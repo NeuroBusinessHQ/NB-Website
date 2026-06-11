@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroBusiness™ AI</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c:  #1a3d35;
+  --c2: #15312a;
+  --c3: #0f2420;
+  --g:  #c9a96e;
+  --g2: #a8813e;
+  --p:  #7c6990;
+  --cr: #faf8f4;
+  --cr2:#f4f1eb;
+  --cr3:#ede9e0;
+  --dk: #1a1814;
+  --t1: #1a1814;
+  --t2: #4a4540;
+  --t3: #8a837a;
+  --b:  rgba(26,24,20,.1);
+  --b2: rgba(26,24,20,.06);
+  --fd: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Outfit', system-ui, sans-serif;
+  --fm: 'DM Mono', monospace;
+  --sidebar: 280px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-size: 15px; line-height: 1.6; font-weight: 300; }
+
+/* ── GATE SCREEN ── */
+#gate {
+  position: fixed; inset: 0; z-index: 500;
+  background: var(--c3);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+#gate.hidden { display: none; }
+.gate-box {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 24px;
+  padding: 48px 44px;
+  width: 100%; max-width: 440px;
+  text-align: center;
+}
+.gate-logo { font-family: var(--fd); font-size: 28px; font-weight: 300; color: var(--cr); letter-spacing: -.02em; margin-bottom: 32px; }
+.gate-logo em { font-style: italic; color: var(--g); }
+.gate-title { font-family: var(--fd); font-size: 22px; font-weight: 300; color: var(--cr); margin-bottom: 8px; }
+.gate-sub { font-size: 14px; color: rgba(255,255,255,.4); line-height: 1.7; margin-bottom: 32px; }
+.gate-input {
+  width: 100%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px; padding: 14px 16px; color: var(--cr);
+  font-family: var(--fb); font-size: 15px; outline: none;
+  transition: border-color .2s; margin-bottom: 12px;
+}
+.gate-input:focus { border-color: var(--g); }
+.gate-input::placeholder { color: rgba(255,255,255,.25); }
+.gate-btn {
+  width: 100%; background: var(--g); color: var(--dk);
+  border: none; border-radius: 10px; padding: 15px;
+  font-family: var(--fb); font-size: 15px; font-weight: 500;
+  cursor: pointer; transition: all .2s; margin-bottom: 12px;
+}
+.gate-btn:hover { background: #d4b47a; }
+.gate-btn:disabled { background: rgba(255,255,255,.1); color: rgba(255,255,255,.3); cursor: not-allowed; }
+.gate-note { font-family: var(--fm); font-size: 11px; color: rgba(255,255,255,.2); letter-spacing: .04em; }
+.gate-error { font-size: 13px; color: #e87070; margin-top: 8px; display: none; }
+.gate-success { font-size: 13px; color: var(--g); margin-top: 8px; display: none; line-height: 1.6; }
+
+/* ── APP LAYOUT ── */
+#app { display: flex; height: 100vh; opacity: 0; transition: opacity .4s; }
+#app.visible { opacity: 1; }
+
+/* ── SIDEBAR ── */
+#sidebar {
+  width: var(--sidebar); flex-shrink: 0;
+  background: var(--c3);
+  display: flex; flex-direction: column;
+  border-right: 1px solid rgba(255,255,255,.06);
+  overflow: hidden;
+}
+.sb-head {
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.sb-logo { font-family: var(--fd); font-size: 20px; font-weight: 300; color: var(--cr); letter-spacing: -.01em; margin-bottom: 16px; }
+.sb-logo em { font-style: italic; color: var(--g); }
+.sb-profile {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px; padding: 14px;
+}
+.sb-profile-badge { font-family: var(--fm); font-size: 10px; letter-spacing: .1em; color: var(--g); margin-bottom: 6px; }
+.sb-profile-name { font-size: 15px; color: var(--cr); font-weight: 400; margin-bottom: 2px; }
+.sb-profile-type { font-size: 13px; color: rgba(255,255,255,.35); }
+
+.sb-nav { flex: 1; overflow-y: auto; padding: 16px 12px; }
+.sb-section-label {
+  font-family: var(--fm); font-size: 9px; letter-spacing: .14em;
+  text-transform: uppercase; color: rgba(255,255,255,.2);
+  padding: 0 8px; margin: 16px 0 6px;
+}
+.sb-btn {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; background: none; border: none;
+  padding: 10px 10px; border-radius: 8px;
+  font-family: var(--fb); font-size: 13px; color: rgba(255,255,255,.5);
+  cursor: pointer; transition: all .15s; text-align: left;
+  margin-bottom: 2px;
+}
+.sb-btn:hover { background: rgba(255,255,255,.05); color: rgba(255,255,255,.8); }
+.sb-btn.active { background: rgba(201,169,110,.1); color: var(--g); }
+.sb-btn-icon { width: 28px; height: 28px; border-radius: 7px; background: rgba(255,255,255,.05); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.sb-btn.active .sb-btn-icon { background: rgba(201,169,110,.15); }
+
+.sb-checkin {
+  padding: 12px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.sb-checkin-label { font-family: var(--fm); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.2); margin-bottom: 8px; }
+.energy-row { display: flex; gap: 6px; }
+.energy-btn {
+  flex: 1; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px; padding: 8px 4px; cursor: pointer;
+  font-size: 16px; text-align: center; transition: all .15s;
+}
+.energy-btn:hover { background: rgba(255,255,255,.1); }
+.energy-btn.sel { border-color: var(--g); background: rgba(201,169,110,.1); }
+
+.sb-stats { padding: 12px; border-top: 1px solid rgba(255,255,255,.06); }
+.stat-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+.stat-label { font-size: 11px; color: rgba(255,255,255,.25); }
+.stat-val { font-family: var(--fm); font-size: 11px; color: rgba(255,255,255,.4); }
+
+/* ── MAIN ── */
+#main { flex: 1; display: flex; flex-direction: column; min-width: 0; background: var(--cr); }
+
+/* ── TOP BAR ── */
+#topbar {
+  height: 56px; padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--b2);
+  background: rgba(250,248,244,.95);
+  backdrop-filter: blur(12px);
+  flex-shrink: 0;
+}
+.topbar-title { font-family: var(--fd); font-size: 18px; font-weight: 300; color: var(--dk); }
+.topbar-title em { font-style: italic; color: var(--g); }
+.topbar-actions { display: flex; gap: 8px; align-items: center; }
+.tb-btn {
+  background: none; border: 1px solid var(--b);
+  border-radius: 8px; padding: 7px 14px;
+  font-family: var(--fb); font-size: 12px; color: var(--t3);
+  cursor: pointer; transition: all .15s;
+}
+.tb-btn:hover { border-color: var(--dk); color: var(--dk); }
+.lang-pill {
+  display: flex; gap: 1px;
+  background: var(--cr2); border: 1px solid var(--b);
+  border-radius: 6px; overflow: hidden;
+}
+.lang-pill span {
+  font-family: var(--fm); font-size: 10px; letter-spacing: .06em;
+  padding: 5px 9px; cursor: pointer; color: var(--t3); transition: all .15s;
+}
+.lang-pill span.active { background: var(--dk); color: var(--cr); }
+
+/* ── CHAT AREA ── */
+#chat-area { flex: 1; overflow-y: auto; padding: 28px; scroll-behavior: smooth; }
+
+/* Welcome / mode cards */
+.welcome { max-width: 700px; margin: 0 auto; }
+.welcome-hero {
+  background: var(--c3); border-radius: 20px;
+  padding: 36px 40px; margin-bottom: 24px;
+  position: relative; overflow: hidden;
+}
+.welcome-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 80% 30%, rgba(201,169,110,.12) 0%, transparent 60%);
+}
+.wh-eye { font-family: var(--fm); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(201,169,110,.6); margin-bottom: 12px; }
+.wh-title { font-family: var(--fd); font-size: clamp(26px,3.5vw,40px); font-weight: 300; color: var(--cr); line-height: 1.15; margin-bottom: 12px; letter-spacing: -.02em; }
+.wh-title em { font-style: italic; color: var(--g); }
+.wh-sub { font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 480px; }
+
+.mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+.mode-card {
+  background: var(--cr); border: 1px solid var(--b);
+  border-radius: 14px; padding: 20px;
+  cursor: pointer; transition: all .2s;
+}
+.mode-card:hover { border-color: var(--g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+.mc-icon { font-size: 22px; margin-bottom: 10px; }
+.mc-title { font-size: 14px; font-weight: 500; color: var(--dk); margin-bottom: 4px; }
+.mc-desc { font-size: 12px; color: var(--t3); line-height: 1.6; }
+
+.agenda-card {
+  background: var(--cr2); border: 1px solid var(--b);
+  border-radius: 14px; padding: 24px;
+  margin-bottom: 12px;
+}
+.agenda-card.loading { text-align: center; padding: 32px; }
+.ag-eye { font-family: var(--fm); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--g2); margin-bottom: 12px; }
+.ag-title { font-family: var(--fd); font-size: 22px; font-weight: 300; color: var(--dk); margin-bottom: 16px; }
+.ag-items { display: flex; flex-direction: column; gap: 10px; }
+.ag-item { display: flex; gap: 14px; align-items: flex-start; }
+.ag-num { width: 26px; height: 26px; border-radius: 50%; background: var(--c); color: var(--g); display: flex; align-items: center; justify-content: center; font-family: var(--fm); font-size: 10px; flex-shrink: 0; margin-top: 1px; }
+.ag-text { font-size: 14px; color: var(--t2); line-height: 1.65; }
+.ag-text strong { color: var(--dk); font-weight: 500; }
+
+/* Messages */
+.msg-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+.msg { display: flex; gap: 14px; align-items: flex-start; }
+.msg.user { flex-direction: row-reverse; }
+.msg-avatar {
+  width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fd); font-size: 13px; font-weight: 400;
+}
+.msg.ai .msg-avatar { background: var(--c); color: var(--g); }
+.msg.user .msg-avatar { background: var(--cr3); color: var(--t3); font-size: 11px; }
+.msg-bubble {
+  max-width: 80%; padding: 14px 18px;
+  border-radius: 16px; font-size: 14px; line-height: 1.75;
+}
+.msg.ai .msg-bubble { background: var(--cr); border: 1px solid var(--b); color: var(--t1); border-radius: 4px 16px 16px 16px; }
+.msg.user .msg-bubble { background: var(--c); color: rgba(255,255,255,.9); border-radius: 16px 4px 16px 16px; }
+.msg-bubble p { margin-bottom: 10px; }
+.msg-bubble p:last-child { margin-bottom: 0; }
+.msg-bubble strong { font-weight: 500; color: var(--dk); }
+.msg.user .msg-bubble strong { color: var(--g); }
+.msg-bubble ul, .msg-bubble ol { padding-left: 18px; margin-bottom: 10px; }
+.msg-bubble li { margin-bottom: 4px; }
+
+.typing { display: flex; gap: 5px; align-items: center; padding: 14px 18px; }
+.typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--t3); animation: blink 1.2s infinite; }
+.typing span:nth-child(2) { animation-delay: .2s; }
+.typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
+.fb-btn { background:none; border:1px solid var(--b); border-radius:20px; padding:3px 9px; font-size:12px; cursor:pointer; transition:all .15s; color:var(--t2); }
+.fb-btn:hover { border-color:var(--g); background:rgba(201,169,110,.08); }
+.fb-btn:disabled { opacity:.5; cursor:default; }
+
+.topic-tag {
+  display: inline-block; font-family: var(--fm); font-size: 9px;
+  letter-spacing: .08em; text-transform: uppercase;
+  background: rgba(26,61,53,.08); color: var(--c);
+  padding: 2px 8px; border-radius: 20px; margin-top: 8px;
+}
+
+/* ── INPUT BAR ── */
+#input-bar {
+  padding: 16px 28px 20px;
+  border-top: 1px solid var(--b2);
+  background: var(--cr);
+  flex-shrink: 0;
+}
+.input-wrap {
+  max-width: 700px; margin: 0 auto;
+  display: flex; gap: 10px; align-items: flex-end;
+}
+#msg-input {
+  flex: 1; background: var(--cr2); border: 1.5px solid var(--b);
+  border-radius: 14px; padding: 13px 16px;
+  font-family: var(--fb); font-size: 14px; color: var(--t1);
+  resize: none; outline: none; min-height: 48px; max-height: 140px;
+  line-height: 1.5; transition: border-color .2s;
+}
+#msg-input:focus { border-color: var(--g); }
+#msg-input::placeholder { color: var(--t3); }
+#send-btn {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: var(--c); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s; flex-shrink: 0;
+}
+#send-btn:hover { background: var(--g); }
+#send-btn:disabled { background: var(--cr3); cursor: not-allowed; }
+#send-btn svg { width: 18px; height: 18px; color: var(--g); }
+#send-btn:hover svg { color: var(--dk); }
+#send-btn:disabled svg { color: var(--t3); }
+
+.quick-prompts {
+  max-width: 700px; margin: 0 auto 10px;
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+.qp-btn {
+  background: none; border: 1px solid var(--b);
+  border-radius: 20px; padding: 5px 12px;
+  font-size: 12px; color: var(--t3); cursor: pointer;
+  font-family: var(--fb); transition: all .15s;
+}
+.qp-btn:hover { border-color: var(--g); color: var(--g2); background: rgba(201,169,110,.05); }
+
+/* ── MOBILE ── */
+#menu-toggle { display: none; }
+@media(max-width: 768px) {
+  #sidebar { position: fixed; left: -100%; top: 0; bottom: 0; z-index: 100; transition: left .3s; }
+  #sidebar.open { left: 0; }
+  #menu-toggle { display: flex; width: 36px; height: 36px; align-items: center; justify-content: center; background: none; border: 1px solid var(--b); border-radius: 8px; cursor: pointer; }
+  .mode-grid { grid-template-columns: 1fr; }
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--b); border-radius: 2px; }
+
+/* ── LOADING SPINNER ── */
+.spinner { width: 20px; height: 20px; border: 2px solid rgba(201,169,110,.2); border-top-color: var(--g); border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 8px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── DATA NOTICE ── */
+.data-notice {
+  max-width: 700px; margin: 0 auto 16px;
+  background: rgba(201,169,110,.06); border: 1px solid rgba(201,169,110,.15);
+  border-radius: 10px; padding: 10px 14px;
+  font-size: 12px; color: var(--t3); line-height: 1.6;
+}
+.data-notice strong { color: var(--g2); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- ── GATE ── -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-logo">NeuroBusiness<em>™</em></div>
+    <div class="gate-title" id="g-title">Access your AI</div>
+    <div class="gate-sub" id="g-sub">Enter the email address you used to purchase NeuroBusiness™ to receive your access link.</div>
+    <input type="email" class="gate-input" id="gate-email" placeholder="your@email.com">
+    <button class="gate-btn" id="gate-btn" onclick="requestAccess()">
+      <span id="gate-btn-txt">Send access link</span>
+    </button>
+    <div class="gate-error" id="gate-error"></div>
+    <div class="gate-success" id="gate-success"></div>
+    <div class="gate-note" id="g-note">SECURE · ENCRYPTED · PERSONALIZED</div>
+  </div>
+</div>
+
+<!-- ── APP ── -->
+<div id="app">
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <div class="sb-head">
+      <div class="sb-logo">NeuroBusiness<em>™</em> <span style="font-family:var(--fm);font-size:10px;color:var(--g);letter-spacing:.06em">AI</span></div>
+      <div class="sb-profile">
+        <div class="sb-profile-badge" id="sb-badge">YOUR TYPE</div>
+        <div class="sb-profile-name" id="sb-name">—</div>
+        <div class="sb-profile-type" id="sb-type">Loading…</div>
+      </div>
+    </div>
+
+    <div class="sb-nav">
+      <div class="sb-section-label" id="lbl-nav-main">Main</div>
+      <button class="sb-btn active" id="btn-chat" onclick="setMode('chat')">
+        <span class="sb-btn-icon">💬</span>
+        <span id="lbl-chat">AI Sparring</span>
+      </button>
+      <button class="sb-btn" id="btn-agenda" onclick="setMode('agenda')">
+        <span class="sb-btn-icon">📋</span>
+        <span id="lbl-agenda">Weekly Agenda</span>
+      </button>
+
+      <div class="sb-section-label" id="lbl-nav-tools">Tools</div>
+      <button class="sb-btn" onclick="injectPrompt('pricing')">
+        <span class="sb-btn-icon">💰</span>
+        <span id="lbl-pricing">Pricing Help</span>
+      </button>
+      <button class="sb-btn" onclick="injectPrompt('visibility')">
+        <span class="sb-btn-icon">📣</span>
+        <span id="lbl-visibility">Visibility Coach</span>
+      </button>
+      <button class="sb-btn" onclick="injectPrompt('decision')">
+        <span class="sb-btn-icon">⚡</span>
+        <span id="lbl-decision">Decision Support</span>
+      </button>
+      <button class="sb-btn" onclick="injectPrompt('offer')">
+        <span class="sb-btn-icon">🎯</span>
+        <span id="lbl-offer">Offer Builder</span>
+      </button>
+      <button class="sb-btn" onclick="injectPrompt('burnout')">
+        <span class="sb-btn-icon">🔋</span>
+        <span id="lbl-burnout-btn">Burnout Check</span>
+      </button>
+      <button class="sb-btn" onclick="injectPrompt('client')">
+        <span class="sb-btn-icon">🤝</span>
+        <span id="lbl-client">Client Situation</span>
+      </button>
+
+      <div class="sb-section-label" id="lbl-nav-more">More</div>
+      <button class="sb-btn" onclick="newChat()">
+        <span class="sb-btn-icon">✨</span>
+        <span id="lbl-new">New Chat</span>
+      </button>
+    </div>
+
+    <div class="sb-checkin">
+      <div class="sb-checkin-label" id="lbl-checkin">Today's energy</div>
+      <div class="energy-row">
+        <button class="energy-btn" onclick="logEnergy(1)" title="Low">😔</button>
+        <button class="energy-btn" onclick="logEnergy(2)" title="OK">😐</button>
+        <button class="energy-btn" onclick="logEnergy(3)" title="Good">🙂</button>
+        <button class="energy-btn" onclick="logEnergy(4)" title="Great">🔥</button>
+      </div>
+    </div>
+
+    <div class="sb-stats">
+      <div class="stat-row">
+        <span class="stat-label" id="lbl-sessions">Sessions</span>
+        <span class="stat-val" id="stat-sessions">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label" id="lbl-streak">Streak</span>
+        <span class="stat-val" id="stat-streak">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div id="main">
+    <div id="topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button id="menu-toggle" onclick="toggleSidebar()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="topbar-title" id="topbar-title">AI <em>Sparring</em></div>
+      </div>
+      <div class="topbar-actions">
+        <div class="lang-pill">
+          <span id="lang-de" onclick="setLang('de')" class="active">DE</span>
+          <span id="lang-en" onclick="setLang('en')">EN</span>
+        </div>
+        <button class="tb-btn" onclick="newChat()" id="lbl-clear">Clear</button>
+      </div>
+    </div>
+
+    <div id="chat-area"></div>
+
+    <div id="input-bar">
+      <div class="quick-prompts" id="quick-prompts"></div>
+      <div class="input-wrap">
+        <textarea id="msg-input" rows="1" placeholder="Ask your AI…" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button id="send-btn" onclick="sendMessage()" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── CONFIG ──
+// Supabase anon key ist öffentlich sicher — dient nur zur Identifizierung, nicht als Secret
+// Der Claude API Key ist NIEMALS hier — er liegt sicher im Cloudflare Worker
+const SUPABASE_URL = 'https://psqfrdpitjmfwvupmfdp.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzcWZyZHBpdGptZnd2dXBtZmRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDQ1NjQsImV4cCI6MjA5MzkyMDU2NH0.yUD24iRrINHLBRIJElmOJZPoBuoBcPGfayNGX38Oldg';
+// KI-Anfragen gehen ausschließlich durch den sicheren Cloudflare Worker — kein API Key im Frontend
+const AI_ENDPOINT = '/api/ai'; // Cloudflare Worker Route
+
+// ── STATE ──
+let USER = null; // { email, name, type, typeName, typeEN, lang, token, userId, scores, burnoutAlert }
+let LANG = 'de';
+let MODE = 'chat';
+let MESSAGES = []; // conversation history
+let CONV_ID = null; // aktuelle Conversation ID
+let IS_SENDING = false;
+let SESSION_START = Date.now();
+let ENERGY_TODAY = null;
+
+// ── PSYCHOTYPE DATA ──
+const TYPES = {
+  S: { de: 'Der Stratege',    en: 'The Strategist'   },
+  V: { de: 'Der Visionär',    en: 'The Visionary'    },
+  M: { de: 'Der Builder',     en: 'The Builder'      },
+  C: { de: 'Der Connector',   en: 'The Connector'    },
+  G: { de: 'Der Hochleister', en: 'The High Performer' },
+};
+
+// ── SYSTEM PROMPTS per Psychotype ──
+function buildSystemPrompt(user) {
+  const isEN = user.lang === 'en';
+  const typeName = isEN ? user.typeEN : user.typeName;
+  const lang = isEN ? 'English' : 'German';
+
+  const typeGuidance = {
+    S: isEN
+      ? `The Strategist tends to over-analyse, delay launches, underprice, and resist visibility. They need permission to act before perfect. Challenge their perfectionism gently but directly. Help them price by value, not effort.`
+      : `Der Stratege neigt zu Überanalyse, verschiebt Launches, unterpreist und meidet Sichtbarkeit. Er braucht Erlaubnis zu handeln bevor es perfekt ist. Fordere seinen Perfektionismus sanft aber direkt heraus. Hilf beim Preis nach Wert, nicht nach Aufwand.`,
+    V: isEN
+      ? `The Visionary has too many ideas, struggles to focus, and often lacks systems. They need help choosing ONE thing and building structure. Challenge them when they jump to new projects. Validate their vision while grounding it in reality.`
+      : `Der Visionär hat zu viele Ideen, kämpft mit Fokus und fehlt oft Systeme. Er braucht Hilfe beim Wählen von EINEM Ding. Fordere ihn heraus wenn er zum nächsten Projekt springt. Bestätige seine Vision während du sie in die Realität bringst.`,
+    M: isEN
+      ? `The Builder delivers fast and well but chronically underprices and can't stop working. They need to hear that their speed is extraordinary and worth 3× market rates. Push them on delegation and scope boundaries.`
+      : `Der Builder liefert schnell und gut, unterpreist chronisch und kann nicht aufhören. Er muss hören dass seine Geschwindigkeit außergewöhnlich ist und 3× den Marktwert wert ist. Dränge auf Delegation und Scope-Grenzen.`,
+    C: isEN
+      ? `The Connector gives too much for free, avoids money conversations, and fears that boundaries damage relationships. Help them monetise their natural trust and empathy. Gently but firmly encourage them to set prices and limits.`
+      : `Der Connector gibt zu viel kostenlos, meidet Geldgespräche und fürchtet dass Grenzen Beziehungen zerstören. Hilf ihm sein natürliches Vertrauen und Empathie zu monetarisieren. Ermutige sanft aber bestimmt zum Setzen von Preisen und Grenzen.`,
+    G: isEN
+      ? `The High Performer is the highest burnout risk. They can't stop, rationalise exhaustion, and don't notice warning signs until collapse. Be vigilant about burnout signals. Always incorporate capacity and recovery into advice. Be direct — they respect directness.`
+      : `Der Hochleister hat das höchste Burnout-Risiko. Er kann nicht aufhören, rationalisiert Erschöpfung und bemerkt Warnsignale erst beim Zusammenbruch. Sei wachsam bei Burnout-Signalen. Integriere immer Kapazität und Regeneration in Ratschläge. Sei direkt — er respektiert Direktheit.`,
+  };
+
+  const baseType = user.type.length > 1 ? user.type[0] : user.type;
+  const guidance = typeGuidance[baseType] || typeGuidance.S;
+
+  return isEN ? `You are the NeuroBusiness™ AI — a business sparring partner and psychological coach developed by Eva Kolontai, Diplom-Psychologin with 20+ years of experience.
+
+You are speaking with ${user.name || 'the user'}, whose NeuroBusiness™ psychotype is: **${typeName}** (${user.type}).
+
+Your role:
+- Act as a direct, warm, and intelligent business partner — not a chatbot
+- Combine business strategy with psychological insight
+- Give concrete, actionable advice tailored to the ${user.type} psychotype
+- Reference the psychotype naturally when relevant, not in every message
+- Be direct. Don't pad responses. Don't list 10 options when 2 are right.
+- Ask one clarifying question when needed — not five
+
+Psychotype-specific guidance:
+${guidance}
+
+Communication style:
+- Warm but direct
+- Psychologically informed without being clinical
+- Business-focused: every insight should connect to revenue, positioning, or wellbeing
+- Short paragraphs. No bullet lists unless genuinely helpful. Natural conversation.
+- Language: ${lang}
+
+Important: You remember the full conversation context. Reference earlier points naturally. You are building an ongoing coaching relationship with this person.`
+
+: `Du bist der NeuroBusiness™ AI — ein Business-Sparringspartner und psychologischer Coach, entwickelt von Eva Kolontai, Diplom-Psychologin mit 20+ Jahren Erfahrung.
+
+Du sprichst mit ${user.name || 'der Person'}, deren NeuroBusiness™ Psychotyp ist: **${typeName}** (${user.type}).
+
+Deine Rolle:
+- Handle als direkter, warmer und intelligenter Business-Partner — nicht als Chatbot
+- Kombiniere Business-Strategie mit psychologischer Einsicht
+- Gib konkrete, umsetzbare Ratschläge angepasst an den ${user.type}-Psychotyp
+- Beziehe den Psychotyp natürlich ein wenn relevant, nicht in jeder Nachricht
+- Sei direkt. Keine aufgeblähten Antworten. Nicht 10 Optionen wenn 2 richtig sind.
+- Stelle eine klärende Frage wenn nötig — nicht fünf
+
+Psychotyp-spezifische Anleitung:
+${guidance}
+
+Kommunikationsstil:
+- Warm aber direkt
+- Psychologisch informiert ohne klinisch zu wirken
+- Business-fokussiert: jede Einsicht sollte sich auf Umsatz, Positionierung oder Wohlbefinden beziehen
+- Kurze Absätze. Keine Aufzählungen außer sie helfen wirklich. Natürliche Konversation.
+- Sprache: ${lang}
+
+Wichtig: Du erinnerst dich an den gesamten Gesprächskontext. Beziehe frühere Punkte natürlich ein. Du baust eine laufende Coaching-Beziehung auf.`;
+}
+
+// ── TOPIC TAGGER ──
+function detectTopic(text) {
+  const t = text.toLowerCase();
+  if (/preis|pricing|rate|honorar|kosten|€|\$|money|geld/.test(t)) return 'pricing';
+  if (/burnout|erschöpft|müde|energy|energie|stress|pause/.test(t)) return 'burnout';
+  if (/entscheidung|decision|wählen|choose|soll ich|should i/.test(t)) return 'decision';
+  if (/angebot|offer|paket|package|produkt|product/.test(t)) return 'offer';
+  if (/sichtbar|visibility|linkedin|instagram|content|post/.test(t)) return 'visibility';
+  if (/kunde|client|kunden|customers/.test(t)) return 'client';
+  if (/woche|week|plan|agenda|priorität|priority/.test(t)) return 'agenda';
+  return 'general';
+}
+
+// ── AUTH ──
+async function requestAccess() {
+  const email = document.getElementById('gate-email').value.trim();
+  const btn = document.getElementById('gate-btn');
+  const errEl = document.getElementById('gate-error');
+  const succEl = document.getElementById('gate-success');
+  errEl.style.display = 'none';
+  succEl.style.display = 'none';
+
+  if (!email || !email.includes('@')) {
+    errEl.textContent = LANG === 'de' ? 'Bitte gültige E-Mail eingeben.' : 'Please enter a valid email.';
+    errEl.style.display = 'block'; return;
+  }
+
+  btn.disabled = true;
+  document.getElementById('gate-btn-txt').textContent = LANG === 'de' ? 'Wird gesendet…' : 'Sending…';
+
+  try {
+    // Check if email exists in Supabase purchases
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}&select=*`, {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    });
+    const data = await res.json();
+
+    if (!data || data.length === 0) {
+      errEl.textContent = LANG === 'de'
+        ? 'Diese E-Mail ist nicht registriert. Hast du die Diagnostik gekauft? → hello@neurobusiness.one'
+        : 'This email is not registered. Did you purchase the diagnostic? → hello@neurobusiness.one';
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      document.getElementById('gate-btn-txt').textContent = LANG === 'de' ? 'Zugangscode senden' : 'Send access link';
+      return;
+    }
+
+    // Generate magic token, save to Supabase, send via Brevo
+    const token = Math.random().toString(36).substr(2, 16) + Date.now().toString(36);
+    const userData = data[0];
+
+    // Save token (access_tokens table — needs to be created via SQL below)
+    await fetch(`${SUPABASE_URL}/rest/v1/access_tokens`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, token, user_id: userData.id, expires_at: new Date(Date.now() + 7*24*60*60*1000).toISOString() })
+    });
+
+    // Send magic link email via n8n webhook
+    const appUrl = `${window.location.origin}${window.location.pathname}?token=${token}`;
+    await fetch('https://evakolontai.app.n8n.cloud/webhook/nb-magic-link', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, token, appUrl, name: userData.name, lang: LANG })
+    }).catch(() => {}); // fire and forget
+
+    succEl.innerHTML = LANG === 'de'
+      ? `✓ Link gesendet! Schau in dein Postfach — <strong>${email}</strong>. Der Link ist 7 Tage gültig.`
+      : `✓ Link sent! Check your inbox — <strong>${email}</strong>. The link is valid for 7 days.`;
+    succEl.style.display = 'block';
+
+  } catch(e) {
+    console.error(e);
+    errEl.textContent = LANG === 'de' ? 'Fehler. Bitte versuche es erneut.' : 'Error. Please try again.';
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    document.getElementById('gate-btn-txt').textContent = LANG === 'de' ? 'Zugangscode senden' : 'Send access link';
+  }
+}
+
+async function validateToken(token) {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/access_tokens?token=eq.${token}&select=*`, {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    });
+    const data = await res.json();
+    if (!data || data.length === 0) return null;
+    const row = data[0];
+    if (new Date(row.expires_at) < new Date()) return null;
+    // Fetch profile separately
+    const pres = await fetch(`${SUPABASE_URL}/rest/v1/profiles?id=eq.${row.user_id}&select=*`, {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    });
+    const profiles = await pres.json();
+    return profiles?.[0] || null;
+  } catch(e) { return null; }
+}
+
+// ── INIT ──
+async function init() {
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('token');
+  LANG = params.get('lang') || navigator.language.startsWith('de') ? 'de' : 'en';
+
+  // Dev mode: bypass auth with URL params
+  const devType = params.get('type');
+  if (devType && params.get('dev') === '1') {
+    USER = {
+      email: 'dev@test.com',
+      name: params.get('name') || 'Test User',
+      type: devType.toUpperCase(),
+      typeName: TYPES[devType.toUpperCase()]?.de || devType,
+      typeEN: TYPES[devType.toUpperCase()]?.en || devType,
+      lang: LANG,
+      token: 'dev',
+      userId: 'dev',
+      burnoutAlert: false,
+      scores: { S: +params.get('s')||0, V: +params.get('v')||0, M: +params.get('m')||0, C: +params.get('c')||0, G: +params.get('g')||0 }
+    };
+    launchApp();
+    return;
+  }
+
+  if (token) {
+    const userData = await validateToken(token);
+    if (userData) {
+      USER = {
+        email: userData.email,
+        name: userData.first_name || '',
+        type: userData.psychotype || 'S',
+        typeName: TYPES[userData.psychotype]?.de || userData.psychotype,
+        typeEN: TYPES[userData.psychotype]?.en || userData.psychotype,
+        lang: userData.lang || LANG,
+        token,
+        userId: userData.id,
+        burnoutAlert: userData.burnout_alert || false,
+        scores: {
+          S: userData.score_s || 0,
+          V: userData.score_v || 0,
+          M: userData.score_m || 0,
+          C: userData.score_c || 0,
+          G: userData.score_g || 0
+        }
+      };
+      LANG = USER.lang;
+      launchApp();
+      return;
+    }
+  }
+
+  // Show gate
+  updateGateLang();
+}
+
+function launchApp() {
+  document.getElementById('gate').classList.add('hidden');
+  const app = document.getElementById('app');
+  app.classList.add('visible');
+  setLang(LANG);
+  updateSidebar();
+  loadStats();
+  showWelcome();
+}
+
+// ── SIDEBAR UPDATE ──
+function updateSidebar() {
+  if (!USER) return;
+  document.getElementById('sb-badge').textContent = USER.type;
+  document.getElementById('sb-name').textContent = USER.name || USER.email.split('@')[0];
+  document.getElementById('sb-type').textContent = LANG === 'de' ? USER.typeName : USER.typeEN;
+}
+
+// ── STATS ──
+async function loadStats() {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/conversations?user_id=eq.${encodeURIComponent(USER.userId)}&select=created_at&order=created_at.desc`, {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    });
+    const data = await res.json();
+    document.getElementById('stat-sessions').textContent = data.length || 0;
+    let streak = 0;
+    if (data.length > 0) {
+      const dates = [...new Set(data.map(r => r.created_at.split('T')[0]))].sort().reverse();
+      let prev = new Date(); prev.setHours(0,0,0,0);
+      for (const d of dates) {
+        const cur = new Date(d);
+        const diff = Math.round((prev - cur) / 86400000);
+        if (diff <= 1) { streak++; prev = cur; } else break;
+      }
+    }
+    document.getElementById('stat-streak').textContent = streak + (LANG === 'de' ? ' Tage' : ' days');
+  } catch(e) {
+    document.getElementById('stat-sessions').textContent = '—';
+    document.getElementById('stat-streak').textContent = '—';
+  }
+}
+
+// ── ENERGY LOG ──
+async function logEnergy(level) {
+  document.querySelectorAll('.energy-btn').forEach((b,i) => b.classList.toggle('sel', i === level-1));
+  ENERGY_TODAY = level;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/checkins`, {
+      method: 'POST',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_id: USER.userId,
+        energy_level: level,
+        stress_level: level <= 2 ? 4 : level === 3 ? 2 : 1, // invert: low energy = high stress
+        focus_level: level,
+        note: `Auto check-in · psychotype ${USER.type} · ${LANG}`
+      })
+    });
+  } catch(e) {}
+  if (level <= 2 && MODE === 'chat') {
+    setTimeout(() => injectPrompt('burnout_low'), 500);
+  }
+}
+
+// ── WELCOME SCREEN ── 
+function showWelcome() {
+  const area = document.getElementById('chat-area');
+  const isEN = LANG === 'en';
+  const typeName = isEN ? USER.typeEN : USER.typeName;
+  const hour = new Date().getHours();
+  const greeting = isEN
+    ? (hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening')
+    : (hour < 12 ? 'Guten Morgen' : hour < 18 ? 'Guten Tag' : 'Guten Abend');
+  const name = USER.name ? `, ${USER.name.split(' ')[0]}` : '';
+
+  const isMonday = new Date().getDay() === 1;
+  const mondayBadge = isMonday ? `<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.25);border-radius:20px;padding:5px 12px;font-family:var(--fm);font-size:10px;color:var(--g);letter-spacing:.06em;margin-bottom:16px">${isEN ? '📋 Weekly Agenda ready' : '📋 Wochenagenda bereit'}</div>` : '';
+
+  area.innerHTML = `
+    <div class="welcome">
+      <div class="welcome-hero">
+        ${mondayBadge}
+        <div class="wh-eye">${isEN ? 'NEUROBUSINESS™ AI' : 'NEUROBUSINESS™ AI'}</div>
+        <div class="wh-title">${greeting}${name},<br>${isEN ? 'ready to <em>think</em> with you.' : 'bereit mit dir zu <em>denken</em>.'}</div>
+        <div class="wh-sub">${isEN
+          ? `You are <strong style="color:var(--g)">${typeName}</strong>. Everything I say is calibrated to how you think, decide, and work.`
+          : `Du bist <strong style="color:var(--g)">${typeName}</strong>. Alles was ich sage ist auf deine Art zu denken, entscheiden und arbeiten kalibriert.`
+        }</div>
+      </div>
+
+      <div class="data-notice">
+        <strong>${isEN ? 'Data & Privacy' : 'Daten & Datenschutz'}:</strong>
+        ${isEN
+          ? 'Your conversations are saved to improve the NeuroBusiness™ system. No data is shared with third parties. You can request deletion at any time: hello@neurobusiness.one'
+          : 'Deine Gespräche werden gespeichert um das NeuroBusiness™-System zu verbessern. Keine Weitergabe an Dritte. Löschung jederzeit: hello@neurobusiness.one'
+        }
+      </div>
+
+      ${USER.burnoutAlert ? `
+      <div style="background:rgba(220,80,60,.06);border:1px solid rgba(220,80,60,.2);border-radius:14px;padding:20px 24px;margin-bottom:24px">
+        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(220,80,60,.7);margin-bottom:8px">${isEN ? '⚠ ATTENTION' : '⚠ ACHTUNG'}</div>
+        <div style="font-size:14px;color:var(--t1);line-height:1.7">${isEN
+          ? 'Your diagnostic shows <strong>elevated burnout markers</strong>. I\'d like to address this directly today — it\'s the most important thing.'
+          : 'Deine Diagnostik zeigt <strong>erhöhte Burnout-Marker</strong>. Ich möchte das heute direkt ansprechen — es ist das Wichtigste.'
+        }</div>
+        <button onclick="injectPrompt('burnout')" style="margin-top:12px;background:none;border:1px solid rgba(220,80,60,.3);border-radius:20px;padding:7px 16px;font-size:13px;color:rgba(220,80,60,.8);cursor:pointer;font-family:var(--fb)">${isEN ? 'Talk about this now →' : 'Jetzt darüber sprechen →'}</button>
+      </div>` : ''}
+
+      <div class="mode-grid">
+        <div class="mode-card" onclick="injectPrompt('decision')">
+          <div class="mc-icon">⚡</div>
+          <div class="mc-title">${isEN ? 'Decision Sparring' : 'Entscheidungs-Sparring'}</div>
+          <div class="mc-desc">${isEN ? 'Stuck at a crossroads? Let\'s think it through — for your type.' : 'Stehst du vor einer Entscheidung? Lass uns durchdenken — für deinen Typ.'}</div>
+        </div>
+        <div class="mode-card" onclick="injectPrompt('pricing')">
+          <div class="mc-icon">💰</div>
+          <div class="mc-title">${isEN ? 'Pricing Help' : 'Preis-Unterstützung'}</div>
+          <div class="mc-desc">${isEN ? 'What should you charge? Stop underpricing your value.' : 'Was solltest du verlangen? Höre auf dich zu unterpreisen.'}</div>
+        </div>
+        <div class="mode-card" onclick="injectPrompt('offer')">
+          <div class="mc-icon">🎯</div>
+          <div class="mc-title">${isEN ? 'Offer Builder' : 'Angebots-Builder'}</div>
+          <div class="mc-desc">${isEN ? 'New offer or repackaging existing work? Let\'s design it.' : 'Neues Angebot oder bestehendes neu verpacken? Lass uns es gestalten.'}</div>
+        </div>
+        <div class="mode-card" onclick="setMode('agenda')">
+          <div class="mc-icon">📋</div>
+          <div class="mc-title">${isEN ? 'Weekly Agenda' : 'Wochenagenda'}</div>
+          <div class="mc-desc">${isEN ? '3 priorities for this week — tailored to your psychotype.' : '3 Prioritäten für diese Woche — auf deinen Psychotyp zugeschnitten.'}</div>
+        </div>
+      </div>
+    </div>`;
+  MESSAGES = [];
+  updateQuickPrompts();
+}
+
+// ── MODES ──
+function setMode(mode) {
+  MODE = mode;
+  document.querySelectorAll('.sb-btn[id^="btn-"]').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('btn-' + mode);
+  if (btn) btn.classList.add('active');
+
+  const isEN = LANG === 'en';
+  const titles = {
+    chat: isEN ? 'AI <em>Sparring</em>' : 'AI <em>Sparring</em>',
+    agenda: isEN ? 'Weekly <em>Agenda</em>' : 'Wochen<em>agenda</em>'
+  };
+  document.getElementById('topbar-title').innerHTML = titles[mode] || titles.chat;
+
+  if (mode === 'agenda') showAgenda();
+  updateQuickPrompts();
+}
+
+// ── AGENDA ──
+async function showAgenda() {
+  const area = document.getElementById('chat-area');
+  const isEN = LANG === 'en';
+  area.innerHTML = `<div class="agenda-card loading"><div class="spinner"></div><div style="font-size:13px;color:var(--t3)">${isEN ? 'Generating your weekly agenda…' : 'Wochenagenda wird erstellt…'}</div></div>`;
+
+  const today = new Date();
+  const weekDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const weekTag = `KW${Math.ceil(today.getDate()/7)}-${today.getFullYear()}`;
+  const typeName = isEN ? USER.typeEN : USER.typeName;
+
+  const prompt = isEN
+    ? `Generate a focused weekly agenda for ${USER.name || 'this person'}, psychotype ${typeName} (${USER.type}). Today is ${weekDays[today.getDay()]}, ${today.toLocaleDateString('en-GB')}. 
+
+Give exactly 3 concrete, actionable priorities for this week. Each priority should:
+- Be specific to the ${USER.type} psychotype's typical bottlenecks and opportunities
+- Take maximum 2-3 hours to complete
+- Be immediately actionable (no prep required)
+
+Format each as: a short bold title (max 6 words) followed by 1-2 sentences of specific instruction. No generic advice.`
+    : `Erstelle eine fokussierte Wochenagenda für ${USER.name || 'diese Person'}, Psychotyp ${typeName} (${USER.type}). Heute ist ${weekDays[today.getDay()]}, ${today.toLocaleDateString('de-DE')}.
+
+Gib genau 3 konkrete, umsetzbare Prioritäten für diese Woche. Jede Priorität soll:
+- Spezifisch auf die typischen Engpässe und Chancen des ${USER.type}-Psychotyps zugeschnitten sein
+- Maximal 2-3 Stunden in Anspruch nehmen
+- Sofort umsetzbar sein (keine Vorbereitung nötig)
+
+Formatiere jede als: kurze fette Überschrift (max 6 Wörter) gefolgt von 1-2 Sätzen spezifischer Anweisung. Kein generischer Ratschlag.`;
+
+  try {
+    const response = await callClaude([{ role: 'user', content: prompt }], buildSystemPrompt(USER));
+    const lines = response.split('\n').filter(l => l.trim());
+    
+    // Parse items
+    let items = [];
+    let current = null;
+    for (const line of lines) {
+      if (/^\*\*/.test(line) || /^[123]\.|^-/.test(line.trim())) {
+        if (current) items.push(current);
+        current = { title: line.replace(/^\*\*|\*\*$/g, '').replace(/^[123]\.\s*/, '').replace(/^-\s*/, ''), body: '' };
+      } else if (current && line.trim()) {
+        current.body += (current.body ? ' ' : '') + line.trim();
+      }
+    }
+    if (current) items.push(current);
+    if (items.length === 0) items = [{ title: isEN ? 'This week' : 'Diese Woche', body: response }];
+
+    area.innerHTML = `
+      <div style="max-width:700px;margin:0 auto">
+        <div class="agenda-card">
+          <div class="ag-eye">${isEN ? `WEEK OF ${today.toLocaleDateString('en-GB', {month:'long', day:'numeric'})}` : `WOCHE VON ${today.toLocaleDateString('de-DE', {month:'long', day:'numeric'})}`}</div>
+          <div class="ag-title">${isEN ? 'Your 3 priorities this week' : 'Deine 3 Prioritäten diese Woche'}</div>
+          <div class="ag-items">
+            ${items.slice(0,3).map((item, i) => `
+              <div class="ag-item">
+                <div class="ag-num">0${i+1}</div>
+                <div class="ag-text"><strong>${item.title}</strong><br>${item.body}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:16px">
+          <button onclick="setMode('chat');injectPrompt('agenda_question')" style="background:none;border:1px solid var(--b);border-radius:20px;padding:8px 18px;font-size:13px;color:var(--t3);cursor:pointer;font-family:var(--fb);transition:all .15s" onmouseover="this.style.borderColor='var(--g)';this.style.color='var(--g2)'" onmouseout="this.style.borderColor='var(--b)';this.style.color='var(--t3)'">
+            ${isEN ? 'Ask about this agenda →' : 'Über diese Agenda sprechen →'}
+          </button>
+        </div>
+      </div>`;
+
+    // Save agenda to Supabase
+    saveSession({ type: 'agenda', content: response, topic: 'agenda' });
+
+  } catch(e) {
+    area.innerHTML = `<div class="agenda-card" style="text-align:center;color:var(--t3)">${isEN ? 'Could not load agenda. Please try again.' : 'Agenda konnte nicht geladen werden.'}</div>`;
+  }
+}
+
+// ── QUICK PROMPTS ──
+const QUICK_PROMPTS = {
+  de: ['Was soll ich heute priorisieren?', 'Hilf mir mit dem Preis', 'Ich bin erschöpft', 'Zeig mir meinen Engpass'],
+  en: ['What should I prioritise today?', 'Help me with pricing', 'I feel exhausted', 'Show me my bottleneck']
+};
+
+function updateQuickPrompts() {
+  const el = document.getElementById('quick-prompts');
+  const prompts = QUICK_PROMPTS[LANG] || QUICK_PROMPTS.en;
+  el.innerHTML = prompts.map(p => `<button class="qp-btn" onclick="sendQuick('${p.replace(/'/g, "\\'")}')">${p}</button>`).join('');
+}
+
+function sendQuick(text) {
+  document.getElementById('msg-input').value = text;
+  sendMessage();
+}
+
+// ── INJECT PROMPTS ──
+const INJECT_PROMPTS = {
+  pricing: {
+    de: 'Ich brauche Hilfe bei meiner Preisgestaltung. Lass mich meine aktuelle Situation erklären: ',
+    en: 'I need help with my pricing. Let me explain my current situation: '
+  },
+  decision: {
+    de: 'Ich stehe vor einer Entscheidung und brauche deinen Rat: ',
+    en: 'I\'m facing a decision and need your input: '
+  },
+  offer: {
+    de: 'Ich möchte ein neues Angebot entwickeln. Hier ist was ich mir vorstelle: ',
+    en: 'I want to develop a new offer. Here\'s what I\'m thinking: '
+  },
+  visibility: {
+    de: 'Ich kämpfe mit meiner Sichtbarkeit. Mein Problem ist: ',
+    en: 'I\'m struggling with visibility. My challenge is: '
+  },
+  burnout: {
+    de: 'Ich möchte meinen aktuellen Energie- und Belastungsstand besprechen.',
+    en: 'I\'d like to discuss my current energy and workload situation.'
+  },
+  burnout_low: {
+    de: 'Ich merke dass deine Energie heute niedrig ist. Möchtest du darüber sprechen was dich gerade belastet?',
+    en: 'I notice your energy is low today. Would you like to talk about what\'s weighing on you?'
+  },
+  client: {
+    de: 'Ich habe eine schwierige Situation mit einem Kunden: ',
+    en: 'I have a challenging client situation: '
+  },
+  agenda_question: {
+    de: 'Ich habe eine Frage zu meiner Wochenagenda: ',
+    en: 'I have a question about my weekly agenda: '
+  }
+};
+
+function injectPrompt(key) {
+  if (MODE !== 'chat') setMode('chat');
+  const prompt = INJECT_PROMPTS[key];
+  if (!prompt) return;
+  const text = prompt[LANG] || prompt.en;
+
+  // For AI-triggered (burnout_low), send directly
+  if (key === 'burnout_low') {
+    if (MESSAGES.length === 0) showChatArea();
+    addMessage('ai', text);
+    MESSAGES.push({ role: 'assistant', content: text });
+    return;
+  }
+
+  const input = document.getElementById('msg-input');
+  input.value = text;
+  input.focus();
+  input.setSelectionRange(text.length, text.length);
+  autoResize(input);
+  checkSendEnabled();
+}
+
+// ── CHAT ──
+function showChatArea() {
+  const area = document.getElementById('chat-area');
+  if (!area.querySelector('.msg-list')) {
+    area.innerHTML = '<div class="msg-list" id="msg-list"></div>';
+  }
+}
+
+function addMessage(role, content) {
+  showChatArea();
+  const list = document.getElementById('msg-list');
+  const isUser = role === 'user';
+  const typeName = LANG === 'en' ? USER.typeEN : USER.typeName;
+  const initials = USER.name ? USER.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2) : 'U';
+
+  // Parse markdown
+  const parsed = content
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+
+  const topic = !isUser ? detectTopic(content) : null;
+  const topicLabel = topic && topic !== 'general' ? `<div class="topic-tag">${topic}</div>` : '';
+
+  // Feedback-Buttons (nur für AI-Nachrichten)
+  const feedbackHtml = !isUser ? `
+    <div class="msg-feedback" style="display:flex;gap:6px;margin-top:10px;align-items:center">
+      <span style="font-family:var(--fm);font-size:10px;color:var(--t3);letter-spacing:.04em">${LANG==='de'?'HILFREICH?':'HELPFUL?'}</span>
+      <button onclick="quickFeedback(this,5)" class="fb-btn" title="Sehr hilfreich">👍</button>
+      <button onclick="quickFeedback(this,2)" class="fb-btn" title="Nicht hilfreich">👎</button>
+      <button onclick="saveAsTask(this)" class="fb-btn fb-task" title="${LANG==='de'?'Als Aufgabe speichern':'Save as task'}" style="margin-left:4px">📌 ${LANG==='de'?'Aufgabe':'Task'}</button>
+    </div>` : '';
+
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  div.innerHTML = `
+    <div class="msg-avatar">${isUser ? initials : 'EK'}</div>
+    <div class="msg-bubble"><p>${parsed}</p>${topicLabel}${feedbackHtml}</div>`;
+  list.appendChild(div);
+  list.scrollTop = list.scrollHeight;
+  document.getElementById('chat-area').scrollTop = document.getElementById('chat-area').scrollHeight;
+}
+
+async function quickFeedback(btn, score) {
+  const row = btn.closest('.msg-feedback');
+  if (!row) return;
+  await saveFeedback(score);
+  row.innerHTML = `<span style="font-family:var(--fm);font-size:10px;color:var(--g);letter-spacing:.04em">${LANG==='de'?'✓ Danke!':'✓ Thanks!'}</span>`;
+}
+
+async function saveAsTask(btn) {
+  const bubble = btn.closest('.msg-bubble');
+  const p = bubble?.querySelector('p');
+  if (!p) return;
+  // Ersten Satz als Aufgabe nehmen (max. 120 Zeichen)
+  const taskText = p.textContent.split(/[.!?]/)[0].trim().substring(0, 120);
+  const weekTag = `KW${Math.ceil(new Date().getDate()/7)}-${new Date().getFullYear()}`;
+  const id = await saveTask(taskText, weekTag);
+  if (id) {
+    btn.textContent = LANG === 'de' ? '✓ Gespeichert' : '✓ Saved';
+    btn.disabled = true;
+    btn.style.color = 'var(--g)';
+  }
+}
+
+function addTyping() {
+  showChatArea();
+  const list = document.getElementById('msg-list');
+  const div = document.createElement('div');
+  div.className = 'msg ai';
+  div.id = 'typing-indicator';
+  div.innerHTML = `<div class="msg-avatar">EK</div><div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  list.appendChild(div);
+  list.scrollTop = list.scrollHeight;
+  document.getElementById('chat-area').scrollTop = document.getElementById('chat-area').scrollHeight;
+}
+
+function removeTyping() {
+  const el = document.getElementById('typing-indicator');
+  if (el) el.remove();
+}
+
+async function sendMessage() {
+  const input = document.getElementById('msg-input');
+  const text = input.value.trim();
+  if (!text || IS_SENDING) return;
+
+  IS_SENDING = true;
+  input.value = '';
+  autoResize(input);
+  checkSendEnabled();
+
+  // Show chat area if on welcome screen
+  if (!document.getElementById('msg-list')) {
+    document.getElementById('chat-area').innerHTML = '<div class="msg-list" id="msg-list"></div>';
+  }
+
+  addMessage('user', text);
+  MESSAGES.push({ role: 'user', content: text });
+  addTyping();
+
+  try {
+    const reply = await callClaude(MESSAGES, buildSystemPrompt(USER));
+    removeTyping();
+    addMessage('ai', reply);
+    MESSAGES.push({ role: 'assistant', content: reply });
+
+    // Save to Supabase
+    const topic = detectTopic(text);
+    saveSession({ type: 'chat', content: text, response: reply, topic });
+
+  } catch(e) {
+    removeTyping();
+    const errMsg = LANG === 'de' ? 'Fehler beim Abrufen der Antwort. Bitte versuche es erneut.' : 'Error fetching response. Please try again.';
+    addMessage('ai', errMsg);
+  }
+
+  IS_SENDING = false;
+  checkSendEnabled();
+}
+
+// ── AI API (Cloudflare Worker) ──
+// Der API Key liegt SICHER im Cloudflare Worker — niemals im Frontend
+async function callClaude(messages, _systemPromptUnused) {
+  const response = await fetch(AI_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${USER.token}`,  // Magic-Link-Token zur Authentifizierung
+    },
+    body: JSON.stringify({
+      messages: messages.slice(-20),
+      mode: MODE,
+      conversationId: CONV_ID || undefined,
+    })
+  });
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error || `API error: ${response.status}`);
+  }
+  const data = await response.json();
+  // Worker gibt auch die conversationId zurück — für spätere Nachrichten in derselben Session
+  if (data.conversationId && !CONV_ID) CONV_ID = data.conversationId;
+  return data.reply || '';
+}
+
+// ── SUPABASE SAVE (direkte Saves die der Worker nicht übernimmt) ──
+// Nachrichten + Conversations werden jetzt vollständig vom Worker gespeichert.
+// Hier nur noch: Check-ins, Tasks, Feedback
+async function saveSession(_data) {
+  // Speicherung von Nachrichten übernimmt der Cloudflare Worker
+  // Diese Funktion bleibt als Stub für eventuelle Frontend-seitige Saves
+}
+
+// ── TASK SPEICHERN ──
+async function saveTask(taskText, weekTag) {
+  if (!USER || USER.userId === 'dev') return null;
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/tasks`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify({
+        user_id: USER.userId,
+        task_text: taskText,
+        status: 'planned',
+        week_tag: weekTag || null
+      })
+    });
+    const data = await res.json();
+    return data?.[0]?.id || null;
+  } catch(e) { return null; }
+}
+
+// ── TASK STATUS UPDATEN ──
+async function updateTaskStatus(taskId, status) {
+  if (!USER || USER.userId === 'dev' || !taskId) return;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/tasks?id=eq.${taskId}`, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ status })
+    });
+  } catch(e) {}
+}
+
+// ── FEEDBACK SPEICHERN ──
+async function saveFeedback(helpfulScore, comment = '') {
+  if (!USER || USER.userId === 'dev') return;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/feedback`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: USER.userId,
+        helpful_score: helpfulScore,
+        comment: comment || null
+      })
+    });
+  } catch(e) {}
+}
+
+// ── UI HELPERS ──
+function newChat() {
+  MESSAGES = [];
+  CONV_ID = null; // neue Conversation für den Worker
+  setMode('chat');
+  showWelcome();
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 140) + 'px';
+  checkSendEnabled();
+}
+
+function checkSendEnabled() {
+  const input = document.getElementById('msg-input');
+  document.getElementById('send-btn').disabled = !input.value.trim() || IS_SENDING;
+}
+
+document.getElementById('msg-input').addEventListener('input', checkSendEnabled);
+
+// ── LANGUAGE ──
+const UI = {
+  de: {
+    'lbl-nav-main': 'Hauptmenü', 'lbl-nav-tools': 'Tools', 'lbl-nav-more': 'Mehr',
+    'lbl-chat': 'AI Sparring', 'lbl-agenda': 'Wochenagenda',
+    'lbl-pricing': 'Preis-Hilfe', 'lbl-visibility': 'Sichtbarkeit',
+    'lbl-decision': 'Entscheidung', 'lbl-offer': 'Angebots-Builder',
+    'lbl-burnout-btn': 'Burnout-Check', 'lbl-client': 'Kunden-Situation',
+    'lbl-new': 'Neues Gespräch', 'lbl-checkin': 'Energie heute',
+    'lbl-sessions': 'Sessions', 'lbl-streak': 'Serie',
+    'lbl-clear': 'Leeren',
+  },
+  en: {
+    'lbl-nav-main': 'Main', 'lbl-nav-tools': 'Tools', 'lbl-nav-more': 'More',
+    'lbl-chat': 'AI Sparring', 'lbl-agenda': 'Weekly Agenda',
+    'lbl-pricing': 'Pricing Help', 'lbl-visibility': 'Visibility',
+    'lbl-decision': 'Decision Support', 'lbl-offer': 'Offer Builder',
+    'lbl-burnout-btn': 'Burnout Check', 'lbl-client': 'Client Situation',
+    'lbl-new': 'New Chat', 'lbl-checkin': 'Today\'s energy',
+    'lbl-sessions': 'Sessions', 'lbl-streak': 'Streak',
+    'lbl-clear': 'Clear',
+  }
+};
+
+function setLang(lang) {
+  LANG = lang;
+  document.getElementById('lang-de').classList.toggle('active', lang === 'de');
+  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  const labels = UI[lang] || UI.en;
+  Object.entries(labels).forEach(([id, txt]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = txt;
+  });
+  document.getElementById('msg-input').placeholder = lang === 'de' ? 'Frag deinen AI…' : 'Ask your AI…';
+  updateQuickPrompts();
+  if (USER) {
+    updateSidebar();
+    if (MODE === 'chat' && MESSAGES.length === 0) showWelcome();
+  }
+}
+
+function updateGateLang() {
+  const isDE = LANG === 'de';
+  document.getElementById('g-title').textContent = isDE ? 'Zugang zu deinem AI' : 'Access your AI';
+  document.getElementById('g-sub').textContent = isDE
+    ? 'Gib die E-Mail-Adresse ein mit der du NeuroBusiness™ gekauft hast — du erhältst deinen persönlichen Zugangslink.'
+    : 'Enter the email address you used to purchase NeuroBusiness™ to receive your personal access link.';
+  document.getElementById('gate-btn-txt').textContent = isDE ? 'Zugangscode senden' : 'Send access link';
+  document.getElementById('g-note').textContent = isDE ? 'SICHER · VERSCHLÜSSELT · PERSONALISIERT' : 'SECURE · ENCRYPTED · PERSONALIZED';
+  document.getElementById('gate-email').placeholder = isDE ? 'deine@email.com' : 'your@email.com';
+}
+
+// ── GATE ENTER KEY ──
+document.getElementById('gate-email').addEventListener('keydown', e => {
+  if (e.key === 'Enter') requestAccess();
+});
+
+// ── START ──
+init();
+</script>
+</body>
+</html>

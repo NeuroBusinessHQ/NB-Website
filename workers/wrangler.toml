@@ -1,0 +1,15 @@
+name = "neurobusiness-ai-worker"
+main = "ai.js"
+compatibility_date = "2024-09-23"
+
+[vars]
+ALLOWED_ORIGIN = "https://neurobusiness.one"
+
+# Secrets werden über das Cloudflare Dashboard oder `wrangler secret put` gesetzt:
+# wrangler secret put SUPABASE_URL
+# wrangler secret put SUPABASE_SERVICE_KEY
+# wrangler secret put ANTHROPIC_API_KEY
+
+[[routes]]
+pattern = "neurobusiness.one/api/*"
+zone_name = "neurobusiness.one"

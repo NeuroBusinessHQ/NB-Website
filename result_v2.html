@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dein NeuroBusiness™ Psychotyp · Diagnostik-Report</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--c:#1a3d35;--c2:#15312a;--c3:#0f2420;--g:#c9a96e;--g2:#a8813e;--p:#7c6990;--cr:#faf8f4;--cr2:#f4f1eb;--cr3:#ede9e0;--dk:#1a1814;--t1:#1a1814;--t2:#4a4540;--t3:#8a837a;--b:rgba(26,24,20,.1);--b2:rgba(26,24,20,.06);--fd:'Cormorant Garamond',Georgia,serif;--fb:'Outfit',system-ui,sans-serif;--fm:'DM Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cr);color:var(--t1);font-family:var(--fb);font-size:16px;line-height:1.6;font-weight:300;overflow-x:hidden}
+#loader{position:fixed;inset:0;z-index:9000;background:var(--c3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:opacity .8s ease}
+#loader.out{opacity:0;pointer-events:none}
+.l-logo{font-family:var(--fd);font-size:32px;font-weight:300;color:var(--cr);letter-spacing:-.02em}
+.l-logo em{font-style:italic;color:var(--g)}
+.l-bar{width:240px;height:1px;background:rgba(255,255,255,.12)}
+.l-fill{height:100%;background:var(--g);width:0;animation:lf 2.2s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes lf{to{width:100%}}
+.l-sub{font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--b2)}
+.nav-logo{font-family:var(--fd);font-size:22px;color:var(--dk);text-decoration:none;letter-spacing:-.01em}
+.nav-logo em{font-style:italic;color:var(--g)}
+.nav-type{font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:100px 48px 72px;background:var(--c3);position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 70% at 80% 20%,rgba(201,169,110,.1) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 10% 80%,rgba(124,105,144,.07) 0%,transparent 50%)}
+.hero-inner{max-width:1080px;margin:0 auto;width:100%}
+.h-eye{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin-bottom:20px;opacity:0;animation:fu .6s .4s forwards}
+.h-badge{display:inline-flex;align-items:center;gap:12px;background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.25);border-radius:100px;padding:10px 22px;margin-bottom:28px;opacity:0;animation:fu .6s .5s forwards}
+.h-badge-code{font-family:var(--fm);font-size:14px;color:var(--g);letter-spacing:.06em}
+.h-badge-sep{width:1px;height:14px;background:rgba(201,169,110,.3)}
+.h-badge-en{font-size:14px;color:rgba(250,248,244,.5);font-weight:300}
+.h-title{font-family:var(--fd);font-size:clamp(56px,8vw,108px);font-weight:300;color:var(--cr);letter-spacing:-.025em;line-height:.98;margin-bottom:24px;opacity:0;animation:fu .7s .6s forwards}
+.h-title em{font-style:italic;color:var(--g)}
+.h-tagline{font-size:clamp(16px,2vw,20px);font-weight:300;color:rgba(250,248,244,.6);max-width:560px;line-height:1.7;margin-bottom:48px;opacity:0;animation:fu .6s .75s forwards}
+.h-mixed-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(124,105,144,.15);border:1px solid rgba(124,105,144,.35);border-radius:8px;padding:10px 18px;margin-bottom:36px;opacity:0;animation:fu .6s .8s forwards}
+.h-mixed-pill.hide{display:none}
+.h-mixed-dot{width:8px;height:8px;border-radius:50%;background:var(--p);flex-shrink:0}
+.h-mixed-txt{font-family:var(--fm);font-size:12px;color:rgba(250,248,244,.7);letter-spacing:.04em}
+.h-scores{opacity:0;animation:fu .6s .9s forwards}
+.h-scores-label{font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,248,244,.25);margin-bottom:20px}
+.sb-wrap{display:flex;flex-direction:column;gap:12px;max-width:460px}
+.sb-row{display:flex;align-items:center;gap:16px}
+.sb-name{font-size:13px;color:rgba(250,248,244,.4);width:116px;flex-shrink:0;font-weight:300}
+.sb-name.p{color:var(--g);font-weight:500}
+.sb-name.s{color:var(--p);font-weight:400}
+.sb-track{flex:1;height:3px;background:rgba(255,255,255,.08);border-radius:2px}
+.sb-fill{height:100%;border-radius:2px;width:0;transition:width 1.6s cubic-bezier(.16,1,.3,1);background:rgba(255,255,255,.2)}
+.sb-fill.p{background:var(--g)}
+.sb-fill.s{background:var(--p)}
+.sb-pct{font-family:var(--fm);font-size:11px;color:rgba(250,248,244,.25);width:30px;text-align:right}
+.sb-pct.p{color:var(--g)}
+.sb-pct.s{color:var(--p)}
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.sec{padding:96px 48px}
+.sec-in{max-width:1080px;margin:0 auto}
+.sec-eye{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin-bottom:16px}
+.sec-h{font-family:var(--fd);font-size:clamp(36px,5vw,60px);font-weight:300;color:var(--dk);letter-spacing:-.025em;line-height:1.05;margin-bottom:12px}
+.sec-h em{font-style:italic;color:var(--g)}
+.sec-sub{font-size:16px;color:var(--t3);max-width:600px;line-height:1.75;margin-bottom:48px}
+#mirror{background:var(--dk)}
+#mirror .sec-h{color:var(--cr)}
+#mirror .sec-eye{color:var(--g)}
+.mirror-intro{font-family:var(--fd);font-size:clamp(18px,2.2vw,26px);font-weight:300;font-style:italic;color:rgba(250,248,244,.72);line-height:1.65;max-width:740px;margin-bottom:56px;padding-left:28px;border-left:2px solid var(--g)}
+.mirror-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:768px){.mirror-grid{grid-template-columns:1fr}}
+.mirror-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:32px;transition:border-color .3s}
+.mirror-card:hover{border-color:rgba(201,169,110,.25)}
+.mirror-card.hl{background:rgba(201,169,110,.06);border-color:rgba(201,169,110,.25);position:relative;overflow:hidden}
+.mirror-card.hl::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g)}
+.mc-q{font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,248,244,.3);margin-bottom:16px}
+.mirror-card.hl .mc-q{color:rgba(201,169,110,.6)}
+.mc-t{font-size:16px;color:rgba(250,248,244,.8);line-height:1.75}
+.mc-t strong{color:var(--g);font-weight:500}
+#profil{background:var(--cr)}
+.mixed-note{background:rgba(124,105,144,.08);border:1px solid rgba(124,105,144,.2);border-radius:12px;padding:20px 24px;margin-bottom:40px}
+.mixed-note.hide{display:none}
+.mn-label{font-family:var(--fm);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--p);margin-bottom:8px}
+.mn-text{font-size:15px;color:var(--t2);line-height:1.7}
+.profil-essence{background:var(--c);border-radius:20px;padding:48px;margin-bottom:28px}
+.pe-label{font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,169,110,.6);margin-bottom:16px}
+.pe-name{font-family:var(--fd);font-size:clamp(28px,3.5vw,44px);font-weight:300;font-style:italic;color:var(--cr);margin-bottom:20px}
+.pe-text{font-size:16px;color:rgba(250,248,244,.72);line-height:1.85;max-width:800px}
+.profil-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+@media(max-width:768px){.profil-row{grid-template-columns:1fr}}
+.profil-card{background:var(--cr2);border:1px solid var(--b);border-radius:16px;padding:28px}
+.profil-card h3{font-family:var(--fd);font-size:20px;font-weight:400;color:var(--dk);margin-bottom:14px}
+.profil-card p{font-size:15px;color:var(--t2);line-height:1.75}
+#staerken{background:var(--cr2)}
+.sl-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px}
+@media(max-width:768px){.sl-grid{grid-template-columns:1fr}}
+.sl-card{background:var(--cr);border:1px solid var(--b);border-radius:16px;padding:32px}
+.sl-card h3{font-family:var(--fd);font-size:22px;font-weight:400;color:var(--dk);margin-bottom:24px}
+.sl-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.sl-list li{display:flex;gap:14px;align-items:flex-start;font-size:14px;color:var(--t2);line-height:1.65}
+.sl-list li::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:8px}
+.sl-s li::before{background:var(--c)}
+.sl-b li::before{background:var(--g)}
+#transform{background:var(--cr)}
+.tf-intro{font-family:var(--fd);font-size:17px;font-weight:300;font-style:italic;color:var(--t3);max-width:640px;line-height:1.75;margin-bottom:56px}
+.tf-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:20px;overflow:hidden;border:1px solid var(--b)}
+@media(max-width:768px){.tf-grid{grid-template-columns:1fr}}
+.tf-col{padding:36px 32px}
+.tf-col.before{background:var(--cr2)}
+.tf-col.after{background:var(--c);position:relative}
+.tf-col.after::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 80% 20%,rgba(201,169,110,.08) 0%,transparent 60%)}
+.tf-col-label{font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px}
+.tf-col.before .tf-col-label{color:var(--t3)}
+.tf-col.after .tf-col-label{color:rgba(201,169,110,.6)}
+.tf-items{list-style:none;display:flex;flex-direction:column;gap:16px}
+.tf-items li{display:flex;gap:14px;align-items:flex-start;font-size:14px;line-height:1.65}
+.tf-col.before .tf-items li{color:var(--t2)}
+.tf-col.after .tf-items li{color:rgba(250,248,244,.75);position:relative}
+.tf-items li span{display:block}
+#business{background:var(--cr2)}
+.biz-intro{font-family:var(--fd);font-size:18px;font-style:italic;color:var(--t2);max-width:680px;line-height:1.75;margin-bottom:48px}
+.biz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.biz-grid{grid-template-columns:1fr}}
+.biz-card{background:var(--cr);border:1px solid var(--b);border-radius:16px;padding:28px}
+.biz-eye{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:12px}
+.biz-h{font-family:var(--fd);font-size:20px;font-weight:400;color:var(--dk);margin-bottom:12px}
+.biz-t{font-size:14px;color:var(--t2);line-height:1.75}
+#burnout{background:var(--cr)}
+.bo-stress{background:var(--c);border-radius:16px;padding:36px;margin-bottom:20px}
+.bo-stress-label{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,169,110,.5);margin-bottom:14px}
+.bo-stress-text{font-size:16px;color:rgba(250,248,244,.75);line-height:1.8;max-width:780px}
+.bo-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:768px){.bo-grid{grid-template-columns:1fr}}
+.bo-level{border-radius:16px;padding:28px;border-left:4px solid}
+.bo-low{background:rgba(26,61,53,.07);border-color:var(--c)}
+.bo-mid{background:rgba(201,169,110,.07);border-color:var(--g)}
+.bo-high{background:rgba(180,60,40,.06);border-color:#b43c28}
+.bo-veryhigh{background:rgba(180,60,40,.1);border-color:#b43c28}
+.bo-level-label{font-family:var(--fm);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.bo-low .bo-level-label{color:var(--c)}
+.bo-mid .bo-level-label{color:var(--g2)}
+.bo-high .bo-level-label,.bo-veryhigh .bo-level-label{color:#b43c28}
+.bo-level-text{font-size:14px;color:var(--t2);line-height:1.65}
+.bo-alert{background:#fff5f4;border:1px solid rgba(180,60,40,.18);border-radius:12px;padding:24px 28px}
+.bo-alert.hide{display:none}
+.bo-alert-title{font-size:15px;font-weight:500;color:#b43c28;margin-bottom:10px}
+.bo-alert-text{font-size:14px;color:var(--t2);line-height:1.7}
+.bo-alert-text a{color:var(--dk);font-weight:500;text-decoration:underline}
+#schritte{background:var(--cr2)}
+.steps-intro{font-family:var(--fd);font-size:18px;font-style:italic;color:var(--t2);max-width:640px;line-height:1.75;margin-bottom:48px}
+.steps-list{display:flex;flex-direction:column;gap:16px;max-width:740px}
+.step{display:flex;gap:24px;align-items:flex-start;background:var(--cr);border:1px solid var(--b);border-radius:14px;padding:28px}
+.step-n{width:40px;height:40px;border-radius:50%;background:var(--c);color:var(--cr);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:12px;flex-shrink:0;letter-spacing:.04em}
+.step-t{font-size:15px;color:var(--t2);line-height:1.7;padding-top:8px}
+.step-t strong{color:var(--dk);font-weight:500}
+#eva-quote{background:var(--c2)}
+.eq-inner{max-width:900px;margin:0 auto;text-align:center}
+.eq-eye{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,169,110,.5);margin-bottom:32px}
+.eq-quote{font-family:var(--fd);font-size:clamp(20px,2.8vw,32px);font-weight:300;font-style:italic;color:rgba(250,248,244,.85);line-height:1.6;margin-bottom:40px}
+.eq-quote::before{content:'\201E';color:var(--g);font-size:1.4em;vertical-align:-.1em;margin-right:4px}
+.eq-quote::after{content:'\201C';color:var(--g);font-size:1.4em;vertical-align:-.1em;margin-left:4px}
+.eq-sig{display:flex;align-items:center;justify-content:center;gap:20px}
+.eq-avatar{width:56px;height:56px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:20px;color:var(--cr3);font-weight:300}
+.eq-name{font-size:15px;font-weight:500;color:var(--cr);text-align:left}
+.eq-role{font-size:13px;color:rgba(250,248,244,.4);text-align:left}
+#upsell{background:var(--cr);padding:100px 48px}
+.up-inner{max-width:1080px;margin:0 auto}
+.up-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+@media(max-width:900px){.up-grid{grid-template-columns:1fr;gap:48px}}
+.up-eye{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin-bottom:20px}
+.up-h{font-family:var(--fd);font-size:clamp(36px,4.5vw,58px);font-weight:300;color:var(--dk);letter-spacing:-.025em;line-height:1.08;margin-bottom:20px}
+.up-h em{font-style:italic;color:var(--g)}
+.up-sub{font-size:16px;color:var(--t2);line-height:1.8;margin-bottom:28px;max-width:480px}
+.up-promise{background:var(--cr2);border:1px solid var(--b);border-radius:12px;padding:20px 24px;margin-bottom:36px;border-left:3px solid var(--g)}
+.up-promise-label{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:8px}
+.up-promise-text{font-size:14px;color:var(--t2);line-height:1.7;font-style:italic}
+.up-cta-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.btn-primary{display:inline-block;background:var(--c);color:var(--cr);font-family:var(--fb);font-size:16px;font-weight:500;padding:18px 36px;border-radius:12px;text-decoration:none;letter-spacing:.01em;transition:all .25s}
+.btn-primary:hover{background:var(--c2);transform:translateY(-2px)}
+.btn-secondary{display:inline-block;color:var(--t3);font-size:14px;text-decoration:none;border-bottom:1px solid var(--b);padding-bottom:2px;transition:color .2s}
+.btn-secondary:hover{color:var(--dk)}
+.up-price{font-family:var(--fm);font-size:12px;color:var(--t3);letter-spacing:.06em}
+.up-feat-col{display:flex;flex-direction:column;gap:16px}
+.up-feat{display:flex;gap:18px;align-items:flex-start;background:var(--cr2);border:1px solid var(--b);border-radius:14px;padding:22px}
+.up-feat-icon{width:40px;height:40px;border-radius:10px;background:var(--c);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;color:var(--g)}
+.up-feat-h{font-size:14px;font-weight:500;color:var(--dk);margin-bottom:4px}
+.up-feat-t{font-size:13px;color:var(--t3);line-height:1.6}
+footer{background:var(--dk);padding:40px 48px;text-align:center}
+footer p{font-size:13px;color:rgba(255,255,255,.3)}
+footer a{color:rgba(255,255,255,.3);text-decoration:none}
+footer a:hover{color:rgba(255,255,255,.6)}
+.hide{display:none!important}
+@media(max-width:600px){#nav{padding:0 20px}.sec{padding:64px 20px}#hero{padding:90px 20px 56px}}
+</style>
+</head>
+<body>
+<div id="loader"><div class="l-logo">NeuroBusiness<em>™</em></div><div class="l-bar"><div class="l-fill"></div></div><div class="l-sub" id="l-msg">Profil wird geladen</div></div>
+<nav id="nav"><a href="https://neurobusiness.one" class="nav-logo">NeuroBusiness<em>™</em></a><span class="nav-type" id="nav-type">DIAGNOSTIC REPORT</span></nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <div class="h-eye">Dein NeuroBusiness™ Psychotyp</div>
+    <div class="h-badge"><span class="h-badge-code" id="hb-code">S</span><span class="h-badge-sep"></span><span class="h-badge-en" id="hb-en">The Strategist</span></div>
+    <h1 class="h-title">Der <em id="hb-name">Stratege</em></h1>
+    <p class="h-tagline" id="hb-tag"></p>
+    <div class="h-mixed-pill hide" id="mixed-pill"><div class="h-mixed-dot"></div><div class="h-mixed-txt" id="mixed-pill-txt">Mischtyp</div></div>
+    <div class="h-scores"><div class="h-scores-label" id="lbl-5d">5-dimensionales Profil</div><div class="sb-wrap" id="sb-wrap"></div></div>
+  </div>
+</section>
+
+<section id="mirror" class="sec">
+  <div class="sec-in">
+    <div class="sec-eye reveal" id="lbl-mirror-eye">Spiegel</div>
+    <h2 class="sec-h reveal" id="lbl-mirror-h">Was wir <em id="lbl-mirror-em">in dir sehen</em></h2>
+    <p class="mirror-intro reveal" id="mirror-intro"></p>
+    <div class="mirror-grid reveal" id="mirror-grid"></div>
+  </div>
+</section>
+
+<section id="profil" class="sec">
+  <div class="sec-in">
+    <div class="sec-eye reveal" id="lbl-profil-eye">Wer du wirklich bist</div>
+    <h2 class="sec-h reveal" id="lbl-profil-h">Dein <em id="lbl-profil-em">Persönlichkeitsprofil</em></h2>
+    <div class="mixed-note hide reveal" id="mixed-note"><div class="mn-label" id="mn-label">Mischtyp</div><div class="mn-text" id="mn-text"></div></div>
+    <div class="profil-essence reveal"><div class="pe-label" id="pe-label">Das Wesen des Typs</div><div class="pe-name" id="pe-name">Der Stratege</div><div class="pe-text" id="pe-text"></div></div>
+    <div class="profil-row reveal">
+      <div class="profil-card"><h3 id="lbl-super">Deine Superkraft</h3><p id="pc-super"></p></div>
+      <div class="profil-card"><h3 id="lbl-shadow">Dein blinder Fleck</h3><p id="pc-shadow"></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="staerken" class="sec">
+  <div class="sec-in">
+    <div class="sec-eye reveal" id="lbl-analyse-eye">Analyse</div>
+    <h2 class="sec-h reveal" id="lbl-analyse-h">Was dich <em id="lbl-analyse-em">auszeichnet</em> — und was dich bremst</h2>
+    <div class="sl-grid reveal">
+      <div class="sl-card sl-s"><h3 id="lbl-staerken">Deine Stärken</h3><ul class="sl-list" id="sl-strengths"></ul></div>
+      <div class="sl-card sl-b"><h3 id="lbl-blind">Deine Blindstellen</h3><ul class="sl-list" id="sl-blind"></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="transform" class="sec">
+  <div class="sec-in">
+    <div class="sec-eye reveal" id="lbl-tf-eye">Vorher · Nachher</div>
+    <h2 class="sec-h reveal" id="lbl-tf-h">Deine <em id="lbl-tf-em">Transformation</em></h2>
+    <p class="tf-intro reveal" id="tf-intro"></p>
+    <div class="tf-grid reveal">
+      <div class="tf-col before"><div class="tf-col-label" id="lbl-tf-now">Jetzt</div><ul class="tf-items" id="tf-before"></ul></div>
+      <div class="tf-col after"><div class="tf-col-label" id="lbl-tf-after">Mit NeuroBusiness™</div><ul class="tf-items" id="tf-after"></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="business" class="sec">
+  <div class="sec-in">
+    <div class="sec-eye reveal" id="lbl-biz-eye">Business-Strategie</div>
+    <h2 class="sec-h reveal" id="lbl-biz-h">So funktioniert dein <em id="lbl-biz-em">Business-Typ</em></h2>
+    <p class="biz-intro reveal" id="biz-intro"></p>
+    <div class="biz-grid reveal">
+      <div class="biz-card"><div class="biz-eye" id="lbl-biz-model-eye">Business-Modell</div><div class="biz-h" id="lbl-biz-model-h">Wie du monetarisierst</div><div class="biz-t" id="biz-model"></div></div>
+      <div class="biz-card"><div class="biz-eye" id="lbl-biz-sales-eye">Verkaufsstil</div><div class="biz-h" id="lbl-biz-sales-h">Wie du überzeugst</div><div class="biz-t" id="biz-sales"></div></div>
+      <div class="biz-card"><div class="biz-eye" id="lbl-biz-vis-eye">Sichtbarkeit</div><div class="biz-h" id="lbl-biz-vis-h">Wie du präsent bist</div><div class="biz-t" id="biz-vis"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="burnout" class="sec">
+  <div class="sec-in">
+    <div class="sec-eye reveal" id="lbl-stress-eye">Selbstführung</div>
+    <h2 class="sec-h reveal" id="lbl-stress-h">Dein <em id="lbl-stress-em">Stressmuster</em></h2>
+    <div class="reveal">
+      <div class="bo-stress"><div class="bo-stress-label" id="lbl-stress-reaction">Wie du unter Druck reagierst</div><div class="bo-stress-text" id="bo-stress"></div></div>
+    </div>
+    <div class="bo-grid reveal" style="margin-top:20px">
+      <div class="bo-level bo-mid" id="bo-card"><div class="bo-level-label" id="lbl-burnout">Burnout-Risiko</div><div class="bo-level-text" id="bo-text"></div></div>
+      <div class="bo-alert hide" id="bo-alert"><div class="bo-alert-title" id="lbl-alert-title">Ein persönliches Wort von Eva</div><div class="bo-alert-text">Dein Ergebnisprofil zeigt erhöhte Erschöpfungsmarker. Das bedeutet nicht dass etwas falsch mit dir ist — es bedeutet dass du in einem Modus arbeitest der sehr leistungsfähig ist, aber einen Preis hat der erst später sichtbar wird.<br><br>Ich würde gerne kurz persönlich sprechen. <a href="https://zeeg.me/evak/15min">15 Minuten buchen →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="schritte" class="sec">
+  <div class="sec-in">
+    <div class="sec-eye reveal" id="lbl-steps-eye">Deine nächsten Schritte</div>
+    <h2 class="sec-h reveal" id="lbl-steps-h">3 konkrete Schritte <em id="lbl-steps-em">ab heute</em></h2>
+    <p class="steps-intro reveal" id="steps-intro"></p>
+    <div class="steps-list reveal" id="steps-list"></div>
+  </div>
+</section>
+
+<section id="eva-quote" class="sec">
+  <div class="eq-inner">
+    <div class="eq-eye reveal" id="lbl-eva-eye">Persönlich von Eva Kolontai</div>
+    <blockquote class="eq-quote reveal" id="eq-quote"></blockquote>
+    <div class="eq-sig reveal"><div class="eq-avatar">EK</div><div><div class="eq-name">Eva Kolontai</div><div class="eq-role">Diplom-Psychologin · NeuroBusiness™ Strategist · Berlin</div></div></div>
+  </div>
+</section>
+
+<section id="upsell">
+  <div class="up-inner">
+
+    <!-- Context Banner: Solo Report user → Upsell to NeuroBusiness AI -->
+    <div id="solo-upgrade-banner" class="hide" style="background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.3);border-radius:16px;padding:24px 32px;margin-bottom:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:6px">Du hast den Solo Report</div>
+        <div style="font-size:15px;color:var(--t1);line-height:1.5">Jetzt weißt du <em>wer</em> du bist. Der NeuroBusiness AI zeigt dir <em>was du tun sollst</em> — jeden Tag, für deinen Typ.</div>
+      </div>
+      <a href="https://buy.stripe.com/eVq7sN77v73u2SKaHhasg06" class="btn-primary" style="white-space:nowrap;flex-shrink:0" id="solo-upgrade-cta">NeuroBusiness AI dazubuchen — 49 €/Monat →</a>
+    </div>
+
+    <div class="up-grid">
+      <div>
+        <div class="up-eye reveal">NeuroBusiness™ AI</div>
+        <h2 class="up-h reveal" id="lbl-up-h">Jetzt mit deinem Typ <em id="lbl-up-em">arbeiten</em></h2>
+        <p class="up-sub reveal" id="up-sub">Die Diagnostik zeigt dir wer du bist. Der NeuroBusiness AI übersetzt das in konkretes Handeln — jeden Tag, auf dich abgestimmt.</p>
+        <div class="up-promise reveal"><div class="up-promise-label" id="lbl-up-promise">Was dein Companion für dich tut</div><div class="up-promise-text" id="up-promise"></div></div>
+
+        <!-- Social proof pill -->
+        <div class="reveal" style="display:flex;align-items:center;gap:12px;margin-bottom:28px">
+          <div style="display:flex">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--c);border:2px solid var(--cr);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:11px;color:var(--g);margin-right:-8px">S</div>
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--c2);border:2px solid var(--cr);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:11px;color:var(--g);margin-right:-8px">V</div>
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--c3);border:2px solid var(--cr);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:11px;color:var(--g)">M</div>
+          </div>
+          <span style="font-size:13px;color:var(--t3)">Über 200 Selbstständige nutzen den NeuroBusiness AI aktiv</span>
+        </div>
+
+        <div class="up-cta-wrap reveal">
+          <a href="https://buy.stripe.com/eVq7sN77v73u2SKaHhasg06" class="btn-primary" id="lbl-up-cta">NeuroBusiness AI freischalten →</a>
+          <span class="up-price" id="lbl-up-price">49 € / Monat · zzgl. MwSt. · Jederzeit kündbar</span>
+          <a href="https://zeeg.me/evak/15min" class="btn-secondary" id="lbl-up-secondary">Erst persönlich sprechen →</a>
+        </div>
+      </div>
+      <div class="up-feat-col reveal">
+        <div class="up-feat"><div class="up-feat-icon">◆</div><div><div class="up-feat-h">Typ-spezifisches Coaching</div><div class="up-feat-t">Jede Antwort auf deinen Psychotyp abgestimmt. Kein generischer Ratschlag, der bei dir nicht zieht.</div></div></div>
+        <div class="up-feat"><div class="up-feat-icon">◈</div><div><div class="up-feat-h">Wöchentliche Agenda — jeden Montag</div><div class="up-feat-t">3 konkrete Aufgaben für die Woche — aus deinem Profil, nicht aus einem Template.</div></div></div>
+        <div class="up-feat"><div class="up-feat-icon">◇</div><div><div class="up-feat-h">Sparringspartner ohne Kalender</div><div class="up-feat-t">Entscheidungen, Pricing, Angebote — sofort besprechen, ohne auf einen Termin zu warten.</div></div></div>
+        <div class="up-feat"><div class="up-feat-icon">○</div><div><div class="up-feat-h">Von Eva Kolontai entwickelt</div><div class="up-feat-t">Diplom-Psychologin, 20+ Jahre Erfahrung. Jeder Prompt trägt ihre klinische und Business-Expertise.</div></div></div>
+
+        <!-- Pricing comparison -->
+        <div style="background:rgba(26,61,53,0.06);border:1px solid rgba(26,61,53,0.15);border-radius:14px;padding:20px 24px;margin-top:4px">
+          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:14px">Vergleich</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(26,24,20,0.06)">
+            <span style="font-size:13px;color:var(--t2)">Business Coach (1 Sitzung/Monat)</span>
+            <span style="font-family:var(--fm);font-size:12px;color:var(--t3)">300–500 €</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(26,24,20,0.06)">
+            <span style="font-size:13px;color:var(--t2)">Strategie-Beratung (1 Stunde)</span>
+            <span style="font-family:var(--fm);font-size:12px;color:var(--t3)">150–300 €</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0 0">
+            <span style="font-size:13px;font-weight:500;color:var(--dk)">NeuroBusiness™ AI</span>
+            <span style="font-family:var(--fm);font-size:13px;color:var(--c);font-weight:500">49 €/Monat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>NeuroBusiness™ ist ein Programm des German Institute of Positive Psychology · Eva Kolontai, Diplom-Psychologin · <a href="https://neurobusiness.one">neurobusiness.one</a></p>
+  <p style="margin-top:8px"><a href="https://neurobusiness.one/#impressum">Impressum</a> · <a href="https://neurobusiness.one/#datenschutz">Datenschutz</a></p>
+</footer>
+
+<script>
+// NeuroBusiness™ Report Data v2 — 15 Profile
+// Alle Inhalte: Mirror, Transformation, Stärken, Blindstellen, Business, Eva-Zitat
+const NB_R = {
+  S:{
+    code:"S",en:"The Strategist",name:"Stratege",
+    tagline:"Dein Denken ist dein stärkstes Werkzeug — wenn du lernst, es nicht gegen dich zu richten.",
+    mirrorIntro:"Menschen wie du werden oft missverstanden. Von außen sieht es aus als würdest du zögern. Von innen weißt du: du analysierst. Der Unterschied ist enorm — aber er kostet dich trotzdem.",
+    mirror:[
+      {q:"Was andere über dich sagen",t:"'Du denkst zu viel nach.' Oder: 'Wann machst du es endlich?' Du hörst das öfter als dir lieb ist — und weißt gleichzeitig dass sie den Punkt verfehlen."},
+      {q:"Was du wirklich machst",t:"Du baust während andere noch reden. Nur langsamer — weil <strong>du weißt was schiefgehen kann</strong>. Das ist kein Zögern. Das ist Präzision."},
+      {q:"Die Frage die dich nachts wachhält",t:"'Ist es schon gut genug?' Nicht aus Unsicherheit. Aus dem tiefen Glauben dass Qualität keine Kompromisse kennt."},
+      {q:"Was du noch nicht ausgesprochen hast",t:"Du weißt dass du zu wenig verlangst. Nicht weil du es nicht wert bist — sondern weil <strong>ein perfektes Angebot sich nie fertig anfühlt</strong>.",h:true},
+    ],
+    essEye:"Wer du wirklich bist",
+    essence:"Der Stratege ist analytisch präzise, risikoavers im besten Sinne, und in der Lage Systeme zu bauen die andere nicht einmal denken können. Du siehst Komplexität wo andere Chaos sehen — und das ist ein außergewöhnliches Talent.",
+    superpower:"Systemisches Denken das Tiefe schafft die kein Wettbewerber kopieren kann.",
+    shadow:"Perfektionismus als Umsatzbremse — das Produkt das nie fertig genug ist.",
+    strengths:["Strukturiertes, systemisches Denken — du erkennst Zusammenhänge die andere übersehen","Hohe Qualitätssicherung — dein Angebot hat echte Tiefe und Substanz","Strategische Weitsicht — du planst die nächste Phase nicht die nächste Woche","Verlässlichkeit — Kunden wissen dass du lieferst","Analytische Entscheidungsqualität — kein Hype reißt dich mit"],
+    blind:["Perfektionismus blockiert den Launch — du wartest auf den Moment der nie kommt","Verkaufsvermeidung — du erklärst lieber als zu verkaufen","Überproduktion — 80% deiner Arbeit sieht der Kunde nie","Sichtbarkeitsresistenz — Self-Promotion fühlt sich unprofessionell an","Kontrollbedarf beim Delegieren"],
+    bizIntro:"Das Wichtigste für deinen Typ: du brauchst kein neues Angebot. Du brauchst den Mut dein bestehendes anzubieten.",
+    business:"Premium-Einzelangebote mit hohem Komplexitätswert. Wenige, hochpreisige Kunden. Kein Massenmarkt.",
+    sales:"Kompetenzdemonstration durch Fallstudien und Zahlen. Discovery → Diagnose → Angebot. Preis nie verhandeln.",
+    visibility:"LinkedIn statt Instagram. Tiefe statt Frequenz. Ein fundierter Artikel pro Woche.",
+    before:["Du optimierst während du eigentlich launchen solltest","Du erklärst deinen Wert statt ihn zu zeigen","Du verlangst was das Angebot kostet — nicht was es wert ist","Du arbeitest für Kunden die deine Tiefe nicht schätzen","Sichtbarkeit fühlt sich nach Aufschneiderei an"],
+    after:["Du setzt das 70%-Angebot live — und optimierst mit echtem Feedback","Kompetenz spricht durch Ergebnisse und Systeme","Du berechnest den Transformationswert und kommunizierst ihn klar","3 Kunden die dich als Partner sehen nicht als Dienstleister","Tiefencontent demonstriert Wert ohne peinlich zu wirken"],
+    stress:"Unter Druck: mehr Analyse, mehr Planung — während die Handlung ausbleibt. Erkennungszeichen: perfektes Konzept, keine Umsätze.",
+    burnoutLevel:"mid",burnout:"Mittel — durch mentale Dauerbelastung, nicht durch Überstunden.",
+    steps:[{n:"01",text:"Definiere dein <strong>MVP-Angebot</strong> und setze es in 14 Tagen live. 70% fertig ist verkaufbar."},{n:"02",text:"Erhöhe deinen Preis um <strong>mindestens 30%</strong> beim nächsten Kunden. Begründe es nicht."},{n:"03",text:"Einen <strong>tiefen LinkedIn-Beitrag pro Woche</strong> — Framework, Fallstudie oder Lernmoment."}],
+    stepsIntro:"Diese drei Schritte adressieren genau die drei Engpässe die dein Wachstum gerade begrenzen.",
+    aiPromise:"Du analysierst zu lange und entscheidest zu langsam. Dein Companion stellt dir die Frage die du dir nicht selbst stellen würdest: 'Was wäre, wenn du das jetzt — genau so — anbietest?'",
+    evaQuote:"Strategen sind die Typen die ich am meisten respektiere — und am häufigsten frustriert sehe. Nicht weil es ihnen an Können fehlt. Sondern weil sie ihr Können nie billig genug anbieten können. Das Problem ist nie das Angebot. Das Problem ist der Mut es zu zeigen.",
+  },
+  V:{
+    code:"V",en:"The Visionary",name:"Visionär",
+    tagline:"Du siehst was andere noch nicht sehen — deine Aufgabe ist, es für sie greifbar zu machen.",
+    mirrorIntro:"Du weißt wie es sich anfühlt wenn eine Idee explodiert und der Raum anders wird. Was du weniger kennst: wie es sich anfühlt wenn dieselbe Energie systematisch in Umsatz übersetzt wird.",
+    mirror:[
+      {q:"Was immer passiert",t:"'Du hast so viele Ideen!' Gemeint als Kompliment. Klingt nach Kompliment. Ist aber oft die freundliche Version von: 'Du springst zu viel.'"},
+      {q:"Was wirklich passiert",t:"Du fängst Dinge an mit der aufrichtigsten Energie — und verlierst sie dann wenn das Angebot Routine wird. Weil dein Gehirn <strong>Neuheit braucht wie andere Koffein</strong>."},
+      {q:"Was du schon weißt aber nicht sagst",t:"Du hast in den letzten 12 Monaten mindestens 3 Angebote gestartet. Eines davon wäre mit mehr Fokus heute dein Hauptumsatz."},
+      {q:"Der echte Engpass",t:"Es ist nicht die Idee. Es ist der Moment <strong>nach</strong> dem Launch wo es keine Neuheit mehr gibt — und du trotzdem erscheinen musst.",h:true},
+    ],
+    essEye:"Wer du wirklich bist",
+    essence:"Der Visionär denkt in Möglichkeiten und begeistert Menschen für Ideen die noch nicht existieren. Deine größte Stärke ist gleichzeitig deine größte Falle: du kannst Räume verändern — aber nur wenn du lange genug bleibst.",
+    superpower:"Kreative Originalität kombiniert mit magnetischer Anziehungskraft — Menschen folgen dir weil du glaubst was du sagst.",
+    shadow:"Umsetzungslücke — zwischen Idee und skalierendem Angebot liegen bei dir Welten.",
+    strengths:["Kreative Originalität — deine Ideen sind echt nicht kopiert","Inspirierende Ausstrahlung — du begeisterst und ziehst an","Früher Trend-Sensor — du siehst Chancen bevor sie offensichtlich werden","Natürliches Storytelling das Visionen verkaufbar macht","Energetische Präsenz die kein Marketing ersetzen kann"],
+    blind:["Zu viele Projekte gleichzeitig — keines wirklich skaliert","Fokuslosigkeit — der nächste Impuls ist immer stärker als das Fertigstellen","Einkommensschwankungen durch Motivationswellen","Strukturaversion — Routinen fühlen sich wie Gefängnis an","Zu viele Versprechen an zu viele Menschen"],
+    bizIntro:"Dein größtes Business-Problem: du brauchst kein neues Angebot. Du brauchst eines — das eine — das du lange genug hältst.",
+    business:"Ein Signature-Offer das deine Vision verkörpert. Gruppen-, Live- und Community-Formate.",
+    sales:"Energie und Vision — kein Skript. Dein stärkster Kanal: Bühne, Webinar, Erstgespräch.",
+    visibility:"Instagram, Podcast, YouTube — überall wo du ungefiltert bist. Frequenz ist wichtiger als Tiefe.",
+    before:["3 Angebote laufen parallel — keines wirklich skaliert","Du erklärst deine Vision bevor du ein konkretes Angebot hast","Monat gut, Monat schlecht — ohne System","Content entsteht wenn du begeistert bist","Jede neue Idee fühlt sich wichtiger an als die laufende"],
+    after:["Ein Signature-Offer — du kommunizierst nur dieses für 90 Tage","Deine Vision ist der Einstieg, das Angebot ist das Ziel","Monatliche Einnahmen stabilisieren sich durch Community-Modell","30-Tage-Content-Plan läuft unabhängig von deiner Tagesstimmung","Neue Ideen kommen in die Parking-List — erst nach 10k/Monat"],
+    stress:"Unter Druck springst du zu neuen Ideen als Ablenkung. Die neue Idee ist echter als das Problem — für etwa 48 Stunden.",
+    burnoutLevel:"high",burnout:"Hoch — durch emotionale Erschöpfung wenn die Begeisterung ausbleibt.",
+    steps:[{n:"01",text:"<strong>Ein Angebot wählen</strong> — dein erfolgreichstes — alle anderen stoppen bis 10.000 € Monatsumsatz erreicht."},{n:"02",text:"<strong>Accountability-Partner</strong> finden der dich bei diesem einen Angebot hält. Wöchentliches 15-Minuten-Check-in."},{n:"03",text:"<strong>30-Tage-Content-Plan</strong> auf dieses eine Angebot — heute erstellen."}],
+    stepsIntro:"Diese Schritte lösen nicht dein Talentproblem — das existiert nicht. Sie lösen dein Fokus-Problem.",
+    aiPromise:"Du verlierst dich in Ideen. Dein Companion holt dich zurück — ohne zu urteilen. Er fragt dich täglich: 'Bist du noch beim Plan?'",
+    evaQuote:"Visionäre sind meine liebsten und herausforderndsten Klienten. Nicht weil sie zu wenig können — sondern weil sie so viel können dass der Markt nicht schnell genug folgen kann. Das Einzige was zwischen dir und außergewöhnlichem Erfolg steht: ein einziges Angebot, lange genug gehalten.",
+  },
+  M:{
+    code:"M",en:"The Builder",name:"Builder",
+    tagline:"Du bist derjenige der es tatsächlich baut — das ist Gold wert. Und wird trotzdem zu billig verkauft.",
+    mirrorIntro:"Du bist der Typ der liefert. Immer. Das ist eine außergewöhnliche Eigenschaft die du systematisch unterschätzt — und systematisch unterbezahlt.",
+    mirror:[
+      {q:"Was andere über dich sagen",t:"'Mit dir wird alles fertig.' Stimmt. Und gleichzeitig: du bist oft der der am meisten arbeitet und am wenigsten verdient. Weil du nach Aufwand rechnest."},
+      {q:"Was wirklich passiert",t:"Du lieferst in einem Tag was andere in einer Woche versuchen. Dein Markt weiß das nicht — weil du es nicht kommunizierst. Du <strong>versteckst deinen größten Vorteil</strong>."},
+      {q:"Die Frage die du nicht stellst",t:"'Was wäre mein Stundensatz wenn ich meinen Output in Wert statt Zeit messen würde?' Die Antwort würde deinen Preis verdreifachen."},
+      {q:"Was dich wirklich begrenzt",t:"Nicht das Können. Die Überzeugung dass <strong>Preise durch Aufwand gerechtfertigt werden</strong> — nicht durch Ergebnisse.",h:true},
+    ],
+    essEye:"Wer du wirklich bist",
+    essence:"Der Builder ist pragmatisch, schnell, ergebnisorientiert. Wo andere noch planen hat der Builder schon drei Dinge fertig. Das ist ein außergewöhnlicher Vorteil — der erst skaliert wenn er durch Positionierung und Preis sichtbar wird.",
+    superpower:"Ausführungsgeschwindigkeit kombiniert mit echter Lieferqualität — eine Kombination die der Markt liebt wenn er sie sieht.",
+    shadow:"Preisunterbewertung — du rechnest nach Aufwand statt nach dem Wert den du schaffst.",
+    strengths:["Ausführungsgeschwindigkeit — du erledigst mehr in einem Tag als andere in einer Woche","Lösungsorientierung — Probleme halten dich nicht auf","Praxisnahe Expertise mit echtem Marktbezug","Verlässlichkeit — du lieferst immer","Schnelle Resilienz nach Rückschlägen"],
+    blind:["Positionierungsblindheit — du weißt was du kannst aber nicht wie du es verkaufst","Preisunterbewertung — systematisch nach Aufwand statt nach Wert","Strategieaversion — Langzeitplanung fühlt sich wie Zeitverschwendung an","Du bist Engpass in deinem eigenen Business","Kein Kundenfilter — jeder Auftrag ist ein guter Auftrag"],
+    bizIntro:"Dein Business-Problem ist nicht zu wenig Arbeit. Es ist zu viel Arbeit für zu wenig Geld.",
+    business:"Paketierte Dienstleistungen mit klarem Scope. Done-for-you mit harten Grenzen. Premium-Pricing.",
+    sales:"Ergebnisse zeigen: Case Studies, Portfolios, konkrete Resultate. Direkt zum Punkt. Preis ohne Entschuldigung.",
+    visibility:"Before/After Content. Process-Videos. 'Hier ist was wir in 5 Tagen gebaut haben.'",
+    before:["Du rechnest Stunden × Rate — zu niedriger Preis","Du nimmst jeden Kunden weil Auslastung Sicherheit ist","Kein klarer Scope — Kunden nehmen immer mehr","Du bist Engpass — ohne dich läuft nichts","Wachstum durch mehr Arbeit statt bessere Preise"],
+    after:["Du rechnest Transformationswert — mindestens 2× höherer Preis","Du wählst Kunden nach Fit","Scope steht im Vertrag — Extras werden berechnet","Erste Delegation läuft","Wachstum durch Preis und System, nicht durch Stunden"],
+    stress:"Unter Druck arbeitest du noch mehr — Hamsterrad. Erkennungszeichen: ausgelastet aber kein Wachstum.",
+    burnoutLevel:"high",burnout:"Hoch — durch physische und operative Überlastung ohne Regeneration.",
+    steps:[{n:"01",text:"<strong>Hauptpreis um 30% erhöhen</strong> beim nächsten Kunden. Keine Erklärung. Keine Entschuldigung."},{n:"02",text:"<strong>Einen Nicht-Ideal-Kunden</strong> höflich beenden — diese Woche."},{n:"03",text:"<strong>Standard-Onboarding-Prozess</strong> dokumentieren der dir 3 Stunden pro Woche spart."}],
+    stepsIntro:"Diese drei Schritte erhöhen deinen Umsatz ohne eine einzige zusätzliche Arbeitsstunde.",
+    aiPromise:"Du baust lieber als du sprichst. Dein Companion übernimmt das Sprechen: Wert in Zahlen ausdrücken, Preise rechtfertigen, Scope-Gespräche führen.",
+    evaQuote:"Builder sind die ehrlichsten Unternehmer die ich kenne — weil ihr Angebot immer hält was es verspricht. Die einzige Unehrlichkeit: sie verschweigen wie gut sie sind. Das kostet sie jedes Jahr tausende von Euro.",
+  },
+  C:{
+    code:"C",en:"The Connector",name:"Connector",
+    tagline:"Dein größtes Asset ist das Vertrauen das du aufbaust — lerne es zu monetarisieren.",
+    mirrorIntro:"Du hast die wertvollste Eigenschaft im Business: Menschen vertrauen dir. Sofort. Ohne Grund. Das ist ein außergewöhnliches Talent — das du systematisch verschenkst.",
+    mirror:[
+      {q:"Was du regelmäßig hörst",t:"'Du hast mir so geholfen!' — Ohne dass sie bezahlt haben. Und du hast dich gut dabei gefühlt. Kurz."},
+      {q:"Das Muster das sich wiederholt",t:"Du gibst, sie nehmen, du gibst mehr. Irgendwann ist die Kapazität erschöpft und du fragst dich warum das Business nicht wächst."},
+      {q:"Was du dir nicht eingestehst",t:"Das Gespräch über Geld fühlt sich wie ein Verrat an. Dabei ist es umgekehrt: <strong>echte Beziehungen halten klare Grenzen aus</strong>."},
+      {q:"Der Durchbruch der dich erwartet",t:"Der Moment wo du lernst dass Nein sagen keine Beziehung zerstört — sondern die richtigen Beziehungen stärkt.",h:true},
+    ],
+    essEye:"Wer du wirklich bist",
+    essence:"Der Connector ist empathisch, netzwerkstark, ein natürlicher Community-Builder. Menschen vertrauen dir instinktiv. Das ist nicht selbstverständlich — das ist ein Talent das die meisten mit viel Geld versuchen zu kaufen und nie erreichen.",
+    superpower:"Beziehungstiefe die Kunden zu lebenslangen Fans macht — organisch, ohne Marketingbudget.",
+    shadow:"Preisangst — die Überzeugung dass Geldgespräche die Beziehung zerstören.",
+    strengths:["Beziehungstiefe — Menschen fühlen sich von dir wirklich gesehen","Empathische Kommunikation die versteht was Kunden wirklich wollen","Organisches Empfehlungsgeschäft das sich selbst aufbaut","Loyale Kunden die langfristig bleiben","Natürliche Kooperationsstärke"],
+    blind:["Grenzensetzungsschwäche — du gibst mehr als vereinbart","Preisangst — du fürchtest dass Geldgespräche die Beziehung gefährden","Riesiges Netzwerk aber zu wenig Monetarisierung","Abhängigkeit von Anerkennung als Motivationsquelle","Zu viele Beziehungen gleichzeitig — emotionale Erschöpfung"],
+    bizIntro:"Dein Business-Problem: du hast alles was andere kaufen müssen — und verkaufst es trotzdem zu wenig.",
+    business:"Membership, Community, Gruppen-Coaching. Ein Angebot mit klarem Scope.",
+    sales:"Vertrauen ist dein Argument. Du brauchst den Moment: 'Das ist mein Angebot, so arbeiten wir.'",
+    visibility:"Community-Building, persönliche Geschichten, Kundenerfolge. Podcasts, Kollaborationen.",
+    before:["Du gibst kostenlos was andere bezahlen würden","Das Geldgespräch kommt zu spät oder gar nicht","Extras werden gemacht ohne Berechnung","Netzwerk riesig — konvertiert aber kaum","Du sagst Ja wenn du Nein meinst"],
+    after:["Gratis-Limit definiert — danach kommt das Angebot","Preis wird im Gespräch kommuniziert bevor du anfängst zu geben","Extras sind im Angebot oder werden separat berechnet","Netzwerk ist strukturiertes Empfehlungssystem","Nein-Satz steht — und wird benutzt"],
+    stress:"Unter Druck suchst du Resonanz durch Gespräche. Das hilft kurzfristig und erschöpft langfristig.",
+    burnoutLevel:"high",burnout:"Hoch — durch emotionale Erschöpfung. Du nimmst die Probleme anderer mit.",
+    steps:[{n:"01",text:"<strong>Gratis-Limit definieren</strong> — was du maximal kostenlos gibst. Diese Grenze heute aufschreiben."},{n:"02",text:"Einen <strong>'Nein mit Würde' Satz</strong> formulieren und diese Woche einmal benutzen."},{n:"03",text:"<strong>Preis um 30% erhöhen</strong> beim nächsten Gespräch — ohne Zögern kommunizieren."}],
+    stepsIntro:"Diese drei Schritte verändern nichts an deiner Empathie. Sie verändern nur wie du sie verpackst.",
+    aiPromise:"Du weißt wie man gibt. Dein Companion hilft dir lernen wie man nimmt — ohne schlechtes Gewissen. Er formuliert Preise, Grenzen und Nein-Sätze die sich für dich ehrlich anfühlen.",
+    evaQuote:"Connectors haben die seltenste Eigenschaft im Business: echtes Vertrauen. Nicht gekauft. Nicht performt. Echt. Das einzige was ich mir für sie wünsche: dass sie aufhören es zu verschenken.",
+  },
+  G:{
+    code:"G",en:"The High Performer",name:"Hochleister",
+    tagline:"Du lebst für Exzellenz — jetzt lerne sie zu deinen Bedingungen zu liefern.",
+    mirrorIntro:"Du funktionierst unter Bedingungen unter denen andere aufhören. Das macht dich außergewöhnlich. Und es ist gleichzeitig die einzige wirklich gefährliche Eigenschaft in diesem System.",
+    mirror:[
+      {q:"Was von außen sichtbar ist",t:"Ein Business das läuft. Kunden die zufrieden sind. Ergebnisse die stimmen. Von außen: perfekt."},
+      {q:"Was von innen passiert",t:"Du erinnerst dich nicht mehr wann du zuletzt wirklich abgeschaltet hast. Nicht weil du keine Zeit hattest — sondern weil <strong>Stille sich wie Versagen anfühlt</strong>."},
+      {q:"Was du noch nicht ausgesprochen hast",t:"Irgendwann fragst du dich warum du das alles machst. Nicht in einer Krise — sondern an einem normalen Dienstag."},
+      {q:"Das Muster",t:"Leistung. Mehr Leistung. Noch mehr. Dann: Zusammenbruch. Erholung. Leistung. Das Intervall <strong>wird kürzer</strong>.",h:true},
+    ],
+    essEye:"Wer du wirklich bist",
+    essence:"Der Hochleister trägt das höchste Burnout-Risiko im System. Das Business läuft bis es nicht mehr läuft — dann sehr abrupt. Das ist keine Schwäche. Das ist das Muster das entsteht wenn außergewöhnliche Menschen keine Grenzen lernen.",
+    superpower:"Exzellenz-Standard der Kunden hält und Reputation aufbaut die sich selbst vermarktet.",
+    shadow:"Burnout-Blindheit — du merkst es erst beim Zusammenbruch.",
+    strengths:["Exzellenz-Standard — deine Qualität ist der Wettbewerbsvorteil","Disziplin und Verlässlichkeit — du hältst was du versprichst immer","Hohe Effizienz — mehr Output in weniger Zeit","Starke Marktreputation durch Ergebnisse","Schnelle Lerngeschwindigkeit"],
+    blind:["Burnout-Blindheit — du merkst es erst wenn es körperlich wird","Ruhe als Schwäche empfunden — Pausen fühlen sich wie Ineffizienz an","Perfektionismus als Positionierungsbremse","Isolation — du trägst zu viel alleine","Vergleichsfalle — nie gut genug"],
+    bizIntro:"Dein Business-Problem ist nicht die Qualität. Es ist die Kapazität. Exzellenz die sich nicht regeneriert hört auf exzellent zu sein.",
+    business:"Premium-Only. Wenige hochpreisige Kunden. Klare Kapazitätsgrenzen. Retainer-Modelle.",
+    sales:"Kein Discounting. Kein Überreden. 'Das ist mein Preis.' Dann schweigen.",
+    visibility:"Thought Leadership. Ein Beitrag der wirklich trifft schlägt zehn generische. LinkedIn, Newsletter.",
+    before:["Kapazität immer überschritten — du nimmst trotzdem an","Pausen werden geplant und emotional sabotiert","Du arbeitest für Kunden die deinen Standard nicht verdienen","Erfolg fühlt sich nie gut genug an","Das Tempo ist nicht haltbar — du weißt es"],
+    after:["Monatliches Stunden-Maximum steht und wird kommuniziert","Pausen stehen im Kalender wie Kundentermine","3 beste Kunden zahlen mehr weil sie deinen Standard schätzen","Erfolg wird bewusst wahrgenommen — Ritual dafür etabliert","Das Tempo ist nachhaltig weil Kapazität respektiert wird"],
+    stress:"Unter Extremdruck funktionierst du außergewöhnlich — aber du zahlst. Erkennungszeichen: innere Leere trotz äußerem Erfolg.",
+    burnoutLevel:"veryhigh",burnout:"SEHR HOCH — kritische Diagnose. Nicht ob sondern wann ohne strukturelle Änderungen.",
+    steps:[{n:"01",text:"<strong>Monatliches Kapazitätslimit</strong> in Stunden festlegen — heute, nicht verhandelbar."},{n:"02",text:"<strong>Deinen größten Energieräuber</strong> aus dem Angebot eliminieren — auch wenn es Umsatz kostet."},{n:"03",text:"<strong>3-Tage Digital-Detox</strong> in den nächsten 30 Tagen — jetzt in den Kalender."}],
+    stepsIntro:"Diese Schritte sind nicht optional für deinen Typ. Sie sind medizinisch notwendig.",
+    aiPromise:"Du kannst nicht aufhören ohne externes Signal. Dein Companion gibt dir dieses Signal: er fragt täglich nach deiner Kapazität und hilft dir Nein zu sagen bevor dein Körper es erzwingt.",
+    evaQuote:"Hochleister sind die Menschen die ich am meisten bewundere — und gleichzeitig am meisten schützen will. Ihr Preis für Exzellenz ist zu hoch wenn er die Person kostet die diese Exzellenz erschafft.",
+  },
+  "S+G":{
+    code:"S+G",en:"Strategist × High Performer",name:"Stratege mit Hochleister-Anteil",isMixed:true,
+    mixedNote:"Diese Kombination ist ca. 22% aller Mischtypen. Stratege-Struktur und Hochleister-Energie multiplizieren sich — doppelter Perfektionismus, doppeltes Burnout-Risiko.",
+    tagline:"Du baust Systeme die perfekt sein müssen — und bezahlst den Preis mit deiner Energie.",
+    mirrorIntro:"Du bist der Typ der am meisten kann und am häufigsten erschöpft ist. Nicht weil du schwach bist — sondern weil zwei der anspruchsvollsten Muster gleichzeitig aktiv sind.",
+    mirror:[
+      {q:"Von außen",t:"Ein Business mit außergewöhnlicher Substanz. Kunden die bleiben. Qualität die überzeugt."},
+      {q:"Von innen",t:"Du hast ein perfektes Konzept und trotzdem keinen Launch. Stratege will es richtig. Hochleister will es vollständig. <strong>Beide zusammen: es wird nie fertig.</strong>"},
+      {q:"Das Muster",t:"Planung → Optimierung → fast fertig → neue Erkenntnis → zurück zur Planung. Wieder und wieder."},
+      {q:"Was dich wirklich kostet",t:"Nicht die Energie für das Projekt. Die Energie für das <strong>Aushalten dass es noch nicht fertig ist</strong>.",h:true},
+    ],
+    essEye:"Das Wesen dieser Kombination",
+    essence:"Stratege-Struktur trifft auf Hochleister-Energie. Das Ergebnis: außergewöhnliche Substanz — und das höchste Burnout-Risiko im System. Du baust Dinge die wirklich funktionieren. Der Preis: stille Erschöpfung.",
+    superpower:"Du baust Systeme die wirklich funktionieren — nicht nur gut klingen.",
+    shadow:"Doppelter Perfektionismus: beide Anteile zusammen blockieren jeden Launch.",
+    strengths:["Systeme die tatsächlich skalieren","Höchste Lieferqualität im NeuroBusiness™-Spektrum","Extreme Selbstdisziplin kombiniert mit analytischer Tiefe","Kunden bleiben weil du wirklich lieferst","Vertrauenswürdigkeit die sich selbst vermarktet"],
+    blind:["Doppelter Perfektionismus blockiert jeden Launch","Burnout kommt ohne Ankündigung","Kein Nein — du übernimmst Verantwortung die nicht deine ist","Delegation als persönliches Versagen","Ruhe ist Ineffizienz — kein Option"],
+    bizIntro:"Du brauchst kein besseres Angebot. Du brauchst das 70%-Angebot jetzt — und Grenzen die es am Leben erhalten.",
+    business:"Premium-Angebote mit klarer Systemlogik. Strikte Kapazitätsgrenzen. Retainer-Modelle.",
+    sales:"Kompetenzdemonstration durch Systeme und Ergebnisse. Kein Discounting.",
+    visibility:"Thought Leadership: tiefe LinkedIn-Artikel, Frameworks, Newsletter.",
+    before:["Perfektes Konzept — Launch wird verschoben","Qualität hoch, Preis zu niedrig, Erschöpfung hoch","Keine Grenzen — Ja aus Pflicht nicht aus Wahl","Wachstum durch mehr Arbeit — bis zum Zusammenbruch","Du weißt dass das Tempo nicht haltbar ist"],
+    after:["70%-Regel: was 70% fertig ist geht raus","Stunden-Maximum steht und wird eingehalten","Preis reflektiert die Systemqualität","Nein wird strategisch eingesetzt","Wachstum durch Preis und Leverage — nicht durch Stunden"],
+    stress:"KRITISCH: Höchstes Burnout-Risiko im System. Du erkennst Überlastung erst wenn sie körperlich wird.",
+    burnoutLevel:"veryhigh",burnout:"SEHR HOCH — doppelte Risikofaktoren aktiv. Höchste Priorität.",
+    steps:[{n:"01",text:"<strong>Wöchentliches Stunden-Maximum</strong> definieren — ab Überschreitung keine neuen Anfragen."},{n:"02",text:"<strong>70%-Regel</strong>: nächstes Angebot geht raus wenn es 70% fertig ist. Kein weiteres Optimieren."},{n:"03",text:"<strong>Einen Kunden pro Quartal</strong> abgeben wenn Kapazität überschritten ist."}],
+    stepsIntro:"Diese Schritte schützen nicht nur deine Energie — sie schützen die Qualität die dich auszeichnet.",
+    aiPromise:"Zwei Muster gleichzeitig zu managen ist schwer alleine. Dein Companion erkennt Perfektionismus-Schleifen und stellt dir täglich die Frage: 'Was wäre, wenn du es jetzt rausgibst?'",
+    evaQuote:"Die S+G Kombination beeindruckt mich am meisten — und besorgt mich am meisten. Weil diese Menschen so viel können dass sie glauben sie müssen es beweisen. Jeden Tag. Das müssen sie nicht.",
+  },
+  "V+M":{
+    code:"V+M",en:"Visionary × Builder",name:"Visionär mit Builder-Anteil",isMixed:true,
+    mixedNote:"Die seltenste und stärkste Kombination — ca. 8%. Wer träumen und bauen kann, verändert Märkte.",
+    tagline:"Du siehst es nicht nur — du baust es auch. Das ist die Kombination die Märkte verändert.",
+    mirrorIntro:"Du hast das was die meisten Unternehmer entweder haben oder sich wünschen: Ideen UND Umsetzung. Die Frage ist nicht ob du erfolgreich sein kannst — sondern auf welchem Feld.",
+    mirror:[
+      {q:"Was passiert",t:"Idee kommt. Energie steigt. Du baust. Ergebnis ist gut. Neue Idee kommt. Das alte Projekt verliert dich."},
+      {q:"Das Muster",t:"Du kannst 3 Dinge gleichzeitig bauen und alle sind gut — aber <strong>keines ist fertig genug um zu skalieren</strong>."},
+      {q:"Was dich trennt",t:"Nicht Talent. Nicht Geschwindigkeit. Sondern: ein einziges Angebot, 12 Monate konsequent vermarktet."},
+      {q:"Der Durchbruch",t:"Du hörst auf zu bauen weil es interessant ist — und baust was <strong>gefragt und bezahlt</strong> wird.",h:true},
+    ],
+    essEye:"Das Wesen dieser Kombination",
+    essence:"Die unternehmerisch stärkste Kombination. Du kannst träumen und machen. Idee direkt zu Markt. Die Herausforderung: die richtigen Baustellen wählen.",
+    superpower:"Idee → Produkt in der Hälfte der Zeit anderer Typen.",
+    shadow:"Zu viele parallele Baustellen — das nächste bauen bevor das erste skaliert.",
+    strengths:["Schnellste Idee-zu-Markt-Zeit","Natürliches Produktdenken","Hohe Energie und Ausdauer gleichzeitig","Lerngeschwindigkeit durch direktes Tun","Inspirierend und pragmatisch"],
+    blind:["Zu viele Produkte gleichzeitig","Marketing als lästige Pflicht","Preis zu niedrig","Kein System hinter dem Erfolg","Vision ändert sich zu schnell"],
+    bizIntro:"Du brauchst kein neues Produkt — du brauchst einen Mechanismus der das beste bestehende skaliert.",
+    business:"Ein Signature-Offer. Productized Services. Klare Launch-Zyklen statt ewiger Betas.",
+    sales:"Zeigen statt erklären. Demo, Prototype, MVP. Webinare wo du live baust.",
+    visibility:"Prozess-Content: 'Ich baue X — hier ist was ich heute gemacht habe.'",
+    before:["3 Projekte laufen — keines im Markt","Marketing passiert wenn Lust da ist","Preis deckt Aufwand nicht Wert","Nächste Idee interessanter als laufendes Projekt","Scaling-Limit: du selbst"],
+    after:["Ein Signature-Offer — 90 Tage Fokus","Content-Pipeline läuft unabhängig von Stimmung","Preis reflektiert Marktwert","Neue Ideen warten in der Liste","System läuft zu 40% ohne dich"],
+    stress:"Du startest neue Projekte wenn alte stocken. Die neue Idee ist echter als das Problem — für 48 Stunden.",
+    burnoutLevel:"mid",burnout:"Mittel — durch Fokuslosigkeit nicht durch Erschöpfung.",
+    steps:[{n:"01",text:"Alle Projekte auflisten. <strong>Das mit dem höchsten Umsatzpotenzial</strong> auswählen — alle anderen pausieren."},{n:"02",text:"<strong>Marketing-System bauen</strong> das ohne dich läuft: Content-Pipeline, Auto-Responder, Referral."},{n:"03",text:"<strong>Preis verdoppeln</strong> für dein Hauptangebot — du unterbietest dich systematisch."}],
+    stepsIntro:"Diese Schritte aktivieren was du bereits hast — sie bauen nur den Rahmen drum herum.",
+    aiPromise:"Du verlierst dich in Baustellen. Dein Companion ist dein Fokus-Filter und erinnert dich täglich warum.",
+    evaQuote:"V+M ist die Kombination die ich mir für jeden Gründer wünschen würde. Und es ist das Profil das am meisten Richtung braucht — nicht weil es zu wenig kann, sondern weil es zu viel kann.",
+  },
+  "V+C":{
+    code:"V+C",en:"Visionary × Connector",name:"Visionär mit Connector-Anteil",isMixed:true,
+    mixedNote:"Ca. 15% aller Mischtypen. Der charismatischste Typ im System — Menschen kaufen dich.",
+    tagline:"Du begeisterst Menschen für Visionen die noch nicht existieren — und sie vertrauen dir dabei.",
+    mirrorIntro:"Du kannst Räume verändern. Buchstäblich. Wenn du sprichst, ändert sich die Energie. Das hältst du wahrscheinlich für selbstverständlich. Das ist es nicht.",
+    mirror:[
+      {q:"Was immer passiert",t:"Du begeisterst Menschen. Sie sagen Ja. Dann fragst du dich wie du 20 Yeses gleichzeitig bedienen sollst."},
+      {q:"Das Muster",t:"Vision + Beziehung + Versprechen. Repeat. Irgendwann so viele Beziehungen und Versprechen dass <strong>der Fokus komplett fehlt</strong>."},
+      {q:"Was du weißt",t:"Du weißt welches Angebot funktionieren würde. Du kommunizierst es nicht konsequent — weil du allen alles sein möchtest."},
+      {q:"Der Schlüssel",t:"Deine größte Stärke wird zur Bremse wenn du sie nicht <strong>in ein skalierbares Format</strong> überführst.",h:true},
+    ],
+    essEye:"Das Wesen dieser Kombination",
+    essence:"Vision kombiniert mit echter Beziehungstiefe. Menschen kaufen dich. Das ist ein unfairer Vorteil den man nicht lernen kann — den man aber auch nicht skalieren kann ohne System.",
+    superpower:"Du kannst Räume verändern. Menschen kaufen nicht dein Produkt — sie kaufen dich.",
+    shadow:"Zu viele Versprechen an zu viele Menschen — Fokus und Monetarisierung leiden.",
+    strengths:["Magnetische Anziehungskraft","Natürliches Storytelling","Community-Building ohne Budget","Empathie kombiniert mit Inspiration","Kollaborationen die andere nicht finden"],
+    blind:["Zu viele Versprechen gleichzeitig","Geld-Thema bleibt im Hintergrund","Fokus leidet unter zu vielen Beziehungen","Emotionale Erschöpfung durch Dauerpräsenz","Business-Modell bleibt unklar"],
+    bizIntro:"Du musst keine neue Energie entwickeln — du musst sie in ein Format bringen das ohne deine Anwesenheit wirkt.",
+    business:"Community-basierte Angebote: Membership, Mastermind, Events.",
+    sales:"Du brauchst eine Bühne. Webinar, Podcast, Event. Wenn die Leute dich erlebt haben kaufen sie.",
+    visibility:"Personal Brand first. Deine Geschichte, dein Warum. Live-Formate.",
+    before:["Begeisterung ohne System — viel Energie wenig Umsatz","Zu viele 1:1 Beziehungen — du bist Engpass","Content entsteht wenn Inspiration da ist","Jede neue Beziehung bringt neues Versprechen","Preis nach Beziehungstiefe"],
+    after:["Community-Angebot läuft — viele profitieren gleichzeitig","1:1 ist Premium — klar begrenzt und berechnet","Content läuft 3 Wochen im Voraus","Neue Beziehungen münden in klares Angebot","Preis nach Wert — Beziehung bleibt echt"],
+    stress:"Unter Druck suchst du Bestätigung durch mehr Gespräche. Kurzfristig Energie, langfristig Erschöpfung.",
+    burnoutLevel:"high",burnout:"Hoch — durch emotionale Dauerbelastung.",
+    steps:[{n:"01",text:"<strong>Gruppen-Angebot entwickeln</strong> das 1:1 Zeit reduziert ohne Beziehungstiefe zu verlieren."},{n:"02",text:"<strong>Öffentlich kommunizieren</strong> was du tust und was nicht — eine klare LinkedIn-Positionierung."},{n:"03",text:"<strong>Monatliches Umsatz-Ziel</strong> vor das Beziehungs-Ziel setzen. Zahl definieren."}],
+    stepsIntro:"Diese Schritte übersetzen deine natürliche Stärke in ein System das skaliert.",
+    aiPromise:"Du begeisterst — dein Companion strukturiert. Er hilft dir deine Energie in Formate zu übersetzen die ohne deine ständige Anwesenheit wirken.",
+    evaQuote:"V+C ist das Profil das ich am häufigsten bei Menschen sehe die eigentlich schon erfolgreich sein müssten. Sie haben alles. Was fehlt: ein System das das alles auffängt.",
+  },
+  "C+G":{
+    code:"C+G",en:"Connector × High Performer",name:"Connector mit Hochleister-Anteil",isMixed:true,
+    mixedNote:"Ca. 12% aller Mischtypen. Das zweithöchste Burnout-Risiko. Empathie + Leistungsanspruch = außergewöhnliche Qualität — zu einem Preis.",
+    tagline:"Du gibst alles für andere — und vergisst dabei systematisch für dich zu sorgen.",
+    mirrorIntro:"Du bist der Typ bei dem Kunden weinen wenn sie aufhören mit dir zu arbeiten. Das ist echt. Und es ist das Muster das dich erschöpft.",
+    mirror:[
+      {q:"Was du jeden Tag tust",t:"Du gibst mehr als vereinbart. Nicht weil du musst — weil es sich falsch anfühlt aufzuhören wenn jemand noch etwas braucht."},
+      {q:"Was das kostet",t:"Nicht Geld. Nicht Zeit. Die <strong>Energie die nicht nachwächst</strong> wenn man sie täglich für andere ausgibt ohne Grenze."},
+      {q:"Was du weißt",t:"Du weißt dass du zu viel gibst. Und trotzdem ändert sich beim nächsten Kunden nichts."},
+      {q:"Warum",t:"Weil du glaubst dass <strong>Grenzen Beziehungen zerstören</strong>. Das ist falsch. Aber es fühlt sich wahr an.",h:true},
+    ],
+    essEye:"Das Wesen dieser Kombination",
+    essence:"Tiefe Empathie kombiniert mit Hochleistungsanspruch. Du hilfst anderen mit einer Energie und Qualität die keine Grenzen kennt. Menschen lieben dich dafür. Der Preis ist ebenfalls real.",
+    superpower:"Du weißt genau was Menschen brauchen und lieferst es in außergewöhnlicher Qualität.",
+    shadow:"Du kannst nicht aufhören — nicht weil du musst, sondern weil es sich falsch anfühlt.",
+    strengths:["Tiefste Kundenbindung aller Typen","Hohe Qualität kombiniert mit echtem Verständnis","Führungsstärke durch Vertrauen","Empfehlungsgeschäft das wächst","Emotionale Intelligenz auf höchstem Niveau"],
+    blind:["Grenzenlosigkeit als Identität","Preis unter Wert — Beziehung überlagert Geldgespräch","Erschöpfung die sich als 'nur noch dieses eine' tarnt","Kein Nein zu Bestandskunden","Exzellenz + Empathie müssen unbegrenzt verfügbar sein"],
+    bizIntro:"Dein Problem ist nicht mangelnde Qualität. Es ist ein fehlendes System das dich schützt während du gibst.",
+    business:"Premium-Einzelbegleitung mit harten Kapazitätsgrenzen. Maximal X Kunden.",
+    sales:"Vertrauen ist dein Argument. Aber du brauchst den Moment: 'Das ist mein Angebot.'",
+    visibility:"Tiefe Kundengeschichten. LinkedIn und Podcast — authentisch.",
+    before:["Kapazität voll — du nimmst trotzdem an","Gratis-Leistung überwiegt bezahlte","'Dieses eine Mal noch' — jeden Tag","Preis 40% unter realem Wert","Erschöpfung wird als temporär rationalisiert"],
+    after:["Maximale Kundenzahl steht und wird eingehalten","Gratis-Limit definiert","Nein ist eine vollständige Antwort","Preis reflektiert Wert der tiefen Begleitung","Regeneration ist geplant"],
+    stress:"WARNUNG: Unter Druck gibst du mehr statt weniger. Das fühlt sich richtig an — und ist trotzdem falsch.",
+    burnoutLevel:"veryhigh",burnout:"SEHR HOCH — emotionale + physische Erschöpfung kombiniert.",
+    steps:[{n:"01",text:"<strong>Maximale Kundenzahl</strong> festlegen — und öffentlich kommunizieren. Heute."},{n:"02",text:"<strong>Einen Nein-Satz schreiben</strong> der sich ehrlich anfühlt. Diese Woche einmal benutzen."},{n:"03",text:"<strong>Preiserhöhung um 40%</strong> beim nächsten Kunden. Keine Erklärung."}],
+    stepsIntro:"Diese Schritte verändern nicht wer du bist — nur wie lange du es bleiben kannst.",
+    aiPromise:"Dein Companion ist dein Schutzschild: er erkennt wo du zu viel gibst, formuliert Grenzen die sich ehrlich anfühlen, und erinnert dich: deine Energie ist endlich.",
+    evaQuote:"C+G ist das Profil dem ich am liebsten sagen möchte: Du bist genug. Du musst nicht so viel geben um geliebt zu werden.",
+  },
+  "S+V":{
+    code:"S+V",en:"Strategist × Visionary",name:"Stratege mit Visionär-Anteil",isMixed:true,
+    mixedNote:"Ca. 11%. Struktur trifft auf Disruption — der Thought-Leader-Typ.",
+    tagline:"Du siehst das große Bild UND weißt wie man es baut — das macht dich gefährlich gut.",
+    mirrorIntro:"Du denkst anders als andere. Grundlegend anders. Das ist keine Einschränkung — das ist dein Markt.",
+    mirror:[
+      {q:"Was du kennst",t:"Das Gefühl wenn du etwas erklärst und die Person wirklich versteht. Dieser Moment."},
+      {q:"Was du nicht kennst",t:"Das System das diesen Moment für hunderte Menschen erzeugt <strong>ohne dass du immer dabei sein musst</strong>."},
+      {q:"Die Spannung",t:"Stratege will beweisen. Visionär will ausprobieren. Manchmal lähmen sie sich gegenseitig."},
+      {q:"Das Potenzial",t:"Ein Framework das deinen Namen trägt. Irgendetwas das dein Denken in die Welt bringt <strong>nachdem du das Zimmer verlassen hast</strong>.",h:true},
+    ],
+    essEye:"Das Wesen dieser Kombination",
+    essence:"Analytische Tiefe trifft auf visionäre Originalität. Der seltenste Thought-Leader-Typ: einer der sowohl tiefe Frameworks baut als auch neue Wege sieht.",
+    superpower:"Du kannst Komplexität in Klarheit übersetzen — und dabei trotzdem Innovation denken.",
+    shadow:"Du analysierst Visionen statt sie zu starten.",
+    strengths:["Strategische Originalität — nicht kopiert","Komplexe Systeme durchdenken UND neu denken","Hochwertige Frameworks als Referenz","Langfristige Positionierung","Thought Leadership mit Substanz"],
+    blind:["Analyse-Paralyse trifft auf visionären Übermut","Zu wenig Execution","Kommunikation zu komplex","Preis unter Wert","Ungeduld wenn andere nicht mithalten"],
+    bizIntro:"Dein Business-Problem: du hast Ideen die 10× so viel wert sind wie du verlangst.",
+    business:"Advisory, Strategie, komplexe Beratung. Frameworks als Produkte. Mastermind-Programme.",
+    sales:"Tiefencontent als Lead-Magnet. Direktgespräch für hochpreisige Projekte.",
+    visibility:"LinkedIn Thought Leadership, Newsletter, Podcast als Gast.",
+    before:["Framework existiert im Kopf — nicht im Markt","Preis zu niedrig für intellektuellen Wert","Entscheidungen dauern zu lang","Kommunikation verliert Kunden","Kein skalierbares Angebot"],
+    after:["Flagship-Framework steht — als Produkt und Service","Preis reflektiert Transformationswert","48h-Regel: keine Entscheidung offen länger als 2 Tage","Kommunikation vereinfacht auf 'Was das für dich bedeutet'","Framework wird gelehrt — Lizenz als Skalierungsweg"],
+    stress:"Unter Druck: mehr Denken, weniger Handeln. 48h Entscheidungsregel.",
+    burnoutLevel:"mid",burnout:"Mittel — durch mentale Dauerbelastung.",
+    steps:[{n:"01",text:"<strong>Flagship-Framework</strong> entwickeln das deinen Namen trägt — als Produkt oder Programm."},{n:"02",text:"<strong>48h-Entscheidungsregel</strong>: jede Entscheidung in max. 48 Stunden getroffen."},{n:"03",text:"<strong>Preis verdoppeln</strong> und neue Kommunikation sofort testen."}],
+    stepsIntro:"Diese Schritte bringen dein Denken in den Markt — der Ort wo es hingehört.",
+    aiPromise:"Dein Companion ist dein intellektueller Sparringspartner: er fordert Frameworks heraus, übersetzt Komplexität in Verkaufssprache, stoppt Analyse-Schleifen.",
+    evaQuote:"S+V schreibt die besten Bücher — und gibt sie nie raus. Weil sie noch nicht fertig sind. Das Buch das du im Kopf hast ist besser als das meiste was im Regal steht. Es muss nur raus.",
+  },
+  "M+G":{
+    code:"M+G",en:"Builder × High Performer",name:"Builder mit Hochleister-Anteil",isMixed:true,
+    mixedNote:"Ca. 10%. Die produktivste Umsetzungskombination. Schnell UND exzellent — ein Tempo das nicht haltbar ist.",
+    tagline:"Du baust schnell und du baust gut — aber du bist dein eigener härtester Chef.",
+    mirrorIntro:"Du bist der Typ der nach einem 12-Stunden-Tag noch 'schnell noch dieses eine' macht. Nicht weil du musst. Weil es sich nicht fertig anfühlt.",
+    mirror:[
+      {q:"Was dein Markt sieht",t:"Qualität und Geschwindigkeit gleichzeitig. So selten dass Kunden nicht glauben können dass es real ist."},
+      {q:"Was du siehst",t:"Dass es noch besser sein könnte. Dass noch dieses Detail fehlt. Dass der Standard von gestern heute nicht mehr ausreicht."},
+      {q:"Das Muster",t:"Liefern. Sofort nächstes Projekt. Liefern. Keine Pause. Kein Innehalten."},
+      {q:"Der versteckte Preis",t:"Du bist 3× schneller als dein Markt und verlangst den <strong>gleichen Preis</strong>. Das ist nicht Bescheidenheit — das ist ein systematischer Fehler.",h:true},
+    ],
+    essEye:"Das Wesen dieser Kombination",
+    essence:"Builder-Geschwindigkeit kombiniert mit Hochleister-Qualität. Du lieferst schnell UND exzellent. Im Markt extrem selten. Das ist auch das Muster das dich ohne Grenzen erschöpft.",
+    superpower:"Du erledigst in drei Tagen was andere in drei Wochen schaffen — und es ist dabei noch gut.",
+    shadow:"Du hältst das Tempo für normal. Es ist außergewöhnlich, und erschöpft dich schneller als du glaubst.",
+    strengths:["Höchste Output-Qualität pro Zeiteinheit","Marktreputation durch Ergebnisse","Resilienz und Durchhaltevermögen","Pragmatische Problemlösung","Zuverlässigkeit und Qualität gleichzeitig"],
+    blind:["Kein natürlicher Stopp","Preisunterbewertung trotz 3× Marktgeschwindigkeit","Delegation als Qualitätsverlust","Kein strategischer Blick","Erschöpfung wird rationalisiert"],
+    bizIntro:"Dein Business läuft von dir statt für dich. Das ändert sich wenn Preis und Grenzen stimmen.",
+    business:"Hochpreisige Done-for-you Pakete mit hartem Scope. Nur die richtigen Kunden.",
+    sales:"Ergebnis-Portfolio. Timelines die beeindrucken. Referenzen sprechen.",
+    visibility:"Before/After. 'Hier ist was wir in 5 Tagen gebaut haben.'",
+    before:["Stundensatz: Marktdurchschnitt obwohl 3× schneller","Keine Pause zwischen Projekten","Alles läuft über dich","Qualitätskontrolle frisst Zeit","Nächstes Projekt startet bevor letztes abgerechnet"],
+    after:["Stundensatz: 50% über Markt — begründet mit Geschwindigkeit","Fester Feierabend der nicht verhandelbar ist","Onboarding läuft ohne dich","Qualitäts-Checkliste existiert","Rechnung geht vor Projektstart raus"],
+    stress:"Unter Druck noch schneller — kurzfristig brilliant, langfristig destruktiv.",
+    burnoutLevel:"high",burnout:"Hoch — durch physische Überlastung ohne Regeneration.",
+    steps:[{n:"01",text:"<strong>Stundensatz um 50% erhöhen</strong> — du bist 3× schneller als der Markt."},{n:"02",text:"<strong>Fester Feierabend</strong> — jeden Tag, keine Ausnahme."},{n:"03",text:"<strong>Eine Aufgabe pro Woche</strong> aktiv delegieren — Training, keine Niederlage."}],
+    stepsIntro:"Diese Schritte erhöhen deinen Umsatz und reduzieren deine Wochenstunden gleichzeitig.",
+    aiPromise:"Du baust lieber als du verhandelst. Dein Companion hilft beim Rest: Wert formulieren, Preis rechtfertigen, erinnern dass deine Geschwindigkeit außergewöhnlich ist.",
+    evaQuote:"M+G baut das Beste — und berechnet das Mittelmaß. Nicht aus Bescheidenheit. Aus der falschen Überzeugung dass Preis durch Zeit gerechtfertigt werden muss.",
+  },
+  "C+S":{
+    code:"C+S",en:"Connector × Strategist",name:"Connector mit Stratege-Anteil",isMixed:true,
+    mixedNote:"Ca. 9%. Emotionale Tiefe trifft auf analytische Struktur — der beste Coach- und Berater-Typ.",
+    tagline:"Du verstehst Menschen tief — und du weißt wie man daraus ein System baut.",
+    mirrorIntro:"Du hörst was andere nicht sagen. Das ist ein klinisches Talent und ein Business-Talent das die meisten Berater nie entwickeln.",
+    mirror:[
+      {q:"Was du kannst",t:"Du verstehst in 20 Minuten was ein Standardberater in 3 Sessions herausfinden würde."},
+      {q:"Was du damit machst",t:"Oft: du gibst die Erkenntnis kostenlos im Erstgespräch. Dann kaufen sie nicht — weil sie schon bekommen haben was sie wollten."},
+      {q:"Die Spannung",t:"Connector will geben. Stratege will verstehen. <strong>Geld fühlt sich wie ein Widerspruch dazu an</strong>."},
+      {q:"Was sich ändert",t:"Der Moment wo du verstehst dass dein tiefes Verstehen <strong>genau der Wert ist</strong> für den jemand zahlt.",h:true},
+    ],
+    essEye:"Das Wesen dieser Kombination",
+    essence:"Emotionale Tiefe trifft auf analytische Struktur. Du diagnostizierst was Menschen wirklich brauchen — und baust die passende Lösung. Eine seltene Kombination.",
+    superpower:"Du diagnostizierst was Menschen wirklich brauchen — und baust dann die passende Lösung.",
+    shadow:"Du gibst die Diagnose kostenlos im Erstgespräch.",
+    strengths:["Tiefes Kundenverständnis + strukturierte Lösungsentwicklung","Empathische Kommunikation die klar ist","Systeme auf echten Bedürfnissen","Langfristige Kundenbeziehungen","Führungsstärke durch Vertrauen"],
+    blind:["Geldgespräche bleiben unangenehm","Zu viel Zeit für einzelne Kunden","Entscheidungen werden verschleppt","Sichtbarkeit fühlt sich selbstbezogen an","Eigene Bedürfnisse hinten angestellt"],
+    bizIntro:"Dein Wert ist höher als du verlangst — weil echtes Verständnis nicht wie Verkauf klingen soll.",
+    business:"Premium-Beratung mit strukturiertem Prozess. Klarer Anfang, Ende, Ergebnis.",
+    sales:"Tiefes Erstgespräch als Verkaufstool — du verstehst in 20 Minuten was andere in Wochen herausfinden.",
+    visibility:"Case Studies die Transformation zeigen. LinkedIn Thought Leadership.",
+    before:["Erstgespräch gibt zu viel — Verkauf unnötig","Preis 30-50% unter Transformationswert","1:1 ohne System dahinter","Eigene Bedürfnisse kommen nach allen anderen","Sichtbarkeit zufällig"],
+    after:["Erstgespräch ist strukturiert — Diagnose kostet","Preis reflektiert Transformationswert","Programm hat festes Anfang und Ende","Wöchentliche Stunde für eigene Entwicklung","LinkedIn-Beitrag pro Woche der Transformation zeigt"],
+    stress:"Unter Druck Rückzug in Analyse. Sofortmaßnahme: erst fühlen dann strukturieren.",
+    burnoutLevel:"high",burnout:"Mittel bis hoch — je nach dominantem Anteil.",
+    steps:[{n:"01",text:"<strong>Programm mit Anfang und Ende</strong> — kein dauerhaftes 1:1. Transformation messbar machen."},{n:"02",text:"<strong>Preis um 30% erhöhen</strong> und zu Beginn des Gesprächs kommunizieren — nicht am Ende."},{n:"03",text:"<strong>Wöchentliche Reflexionszeit</strong>: 1 Stunde für dich — nicht für Kunden."}],
+    stepsIntro:"Diese Schritte strukturieren was du bereits kannst — damit es für mehr Menschen zugänglich wird.",
+    aiPromise:"Dein Companion hilft Beziehung und Geschäft in Balance zu halten: Preise die sich ehrlich anfühlen, Grenzen die Beziehungen nicht zerstören.",
+    evaQuote:"C+S ist das Profil das ich am häufigsten bei Menschen sehe die sagen 'Ich bin nicht sicher ob ich gut genug bin.' Du bist nicht nur gut genug — du bist besser als die meisten die dreimal so viel verlangen.",
+  },
+  "G+V":{
+    code:"G+V",en:"High Performer × Visionary",name:"Hochleister mit Visionär-Anteil",isMixed:true,
+    mixedNote:"Ca. 7% — selten und imposant. Große Vision + außergewöhnliche Qualität. Nichts ist je fertig genug.",
+    tagline:"Du kannst Visionen nicht nur träumen — du kannst sie mit außergewöhnlicher Qualität liefern.",
+    mirrorIntro:"Du willst Dinge in die Welt bringen die wirklich gut sind. Das ist keine Eigenschaft — das ist eine Identität.",
+    mirror:[
+      {q:"Was das kostet",t:"Den Launch. Weil es noch nicht gut genug ist. Wieder. Und wieder."},
+      {q:"Was wirklich passiert",t:"Das Beste ist der Feind des Guten — du kennst den Satz. Du glaubst ihn nur nicht für dich."},
+      {q:"Die Frage",t:"Wenn du den Launch 6 Monate weiter verschiebst — wird es dann wirklich besser? Oder nur <strong>anders unfertig</strong>?"},
+      {q:"Der Durchbruch",t:"'Gut genug für den Markt' leistet oft mehr als <strong>'perfekt zu spät'</strong>.",h:true},
+    ],
+    essEye:"Das Wesen dieser Kombination",
+    essence:"Visionäre Originalität kombiniert mit Hochleister-Umsetzungsqualität. Wenn du etwas rausgibst ist es außergewöhnlich. Du gibst es selten raus — weil es noch nicht gut genug ist.",
+    superpower:"Wenn du etwas rausbringst ist es wirklich gut. Nicht gut für die Kategorie — gut.",
+    shadow:"Du bringst es selten raus. Weil es noch nicht gut genug ist.",
+    strengths:["Visionäre Originalität mit Umsetzungsqualität","Produkte die Kategorien definieren","Extreme Ausdauer","Marktpositionierung durch Qualität","Inspirierende Präsenz mit Substanz"],
+    blind:["Längste Launch-Zyklen","Hohe Erwartungen die selten erfüllt werden","Erschöpfung durch Standards","Sichtbarkeit fühlt sich wie Selbstvermarktung an","Delegation unmöglich"],
+    bizIntro:"Du hast das beste Angebot das du nie gezeigt hast. Das ändert sich mit einer öffentlichen Deadline.",
+    business:"Premium-Produkte mit externen Deadlines die dich zum Veröffentlichen zwingen.",
+    sales:"Presale, Waitlist, öffentliche Deadline. Der Markt finanziert das Fertigstellen.",
+    visibility:"Behind-the-scenes des Entwicklungsprozesses. Seltene aber intensive Momente.",
+    before:["Launch seit 3+ Monaten verschoben","Niemand weiß was du arbeitest","Standards so hoch dass gute Arbeit unfertig wirkt","Kein externer Anker","Burnout durch Daueranspannung"],
+    after:["Öffentliche Deadline steht — der Markt wartet","Prozess wird gezeigt — Transparenz baut Erwartung","'Gut genug für heute' ist valide Qualität","Presale läuft","Launch ist Event — gefeiert nicht abgehakt"],
+    stress:"Du erhöhst Standards unter Druck weiter — Circulus vitiosus. Öffentliche Deadline bricht das Muster.",
+    burnoutLevel:"veryhigh",burnout:"SEHR HOCH — doppelte Perfektion aus zwei Richtungen.",
+    steps:[{n:"01",text:"<strong>Nächsten Launch öffentlich ankündigen</strong> mit Datum — heute, bevor du fertig bist."},{n:"02",text:"<strong>Eine Person finden</strong> die dir ehrlich sagt wann etwas gut genug ist — ihr vertrauen."},{n:"03",text:"<strong>Freitagsritual</strong>: jeden Freitag geht etwas raus. Das Muster ist wichtiger als der Inhalt."}],
+    stepsIntro:"Diese Schritte erzwingen was du alleine nicht erzwingen kannst: den Abschluss.",
+    aiPromise:"Dein Companion ist dein externer Anker: er stellt täglich die Frage die zählt: 'Ist es gut genug für heute?'",
+    evaQuote:"G+V wartet auf den perfekten Moment. Der kommt nicht. Der perfekte Moment ist der Moment wo du aufhörst zu warten.",
+  },
+  "M+C":{
+    code:"M+C",en:"Builder × Connector",name:"Builder mit Connector-Anteil",isMixed:true,
+    mixedNote:"Ca. 9%. Schnelle Lieferung + Beziehungsverständnis. Kunden werden zu Fans.",
+    tagline:"Du baust was Menschen wirklich brauchen — weil du zuerst zuhörst.",
+    mirrorIntro:"Du bist der Typ bei dem Kunden nicht nur zurückkommen — sondern andere mitbringen. Die Frage ist ob du es systematisch nutzt.",
+    mirror:[
+      {q:"Was nach jedem Projekt passiert",t:"Zufriedene Kunden. Manchmal Empfehlungen. Kein System das diese Dynamik skaliert."},
+      {q:"Was du noch nicht gemacht hast",t:"Den Kunden fragen: 'Wen kennst du der das gleiche Problem hat?' — systematisch, nach jedem Projekt."},
+      {q:"Wo du Geld lässt",t:"Im Scope Creep. In Extras die du machst weil der Kunde nett ist. In Preisen die du nicht erhöhst."},
+      {q:"Der Hebel",t:"Ein strukturiertes Referral-System das <strong>organisches in vorhersagbares Wachstum</strong> verwandelt.",h:true},
+    ],
+    essEye:"Das Wesen dieser Kombination",
+    essence:"Builder-Pragmatismus trifft auf Connector-Empathie. Du lieferst schnell UND verstehst die Menschen. Kunden lieben das. Die Herausforderung: nicht für jeden alles zu sein.",
+    superpower:"Du machst Kunden zu Fans — durch Ergebnisse UND die Art wie du arbeitest.",
+    shadow:"Du bist für jeden da — was bedeutet manchmal für niemanden wirklich da.",
+    strengths:["Kundenzufriedenheit die zu Empfehlungen führt","Verständnis für den Menschen hinter dem Auftrag","Schnelle verlässliche Lieferung","Natürliche Kooperationsstärke","Empfehlungsgeschäft ohne Marketing"],
+    blind:["Preis zu niedrig — Beziehung vor Wert","Scope Creep durch mangelnde Grenzen","Zu viele Projekte gleichzeitig","Kein strategischer Fokus","Positionierung unklar"],
+    bizIntro:"Dein Business wächst organisch — aber unkontrolliert. Das ändert sich wenn das Referralsystem bewusst gesteuert wird.",
+    business:"Klar definierte Service-Pakete. Maximale Kundenzahl. Referral-Programm.",
+    sales:"Testimonials und Weiterempfehlungen systematisieren. Onboarding-Erlebnis das begeistert.",
+    visibility:"Kundenerfolge mit Erlaubnis. LinkedIn für B2B.",
+    before:["Preis nach Beziehung nicht Wert","Scope Creep in jedem Projekt","Empfehlungen kommen zufällig","Nische unklar","24h-Zusagen die du bereust"],
+    after:["Preis nach Wert — kommuniziert vor Projektstart","Scope im Vertrag — Extras berechnet","Referral-System: nach jedem Projekt kommt die Frage","Nische definiert — für wen genau","24h-Bedenkzeit vor jeder Zusage"],
+    stress:"Unter Druck nimmst du mehr an. 24h Bedenkzeit vor jeder Zusage.",
+    burnoutLevel:"mid",burnout:"Mittel — operative Überlastung kombiniert mit emotionaler Bindung.",
+    steps:[{n:"01",text:"<strong>Nische definieren</strong>: für wen genau, was genau — diese Woche kommunizieren."},{n:"02",text:"<strong>Preis um 25% erhöhen</strong> beim nächsten Angebot."},{n:"03",text:"<strong>24h-Regel</strong>: keine Zusage ohne eine Nacht drüber schlafen."}],
+    stepsIntro:"Diese Schritte schützen die Qualität die deine Kunden lieben — indem sie die Kapazität schützen.",
+    aiPromise:"Dein Companion hilft beim Rest: Nische kommunizieren, Scope definieren, Preis rechtfertigen, Nein formulieren.",
+    evaQuote:"M+C baut das Beste und behandelt jeden Kunden wie einen Freund. Das ist schön — und kostet zu viel. Der Freund zahlt auch.",
+  },
+  "S+M":{
+    code:"S+M",en:"Strategist × Builder",name:"Stratege mit Builder-Anteil",isMixed:true,
+    mixedNote:"Ca. 8%. Strategie + Execution aus einer Hand — der pragmatischste Stratege.",
+    tagline:"Du planst nicht nur — du setzt auch um. Das ist seltener als du denkst.",
+    mirrorIntro:"Du verlierst dich nicht endlos in Theorie — du baust auch. Das unterscheidet dich von den meisten strategischen Menschen.",
+    mirror:[
+      {q:"Was dich von reinen Strategen unterscheidet",t:"Du hast fertige Dinge im Portfolio. Echte. Nicht nur Konzepte."},
+      {q:"Was dich von reinen Buildern unterscheidet",t:"Du weißt warum du was baust. Das gibt deiner Arbeit eine Struktur die andere erst nach Jahren entwickeln."},
+      {q:"Die Spannung",t:"Stratege sagt 'Warte bis es durchdacht ist.' Builder sagt 'Fang jetzt an.' Manchmal gewinnt die falsche Seite."},
+      {q:"Das ungenutzte Kapital",t:"Deine Systeme sind gut genug um <strong>andere zu lehren wie sie funktionieren</strong>. Das ist ein Produkt.",h:true},
+    ],
+    essEye:"Das Wesen dieser Kombination",
+    essence:"Strategisches Denken trifft auf pragmatische Umsetzung. Du entwickelst Systeme die wirklich gebaut werden. Die Spannung zwischen beiden Anteilen ist auch die Quelle der Originalität.",
+    superpower:"Du entwickelst Systeme die wirklich gebaut werden — kein Konzept das im Ordner liegt.",
+    shadow:"Timing-Problem: wann planen wann starten — das Gleichgewicht ist schwer.",
+    strengths:["Vollständiger Zyklus: Strategie → Umsetzung","Solide funktionale Produkte","Zuverlässigkeit durch Planung und Execution","Pragmatische Problemlösung mit Qualitätsbewusstsein","Gut dokumentierte Systeme"],
+    blind:["Timing-Problem: wann planen wann starten","Kommunikation zu technisch","Verkauf zwischen zwei Stühlen","Selbstvermarktung vernachlässigt","Preis nach Aufwand statt Wert"],
+    bizIntro:"Dein System ist dein Produkt — nicht nur ein Mittel zum Zweck.",
+    business:"Systemisierte Dienstleistungen. Productized Services. Workshops die dein System vermitteln.",
+    sales:"Prozess-Transparenz als Verkaufsargument. 'Hier ist wie wir arbeiten.'",
+    visibility:"Frameworks, Prozesse, Behind-the-scenes. LinkedIn.",
+    before:["System im Kopf — nicht als Produkt","Preis nach Stunden obwohl System das Ergebnis liefert","Planung dauert zu lang","Kommunikation verliert Kunden","Kein Marketing"],
+    after:["System dokumentiert — als Produkt und Service","Preis nach Output","Planung hat feste Zeit","Kommunikation vereinfacht","LinkedIn zeigt wöchentlich ein System-Insight"],
+    stress:"Unter Druck: entweder überstürzt starten oder paralysiert analysieren. Erkenne welcher Modus aktiv ist.",
+    burnoutLevel:"mid",burnout:"Mittel — durch Identifikation mit Produktivität.",
+    steps:[{n:"01",text:"<strong>Dokumentierten Prozess</strong> als Angebot verkaufen — das System ist das Produkt."},{n:"02",text:"<strong>Launch-Datum</strong> für nächstes Angebot setzen bevor Planung abgeschlossen."},{n:"03",text:"<strong>Stundensatz auf Basis des Outputs</strong> kalkulieren — was liefert dein System."}],
+    stepsIntro:"Diese Schritte monetarisieren was du bereits kannst.",
+    aiPromise:"Dein Companion hilft das richtige Timing zu finden, Systeme in Verkaufssprache zu übersetzen, und Preise nach Wert zu formulieren.",
+    evaQuote:"S+M baut die besten Systeme — und erklärt sie zu gut. Der Kunde versteht das System so genau dass er denkt er könnte es selbst bauen. Das ist kein Fehler — das ist ein Zeichen dass der Wert zu günstig kommuniziert wird.",
+  },
+};
+
+const _NB_MIXED_MAP={S_G:"S+G",G_S:"S+G",V_M:"V+M",M_V:"V+M",V_C:"V+C",C_V:"V+C",C_G:"C+G",G_C:"C+G",S_V:"S+V",V_S:"S+V",M_G:"M+G",G_M:"M+G",C_S:"C+S",S_C:"C+S",G_V:"G+V",V_G:"G+V",M_C:"M+C",C_M:"M+C",S_M:"S+M",M_S:"S+M"};
+const _NB_TYPE_NAMES={S:"Der Stratege",V:"Der Visionär",M:"Der Builder",C:"Der Connector",G:"Der Hochleister"};
+
+</script>
+<script>
+
+// === ENGLISH DATA ===
+const LABELS_EN={
+  '5d':'5-Dimension Profile','mirror-eye':'Mirror','mirror-em':'see in you',
+  'mirror-h-prefix':'What we ','profil-eye':'Who you really are','profil-em':'Personality Profile',
+  'profil-h-prefix':'Your ','super':'Your Superpower','shadow':'Your Blind Spot',
+  'analyse-eye':'Analysis','analyse-em':'defines you',
+  'analyse-h-prefix':'What ','analyse-h-suffix':' — and what holds you back',
+  'staerken':'Your Strengths','blind':'Your Blind Spots','tf-eye':'Before · After',
+  'tf-em':'Transformation','tf-h-prefix':'Your ','tf-now':'Now','tf-after':'With NeuroBusiness™',
+  'biz-eye':'Business Strategy','biz-em':'business type works','biz-h-prefix':'How your ',
+  'biz-model-eye':'Business Model','biz-model-h':'How you monetise',
+  'biz-sales-eye':'Sales Style','biz-sales-h':'How you persuade',
+  'biz-vis-eye':'Visibility','biz-vis-h':'How you show up',
+  'stress-eye':'Self-Leadership','stress-em':'Stress Pattern','stress-h-prefix':'Your ',
+  'stress-reaction':'How you respond under pressure','burnout':'Burnout Risk',
+  'alert-title':'A personal note from Eva',
+  'alert-text':'Your result profile shows elevated exhaustion markers. This does not mean something is wrong with you — it means you are working in a mode that is highly capable, but carries a price that only becomes visible later.<br><br>I would love to speak with you briefly. <a href="https://zeeg.me/evak/15min">Book 15 minutes →</a>',
+  'steps-eye':'Your Next Steps','steps-em':'Starting Today','steps-h-prefix':'3 Concrete Steps ',
+  'eva-eye':'A Personal Note from Eva Kolontai',
+  'up-em':'now','up-h-prefix':'Start working with your type ',
+  'up-promise':'What your Companion does for you',
+  'up-cta':'Unlock NeuroBusiness AI →',
+  'up-price':'€49 / month · excl. VAT · Cancel anytime',
+  'up-secondary':'Talk to Eva first →',
+};
+const LABELS_DE={
+  '5d':'5-dimensionales Profil','mirror-eye':'Spiegel','mirror-em':'in dir sehen',
+  'mirror-h-prefix':'Was wir ','profil-eye':'Wer du wirklich bist','profil-em':'Persönlichkeitsprofil',
+  'profil-h-prefix':'Dein ','super':'Deine Superkraft','shadow':'Dein blinder Fleck',
+  'analyse-eye':'Analyse','analyse-em':'auszeichnet',
+  'analyse-h-prefix':'Was dich ','analyse-h-suffix':' — und was dich bremst',
+  'staerken':'Deine Stärken','blind':'Deine Blindstellen','tf-eye':'Vorher · Nachher',
+  'tf-em':'Transformation','tf-h-prefix':'Deine ','tf-now':'Jetzt','tf-after':'Mit NeuroBusiness™',
+  'biz-eye':'Business-Strategie','biz-em':'Business-Typ','biz-h-prefix':'So funktioniert dein ',
+  'biz-model-eye':'Business-Modell','biz-model-h':'Wie du monetarisierst',
+  'biz-sales-eye':'Verkaufsstil','biz-sales-h':'Wie du überzeugst',
+  'biz-vis-eye':'Sichtbarkeit','biz-vis-h':'Wie du präsent bist',
+  'stress-eye':'Selbstführung','stress-em':'Stressmuster','stress-h-prefix':'Dein ',
+  'stress-reaction':'Wie du unter Druck reagierst','burnout':'Burnout-Risiko',
+  'alert-title':'Ein persönliches Wort von Eva',
+  'alert-text':'Dein Ergebnisprofil zeigt erhöhte Erschöpfungsmarker. Das bedeutet nicht dass etwas falsch mit dir ist — es bedeutet dass du in einem Modus arbeitest der sehr leistungsfähig ist, aber einen Preis hat der erst später sichtbar wird.<br><br>Ich würde gerne kurz persönlich sprechen. <a href="https://zeeg.me/evak/15min">15 Minuten buchen →</a>',
+  'steps-eye':'Deine nächsten Schritte','steps-em':'ab heute','steps-h-prefix':'3 konkrete Schritte ',
+  'eva-eye':'Persönlich von Eva Kolontai',
+  'up-em':'arbeiten','up-h-prefix':'Jetzt mit deinem Typ ',
+  'up-promise':'Was dein Companion für dich tut',
+  'up-cta':'NeuroBusiness AI freischalten →',
+  'up-price':'49 € / Monat · zzgl. MwSt. · Jederzeit kündbar',
+  'up-secondary':'Erst persönlich sprechen →',
+};
+function setLbl(id,txt){const el=document.getElementById(id);if(el)el.innerHTML=txt;}
+function translateLabels(isEN){
+  const L=isEN?LABELS_EN:LABELS_DE;
+  ['5d','mirror-eye','profil-eye','super','shadow','analyse-eye','staerken','blind',
+   'tf-eye','biz-eye','biz-model-eye','biz-model-h','biz-sales-eye','biz-sales-h',
+   'biz-vis-eye','biz-vis-h','stress-eye','stress-reaction','burnout','alert-title',
+   'alert-text','steps-eye','eva-eye','up-promise','up-cta','up-price','up-secondary']
+  .forEach(k=>{setLbl('lbl-'+k,L[k]);});
+  setLbl('lbl-mirror-h',L['mirror-h-prefix']+'<em id="lbl-mirror-em">'+L['mirror-em']+'</em>');
+  setLbl('lbl-profil-h',L['profil-h-prefix']+'<em id="lbl-profil-em">'+L['profil-em']+'</em>');
+  setLbl('lbl-analyse-h',L['analyse-h-prefix']+'<em id="lbl-analyse-em">'+L['analyse-em']+'</em>'+L['analyse-h-suffix']);
+  setLbl('lbl-biz-h',L['biz-h-prefix']+'<em id="lbl-biz-em">'+L['biz-em']+'</em>');
+  setLbl('lbl-stress-h',L['stress-h-prefix']+'<em id="lbl-stress-em">'+L['stress-em']+'</em>');
+  setLbl('lbl-steps-h',L['steps-h-prefix']+'<em id="lbl-steps-em">'+L['steps-em']+'</em>');
+  setLbl('lbl-tf-h',L['tf-h-prefix']+'<em id="lbl-tf-em">'+L['tf-em']+'</em>');
+  setLbl('lbl-up-h',L['up-h-prefix']+'<em id="lbl-up-em">'+L['up-em']+'</em>');
+}
+const TYPE_LABELS_EN={S:"Strategist",V:"Visionary",M:"Builder",C:"Connector",G:"High Performer"};
+const TYPE_NAMES_EN={S:"The Strategist",V:"The Visionary",M:"The Builder",C:"The Connector",G:"The High Performer"};
+
+const NB_R_EN = {
+  "S":{"tagline": "Your thinking is your strongest tool — when you learn not to use it against yourself.", "mirrorIntro": "People like you are often misunderstood. From outside it looks like hesitation. From inside you know: you're analysing. The difference is enormous — but it still costs you.", "mirror": [{"q": "What others say about you", "t": "'You think too much.' Or: 'When are you finally going to do it?' You hear this more often than you'd like — and know at the same time that they're missing the point."}, {"q": "What you're actually doing", "t": "You're building while others are still talking. Just slower — because <strong>you know what can go wrong</strong>. That's not hesitation. That's precision."}, {"q": "The question that keeps you up at night", "t": "'Is it good enough yet?' Not from uncertainty. From the deep belief that quality allows no compromise."}, {"q": "What you haven't said out loud", "t": "You know you're charging too little. Not because you're not worth it — but because <strong>a perfect offer never feels finished</strong>.", "h": true}], "essEye": "Who you really are", "essence": "The Strategist is analytically precise, risk-aware in the best sense, and capable of building systems others cannot even conceptualise. You see complexity where others see chaos — and that is an extraordinary talent.", "superpower": "Systemic thinking that creates depth no competitor can copy.", "shadow": "Perfectionism as a revenue brake — the product that is never quite finished.", "strengths": ["Structured, systemic thinking — you recognise connections others overlook", "High quality assurance — your offer has genuine depth and substance", "Strategic foresight — you plan the next phase, not the next week", "Reliability — clients know you deliver", "Analytical decision quality — no hype sweeps you along"], "blind": ["Perfectionism blocks the launch — you wait for a moment that never comes", "Sales avoidance — you prefer explaining to selling", "Overproduction — 80% of your work the client never sees", "Visibility resistance — self-promotion feels unprofessional", "Control need when delegating"], "bizIntro": "The most important thing for your type: you don't need a new offer. You need the courage to present the one you have.", "business": "Premium individual offers with high complexity value. Few, high-ticket clients. No mass market.", "sales": "Competence demonstration through case studies and numbers. Discovery → Diagnosis → Offer. Never negotiate the price.", "visibility": "LinkedIn not Instagram. Depth over frequency. One substantial article per week.", "before": ["You're optimising when you should be launching", "You explain your value instead of demonstrating it", "You charge what the offer costs — not what it's worth", "You work for clients who don't appreciate your depth", "Visibility feels like showing off"], "after": ["You put the 70%-offer live — and optimise with real feedback", "Competence speaks through results and systems", "You calculate the transformation value and communicate it clearly", "3 clients who see you as a partner, not a supplier", "Deep content demonstrates value without feeling embarrassing"], "stress": "Under pressure: more analysis, more planning — while action is absent. Tell-tale sign: perfect concept, no revenue.", "burnout": "Medium — from sustained mental load, not from overwork.", "steps": [{"n": "01", "text": "Define your <strong>MVP offer</strong> and put it live within 14 days. 70% done is sellable."}, {"n": "02", "text": "Raise your price by <strong>at least 30%</strong> with the next client. Don't justify it."}, {"n": "03", "text": "One <strong>in-depth LinkedIn post per week</strong> — framework, case study or lesson learned."}], "stepsIntro": "These three steps address exactly the three bottlenecks currently limiting your growth.", "aiPromise": "You analyse too long and decide too slowly. Your Companion asks the question you wouldn't ask yourself: 'What if you offered it now — exactly as it is?'", "evaQuote": "Strategists are the type I respect most — and see frustrated most often. Not because they lack ability. But because they can never make their ability cheap enough to offer. The problem is never the offer. The problem is the courage to show it.", "name": "The Strategist"},
+  "V":{"tagline": "You see what others don't yet see — your job is to make it tangible for them.", "mirrorIntro": "You know what it feels like when an idea explodes and the room changes. What you know less: what it feels like when that same energy is systematically converted into revenue.", "mirror": [{"q": "What always happens", "t": "'You have so many ideas!' Meant as a compliment. Sounds like a compliment. But it's often the friendly version of: 'You jump around too much.'"}, {"q": "What's really happening", "t": "You start things with the most genuine energy — and lose it when the offer becomes routine. Because your brain <strong>needs novelty like others need caffeine</strong>."}, {"q": "What you already know but don't say", "t": "In the last 12 months you've started at least 3 offers. One of them, with more focus, would be your main revenue today."}, {"q": "The real bottleneck", "t": "It's not the idea. It's the moment <strong>after</strong> the launch when the novelty is gone — and you still have to show up.", "h": true}], "essEye": "Who you really are", "essence": "The Visionary thinks in possibilities and inspires people towards ideas that don't yet exist. Your greatest strength is simultaneously your greatest trap: you can change rooms — but only if you stay long enough.", "superpower": "Creative originality combined with magnetic appeal — people follow you because you believe what you say.", "shadow": "Implementation gap — between idea and scalable offer lies a world.", "strengths": ["Creative originality — your ideas are genuine, not copied", "Inspiring presence — you enthuse and attract", "Early trend sensor — you see opportunities before they become obvious", "Natural storytelling that makes visions sellable", "Energetic presence that no marketing can replace"], "blind": ["Too many projects at once — none really scales", "Lack of focus — the next impulse is always stronger than completing", "Income fluctuations through motivation waves", "Structure aversion — routines feel like a prison", "Too many promises to too many people"], "bizIntro": "Your biggest business problem: you don't need a new offer. You need one — the one — that you hold long enough.", "business": "A signature offer that embodies your vision. Group, live and community formats.", "sales": "Energy and vision — no script. Your strongest channel: stage, webinar, first conversation.", "visibility": "Instagram, podcast, YouTube — anywhere you're unfiltered. Frequency matters more than depth.", "before": ["3 offers running in parallel — none really scales", "You explain your vision before you have a concrete offer", "Good month, bad month — no system", "Content happens when you're excited", "Every new idea feels more important than the current one"], "after": ["One signature offer — you communicate only this for 90 days", "Your vision is the entry point, the offer is the goal", "Monthly income stabilises through community model", "30-day content plan runs regardless of daily mood", "New ideas go to the parking list — only after €10k/month"], "stress": "Under pressure you jump to new ideas as a distraction. The new idea feels more real than the problem — for about 48 hours.", "burnout": "High — from emotional exhaustion when the enthusiasm is absent.", "steps": [{"n": "01", "text": "<strong>Choose one offer</strong> — your most successful — stop all others until €10,000 monthly revenue is reached."}, {"n": "02", "text": "Find an <strong>accountability partner</strong> who keeps you with this one offer. Weekly 15-minute check-in."}, {"n": "03", "text": "<strong>30-day content plan</strong> for this one offer — create it today."}], "stepsIntro": "These steps don't solve a talent problem — that doesn't exist. They solve your focus problem.", "aiPromise": "You lose yourself in ideas. Your Companion brings you back — without judgement. It asks you daily: 'Are you still on plan?'", "evaQuote": "Visionaries are my favourite and most challenging clients. Not because they can do too little — but because they can do so much that the market can't follow quickly enough. The only thing between you and extraordinary success: one single offer, held long enough.", "name": "The Visionary"},
+  "M":{"tagline": "You're the one who actually builds it — that's worth gold. And is still sold too cheaply.", "mirrorIntro": "You're the type who delivers. Always. That is an extraordinary quality that you systematically underestimate — and systematically underprice.", "mirror": [{"q": "What others say about you", "t": "'Everything gets done with you.' True. And at the same time: you're often the one who works most and earns least. Because you charge by effort."}, {"q": "What's really happening", "t": "You deliver in a day what others attempt in a week. Your market doesn't know this — because you don't communicate it. You <strong>hide your greatest advantage</strong>."}, {"q": "The question you don't ask", "t": "'What would my rate be if I measured my output in value instead of time?' The answer would triple your price."}, {"q": "What's really limiting you", "t": "Not ability. The belief that <strong>prices are justified by effort</strong> — not by results.", "h": true}], "essEye": "Who you really are", "essence": "The Builder is pragmatic, fast, results-oriented. While others are still planning, the Builder already has three things finished. That is an extraordinary advantage — that only scales when it becomes visible through positioning and price.", "superpower": "Execution speed combined with genuine delivery quality — a combination the market loves when it sees it.", "shadow": "Price undervaluation — you charge by effort instead of by the value you create.", "strengths": ["Execution speed — you accomplish more in a day than others in a week", "Solution orientation — problems don't stop you", "Practical expertise with real market relevance", "Reliability — you always deliver", "Fast resilience after setbacks"], "blind": ["Positioning blindness — you know what you can do but not how to sell it", "Price undervaluation — systematically by effort instead of by value", "Strategy aversion — long-term planning feels like a waste of time", "You are the bottleneck in your own business", "No client filter — every project is a good project"], "bizIntro": "Your business problem is not too little work. It's too much work for too little money.", "business": "Packaged services with clear scope. Done-for-you with hard boundaries. Premium pricing.", "sales": "Show results: case studies, portfolios, concrete outcomes. Straight to the point. Price without apology.", "visibility": "Before/after content. Process videos. 'Here's what we built in 5 days.'", "before": ["You calculate hours × rate — price too low", "You take every client because utilisation feels like security", "No clear scope — clients always take more", "You're the bottleneck — nothing runs without you", "Growth through more work instead of better prices"], "after": ["You calculate transformation value — at least 2× higher price", "You choose clients by fit", "Scope is in the contract — extras are billed", "First delegation is running", "Growth through price and system, not through hours"], "stress": "Under pressure you work even more — hamster wheel. Tell-tale sign: fully booked but no growth.", "burnout": "High — from physical and operational overload without recovery.", "steps": [{"n": "01", "text": "<strong>Raise your main price by 30%</strong> with the next client. No explanation. No apology."}, {"n": "02", "text": "Politely end <strong>one non-ideal client relationship</strong> — this week."}, {"n": "03", "text": "<strong>Document your standard onboarding process</strong> that saves you 3 hours per week."}], "stepsIntro": "These three steps increase your revenue without a single additional working hour.", "aiPromise": "You prefer building to talking. Your Companion takes over the talking: expressing value in numbers, justifying prices, handling scope conversations.", "evaQuote": "Builders are the most honest entrepreneurs I know — because their offer always delivers what it promises. The only dishonesty: they conceal how good they are. That costs them thousands every year.", "name": "The Builder"},
+  "C":{"tagline": "Your greatest asset is the trust you build — learn to monetise it.", "mirrorIntro": "You have the most valuable quality in business: people trust you. Immediately. Without reason. That is an extraordinary talent — that you systematically give away.", "mirror": [{"q": "What you regularly hear", "t": "'You've helped me so much!' — Without having paid. And you felt good about it. Briefly."}, {"q": "The pattern that repeats", "t": "You give, they take, you give more. Eventually capacity is exhausted and you wonder why the business isn't growing."}, {"q": "What you don't admit to yourself", "t": "The conversation about money feels like a betrayal. But it's the other way round: <strong>real relationships can handle clear boundaries</strong>."}, {"q": "The breakthrough waiting for you", "t": "The moment you learn that saying no doesn't destroy a relationship — it strengthens the right ones.", "h": true}], "essEye": "Who you really are", "essence": "The Connector is empathetic, strong-networked, a natural community builder. People trust you instinctively. That's not self-evident — it's a talent most try to buy with money and never reach.", "superpower": "Relationship depth that turns clients into lifelong fans — organically, without a marketing budget.", "shadow": "Price anxiety — the belief that money conversations destroy the relationship.", "strengths": ["Relationship depth — people feel truly seen by you", "Empathetic communication that understands what clients really want", "Organic referral business that builds itself", "Loyal clients who stay long-term", "Natural collaboration strength"], "blind": ["Boundary-setting weakness — you give more than agreed", "Price anxiety — you fear money conversations will damage the relationship", "Huge network but too little monetisation", "Dependency on recognition as a motivation source", "Too many relationships at once — emotional exhaustion"], "bizIntro": "Your business problem: you have everything others have to buy — and still sell too little of it.", "business": "Membership, community, group coaching. One offer with a clear scope.", "sales": "Trust is your argument. You need the moment: 'This is my offer, this is how we work.'", "visibility": "Community building, personal stories, client successes. Podcasts, collaborations.", "before": ["You give away for free what others would pay for", "The money conversation comes too late or not at all", "Extras are done without billing", "Network is huge — but converts poorly", "You say yes when you mean no"], "after": ["Free limit defined — then comes the offer", "Price is communicated in the conversation before you start giving", "Extras are in the offer or billed separately", "Network is a structured referral system", "No-sentence exists — and is used"], "stress": "Under pressure you seek resonance through conversations. That helps short-term and exhausts long-term.", "burnout": "High — from emotional exhaustion. You take on others' problems.", "steps": [{"n": "01", "text": "<strong>Define your free limit</strong> — what you give maximum at no cost. Write this boundary down today."}, {"n": "02", "text": "Formulate a <strong>'no with dignity' sentence</strong> and use it once this week."}, {"n": "03", "text": "<strong>Raise price by 30%</strong> in the next conversation — communicate without hesitation."}], "stepsIntro": "These three steps change nothing about your empathy. They only change how you package it.", "aiPromise": "You know how to give. Your Companion helps you learn how to receive — without guilt. It formulates prices, boundaries and no-sentences that feel honest to you.", "evaQuote": "Connectors have the rarest quality in business: genuine trust. Not bought. Not performed. Real. The only thing I wish for them: that they stop giving it away.", "name": "The Connector"},
+  "G":{"tagline": "You live for excellence — now learn to deliver it on your terms.", "mirrorIntro": "You function under conditions where others stop. That makes you extraordinary. And it is simultaneously the only truly dangerous quality in this system.", "mirror": [{"q": "What's visible from outside", "t": "A business that runs. Satisfied clients. Results that work. From outside: perfect."}, {"q": "What's happening from inside", "t": "You can't remember when you last truly switched off. Not because you had no time — but because <strong>silence feels like failure</strong>."}, {"q": "What you haven't said yet", "t": "At some point you ask yourself why you're doing all this. Not in a crisis — but on a normal Tuesday."}, {"q": "The pattern", "t": "Performance. More performance. Even more. Then: collapse. Recovery. Performance. The interval <strong>gets shorter</strong>.", "h": true}], "essEye": "Who you really are", "essence": "The High Performer carries the highest burnout risk in the system. The business runs until it doesn't — then very abruptly. This is not a weakness. This is the pattern that emerges when extraordinary people learn no limits.", "superpower": "Excellence standard that keeps clients and builds a reputation that markets itself.", "shadow": "Burnout blindness — you only notice at the point of collapse.", "strengths": ["Excellence standard — your quality is the competitive advantage", "Discipline and reliability — you always keep your promises", "High efficiency — more output in less time", "Strong market reputation through results", "Fast learning speed"], "blind": ["Burnout blindness — you only notice when it becomes physical", "Rest perceived as weakness — pauses feel like inefficiency", "Perfectionism as a positioning brake", "Isolation — you carry too much alone", "Comparison trap — never good enough"], "bizIntro": "Your business problem is not quality. It's capacity. Excellence that doesn't regenerate stops being excellent.", "business": "Premium only. Few high-ticket clients. Clear capacity limits. Retainer models.", "sales": "No discounting. No persuading. 'That's my price.' Then silence.", "visibility": "Thought leadership. One post that truly lands beats ten generic ones. LinkedIn, newsletter.", "before": ["Capacity always exceeded — you take on more anyway", "Breaks are planned and emotionally sabotaged", "You work for clients who don't deserve your standard", "Success never feels good enough", "The pace is unsustainable — you know it"], "after": ["Monthly hour maximum set and communicated", "Breaks are in the calendar like client appointments", "3 best clients pay more because they value your standard", "Success is consciously acknowledged — ritual established for it", "The pace is sustainable because capacity is respected"], "stress": "Under extreme pressure you function extraordinarily — but you pay. Tell-tale sign: inner emptiness despite external success.", "burnout": "VERY HIGH — critical diagnosis. Not if but when, without structural changes.", "steps": [{"n": "01", "text": "Set a <strong>monthly capacity limit</strong> in hours — today, non-negotiable."}, {"n": "02", "text": "<strong>Eliminate your biggest energy drain</strong> from your offer — even if it costs revenue."}, {"n": "03", "text": "<strong>3-day digital detox</strong> within the next 30 days — schedule it now."}], "stepsIntro": "These steps are not optional for your type. They are medically necessary.", "aiPromise": "You can't stop without an external signal. Your Companion gives you this signal: it asks daily about your capacity and helps you say no before your body forces it.", "evaQuote": "High Performers are the people I admire most — and simultaneously most want to protect. Their price for excellence is too high when it costs the person who creates that excellence.", "name": "The High Performer"},
+  "S+G":{name:"Strategist \u00d7 High Performer",tagline:"You build systems that need to be perfect \u2014 and pay the price with your energy.",mirrorIntro:"You are the type who can do the most and is most often exhausted. Not because you are weak \u2014 but because two of the most demanding patterns are active simultaneously.",stepsIntro:"These steps protect not only your energy \u2014 they protect the quality that defines you.",aiPromise:"Managing two patterns simultaneously is hard alone. Your Companion recognises perfectionism loops and asks you daily: 'What if you released it now?'",evaQuote:"The S+G combination impresses me most \u2014 and concerns me most. Because these people can do so much that they believe they have to prove it. Every day. They don't.",superpower:"You build systems that truly work \u2014 not just sound good.",shadow:"Double perfectionism: both elements together block every launch."},
+  "V+M":{name:"Visionary \u00d7 Builder",tagline:"You don't just see it \u2014 you build it too. That's the combination that changes markets.",mirrorIntro:"You have what most entrepreneurs either have or wish for: ideas AND implementation. The question isn't whether you can succeed \u2014 it's on which field.",stepsIntro:"These steps activate what you already have \u2014 they just build the frame around it.",aiPromise:"You lose yourself in builds. Your Companion is your focus filter and reminds you daily why.",evaQuote:"V+M is the combination I'd wish for every founder. And it's the profile that needs the most direction \u2014 not because it can do too little, but because it can do too much.",superpower:"Idea \u2192 product in half the time of other types.",shadow:"Too many parallel builds \u2014 the next build starts before the first has scaled."},
+  "V+C":{name:"Visionary \u00d7 Connector",tagline:"You enthuse people for visions that don't yet exist \u2014 and they trust you in the process.",mirrorIntro:"You can change rooms. Literally. When you speak, the energy shifts. You probably take this for granted. It isn't.",stepsIntro:"These steps translate your natural strength into a system that scales.",aiPromise:"You inspire \u2014 your Companion structures. It helps translate your energy into formats that work without your constant presence.",evaQuote:"V+C is the profile I most often see in people who should already be successful. They have everything. What's missing: a system to catch all of it.",superpower:"You can change rooms. People don't buy your product \u2014 they buy you.",shadow:"Too many promises to too many people \u2014 focus and monetisation suffer."},
+  "C+G":{name:"Connector \u00d7 High Performer",tagline:"You give everything for others \u2014 and systematically forget to care for yourself.",mirrorIntro:"You're the type whose clients cry when they stop working with you. That's real. And it's the pattern that exhausts you.",stepsIntro:"These steps don't change who you are \u2014 only how long you can remain it.",aiPromise:"Your Companion is your shield: it recognises where you give too much, formulates boundaries that feel honest, and reminds you: your energy is finite.",evaQuote:"C+G is the profile I most want to tell: You are enough. You don't have to give so much to be loved.",superpower:"You know exactly what people need and deliver it in extraordinary quality.",shadow:"You can't stop \u2014 not because you have to, but because it feels wrong."},
+  "S+V":{name:"Strategist \u00d7 Visionary",tagline:"You see the big picture AND know how to build it \u2014 that makes you dangerously good.",mirrorIntro:"You think differently from others. Fundamentally differently. That's not a limitation \u2014 that's your market.",stepsIntro:"These steps bring your thinking into the market \u2014 where it belongs.",aiPromise:"Your Companion is your intellectual sparring partner: it challenges frameworks, translates complexity into sales language, stops analysis loops.",evaQuote:"S+V writes the best books \u2014 and never releases them. Because they're not finished yet. The book in your head is better than most of what's on shelves. It just needs to come out.",superpower:"You can translate complexity into clarity \u2014 while still thinking innovatively.",shadow:"You analyse visions instead of starting them."},
+  "M+G":{name:"Builder \u00d7 High Performer",tagline:"You build fast and you build well \u2014 but you are your own toughest boss.",mirrorIntro:"You're the type who after a 12-hour day still does 'just this one more thing'. Not because you have to. Because it doesn't feel finished.",stepsIntro:"These steps increase your revenue and reduce your working hours simultaneously.",aiPromise:"You prefer building to negotiating. Your Companion handles the rest: formulating value, justifying prices, reminding you that your speed is extraordinary.",evaQuote:"M+G builds the best \u2014 and charges the average. Not from modesty. From the false belief that price must be justified by time.",superpower:"You accomplish in three days what others need three weeks for \u2014 and it's good.",shadow:"You consider this pace normal. It's extraordinary, and exhausts you faster than you think."},
+  "C+S":{name:"Connector \u00d7 Strategist",tagline:"You understand people deeply \u2014 and you know how to build a system from it.",mirrorIntro:"You hear what others don't say. That is a clinical talent and a business talent that most consultants never develop.",stepsIntro:"These steps structure what you can already do \u2014 making it accessible for more people.",aiPromise:"Your Companion helps keep relationship and business in balance: prices that feel honest, limits that don't destroy relationships.",evaQuote:"C+S is the profile I most often see in people who say 'I'm not sure I'm good enough.' You're not just good enough \u2014 you're better than most who charge three times as much.",superpower:"You diagnose what people really need \u2014 and then build the fitting solution.",shadow:"You give away the diagnosis for free in the discovery call."},
+  "G+V":{name:"High Performer \u00d7 Visionary",tagline:"You can not only dream visions \u2014 you can deliver them with extraordinary quality.",mirrorIntro:"You want to bring things into the world that are truly good. That's not a quality \u2014 that's an identity.",stepsIntro:"These steps force what you can't force alone: the finish.",aiPromise:"Your Companion is your external anchor: it asks daily the question that counts: 'Is it good enough for today?'",evaQuote:"G+V waits for the perfect moment. It doesn't come. The perfect moment is the moment you stop waiting.",superpower:"When you release something it is truly good. Not good for the category \u2014 genuinely good.",shadow:"You rarely release it. Because it's not good enough yet."},
+  "M+C":{name:"Builder \u00d7 Connector",tagline:"You build what people really need \u2014 because you listen first.",mirrorIntro:"You're the type whose clients don't just come back \u2014 they bring others. The question is whether you use this systematically.",stepsIntro:"These steps protect the quality your clients love \u2014 by protecting the capacity.",aiPromise:"Your Companion handles the rest: communicating niche, defining scope, justifying price, formulating no.",evaQuote:"M+C builds the best and treats every client like a friend. That's beautiful \u2014 and costs too much. Friends pay too.",superpower:"You turn clients into fans \u2014 through results AND the way you work.",shadow:"You're there for everyone \u2014 which sometimes means not truly there for anyone."},
+  "S+M":{name:"Strategist \u00d7 Builder",tagline:"You don't just plan \u2014 you implement too. That's rarer than you think.",mirrorIntro:"You don't lose yourself endlessly in theory \u2014 you also build. That distinguishes you from most strategic people.",stepsIntro:"These steps monetise what you can already do.",aiPromise:"Your Companion helps find the right timing, translate systems into sales language, and formulate prices by value.",evaQuote:"S+M builds the best systems \u2014 and explains them too well. The client understands the system so precisely that they think they could build it themselves. That's not a mistake \u2014 that's a sign the value is being communicated too cheaply.",superpower:"You develop systems that are actually built \u2014 no concept gathering dust in a folder.",shadow:"Timing problem: when to plan, when to start \u2014 the balance is hard."},
+};
+
+const MIXED_MAP={S_G:"S+G",G_S:"S+G",V_M:"V+M",M_V:"V+M",V_C:"V+C",C_V:"V+C",C_G:"C+G",G_C:"C+G",S_V:"S+V",V_S:"S+V",M_G:"M+G",G_M:"M+G",C_S:"C+S",S_C:"C+S",G_V:"G+V",V_G:"G+V",M_C:"M+C",C_M:"M+C",S_M:"S+M",M_S:"S+M"};
+const TYPE_LABELS={S:"Stratege",V:"Visionär",M:"Builder",C:"Connector",G:"Hochleister"};
+const TYPE_NAMES={S:"Der Stratege",V:"Der Visionär",M:"Der Builder",C:"Der Connector",G:"Der Hochleister"};
+const _iEN=(new URLSearchParams(window.location.search).get('lang')||'de')==='en';
+const LOAD_MSGS=_iEN?["Loading your profile …","Analysis running …","Creating your report …"]:["Profil wird geladen …","Analyse läuft …","Report wird erstellt …"];
+
+function getParams(){const p=new URLSearchParams(window.location.search);return{primary:(p.get('type')||'S').toUpperCase(),secondary:p.get('sec')?p.get('sec').toUpperCase():null,scores:{S:+p.get('s')||0,V:+p.get('v')||0,M:+p.get('m')||0,C:+p.get('c')||0,G:+p.get('g')||0},burnout:p.get('burnout')==='1',name:p.get('name')||''}}
+function getKey(pr,sec){if(!sec)return pr;return MIXED_MAP[pr+'_'+sec]||MIXED_MAP[sec+'_'+pr]||pr}
+function $id(id){return document.getElementById(id)}
+function set(id,html){const el=$id(id);if(el)el.innerHTML=html}
+function show(id){const el=$id(id);if(el)el.classList.remove('hide')}
+
+function render(d){
+  const isEN=(new URLSearchParams(window.location.search).get('lang')||'de')==='en';
+  const TL=isEN?TYPE_LABELS_EN:TYPE_LABELS;
+  const TN=isEN?TYPE_NAMES_EN:TYPE_NAMES;
+  translateLabels(isEN);
+  const key=getKey(d.primary,d.secondary);
+  const rDE=NB_R[key]||NB_R[d.primary]||NB_R.S;
+  const rEN_raw=NB_R_EN[key]||NB_R_EN[d.primary]||NB_R_EN.S;
+  const r=isEN?{...rDE,...rEN_raw}:rDE;
+  set('hb-code',r.code);set('hb-en',r.en);set('hb-name',r.name.replace(/^(Der|Die) /,''));
+  set('hb-tag',r.tagline);
+  $id('nav-type').textContent=r.code+' — '+r.en;
+  if(r.isMixed&&d.secondary){show('mixed-pill');set('mixed-pill-txt',TN[d.primary]+' + '+TN[d.secondary])}
+  const sbW=$id('sb-wrap');sbW.innerHTML='';
+  ['S','V','M','C','G'].forEach(t=>{const pct=d.scores[t]||0,iP=t===d.primary,iS=t===d.secondary;sbW.insertAdjacentHTML('beforeend',`<div class="sb-row"><span class="sb-name${iP?' p':iS?' s':''}">${TL[t]}</span><div class="sb-track"><div class="sb-fill${iP?' p':iS?' s':''}" data-p="${pct}"></div></div><span class="sb-pct${iP?' p':iS?' s':''}">${pct}%</span></div>`)});
+  set('mirror-intro',r.mirrorIntro);
+  set('mirror-grid',r.mirror.map(m=>`<div class="mirror-card${m.h?' hl':''}"><div class="mc-q">${m.q}</div><div class="mc-t">${m.t}</div></div>`).join(''));
+  if(r.isMixed&&r.mixedNote){show('mixed-note');set('mn-label',(isEN?'Mixed type: ':'Mischtyp: ')+r.name);set('mn-text',r.mixedNote)}
+  set('pe-label',r.isMixed?(isEN?'The essence of this combination':'Das Wesen dieser Kombination'):(isEN?'Who you really are':'Das Wesen des Typs'));
+  set('pe-name',r.name);set('pe-text',r.essence);set('pc-super',r.superpower);set('pc-shadow',r.shadow);
+  set('sl-strengths',r.strengths.map(s=>`<li>${s}</li>`).join(''));
+  set('sl-blind',r.blind.map(s=>`<li>${s}</li>`).join(''));
+  set('tf-intro',r.tfIntro||(isEN?'Here is the difference between your business today — and the business that truly fits you.':'Hier ist der Unterschied zwischen deinem Business heute — und dem Business das wirklich zu dir passt.'));
+  set('tf-before',r.before.map(s=>`<li><span>${s}</span></li>`).join(''));
+  set('tf-after',r.after.map(s=>`<li><span>${s}</span></li>`).join(''));
+  set('biz-intro',r.bizIntro);set('biz-model',r.business);set('biz-sales',r.sales);set('biz-vis',r.visibility);
+  set('bo-stress',r.stress);
+  const bc=$id('bo-card');bc.className='bo-level bo-'+(r.burnoutLevel||'mid');set('bo-text',r.burnout);
+  if(d.burnout)show('bo-alert');
+  set('steps-intro',r.stepsIntro);
+  set('steps-list',r.steps.map(s=>`<div class="step"><div class="step-n">${s.n}</div><div class="step-t">${s.text}</div></div>`).join(''));
+  set('eq-quote',r.evaQuote);
+  const fn=d.name?d.name+', ':'';
+  set('up-sub',isEN
+    ?(fn+'Your NeuroBusiness AI knows your type — and doesn\'t respond generically, but exactly for you as '+r.name+'.')
+    :(fn+'Dein NeuroBusiness AI kennt deinen Typ — und antwortet nicht generisch, sondern genau für dich als '+r.name+'.'));
+  set('up-promise',r.aiPromise);
+}
+
+function initReveal(){
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  const d=getParams();render(d);
+  let mi=0;const lmEl=$id('l-msg');
+  const li=setInterval(()=>{mi++;if(mi<LOAD_MSGS.length)lmEl.textContent=LOAD_MSGS[mi];else clearInterval(li)},700);
+  setTimeout(()=>{
+    $id('loader').classList.add('out');
+    setTimeout(()=>{const l=$id('loader');if(l)l.remove()},800);
+    initReveal();
+    setTimeout(()=>{document.querySelectorAll('.sb-fill').forEach(el=>{el.style.width=el.dataset.p+'%'})},300);
+  },2200);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroBusiness™ — Baue ein Business, das zu deinem Gehirn passt</title>
+<meta name="description" content="Neuropsychologische Business-Diagnostik für Coaches, Berater:innen und selbstständige Expert:innen. Finde heraus, welches Business-Modell, welche Sichtbarkeit und welche Arbeitsweise wirklich zu dir passen. Berlin · London · Dubai.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://neurobusiness.one/">
+<meta property="og:title" content="NeuroBusiness™ — Baue ein Business, das zu deinem Gehirn passt">
+<meta property="og:description" content="Neuropsychologische Business-Diagnostik für selbstständige Expert:innen. 50 Fragen. Dein Psychotyp. Deine Strategie. Für DACH, UK und den Mittleren Osten.">
+<meta property="og:image" content="https://neurobusiness.one/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NeuroBusiness™ — Baue ein Business, das zu deinem Gehirn passt">
+<meta name="twitter:description" content="Finde deinen Psychotyp in 50 Fragen. Erhalte dein vollständiges NeuroBusiness-Profil — dein natürliches Business-Modell, deine Sichtbarkeitsstrategie und 3 konkrete nächste Schritte.">
+<meta name="twitter:image" content="https://neurobusiness.one/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #faf8f4;
+  --cream2: #f4f1eb;
+  --cream3: #ede9e0;
+  --dark: #1a1814;
+  --dark2: #2e2b26;
+  --gold: #c9a96e;
+  --gold2: #a8813e;
+  --gold-light: #f0e4cc;
+  --text: #1a1814;
+  --text2: #6b6560;
+  --text3: #a09a92;
+  --border: rgba(26,24,20,0.1);
+  --border2: rgba(26,24,20,0.06);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(250,248,244,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+.nav-logo em { color: var(--gold); font-style: normal; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 14px; font-weight: 400; color: var(--text2);
+  text-decoration: none; letter-spacing: 0.01em; transition: color .2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--dark); color: var(--cream) !important;
+  padding: 9px 20px; border-radius: 6px;
+  font-size: 13px !important; font-weight: 500 !important;
+  transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--dark2) !important; color: var(--cream) !important; }
+.lang-switch {
+  display: flex; gap: 2px;
+  background: var(--cream2); border: 1px solid var(--border);
+  border-radius: 6px; overflow: hidden; cursor: pointer;
+}
+.lang-switch span {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em;
+  padding: 5px 10px; cursor: pointer; transition: all .15s; color: var(--text3);
+}
+.lang-switch span.active { background: var(--dark); color: var(--cream); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 100px 40px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201,169,110,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 300; line-height: 1.05;
+  color: var(--dark); letter-spacing: -0.02em;
+  max-width: 800px; margin-bottom: 32px;
+}
+.hero-title em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  font-size: clamp(17px, 2vw, 20px); font-weight: 300;
+  color: var(--text2); max-width: 520px; line-height: 1.7;
+  margin-bottom: 48px;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.btn-primary {
+  background: var(--dark); color: var(--cream);
+  font-family: var(--font-body); font-size: 15px; font-weight: 500;
+  padding: 16px 32px; border-radius: 8px; text-decoration: none;
+  transition: all .2s; letter-spacing: 0.01em; border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--gold); color: var(--dark); }
+.btn-outline {
+  background: transparent; color: var(--text2);
+  font-family: var(--font-body); font-size: 15px; font-weight: 400;
+  padding: 16px 32px; border-radius: 8px; text-decoration: none;
+  border: 1px solid var(--border); transition: all .2s; cursor: pointer;
+}
+.btn-outline:hover { border-color: var(--dark); color: var(--dark); }
+.hero-claim {
+  position: absolute; right: 40px; bottom: 80px;
+  font-family: var(--font-display); font-size: clamp(90px, 14vw, 200px);
+  font-weight: 300; color: rgba(201,169,110,0.07); letter-spacing: -0.04em;
+  pointer-events: none; line-height: 1; font-style: italic;
+}
+
+/* ── SECTION BASE ── */
+section { padding: 100px 40px; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 300; line-height: 1.1;
+  color: var(--dark); letter-spacing: -0.02em; margin-bottom: 20px;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-sub {
+  font-size: 17px; font-weight: 300; color: var(--text2);
+  max-width: 560px; line-height: 1.75; margin-bottom: 60px;
+}
+
+/* ── PROBLEM SECTION ── */
+.problem { background: var(--dark); }
+.problem .section-eyebrow { color: rgba(201,169,110,0.7); }
+.problem .section-title { color: var(--cream); }
+.problem .section-sub { color: rgba(250,248,244,0.55); }
+.problem-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; overflow: hidden; margin-top: 60px;
+}
+.problem-item {
+  background: var(--dark); padding: 36px 32px;
+}
+.problem-item-num {
+  font-family: var(--font-mono); font-size: 11px; color: var(--gold);
+  letter-spacing: .08em; margin-bottom: 14px;
+}
+.problem-item-title {
+  font-family: var(--font-display); font-size: 22px; font-weight: 400;
+  color: var(--cream); margin-bottom: 10px; line-height: 1.3;
+}
+.problem-item-text { font-size: 14px; color: rgba(250,248,244,0.5); line-height: 1.7; }
+
+/* ── HOW IT WORKS ── */
+.how { background: var(--cream2); }
+.steps-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px;
+}
+.step {
+  padding: 36px 32px;
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 16px; position: relative;
+}
+.step-num {
+  font-family: var(--font-display); font-size: 64px; font-weight: 300;
+  color: var(--gold-light); line-height: 1; margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+.step-title {
+  font-family: var(--font-display); font-size: 22px; font-weight: 400;
+  color: var(--dark); margin-bottom: 12px; line-height: 1.3;
+}
+.step-text { font-size: 14px; color: var(--text2); line-height: 1.75; }
+
+/* ── PRODUCTS ── */
+.products-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 60px;
+}
+@media(max-width:1024px){.products-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.products-grid{grid-template-columns:1fr;}}
+.product-card {
+  border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+}
+.product-card-header {
+  padding: 40px 40px 32px; background: var(--cream2);
+  border-bottom: 1px solid var(--border);
+}
+.product-badge {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--gold2);
+  background: var(--gold-light); padding: 4px 12px; border-radius: 20px;
+  display: inline-block; margin-bottom: 20px;
+}
+.product-name {
+  font-family: var(--font-display); font-size: 32px; font-weight: 300;
+  color: var(--dark); line-height: 1.2; margin-bottom: 8px;
+}
+.product-tagline { font-size: 15px; color: var(--text2); line-height: 1.6; }
+.product-card-body { padding: 32px 40px 40px; background: var(--cream); }
+.product-features { list-style: none; margin-bottom: 32px; }
+.product-features li {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 14px; color: var(--text2); padding: 9px 0;
+  border-bottom: 1px solid var(--border2); line-height: 1.5;
+}
+.product-features li:last-child { border-bottom: none; }
+.product-features li::before {
+  content: '—'; color: var(--gold); flex-shrink: 0; margin-top: 0px;
+}
+.product-price {
+  font-family: var(--font-display); font-size: 36px; font-weight: 300;
+  color: var(--dark); margin-bottom: 4px;
+}
+.product-price-note { font-size: 13px; color: var(--text3); margin-bottom: 24px; }
+.product-card.featured { border-color: var(--gold); }
+.product-card.featured .product-card-header { background: var(--dark); }
+.product-card.featured .product-badge { background: rgba(201,169,110,0.2); color: var(--gold); }
+.product-card.featured .product-name { color: var(--cream); }
+.product-card.featured .product-tagline { color: rgba(250,248,244,0.6); }
+
+/* ── PSYCHOTYPES ── */
+.psychotypes { background: var(--cream2); }
+.types-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 60px;
+}
+.type-card {
+  padding: 28px 20px; background: var(--cream);
+  border: 1px solid var(--border); border-radius: 14px;
+  transition: all .2s; cursor: default;
+}
+.type-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.type-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--gold-light); display: flex; align-items: center;
+  justify-content: center; margin-bottom: 16px;
+}
+.type-icon-letter {
+  font-family: var(--font-display); font-size: 20px; font-weight: 400;
+  color: var(--gold2); font-style: italic;
+}
+.type-name {
+  font-family: var(--font-display); font-size: 18px; font-weight: 400;
+  color: var(--dark); margin-bottom: 8px;
+}
+.type-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+/* ── AUDIENCE ── */
+.audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
+.audience-card {
+  padding: 40px; background: var(--cream2);
+  border: 1px solid var(--border); border-radius: 16px;
+}
+.audience-badge {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--gold2);
+  border: 1px solid var(--gold-light); padding: 4px 12px;
+  border-radius: 20px; display: inline-block; margin-bottom: 20px;
+}
+.audience-title {
+  font-family: var(--font-display); font-size: 26px; font-weight: 400;
+  color: var(--dark); margin-bottom: 14px; line-height: 1.3;
+}
+.audience-text { font-size: 15px; color: var(--text2); line-height: 1.75; margin-bottom: 24px; }
+.audience-points { list-style: none; }
+.audience-points li {
+  font-size: 14px; color: var(--text2); padding: 6px 0;
+  display: flex; gap: 10px; line-height: 1.5;
+}
+.audience-points li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+
+/* ── TESTIMONIALS ── */
+.testimonials { background: var(--dark); }
+.testimonials .section-title { color: var(--cream); }
+.testimonials .section-eyebrow { color: rgba(201,169,110,0.7); }
+.testimonials .section-sub { color: rgba(250,248,244,0.5); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+.testimonial-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 32px;
+}
+.testimonial-text {
+  font-family: var(--font-display); font-size: 18px; font-style: italic;
+  font-weight: 300; color: var(--cream); line-height: 1.6; margin-bottom: 24px;
+}
+.testimonial-author { font-size: 13px; color: rgba(250,248,244,0.45); }
+.testimonial-type {
+  font-family: var(--font-mono); font-size: 10px; color: var(--gold);
+  letter-spacing: .08em; text-transform: uppercase; margin-top: 4px;
+}
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--cream2); padding: 120px 40px;
+  text-align: center;
+}
+.cta-inner { max-width: 680px; margin: 0 auto; }
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 300; line-height: 1.1;
+  color: var(--dark); letter-spacing: -0.02em; margin-bottom: 24px;
+}
+.cta-title em { font-style: italic; color: var(--gold); }
+.cta-sub {
+  font-size: 17px; font-weight: 300; color: var(--text2);
+  line-height: 1.75; margin-bottom: 48px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark); padding: 60px 40px 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 32px;
+}
+.footer-logo {
+  font-family: var(--font-display); font-size: 24px; font-weight: 400;
+  color: var(--cream); margin-bottom: 14px;
+}
+.footer-logo em { color: var(--gold); font-style: normal; }
+.footer-desc { font-size: 14px; color: rgba(250,248,244,0.4); line-height: 1.7; }
+.footer-col-title {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(250,248,244,0.3); margin-bottom: 16px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  font-size: 14px; color: rgba(250,248,244,0.5); text-decoration: none;
+  transition: color .15s;
+}
+.footer-links a:hover { color: var(--cream); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: rgba(250,248,244,0.25);
+}
+
+/* ── QUIZ STRIP ── */
+.quiz-strip {
+  background: var(--gold); padding: 20px 40px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+.quiz-strip-text {
+  font-size: 15px; font-weight: 500; color: var(--dark);
+}
+.quiz-strip-text em { font-style: normal; font-family: var(--font-display); font-size: 18px; }
+.btn-quiz-strip {
+  background: var(--dark); color: var(--cream);
+  font-family: var(--font-body); font-size: 14px; font-weight: 500;
+  padding: 11px 24px; border-radius: 6px; text-decoration: none;
+  white-space: nowrap; transition: all .2s; flex-shrink: 0;
+}
+.btn-quiz-strip:hover { background: #2e2b26; }
+
+/* ── SEPARATOR ── */
+.sep { height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+  .nav-links a:not(.nav-cta):not(.lang-link) { display: none; }
+  section { padding: 72px 20px; }
+  .hero { padding: 90px 20px 60px; }
+  .hero-claim { display: none; }
+  .products-grid { grid-template-columns: 1fr; }
+  .types-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: 1fr; gap: 20px; }
+  .audience-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .quiz-strip { flex-direction: column; text-align: center; }
+}
+
+/* ── ANIMATIONS ── */
+.fade-up {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* PAYMENT MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(26,24,20,0.7);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:#fff;border-radius:24px;padding:48px 44px;width:100%;max-width:480px;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.15);transform:translateY(20px);transition:transform .3s}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:20px;right:24px;background:none;border:none;font-size:22px;color:var(--text3);cursor:pointer;line-height:1;padding:4px}
+.modal-close:hover{color:var(--text)}
+.modal-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);margin-bottom:12px}
+.modal-title{font-family:var(--font-display);font-size:30px;font-weight:400;color:var(--dark);margin-bottom:6px;line-height:1.2}
+.modal-price{font-family:var(--font-display);font-size:38px;font-weight:300;color:var(--dark);margin-bottom:4px}
+.modal-price-note{font-size:13px;color:var(--text3);margin-bottom:24px}
+.modal-features{list-style:none;margin-bottom:28px}
+.modal-features li{display:flex;gap:10px;font-size:14px;color:var(--text2);padding:7px 0;border-bottom:1px solid var(--cream3);line-height:1.5}
+.modal-features li:last-child{border-bottom:none}
+.modal-features li::before{content:'—';color:var(--gold);flex-shrink:0}
+.stripe-btn{width:100%;background:var(--dark);color:#fff;border:none;border-radius:12px;padding:16px;font-family:var(--font-body);font-size:15px;font-weight:500;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;margin-bottom:10px}
+.stripe-btn:hover{background:var(--gold);color:var(--dark)}
+.stripe-btn svg{width:20px;height:20px;flex-shrink:0}
+.stripe-note{font-size:12px;color:var(--text3);text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
+.stripe-note svg{width:14px;height:14px;color:var(--text3)}
+.modal-divider{height:1px;background:var(--cream3);margin:20px 0}
+.modal-alt{font-size:13px;color:var(--text2);text-align:center}
+.modal-alt a{color:var(--gold2);text-decoration:none;font-weight:500}
+.modal-alt a:hover{text-decoration:underline}
+
+/* CONTACT & WHATSAPP */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:150;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.wa-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);cursor:pointer;transition:all .2s;text-decoration:none;border:none}
+.wa-btn:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,0.5)}
+.wa-btn svg{width:28px;height:28px}
+.wa-tooltip{background:var(--dark);color:#fff;font-size:13px;font-weight:500;padding:8px 14px;border-radius:8px;white-space:nowrap;opacity:0;transform:translateX(8px);transition:all .2s;pointer-events:none}
+.wa-float:hover .wa-tooltip{opacity:1;transform:translateX(0)}
+.contact-section{background:var(--dark);padding:100px 40px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;max-width:1100px;margin:0 auto}
+.contact-left .section-title{color:var(--cream)}
+.contact-left .section-eyebrow{color:rgba(201,169,110,0.7)}
+.contact-left p{font-size:15px;color:rgba(250,248,244,0.5);line-height:1.8;margin-bottom:28px}
+.contact-info-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.contact-info-icon{width:36px;height:36px;background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-info-icon svg{width:16px;height:16px;color:var(--gold)}
+.contact-info-text{font-size:14px;color:rgba(250,248,244,0.6)}
+.contact-info-text a{color:var(--gold);text-decoration:none}
+.contact-info-text a:hover{text-decoration:underline}
+.wa-contact-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-family:var(--font-body);font-size:14px;font-weight:500;padding:12px 20px;border-radius:10px;text-decoration:none;margin-top:8px;transition:all .2s}
+.wa-contact-btn:hover{background:#1da851;transform:translateY(-1px)}
+.wa-contact-btn svg{width:18px;height:18px}
+.contact-form{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:36px}
+.form-group{margin-bottom:18px}
+.form-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,248,244,0.35);margin-bottom:8px;display:block}
+.form-input{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 16px;color:var(--cream);font-family:var(--font-body);font-size:14px;outline:none;transition:border-color .15s}
+.form-input:focus{border-color:rgba(201,169,110,0.4)}
+.form-input::placeholder{color:rgba(250,248,244,0.2)}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a09a92' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.form-textarea{min-height:100px;resize:vertical;line-height:1.6}
+.form-submit{width:100%;background:var(--gold);color:var(--dark);border:none;border-radius:10px;padding:15px;font-family:var(--font-body);font-size:15px;font-weight:500;cursor:pointer;transition:all .2s;margin-top:4px}
+.form-submit:hover{background:#d4b47a;transform:translateY(-1px)}
+.form-submit:disabled{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.3);cursor:not-allowed;transform:none}
+.form-success{display:none;background:rgba(61,184,138,0.1);border:1px solid rgba(61,184,138,0.2);border-radius:10px;padding:16px;text-align:center;font-size:14px;color:#3db88a;margin-top:12px}
+.form-error{display:none;background:rgba(233,69,96,0.1);border:1px solid rgba(233,69,96,0.2);border-radius:10px;padding:16px;text-align:center;font-size:14px;color:#e94560;margin-top:12px}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+
+/* QUIZ */
+.quiz-section{background:var(--cream);padding:100px 40px;border-top:1px solid var(--border)}
+.quiz-wrap{max-width:680px;margin:0 auto}
+.quiz-shell{background:#fff;border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,0.06)}
+.quiz-top{padding:32px 40px 0}
+.quiz-prog-label{font-family:var(--font-mono);font-size:11px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;display:flex;justify-content:space-between}
+.quiz-prog-bar{height:3px;background:var(--cream3);border-radius:2px;overflow:hidden;margin-bottom:32px}
+.quiz-prog-fill{height:100%;background:var(--dark);border-radius:2px;transition:width .4s ease}
+.quiz-q{padding:0 40px 32px}
+.quiz-q-num{font-family:var(--font-mono);font-size:11px;color:var(--gold2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.quiz-q-text{font-family:var(--font-display);font-size:26px;font-weight:300;color:var(--dark);line-height:1.3;margin-bottom:28px}
+.quiz-q-text em{font-style:italic;color:var(--gold)}
+.quiz-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.quiz-opt{background:var(--cream2);border:1.5px solid var(--border);border-radius:12px;padding:14px 20px;cursor:pointer;font-size:15px;color:var(--text);transition:all .18s;text-align:left;font-family:var(--font-body);display:flex;align-items:center;gap:12px}
+.quiz-opt:hover{border-color:var(--gold);background:var(--cream)}
+.quiz-opt.selected{border-color:var(--dark);background:var(--dark);color:#fff}
+.quiz-opt-letter{font-family:var(--font-mono);font-size:12px;width:22px;height:22px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:.6}
+.quiz-opt.selected .quiz-opt-letter{opacity:1;border-color:#fff}
+.quiz-nav{padding:20px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:var(--cream2)}
+.quiz-nav-info{font-size:13px;color:var(--text3);font-family:var(--font-mono)}
+.quiz-nav-btn{background:var(--dark);color:#fff;border:none;border-radius:10px;padding:11px 28px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:all .18s}
+.quiz-nav-btn:hover{background:var(--gold);color:var(--dark)}
+.quiz-nav-btn:disabled{background:var(--cream3);color:var(--text3);cursor:not-allowed}
+/* RESULT */
+.quiz-result{display:none;padding:40px}
+.quiz-result-hero{background:var(--dark);border-radius:16px;padding:32px;margin-bottom:24px;text-align:center}
+.quiz-result-label{font-family:var(--font-mono);font-size:10px;color:rgba(201,169,110,0.7);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.quiz-result-type{font-family:var(--font-display);font-size:40px;font-weight:300;color:#fff;margin-bottom:8px}
+.quiz-result-tagline{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6}
+.quiz-result-section{background:var(--cream2);border-radius:12px;padding:20px 24px;margin-bottom:14px}
+.quiz-result-section-title{font-family:var(--font-mono);font-size:10px;color:var(--gold2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.quiz-result-section-text{font-size:14px;color:var(--text2);line-height:1.75}
+.quiz-result-section-text strong{color:var(--text);font-weight:500}
+.quiz-accuracy{text-align:center;font-size:13px;color:var(--text3);margin-bottom:20px;padding:12px;background:var(--cream2);border-radius:8px;border:1px solid var(--border)}
+.quiz-cta-row{display:flex;flex-direction:column;gap:10px}
+.quiz-restart{background:none;border:1px solid var(--border);color:var(--text3);font-family:var(--font-mono);font-size:11px;padding:8px;border-radius:8px;cursor:pointer;transition:all .15s;letter-spacing:.06em}
+.quiz-restart:hover{border-color:var(--dark);color:var(--text)}
+
+/* REPORT PREVIEW */
+.report-preview-section{background:var(--cream2);padding:100px 40px;border-top:1px solid var(--border)}
+.rp-wrap{max-width:1100px;margin:0 auto}
+.rp-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:60px}
+.rp-left{}
+.rp-left p{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:20px}
+.rp-check{display:flex;gap:10px;font-size:14px;color:var(--text2);margin-bottom:10px;align-items:flex-start}
+.rp-check::before{content:'→';color:var(--gold);flex-shrink:0;margin-top:1px}
+.rp-mockup{background:#1a1814;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.2)}
+.rp-mock-bar{background:rgba(255,255,255,0.05);padding:12px 20px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.rp-mock-dot{width:10px;height:10px;border-radius:50%}
+.rp-mock-title{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.06em;margin-left:8px}
+.rp-mock-body{padding:24px}
+.rp-mock-hero{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;margin-bottom:14px}
+.rp-mock-eyebrow{font-family:var(--font-mono);font-size:9px;color:rgba(201,169,110,0.6);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.rp-mock-type{font-family:var(--font-display);font-size:28px;font-weight:300;color:#fff;margin-bottom:4px}
+.rp-mock-tag{font-size:12px;color:rgba(255,255,255,0.4)}
+.rp-mock-dims{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px;margin-bottom:14px}
+.rp-mock-dims-title{font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:12px;font-weight:500}
+.rp-dim{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.rp-dim-label{font-size:11px;color:rgba(255,255,255,0.35);width:120px;flex-shrink:0}
+.rp-dim-track{flex:1;height:5px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.rp-dim-fill{height:100%;border-radius:3px}
+.rp-dim-val{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.3);width:28px;text-align:right}
+.rp-mock-section{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:14px;margin-bottom:10px}
+.rp-mock-sec-num{font-family:var(--font-mono);font-size:9px;color:rgba(201,169,110,0.5);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.rp-mock-sec-title{font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);margin-bottom:8px}
+.rp-mock-bullet{display:flex;gap:6px;font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:4px;line-height:1.5}
+.rp-mock-bullet::before{content:'—';color:rgba(201,169,110,0.5);flex-shrink:0}
+.rp-mock-cta{background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:16px;text-align:center;margin-top:4px}
+.rp-mock-cta-text{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:8px}
+.rp-mock-cta-btn{background:#c9a96e;color:#1a1814;font-size:12px;font-weight:500;padding:8px 18px;border-radius:6px;display:inline-block}
+@media(max-width:900px){.rp-grid{grid-template-columns:1fr}}
+
+/* LEGAL PAGES */
+.legal-overlay{position:fixed;inset:0;background:#fff;z-index:300;overflow-y:auto;display:none}
+.legal-overlay.open{display:block}
+.legal-header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);padding:16px 40px;display:flex;align-items:center;justify-content:space-between;z-index:10}
+.legal-header-logo{font-family:var(--font-display);font-size:18px;color:var(--dark)}
+.legal-header-logo em{color:var(--gold);font-style:normal}
+.legal-close{background:none;border:1px solid var(--border);color:var(--text2);padding:7px 16px;border-radius:6px;cursor:pointer;font-family:var(--font-body);font-size:13px;transition:all .15s}
+.legal-close:hover{border-color:var(--dark);color:var(--dark)}
+.legal-body{max-width:760px;margin:0 auto;padding:60px 40px}
+.legal-body h1{font-family:var(--font-display);font-size:42px;font-weight:300;color:var(--dark);margin-bottom:8px}
+.legal-body h2{font-family:var(--font-display);font-size:24px;font-weight:400;color:var(--dark);margin:32px 0 12px}
+.legal-body p{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:14px}
+.legal-body strong{color:var(--text);font-weight:500}
+.legal-body a{color:var(--gold2);text-decoration:none}
+.legal-body a:hover{text-decoration:underline}
+.legal-body ul{list-style:none;padding:0;margin-bottom:14px}
+.legal-body ul li{font-size:15px;color:var(--text2);padding:4px 0;display:flex;gap:8px}
+.legal-body ul li::before{content:'—';color:var(--gold);flex-shrink:0}
+.legal-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+@media(max-width:600px){.legal-body{padding:40px 20px}.legal-header{padding:14px 20px}}
+
+/* EMAIL GATE */
+.quiz-gate{padding:32px 40px 36px;display:none;animation:fadeUp .3s ease}
+.quiz-gate-icon{width:56px;height:56px;background:var(--cream2);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px}
+.quiz-gate-title{font-family:var(--font-display);font-size:26px;font-weight:400;color:var(--dark);margin-bottom:8px;line-height:1.2}
+.quiz-gate-sub{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:24px}
+.quiz-gate-fields{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.quiz-gate-input{background:var(--cream2);border:1.5px solid var(--border);border-radius:10px;padding:13px 16px;color:var(--dark);font-family:var(--font-body);font-size:15px;outline:none;width:100%;transition:all .15s}
+.quiz-gate-input:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(201,169,110,0.1)}
+.quiz-gate-input::placeholder{color:var(--text3)}
+.quiz-gate-btn{width:100%;background:var(--dark);color:#fff;border:none;border-radius:10px;padding:15px;font-size:15px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:all .15s;display:flex;align-items:center;justify-content:center;gap:10px}
+.quiz-gate-btn:hover{background:var(--gold);color:var(--dark)}
+.quiz-gate-btn:disabled{background:var(--cream3);color:var(--text3);cursor:not-allowed}
+.quiz-gate-skip{text-align:center;margin-top:10px}
+.quiz-gate-skip button{background:none;border:none;font-size:12px;color:var(--text3);cursor:pointer;font-family:var(--font-mono);letter-spacing:.04em;text-decoration:underline}
+.quiz-gate-skip button:hover{color:var(--text2)}
+.quiz-gate-privacy{font-size:11px;color:var(--text3);text-align:center;margin-top:8px;line-height:1.6}
+.quiz-result-teaser{background:var(--cream2);border-radius:12px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.quiz-result-teaser-icon{width:40px;height:40px;background:var(--dark);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.quiz-result-teaser-text{font-size:14px;color:var(--text2);line-height:1.5}
+.quiz-result-teaser-text strong{color:var(--dark)}
+</style>
+<!-- Brevo: geladen erst nach Nutzeraktion (TTDSG §25) -->
+</head>
+<body style="opacity:0;transition:opacity .15s ease">
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">NeuroBusiness<em>™</em></a>
+  <div class="nav-links">
+    <a href="#produkte" id="nav-products">Produkte</a>
+    <a href="#psychotypen" id="nav-types">Psychotypen</a>
+    <a href="/teams" id="nav-teams">Für Teams</a>
+    <a href="https://germaninstitute.eu/neurobusiness-practitioner" id="nav-coaches">Für Coaches</a>
+    <a href="#kontakt" id="nav-contact">Kontakt</a>
+    <div class="lang-switch">
+      <span class="active" onclick="setLang('de')" id="lsDE">DE</span>
+      <span onclick="setLang('en')" id="lsEN">EN</span>
+    </div>
+    <button onclick="openModal('modalDiagnostik')" class="nav-cta" id="nav-cta" style="border:none;cursor:pointer">Jetzt starten</button>
+  </div>
+</nav>
+
+<!-- QUIZ STRIP -->
+<div class="quiz-strip" style="margin-top:64px">
+  <div class="quiz-strip-text" id="strip-text">
+    <em>Welcher Psychotyp bist du?</em> — Mach den kostenlosen 7-Fragen-Test
+  </div>
+  <a href="#quiz" class="btn-quiz-strip" id="strip-btn">Test machen</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap"><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--text3);border:1px solid var(--border);padding:3px 10px;border-radius:20px">London</span><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--text3);border:1px solid var(--border);padding:3px 10px;border-radius:20px">Dubai</span><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--text3);border:1px solid var(--border);padding:3px 10px;border-radius:20px">Berlin</span></div>
+  <div class="hero-eyebrow" id="hero-eyebrow">Business-Diagnostik für Selbstständige</div>
+  <h1 class="hero-title" id="hero-title">
+    Nicht jedes<br>Business passt<br>zu <em>jedem Gehirn.</em>
+  </h1>
+  <p class="hero-sub" id="hero-sub">
+    Für Coaches, Berater:innen und selbstständige Expert:innen, die fachlich stark sind — aber merken, dass ihr Business-Modell, ihre Sichtbarkeit und ihr Wachstum sie mehr Energie kosten, als sie sollten.
+  </p>
+  <div class="hero-actions">
+    <button onclick="openModal('modalDiagnostik')" class="btn-primary" id="hero-cta1">Meinen Business-Fit analysieren</button>
+    <a href="#wie-es-funktioniert" class="btn-outline" id="hero-cta2">Wie es funktioniert</a>
+  </div>
+  <div class="hero-claim">N</div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-up" id="prob-eyebrow">Das Problem</div>
+    <h2 class="section-title fade-up" id="prob-title">Du scheiterst nicht, weil du<br><em>nicht gut genug bist.</em></h2>
+    <p class="section-sub fade-up" id="prob-sub">Du scheiterst, weil du Strategien kopierst, die für einen anderen Gehirntyp gebaut sind.</p>
+    <div class="problem-grid fade-up">
+      <div class="problem-item">
+        <div class="problem-item-num">01</div>
+        <div class="problem-item-title" id="pi1t">Chronischer innerer Widerstand</div>
+        <div class="problem-item-text" id="pi1d">Dein Business läuft, aber es fühlt sich wie permanenter Gegenwind an. Nicht wegen mangelnder Disziplin — wegen strukturellem Mismatch.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-item-num">02</div>
+        <div class="problem-item-title" id="pi2t">Kopierte Strategien, die nicht passen</div>
+        <div class="problem-item-text" id="pi2d">Du postest täglich auf Instagram, weil alle sagen, du musst. Für eine:n Strateg:in ist das neuropsychologisch falsch ausgerichtet.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-item-num">03</div>
+        <div class="problem-item-title" id="pi3t">Erschöpfung trotz Erfolg</div>
+        <div class="problem-item-text" id="pi3d">Du lieferst hervorragende Ergebnisse — aber zu einem Preis, der dich innerlich auslaugt. Das ist kein Burnout-Problem. Das ist ein Alignment-Problem.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="wie-es-funktioniert">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-up" id="how-eyebrow">Wie es funktioniert</div>
+    <h2 class="section-title fade-up" id="how-title">Drei Schritte zu deinem<br><em>stimmigen Business</em></h2>
+    <div class="steps-grid fade-up">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title" id="s1t">Diagnostik</div>
+        <div class="step-text" id="s1d">50 psychologisch fundierte Fragen entlang 5 Business-relevanter Dimensionen bestimmen deinen NeuroBusiness-Psychotyp. Vollständiger Report in wenigen Minuten — automatisch.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title" id="s2t">Verstehen</div>
+        <div class="step-text" id="s2d">Dein Report zeigt genau, warum dein Business bisher nicht optimal läuft — und welches Business-Modell, welche Sichtbarkeitsstrategie und welcher Arbeitsstil zu deinem Typ passen.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title" id="s3t">NeuroBusiness AI</div>
+        <div class="step-text" id="s3d">Die NeuroBusiness AI begleitet dich täglich: Wochen-Agenda, Business-Brainstorming, Entscheidungs-Helfer — alles psychotyp-spezifisch für dich.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PSYCHOTYPES -->
+
+<!-- REPORT PREVIEW -->
+<section class="report-preview-section" id="report-preview">
+  <div class="rp-wrap">
+    <div class="section-eyebrow fade-up" id="rp-eyebrow">Report-Vorschau</div>
+    <h2 class="section-title fade-up" id="rp-title">So sieht dein <em>Report aus</em></h2>
+    <div class="rp-grid fade-up">
+      <div class="rp-left">
+        <p id="rp-text">Nach dem 50-Fragen-Test erhältst du deinen vollständigen NeuroBusiness Report sofort — kein Warten, kein Call nötig.</p>
+        <div class="rp-check" id="rp-c1">Psychotyp-Identifikation mit Primär- und Sekundärtyp</div>
+        <div class="rp-check" id="rp-c2">5-Dimensionen-Profil als visuelle Darstellung</div>
+        <div class="rp-check" id="rp-c3">Strukturanalyse — warum dein Business bisher nicht optimal läuft</div>
+        <div class="rp-check" id="rp-c4">Dein natürliches Business-Modell und deine Sichtbarkeitsstrategie</div>
+        <div class="rp-check" id="rp-c5">Burnout-Risiko-Analyse basierend auf dem D5-Score</div>
+        <div class="rp-check" id="rp-c6">3 konkrete nächste Schritte zur sofortigen Umsetzung</div>
+        <div style="margin-top:28px">
+          <button onclick="openModal('modalDiagnostik')" class="btn-primary" id="rp-cta">Meinen Report jetzt erhalten</button>
+        </div>
+      </div>
+      <div>
+        <div class="rp-mockup">
+          <div class="rp-mock-bar">
+            <div class="rp-mock-dot" style="background:#ff5f57"></div>
+            <div class="rp-mock-dot" style="background:#ffbd2e"></div>
+            <div class="rp-mock-dot" style="background:#28ca41"></div>
+            <div class="rp-mock-title">neurobusiness.one — Report</div>
+          </div>
+          <div class="rp-mock-body">
+            <div class="rp-mock-hero">
+              <div class="rp-mock-eyebrow" id="rp-mock-eyebrow">Dein NeuroBusiness Psychotyp</div>
+              <div class="rp-mock-type" id="rp-mock-type">The Strategist</div>
+              <div class="rp-mock-tag" id="rp-mock-tag">Analytische Tiefe ist deine Superkraft.</div>
+            </div>
+            <div class="rp-mock-dims">
+              <div class="rp-mock-dims-title" id="rp-mock-dims-title">5-Dimensionen-Profil</div>
+              <div class="rp-dim"><span class="rp-dim-label" id="rp-d1">Energie-Profil</span><div class="rp-dim-track"><div class="rp-dim-fill" style="width:82%;background:#5b8fcf"></div></div><span class="rp-dim-val">82%</span></div>
+              <div class="rp-dim"><span class="rp-dim-label" id="rp-d2">Kognitions-Stil</span><div class="rp-dim-track"><div class="rp-dim-fill" style="width:75%;background:#9b6fd4"></div></div><span class="rp-dim-val">75%</span></div>
+              <div class="rp-dim"><span class="rp-dim-label" id="rp-d3">Motivations-Fokus</span><div class="rp-dim-track"><div class="rp-dim-fill" style="width:35%;background:#e8873a"></div></div><span class="rp-dim-val">35%</span></div>
+              <div class="rp-dim"><span class="rp-dim-label" id="rp-d4">Umsetzung</span><div class="rp-dim-track"><div class="rp-dim-fill" style="width:70%;background:#3db88a"></div></div><span class="rp-dim-val">70%</span></div>
+              <div class="rp-dim"><span class="rp-dim-label" id="rp-d5">Stress-Regulation</span><div class="rp-dim-track"><div class="rp-dim-fill" style="width:55%;background:#c9a96e"></div></div><span class="rp-dim-val">55%</span></div>
+            </div>
+            <div class="rp-mock-section">
+              <div class="rp-mock-sec-num" id="rp-s1-num">Abschnitt 1</div>
+              <div class="rp-mock-sec-title" id="rp-s1-title">Wer du bist</div>
+              <div class="rp-mock-bullet" id="rp-b1">Analytische Tiefe: du erkennst Muster, die andere übersehen</div>
+              <div class="rp-mock-bullet" id="rp-b2">Systemdenken: du siehst die ganze Struktur</div>
+              <div class="rp-mock-bullet" id="rp-b3">Expertise-Autorität: Menschen vertrauen dir, weil du dein Fach kennst</div>
+            </div>
+            <div class="rp-mock-section">
+              <div class="rp-mock-sec-num" id="rp-s2-num">Abschnitt 4</div>
+              <div class="rp-mock-sec-title" id="rp-s2-title">Deine 3 nächsten Schritte</div>
+              <div class="rp-mock-bullet" id="rp-s2-b1">Verkaufe dein Angebot jetzt — hör auf, es zu perfektionieren</div>
+              <div class="rp-mock-bullet" id="rp-s2-b2">Wähle einen Kanal und zeige dort Tiefe</div>
+              <div class="rp-mock-bullet" id="rp-s2-b3">Etabliere einen Umsetzungs-Rhythmus</div>
+            </div>
+            <div class="rp-mock-cta">
+              <div class="rp-mock-cta-text" id="rp-mock-cta-text">Deine NeuroBusiness AI ist bereit</div>
+              <div class="rp-mock-cta-btn" id="rp-mock-cta-btn">NeuroBusiness AI starten →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="psychotypen">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-up" id="types-eyebrow">Die 5 Psychotypen</div>
+    <h2 class="section-title fade-up" id="types-title">Welcher Typ bist <em>du?</em></h2>
+    <p class="section-sub fade-up" id="types-sub">Jeder Psychotyp hat ein natürliches Business-Modell, einen natürlichen Sichtbarkeitsstil und natürliche Stärken. Der Test zeigt dir, welcher du bist.</p>
+    <div class="types-grid fade-up">
+      <div class="type-card">
+        <div class="type-icon"><span class="type-icon-letter">S</span></div>
+        <div class="type-name" id="tn1">The Strategist</div>
+        <div class="type-desc" id="td1">Analytische Tiefe, Systemdenken, Expertise-Autorität. Denkt, bevor er handelt.</div>
+      </div>
+      <div class="type-card">
+        <div class="type-icon"><span class="type-icon-letter">V</span></div>
+        <div class="type-name" id="tn2">The Visionary</div>
+        <div class="type-desc" id="td2">Innovation, Mustererkennung, Inspirationskraft. Sieht, was noch nicht existiert.</div>
+      </div>
+      <div class="type-card">
+        <div class="type-icon"><span class="type-icon-letter">B</span></div>
+        <div class="type-name" id="tn3">The Builder</div>
+        <div class="type-desc" id="td3">Umsetzung, Tempo, Direktheit. Während andere analysieren, hat er die erste Version.</div>
+      </div>
+      <div class="type-card">
+        <div class="type-icon"><span class="type-icon-letter">C</span></div>
+        <div class="type-name" id="tn4">The Connector</div>
+        <div class="type-desc" id="td4">Beziehungen, Vertrauen, Community. Menschen vertrauen auf eine Art, für die andere Jahre brauchen.</div>
+      </div>
+      <div class="type-card">
+        <div class="type-icon"><span class="type-icon-letter">H</span></div>
+        <div class="type-name" id="tn5">The High Performer</div>
+        <div class="type-desc" id="td5">Exzellenz, Qualität, Disziplin. Liefert auf einem Niveau, das die meisten nicht erreichen.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px" class="fade-up">
+      <button onclick="openModal('modalDiagnostik')" class="btn-primary" id="types-cta">Meinen Typ finden</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="produkte" style="background:var(--cream2)">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-up" id="prod-eyebrow">Unsere Produkte</div>
+    <h2 class="section-title fade-up" id="prod-title">Für jeden Schritt der <em>richtigen</em> Strategie</h2>
+    <div class="products-grid fade-up" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:880px;margin:0 auto">
+
+      <!-- CARD 1: Solo Report (Entry) -->
+      <div class="product-card">
+        <div class="product-card-header">
+          <div class="product-badge" id="pb0">NeuroBusiness™ Diagnostik</div>
+          <div class="product-name" id="pn0">Solo<br>Report</div>
+          <div class="product-tagline" id="pt0">Für selbstständige Expert:innen, die verstehen wollen, warum ihr Business sich schwerer anfühlt, als es sollte.</div>
+        </div>
+        <div class="product-card-body">
+          <ul class="product-features" id="pf0">
+            <li>50-Fragen neuropsychologischer Test</li>
+            <li>Vollständiger Report mit 5-Dimensionen-Profil</li>
+            <li>Dein natürliches Business-Modell & Sichtbarkeitsstrategie</li>
+            <li>Stärken, Blindstellen & Burnout-Risiko</li>
+            <li>3 konkrete nächste Schritte</li>
+            <li style="color:var(--text3)">Keine NeuroBusiness AI enthalten</li>
+          </ul>
+          <div class="product-price" id="pp0">147 €</div>
+          <div class="product-price-note" id="ppn0">Einmalig · zzgl. MwSt. · Kein Abo</div>
+          <a href="https://buy.stripe.com/5kQfZj1NbbjK50Sg1Basg08" class="btn-outline" style="display:block;text-align:center;width:100%" id="pcta0">Meinen Report bestellen</a>
+        </div>
+      </div>
+
+      <!-- CARD 2: Diagnostik + NeuroBusiness AI (Featured) -->
+      <div class="product-card featured">
+        <div class="product-card-header" style="position:relative">
+          <div style="position:absolute;top:20px;right:20px;background:var(--gold);color:var(--dark);font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px;font-weight:500">Beliebteste</div>
+          <div class="product-badge" id="pb1">NeuroBusiness™ Strategist</div>
+          <div class="product-name" id="pn1">Diagnostik<br>+ NeuroBusiness AI</div>
+          <div class="product-tagline" id="pt1">Für Selbstständige, die nicht nur wissen wollen, welcher Typ sie sind — sondern ihre Entscheidungen typgerecht ausrichten wollen.</div>
+        </div>
+        <div class="product-card-body">
+          <ul class="product-features" id="pf1">
+            <li>Alles aus Solo Report</li>
+            <li><strong style="color:var(--gold)">12 Monate NeuroBusiness AI inklusive</strong></li>
+            <li>Psychotyp-spezifische Wochen-Agenda jeden Montag</li>
+            <li>Business-Brainstorming & Entscheidungs-Helfer</li>
+            <li>NeuroBusiness AI mit Gedächtnis — kennt deinen Typ</li>
+            <li style="color:rgba(250,248,244,0.5)">Nach 12 Monaten: 49 €/Monat, jederzeit kündbar</li>
+          </ul>
+          <div class="product-price" id="pp1">490 €</div>
+          <div class="product-price-note" id="ppn1" style="color:rgba(250,248,244,0.5)">12 Monate NeuroBusiness AI inklusive · danach 49 €/Monat · zzgl. MwSt.</div>
+          <button onclick="openModal('modalDiagnostik')" class="btn-primary" style="display:block;text-align:center;width:100%;background:var(--gold);color:var(--dark);border:none;cursor:pointer" id="pcta1">Mein typgerechtes System starten</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Core Programme -->
+    <div id="core-programme" style="margin-top:32px;padding:40px;background:var(--dark);border-radius:20px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap" class="fade-up">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px" id="cp-badge">Core Programme</div>
+        <div style="font-family:var(--font-display);font-size:28px;font-weight:300;color:var(--cream);margin-bottom:8px" id="cp-title">12-Wochen NeuroBusiness™ Transformation</div>
+        <div style="font-size:14px;color:rgba(250,248,244,0.5);max-width:500px;line-height:1.7" id="cp-desc">Das intensive 1:1- und Gruppen-Coaching-Programm für Selbstständige, die ihr Business grundlegend neu ausrichten wollen.</div>
+      </div>
+      <div style="flex-shrink:0;text-align:center">
+        <div style="font-family:var(--font-display);font-size:36px;font-weight:300;color:var(--cream);margin-bottom:4px">4.990 €</div>
+        <div style="font-size:13px;color:rgba(250,248,244,0.35);margin-bottom:20px" id="cp-note">12 Wochen · Hybrid · Zoom · zzgl. MwSt.</div>
+        <a href="https://zeeg.me/evak/15min" class="btn-primary" id="cp-cta">Strategiegespräch buchen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜR TEAMS — kleine Abzweigung zur Teams-Seite -->
+<section id="fuer-teams" style="background:var(--dark);color:var(--cream);padding:72px 40px">
+  <div class="section-inner" style="max-width:880px">
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:44px 40px" class="fade-up">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px" id="tm-eyebrow">Für Teams & Organisationen</div>
+          <h3 style="font-family:var(--font-display);font-size:30px;font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:16px;letter-spacing:-0.01em" id="tm-title">NeuroBusiness™ für <em style="color:var(--gold);font-style:italic">Teams & Organisationen</em></h3>
+          <p style="font-size:15px;color:rgba(250,248,244,0.6);line-height:1.75;max-width:520px;margin-bottom:24px" id="tm-sub">Für Startup-Teams, Acceleratoren und Unternehmen, die Rollen, Zusammenarbeit, Kommunikation und blinde Flecken sichtbar machen wollen — bevor daraus Reibung, Fehlentscheidungen oder Erschöpfung entstehen.</p>
+          <ul style="list-style:none;padding:0;margin:0 0 28px;font-size:14px;color:rgba(250,248,244,0.7);line-height:1.9">
+            <li id="tm-b1">— Team-Psychotyp-Map</li>
+            <li id="tm-b2">— Rollen- & Kommunikationsprofil</li>
+            <li id="tm-b3">— Dashboard für Führung, HR oder Cohort-Management</li>
+          </ul>
+          <a href="/teams" class="btn-primary" id="tm-cta" style="background:var(--gold);color:var(--dark);display:inline-block">Team Intelligence ansehen →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COACHES FOOTNOTE — minimal, vor Footer -->
+<div id="fuer-coaches" style="background:var(--cream3);border-top:1px solid var(--border);padding:28px 40px">
+  <div class="section-inner">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <p id="coach-strip-text" style="font-size:14px;color:var(--text2);line-height:1.7;max-width:680px">
+        <span id="coach-strip-label" style="font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-right:12px">Für Professionals</span>
+        <span id="coach-strip-main">Du möchtest die NeuroBusiness™ Diagnostik in deiner Coaching-Praxis einsetzen, Workshops leiten oder selbst als NeuroBusiness Strategist ausgebildet werden?</span>
+      </p>
+      <a href="https://germaninstitute.eu/neurobusiness-practitioner" id="coach-strip-cta" style="font-size:14px;color:var(--gold2);text-decoration:none;white-space:nowrap;border-bottom:1px solid var(--gold-light);padding-bottom:2px;flex-shrink:0;transition:color .2s" onmouseover="this.style.color='var(--dark)'" onmouseout="this.style.color='var(--gold2)'">German Institute of Positive Psychology →</a>
+    </div>
+  </div>
+</div>
+
+<!-- AUDIENCE -->
+<section id="fuer-wen">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-up" id="aud-eyebrow">Für wen</div>
+    <h2 class="section-title fade-up" id="aud-title">Zwei Wege zu einem <em>stimmigen Business</em></h2>
+    <div class="audience-grid fade-up">
+      <div class="audience-card">
+        <div class="audience-badge" id="ab1">Quereinsteiger:innen in die Selbstständigkeit</div>
+        <div class="audience-title" id="at1">Du verlässt die Sicherheit — und weißt noch nicht, wer du als Unternehmer:in bist.</div>
+        <p class="audience-text" id="atext1">Du hattest ein gutes Gehalt, eine klare Rolle, Struktur. Jetzt bist du auf dich allein gestellt — und merkst, dass der Aufbau einer Selbstständigkeit sich fundamental anders anfühlt als angestellt zu sein.</p>
+        <ul class="audience-points" id="ap1">
+          <li>Du hast klare Expertise, aber noch keine Unternehmer:innen-Identität</li>
+          <li>Du kopierst Strategien von anderen — sie passen nicht zu dir</li>
+          <li>Du weißt nicht, welches Business-Modell wirklich zu dir passt</li>
+          <li>Du hast Abfindung oder Ersparnisse und willst sie klug investieren</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <div class="audience-badge" id="ab2">Etablierte Selbstständige</div>
+        <div class="audience-title" id="at2">Du bist schon unterwegs — aber irgendetwas läuft nicht so, wie es sollte.</div>
+        <p class="audience-text" id="atext2">Du arbeitest viel, lieferst Qualität — aber das Wachstum bleibt aus, die Energie auch. Du spürst, dass dein Modell nicht für deine Arbeitsweise gebaut ist.</p>
+        <ul class="audience-points" id="ap2">
+          <li>Dein Business läuft, aber es fühlt sich wie Gegenwind an</li>
+          <li>Du bist gut — aber dein Preis spiegelt das nicht wider</li>
+          <li>Deine Sichtbarkeits-Strategie laugt dich aus</li>
+          <li>Du weißt, du kannst mehr — aber nicht wie</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-up" id="test-eyebrow">Stimmen</div>
+    <h2 class="section-title fade-up" id="test-title">Was unsere Klient:innen <em>sagen</em></h2>
+    <div class="testimonials-grid fade-up">
+      <div class="testimonial-card">
+        <div class="testimonial-text" id="tt1">"Der Report hat in 10 Minuten erklärt, warum mein Business 3 Jahre lang gegen die Wand gelaufen ist. Ich habe ein Builder-Business geführt — als Strategin."</div>
+        <div class="testimonial-author" id="ta1">M.K., Strategy Consultant, London</div>
+        <div class="testimonial-type" id="ttype1">Psychotyp: The Strategist</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text" id="tt2">"Nach 18 Jahren Corporate war ich überzeugt, ich brauche besseres Marketing. NeuroBusiness hat mir gezeigt, dass ich das falsche Business-Modell hatte. Komplett."</div>
+        <div class="testimonial-author" id="ta2">S.B., Executive Coach, Dubai</div>
+        <div class="testimonial-type" id="ttype2">Psychotyp: The Connector</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text" id="tt3">"Die NeuroBusiness AI gibt mir jeden Montag konkrete Aufgaben, die zu mir passen. Nicht generisch — für meinen Psychotyp. Das ist der Unterschied zu allem anderen."</div>
+        <div class="testimonial-author" id="ta3">T.F., Brand Strategist, Berlin</div>
+        <div class="testimonial-type" id="ttype3">Psychotyp: The Visionary</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+
+<!-- 7-FRAGEN QUIZ -->
+<section class="quiz-section" id="quiz">
+  <div class="quiz-wrap">
+    <div style="text-align:center;margin-bottom:40px" class="fade-up">
+      <div class="section-eyebrow" id="quiz-eyebrow" style="justify-content:center;display:block">7-Fragen-Test</div>
+      <h2 class="section-title" id="quiz-title" style="margin-bottom:12px">Welcher Typ <em>bist du?</em></h2>
+      <p style="font-size:15px;color:var(--text2);max-width:480px;margin:0 auto;line-height:1.7" id="quiz-sub">7 Fragen · 90 Sekunden · Sofort-Ergebnis. Kostenlos.</p>
+    </div>
+    <div class="quiz-shell fade-up" id="quizShell">
+      <!-- PROGRESS -->
+      <div class="quiz-top" id="quizTop">
+        <div class="quiz-prog-label"><span id="qBlockLabel">Frage 1 von 7</span><span id="qPct">0%</span></div>
+        <div class="quiz-prog-bar"><div class="quiz-prog-fill" id="qProgFill" style="width:0%"></div></div>
+      </div>
+      <!-- QUESTION -->
+      <div class="quiz-q" id="quizQuestion"></div>
+      <!-- NAV -->
+      <div class="quiz-nav" id="quizNav">
+        <span class="quiz-nav-info" id="qNavInfo">90 Sekunden</span>
+        <button class="quiz-nav-btn" id="qNextBtn" onclick="quizNext()" disabled>Weiter →</button>
+      </div>
+
+      <!-- EMAIL GATE -->
+      <div class="quiz-gate" id="quizGate">
+        <div class="quiz-result-teaser">
+          <div class="quiz-result-teaser-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <div class="quiz-result-teaser-text" id="gate-teaser">Dein Ergebnis ist bereit — <strong>wir haben deinen Psychotyp identifiziert.</strong> Gib deine Daten ein, um dein vollständiges Profil zu sehen.</div>
+        </div>
+        <div class="quiz-gate-icon">📊</div>
+        <div class="quiz-gate-title" id="gate-title">Dein NeuroBusiness<br>Psychotyp ist bereit.</div>
+        <div class="quiz-gate-sub" id="gate-sub">Erhalte dein kostenloses Psychotyp-Profil — mit deiner Superkraft, Blindstelle und deinem natürlichen Business-Modell. Kein Spam.</div>
+        <div class="quiz-gate-fields">
+          <input class="quiz-gate-input" id="gate-name" type="text" placeholder="Dein Vorname" autocomplete="given-name">
+          <input class="quiz-gate-input" id="gate-email" type="email" placeholder="deine@email.com" autocomplete="email">
+          <input class="quiz-gate-input" id="gate-whatsapp" type="tel" placeholder="WhatsApp-Nummer (optional, z.B. +49 170 …)" autocomplete="tel">
+        </div>
+        <label id="gate-consent-wrap" style="display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;cursor:pointer">
+          <input type="checkbox" id="gate-consent" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--dark);cursor:pointer">
+          <span id="gate-consent-text" style="font-size:12px;color:var(--text2);line-height:1.6">Ja, schick mir mein Ergebnis an diese E-Mail und informiere mich über NeuroBusiness-Inhalte &amp; Angebote. Abmeldung jederzeit möglich. (<a href="#" onclick="openLegal('datenschutzOverlay');return false;" style="color:var(--text2)">Datenschutz</a>)</span>
+        </label>
+        <button class="quiz-gate-btn" id="gate-submit-btn" onclick="submitGate()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span id="gate-btn-text">Ergebnis per E-Mail erhalten →</span>
+        </button>
+        <div class="quiz-gate-privacy" id="gate-privacy">🔒 Deine Daten sind sicher. Wir geben sie nicht an Dritte weiter. Jederzeit abmeldbar.</div>
+      </div>
+      <!-- RESULT -->
+      <div class="quiz-result" id="quizResult"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="cta-full">
+  <div class="cta-inner">
+    <div class="section-eyebrow" style="text-align:center" id="cta-eyebrow">Jetzt starten</div>
+    <h2 class="cta-title fade-up" id="cta-title">Finde deinen<br><em>NeuroBusiness-Psychotyp.</em></h2>
+    <p class="cta-sub fade-up" id="cta-sub">Beginne mit dem kostenlosen 7-Fragen-Test — oder starte direkt mit der vollständigen Diagnostik.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap" class="fade-up">
+      <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" class="btn-primary" id="cta-btn1">Meinen Typ in 90 Sekunden finden</button>
+      <button onclick="openModal('modalDiagnostik')" class="btn-outline" id="cta-btn2">Vollständige Diagnostik</button>
+    </div>
+    <div style="margin-top:40px;padding-top:40px;border-top:1px solid var(--border)" class="fade-up">
+      <p style="font-size:13px;color:var(--text3);text-align:center" id="cta-note">Entwickelt von Eva Kolontai · Diplom-Psychologin & NeuroBusiness Strategist · Berlin</p>
+    </div>
+  </div>
+</section>
+
+<!-- OPT-IN / NEWSLETTER -->
+<section style="background:var(--cream2);padding:64px 24px">
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;align-items:center">
+    <div>
+      <div class="section-eyebrow" id="optin-eyebrow" style="color:var(--gold)">Newsletter</div>
+      <h2 class="fade-up" id="optin-title" style="font-family:var(--font-display);font-size:30px;font-weight:400;color:var(--dark);line-height:1.2;margin:8px 0 12px">NeuroBusiness-Impulse erhalten</h2>
+      <p class="fade-up" id="optin-sub" style="font-size:15px;color:var(--text2);line-height:1.7;max-width:380px">Impulse zu Business-Psychotypen, mentaler Leistungsfähigkeit und gesundem Wachstum — direkt in dein Postfach. Jederzeit abbestellbar.</p>
+    </div>
+    <form id="nbOptin" onsubmit="return nbOptinSubmit(event)" style="max-width:440px">
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <input type="email" id="nbOptinEmail" required placeholder="name@email.com" style="flex:1;min-width:200px;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:#fff;font-size:15px;color:var(--dark);outline:none">
+        <button type="submit" id="optin-btn" style="background:var(--dark);color:#fff;border:none;border-radius:10px;padding:13px 24px;font-size:15px;font-weight:500;cursor:pointer">Eintragen</button>
+      </div>
+      <label style="display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:12px;color:var(--text2);line-height:1.5;cursor:pointer">
+        <input type="checkbox" id="nbOptinConsent" required style="margin-top:3px;flex-shrink:0">
+        <span id="optin-consent">Ja, ich möchte Impulse per E-Mail erhalten. Jederzeit abbestellbar. Es gilt die Datenschutzerklärung.</span>
+      </label>
+      <p id="nbOptinMsg" style="display:none;font-size:13px;color:var(--gold);margin-top:10px;line-height:1.6"></p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="kontakt">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <div class="section-eyebrow" id="c-eyebrow">Kontakt</div>
+      <h2 class="section-title" id="c-title">Lass uns<br><em>sprechen.</em></h2>
+      <p id="c-text">Du hast Fragen zum Programm oder bist bereit loszulegen? Wir antworten innerhalb von 24 Stunden.</p>
+      <div class="contact-info-row">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="contact-info-text">hello@neurobusiness.one</div>
+      </div>
+      <div class="contact-info-row">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div class="contact-info-text">Berlin · London · Dubai</div>
+      </div>
+      <div style="margin-top:24px">
+        <a href="https://wa.me/4915565695582?text=Hi%20Eva%2C%20ich%20interessiere%20mich%20f%C3%BCr%20NeuroBusiness%E2%84%A2" 
+           class="wa-contact-btn" target="_blank" rel="noopener" id="c-wa-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span id="c-wa-text">WhatsApp schreiben</span>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label class="form-label" id="f-name-label">Name</label>
+          <input class="form-input" id="f-name" type="text" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" id="f-email-label">E-Mail</label>
+          <input class="form-input" id="f-email" type="email" placeholder="deine@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" id="f-interest-label">Interesse</label>
+          <select class="form-input form-select" id="f-interest">
+            <option value="" id="f-opt-placeholder">Bitte wählen...</option>
+            <option value="solo" id="f-opt0">Solo Report (147 €)</option>
+            <option value="diagnostik" id="f-opt1">Diagnostik + NeuroBusiness AI (490 €)</option>
+            <option value="core" id="f-opt2">12-Wochen Transformation (4.990 €)</option>
+            <option value="teams" id="f-opt3">Team Intelligence (Anfrage)</option>
+            <option value="frage" id="f-opt4">Allgemeine Frage</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" id="f-msg-label">Nachricht</label>
+          <textarea class="form-input form-textarea" id="f-msg" placeholder="Wie können wir dir helfen?"></textarea>
+        </div>
+        <button class="form-submit" id="f-submit" onclick="submitForm()">
+          <span id="f-submit-text">Nachricht senden →</span>
+        </button>
+        <div class="form-success" id="f-success">✓ Nachricht gesendet — wir melden uns innerhalb von 24 Stunden.</div>
+        <div class="form-error" id="f-error">Fehler beim Senden. Bitte versuche es erneut oder schreibe per WhatsApp.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">NeuroBusiness<em>™</em></div>
+      <p class="footer-desc" id="footer-desc">Neuropsychologische Business-Diagnostik für selbstständige Expert:innen. Berlin · London · Dubai. Entwickelt von Eva Kolontai, Diplom-Psychologin & NeuroBusiness Strategist.</p>
+    </div>
+    <div>
+      <div class="footer-col-title" id="fc1-title">Produkte</div>
+      <ul class="footer-links">
+        <li><a href="#produkte" id="fl1">NeuroBusiness™ Strategist</a></li>
+        <li><a href="/teams" id="fl2">Für Teams</a></li>
+        <li><a href="#core-programme" id="fl3">12-Wochen Transformation</a></li>
+        <li><a href="#quiz" id="fl4">7-Fragen-Test</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" id="fc2-title">Kontakt</div>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@neurobusiness.one">hello@neurobusiness.one</a></li>
+        <li><a href="https://zeeg.me/evak/15min" id="fl5">Strategiegespräch</a></li>
+        <li><a href="https://linkedin.com/in/coach-eva">LinkedIn</a></li>
+        <li><a href="https://instagram.com/eva.kolontai">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span id="footer-copy">© 2026 NeuroBusiness™ · neurobusiness.one</span>
+    <span><a href="#" onclick="openLegal('impressumOverlay');return false;" style="color:rgba(250,248,244,0.35);text-decoration:none;transition:color .15s" onmouseover="this.style.color='rgba(250,248,244,0.7)'" onmouseout="this.style.color='rgba(250,248,244,0.35)'" id="footer-impressum">Impressum</a> · <a href="#" onclick="openLegal('datenschutzOverlay');return false;" style="color:rgba(250,248,244,0.35);text-decoration:none;transition:color .15s" onmouseover="this.style.color='rgba(250,248,244,0.7)'" onmouseout="this.style.color='rgba(250,248,244,0.35)'" id="footer-datenschutz">Datenschutz</a></span>
+  </div>
+</footer>
+
+<script>
+// ── BREVO: lazy load nach Nutzeraktion ──
+let _brevoReady = false;
+function initBrevo() {
+  if (_brevoReady) return;
+  _brevoReady = true;
+  window.Brevo = window.Brevo || [];
+  window.Brevo.push(["init", { client_key: "1zabutdb8zbhdqvuly1n0jz1" }]);
+  const s = document.createElement('script');
+  s.src = 'https://cdn.brevo.com/js/sdk-loader.js';
+  s.async = true;
+  document.head.appendChild(s);
+}
+
+// ── TRANSLATIONS ──
+const T = {
+  de: {
+    'nav-products': 'Produkte', 'nav-types': 'Psychotypen', 'nav-teams': 'Für Teams',
+    'nav-coaches': 'Für Coaches', 'nav-contact': 'Kontakt',
+    'coach-strip-label': 'Für Professionals', 'coach-strip-main': 'Du möchtest die NeuroBusiness™ Diagnostik in deiner Coaching-Praxis einsetzen, Workshops leiten oder selbst als NeuroBusiness Strategist ausgebildet werden?', 'coach-strip-cta': 'German Institute of Positive Psychology →',
+    'nav-cta': 'Jetzt starten',
+    'strip-text': '<em>Welcher Psychotyp bist du?</em> \u2014 Mach den kostenlosen 7-Fragen-Test',
+    'strip-btn': 'Test machen',
+    'hero-eyebrow': 'Business-Diagnostik für Selbstständige',
+    'hero-sub': 'Für Coaches, Berater:innen und selbstständige Expert:innen, die fachlich stark sind \u2014 aber merken, dass ihr Business-Modell, ihre Sichtbarkeit und ihr Wachstum sie mehr Energie kosten, als sie sollten.',
+    'hero-cta1': 'Meinen Business-Fit analysieren', 'hero-cta2': 'Wie es funktioniert',
+    'prob-eyebrow': 'Das Problem',
+    'prob-title': 'Du scheiterst nicht, weil du<br><em>nicht gut genug bist.</em>',
+    'prob-sub': 'Du scheiterst, weil du Strategien kopierst, die für einen anderen Gehirntyp gebaut sind.',
+    'pi1t': 'Chronischer innerer Widerstand', 'pi1d': 'Dein Business läuft, aber es fühlt sich wie permanenter Gegenwind an. Nicht wegen mangelnder Disziplin \u2014 wegen strukturellem Mismatch.',
+    'pi2t': 'Kopierte Strategien, die nicht passen',
+    'pi2d': 'Du postest täglich auf Instagram, weil alle sagen, du musst. Für eine:n Strateg:in ist das neuropsychologisch falsch ausgerichtet.',
+    'pi3t': 'Erschöpfung trotz Erfolg', 'pi3d': 'Du lieferst hervorragende Ergebnisse \u2014 aber zu einem Preis, der dich innerlich auslaugt. Das ist kein Burnout-Problem. Das ist ein Alignment-Problem.',
+    'how-eyebrow': 'Wie es funktioniert',
+    'how-title': 'Drei Schritte zu deinem<br><em>stimmigen Business</em>',
+    's1t': 'Diagnostik', 's1d': '50 psychologisch fundierte Fragen entlang 5 Business-relevanter Dimensionen bestimmen deinen NeuroBusiness-Psychotyp. Vollständiger Report in wenigen Minuten \u2014 automatisch.',
+    's2t': 'Verstehen', 's2d': 'Dein Report zeigt genau, warum dein Business bisher nicht optimal läuft \u2014 und welches Business-Modell, welche Sichtbarkeitsstrategie und welcher Arbeitsstil zu deinem Typ passen.',
+    's3t': 'NeuroBusiness AI', 's3d': 'Die NeuroBusiness AI begleitet dich täglich: Wochen-Agenda, Business-Brainstorming, Entscheidungs-Helfer \u2014 alles psychotyp-spezifisch für dich.',
+    'types-eyebrow': 'Die 5 Psychotypen', 'types-title': 'Welcher Typ bist <em>du?</em>',
+    'types-sub': 'Jeder Psychotyp hat ein natürliches Business-Modell, einen natürlichen Sichtbarkeitsstil und natürliche Stärken. Der Test zeigt dir, welcher du bist.',
+    'tn1': 'The Strategist', 'td1': 'Analytische Tiefe, Systemdenken, Expertise-Autorität. Denkt, bevor er handelt.',
+    'tn2': 'The Visionary', 'td2': 'Innovation, Mustererkennung, Inspirationskraft. Sieht, was noch nicht existiert.',
+    'tn3': 'The Builder', 'td3': 'Umsetzung, Tempo, Direktheit. Während andere analysieren, hat er die erste Version.',
+    'tn4': 'The Connector', 'td4': 'Beziehungen, Vertrauen, Community. Menschen vertrauen auf eine Art, für die andere Jahre brauchen.',
+    'tn5': 'The High Performer', 'td5': 'Exzellenz, Qualität, Disziplin. Liefert auf einem Niveau, das die meisten nicht erreichen.',
+    'types-cta': 'Meinen Typ finden',
+    'prod-eyebrow': 'Unsere Produkte', 'prod-title': 'Für jeden Schritt der <em>richtigen</em> Strategie',
+    'pb0': 'NeuroBusiness™ Diagnostik', 'pn0': 'Solo<br>Report', 'pt0': 'Für selbstständige Expert:innen, die verstehen wollen, warum ihr Business sich schwerer anfühlt, als es sollte.',
+    'pp0': '147 €', 'ppn0': 'Einmalig · zzgl. MwSt. · Kein Abo', 'pcta0': 'Meinen Report bestellen',
+    'pb1': 'NeuroBusiness™ Strategist', 'pn1': 'Diagnostik<br>+ NeuroBusiness AI',
+    'pt1': 'Für Selbstständige, die nicht nur wissen wollen, welcher Typ sie sind \u2014 sondern ihre Entscheidungen typgerecht ausrichten wollen.',
+    'pp1': '490 €',
+    'ppn1': '12 Monate NeuroBusiness AI inklusive · danach 49 €/Monat · zzgl. MwSt.', 'pcta1': 'Mein typgerechtes System starten',
+    'cp-badge': 'Core Programme', 'cp-title': '12-Wochen NeuroBusiness™ Transformation',
+    'cp-desc': 'Das intensive 1:1- und Gruppen-Coaching-Programm für Selbstständige, die ihr Business grundlegend neu ausrichten wollen.',
+    'cp-note': '12 Wochen · Hybrid · Zoom · zzgl. MwSt.', 'cp-cta': 'Strategiegespräch buchen',
+    'aud-eyebrow': 'Für wen', 'aud-title': 'Zwei Wege zu einem <em>stimmigen Business</em>',
+    'ab1': 'Quereinsteiger:innen in die Selbstständigkeit', 'at1': 'Du verlässt die Sicherheit \u2014 und weißt noch nicht, wer du als Unternehmer:in bist.',
+    'atext1': 'Du hattest ein gutes Gehalt, eine klare Rolle, Struktur. Jetzt bist du auf dich allein gestellt \u2014 und merkst, dass der Aufbau einer Selbstständigkeit sich fundamental anders anfühlt als angestellt zu sein.',
+    'ab2': 'Etablierte Selbstständige', 'at2': 'Du bist schon unterwegs \u2014 aber irgendetwas läuft nicht so, wie es sollte.',
+    'atext2': 'Du arbeitest viel, lieferst Qualität \u2014 aber das Wachstum bleibt aus, die Energie auch. Du spürst, dass dein Modell nicht für deine Arbeitsweise gebaut ist.',
+    'test-eyebrow': 'Stimmen', 'test-title': 'Was unsere Klient:innen <em>sagen</em>',
+    'tt1': '"Der Report hat in 10 Minuten erklärt, warum mein Business 3 Jahre lang gegen die Wand gelaufen ist. Ich habe ein Builder-Business geführt \u2014 als Strategin."',
+    'tt2': '"Nach 18 Jahren Corporate war ich überzeugt, ich brauche besseres Marketing. NeuroBusiness hat mir gezeigt, dass ich das falsche Business-Modell hatte. Komplett."',
+    'tt3': '"Die NeuroBusiness AI gibt mir jeden Montag konkrete Aufgaben, die zu mir passen. Nicht generisch \u2014 für meinen Psychotyp. Das ist der Unterschied zu allem anderen."',
+    'quiz-eyebrow': '7-Fragen-Test',
+    'quiz-title': 'Welcher Typ <em>bist du?</em>',
+    'quiz-sub': '7 Fragen · 90 Sekunden · Sofort-Ergebnis. Kostenlos.',
+    'cta-eyebrow': 'Jetzt starten', 'cta-title': 'Finde deinen<br><em>NeuroBusiness-Psychotyp.</em>',
+    'cta-sub': 'Beginne mit dem kostenlosen 7-Fragen-Test \u2014 oder starte direkt mit der vollständigen Diagnostik.',
+    'cta-btn1': 'Meinen Typ in 90 Sekunden finden', 'cta-btn2': 'Vollständige Diagnostik',
+    'cta-note': 'Entwickelt von Eva Kolontai · Diplom-Psychologin & NeuroBusiness Strategist · Berlin',
+    'footer-desc': 'Neuropsychologische Business-Diagnostik für selbstständige Expert:innen. Berlin · London · Dubai. Entwickelt von Eva Kolontai, Diplom-Psychologin & NeuroBusiness Strategist.',
+    'fc1-title': 'Produkte', 'fc2-title': 'Kontakt',
+    'fl1': 'NeuroBusiness™ Strategist', 'fl2': 'Für Teams',
+    'fl3': '12-Wochen Transformation', 'fl4': '7-Fragen-Test', 'fl5': 'Strategiegespräch',
+    'footer-copy': '© 2026 NeuroBusiness™ · neurobusiness.one',
+    'ap1': ['Du hast klare Expertise, aber noch keine Unternehmer:innen-Identität', 'Du kopierst Strategien von anderen \u2014 sie passen nicht zu dir', 'Du weißt nicht, welches Business-Modell wirklich zu dir passt', 'Du hast Abfindung oder Ersparnisse und willst sie klug investieren'],
+    'ap2': ['Dein Business läuft, aber es fühlt sich wie Gegenwind an', 'Du bist gut \u2014 aber dein Preis spiegelt das nicht wider', 'Deine Sichtbarkeits-Strategie laugt dich aus', 'Du weißt, du kannst mehr \u2014 aber nicht wie'],
+    'pf1': ['Alles aus Solo Report', '12 Monate NeuroBusiness AI inklusive', 'Psychotyp-spezifische Wochen-Agenda jeden Montag', 'Business-Brainstorming & Entscheidungs-Helfer', 'NeuroBusiness AI mit Gedächtnis \u2014 kennt deinen Typ', 'Nach 12 Monaten: 49 €/Monat, jederzeit kündbar'],
+    'ta1': 'M.K., Strategy Consultant, London', 'ta2': 'S.B., Executive Coach, Dubai', 'ta3': 'T.F., Brand Strategist, Berlin',
+    'ttype1': 'Psychotyp: The Strategist', 'ttype2': 'Psychotyp: The Connector', 'ttype3': 'Psychotyp: The Visionary',
+    'tm-eyebrow': 'Für Teams & Organisationen',
+    'tm-title': 'NeuroBusiness™ für <em style="color:var(--gold);font-style:italic">Teams & Organisationen</em>',
+    'tm-sub': 'Für Startup-Teams, Acceleratoren und Unternehmen, die Rollen, Zusammenarbeit, Kommunikation und blinde Flecken sichtbar machen wollen \u2014 bevor daraus Reibung, Fehlentscheidungen oder Erschöpfung entstehen.',
+    'tm-b1': '\u2014 Team-Psychotyp-Map',
+    'tm-b2': '\u2014 Rollen- & Kommunikationsprofil',
+    'tm-b3': '\u2014 Dashboard für Führung, HR oder Cohort-Management',
+    'tm-cta': 'Team Intelligence ansehen →',
+    'optin-eyebrow': 'Newsletter', 'optin-title': 'NeuroBusiness-Impulse erhalten', 'optin-sub': 'Impulse zu Business-Psychotypen, mentaler Leistungsfähigkeit und gesundem Wachstum \u2014 direkt in dein Postfach. Jederzeit abbestellbar.',
+    'optin-btn': 'Eintragen', 'optin-consent': 'Ja, ich möchte Impulse per E-Mail erhalten. Jederzeit abbestellbar. Es gilt die Datenschutzerklärung.',
+    'hero-title': 'Nicht jedes<br>Business passt<br>zu <em>jedem Gehirn.</em>',
+    'rp-eyebrow': 'Report-Vorschau',
+    'rp-title': 'So sieht dein <em>Report aus</em>',
+    'rp-text': 'Nach dem 50-Fragen-Test erhältst du deinen vollständigen NeuroBusiness Report sofort \u2014 kein Warten, kein Call nötig.',
+    'rp-c1': 'Psychotyp-Identifikation mit Primär- und Sekundärtyp',
+    'rp-c2': '5-Dimensionen-Profil als visuelle Darstellung',
+    'rp-c3': 'Strukturanalyse \u2014 warum dein Business bisher nicht optimal läuft',
+    'rp-c4': 'Dein natürliches Business-Modell und deine Sichtbarkeitsstrategie',
+    'rp-c5': 'Burnout-Risiko-Analyse basierend auf dem D5-Score',
+    'rp-c6': '3 konkrete nächste Schritte zur sofortigen Umsetzung',
+    'rp-cta': 'Meinen Report jetzt erhalten',
+  },
+  en: {
+    'nav-products': 'Products', 'nav-types': 'Psychotypes', 'nav-teams': 'For Teams',
+    'nav-coaches': 'For Coaches', 'nav-contact': 'Contact',
+    'coach-strip-label': 'For professionals', 'coach-strip-main': 'You want to apply NeuroBusiness™ diagnostics in your coaching practice, run workshops, or train as a NeuroBusiness Strategist yourself?', 'coach-strip-cta': 'German Institute of Positive Psychology →',
+    'nav-cta': 'Get started',
+    'strip-text': '<em>What\'s your psychotype?</em> \u2014 Take the free 7-question test',
+    'strip-btn': 'Take test',
+    'hero-eyebrow': 'Business Diagnostics for Independent Professionals',
+    'hero-sub': 'For coaches, consultants and independent experts who deliver excellent work \u2014 but feel their business model, visibility and growth strategy are draining more energy than they should.',
+    'hero-cta1': 'Analyse my business fit', 'hero-cta2': 'How it works',
+    'prob-eyebrow': 'The problem',
+    'prob-title': 'You\'re not failing because you lack<br><em>drive or talent.</em>',
+    'prob-sub': 'You are failing because you are copying strategies built for a different brain type.',
+    'pi1t': 'Chronic inner resistance', 'pi1d': 'Your business runs, but it feels like permanent headwinds. Not from lack of discipline \u2014 from structural mismatch.',
+    'pi2t': 'Copied strategies that do not fit',
+    'pi2d': "You post daily on Instagram because everyone says you must. For a Strategist, that's neuropsychologically misaligned.",
+    'pi3t': 'Exhaustion despite success', 'pi3d': 'You deliver excellent results \u2014 but at a price that drains you internally. This isn\'t a burnout problem. It\'s an alignment problem.',
+    'how-eyebrow': 'How it works',
+    'how-title': 'Three steps to your<br><em>aligned business</em>',
+    's1t': 'Diagnostics', 's1d': '50 psychology-based questions across 5 business-relevant dimensions determine your NeuroBusiness Psychotype. Full report in minutes \u2014 automatic.',
+    's2t': 'Understanding', 's2d': 'Your report shows exactly why your business hasn\'t been running optimally \u2014 and which business model, visibility strategy and approach fits your type.',
+    's3t': 'NeuroBusiness AI', 's3d': 'The NeuroBusiness AI accompanies you daily: weekly agenda, business brainstorming, decision helper \u2014 all psychotype-specific for you.',
+    'types-eyebrow': 'The 5 psychotypes', 'types-title': 'Which type are <em>you?</em>',
+    'types-sub': 'Every psychotype has a natural business model, a natural visibility style and natural strengths. The test shows you which one you are.',
+    'tn1': 'The Strategist', 'td1': 'Analytical depth, systems thinking, expertise authority. Thinks before acting.',
+    'tn2': 'The Visionary', 'td2': 'Innovation, pattern recognition, inspirational power. Sees what does not yet exist.',
+    'tn3': 'The Builder', 'td3': 'Execution, speed, directness. While others analyse, they already have the first version.',
+    'tn4': 'The Connector', 'td4': 'Relationships, trust, community. People trust them in a way that takes others years to build.',
+    'tn5': 'The High Performer', 'td5': 'Excellence, quality, discipline. Delivers at a level most cannot reach.',
+    'types-cta': 'Find my type',
+    'prod-eyebrow': 'Our products', 'prod-title': 'For every step of the <em>right</em> strategy',
+    'pb0': 'NeuroBusiness™ Diagnostic', 'pn0': 'Solo<br>Report', 'pt0': 'For independent experts who want to understand why their business feels harder than it should.',
+    'pp0': '147 €', 'ppn0': 'One-time · excl. VAT · No subscription', 'pcta0': 'Order my report',
+    'pb1': 'NeuroBusiness™ Strategist', 'pn1': 'Diagnostics<br>+ NeuroBusiness AI',
+    'pt1': 'For independents who want not just to know their type \u2014 but to align their decisions with it.',
+    'pp1': '490 €',
+    'ppn1': '12 months NeuroBusiness AI included · then 49 €/month · excl. VAT', 'pcta1': 'Start my aligned system',
+    'cp-badge': 'Core Programme', 'cp-title': '12-Week NeuroBusiness™ Transformation',
+    'cp-desc': 'The intensive 1:1 + group coaching programme for independent professionals who want to fundamentally realign their business.',
+    'cp-note': '12 weeks · Hybrid · Zoom · excl. VAT', 'cp-cta': 'Book strategy call',
+    'aud-eyebrow': 'Who it\'s for', 'aud-title': 'Two paths to an <em>aligned business</em>',
+    'ab1': 'Corporate Professionals Going Independent', 'at1': 'You\'re leaving security \u2014 and don\'t yet know who you are as an entrepreneur.',
+    'atext1': 'You had the title, the salary, the structure. Now you\'re independent \u2014 and discovering that building a business feels fundamentally different from being employed.',
+    'ab2': 'Established Independent Professionals', 'at2': 'You\'re already on the path \u2014 but something isn\'t working as it should.',
+    'atext2': 'You work hard, deliver exceptional quality. But growth has plateaued, energy is draining, and you sense the model isn\'t built for how you actually operate.',
+    'test-eyebrow': 'Voices', 'test-title': 'What our clients <em>say</em>',
+    'tt1': '"The report explained in 10 minutes why my business had been running into a wall for 3 years. I was running a Builder business \u2014 as a Strategist."',
+    'tt2': '"After 18 years in corporate I was convinced I needed better marketing. NeuroBusiness showed me I had the wrong business model. Entirely."',
+    'tt3': '"The NeuroBusiness AI gives me concrete tasks every Monday that fit me. Not generic \u2014 for my psychotype. That\'s the difference from everything else."',
+    'quiz-eyebrow': '7-Question Test',
+    'quiz-title': 'Which type <em>are you?</em>',
+    'quiz-sub': '7 questions · 90 seconds · Instant result. Free.',
+    'cta-eyebrow': 'Get started', 'cta-title': 'Find your<br><em>NeuroBusiness Psychotype.</em>',
+    'cta-sub': 'Start with the free 7-question test \u2014 or go straight to the full diagnostic.',
+    'cta-btn1': 'Find my type in 90 seconds', 'cta-btn2': 'Full diagnostics',
+    'cta-note': 'Developed by Eva Kolontai · Diplom-Psychologin & NeuroBusiness Strategist · Berlin',
+    'footer-desc': 'Neuropsychological business diagnostics for independent professionals. Berlin · London · Dubai. Developed by Eva Kolontai, Diplom-Psychologin & NeuroBusiness Strategist.',
+    'fc1-title': 'Products', 'fc2-title': 'Contact',
+    'fl1': 'NeuroBusiness™ Strategist', 'fl2': 'For Teams',
+    'fl3': '12-Week Transformation', 'fl4': '7-Question Test', 'fl5': 'Strategy call',
+    'footer-copy': '© 2026 NeuroBusiness™ · neurobusiness.one',
+    'ap1': ['You have clear expertise but no entrepreneurial identity', 'You copy strategies from others \u2014 they don\'t fit you', 'You don\'t know which business model truly suits you', 'You have savings or a settlement and want to invest wisely'],
+    'ap2': ['Your business runs, but it feels like headwinds', 'You\'re good \u2014 but your pricing doesn\'t reflect that', 'Your visibility strategy exhausts you', 'You know you can do more \u2014 but not how'],
+    'pf1': ['Everything in Solo Report','12 months NeuroBusiness AI included','Psychotype-specific weekly agenda every Monday','Business brainstorming & decision helper','NeuroBusiness AI with memory \u2014 knows your type','After 12 months: 49 €/month, cancel anytime'],
+    'ta1': 'M.K., Strategy Consultant, London', 'ta2': 'S.B., Executive Coach, Dubai', 'ta3': 'T.F., Brand Strategist, Berlin',
+    'ttype1': 'Psychotype: The Strategist', 'ttype2': 'Psychotype: The Connector', 'ttype3': 'Psychotype: The Visionary',
+    'tm-eyebrow': 'For Teams & Organizations',
+    'tm-title': 'NeuroBusiness™ for <em style="color:var(--gold);font-style:italic">Teams & Organizations</em>',
+    'tm-sub': 'For startup teams, accelerators and companies that want to make roles, collaboration, communication and collective blind spots visible \u2014 before they turn into friction, bad decisions or burnout.',
+    'tm-b1': '\u2014 Team Psychotype Map',
+    'tm-b2': '\u2014 Role & Communication Profile',
+    'tm-b3': '\u2014 Dashboard for Leadership, HR or Cohort Management',
+    'tm-cta': 'Explore Team Intelligence →',
+    'optin-eyebrow': 'Newsletter', 'optin-title': 'Get NeuroBusiness insights', 'optin-sub': 'Insights on business psychotypes, mental performance and healthy growth \u2014 straight to your inbox. Unsubscribe anytime.',
+    'optin-btn': 'Subscribe', 'optin-consent': 'Yes, I would like to receive insights by email. Unsubscribe anytime. The privacy policy applies.',
+    'hero-title': 'Not every<br>business fits<br><em>every brain.</em>',
+    'rp-eyebrow': 'Report Preview',
+    'rp-title': 'What your <em>report looks like</em>',
+    'rp-text': 'After the 50-question test you receive your full NeuroBusiness Report instantly \u2014 no waiting, no call needed.',
+    'rp-c1': 'Psychotype identification with primary and secondary type',
+    'rp-c2': '5-dimension profile as a visual representation',
+    'rp-c3': 'Structural analysis \u2014 why your business has not been running optimally',
+    'rp-c4': 'Your natural business model and visibility strategy',
+    'rp-c5': 'Burnout risk analysis based on D5 score',
+    'rp-c6': '3 concrete next steps for immediate implementation',
+    'rp-cta': 'Get my report now',
+  }
+};
+
+let lang = 'de';
+
+function setLang(l) {
+  lang = l;
+  document.getElementById('lsDE').classList.toggle('active', l === 'de');
+  document.getElementById('lsEN').classList.toggle('active', l === 'en');
+  document.documentElement.lang = l;
+  document.body.style.opacity = '1';
+  const t = T[l];
+  Object.keys(t).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const val = t[id];
+    if (Array.isArray(val)) {
+      el.innerHTML = val.map(v => `<li>${v}</li>`).join('');
+    } else {
+      el.innerHTML = val;
+    }
+  });
+  // Apply all sub-translations
+  if (typeof applyModalTranslations === 'function') applyModalTranslations();
+  if (typeof applyContactTranslations === 'function') applyContactTranslations();
+  if (typeof quizInit === 'function') quizInit();
+}
+
+
+// CONTACT FORM
+async function submitForm() {
+  initBrevo();
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const interest = document.getElementById('f-interest').value;
+  const msg = document.getElementById('f-msg').value.trim();
+  
+  if (!name || !email || !msg) {
+    document.getElementById('f-error').style.display = 'block';
+    document.getElementById('f-error').textContent = lang === 'de' 
+      ? 'Bitte fülle alle Pflichtfelder aus.' 
+      : 'Please fill in all required fields.';
+    return;
+  }
+  
+  const btn = document.getElementById('f-submit');
+  btn.disabled = true;
+  document.getElementById('f-submit-text').textContent = lang === 'de' ? 'Wird gesendet...' : 'Sending...';
+  document.getElementById('f-error').style.display = 'none';
+
+  // Brevo: Kontakt identifizieren & Anfrage tracken
+  try {
+    if (window.Brevo) {
+      window.Brevo.push(["identify", { identifiers: { email_id: email }, attributes: { VORNAME: name, INTERESSE: interest, QUELLE: 'Kontaktformular neurobusiness.one', SPRACHE: lang } }]);
+      window.Brevo.push(["track", "contact_form_submitted", { interest: interest }]);
+    }
+  } catch(e){}
+  
+  // Send via WhatsApp as fallback (opens WhatsApp with pre-filled message)
+  const waMsg = encodeURIComponent(
+    `Neue Anfrage von ${name} (${email})\nInteresse: ${interest}\nNachricht: ${msg}`
+  );
+  
+  // Try mailto as primary
+  const mailBody = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\nInteresse: ${interest}\n\nNachricht:\n${msg}`);
+  const mailSubject = encodeURIComponent('NeuroBusiness™ Anfrage \u2014 ' + interest);
+  
+  window.location.href = `mailto:hello@neurobusiness.one?subject=${mailSubject}&body=${mailBody}`;
+  
+  setTimeout(() => {
+    document.getElementById('f-success').style.display = 'block';
+    document.getElementById('f-success').textContent = lang === 'de'
+      ? '✓ E-Mail-Client geöffnet \u2014 bitte sende die E-Mail ab. Alternativ via WhatsApp.'
+      : '✓ Email client opened \u2014 please send the email. Alternatively via WhatsApp.';
+    btn.disabled = false;
+    document.getElementById('f-submit-text').textContent = lang === 'de' ? 'Nachricht senden →' : 'Send message →';
+  }, 1000);
+}
+
+
+// ── 7-FRAGEN QUIZ ──
+const QUIZ = {
+  de: [
+    {
+      q: "Wenn du an dein Business denkst, was fühlt sich am schwersten an?",
+      opts: [
+        {t:"Ich weiß nicht genau, WEM ich wirklich helfe.", type:'V'},
+        {t:"Ich tue mich schwer, mich so laut zu zeigen wie andere.", type:'S'},
+        {t:"Ich plane zu viel, komme aber nicht ins schnelle Tun.", type:'G'},
+        {t:"Ich verkaufe mich oft unter Wert.", type:'C'},
+        {t:"Ich will einfach Ergebnisse, aber etwas hält mich zurück.", type:'M'}
+      ]
+    },
+    {
+      q: "Wie triffst du wichtige Business-Entscheidungen?",
+      opts: [
+        {t:"Ich analysiere alle Daten, bis ich sicher bin.", type:'S'},
+        {t:"Ich höre auf mein Bauchgefühl und meine Vision.", type:'V'},
+        {t:"Ich probiere es einfach aus und korrigiere den Kurs.", type:'M'},
+        {t:"Ich frage erst mein Netzwerk oder suche den Austausch.", type:'C'},
+        {t:"Ich grüble lange, weil ich keine Fehler machen will.", type:'G'}
+      ]
+    },
+    {
+      q: "Was gibt dir im Arbeitsalltag am meisten Energie?",
+      opts: [
+        {t:"Tiefe, fokussierte Arbeit ohne Ablenkung.", type:'S'},
+        {t:"Inspiration durch neue, große Ideen.", type:'V'},
+        {t:"Schnelle Ergebnisse und sichtbare Fortschritte.", type:'M'},
+        {t:"Austausch mit Menschen, die ich unterstützen kann.", type:'C'},
+        {t:"Das Gefühl, alles im Griff zu haben.", type:'G'}
+      ]
+    },
+    {
+      q: "Wie gehst du mit Widerstand oder Kritik um?",
+      opts: [
+        {t:"Ich ziehe mich zurück und reflektiere lange.", type:'S'},
+        {t:"Ich werde kreativ und finde einen ganz neuen Weg.", type:'V'},
+        {t:"Ich bleibe hartnäckig und arbeite einfach härter.", type:'M'},
+        {t:"Ich suche das direkte Gespräch, um es zu klären.", type:'C'},
+        {t:"Ich zweifle an mir selbst und hinterfrage alles.", type:'G'}
+      ]
+    },
+    {
+      q: "Was wünschst du dir am meisten für dein Business?",
+      opts: [
+        {t:"Klarheit & ein System, das funktioniert.", type:'S'},
+        {t:"Mehr Leichtigkeit & weniger Druck.", type:'G'},
+        {t:"Echte Verbindung zu meinen Kunden.", type:'C'},
+        {t:"Schnelleres Wachstum durch klare Struktur.", type:'M'},
+        {t:"Die Freiheit, meinen Visionen zu folgen.", type:'V'}
+      ]
+    },
+    {
+      q: "Wenn du an Verkauf denkst, was ist dein größtes Problem?",
+      opts: [
+        {t:"Ich fühle mich wie ein 'Verkäufer' \u2013 und das mag ich nicht.", type:'S'},
+        {t:"Ich weiß nicht, wie ich mein Angebot richtig positioniere.", type:'V'},
+        {t:"Ich habe Angst, zu viel zu verlangen.", type:'C'},
+        {t:"Ich tue mich schwer, überhaupt damit anzufangen.", type:'G'},
+        {t:"Ich will einfach verkaufen, aber es fühlt sich nicht leicht an.", type:'M'}
+      ]
+    },
+    {
+      q: "Welches Statement trifft am meisten auf dich zu?",
+      opts: [
+        {t:"Ich bin besser im Denken als im Handeln.", type:'S'},
+        {t:"Ich habe viele Ideen, aber setze wenige um.", type:'V'},
+        {t:"Ich arbeite viel, aber sehe nicht genug Ergebnis.", type:'G'},
+        {t:"Ich helfe gerne, aber vergesse mich dabei selbst.", type:'C'},
+        {t:"Ich will schnell wachsen, aber etwas bremst mich.", type:'M'}
+      ]
+    },
+  ],
+  en: [
+    {
+      q: "Thinking about your business, what feels hardest right now?",
+      opts: [
+        {t:"I don't know exactly WHO I'm really helping.", type:'V'},
+        {t:"I struggle to be as visible and loud as others.", type:'S'},
+        {t:"I plan too much but don't move into action fast enough.", type:'G'},
+        {t:"I often undersell myself.", type:'C'},
+        {t:"I want results but something keeps holding me back.", type:'M'}
+      ]
+    },
+    {
+      q: "How do you make important business decisions?",
+      opts: [
+        {t:"I analyse all the data until I feel certain.", type:'S'},
+        {t:"I trust my gut and my vision.", type:'V'},
+        {t:"I just try it and adjust as I go.", type:'M'},
+        {t:"I ask my network first and seek exchange.", type:'C'},
+        {t:"I overthink because I can't afford to make mistakes.", type:'G'}
+      ]
+    },
+    {
+      q: "What gives you the most energy in your day-to-day work?",
+      opts: [
+        {t:"Deep, focused work without distraction.", type:'S'},
+        {t:"Inspiration from big new ideas.", type:'V'},
+        {t:"Fast results and visible progress.", type:'M'},
+        {t:"Connecting with people I can support.", type:'C'},
+        {t:"The feeling of having everything under control.", type:'G'}
+      ]
+    },
+    {
+      q: "How do you handle resistance or criticism?",
+      opts: [
+        {t:"I withdraw and reflect for a long time.", type:'S'},
+        {t:"I get creative and find a completely new approach.", type:'V'},
+        {t:"I stay persistent and just work harder.", type:'M'},
+        {t:"I seek a direct conversation to resolve it.", type:'C'},
+        {t:"I doubt myself and question everything.", type:'G'}
+      ]
+    },
+    {
+      q: "What do you want most for your business?",
+      opts: [
+        {t:"Clarity and a system that works.", type:'S'},
+        {t:"More ease and less pressure.", type:'G'},
+        {t:"Genuine connection with my clients.", type:'C'},
+        {t:"Faster growth through clear structure.", type:'M'},
+        {t:"The freedom to follow my vision.", type:'V'}
+      ]
+    },
+    {
+      q: "When you think about selling, what is your biggest challenge?",
+      opts: [
+        {t:"I feel like a 'salesperson' \u2014 and I don't like that.", type:'S'},
+        {t:"I don't know how to position my offer correctly.", type:'V'},
+        {t:"I'm afraid to charge what I'm worth.", type:'C'},
+        {t:"I find it hard to even get started.", type:'G'},
+        {t:"I want to sell but it doesn't feel natural.", type:'M'}
+      ]
+    },
+    {
+      q: "Which statement fits you most?",
+      opts: [
+        {t:"I'm better at thinking than at doing.", type:'S'},
+        {t:"I have many ideas but implement very few.", type:'V'},
+        {t:"I work a lot but don't see enough results.", type:'G'},
+        {t:"I love helping others but forget about myself.", type:'C'},
+        {t:"I want to grow fast but something is slowing me down.", type:'M'}
+      ]
+    },
+  ]
+};
+
+const QUIZ_RESULTS = {
+  Strategist: {
+    de: {
+      name: 'The Strategist',
+      tagline: 'Analytische Tiefe ist deine Superkraft.',
+      strength: 'Du erkennst Muster die anderen verborgen bleiben. Deine Expertise ist tief \u2014 und genau das ist dein größter Hebel. Menschen vertrauen dir weil du weißt wovon du redest.',
+      blindspot: 'Du analysierst zu lange bevor du ins Handeln kommst. Dein Angebot ist wahrscheinlich besser als dein Preis. Und du kopierst Sichtbarkeitsstrategien die für Builder gebaut wurden \u2014 nicht für Strategen.',
+      model: 'Premium-Beratung, Thought Leadership, Expertise-Autorität.',
+    },
+    en: {
+      name: 'The Strategist',
+      tagline: 'Analytical depth is your superpower.',
+      strength: "You recognise patterns others miss. Your expertise is deep \u2014 and that's your greatest lever. People trust you because you know your subject.",
+      blindspot: "You over-analyse before taking action. Your offer is probably worth more than your price reflects. And you're copying visibility strategies built for Builders \u2014 not Strategists.",
+      model: 'Premium consulting, thought leadership, expertise authority.',
+    }
+  },
+  Visionary: {
+    de: {
+      name: 'The Visionary',
+      tagline: 'Du siehst was noch nicht existiert.',
+      strength: 'Du erkennst Trends bevor sie offensichtlich sind. Deine Ideen inspirieren. Menschen folgen dir weil du ihnen eine Richtung gibst die sie selbst nicht sehen konnten.',
+      blindspot: 'Du startest drei brillante Projekte gleichzeitig und bringst keines zu Ende. Dein größtes Risiko ist nicht Mangel an Ideen \u2014 es ist Mangel an Vollendung.',
+      model: 'Transformationsformate, Retreats, Keynotes, Masterminds.',
+    },
+    en: {
+      name: 'The Visionary',
+      tagline: 'You see what does not yet exist.',
+      strength: "You recognise trends before they become obvious. Your ideas inspire. People follow you because you give them a direction they couldn't see themselves.",
+      blindspot: "You start three brilliant projects simultaneously and complete none. Your biggest risk isn't lack of ideas \u2014 it's lack of completion.",
+      model: 'Transformation formats, retreats, keynotes, masterminds.',
+    }
+  },
+  Builder: {
+    de: {
+      name: 'The Builder',
+      tagline: 'Während andere analysieren, hast du die erste Version.',
+      strength: 'Du bringst Dinge schneller zur Realität als fast alle anderen. Deine Energie ist ansteckend. Menschen folgen dir weil du vorangehst.',
+      blindspot: 'Du hast schnell gestartet \u2014 aber keine Systeme gebaut die das tragen. Tempo ohne Struktur verbrennt Energie ohne Vermögen aufzubauen.',
+      model: 'Challenges, Bootcamps, Intensiv-Programme, Gruppencoaching.',
+    },
+    en: {
+      name: 'The Builder',
+      tagline: 'While others analyse, you already have the first version.',
+      strength: 'You bring things to reality faster than almost anyone else. Your energy is contagious. People follow you because you lead.',
+      blindspot: "You started fast \u2014 but haven't built systems to sustain it. Speed without structure burns energy without building assets.",
+      model: 'Challenges, bootcamps, intensive programmes, group coaching.',
+    }
+  },
+  G: {
+    de: {
+      name: 'Der Hochleister',
+      tagline: 'Du lieferst auf einem Niveau das die meisten nicht erreichen.',
+      strength: 'Durchhaltevermögen und Detailgenauigkeit. Du lieferst Qualität auf die sich andere verlassen können. Deine Zuverlässigkeit ist legend.',
+      blindspot: 'Du verwechselst Kontrolle mit Sicherheit \u2014 und zahlst den Preis mit deiner Energie. Pause fühlt sich wie Versagen an. Das kostet dich mehr als du weißt.',
+      model: 'Premium-Einzelbegleitung, Boutique-Angebote, Advisory mit limitierter Kapazität.',
+    },
+    en: {
+      name: 'The High Performer',
+      tagline: 'You deliver at a level most cannot reach.',
+      strength: 'Persistence and attention to detail. You deliver quality others rely on. Your reliability is legendary.',
+      blindspot: 'You confuse control with safety \u2014 and pay the price with your energy. Rest feels like failure. That costs you more than you realise.',
+      model: 'Premium individual support, boutique offers, advisory with limited capacity.',
+    }
+  },
+  Connector: {
+    de: {
+      name: 'The Connector',
+      tagline: 'Menschen vertrauen dir auf eine Art für die andere Jahre brauchen.',
+      strength: 'Du spürst was Menschen brauchen bevor sie es aussprechen. Deine Empathie ist einzigartig. Kunden bleiben weil die Beziehung zählt.',
+      blindspot: 'Du hast Preise nicht erhöht aus Angst die Beziehung zu beschädigen. Du bist zu verfügbar. Empathie ohne Grenzen kostet dich persönlich sehr viel.',
+      model: 'Membership, Community, Premium-Einzelcoaching, Referral-Systeme.',
+    },
+    en: {
+      name: 'The Connector',
+      tagline: 'People trust you in a way that takes others years to build.',
+      strength: 'You sense what people need before they express it. Your empathy is unique. Clients stay because the relationship matters.',
+      blindspot: "You haven't raised prices for fear of damaging the relationship. You're too available. Empathy without boundaries costs you personally a great deal.",
+      model: 'Membership, community, premium individual coaching, referral systems.',
+    }
+  },
+};
+
+let quizAnswers = [];
+let quizCurrent = 0;
+
+function quizInit() {
+  quizAnswers = [];
+  quizCurrent = 0;
+  document.getElementById('quizResult').style.display = 'none';
+  document.getElementById('quizResult').innerHTML = '';
+  document.getElementById('quizGate').style.display = 'none';
+  document.getElementById('gate-name').value = '';
+  document.getElementById('gate-email').value = '';
+  if (document.getElementById('gate-whatsapp')) document.getElementById('gate-whatsapp').value = '';
+  const consentBox = document.getElementById('gate-consent');
+  if (consentBox) consentBox.checked = false;
+  document.getElementById('quizTop').style.display = 'block';
+  document.getElementById('quizQuestion').style.display = 'block';
+  document.getElementById('quizNav').style.display = 'flex';
+  const btn = document.getElementById('gate-submit-btn');
+  if (btn) { btn.disabled = false; }
+  renderQuizQ();
+}
+
+function renderQuizQ() {
+  const qs = QUIZ[lang] || QUIZ.de;
+  const q = qs[quizCurrent];
+  const total = qs.length;
+  const pct = Math.round((quizCurrent / total) * 100);
+  const letters = ['A','B','C','D','E'];
+
+  document.getElementById('qBlockLabel').textContent = (lang==='de'?'Frage ':'Question ') + (quizCurrent+1) + (lang==='de' ? ' von ' : ' of ') + total;
+  document.getElementById('qPct').textContent = pct + '%';
+  document.getElementById('qProgFill').style.width = pct + '%';
+  document.getElementById('qNavInfo').textContent = lang==='de' ? '90 Sekunden' : '90 seconds';
+
+  const sel = quizAnswers[quizCurrent];
+  document.getElementById('quizQuestion').innerHTML =
+    '<div class="quiz-q-num">' + (lang==='de'?'Frage ':'Question ') + (quizCurrent+1) + '</div>' +
+    '<div class="quiz-q-text">' + q.q + '</div>' +
+    '<div class="quiz-opts">' +
+    q.opts.map((o,i) => `<button class="quiz-opt${sel===i?' selected':''}" onclick="quizSelect(${i})"><span class="quiz-opt-letter">${letters[i]}</span>${o.t}</button>`).join('') +
+    '</div>';
+
+  document.getElementById('qNextBtn').disabled = sel === undefined;
+  const isLast = quizCurrent === total - 1;
+  document.getElementById('qNextBtn').textContent = isLast
+    ? (lang==='de' ? 'Ergebnis anzeigen →' : 'Show result →')
+    : (lang==='de' ? 'Weiter →' : 'Next →');
+}
+
+function quizSelect(i) {
+  initBrevo();
+  quizAnswers[quizCurrent] = i;
+  document.querySelectorAll('.quiz-opt').forEach((el,idx) => el.classList.toggle('selected', idx===i));
+  document.getElementById('qNextBtn').disabled = false;
+}
+
+function quizNext() {
+  const qs = QUIZ[lang] || QUIZ.de;
+  if (quizCurrent < qs.length - 1) {
+    quizCurrent++;
+    renderQuizQ();
+    document.getElementById('quizShell').scrollIntoView({behavior:'smooth', block:'start'});
+  } else {
+    showEmailGate();
+  }
+}
+
+
+// EMAIL GATE
+function showEmailGate() {
+  document.getElementById('quizTop').style.display = 'none';
+  document.getElementById('quizQuestion').style.display = 'none';
+  document.getElementById('quizNav').style.display = 'none';
+  document.getElementById('quizGate').style.display = 'block';
+  document.getElementById('quizShell').scrollIntoView({behavior:'smooth', block:'start'});
+  applyGateTranslations();
+}
+
+function applyGateTranslations() {
+  const isDE = lang === 'de';
+  const t = {
+    teaser: isDE
+      ? 'Dein Ergebnis ist bereit — <strong>wir haben deinen Psychotyp identifiziert.</strong> Gib deine Daten ein um dein vollständiges Profil zu sehen.'
+      : 'Your result is ready — <strong>we identified your psychotype.</strong> Enter your details to see your full profile.',
+    title: isDE ? 'Dein NeuroBusiness<br>Psychotyp ist bereit.' : 'Your NeuroBusiness<br>Psychotype is ready.',
+    sub: isDE
+      ? 'Erhalte dein kostenloses Psychotyp-Profil — mit deiner Superkraft, Blindstelle und deinem natürlichen Business-Modell. Kein Spam.'
+      : 'Get your free psychotype profile — including your superpower, blind spot and natural business model. No spam, ever.',
+    namePh: isDE ? 'Dein Vorname' : 'Your first name',
+    whatsappPh: isDE ? 'WhatsApp-Nummer (optional, z.B. +49 170 …)' : 'WhatsApp number (optional, e.g. +49 170 …)',
+    btn: isDE ? 'Ergebnis per E-Mail erhalten →' : 'Email me my result →',
+    consent: isDE
+      ? 'Ja, schick mir mein Ergebnis an diese E-Mail und informiere mich über NeuroBusiness-Inhalte &amp; Angebote. Abmeldung jederzeit möglich. (<a href="#" onclick="openLegal(\'datenschutzOverlay\');return false;" style="color:var(--text2)">Datenschutz</a>)'
+      : 'Yes, send my result to this email and keep me informed about NeuroBusiness content &amp; offers. Unsubscribe anytime. (<a href="#" onclick="openLegal(\'datenschutzOverlay\');return false;" style="color:var(--text2)">Privacy policy</a>)',
+    privacy: isDE
+      ? '🔒 Deine Daten sind sicher. Wir nutzen sie nur für dein Ergebnis und relevante NeuroBusiness-Inhalte. Jederzeit abmeldbar.'
+      : '🔒 Your data is safe. We only use it to send you your result and relevant NeuroBusiness content. Unsubscribe anytime.',
+  };
+  const el = (id) => document.getElementById(id);
+  if (el('gate-teaser')) el('gate-teaser').innerHTML = t.teaser;
+  if (el('gate-title')) el('gate-title').innerHTML = t.title;
+  if (el('gate-sub')) el('gate-sub').textContent = t.sub;
+  if (el('gate-name')) el('gate-name').placeholder = t.namePh;
+  if (el('gate-whatsapp')) el('gate-whatsapp').placeholder = t.whatsappPh;
+  if (el('gate-btn-text')) el('gate-btn-text').textContent = t.btn;
+  if (el('gate-consent-text')) el('gate-consent-text').innerHTML = t.consent;
+  if (el('gate-privacy')) el('gate-privacy').textContent = t.privacy;
+}
+
+async function submitGate() {
+  initBrevo();
+  const name = document.getElementById('gate-name').value.trim();
+  const email = document.getElementById('gate-email').value.trim();
+  const whatsapp = document.getElementById('gate-whatsapp') ? document.getElementById('gate-whatsapp').value.trim() : '';
+  const consentEl = document.getElementById('gate-consent');
+  const consentGiven = consentEl && consentEl.checked;
+  if (!consentGiven) {
+    const wrap = document.getElementById('gate-consent-wrap');
+    if (wrap) { wrap.style.outline = '2px solid #e94560'; wrap.style.borderRadius = '6px'; wrap.style.padding = '4px'; }
+    setTimeout(() => { if (wrap) { wrap.style.outline = ''; wrap.style.padding = ''; } }, 2500);
+    return;
+  }
+  if (!email || !email.includes('@')) {
+    document.getElementById('gate-email').focus();
+    document.getElementById('gate-email').style.borderColor = '#e94560';
+    document.getElementById('gate-email').placeholder = lang === 'de' ? '⚠ E-Mail ist Pflichtfeld' : '⚠ Email is required';
+    setTimeout(() => {
+      document.getElementById('gate-email').style.borderColor = '';
+      document.getElementById('gate-email').placeholder = lang === 'de' ? 'deine@email.com' : 'your@email.com';
+    }, 2500);
+    return;
+  }
+  const btn = document.getElementById('gate-submit-btn');
+  btn.disabled = true;
+  document.getElementById('gate-btn-text').textContent = lang === 'de' ? 'Wird gespeichert...' : 'Saving...';
+
+  // Determine psychotype before showing result (for Brevo)
+  const qs = QUIZ[lang] || QUIZ.de;
+  const scores = {S:0, V:0, M:0, C:0, G:0};
+  quizAnswers.forEach((ans, qi) => {
+    if (ans !== undefined) {
+      const type = qs[qi].opts[ans].type;
+      if (scores[type] !== undefined) scores[type]++;
+    }
+  });
+  const typeMap = {S:'Strategist', V:'Visionary', M:'Builder', C:'Connector', G:'High Performer'};
+  const winnerKey = Object.keys(scores).reduce((a,b) => scores[a]>scores[b]?a:b);
+  const psychotype = typeMap[winnerKey] || 'Strategist';
+
+  // Save to Supabase if available
+  try {
+    if (typeof sb !== 'undefined') {
+      await sb.from('quiz_leads').upsert({
+        email,
+        first_name: name || null,
+        whatsapp: whatsapp || null,
+        psychotype: psychotype,
+        quiz_completed: true,
+        marketing_consent: true,
+        consent_at: new Date().toISOString(),
+        lang,
+        created_at: new Date().toISOString()
+      }, { onConflict: 'email' });
+    }
+  } catch(e) { console.log('Lead save:', e.message); }
+
+  // Brevo: Lead identifizieren & Quiz-Abschluss tracken
+  try {
+    if (window.Brevo) {
+      window.Brevo.push(["identify", { identifiers: { email_id: email }, attributes: { VORNAME: name || '', WHATSAPP: whatsapp || '', PSYCHOTYPE: psychotype, QUELLE: 'Quiz neurobusiness.one', SPRACHE: lang, MARKETING_CONSENT: true } }]);
+      window.Brevo.push(["track", "quiz_completed", { lang: lang, psychotype: psychotype, whatsapp: whatsapp || '', consent: true }]);
+    }
+  } catch(e){}
+
+  // Hide quiz UI, show email confirmation — no results on page
+  document.getElementById('quizTop').style.display = 'none';
+  document.getElementById('quizQuestion').style.display = 'none';
+  document.getElementById('quizNav').style.display = 'none';
+
+  const isDE = lang === 'de';
+  const firstName = name ? (isDE ? name + ', ' : name + ', ') : '';
+  const gateBox = document.getElementById('quizGate');
+  gateBox.innerHTML = `
+    <div style="text-align:center;padding:48px 24px 40px">
+      <div style="width:64px;height:64px;background:#f5f0eb;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:32px">📬</div>
+      <div style="font-family:var(--font-display);font-size:26px;font-weight:400;color:var(--dark);margin-bottom:12px;line-height:1.25">
+        ${isDE ? `${firstName}dein Ergebnis ist unterwegs!` : `${firstName}your result is on its way!`}
+      </div>
+      <div style="font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:8px">
+        ${isDE
+          ? `Bitte prüfe dein Postfach — <strong style="color:var(--dark)">${email}</strong>.<br>Dein NeuroBusiness-Psychotyp wird dir in wenigen Minuten zugesendet.`
+          : `Please check your inbox — <strong style="color:var(--dark)">${email}</strong>.<br>Your NeuroBusiness psychotype will arrive within a few minutes.`}
+      </div>
+      <div style="font-size:13px;color:var(--text3);margin-bottom:32px">
+        ${isDE ? '📁 Nicht da? Bitte auch im Spam-Ordner nachsehen.' : '📁 Not there? Please also check your spam folder.'}
+      </div>
+      <a href="https://wa.me/4915565695582" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:10px;padding:13px 22px;font-size:14px;font-weight:500;text-decoration:none;margin-bottom:12px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        ${isDE ? 'Fragen? Schreib uns auf WhatsApp' : 'Questions? Message us on WhatsApp'}
+      </a>
+      <div><button onclick="quizInit()" style="background:none;border:none;font-size:12px;color:var(--text3);cursor:pointer;font-family:var(--font-mono);letter-spacing:.04em;text-decoration:underline;margin-top:8px">${isDE ? 'Test wiederholen' : 'Retake test'}</button></div>
+    </div>`;
+  gateBox.style.display = 'block';
+}
+
+function showQuizResult(leadName) {
+  const qs = QUIZ[lang] || QUIZ.de;
+  const scores = {S:0, V:0, M:0, C:0, G:0};
+  quizAnswers.forEach((ans, qi) => {
+    if (ans !== undefined) {
+      const type = qs[qi].opts[ans].type;
+      if (scores[type] !== undefined) scores[type]++;
+    }
+  });
+  const typeMap = {S:'Strategist', V:'Visionary', M:'Builder', C:'Connector', G:'G'};
+  const winnerKey = Object.keys(scores).reduce((a,b) => scores[a]>scores[b]?a:b);
+  const winner = typeMap[winnerKey] || 'Strategist';
+  const r = (QUIZ_RESULTS[winner] || QUIZ_RESULTS.Strategist)[lang] || (QUIZ_RESULTS[winner] || QUIZ_RESULTS.Strategist).de;
+
+  document.getElementById('quizTop').style.display = 'none';
+  document.getElementById('quizQuestion').style.display = 'none';
+  document.getElementById('quizNav').style.display = 'none';
+
+  const isDE = lang === 'de';
+  // Personalize if name was captured
+  const firstName = leadName || '';
+  document.getElementById('quizResult').style.display = 'block';
+  document.getElementById('quizResult').innerHTML = `
+    <div class="quiz-result-hero">
+      <div class="quiz-result-label">${firstName ? (isDE ? firstName + ", dein" : firstName + ", your") : (isDE ? "Dein" : "Your")} NeuroBusiness Psychotype</div>
+      <div class="quiz-result-type">${r.name}</div>
+      <div class="quiz-result-tagline">${r.tagline}</div>
+    </div>
+    <div class="quiz-accuracy">${isDE?'⚡ Dieser Test gibt dir eine erste Tendenz (~80% Genauigkeit). Die vollständige 50-Fragen-Diagnostik zeigt dein exaktes 5-Dimensionen-Profil.':'⚡ This test gives you an initial indication (~80% accuracy). The full 50-question diagnostic reveals your exact 5-dimension profile.'}</div>
+    <div class="quiz-result-section">
+      <div class="quiz-result-section-title">${isDE?'Deine Superkraft':'Your superpower'}</div>
+      <div class="quiz-result-section-text">${r.strength}</div>
+    </div>
+    <div class="quiz-result-section">
+      <div class="quiz-result-section-title">${isDE?'Deine Blindstelle':'Your blind spot'}</div>
+      <div class="quiz-result-section-text">${r.blindspot}</div>
+    </div>
+    <div class="quiz-result-section">
+      <div class="quiz-result-section-title">${isDE?'Dein natürliches Business-Modell':'Your natural business model'}</div>
+      <div class="quiz-result-section-text">${r.model}</div>
+    </div>
+    <div class="quiz-cta-row">
+      <button onclick="openModal('modalDiagnostik')" class="btn-primary" style="width:100%;text-align:center">${isDE?'Vollständige Diagnostik starten \u2014 490 €':'Start full diagnostics \u2014 €490'}</button>
+      <a href="https://wa.me/4915565695582" target="_blank" class="btn-outline" style="display:block;text-align:center">${isDE?'Mit Eva sprechen (WhatsApp)':'Talk to Eva (WhatsApp)'}</a>
+      <button class="quiz-restart" onclick="quizInit()">${isDE?'Test wiederholen':'Retake test'}</button>
+    </div>`;
+}
+
+// Quiz init happens via setLang at end
+
+
+// Contact translations
+const CONTACT_TR = {
+  de: {
+    'c-eyebrow': 'Kontakt', 'c-title': 'Lass uns<br><em>sprechen.</em>',
+    'c-text': 'Du hast Fragen zum Programm oder bist bereit loszulegen? Wir antworten innerhalb von 24 Stunden.',
+    'c-wa-text': 'WhatsApp schreiben', 'wa-tooltip': 'WhatsApp schreiben',
+    'f-name-label': 'Name', 'f-email-label': 'E-Mail',
+    'f-interest-label': 'Interesse', 'f-msg-label': 'Nachricht',
+    'f-opt-placeholder': 'Bitte wählen...',
+    'f-opt0': 'Solo Report (147 €)',
+    'f-opt1': 'Diagnostik + NeuroBusiness AI (490 €)',
+    'f-opt2': '12-Wochen Transformation (4.990 €)',
+    'f-opt3': 'Team Intelligence (Anfrage)',
+    'f-opt4': 'Allgemeine Frage',
+    'f-submit-text': 'Nachricht senden →',
+    'f-success': '✓ E-Mail-Client geöffnet \u2014 bitte sende die E-Mail ab.',
+    'nav-contact': 'Kontakt',
+  },
+  en: {
+    'c-eyebrow': 'Contact', 'c-title': 'Let\'s<br><em>talk.</em>',
+    'c-text': 'Questions about the programme or ready to get started? We respond within 24 hours.',
+    'c-wa-text': 'Message on WhatsApp', 'wa-tooltip': 'Message on WhatsApp',
+    'f-name-label': 'Name', 'f-email-label': 'Email',
+    'f-interest-label': 'Interest', 'f-msg-label': 'Message',
+    'f-opt-placeholder': 'Please select...',
+    'f-opt0': 'Solo Report (€147)',
+    'f-opt1': 'Diagnostics + NeuroBusiness AI (€490)',
+    'f-opt2': '12-Week Transformation (€4,990)',
+    'f-opt3': 'Team Intelligence (enquiry)',
+    'f-opt4': 'General enquiry',
+    'f-submit-text': 'Send message →',
+    'f-success': '✓ Email client opened \u2014 please send the email.',
+    'nav-contact': 'Contact',
+  }
+};
+
+function applyContactTranslations() {
+  const t = CONTACT_TR[lang] || CONTACT_TR.en;
+  Object.keys(t).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = t[id];
+  });
+  // Update WA link text
+  const waBtn = document.querySelector('.wa-contact-btn span');
+  if (waBtn) waBtn.textContent = t['c-wa-text'];
+}
+
+
+
+// STRIPE LINKS
+const STRIPE_LINKS = {
+  solo:       'https://buy.stripe.com/5kQfZj1NbbjK50Sg1Basg08',  // \u20ac97 Solo Report
+  companion:  'https://buy.stripe.com/eVq7sN77v73u2SKaHhasg06',  // \u20ac49/Monat NeuroBusiness AI
+  diagnostik: 'https://buy.stripe.com/6oU9AVfE187yalc6r1asg09',                    // TODO: \u20ac490 Bundle in Stripe anlegen (Diagnostik + 12 Monate AI), dann hier eintragen
+};
+
+
+function openLegal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLegal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Apply current language
+  applyModalTranslations();
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', e => { if(e.target === el) closeModal(el.id); });
+});
+
+// Close on ESC
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(el => closeModal(el.id));
+});
+
+function handleStripeClick(e, product) {
+  const link = STRIPE_LINKS[product];
+  if (link.includes('PLACEHOLDER')) {
+    e.preventDefault();
+    alert(lang === 'de' 
+      ? 'Zahlung wird gerade eingerichtet \u2014 bitte kontaktiere uns direkt: hello@neurobusiness.one'
+      : 'Payment is being set up \u2014 please contact us directly: hello@neurobusiness.one');
+  }
+}
+
+const MODAL_TR = {
+  de: {
+    'md-eyebrow': 'NeuroBusiness™ Strategist',
+    'md-title': 'Solo-Diagnostik<br>& NeuroBusiness AI',
+    'md-note': 'Einmalig · 12 Monate NeuroBusiness AI inklusive · danach 49 €/Monat · zzgl. MwSt.',
+    'md-btn-text': 'Jetzt sichern \u2014 490 €',
+    'md-security': 'Sichere Zahlung via Stripe · SSL-verschlüsselt',
+    'md-alt': 'Fragen? <a href="mailto:hello@neurobusiness.one">hello@neurobusiness.one</a>',
+    'md-features': ['50-Fragen neuropsychologischer Test', 'Vollständiger Report mit 5-Dimensionen-Profil', '12 Monate NeuroBusiness AI inklusive <span style="color:var(--gold);font-size:11px">(Wert: 588 €)</span>', 'Wöchentliche Agenda jeden Montag für deinen Typ', 'Business-Brainstorming & Entscheidungs-Helfer'],
+  },
+  en: {
+    'md-eyebrow': 'NeuroBusiness™ Strategist',
+    'md-title': 'Solo Diagnostics<br>& NeuroBusiness AI',
+    'md-note': 'One-time · 12 months NeuroBusiness AI included · then 49 €/month · excl. VAT',
+    'md-btn-text': 'Secure now \u2014 €490',
+    'md-security': 'Secure payment via Stripe · SSL encrypted · All prices excl. VAT',
+    'md-alt': 'Questions? <a href="mailto:hello@neurobusiness.one">hello@neurobusiness.one</a>',
+    'md-features': ['50-question neuropsychological test', 'Full report with 5-dimension profile', '12 months NeuroBusiness AI included <span style="color:var(--gold);font-size:11px">(value: €588)</span>', 'Weekly agenda every Monday for your type', 'Business brainstorming & decision helper'],
+  }
+};
+
+function applyModalTranslations() {
+  const t = MODAL_TR[lang] || MODAL_TR.en;
+  Object.keys(t).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const val = t[id];
+    if (Array.isArray(val)) {
+      el.innerHTML = val.map(v => '<li>' + v + '</li>').join('');
+    } else {
+      el.innerHTML = val;
+    }
+  });
+}
+
+// Also update modals when lang changes
+
+
+// Scroll animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+// Initialize language on load
+document.addEventListener("DOMContentLoaded", function() {
+  setLang(lang);
+  // Open legal overlay if linked from subpage (e.g. /teams footer)
+  const legalParam = new URLSearchParams(window.location.search).get('legal');
+  if (legalParam === 'impressum' && typeof openLegal === 'function') openLegal('impressumOverlay');
+  if (legalParam === 'datenschutz' && typeof openLegal === 'function') openLegal('datenschutzOverlay');
+});
+</script>
+
+<!-- PAYMENT MODAL — DIAGNOSTIK -->
+<div class="modal-overlay" id="modalDiagnostik">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modalDiagnostik')">×</button>
+    <div class="modal-eyebrow" id="md-eyebrow">NeuroBusiness™ Best Value</div>
+    <div class="modal-title" id="md-title">Diagnostik +<br>12 Monate NeuroBusiness AI</div>
+    <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px">
+      <div class="modal-price">490 €</div>
+    </div>
+    <div class="modal-price-note" id="md-note">Einmalig · 12 Monate NeuroBusiness AI inklusive · danach 49 €/Monat · zzgl. MwSt.</div>
+    <ul class="modal-features" id="md-features">
+      <li>50-Fragen neuropsychologischer Diagnostik-Test</li>
+      <li>Vollständiger Report mit 5-Dimensionen-Profil</li>
+      <li>12 Monate NeuroBusiness AI inklusive <span style="color:var(--gold);font-size:11px">(Wert: 588 €)</span></li>
+      <li>Wöchentliche Agenda jeden Montag für deinen Typ</li>
+      <li>Business-Brainstorming & Entscheidungs-Helfer</li>
+    </ul>
+    <a href="https://buy.stripe.com/6oU9AVfE187yalc6r1asg09" class="stripe-btn" id="md-stripe-btn" onclick="handleStripeClick(event,'diagnostik')">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="white" fill-opacity="0.15"/><path d="M13.5 8.5C13.5 7.67 12.83 7 12 7C11.17 7 10.5 7.67 10.5 8.5C10.5 9.5 11.5 10 12 10.5C12.5 11 13.5 11.5 13.5 12.5C13.5 13.33 12.83 14 12 14C11.17 14 10.5 13.33 10.5 12.5M12 6V7M12 14V15" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span id="md-btn-text">Jetzt sichern — 490 €</span>
+    </a>
+    <div class="stripe-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <span id="md-security">Sichere Zahlung via Stripe · SSL-verschlüsselt</span>
+    </div>
+    <div style="text-align:center;margin:12px 0 4px;font-size:12px;color:var(--text3)">
+      Nur das Diagnostic? → <a href="https://buy.stripe.com/5kQfZj1NbbjK50Sg1Basg08" style="color:var(--gold2);font-weight:500;text-decoration:none">Solo Report für 147 € →</a>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-alt" id="md-alt">Fragen? <a href="mailto:hello@neurobusiness.one">hello@neurobusiness.one</a></div>
+  </div>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<div class="wa-float">
+  <div class="wa-tooltip" id="wa-tooltip">WhatsApp schreiben</div>
+  <a href="https://wa.me/4915565695582?text=Hi%20Eva%2C%20ich%20interessiere%20mich%20f%C3%BCr%20NeuroBusiness%E2%84%A2" 
+     class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+
+<!-- IMPRESSUM -->
+<div class="legal-overlay" id="impressumOverlay">
+  <div class="legal-header">
+    <div class="legal-header-logo">NeuroBusiness<em>™</em></div>
+    <button class="legal-close" onclick="closeLegal('impressumOverlay')">← Zurück / Back</button>
+  </div>
+  <div class="legal-body">
+    <div class="legal-eyebrow">Legal</div>
+    <h1>Impressum</h1>
+    <p><strong>NeuroBusiness™</strong> ist ein Programm des<br>
+    <strong>German Institute of Positive Psychology</strong><br>
+    Einzelunternehmen — Eva Kolontai</p>
+
+    <h2>Angaben gemäß § 5 TMG</h2>
+    <p>
+      <strong>Eva Kolontai</strong><br>
+      German Institute of Positive Psychology<br>
+      Ritterstr. 59<br>
+      10969 Berlin, Deutschland<br><br>
+      Telefon: 0176 404 88 045<br>
+      E-Mail: <a href="mailto:hello@neurobusiness.one">hello@neurobusiness.one</a><br>
+      Web: <a href="https://neurobusiness.one">https://neurobusiness.one</a>
+    </p>
+
+    <h2>Vertretungsberechtigt</h2>
+    <p><strong>Eva Kolontai</strong><br>
+    Rechtsform: Einzelunternehmen<br>
+    USt-IdNr.: 57149568201</p>
+
+    <h2>Inhaltlich verantwortlich</h2>
+    <p>Gemäß § 5 TMG und § 18 Abs. 2 MStV:<br>
+    <strong>Eva Kolontai</strong>, Ritterstr. 59, 10969 Berlin</p>
+
+    <h2>EU-Streitschlichtung</h2>
+    <p>Plattform der EU-Kommission zur Online-Streitbeilegung: <a href="https://ec.europa.eu/consumers/odr" target="_blank">https://ec.europa.eu/consumers/odr</a><br>
+    Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+    <h2>Haftung für Inhalte & Links</h2>
+    <p>Wir erstellen Inhalte mit größter Sorgfalt, übernehmen jedoch keine Gewähr für Richtigkeit, Vollständigkeit und Aktualität. Für Inhalte verlinkter externer Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+
+    <h2>Urheberrecht</h2>
+    <p>Alle Inhalte (Texte, Bilder, Medien, Downloads) sind urheberrechtlich geschützt. Das NeuroBusiness™ Framework, die 5 Psychotypen und alle zugehörigen Materialien sind geistiges Eigentum von Eva Kolontai. Jede Verwertung bedarf der vorherigen Zustimmung.</p>
+  </div>
+</div>
+
+<!-- DATENSCHUTZ -->
+<div class="legal-overlay" id="datenschutzOverlay">
+  <div class="legal-header">
+    <div class="legal-header-logo">NeuroBusiness<em>™</em></div>
+    <button class="legal-close" onclick="closeLegal('datenschutzOverlay')">← Zurück / Back</button>
+  </div>
+  <div class="legal-body">
+    <div class="legal-eyebrow">Legal</div>
+    <h1>Datenschutzerklärung<br><em style="font-size:0.6em;color:var(--text2)">Privacy Policy</em></h1>
+
+    <h2>1. Verantwortlicher</h2>
+    <p><strong>Eva Kolontai</strong> — German Institute of Positive Psychology<br>
+    Ritterstr. 59, 10969 Berlin<br>
+    E-Mail: <a href="mailto:hello@neurobusiness.one">hello@neurobusiness.one</a></p>
+
+    <h2>2. Daten die wir erheben</h2>
+    <ul>
+      <li>E-Mail-Adresse (bei Registrierung und Login)</li>
+      <li>Vorname und Branche (optional, bei Profilerstellung)</li>
+      <li>Quiz-Antworten und Testergebnisse (Psychotyp-Diagnostik)</li>
+      <li>Tägliche Check-in Daten (Energie, Stress, Fokus)</li>
+      <li>Gesprächsinhalte mit dem NeuroBusiness AI</li>
+    </ul>
+
+    <h2>3. Zweck der Datenverarbeitung</h2>
+    <ul>
+      <li>Bereitstellung des NeuroBusiness™ Diagnostik-Systems</li>
+      <li>Personalisierung des NeuroBusiness AIs auf deinen Psychotyp</li>
+      <li>Verbesserung des NeuroBusiness™ Frameworks</li>
+      <li>Kontaktaufnahme auf deine Anfrage hin</li>
+    </ul>
+
+    <h2>4. Rechtsgrundlage</h2>
+    <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) und Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).</p>
+
+    <h2>5. Datenspeicherung &amp; Auftragsverarbeiter</h2>
+    <p>Deine Daten werden auf Servern der Supabase Inc. (EU-Region: West EU / Irland) gespeichert. Supabase ist nach DSGVO-Standards zertifiziert. Daten werden nicht an Dritte verkauft.</p>
+    <p><strong>Stripe Inc.</strong> (185 Berry Street, Suite 550, San Francisco, CA 94107, USA) — Zahlungsabwicklung. Zahlungsdaten werden direkt an Stripe übermittelt. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO. Datenschutz: <a href="https://stripe.com/de/privacy" target="_blank">stripe.com/de/privacy</a></p>
+    <p><strong>Tally So</strong> — Formularanbieter für die NeuroBusiness™ Diagnostik (Name, E-Mail, Testantworten). Datenschutz: <a href="https://tally.so/privacy" target="_blank">tally.so/privacy</a></p>
+    <h2>5a. Widerrufsbelehrung für digitale Produkte</h2>
+    <p>Bei digitalen Produkten (Diagnostik-Report, NeuroBusiness AI) beginnt die Leistung unmittelbar nach dem Kauf. <strong>Du stimmst ausdrücklich zu, dass wir vor Ablauf der Widerrufsfrist mit der Ausführung beginnen, und bestätigst damit den Verlust deines Widerrufsrechts</strong> (§ 356 Abs. 5 BGB).</p>
+
+    <h2>6. AI-Verarbeitung</h2>
+    <p>Der NeuroBusiness AI wird von Anthropic (Claude API) betrieben. Gesprächsinhalte werden zur Antwortgenerierung an die Anthropic API übermittelt. Anthropic speichert keine Konversationsdaten dauerhaft. Weitere Informationen: <a href="https://www.anthropic.com/legal/privacy" target="_blank">anthropic.com/privacy</a></p>
+
+    <h2>6a. Newsletter & E-Mail-Marketing (Brevo / Double-Opt-in)</h2>
+    <p>Wenn du dich über unser Anmeldeformular für Newsletter- bzw. Impuls-E-Mails einträgst, verarbeiten wir deine E-Mail-Adresse (und ggf. deinen Vornamen), um dir Informationen, Angebote und Impulse zuzusenden. Die Anmeldung erfolgt im Double-Opt-in-Verfahren: Nach dem Eintragen erhältst du eine Bestätigungs-E-Mail mit einem Link; erst nach dessen Klick wird die Anmeldung wirksam.</p>
+    <p>Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Du kannst diese jederzeit widerrufen – über den Abmelde-Link in jeder E-Mail oder per Nachricht an hello@neurobusiness.one. Für Versand und Verwaltung nutzen wir Brevo (Sendinblue GmbH, Köpenicker Str. 126, 10179 Berlin) als Auftragsverarbeiter (Art. 28 DSGVO). Zur Erfolgsmessung kann Brevo erfassen, ob E-Mails geöffnet und Links angeklickt werden. Details: <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" rel="noopener">brevo.com/de/legal/privacypolicy</a>.</p>
+
+    <h2>6b. Website-Tracking (Brevo)</h2>
+    <p>Auf dieser Website ist der Brevo-Tracker eingebunden, der – sofern du einwilligst – Nutzungsdaten (z. B. besuchte Seiten, ausgelöste Ereignisse) erfasst und ggf. mit deiner E-Mail-Adresse verknüpft, um unsere Kommunikation relevanter zu gestalten. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO bzw. § 25 Abs. 1 TTDSG), die du jederzeit mit Wirkung für die Zukunft widerrufen kannst.</p>
+
+    <h2>7. Deine Rechte</h2>
+    <ul>
+      <li>Auskunft über deine gespeicherten Daten (Art. 15 DSGVO)</li>
+      <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+      <li>Löschung deiner Daten (Art. 17 DSGVO)</li>
+      <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+      <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+      <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+    </ul>
+    <p>Zur Ausübung deiner Rechte: <a href="mailto:hello@neurobusiness.one">hello@neurobusiness.one</a></p>
+
+    <h2>8. Cookies</h2>
+    <p>Diese Website verwendet technisch notwendige Cookies (Session-Management, Spracheinstellung). Darüber hinaus kann – nur mit deiner Einwilligung – der Brevo-Tracker Cookies zur Wiedererkennung und Reichweitenmessung setzen (siehe Abschnitt 6b). Diese Einwilligung kannst du jederzeit widerrufen.</p>
+
+    <h2>9. Beschwerderecht</h2>
+    <p>Du hast das Recht, dich bei der zuständigen Datenschutzaufsichtsbehörde zu beschweren. In Berlin: Berliner Beauftragte für Datenschutz und Informationsfreiheit, <a href="https://www.datenschutz-berlin.de" target="_blank">www.datenschutz-berlin.de</a></p>
+
+    <p style="margin-top:32px;font-size:13px;color:var(--text3)">Stand: Juni 2026 · NeuroBusiness™ ist ein Programm des German Institute of Positive Psychology</p>
+  </div>
+</div>
+
+<script>
+window.nbOptinSubmit = function(e){
+  e.preventDefault();
+  initBrevo();
+  var em = (document.getElementById('nbOptinEmail')||{}).value || '';
+  em = em.trim();
+  var msg = document.getElementById('nbOptinMsg');
+  if(!em){ return false; }
+  var L = (typeof lang !== 'undefined' ? lang : 'de');
+  var d = new URLSearchParams();
+  d.append('EMAIL', em);
+  d.append('QUIZ_COMPLETED','1');
+  d.append('email_address_check','');
+  d.append('locale', L);
+  try{ if(window.Brevo){ window.Brevo.push(["identify",{identifiers:{email_id:em},attributes:{QUELLE:'Newsletter-Optin neurobusiness.one'}}]); } }catch(x){}
+  fetch('https://288596f4.sibforms.com/serve/MUIFAJZO0LqLqJ35L1ccwt4JKVOcgYiwNcjm9wjSUm18bpcZ8ufpxAp0KQzaIEYnf-r5qokk_xqYRBvXJgeEMiZoCvK_dy_D8dhpFogURGmg_00O9JOMkNW3sLgz3AjgG9kUHepT3yPi74to-ejGeSZqiMlxvHE9NMRvIfzIqxg1fjMnVjY7DxLDU0Zfgl6h06YfyTZoORsZ6vFFlg==',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:d.toString()}).finally(function(){
+    var f = document.getElementById('nbOptin');
+    f.querySelectorAll('div,label').forEach(function(el){ el.style.display='none'; });
+    msg.style.display='block';
+    msg.textContent = (L==='en')
+      ? 'Almost there! Please confirm your subscription via the link in the email we just sent you.'
+      : 'Fast geschafft! Bitte bestätige die Anmeldung über den Link in der E-Mail, die wir dir gerade geschickt haben.';
+  });
+  return false;
+};
+</script>
+</body>
+</html>

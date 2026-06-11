@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroBusiness™ Diagnostic — 50-Question Assessment</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cr:#faf8f4;--cr2:#f4f1eb;--cr3:#ede9e0;
+  --dk:#1a1814;--dk2:#2e2b26;--em:#1a3d35;
+  --go:#c9a96e;--go2:#a8813e;--gl:#f0e4cc;
+  --t1:#1a1814;--t2:#6b6560;--t3:#a09a92;
+  --bd:rgba(26,24,20,.1);--bd2:rgba(26,24,20,.06);
+  --fd:'Cormorant Garamond',Georgia,serif;
+  --fb:'Outfit',sans-serif;--fm:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cr);color:var(--t1);font-family:var(--fb);font-size:16px;line-height:1.6;font-weight:300;min-height:100vh;overflow-x:hidden}
+
+/* ── LOADER ── */
+#loader{position:fixed;inset:0;background:var(--em);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9000;transition:opacity .8s ease}
+#loader.out{opacity:0;pointer-events:none}
+.l-logo{font-family:var(--fd);font-size:30px;font-weight:300;color:var(--cr);letter-spacing:-.02em;margin-bottom:32px}
+.l-logo em{color:var(--go);font-style:italic}
+.l-bar{width:240px;height:1px;background:rgba(255,255,255,.12);border-radius:1px}
+.l-fill{height:100%;background:var(--go);width:0;animation:lf 1.8s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes lf{to{width:100%}}
+.l-sub{font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:16px}
+
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(250,248,244,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd2)}
+.nav-logo{font-family:var(--fd);font-size:22px;color:var(--dk);text-decoration:none;letter-spacing:-.01em}
+.nav-logo em{color:var(--go);font-style:normal}
+.nav-right{display:flex;align-items:center;gap:16px}
+.lang-sw{display:flex;gap:2px;background:var(--cr2);border:1px solid var(--bd);border-radius:6px;overflow:hidden}
+.lang-sw span{font-family:var(--fm);font-size:11px;letter-spacing:.06em;padding:5px 10px;cursor:pointer;transition:all .15s;color:var(--t3)}
+.lang-sw span.on{background:var(--dk);color:var(--cr)}
+.nav-step{font-family:var(--fm);font-size:11px;letter-spacing:.08em;color:var(--t3)}
+
+/* ── GATE (access check) ── */
+#gate{display:none;min-height:100vh;align-items:center;justify-content:center;padding:80px 24px}
+#gate.show{display:flex}
+.gate-card{max-width:480px;width:100%;text-align:center}
+.gate-icon{width:64px;height:64px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:28px}
+.gate-title{font-family:var(--fd);font-size:36px;font-weight:300;color:var(--dk);margin-bottom:12px;line-height:1.1}
+.gate-sub{font-size:15px;color:var(--t2);line-height:1.75;margin-bottom:32px}
+.btn-gold{display:inline-block;background:var(--dk);color:var(--cr);font-family:var(--fb);font-size:15px;font-weight:500;padding:14px 32px;border-radius:8px;text-decoration:none;transition:all .2s}
+.btn-gold:hover{background:var(--go);color:var(--dk)}
+
+/* ── INTRO SCREEN ── */
+#intro{display:none;min-height:100vh;padding:100px 48px 60px;max-width:760px;margin:0 auto}
+#intro.show{display:block}
+.intro-eyebrow{font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--go);margin-bottom:20px}
+.intro-title{font-family:var(--fd);font-size:clamp(40px,5vw,64px);font-weight:300;line-height:1.08;letter-spacing:-.02em;color:var(--dk);margin-bottom:24px}
+.intro-title em{font-style:italic;color:var(--go)}
+.intro-sub{font-size:16px;color:var(--t2);line-height:1.8;max-width:560px;margin-bottom:48px}
+.intro-meta{display:flex;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.intro-meta-item{display:flex;align-items:center;gap:8px;font-family:var(--fm);font-size:11px;letter-spacing:.08em;color:var(--t3)}
+.intro-meta-dot{width:6px;height:6px;border-radius:50%;background:var(--go);flex-shrink:0}
+.intro-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+.field-wrap{display:flex;flex-direction:column;gap:6px}
+.field-label{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+.field-input{background:var(--cr2);border:1.5px solid var(--bd);border-radius:10px;padding:13px 16px;color:var(--t1);font-family:var(--fb);font-size:15px;outline:none;transition:all .15s;width:100%}
+.field-input:focus{border-color:var(--go);background:#fff;box-shadow:0 0 0 3px rgba(201,169,110,.1)}
+.field-input::placeholder{color:var(--t3)}
+.field-full{grid-column:1/-1}
+.btn-start{background:var(--dk);color:var(--cr);font-family:var(--fb);font-size:16px;font-weight:500;padding:16px 40px;border-radius:10px;border:none;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px}
+.btn-start:hover{background:var(--go);color:var(--dk)}
+.btn-start:disabled{background:var(--cr3);color:var(--t3);cursor:not-allowed}
+.intro-note{font-size:13px;color:var(--t3);margin-top:16px;line-height:1.6}
+
+/* ── QUIZ ── */
+#quiz{display:none;min-height:100vh;padding-top:64px}
+#quiz.show{display:block}
+.quiz-prog-wrap{position:sticky;top:64px;z-index:100;background:rgba(250,248,244,.96);backdrop-filter:blur(10px);padding:16px 48px;border-bottom:1px solid var(--bd2)}
+.quiz-prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.prog-label{font-family:var(--fm);font-size:11px;color:var(--t3);letter-spacing:.06em}
+.prog-pct{font-family:var(--fm);font-size:11px;color:var(--go)}
+.prog-bar{height:2px;background:var(--cr3);border-radius:1px;overflow:hidden}
+.prog-fill{height:100%;background:var(--dk);border-radius:1px;transition:width .4s ease}
+.block-header{padding:60px 48px 32px;max-width:860px;margin:0 auto}
+.block-eyebrow{font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--go);margin-bottom:12px}
+.block-title{font-family:var(--fd);font-size:clamp(28px,4vw,44px);font-weight:300;color:var(--dk);line-height:1.1;letter-spacing:-.02em}
+.block-title em{font-style:italic;color:var(--go)}
+.questions-wrap{max-width:860px;margin:0 auto;padding:0 48px 80px}
+.q-item{margin-bottom:36px;background:var(--cr);border:1px solid var(--bd);border-radius:16px;overflow:hidden;transition:border-color .2s}
+.q-item:hover{border-color:rgba(201,169,110,.3)}
+.q-top{padding:24px 28px 20px;border-bottom:1px solid var(--bd2)}
+.q-num{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--go2);margin-bottom:8px}
+.q-text{font-size:15px;color:var(--t1);line-height:1.65;font-weight:400}
+.q-scale{padding:20px 28px 24px}
+.scale-labels{display:flex;justify-content:space-between;margin-bottom:12px}
+.scale-label{font-family:var(--fm);font-size:10px;letter-spacing:.04em;color:var(--t3)}
+.scale-btns{display:flex;gap:8px}
+.scale-btn{flex:1;height:44px;border:1.5px solid var(--bd);border-radius:8px;background:var(--cr2);cursor:pointer;font-family:var(--fm);font-size:13px;color:var(--t2);transition:all .15s;display:flex;align-items:center;justify-content:center;font-weight:400}
+.scale-btn:hover{border-color:var(--go);background:var(--gl);color:var(--dk)}
+.scale-btn.sel{border-color:var(--dk);background:var(--dk);color:var(--cr)}
+.block-nav{display:flex;justify-content:space-between;align-items:center;padding:0 48px 48px;max-width:860px;margin:0 auto}
+.btn-prev{background:none;border:1px solid var(--bd);color:var(--t2);font-family:var(--fb);font-size:14px;padding:12px 24px;border-radius:8px;cursor:pointer;transition:all .15s}
+.btn-prev:hover{border-color:var(--dk);color:var(--dk)}
+.btn-next{background:var(--dk);color:var(--cr);font-family:var(--fb);font-size:15px;font-weight:500;padding:14px 32px;border-radius:8px;border:none;cursor:pointer;transition:all .2s}
+.btn-next:hover:not(:disabled){background:var(--go);color:var(--dk)}
+.btn-next:disabled{background:var(--cr3);color:var(--t3);cursor:not-allowed}
+.block-progress-info{font-family:var(--fm);font-size:11px;color:var(--t3)}
+
+/* ── CALCULATING ── */
+#calc{display:none;min-height:100vh;align-items:center;justify-content:center;background:var(--em)}
+#calc.show{display:flex}
+.calc-inner{text-align:center;padding:40px}
+.calc-logo{font-family:var(--fd);font-size:28px;color:var(--cr);margin-bottom:40px;letter-spacing:-.01em}
+.calc-logo em{color:var(--go);font-style:italic}
+.calc-bar{width:280px;height:2px;background:rgba(255,255,255,.1);border-radius:1px;margin:0 auto 24px;overflow:hidden}
+.calc-fill{height:100%;background:var(--go);border-radius:1px;animation:cf 3s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes cf{0%{width:0}70%{width:85%}100%{width:100%}}
+.calc-label{font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.calc-steps{margin-top:40px;display:flex;flex-direction:column;gap:10px;text-align:left;max-width:320px;margin-left:auto;margin-right:auto}
+.calc-step{display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(255,255,255,.5);opacity:0;transition:opacity .4s}
+.calc-step.vis{opacity:1}
+.calc-step-dot{width:6px;height:6px;border-radius:50%;background:var(--go);flex-shrink:0}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  #nav{padding:0 20px}
+  #intro{padding:90px 20px 60px}
+  .intro-fields{grid-template-columns:1fr}
+  .quiz-prog-wrap{padding:12px 20px}
+  .block-header{padding:40px 20px 24px}
+  .questions-wrap{padding:0 20px 60px}
+  .block-nav{padding:0 20px 40px}
+  .scale-btns{gap:5px}
+  .scale-btn{font-size:12px;height:40px}
+}
+</style>
+<!-- Brevo -->
+<script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>
+<script>window.Brevo=window.Brevo||[];Brevo.push(["init",{client_key:"1zabutdb8zbhdqvuly1n0jz1"}]);</script>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="l-logo">NeuroBusiness<em>™</em></div>
+  <div class="l-bar"><div class="l-fill"></div></div>
+  <div class="l-sub" id="l-sub">Loading your diagnostic</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="https://neurobusiness.one" class="nav-logo">NeuroBusiness<em>™</em></a>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <span onclick="setLang('de')" id="lDE">DE</span>
+      <span class="on" onclick="setLang('en')" id="lEN">EN</span>
+    </div>
+    <span class="nav-step" id="nav-step">Diagnostic</span>
+  </div>
+</nav>
+
+<!-- ACCESS GATE -->
+<div id="gate">
+  <div class="gate-card">
+    <div class="gate-icon">🔐</div>
+    <h1 class="gate-title" id="gate-title">Access Required</h1>
+    <p class="gate-sub" id="gate-sub">This diagnostic is available exclusively to NeuroBusiness™ customers. Please use the personal link sent to your email after purchase.</p>
+    <a href="https://neurobusiness.one/#produkte" class="btn-gold" id="gate-btn">Get access →</a>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div id="intro">
+  <div class="intro-eyebrow" id="i-eye">NeuroBusiness™ Full Diagnostic</div>
+  <h1 class="intro-title" id="i-title">Who are you really —<br>and how do you work <em>best?</em></h1>
+  <p class="intro-sub" id="i-sub">50 scientifically grounded questions across 5 dimensions. Your result: a complete neuropsychological business profile — your psychotype, your 5-dimension score, your business strategy and your 3 next steps.</p>
+  <div class="intro-meta">
+    <div class="intro-meta-item"><div class="intro-meta-dot"></div><span id="i-m1">50 questions · approx. 12 minutes</span></div>
+    <div class="intro-meta-item"><div class="intro-meta-dot"></div><span id="i-m2">5 dimensions · 5 psychotypes</span></div>
+    <div class="intro-meta-item"><div class="intro-meta-dot"></div><span id="i-m3">Instant full report</span></div>
+  </div>
+  <div class="intro-fields">
+    <div class="field-wrap">
+      <label class="field-label" id="lbl-fn">First name</label>
+      <input class="field-input" id="f-firstname" type="text" autocomplete="given-name" required>
+    </div>
+    <div class="field-wrap">
+      <label class="field-label" id="lbl-ln">Last name</label>
+      <input class="field-input" id="f-lastname" type="text" autocomplete="family-name">
+    </div>
+    <div class="field-wrap field-full">
+      <label class="field-label" id="lbl-em">Email</label>
+      <input class="field-input" id="f-email" type="email" autocomplete="email" required>
+    </div>
+    <div class="field-wrap">
+      <label class="field-label" id="lbl-ind">Industry</label>
+      <input class="field-input" id="f-industry" type="text">
+    </div>
+    <div class="field-wrap">
+      <label class="field-label" id="lbl-yrs">Years self-employed</label>
+      <input class="field-input" id="f-years" type="text">
+    </div>
+  </div>
+  <button class="btn-start" onclick="startQuiz()" id="btn-start">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <span id="btn-start-txt">Start diagnostic now</span>
+  </button>
+  <p class="intro-note" id="i-note">🔒 Your answers are saved securely and used exclusively for your personal NeuroBusiness report. This assessment does not replace professional psychological consultation.</p>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz">
+  <div class="quiz-prog-wrap">
+    <div class="quiz-prog-top">
+      <span class="prog-label" id="prog-label">Block 1 of 5</span>
+      <span class="prog-pct" id="prog-pct">0%</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+  </div>
+  <div id="quiz-content"></div>
+</div>
+
+<!-- CALCULATING -->
+<div id="calc">
+  <div class="calc-inner">
+    <div class="calc-logo">NeuroBusiness<em>™</em></div>
+    <div class="calc-bar"><div class="calc-fill"></div></div>
+    <div class="calc-label" id="calc-label">Analysing your profile</div>
+    <div class="calc-steps" id="calc-steps"></div>
+  </div>
+</div>
+
+<script>
+// ── CONFIG ──
+// ⚠️  BEFORE LAUNCH: gleiche Werte wie in app.html
+const SUPABASE_URL = 'https://psqfrdpitjmfwvupmfdp.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzcWZyZHBpdGptZnd2dXBtZmRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDQ1NjQsImV4cCI6MjA5MzkyMDU2NH0.yUD24iRrINHLBRIJElmOJZPoBuoBcPGfayNGX38Oldg';
+
+// ═══════════════════════════════════════════
+// TRANSLATIONS
+// ═══════════════════════════════════════════
+const TR = {
+  en: {
+    'l-sub':'Loading your diagnostic',
+    'gate-title':'Access Required',
+    'gate-sub':'This diagnostic is available exclusively to NeuroBusiness™ customers. Please use the personal link from your email.',
+    'gate-btn':'Get access →',
+    'i-eye':'NeuroBusiness™ Full Diagnostic',
+    'i-title':'Who are you really —<br>and how do you work <em>best?</em>',
+    'i-sub':'50 scientifically grounded questions across 5 dimensions. Your result: a complete neuropsychological business profile — your psychotype, your 5-dimension score, your business strategy and your 3 next steps.',
+    'i-m1':'50 questions · approx. 12 minutes',
+    'i-m2':'5 dimensions · 5 psychotypes',
+    'i-m3':'Instant full report',
+    'lbl-fn':'First name','lbl-ln':'Last name','lbl-em':'Email','lbl-ind':'Industry','lbl-yrs':'Years self-employed',
+    'btn-start-txt':'Start diagnostic now',
+    'i-note':'🔒 Your answers are saved securely and used exclusively for your personal NeuroBusiness report.',
+    'nav-step':'Diagnostic',
+    'scale-low':'Strongly disagree','scale-high':'Strongly agree',
+    'btn-prev-txt':'← Back','btn-next-txt':'Continue →','btn-submit-txt':'Calculate my result →',
+    'prog-of':' of ','block-q':'Question ',
+    'calc-label':'Analysing your profile',
+    'calc-steps':['Evaluating energy profile','Analysing cognition style','Mapping motivation focus','Assessing implementation style','Calculating stress pattern','Identifying your psychotype'],
+    blockTitles:[
+      ['D1 — Energy Profile & Visibility','How you work and where you get your energy from'],
+      ['D2 — Cognition & Decision-Making','How you think and how you make decisions'],
+      ['D3 — Motivation Focus','What drives you — growth or security?'],
+      ['D4 — Implementation & Scaling','How you execute and how you want to grow'],
+      ['D5 — Stress Regulation & Self-Leadership','How you handle pressure and recover']
+    ]
+  },
+  de: {
+    'l-sub':'Diagnostik wird geladen',
+    'gate-title':'Zugang erforderlich',
+    'gate-sub':'Diese Diagnostik steht ausschließlich NeuroBusiness™-Kunden zur Verfügung. Bitte nutze den persönlichen Link aus deiner E-Mail.',
+    'gate-btn':'Zugang erhalten →',
+    'i-eye':'NeuroBusiness™ Vollständige Diagnostik',
+    'i-title':'Wer bist du wirklich —<br>und wie arbeitest du am <em>besten?</em>',
+    'i-sub':'50 wissenschaftlich fundierte Fragen in 5 Dimensionen. Dein Ergebnis: ein vollständiges neuropsychologisches Business-Profil — dein Psychotyp, dein 5-Dimensionen-Score, deine Business-Strategie und deine 3 nächsten Schritte.',
+    'i-m1':'50 Fragen · ca. 12 Minuten',
+    'i-m2':'5 Dimensionen · 5 Psychotypen',
+    'i-m3':'Sofortiger vollständiger Report',
+    'lbl-fn':'Vorname','lbl-ln':'Nachname','lbl-em':'E-Mail','lbl-ind':'Branche','lbl-yrs':'Jahre selbstständig',
+    'btn-start-txt':'Diagnostik jetzt starten',
+    'i-note':'🔒 Deine Antworten werden sicher gespeichert und ausschließlich für deinen persönlichen NeuroBusiness Report verwendet.',
+    'nav-step':'Diagnostik',
+    'scale-low':'Stimme gar nicht zu','scale-high':'Stimme voll zu',
+    'btn-prev-txt':'← Zurück','btn-next-txt':'Weiter →','btn-submit-txt':'Mein Ergebnis berechnen →',
+    'prog-of':' von ','block-q':'Frage ',
+    'calc-label':'Dein Profil wird analysiert',
+    'calc-steps':['Energieprofil wird ausgewertet','Kognitionsstil wird analysiert','Motivationsfokus wird bestimmt','Umsetzungsstil wird bewertet','Stressmuster wird berechnet','Dein Psychotyp wird identifiziert'],
+    blockTitles:[
+      ['D1 — Energieprofil & Sichtbarkeit','Wie du arbeitest und wo du Energie tankst'],
+      ['D2 — Kognitionsstil & Entscheidungsverhalten','Wie du denkst und Entscheidungen triffst'],
+      ['D3 — Regulationsfokus & Motivation','Was dich antreibt — Wachstum oder Sicherheit?'],
+      ['D4 — Umsetzungsstil & Skalierungslogik','Wie du umsetzt und wie du wachsen willst'],
+      ['D5 — Stressregulation & Selbstführung','Wie du mit Druck umgehst und dich erholen kannst']
+    ]
+  }
+};
+
+// ═══════════════════════════════════════════
+// 50 QUESTIONS — DE + EN
+// ═══════════════════════════════════════════
+const BLOCKS = [
+  // BLOCK A — D1 (Q1-10)
+  {
+    de: [
+      "Ich arbeite am produktivsten in tiefen, ungestörten Arbeitsphasen ohne Unterbrechungen.",
+      "Nach intensiven Kundentagen brauche ich bewusste Rückzugszeit, um wieder leistungsfähig zu sein.",
+      "Ich bekomme Energie, wenn ich meine Ideen mit Menschen teile und im Gespräch weiterentwickle.",
+      "Netzwerken und neue Menschen kennenlernen empfinde ich als belebend, nicht als erschöpfend.",
+      "Ich präsentiere mein Angebot lieber in Inhalten (Texte, Videos, Posts) als in direkten Gesprächen.",
+      "Ich gewinne Kunden am liebsten durch persönliche Beziehungen und Empfehlungen — nicht durch Content.",
+      "Ich fühle mich auf der Bühne oder in Gruppen wohl — dort zeige ich meine beste Seite.",
+      "Für kreative oder strategische Arbeit brauche ich Stille und Rückzug.",
+      "Ständige Sichtbarkeit auf Social Media kostet mich deutlich mehr Energie als sie mir gibt.",
+      "Ich habe Freude daran, in Gruppen zu arbeiten — das aktiviert mich und bringt mich auf neue Ideen."
+    ],
+    en: [
+      "I am most productive in deep, uninterrupted work sessions without distractions.",
+      "After intensive client days, I need deliberate alone-time to recharge and perform again.",
+      "I gain energy when I share my ideas with people and develop them further in conversation.",
+      "I find networking and meeting new people energising, not exhausting.",
+      "I prefer to present my offer through content (articles, videos, posts) rather than direct conversations.",
+      "I prefer winning clients through personal relationships and referrals — not through content.",
+      "I feel comfortable on stage or in groups — that's where I show my best side.",
+      "For creative or strategic work, I need silence and retreat.",
+      "Constant visibility on social media costs me significantly more energy than it gives me.",
+      "I enjoy working in groups — it activates me and sparks new ideas."
+    ]
+  },
+  // BLOCK B — D2 (Q11-20)
+  {
+    de: [
+      "Bevor ich eine wichtige Business-Entscheidung treffe, analysiere ich Daten, Zahlen und Fakten systematisch.",
+      "Ich vertraue meinem Bauchgefühl bei Entscheidungen — auch wenn ich es nicht rational begründen kann.",
+      "Ich entwickle Angebote lieber strukturiert: Zielgruppe → Problem → Lösung → Preis.",
+      "Meine besten Business-Ideen entstehen aus einem spontanen Impuls oder einer intuitiven Erkenntnis.",
+      "Ich möchte verstehen, warum eine Strategie funktioniert — bevor ich sie umsetze.",
+      "Ich entscheide lieber schnell und passe dann an — langes Analysieren kostet mich zu viel.",
+      "Im Verkaufsgespräch kann ich alle Fragen des Kunden logisch und strukturiert beantworten.",
+      "Im Verkaufsgespräch verlasse ich mich auf die Energie des Moments und meinen Instinkt.",
+      "Ich hinterfrage eine Strategie erst, wenn konkrete Ergebnisse dagegen sprechen.",
+      "Ich spüre oft intuitiv, ob ein Kunde oder ein Angebot 'stimmt' — bevor ich es analytisch erklären kann."
+    ],
+    en: [
+      "Before making an important business decision, I systematically analyse data, numbers and facts.",
+      "I trust my gut in decisions — even when I can't rationally justify it.",
+      "I prefer to develop offers in a structured way: target group → problem → solution → price.",
+      "My best business ideas come from a spontaneous impulse or an intuitive insight.",
+      "I want to understand why a strategy works — before I implement it.",
+      "I prefer to decide quickly and adjust along the way — long analysis costs me too much.",
+      "In sales conversations, I can answer all client questions logically and in a structured way.",
+      "In sales conversations, I rely on the energy of the moment and my instinct.",
+      "I only question a strategy when concrete results speak against it.",
+      "I often sense intuitively whether a client or an offer 'feels right' — before I can analytically explain it."
+    ]
+  },
+  // BLOCK C — D3 (Q21-30)
+  {
+    de: [
+      "Im Business motiviert mich vor allem, was möglich werden könnte — neue Chancen, Wachstum, Potenzial.",
+      "Im Business motiviert mich vor allem, was ich absichern und schützen will — Stabilität, Verlässlichkeit, Kontrolle.",
+      "Ich erhöhe meinen Preis eher, wenn ich eine Wachstumschance sehe — nicht erst, wenn ich unter Druck bin.",
+      "Ich treffe lieber keine Entscheidung, als eine Entscheidung zu treffen, die sich später als falsch herausstellt.",
+      "Ich teste neue Angebote und Formate auch dann, wenn der Ausgang unsicher ist.",
+      "Bevor ich etwas Neues starte, stelle ich sicher, dass das Bestehende stabil läuft.",
+      "Ich bin bereit, kurzfristig weniger zu verdienen, wenn ich dafür langfristig stärker wachse.",
+      "Verluste — auch kleine — beschäftigen mich mehr als gleichwertige Gewinne mich freuen.",
+      "Ich gehe kalkulierte Risiken ein, wenn die potenzielle Belohnung groß genug ist.",
+      "Ich fühle mich am wohlsten, wenn ich weiß, was mich erwartet — Überraschungen im Business stressen mich."
+    ],
+    en: [
+      "In business, I am primarily motivated by what could become possible — new opportunities, growth, potential.",
+      "In business, I am primarily motivated by what I want to secure and protect — stability, reliability, control.",
+      "I raise my prices when I see a growth opportunity — not only when I'm under financial pressure.",
+      "I would rather make no decision than a decision that turns out to be wrong later.",
+      "I test new offers and formats even when the outcome is uncertain.",
+      "Before starting something new, I make sure the existing business is running stably.",
+      "I am willing to earn less short-term if it means I grow stronger long-term.",
+      "Losses — even small ones — concern me more than equivalent gains make me happy.",
+      "I take calculated risks when the potential reward is large enough.",
+      "I feel most comfortable when I know what to expect — surprises in business stress me."
+    ]
+  },
+  // BLOCK D — D4 (Q31-40)
+  {
+    de: [
+      "Ich setze Projekte am liebsten nach einem klaren Plan um — Schritt für Schritt, mit definiertem Ziel.",
+      "Ich starte lieber schnell und optimiere unterwegs — zu viel Planung bremst mich.",
+      "Ich baue gerne Systeme und Prozesse, die ohne mein ständiges Eingreifen funktionieren.",
+      "Ich habe Schwierigkeiten, Aufgaben zu delegieren — ich mache es lieber selbst, wenn es wirklich gut sein soll.",
+      "Ich arbeite gut mit Routinen und wiederkehrenden Strukturen — sie geben mir Sicherheit und Effizienz.",
+      "Ich werde schnell ungeduldig mit zu viel Struktur — ich brauche Spielraum zum Experimentieren.",
+      "Ich habe klare Vorstellungen davon, wie mein Business in zwei bis drei Jahren aussehen soll.",
+      "Ich reagiere lieber auf das, was gerade gefragt ist, als nach einem Langzeitplan zu arbeiten.",
+      "Skalierung bedeutet für mich: Systeme bauen, die ohne mich laufen — nicht mehr arbeiten.",
+      "Ich merke, dass ich Dinge oft selbst erledige, weil es schneller geht als zu erklären oder zu übergeben."
+    ],
+    en: [
+      "I prefer to implement projects following a clear plan — step by step, with a defined goal.",
+      "I prefer to start quickly and optimise along the way — too much planning slows me down.",
+      "I enjoy building systems and processes that run without my constant involvement.",
+      "I have difficulty delegating tasks — I would rather do it myself if it needs to be done really well.",
+      "I work well with routines and recurring structures — they give me security and efficiency.",
+      "I quickly become impatient with too much structure — I need room to experiment.",
+      "I have a clear picture of what I want my business to look like in two to three years.",
+      "I prefer to respond to what is currently in demand rather than work to a long-term plan.",
+      "Scaling for me means building systems that run without me — not working more.",
+      "I notice that I often do things myself because it is faster than explaining or handing over."
+    ]
+  },
+  // BLOCK E — D5 (Q41-50)
+  {
+    de: [
+      "Wenn mein Business unter Druck gerät, brauche ich Rückzug und Stille, um wieder klar zu entscheiden.",
+      "Wenn mein Business unter Druck gerät, hilft mir Austausch und Resonanz mit anderen mehr als Rückzug.",
+      "In unklaren Phasen gewinne ich Sicherheit durch Struktur — konkrete To-dos und klare nächste Schritte.",
+      "In unklaren Phasen hilft mir Bewegung, Abstand und das Loslassen von starren Plänen mehr als Struktur.",
+      "Ich setze mir sehr hohe Standards — und bin selten wirklich zufrieden mit meiner eigenen Leistung.",
+      "Fehler oder Misserfolge im Business beschäftigen mich noch lange, nachdem sie passiert sind.",
+      "Ich erkenne Überlastung bei mir meist erst, wenn ich bereits deutlich zu viel geleistet habe.",
+      "Rückschläge stecke ich relativ schnell weg — ich schaue lieber nach vorne als zurück.",
+      "Ich kann gut Nein sagen — auch wenn es unbequem ist oder jemanden enttäuscht.",
+      "Ich brauche regelmäßige externe Bestätigung, um sicher zu sein, dass ich auf dem richtigen Weg bin."
+    ],
+    en: [
+      "When my business comes under pressure, I need retreat and silence to think clearly again.",
+      "When my business comes under pressure, exchange and resonance with others helps me more than withdrawal.",
+      "In unclear phases, I gain security through structure — concrete to-dos and clear next steps.",
+      "In unclear phases, movement, distance and letting go of rigid plans helps me more than structure.",
+      "I hold myself to very high standards — and am rarely truly satisfied with my own performance.",
+      "Mistakes or setbacks in business stay with me long after they have happened.",
+      "I usually recognise that I am overloaded only when I have already done far too much.",
+      "I bounce back from setbacks relatively quickly — I prefer to look forward rather than back.",
+      "I can say no well — even when it is uncomfortable or disappoints someone.",
+      "I need regular external confirmation to be sure that I am on the right track."
+    ]
+  }
+];
+
+const BLOCK_NAMES_EN = ['Energy Profile & Visibility','Cognition & Decision-Making','Motivation Focus','Implementation & Scaling','Stress Regulation'];
+const BLOCK_NAMES_DE = ['Energieprofil & Sichtbarkeit','Kognitionsstil & Entscheidungsverhalten','Regulationsfokus & Motivation','Umsetzungsstil & Skalierung','Stressregulation & Selbstführung'];
+
+// ═══════════════════════════════════════════
+// SCORING ALGORITHM
+// D1 Q1-10, D2 Q11-20, D3 Q21-30, D4 Q31-40, D5 Q41-50
+// Within each block of 10, odd-index within block = pole A, even-index = pole B
+// D1: A=Intro(S/G), B=Extro(V/C/M)
+// D2: A=Analytical(S), B=Intuitive(V/C)
+// D3: A=Promotion(V/M) at Q21,23,25,27,29 / B=Prevention(S/G) at Q22,24,26,28,30
+// D4: A=Systematic(S/G), B=Experimental(M/V)
+// D5: A=HighRisk(G), B=Resilient(M/C)
+// ═══════════════════════════════════════════
+function computeScores(ans) {
+  // ans = array of 50 values, 1-indexed from 1
+  // 0-indexed: ans[0]=Q1, ans[49]=Q50
+  const a = ans; // 0-indexed
+
+  // D1: Q1-10
+  const D1_intro = avg([a[0],a[1],a[4],a[7],a[8]]);   // Q1,2,5,8,9
+  const D1_extro = avg([a[2],a[3],a[5],a[6],a[9]]);   // Q3,4,6,7,10
+
+  // D2: Q11-20
+  const D2_anal  = avg([a[10],a[12],a[14],a[16],a[18]]); // Q11,13,15,17,19
+  const D2_intuit= avg([a[11],a[13],a[15],a[17],a[19]]); // Q12,14,16,18,20
+
+  // D3: Q21-30
+  const D3_prom  = avg([a[20],a[22],a[24],a[26],a[28]]); // Q21,23,25,27,29
+  const D3_prev  = avg([a[21],a[23],a[25],a[27],a[29]]); // Q22,24,26,28,30
+
+  // D4: Q31-40
+  const D4_sys   = avg([a[30],a[32],a[34],a[36],a[38]]); // Q31,33,35,37,39
+  const D4_exp   = avg([a[31],a[33],a[35],a[37],a[39]]); // Q32,34,36,38,40
+
+  // D5: Q41-50
+  const D5_risk  = avg([a[40],a[42],a[44],a[45],a[46]]); // Q41,43,45,46,47
+  const D5_res   = avg([a[41],a[43],a[47],a[48],a[49]]); // Q42,44,48,49,50
+
+  // Psychotype raw scores (scale 1-5 → 0-100 after norm)
+  // S: introverted + analytical + prevention-focused + systematic
+  const S_raw = (D1_intro*1.2 + D2_anal*1.2 + D3_prev*0.8 + D4_sys*0.8) / 4;
+  // V: extroverted + intuitive + promotion-focused + experimental
+  const V_raw = (D1_extro*0.8 + D2_intuit*1.2 + D3_prom*1.2 + D4_exp*0.8) / 4;
+  // M: extroverted + analytical-fast + promotion + experimental + resilient
+  const M_raw = (D1_extro*0.7 + D2_anal*0.3 + D2_intuit*0.7 + D3_prom*1.0 + D4_exp*1.0 + D5_res*0.8) / 4.5;
+  // C: extroverted + intuitive + validation-seeking + resilient
+  const C_raw = (D1_extro*1.2 + D2_intuit*0.8 + D5_res*0.8 + (6-a[49])*0.5) / 3.3; // Q50 inv
+  // G: introverted + analytical + prevention + systematic + high burnout risk
+  const G_raw = (D1_intro*0.8 + D2_anal*0.8 + D3_prev*1.2 + D4_sys*0.8 + D5_risk*1.2) / 4.8;
+
+  function norm(x){ return Math.min(100, Math.max(0, Math.round((x-1)/4*100))); }
+
+  const S=norm(S_raw), V=norm(V_raw), M=norm(M_raw), C=norm(C_raw), G=norm(G_raw);
+
+  // Determine primary and secondary
+  const scores = {S,V,M,C,G};
+  const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  const primary = sorted[0][0];
+  const secondary = sorted[1][1] >= sorted[0][1] - 15 ? sorted[1][0] : null;
+
+  const burnout = D5_risk >= 3.8;
+
+  return {S,V,M,C,G,primary,secondary,burnout};
+}
+
+function avg(arr){ return arr.reduce((s,v)=>s+v,0)/arr.length; }
+
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+let lang = 'en';
+let currentBlock = 0;
+let answers = new Array(50).fill(0); // 0 = unanswered
+let userData = {};
+
+// ═══════════════════════════════════════════
+// LANGUAGE
+// ═══════════════════════════════════════════
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.getElementById('lDE').classList.toggle('on', l==='de');
+  document.getElementById('lEN').classList.toggle('on', l==='en');
+  const t = TR[l];
+  ['l-sub','gate-title','gate-sub','gate-btn','i-eye','i-sub','i-m1','i-m2','i-m3',
+   'lbl-fn','lbl-ln','lbl-em','lbl-ind','lbl-yrs','btn-start-txt','i-note','nav-step',
+   'calc-label'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.innerHTML=t[id]||'';
+  });
+  document.getElementById('i-title').innerHTML = t['i-title'];
+  // Update placeholders
+  document.getElementById('f-firstname').placeholder = l==='de'?'Max':'Alex';
+  document.getElementById('f-email').placeholder = l==='de'?'deine@email.de':'your@email.com';
+  document.getElementById('f-industry').placeholder = l==='de'?'z.B. Coaching':'e.g. Consulting';
+  document.getElementById('f-years').placeholder = l==='de'?'z.B. 3':'e.g. 3';
+  // Re-render quiz if active
+  if(document.getElementById('quiz').classList.contains('show')) {
+    renderBlock(currentBlock);
+  }
+}
+
+// ═══════════════════════════════════════════
+// TOKEN CHECK (echte Supabase-Validierung)
+// ═══════════════════════════════════════════
+async function checkAccess() {
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('token');
+
+  // Dev-Mode: localhost ohne Token durchlassen
+  if(!token) {
+    if(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return true;
+    }
+    return false;
+  }
+
+  try {
+    // 1. Token in access_tokens prüfen
+    const tokenRes = await fetch(
+      `${SUPABASE_URL}/rest/v1/access_tokens?token=eq.${encodeURIComponent(token)}&select=id,user_id,email,expires_at`,
+      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
+    );
+    const tokenData = await tokenRes.json();
+    const row = tokenData?.[0];
+
+    if(!row || new Date(row.expires_at) < new Date()) {
+      return false; // Token ungültig oder abgelaufen
+    }
+
+    // 2. Profil laden für Name/Email Prefill
+    const profileRes = await fetch(
+      `${SUPABASE_URL}/rest/v1/profiles?id=eq.${row.user_id}&select=email,first_name`,
+      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
+    );
+    const profileData = await profileRes.json();
+    const profile = profileData?.[0];
+
+    // Felder vorab ausfüllen
+    const emailField = document.getElementById('f-email');
+    const nameField  = document.getElementById('f-firstname');
+    if(emailField && (profile?.email || row.email)) {
+      emailField.value = profile?.email || row.email;
+    }
+    if(nameField && profile?.first_name) {
+      nameField.value = profile.first_name;
+    }
+
+    return true;
+  } catch(e) {
+    console.error('Token validation error:', e);
+    return false;
+  }
+}
+
+// ═══════════════════════════════════════════
+// START FLOW
+// ═══════════════════════════════════════════
+function startQuiz() {
+  const fn = document.getElementById('f-firstname').value.trim();
+  const em = document.getElementById('f-email').value.trim();
+  if(!fn || !em || !em.includes('@')) {
+    document.getElementById('f-firstname').focus();
+    return;
+  }
+  userData = {
+    firstName: fn,
+    lastName: document.getElementById('f-lastname').value.trim(),
+    email: em,
+    industry: document.getElementById('f-industry').value.trim(),
+    years: document.getElementById('f-years').value.trim()
+  };
+
+  // Track start in Brevo
+  try {
+    if(window.Brevo) {
+      Brevo.push(['identify',{identifiers:{email_id:em},attributes:{VORNAME:fn,QUELLE:'Diagnostic neurobusiness.one',SPRACHE:lang}}]);
+      Brevo.push(['track','diagnostic_started',{lang}]);
+    }
+  } catch(e){}
+
+  document.getElementById('intro').classList.remove('show');
+  document.getElementById('quiz').classList.add('show');
+  currentBlock = 0;
+  renderBlock(0);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ═══════════════════════════════════════════
+// RENDER BLOCK
+// ═══════════════════════════════════════════
+function renderBlock(blockIdx) {
+  const t = TR[lang];
+  const block = BLOCKS[blockIdx];
+  const questions = lang==='de' ? block.de : block.en;
+  const blockTitle = t.blockTitles[blockIdx];
+  const offset = blockIdx * 10; // global question index offset
+  const totalAnswered = answers.filter(v=>v>0).length;
+  const pct = Math.round(totalAnswered/50*100);
+
+  document.getElementById('prog-label').textContent =
+    (lang==='de'?'Block ':'Block ') + (blockIdx+1) + t['prog-of'] + '5 — ' +
+    (lang==='de'?BLOCK_NAMES_DE[blockIdx]:BLOCK_NAMES_EN[blockIdx]);
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-fill').style.width = pct + '%';
+
+  let html = `
+    <div class="block-header">
+      <div class="block-eyebrow">${lang==='de'?'Block':'Block'} ${blockIdx+1}/5</div>
+      <h2 class="block-title">${blockTitle[0].replace(/D\d — /,'')}<br><em>${blockTitle[1]}</em></h2>
+    </div>
+    <div class="questions-wrap">`;
+
+  questions.forEach((q, qi) => {
+    const globalIdx = offset + qi;
+    const ans = answers[globalIdx];
+    html += `
+      <div class="q-item" id="qi-${globalIdx}">
+        <div class="q-top">
+          <div class="q-num">${t['block-q']}${globalIdx+1}</div>
+          <div class="q-text">${q}</div>
+        </div>
+        <div class="q-scale">
+          <div class="scale-labels">
+            <span class="scale-label">${t['scale-low']}</span>
+            <span class="scale-label">${t['scale-high']}</span>
+          </div>
+          <div class="scale-btns">
+            ${[1,2,3,4,5].map(v=>`<button class="scale-btn${ans===v?' sel':''}" onclick="selectAnswer(${globalIdx},${v})">${v}</button>`).join('')}
+          </div>
+        </div>
+      </div>`;
+  });
+
+  const isLast = blockIdx === 4;
+  html += `
+    </div>
+    <div class="block-nav">
+      <button class="btn-prev" onclick="prevBlock()" ${blockIdx===0?'style="visibility:hidden"':''}>
+        ${t['btn-prev-txt']}
+      </button>
+      <span class="block-progress-info">${totalAnswered}/50 ${lang==='de'?'beantwortet':'answered'}</span>
+      <button class="btn-next" id="btn-next" onclick="${isLast?'submitQuiz()':'nextBlock()'}" ${!blockComplete(blockIdx)?'disabled':''}>
+        ${isLast ? t['btn-submit-txt'] : t['btn-next-txt']}
+      </button>
+    </div>`;
+
+  document.getElementById('quiz-content').innerHTML = html;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function selectAnswer(idx, val) {
+  answers[idx] = val;
+  // Update button visuals
+  const qi = document.getElementById('qi-'+idx);
+  if(qi) {
+    qi.querySelectorAll('.scale-btn').forEach((btn,i)=>{
+      btn.classList.toggle('sel', i+1===val);
+    });
+  }
+  // Update next button
+  const blockIdx = Math.floor(idx/10);
+  document.getElementById('btn-next').disabled = !blockComplete(blockIdx);
+  // Update progress
+  const totalAnswered = answers.filter(v=>v>0).length;
+  const pct = Math.round(totalAnswered/50*100);
+  document.getElementById('prog-pct').textContent = pct+'%';
+  document.getElementById('prog-fill').style.width = pct+'%';
+  const t = TR[lang];
+  document.querySelector('.block-progress-info').textContent =
+    totalAnswered+'/50 '+(lang==='de'?'beantwortet':'answered');
+}
+
+function blockComplete(blockIdx) {
+  const offset = blockIdx*10;
+  for(let i=offset; i<offset+10; i++) {
+    if(answers[i]===0) return false;
+  }
+  return true;
+}
+
+function nextBlock() {
+  if(!blockComplete(currentBlock)) return;
+  currentBlock++;
+  renderBlock(currentBlock);
+}
+
+function prevBlock() {
+  if(currentBlock===0) return;
+  currentBlock--;
+  renderBlock(currentBlock);
+}
+
+// ═══════════════════════════════════════════
+// SUBMIT & CALCULATE
+// ═══════════════════════════════════════════
+function submitQuiz() {
+  if(!blockComplete(4)) return;
+
+  // Show calculation screen
+  document.getElementById('quiz').classList.remove('show');
+  document.getElementById('calc').classList.add('show');
+  window.scrollTo({top:0});
+
+  const t = TR[lang];
+  document.getElementById('calc-label').textContent = t['calc-label'];
+
+  // Animated steps
+  const stepsEl = document.getElementById('calc-steps');
+  stepsEl.innerHTML = t['calc-steps'].map(s=>`
+    <div class="calc-step">
+      <div class="calc-step-dot"></div>
+      <span>${s}</span>
+    </div>`).join('');
+
+  const steps = stepsEl.querySelectorAll('.calc-step');
+  steps.forEach((el,i)=>{
+    setTimeout(()=>el.classList.add('vis'), 400+i*500);
+  });
+
+  // Calculate after 3.5s
+  setTimeout(async ()=>{
+    const result = computeScores(answers);
+
+    // ── 1. Supabase: Profil direkt mit Ergebnissen updaten ─────────────
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token     = urlParams.get('token');
+      if(token) {
+        const tokenRes  = await fetch(
+          `${SUPABASE_URL}/rest/v1/access_tokens?token=eq.${encodeURIComponent(token)}&select=user_id`,
+          { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
+        );
+        const tokenData = await tokenRes.json();
+        const userId    = tokenData?.[0]?.user_id;
+        if(userId) {
+          await fetch(
+            `${SUPABASE_URL}/rest/v1/profiles?id=eq.${userId}`,
+            {
+              method: 'PATCH',
+              headers: {
+                'apikey': SUPABASE_KEY,
+                'Authorization': `Bearer ${SUPABASE_KEY}`,
+                'Content-Type': 'application/json',
+                'Prefer': 'return=minimal'
+              },
+              body: JSON.stringify({
+                psychotype:            result.primary,
+                secondary_psychotype:  result.secondary || null,
+                score_s:               result.S,
+                score_v:               result.V,
+                score_m:               result.M,
+                score_c:               result.C,
+                score_g:               result.G,
+                burnout_alert:         result.burnout ? true : false,
+                industry:              userData.industry || null,
+                years_self_employed:   userData.years    || null,
+                report_context: JSON.stringify({
+                  primary:   result.primary,
+                  secondary: result.secondary || null,
+                  scores:    { S: result.S, V: result.V, M: result.M, C: result.C, G: result.G },
+                  burnout:   result.burnout ? true : false,
+                  industry:  userData.industry || null,
+                  years:     userData.years    || null,
+                  lang:      lang
+                }),
+                lang: lang
+              })
+            }
+          );
+        }
+      }
+    } catch(saveErr) {
+      console.warn('Supabase direct save failed (non-blocking):', saveErr);
+    }
+
+    // ── 2. Brevo Tracking ──────────────────────────────────────────────
+    try {
+      if(window.Brevo) {
+        Brevo.push(['identify',{identifiers:{email_id:userData.email},
+          attributes:{VORNAME:userData.firstName,PSYCHOTYP:result.primary,SPRACHE:lang,DIAGNOSTIC_DONE:'1'}}]);
+        Brevo.push(['track','diagnostic_completed',{type:result.primary,burnout:result.burnout?1:0}]);
+      }
+    } catch(e){}
+
+    // ── 3. n8n Webhook → löst Report-E-Mail aus (fire-and-forget) ──────
+    try {
+      fetch('https://evakolontai.app.n8n.cloud/webhook/diagnostic-complete', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email:     userData.email,
+          firstName: userData.firstName,
+          lang:      lang,
+          primary:   result.primary,
+          secondary: result.secondary || null,
+          scores: { S: result.S, V: result.V, M: result.M, C: result.C, G: result.G },
+          burnout:   result.burnout ? true : false,
+          industry:  userData.industry || null,
+          years:     userData.years    || null
+        })
+      }).catch(()=>{});
+    } catch(e){}
+
+    // ── 4. Redirect zum Report ─────────────────────────────────────────
+    const params = new URLSearchParams({
+      type:    result.primary,
+      s:       result.S,
+      v:       result.V,
+      m:       result.M,
+      c:       result.C,
+      g:       result.G,
+      burnout: result.burnout ? '1' : '0',
+      name:    userData.firstName,
+      lang:    lang
+    });
+    if(result.secondary) params.set('sec', result.secondary);
+    const tkn = new URLSearchParams(window.location.search).get('token');
+    if(tkn) params.set('token', tkn); // Token weitergeben für nahtlosen Übergang zu app.html
+
+    window.location.href = 'result_v2.html?' + params.toString();
+  }, 4000);
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', ()=>{
+  // Detect language from URL or browser
+  const urlLang = new URLSearchParams(window.location.search).get('lang');
+  const browserLang = navigator.language?.startsWith('de') ? 'de' : 'en';
+  lang = urlLang || browserLang;
+  setLang(lang);
+
+  // Check access (async — echte Supabase-Validierung)
+  setTimeout(async ()=>{
+    const hasAccess = await checkAccess();
+    document.getElementById('loader').classList.add('out');
+    if(hasAccess) {
+      document.getElementById('intro').classList.add('show');
+    } else {
+      document.getElementById('gate').classList.add('show');
+    }
+  }, 2000);
+});
+</script>
+</body>
+</html>

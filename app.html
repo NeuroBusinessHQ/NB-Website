@@ -463,7 +463,7 @@ body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-siz
 const SUPABASE_URL = 'https://psqfrdpitjmfwvupmfdp.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzcWZyZHBpdGptZnd2dXBtZmRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDQ1NjQsImV4cCI6MjA5MzkyMDU2NH0.yUD24iRrINHLBRIJElmOJZPoBuoBcPGfayNGX38Oldg';
 // KI-Anfragen gehen ausschließlich durch den sicheren Cloudflare Worker — kein API Key im Frontend
-const AI_ENDPOINT = 'https://neurobusiness-ai-worker.evaa-com.workers.dev'; // Cloudflare Worker
+const AI_ENDPOINT = 'https://neurobusiness.one/api/ai'; // Cloudflare Worker via Route
 
 // ── STATE ──
 let USER = null; // { email, name, type, typeName, typeEN, lang, token, userId, scores, burnoutAlert }

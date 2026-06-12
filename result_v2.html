@@ -256,9 +256,9 @@ footer a:hover{color:rgba(255,255,255,.6)}
 
 <section id="hero">
   <div class="hero-inner">
-    <div class="h-eye">Dein NeuroBusiness™ Psychotyp</div>
+    <div class="h-eye" id="lbl-h-eye">Dein NeuroBusiness™ Psychotyp</div>
     <div class="h-badge"><span class="h-badge-code" id="hb-code">S</span><span class="h-badge-sep"></span><span class="h-badge-en" id="hb-en">The Strategist</span></div>
-    <h1 class="h-title">Der <em id="hb-name">Stratege</em></h1>
+    <h1 class="h-title"><span id="h-title-prefix">Der </span><em id="hb-name">Stratege</em></h1>
     <p class="h-tagline" id="hb-tag"></p>
     <div class="h-mixed-pill hide" id="mixed-pill"><div class="h-mixed-dot"></div><div class="h-mixed-txt" id="mixed-pill-txt">Mischtyp</div></div>
     <div class="h-scores"><div class="h-scores-label" id="lbl-5d">5-dimensionales Profil</div><div class="sb-wrap" id="sb-wrap"></div></div>
@@ -373,7 +373,7 @@ footer a:hover{color:rgba(255,255,255,.6)}
   <div class="eq-inner">
     <div class="eq-eye reveal" id="lbl-eva-eye">Persönlich von Eva Kolontai</div>
     <blockquote class="eq-quote reveal" id="eq-quote"></blockquote>
-    <div class="eq-sig reveal"><div class="eq-avatar">EK</div><div><div class="eq-name">Eva Kolontai</div><div class="eq-role">Diplom-Psychologin · NeuroBusiness™ Strategist · Berlin</div></div></div>
+    <div class="eq-sig reveal"><div class="eq-avatar">EK</div><div><div class="eq-name">Eva Kolontai</div><div class="eq-role" id="lbl-eq-role">Diplom-Psychologin · NeuroBusiness™ Strategist · Berlin</div></div></div>
   </div>
 </section>
 
@@ -416,8 +416,8 @@ footer a:hover{color:rgba(255,255,255,.6)}
     <!-- Context Banner: Solo Report user → Upsell to NeuroBusiness AI -->
     <div id="solo-upgrade-banner" class="hide" style="background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.3);border-radius:16px;padding:24px 32px;margin-bottom:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
       <div>
-        <div style="font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:6px">Du hast den Solo Report</div>
-        <div style="font-size:15px;color:var(--t1);line-height:1.5">Jetzt weißt du <em>wer</em> du bist. Der NeuroBusiness AI zeigt dir <em>was du tun sollst</em> — jeden Tag, für deinen Typ.</div>
+        <div id="lbl-solo-label" style="font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:6px">Du hast den Solo Report</div>
+        <div id="lbl-solo-text" style="font-size:15px;color:var(--t1);line-height:1.5">Jetzt weißt du <em>wer</em> du bist. Der NeuroBusiness AI zeigt dir <em>was du tun sollst</em> — jeden Tag, für deinen Typ.</div>
       </div>
       <a href="https://buy.stripe.com/eVq7sN77v73u2SKaHhasg06" class="btn-primary" style="white-space:nowrap;flex-shrink:0" id="solo-upgrade-cta">NeuroBusiness AI dazubuchen — 49 €/Monat →</a>
     </div>
@@ -1222,6 +1222,15 @@ function render(d){
   const TL=isEN?TYPE_LABELS_EN:TYPE_LABELS;
   const TN=isEN?TYPE_NAMES_EN:TYPE_NAMES;
   translateLabels(isEN);
+  if(isEN){
+    document.title='Your NeuroBusiness™ Psychotype · Diagnostic Report';
+    set('lbl-h-eye','Your NeuroBusiness™ Psychotype');
+    const pfx=$id('h-title-prefix');if(pfx)pfx.textContent='';
+    set('lbl-eq-role','Dipl. Psychologist · NeuroBusiness™ Strategist · Berlin');
+    set('lbl-solo-label','You have the Solo Report');
+    set('lbl-solo-text','Now you know <em>who</em> you are. NeuroBusiness AI shows you <em>what to do</em> — every day, for your type.');
+    set('solo-upgrade-cta','Add NeuroBusiness AI — €49/month →');
+  }
   const key=getKey(d.primary,d.secondary);
   const rDE=NB_R[key]||NB_R[d.primary]||NB_R.S;
   const rEN_base=NB_R_EN[d.primary]||NB_R_EN.S;

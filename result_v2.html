@@ -248,9 +248,22 @@ footer a:hover{color:rgba(255,255,255,.6)}
 .meth-cta{display:inline-block;border:1px solid rgba(201,169,110,.35);color:var(--g);font-family:var(--fb);font-size:13px;font-weight:400;padding:12px 22px;border-radius:9px;text-decoration:none;white-space:nowrap;transition:all .2s;flex-shrink:0}
 .meth-cta:hover{background:rgba(201,169,110,.1);border-color:rgba(201,169,110,.6)}
 @media(max-width:600px){#dim-visual{padding:64px 20px}#methodology{padding:64px 20px}}
+/* ── Access bar ── */
+#access-bar{display:none;position:sticky;top:0;z-index:100;background:rgba(14,13,11,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,169,110,0.25);padding:0 48px}
+#access-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;height:52px}
+.ab-text{font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,169,110,0.7)}
+.ab-btn{display:inline-block;background:var(--c);color:var(--cr);font-family:var(--fb);font-size:13px;font-weight:500;padding:9px 22px;border-radius:8px;text-decoration:none;white-space:nowrap;transition:background .2s}
+.ab-btn:hover{background:var(--c2)}
+@media(max-width:600px){#access-bar{padding:0 20px}.ab-text{display:none}}
 </style>
 </head>
 <body>
+<div id="access-bar">
+  <div id="access-bar-inner">
+    <span class="ab-text" id="lbl-ab-text">Dein NeuroBusiness AI ist aktiv</span>
+    <a href="#" class="ab-btn" id="ab-open-btn">NeuroBusiness AI öffnen →</a>
+  </div>
+</div>
 <div id="loader"><div class="l-logo">NeuroBusiness<em>™</em></div><div class="l-bar"><div class="l-fill"></div></div><div class="l-sub" id="l-msg">Profil wird geladen</div></div>
 <nav id="nav"><a href="https://neurobusiness.one" class="nav-logo">NeuroBusiness<em>™</em></a><span class="nav-type" id="nav-type">DIAGNOSTIC REPORT</span></nav>
 
@@ -1230,6 +1243,17 @@ function render(d){
     set('lbl-solo-label','You have the Solo Report');
     set('lbl-solo-text','Now you know <em>who</em> you are. NeuroBusiness AI shows you <em>what to do</em> — every day, for your type.');
     set('solo-upgrade-cta','Add NeuroBusiness AI — €49/month →');
+    set('lbl-ab-text','Your NeuroBusiness AI is active');
+    set('ab-open-btn','Open NeuroBusiness AI →');
+  }
+  // Access bar: show when token present
+  const _tok=(new URLSearchParams(window.location.search)).get('token');
+  const _lang=(new URLSearchParams(window.location.search)).get('lang')||'de';
+  if(_tok){
+    const abBar=$id('access-bar');
+    const abBtn=$id('ab-open-btn');
+    if(abBar)abBar.style.display='block';
+    if(abBtn)abBtn.href='app.html?token='+encodeURIComponent(_tok)+'&lang='+_lang;
   }
   const key=getKey(d.primary,d.secondary);
   const rDE=NB_R[key]||NB_R[d.primary]||NB_R.S;

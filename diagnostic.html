@@ -261,7 +261,7 @@ const TR = {
     'gate-btn':'Get access →',
     'i-eye':'NeuroBusiness™ Full Diagnostic',
     'i-title':'Who are you really —<br>and how do you work <em>best?</em>',
-    'i-sub':'50 scientifically grounded questions across 5 dimensions. Your result: a complete neuropsychological business profile — your psychotype, your 5-dimension score, your business strategy and your 3 next steps.',
+    'i-sub':'50 questions across 5 dimensions — developed on the basis of Regulatory Focus Theory (Higgins), Big Five personality research, and clinical burnout research (Maslach). Your result: a complete neuropsychological business profile — your psychotype, your 5-dimension score, your business strategy and your 3 next steps.',
     'i-m1':'50 questions · approx. 12 minutes',
     'i-m2':'5 dimensions · 5 psychotypes',
     'i-m3':'Instant full report',
@@ -289,7 +289,7 @@ const TR = {
     'gate-btn':'Zugang erhalten →',
     'i-eye':'NeuroBusiness™ Vollständige Diagnostik',
     'i-title':'Wer bist du wirklich —<br>und wie arbeitest du am <em>besten?</em>',
-    'i-sub':'50 wissenschaftlich fundierte Fragen in 5 Dimensionen. Dein Ergebnis: ein vollständiges neuropsychologisches Business-Profil — dein Psychotyp, dein 5-Dimensionen-Score, deine Business-Strategie und deine 3 nächsten Schritte.',
+    'i-sub':'50 Fragen in 5 Dimensionen — entwickelt auf Basis der Regulatory Focus Theory (Higgins), der Big Five Persönlichkeitsforschung und klinischer Burnout-Forschung (Maslach). Dein Ergebnis: ein vollständiges neuropsychologisches Business-Profil — dein Psychotyp, dein 5-Dimensionen-Score, deine Business-Strategie und deine 3 nächsten Schritte.',
     'i-m1':'50 Fragen · ca. 12 Minuten',
     'i-m2':'5 Dimensionen · 5 Psychotypen',
     'i-m3':'Sofortiger vollständiger Report',
@@ -488,8 +488,15 @@ function computeScores(ans) {
   const D4_exp   = avg([a[31],a[33],a[35],a[37],a[39]]); // Q32,34,36,38,40
 
   // D5: Q41-50
-  const D5_risk  = avg([a[40],a[42],a[44],a[45],a[46]]); // Q41,43,45,46,47
-  const D5_res   = avg([a[41],a[43],a[47],a[48],a[49]]); // Q42,44,48,49,50
+  // D5_risk: klinisch etablierte Burnout-Vulnerabilitätsmarker
+  //   Q41 (Rückzug nötig), Q43 (Struktur nötig), Q45 (Perfektionismus),
+  //   Q46 (Rumination/Fehler), Q47 (Burnout-Blindheit), Q50 (externe Validierungsabhängigkeit)
+  // NOTE: Q50 wurde hierher verschoben — externe Bestätigungsabhängigkeit ist ein
+  // Risikofaktor (external locus of control), KEINE Resilienzmarke.
+  const D5_risk  = avg([a[40],a[42],a[44],a[45],a[46],a[49]]); // Q41,43,45,46,47,50
+  // D5_res: Selbstregulations- und Resilienzindikatoren
+  //   Q42 (soziales Coping), Q44 (kognitive Flexibilität), Q48 (Bounce-Back), Q49 (Grenzen setzen)
+  const D5_res   = avg([a[41],a[43],a[47],a[48]]); // Q42,44,48,49
 
   // Psychotype raw scores (scale 1-5 → 0-100 after norm)
   // S: introverted + analytical + prevention-focused + systematic
@@ -498,8 +505,11 @@ function computeScores(ans) {
   const V_raw = (D1_extro*0.8 + D2_intuit*1.2 + D3_prom*1.2 + D4_exp*0.8) / 4;
   // M: extroverted + analytical-fast + promotion + experimental + resilient
   const M_raw = (D1_extro*0.7 + D2_anal*0.3 + D2_intuit*0.7 + D3_prom*1.0 + D4_exp*1.0 + D5_res*0.8) / 4.5;
-  // C: extroverted + intuitive + validation-seeking + resilient
-  const C_raw = (D1_extro*1.2 + D2_intuit*0.8 + D5_res*0.8 + (6-a[49])*0.5) / 3.3; // Q50 inv
+  // C: extroverted + intuitive + resilient (soziales Coping, Flexibilität, Grenzen)
+  // FIX: Q50 (externe Bestätigung) war hier doppelt verrechnet — positiv via D5_res UND
+  // invertiert via (6-a[49]). Da Q50 nun korrekt in D5_risk liegt, wird der direkte
+  // Inversionsterm entfernt. Divisor angepasst: 1.2+0.8+0.8 = 2.8
+  const C_raw = (D1_extro*1.2 + D2_intuit*0.8 + D5_res*0.8) / 2.8;
   // G: introverted + analytical + prevention + systematic + high burnout risk
   const G_raw = (D1_intro*0.8 + D2_anal*0.8 + D3_prev*1.2 + D4_sys*0.8 + D5_risk*1.2) / 4.8;
 
@@ -511,14 +521,44 @@ function computeScores(ans) {
   const scores = {S,V,M,C,G};
   const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
   const primary = sorted[0][0];
-  const secondary = sorted[1][1] >= sorted[0][1] - 15 ? sorted[1][0] : null;
+  // Mischtyp-Schwelle: prozentbasiert statt fixer Punktdifferenz.
+  // Wissenschaftliche Begründung: ein zweiter Typ wird als klinisch relevant gewertet,
+  // wenn er ≥ 80% des Primärtyp-Scores erreicht UND mindestens 25 Punkte absolut.
+  // Alter Fix-Wert (-15) war inkonsistent: bei primary=90 → threshold 75 (83%),
+  // bei primary=40 → threshold 25 (63%) — zu breite Streuung.
+  const secondary = (sorted[1][1] >= sorted[0][1] * 0.80 && sorted[1][1] >= 25) ? sorted[1][0] : null;
 
+  // Burnout-Alert: D5_risk ≥ 3.8 (von max. 5) über 6 Vulnerabilitätsmarker.
+  // Entspricht ~70% Zustimmung zu Erschöpfungsindikatoren — klinisch als
+  // "erhöhtes Risiko" interpretierbar (angelehnt an MBI-Konzept von Maslach & Jackson 1981).
+  // ⚠️  Nicht als Diagnose kommunizieren — als Handlungsempfehlung formulieren.
   const burnout = D5_risk >= 3.8;
 
-  return {S,V,M,C,G,primary,secondary,burnout};
+  // Bipolare Dimensionspositionen (0 = A-Pol, 100 = B-Pol) — für Radar-Chart und Dimensionsbalken
+  const d1 = norm(D1_extro);   // 0 = Introvertiert,  100 = Extrovertiert
+  const d2 = norm(D2_intuit);  // 0 = Analytisch,     100 = Intuitiv
+  const d3 = norm(D3_prom);    // 0 = Prävention,     100 = Promotion
+  const d4 = norm(D4_exp);     // 0 = Systematisch,   100 = Experimentell
+  const d5 = Math.max(0, Math.min(100, 100 - norm(D5_risk))); // 0 = Vulnerabel, 100 = Resilient
+  return {S,V,M,C,G,primary,secondary,burnout,d1,d2,d3,d4,d5};
 }
 
 function avg(arr){ return arr.reduce((s,v)=>s+v,0)/arr.length; }
+
+// ═══════════════════════════════════════════
+// RESPONSE-SET-DETEKTION
+// Wissenschaftlicher Hintergrund: Acquiescence Bias und Response Set sind bekannte
+// Messartefakte in Likert-Skalen. Wenn >60% aller Antworten identisch sind, ist
+// die Aussagekraft des Profils stark eingeschränkt (Cronbach 1946; Paulhus 1991).
+// ═══════════════════════════════════════════
+function detectResponseSet(answers) {
+  const counts = {1:0, 2:0, 3:0, 4:0, 5:0};
+  answers.forEach(v => { if(v>=1 && v<=5) counts[v]++; });
+  const maxCount = Math.max(...Object.values(counts));
+  const dominantValue = Object.keys(counts).find(k => counts[k] === maxCount);
+  // Schwelle: >30 von 50 identische Antworten (>60%) = Response Set Warnung
+  return { isUniform: maxCount > 30, dominantValue: parseInt(dominantValue), maxCount };
+}
 
 // ═══════════════════════════════════════════
 // STATE
@@ -776,6 +816,8 @@ function submitQuiz() {
   // Calculate after 3.5s
   setTimeout(async ()=>{
     const result = computeScores(answers);
+    const responseSetCheck = detectResponseSet(answers);
+    result.responseSetWarning = responseSetCheck.isUniform;
 
     // ── 1. Supabase: Profil direkt mit Ergebnissen updaten ─────────────
     try {
@@ -852,7 +894,8 @@ function submitQuiz() {
           scores: { S: result.S, V: result.V, M: result.M, C: result.C, G: result.G },
           burnout:   result.burnout ? true : false,
           industry:  userData.industry || null,
-          years:     userData.years    || null
+          years:     userData.years    || null,
+          token:     new URLSearchParams(window.location.search).get('token') || null
         })
       }).catch(()=>{});
     } catch(e){}
@@ -869,7 +912,12 @@ function submitQuiz() {
       name:    userData.firstName,
       lang:    lang
     });
+    // Dimension-Scores für Radar-Chart und bipolare Balken weitergeben
+    params.set('d1', result.d1); params.set('d2', result.d2);
+    params.set('d3', result.d3); params.set('d4', result.d4);
+    params.set('d5', result.d5);
     if(result.secondary) params.set('sec', result.secondary);
+    if(result.responseSetWarning) params.set('rsw', '1'); // response set warning flag
     const tkn = new URLSearchParams(window.location.search).get('token');
     if(tkn) params.set('token', tkn); // Token weitergeben für nahtlosen Übergang zu app.html
 

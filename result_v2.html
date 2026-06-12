@@ -325,11 +325,36 @@ footer a:hover{color:rgba(255,255,255,.6)}
           <span style="font-size:13px;color:var(--t3)">Über 200 Selbstständige nutzen den NeuroBusiness AI aktiv</span>
         </div>
 
-        <div class="up-cta-wrap reveal">
+        <!-- Access CTA: shown when user already has a valid token -->
+        <div id="access-cta-wrap" class="up-cta-wrap reveal" style="display:none">
+          <a href="#" class="btn-primary" id="open-app-btn">NeuroBusiness AI öffnen →</a>
+          <span class="up-price" id="lbl-access-ready">Dein Zugang ist aktiv — direkt starten.</span>
+        </div>
+
+        <div class="up-cta-wrap reveal" id="upsell-cta-wrap">
           <a href="https://buy.stripe.com/eVq7sN77v73u2SKaHhasg06" class="btn-primary" id="lbl-up-cta">NeuroBusiness AI freischalten →</a>
           <span class="up-price" id="lbl-up-price">49 € / Monat · zzgl. MwSt. · Jederzeit kündbar</span>
           <a href="https://zeeg.me/evak/15min" class="btn-secondary" id="lbl-up-secondary">Erst persönlich sprechen →</a>
         </div>
+
+        <script>
+        (function(){
+          const p = new URLSearchParams(window.location.search);
+          const tok = p.get('token');
+          const lang = p.get('lang') || 'de';
+          if (tok) {
+            const appUrl = 'app.html?token=' + encodeURIComponent(tok) + '&lang=' + lang;
+            document.getElementById('open-app-btn').href = appUrl;
+            document.getElementById('access-cta-wrap').style.display = '';
+            document.getElementById('upsell-cta-wrap').style.display = 'none';
+            // EN label
+            if (lang === 'en') {
+              document.getElementById('open-app-btn').textContent = 'Open NeuroBusiness AI →';
+              document.getElementById('lbl-access-ready').textContent = 'Your access is active — start now.';
+            }
+          }
+        })();
+        </script>
       </div>
       <div class="up-feat-col reveal">
         <div class="up-feat"><div class="up-feat-icon">◆</div><div><div class="up-feat-h">Typ-spezifisches Coaching</div><div class="up-feat-t">Jede Antwort auf deinen Psychotyp abgestimmt. Kein generischer Ratschlag, der bei dir nicht zieht.</div></div></div>

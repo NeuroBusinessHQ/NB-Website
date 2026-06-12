@@ -690,6 +690,12 @@ async function init() {
   if (token) {
     const userData = await validateToken(token);
     if (userData) {
+      // No psychotype = hasn't done diagnostic yet → redirect there first
+      if (!userData.psychotype) {
+        const redirectLang = userData.lang || LANG || 'de';
+        window.location.href = `diagnostic.html?token=${encodeURIComponent(token)}&lang=${redirectLang}`;
+        return;
+      }
       USER = {
         email: userData.email,
         name: userData.first_name || '',

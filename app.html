@@ -641,7 +641,7 @@ async function requestAccess() {
     await fetch('https://evakolontai.app.n8n.cloud/webhook/nb-magic-link', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, token, appUrl, name: userData.name, lang: LANG })
+      body: JSON.stringify({ email, token, appUrl, name: userData.first_name || '', lang: LANG })
     }).catch(() => {}); // fire and forget
 
     succEl.innerHTML = LANG === 'de'

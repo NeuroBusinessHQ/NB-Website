@@ -25,7 +25,7 @@ export default {
     const origin = request.headers.get('Origin') || '';
     const allowed = env.ALLOWED_ORIGIN || 'https://neurobusiness.one';
     const corsHeaders = {
-      'Access-Control-Allow-Origin': origin === allowed || origin.includes('localhost') ? origin : allowed,
+      'Access-Control-Allow-Origin': (origin === allowed || origin.includes('localhost') || origin.includes('pages.dev')) ? origin : allowed,
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     };
@@ -38,7 +38,57 @@ export default {
       return json({ error: 'Method not allowed' }, 405, corsHeaders);
     }
 
-    // ── TOKEN-VALIDIERUNG ─────────────────────────────────────────
+    const pathname = new URL(request.url).pathname;
+
+    // ── /api/save-diagnostic ──────────────────────────────────────
+    if (pathname === '/api/save-diagnostic') {
+      let body;
+      try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+
+      const { token: diagToken, primary, secondary, scores, burnout, industry, years, d1, d2, d3, d4, d5, responseSetWarning } = body;
+      if (!diagToken || !primary) return json({ error: 'Missing token or primary' }, 400, corsHeaders);
+
+      // Validate token → get user_id
+      const tokenData = await supabaseGet(`access_tokens?token=eq.${encodeURIComponent(diagToken)}&select=user_id,expires_at`, env);
+      const row = tokenData?.[0];
+      if (!row || new Date(row.expires_at) < new Date()) return json({ error: 'Invalid or expired token' }, 401, corsHeaders);
+
+      // Update profile using service role key (bypasses RLS)
+      const patch = {
+        psychotype: primary,
+        secondary_psychotype: secondary || null,
+        score_s: scores?.S ?? 0,
+        score_v: scores?.V ?? 0,
+        score_m: scores?.M ?? 0,
+        score_c: scores?.C ?? 0,
+        score_g: scores?.G ?? 0,
+        burnout_alert: burnout ? true : false,
+        industry: industry || null,
+        years_self_employed: years || null,
+        diagnostic_completed_at: new Date().toISOString(),
+        report_context: JSON.stringify({ primary, secondary: secondary || null, scores, burnout, industry, years, d1, d2, d3, d4, d5 }),
+      };
+
+      const patchRes = await fetch(`${env.SUPABASE_URL}/rest/v1/profiles?id=eq.${row.user_id}`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': env.SUPABASE_SERVICE_KEY,
+          'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal',
+        },
+        body: JSON.stringify(patch),
+      });
+
+      if (!patchRes.ok) {
+        const err = await patchRes.text();
+        return json({ error: 'Profile update failed', detail: err }, 500, corsHeaders);
+      }
+
+      return json({ ok: true }, 200, corsHeaders);
+    }
+
+    // ── TOKEN-VALIDIERUNG (für /api/ai) ───────────────────────────
     const authHeader = request.headers.get('Authorization') || '';
     const token = authHeader.replace('Bearer ', '').trim();
 

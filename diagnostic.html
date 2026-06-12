@@ -819,56 +819,28 @@ function submitQuiz() {
     const responseSetCheck = detectResponseSet(answers);
     result.responseSetWarning = responseSetCheck.isUniform;
 
-    // ── 1. Supabase: Profil direkt mit Ergebnissen updaten ─────────────
+    // ── 1. Profil via Cloudflare Worker speichern (service role, bypasses RLS) ──
     try {
-      const urlParams = new URLSearchParams(window.location.search);
-      const token     = urlParams.get('token');
-      if(token) {
-        const tokenRes  = await fetch(
-          `${SUPABASE_URL}/rest/v1/access_tokens?token=eq.${encodeURIComponent(token)}&select=user_id`,
-          { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
-        );
-        const tokenData = await tokenRes.json();
-        const userId    = tokenData?.[0]?.user_id;
-        if(userId) {
-          await fetch(
-            `${SUPABASE_URL}/rest/v1/profiles?id=eq.${userId}`,
-            {
-              method: 'PATCH',
-              headers: {
-                'apikey': SUPABASE_KEY,
-                'Authorization': `Bearer ${SUPABASE_KEY}`,
-                'Content-Type': 'application/json',
-                'Prefer': 'return=minimal'
-              },
-              body: JSON.stringify({
-                psychotype:            result.primary,
-                secondary_psychotype:  result.secondary || null,
-                score_s:               result.S,
-                score_v:               result.V,
-                score_m:               result.M,
-                score_c:               result.C,
-                score_g:               result.G,
-                burnout_alert:         result.burnout ? true : false,
-                industry:              userData.industry || null,
-                years_self_employed:   userData.years    || null,
-                report_context: JSON.stringify({
-                  primary:   result.primary,
-                  secondary: result.secondary || null,
-                  scores:    { S: result.S, V: result.V, M: result.M, C: result.C, G: result.G },
-                  burnout:   result.burnout ? true : false,
-                  industry:  userData.industry || null,
-                  years:     userData.years    || null,
-                  lang:      lang
-                }),
-                lang: lang
-              })
-            }
-          );
-        }
+      const diagToken = new URLSearchParams(window.location.search).get('token');
+      if(diagToken) {
+        await fetch('https://neurobusiness.one/api/save-diagnostic', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            token:     diagToken,
+            primary:   result.primary,
+            secondary: result.secondary || null,
+            scores:    { S: result.S, V: result.V, M: result.M, C: result.C, G: result.G },
+            burnout:   result.burnout ? true : false,
+            industry:  userData.industry || null,
+            years:     userData.years    || null,
+            d1: result.d1, d2: result.d2, d3: result.d3, d4: result.d4, d5: result.d5,
+            responseSetWarning: result.responseSetWarning || false,
+          })
+        });
       }
     } catch(saveErr) {
-      console.warn('Supabase direct save failed (non-blocking):', saveErr);
+      console.warn('save-diagnostic failed (non-blocking):', saveErr);
     }
 
     // ── 2. Brevo Tracking ──────────────────────────────────────────────

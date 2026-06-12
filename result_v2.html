@@ -951,8 +951,13 @@ function render(d){
   translateLabels(isEN);
   const key=getKey(d.primary,d.secondary);
   const rDE=NB_R[key]||NB_R[d.primary]||NB_R.S;
-  const rEN_raw=NB_R_EN[key]||NB_R_EN[d.primary]||NB_R_EN.S;
-  const r=isEN?{...rDE,...rEN_raw}:rDE;
+  const rEN_base=NB_R_EN[d.primary]||NB_R_EN.S;
+  const rEN_mixed=d.secondary?(NB_R_EN[key]||{}):rEN_base;
+  const r=isEN
+    ?(d.secondary
+      ?{...rEN_base,isMixed:rDE.isMixed,code:rDE.code,en:rDE.en,burnoutLevel:rDE.burnoutLevel,mixedNote:undefined,...rEN_mixed}
+      :{...rDE,...rEN_base})
+    :rDE;
   set('hb-code',r.code);set('hb-en',r.en);set('hb-name',r.name.replace(/^(Der|Die) /,''));
   set('hb-tag',r.tagline);
   $id('nav-type').textContent=r.code+' — '+r.en;

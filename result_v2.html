@@ -190,6 +190,64 @@ footer a{color:rgba(255,255,255,.3);text-decoration:none}
 footer a:hover{color:rgba(255,255,255,.6)}
 .hide{display:none!important}
 @media(max-width:600px){#nav{padding:0 20px}.sec{padding:64px 20px}#hero{padding:90px 20px 56px}}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   #DIM-VISUAL — 5D Diagnostik-Profil
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#dim-visual{background:var(--cr2);padding:96px 48px}
+#dim-visual .sec-in{max-width:1080px;margin:0 auto}
+.dv-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-top:52px}
+@media(max-width:860px){.dv-grid{grid-template-columns:1fr;gap:48px}}
+.radar-wrap{display:flex;flex-direction:column;align-items:center}
+.radar-title{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:20px;text-align:center}
+.radar-svg-box{width:100%;max-width:360px}
+.dim-bars{display:flex;flex-direction:column;gap:14px}
+.dim-bar-wrap{background:var(--cr);border:1px solid var(--b);border-radius:12px;padding:18px 20px}
+.dim-bar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.dim-bar-title{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+.dim-bar-score{font-family:var(--fm);font-size:11px;color:var(--g)}
+.dim-bar-poles{display:flex;justify-content:space-between;margin-bottom:7px}
+.dim-bar-pole{font-size:12px;color:var(--t3);transition:color .3s}
+.dim-bar-pole.hi{color:var(--t1);font-weight:500}
+.dim-bar-track{height:6px;background:var(--cr3);border-radius:3px;position:relative}
+.dim-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--c),var(--g));width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+.dim-bar-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;background:var(--dk);border:2px solid var(--cr);box-shadow:0 0 0 2px var(--dk);left:0;transition:left 1.4s cubic-bezier(.16,1,.3,1)}
+/* ── Mixed-Type Komposition ── */
+.mix-comp{margin-top:40px;background:rgba(124,105,144,.07);border:1px solid rgba(124,105,144,.2);border-radius:16px;padding:28px 32px;display:none}
+.mix-comp.show{display:block}
+.mix-comp-label{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--p);margin-bottom:22px}
+.mix-row{display:flex;align-items:center;gap:18px;margin-bottom:16px}
+.mix-badge{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:22px;font-weight:300;font-style:italic;flex-shrink:0}
+.mix-badge.pri{background:var(--c);color:var(--g)}
+.mix-badge.sec{background:var(--cr3);color:var(--t2);border:1px solid var(--b)}
+.mix-bar-wrap{flex:1}
+.mix-bar{height:9px;background:var(--cr3);border-radius:5px;overflow:hidden}
+.mix-bar-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--c) 0%,rgba(26,61,53,.35) 100%);width:0;transition:width 1.6s cubic-bezier(.16,1,.3,1)}
+.mix-pcts{display:flex;justify-content:space-between;margin-top:6px}
+.mix-pct{font-family:var(--fm);font-size:11px;color:var(--t2)}
+.mix-insight{font-size:14px;color:var(--t2);line-height:1.75;margin-top:14px;padding-top:14px;border-top:1px solid rgba(124,105,144,.15)}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   #METHODOLOGY — B2B / Fachleute
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#methodology{background:var(--dk);padding:96px 48px}
+#methodology .sec-in{max-width:1080px;margin:0 auto}
+.meth-eye{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,169,110,.5);margin-bottom:24px}
+.meth-h{font-family:var(--fd);font-size:clamp(36px,4vw,52px);font-weight:300;color:var(--cr);letter-spacing:-.025em;line-height:1.1;margin-bottom:16px}
+.meth-h em{font-style:italic;color:var(--g)}
+.meth-sub{font-size:16px;color:rgba(250,248,244,.45);line-height:1.8;max-width:680px;margin-bottom:52px}
+.meth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.meth-grid{grid-template-columns:1fr}}
+.meth-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px}
+.meth-card-eye{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,169,110,.4);margin-bottom:12px}
+.meth-card-title{font-size:15px;font-weight:500;color:var(--cr);margin-bottom:10px;line-height:1.35}
+.meth-card-text{font-size:13px;color:rgba(250,248,244,.4);line-height:1.75}
+.meth-divider{height:1px;background:rgba(255,255,255,.06);margin:36px 0}
+.meth-footer{display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.meth-footer-text{font-size:13px;color:rgba(250,248,244,.28);line-height:1.75;max-width:580px}
+.meth-cta{display:inline-block;border:1px solid rgba(201,169,110,.35);color:var(--g);font-family:var(--fb);font-size:13px;font-weight:400;padding:12px 22px;border-radius:9px;text-decoration:none;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.meth-cta:hover{background:rgba(201,169,110,.1);border-color:rgba(201,169,110,.6)}
+@media(max-width:600px){#dim-visual{padding:64px 20px}#methodology{padding:64px 20px}}
 </style>
 </head>
 <body>
@@ -213,6 +271,29 @@ footer a:hover{color:rgba(255,255,255,.6)}
     <h2 class="sec-h reveal" id="lbl-mirror-h">Was wir <em id="lbl-mirror-em">in dir sehen</em></h2>
     <p class="mirror-intro reveal" id="mirror-intro"></p>
     <div class="mirror-grid reveal" id="mirror-grid"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     5D DIAGNOSTIK-PROFIL — Radar + Dimensionsbalken
+     ══════════════════════════════════════════════════ -->
+<section id="dim-visual">
+  <div class="sec-in">
+    <div class="meth-eye reveal" id="lbl-dv-eye">5-Dimensionen · Diagnostisches Profil</div>
+    <h2 class="sec-h reveal" id="lbl-dv-h">Dein neuropsychologisches <em>Dimensionsprofil</em></h2>
+    <p class="sec-sub reveal" id="lbl-dv-sub">Wie du dich auf jeder der 5 Dimensionen positionierst — und was das für deinen Arbeitsstil bedeutet.</p>
+    <div class="dv-grid">
+      <div class="radar-wrap reveal">
+        <div class="radar-title" id="lbl-radar-title">Profil-Radar</div>
+        <div class="radar-svg-box" id="radar-container"><!-- SVG via JS --></div>
+      </div>
+      <div class="dim-bars reveal" id="dim-bars-wrap"><!-- via JS --></div>
+    </div>
+    <div class="mix-comp" id="mix-comp">
+      <div class="mix-comp-label" id="lbl-mix-label">Deine Typ-Komposition</div>
+      <div class="mix-row" id="mix-row"><!-- via JS --></div>
+      <div class="mix-insight" id="mix-insight"></div>
+    </div>
   </div>
 </section>
 
@@ -274,7 +355,7 @@ footer a:hover{color:rgba(255,255,255,.6)}
     </div>
     <div class="bo-grid reveal" style="margin-top:20px">
       <div class="bo-level bo-mid" id="bo-card"><div class="bo-level-label" id="lbl-burnout">Burnout-Risiko</div><div class="bo-level-text" id="bo-text"></div></div>
-      <div class="bo-alert hide" id="bo-alert"><div class="bo-alert-title" id="lbl-alert-title">Ein persönliches Wort von Eva</div><div class="bo-alert-text">Dein Ergebnisprofil zeigt erhöhte Erschöpfungsmarker. Das bedeutet nicht dass etwas falsch mit dir ist — es bedeutet dass du in einem Modus arbeitest der sehr leistungsfähig ist, aber einen Preis hat der erst später sichtbar wird.<br><br>Ich würde gerne kurz persönlich sprechen. <a href="https://zeeg.me/evak/15min">15 Minuten buchen →</a></div></div>
+      <div class="bo-alert hide" id="bo-alert"><div class="bo-alert-title" id="lbl-alert-title">Ein persönliches Wort von Eva</div><div class="bo-alert-text" id="lbl-alert-text">Dein Ergebnisprofil zeigt erhöhte Erschöpfungsmarker. Das bedeutet nicht dass etwas falsch mit dir ist — es bedeutet dass du in einem Modus arbeitest der sehr leistungsfähig ist, aber einen Preis hat der erst später sichtbar wird.<br><br>Ich würde gerne kurz persönlich sprechen. <a href="https://zeeg.me/evak/15min">15 Minuten buchen →</a></div></div>
     </div>
   </div>
 </section>
@@ -293,6 +374,39 @@ footer a:hover{color:rgba(255,255,255,.6)}
     <div class="eq-eye reveal" id="lbl-eva-eye">Persönlich von Eva Kolontai</div>
     <blockquote class="eq-quote reveal" id="eq-quote"></blockquote>
     <div class="eq-sig reveal"><div class="eq-avatar">EK</div><div><div class="eq-name">Eva Kolontai</div><div class="eq-role">Diplom-Psychologin · NeuroBusiness™ Strategist · Berlin</div></div></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     METHODOLOGY — Wissenschaftliche Grundlage / B2B
+     ══════════════════════════════════════════════════ -->
+<section id="methodology">
+  <div class="sec-in">
+    <div class="meth-eye reveal" id="lbl-meth-eye">Für Fachleute</div>
+    <h2 class="meth-h reveal" id="lbl-meth-h">Diagnostische <em>Grundlage</em></h2>
+    <p class="meth-sub reveal" id="lbl-meth-sub">Das NeuroBusiness™ Diagnostikinstrument ist auf wissenschaftlich etablierten psychologischen Modellen aufgebaut und für den professionellen Einsatz in Business-Coaching und Organisationsentwicklung konzipiert.</p>
+    <div class="meth-grid reveal">
+      <div class="meth-card">
+        <div class="meth-card-eye" id="lbl-mc1-eye">Dimension 1 &amp; 3</div>
+        <div class="meth-card-title" id="lbl-mc1-title">Regulatory Focus Theory</div>
+        <div class="meth-card-text" id="lbl-mc1-text">E. Tory Higgins (1997) — Promotion- vs. Prävention-Fokus als fundamentale motivationale Orientierung in Entscheidungs- und Kommunikationsprozessen. Erklärt Risikobereitschaft und strategisches Verhalten in Business-Kontexten.</div>
+      </div>
+      <div class="meth-card">
+        <div class="meth-card-eye" id="lbl-mc2-eye">Dimension 1 &amp; 2</div>
+        <div class="meth-card-title" id="lbl-mc2-title">Big Five &amp; Kognitionsstile</div>
+        <div class="meth-card-text" id="lbl-mc2-text">Costa &amp; McCrae (1992) — Introversion-Extraversion als stabiles Persönlichkeitsmerkmal. Ergänzt durch duale Prozesstheorie (Kahneman 2011): analytisches System-2-Denken vs. intuitives System-1-Denken als kognitive Grundorientierung.</div>
+      </div>
+      <div class="meth-card">
+        <div class="meth-card-eye" id="lbl-mc3-eye">Dimension 5</div>
+        <div class="meth-card-title" id="lbl-mc3-title">Burnout &amp; Resilienzforschung</div>
+        <div class="meth-card-text" id="lbl-mc3-text">Maslach &amp; Jackson (1981) — multidimensionales Burnout-Modell (MBI). Ergänzt durch Salutogenese (Antonovsky 1979): Kohärenzgefühl und Selbstregulation als Schutzfaktoren. Prüft externe Validierungsabhängigkeit (Rotter 1966).</div>
+      </div>
+    </div>
+    <div class="meth-divider"></div>
+    <div class="meth-footer reveal">
+      <p class="meth-footer-text" id="lbl-meth-footer">NeuroBusiness™ ist ein diagnostisches Instrument des German Institute of Positive Psychology, entwickelt von Eva Kolontai, Diplom-Psychologin. Das Instrument dient als evidenzbasiertes Coaching-Assessment und erhebt keinen klinisch-diagnostischen Anspruch. Lizenzierter Einsatz durch Coaches, Psychologen und Organisationsentwickler möglich.</p>
+      <a href="mailto:info@neurobusiness.one?subject=Lizenzanfrage%20NeuroBusiness%20Diagnostik" class="meth-cta" id="lbl-meth-cta">Lizenz anfragen →</a>
+    </div>
   </div>
 </section>
 
@@ -357,10 +471,10 @@ footer a:hover{color:rgba(255,255,255,.6)}
         </script>
       </div>
       <div class="up-feat-col reveal">
-        <div class="up-feat"><div class="up-feat-icon">◆</div><div><div class="up-feat-h">Typ-spezifisches Coaching</div><div class="up-feat-t">Jede Antwort auf deinen Psychotyp abgestimmt. Kein generischer Ratschlag, der bei dir nicht zieht.</div></div></div>
-        <div class="up-feat"><div class="up-feat-icon">◈</div><div><div class="up-feat-h">Wöchentliche Agenda — jeden Montag</div><div class="up-feat-t">3 konkrete Aufgaben für die Woche — aus deinem Profil, nicht aus einem Template.</div></div></div>
-        <div class="up-feat"><div class="up-feat-icon">◇</div><div><div class="up-feat-h">Sparringspartner ohne Kalender</div><div class="up-feat-t">Entscheidungen, Pricing, Angebote — sofort besprechen, ohne auf einen Termin zu warten.</div></div></div>
-        <div class="up-feat"><div class="up-feat-icon">○</div><div><div class="up-feat-h">Von Eva Kolontai entwickelt</div><div class="up-feat-t">Diplom-Psychologin, 20+ Jahre Erfahrung. Jeder Prompt trägt ihre klinische und Business-Expertise.</div></div></div>
+        <div class="up-feat"><div class="up-feat-icon">◆</div><div><div class="up-feat-h" id="lbl-feat1-h">Typ-spezifisches Coaching</div><div class="up-feat-t" id="lbl-feat1-t">Jede Antwort auf deinen Psychotyp abgestimmt. Kein generischer Ratschlag, der bei dir nicht zieht.</div></div></div>
+        <div class="up-feat"><div class="up-feat-icon">◈</div><div><div class="up-feat-h" id="lbl-feat2-h">Wöchentliche Agenda — jeden Montag</div><div class="up-feat-t" id="lbl-feat2-t">3 konkrete Aufgaben für die Woche — aus deinem Profil, nicht aus einem Template.</div></div></div>
+        <div class="up-feat"><div class="up-feat-icon">◇</div><div><div class="up-feat-h" id="lbl-feat3-h">Sparringspartner ohne Kalender</div><div class="up-feat-t" id="lbl-feat3-t">Entscheidungen, Pricing, Angebote — sofort besprechen, ohne auf einen Termin zu warten.</div></div></div>
+        <div class="up-feat"><div class="up-feat-icon">○</div><div><div class="up-feat-h" id="lbl-feat4-h">Von Eva Kolontai entwickelt</div><div class="up-feat-t" id="lbl-feat4-t">Diplom-Psychologin, 20+ Jahre Erfahrung. Jeder Prompt trägt ihre klinische und Business-Expertise.</div></div></div>
 
         <!-- Pricing comparison -->
         <div style="background:rgba(26,61,53,0.06);border:1px solid rgba(26,61,53,0.15);border-radius:14px;padding:20px 24px;margin-top:4px">
@@ -869,6 +983,14 @@ const LABELS_EN={
   'up-cta':'Unlock NeuroBusiness AI →',
   'up-price':'€49 / month · excl. VAT · Cancel anytime',
   'up-secondary':'Talk to Eva first →',
+  'feat1-h':'Type-specific Coaching',
+  'feat1-t':'Every response calibrated to your psychotype. No generic advice that doesn\'t work for you.',
+  'feat2-h':'Weekly Agenda — every Monday',
+  'feat2-t':'3 concrete tasks for the week — from your profile, not from a template.',
+  'feat3-h':'Sparring Partner on demand',
+  'feat3-t':'Decisions, pricing, offers — discuss immediately, without waiting for an appointment.',
+  'feat4-h':'Developed by Eva Kolontai',
+  'feat4-t':'Dipl. Psychologist, 20+ years of experience. Every prompt carries her clinical and business expertise.',
 };
 const LABELS_DE={
   '5d':'5-dimensionales Profil','mirror-eye':'Spiegel','mirror-em':'in dir sehen',
@@ -893,14 +1015,23 @@ const LABELS_DE={
   'up-cta':'NeuroBusiness AI freischalten →',
   'up-price':'49 € / Monat · zzgl. MwSt. · Jederzeit kündbar',
   'up-secondary':'Erst persönlich sprechen →',
+  'feat1-h':'Typ-spezifisches Coaching',
+  'feat1-t':'Jede Antwort auf deinen Psychotyp abgestimmt. Kein generischer Ratschlag, der bei dir nicht zieht.',
+  'feat2-h':'Wöchentliche Agenda — jeden Montag',
+  'feat2-t':'3 konkrete Aufgaben für die Woche — aus deinem Profil, nicht aus einem Template.',
+  'feat3-h':'Sparringspartner ohne Kalender',
+  'feat3-t':'Entscheidungen, Pricing, Angebote — sofort besprechen, ohne auf einen Termin zu warten.',
+  'feat4-h':'Von Eva Kolontai entwickelt',
+  'feat4-t':'Diplom-Psychologin, 20+ Jahre Erfahrung. Jeder Prompt trägt ihre klinische und Business-Expertise.',
 };
 function setLbl(id,txt){const el=document.getElementById(id);if(el)el.innerHTML=txt;}
 function translateLabels(isEN){
   const L=isEN?LABELS_EN:LABELS_DE;
   ['5d','mirror-eye','profil-eye','super','shadow','analyse-eye','staerken','blind',
-   'tf-eye','biz-eye','biz-model-eye','biz-model-h','biz-sales-eye','biz-sales-h',
+   'tf-eye','tf-now','tf-after','biz-eye','biz-model-eye','biz-model-h','biz-sales-eye','biz-sales-h',
    'biz-vis-eye','biz-vis-h','stress-eye','stress-reaction','burnout','alert-title',
-   'alert-text','steps-eye','eva-eye','up-promise','up-cta','up-price','up-secondary']
+   'alert-text','steps-eye','eva-eye','up-promise','up-cta','up-price','up-secondary',
+   'feat1-h','feat1-t','feat2-h','feat2-t','feat3-h','feat3-t','feat4-h','feat4-t']
   .forEach(k=>{setLbl('lbl-'+k,L[k]);});
   setLbl('lbl-mirror-h',L['mirror-h-prefix']+'<em id="lbl-mirror-em">'+L['mirror-em']+'</em>');
   setLbl('lbl-profil-h',L['profil-h-prefix']+'<em id="lbl-profil-em">'+L['profil-em']+'</em>');
@@ -938,11 +1069,153 @@ const TYPE_NAMES={S:"Der Stratege",V:"Der Visionär",M:"Der Builder",C:"Der Conn
 const _iEN=(new URLSearchParams(window.location.search).get('lang')||'de')==='en';
 const LOAD_MSGS=_iEN?["Loading your profile …","Analysis running …","Creating your report …"]:["Profil wird geladen …","Analyse läuft …","Report wird erstellt …"];
 
-function getParams(){const p=new URLSearchParams(window.location.search);return{primary:(p.get('type')||'S').toUpperCase(),secondary:p.get('sec')?p.get('sec').toUpperCase():null,scores:{S:+p.get('s')||0,V:+p.get('v')||0,M:+p.get('m')||0,C:+p.get('c')||0,G:+p.get('g')||0},burnout:p.get('burnout')==='1',name:p.get('name')||''}}
+function getParams(){
+  const p=new URLSearchParams(window.location.search);
+  const pn=k=>Math.min(100,Math.max(0,parseInt(p.get(k))||50));
+  return{
+    primary:(p.get('type')||'S').toUpperCase(),
+    secondary:p.get('sec')?p.get('sec').toUpperCase():null,
+    scores:{S:+p.get('s')||0,V:+p.get('v')||0,M:+p.get('m')||0,C:+p.get('c')||0,G:+p.get('g')||0},
+    burnout:p.get('burnout')==='1',
+    name:p.get('name')||'',
+    responseSetWarning:p.get('rsw')==='1',
+    dims:{d1:pn('d1'),d2:pn('d2'),d3:pn('d3'),d4:pn('d4'),d5:pn('d5')}
+  }
+}
 function getKey(pr,sec){if(!sec)return pr;return MIXED_MAP[pr+'_'+sec]||MIXED_MAP[sec+'_'+pr]||pr}
 function $id(id){return document.getElementById(id)}
 function set(id,html){const el=$id(id);if(el)el.innerHTML=html}
 function show(id){const el=$id(id);if(el)el.classList.remove('hide')}
+
+// ─── RADAR CHART ────────────────────────────────────────────
+function buildRadar(dims, isEN) {
+  const cx=200,cy=200,R=148;
+  const labels=isEN
+    ?['ENERGY','COGNITION','MOTIVATION','IMPLEMENTATION','SELF-LEADERSHIP']
+    :['ENERGIE','KOGNITION','MOTIVATION','UMSETZUNG','SELBSTFÜHRUNG'];
+  const vals=[dims.d1,dims.d2,dims.d3,dims.d4,dims.d5];
+  const n=5;
+  const ang=i=>-Math.PI/2+i*2*Math.PI/n;
+  const pt=(r,i)=>({x:cx+r*Math.cos(ang(i)),y:cy+r*Math.sin(ang(i))});
+  // grid
+  let svg='<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">';
+  [0.25,0.5,0.75,1].forEach(s=>{
+    const pts=Array.from({length:n},(_,i)=>pt(R*s,i));
+    const poly=pts.map(p=>p.x+','+p.y).join(' ');
+    svg+=`<polygon points="${poly}" fill="none" stroke="${s===1?'rgba(26,24,20,.15)':'rgba(26,24,20,.07)'}" stroke-width="${s===1?1.5:1}"/>`;
+  });
+  // axes
+  for(let i=0;i<n;i++){
+    const p=pt(R,i);
+    svg+=`<line x1="${cx}" y1="${cy}" x2="${p.x}" y2="${p.y}" stroke="rgba(26,24,20,.08)" stroke-width="1"/>`;
+  }
+  // score polygon
+  const sPts=vals.map((v,i)=>pt((v/100)*R,i));
+  svg+=`<polygon points="${sPts.map(p=>p.x+','+p.y).join(' ')}" fill="rgba(26,61,53,.12)" stroke="#1a3d35" stroke-width="2.5" stroke-linejoin="round"/>`;
+  // gold accent dots
+  sPts.forEach(p=>{
+    svg+=`<circle cx="${p.x}" cy="${p.y}" r="5.5" fill="#1a3d35" stroke="#faf8f4" stroke-width="2"/>`;
+  });
+  // labels
+  labels.forEach((lbl,i)=>{
+    const p=pt(R+26,i);
+    const ca=Math.cos(ang(i));
+    const sa=Math.sin(ang(i));
+    const anchor=Math.abs(ca)<0.15?'middle':ca>0?'start':'end';
+    const dy=sa<-0.15?'-0.5em':sa>0.15?'1.1em':'0.4em';
+    svg+=`<text x="${p.x}" y="${p.y}" text-anchor="${anchor}" dy="${dy}" font-family="'DM Mono',monospace" font-size="9.5" letter-spacing="0.09em" fill="#8a837a">${lbl}</text>`;
+  });
+  svg+='</svg>';
+  return svg;
+}
+
+// ─── DIMENSION BARS ─────────────────────────────────────────
+function buildDimBars(dims, isEN) {
+  const DEFS=isEN?[
+    {k:'d1',a:'Introverted',b:'Extroverted', lbl:'D1 · Energy'},
+    {k:'d2',a:'Analytical', b:'Intuitive',   lbl:'D2 · Cognition'},
+    {k:'d3',a:'Prevention', b:'Promotion',   lbl:'D3 · Motivation'},
+    {k:'d4',a:'Systematic', b:'Experimental',lbl:'D4 · Implementation'},
+    {k:'d5',a:'Vulnerable', b:'Resilient',   lbl:'D5 · Self-Leadership'},
+  ]:[
+    {k:'d1',a:'Introvertiert',  b:'Extrovertiert',  lbl:'D1 · Energie'},
+    {k:'d2',a:'Analytisch',     b:'Intuitiv',       lbl:'D2 · Kognition'},
+    {k:'d3',a:'Prävention',     b:'Promotion',      lbl:'D3 · Motivation'},
+    {k:'d4',a:'Systematisch',   b:'Experimentell',  lbl:'D4 · Umsetzung'},
+    {k:'d5',a:'Vulnerabel',     b:'Resilient',      lbl:'D5 · Selbstführung'},
+  ];
+  return DEFS.map(({k,a,b,lbl})=>{
+    const v=dims[k]??50;
+    const hiB=v>=50;
+    return `<div class="dim-bar-wrap">
+      <div class="dim-bar-top">
+        <span class="dim-bar-title">${lbl}</span>
+        <span class="dim-bar-score">${v}%</span>
+      </div>
+      <div class="dim-bar-poles">
+        <span class="dim-bar-pole${!hiB?' hi':''}">${a}</span>
+        <span class="dim-bar-pole${hiB?' hi':''}">${b}</span>
+      </div>
+      <div class="dim-bar-track">
+        <div class="dim-bar-fill" data-pct="${v}"></div>
+        <div class="dim-bar-dot" data-pct="${v}"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── MIXED-TYPE COMPOSITION ──────────────────────────────────
+function buildMixComp(d, isEN) {
+  if(!d.secondary) return;
+  const TN=isEN?TYPE_NAMES_EN:TYPE_NAMES;
+  const sP=d.scores[d.primary]||50, sS=d.scores[d.secondary]||35;
+  const tot=sP+sS;
+  const pPct=Math.round(sP/tot*100), sPct=100-pPct;
+  const key=getKey(d.primary,d.secondary);
+  const mixData=isEN?(NB_R_EN[key]||NB_R_EN[d.primary]||{}):(NB_R[key]||NB_R[d.primary]||{});
+  const mc=$id('mix-comp');
+  if(!mc) return;
+  mc.classList.add('show');
+  $id('mix-row').innerHTML=`
+    <div class="mix-badge pri">${d.primary}</div>
+    <div class="mix-bar-wrap">
+      <div class="mix-bar"><div class="mix-bar-fill" data-pct="${pPct}"></div></div>
+      <div class="mix-pcts">
+        <span class="mix-pct">${TN[d.primary]} · ${pPct}%</span>
+        <span class="mix-pct">${sPct}% · ${TN[d.secondary]}</span>
+      </div>
+    </div>
+    <div class="mix-badge sec">${d.secondary}</div>`;
+  if(mixData.mixedNote) $id('mix-insight').innerHTML=mixData.mixedNote;
+}
+
+// ─── B2B TRANSLATIONS ────────────────────────────────────────
+function translateMethodology(isEN) {
+  if(!isEN) return;
+  set('lbl-meth-eye','For Professionals');
+  set('lbl-meth-h','Scientific <em>Foundation</em>');
+  set('lbl-meth-sub','The NeuroBusiness™ diagnostic instrument is built on scientifically established psychological models and designed for professional use in business coaching and organizational development.');
+  set('lbl-mc1-eye','Dimensions 1 &amp; 3');
+  set('lbl-mc1-title','Regulatory Focus Theory');
+  set('lbl-mc1-text','E. Tory Higgins (1997) — Promotion vs. Prevention focus as a fundamental motivational orientation in decision-making and communication. Explains risk appetite and strategic behavior in business contexts.');
+  set('lbl-mc2-eye','Dimensions 1 &amp; 2');
+  set('lbl-mc2-title','Big Five &amp; Cognitive Styles');
+  set('lbl-mc2-text','Costa &amp; McCrae (1992) — Introversion-Extraversion as a stable personality trait. Complemented by dual-process theory (Kahneman 2011): analytical System 2 thinking vs. intuitive System 1 as cognitive orientation.');
+  set('lbl-mc3-eye','Dimension 5');
+  set('lbl-mc3-title','Burnout &amp; Resilience Research');
+  set('lbl-mc3-text','Maslach &amp; Jackson (1981) — multidimensional burnout model (MBI). Complemented by salutogenesis (Antonovsky 1979) and external locus of control (Rotter 1966) as vulnerability markers.');
+  set('lbl-meth-footer','NeuroBusiness™ is a diagnostic instrument of the German Institute of Positive Psychology, developed by Eva Kolontai, Diplom-Psychologin. It serves as an evidence-based coaching assessment and does not claim clinical diagnostic validity. Licensed use by coaches, psychologists, and organizational consultants available.');
+  set('lbl-meth-cta','Request a license →');
+}
+
+function translateDimVisual(isEN) {
+  if(!isEN) return;
+  set('lbl-dv-eye','5 Dimensions · Diagnostic Profile');
+  set('lbl-dv-h','Your neuropsychological <em>Dimension Profile</em>');
+  set('lbl-dv-sub','How you are positioned on each of the 5 dimensions — and what this means for your working style.');
+  set('lbl-radar-title','Profile Radar');
+  set('lbl-mix-label','Your Type Composition');
+}
 
 function render(d){
   const isEN=(new URLSearchParams(window.location.search).get('lang')||'de')==='en';
@@ -978,6 +1251,24 @@ function render(d){
   set('bo-stress',r.stress);
   const bc=$id('bo-card');bc.className='bo-level bo-'+(r.burnoutLevel||'mid');set('bo-text',r.burnout);
   if(d.burnout)show('bo-alert');
+  // Response Set Warning: diskrete Hinweisbox wenn Antwortmuster uniform war
+  if(d.responseSetWarning){
+    const isEN=(new URLSearchParams(window.location.search).get('lang')||'de')==='en';
+    const rswEl=document.createElement('div');
+    rswEl.style.cssText='background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.3);border-radius:12px;padding:18px 22px;margin-top:16px';
+    rswEl.innerHTML=isEN
+      ?'<div style="font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:8px">Note on your results</div><div style="font-size:13px;color:var(--t2);line-height:1.65">Your answers show a very uniform pattern. For the most accurate profile, re-taking the assessment with more differentiated responses is recommended — the questions are designed to reveal genuine differences in your working style.</div>'
+      :'<div style="font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:8px">Hinweis zu deinen Ergebnissen</div><div style="font-size:13px;color:var(--t2);line-height:1.65">Deine Antworten zeigen ein sehr gleichförmiges Muster. Für ein präzisestes Profil empfiehlt sich eine Wiederholung mit stärker differenzierten Antworten — die Fragen sind darauf ausgelegt, echte Unterschiede in deiner Arbeitsweise sichtbar zu machen.</div>';
+    $id('burnout').closest('section')?.querySelector('.sec-in')?.appendChild(rswEl);
+  }
+  // ── 5D Radar + Dimension Bars ──────────────────────────────────────────
+  const radarCont=$id('radar-container');
+  if(radarCont) radarCont.innerHTML=buildRadar(d.dims,isEN);
+  const barsCont=$id('dim-bars-wrap');
+  if(barsCont) barsCont.innerHTML=buildDimBars(d.dims,isEN);
+  buildMixComp(d,isEN);
+  translateDimVisual(isEN);
+  translateMethodology(isEN);
   set('steps-intro',r.stepsIntro);
   set('steps-list',r.steps.map(s=>`<div class="step"><div class="step-n">${s.n}</div><div class="step-t">${s.text}</div></div>`).join(''));
   set('eq-quote',r.evaQuote);
@@ -1001,7 +1292,20 @@ window.addEventListener('DOMContentLoaded',()=>{
     $id('loader').classList.add('out');
     setTimeout(()=>{const l=$id('loader');if(l)l.remove()},800);
     initReveal();
-    setTimeout(()=>{document.querySelectorAll('.sb-fill').forEach(el=>{el.style.width=el.dataset.p+'%'})},300);
+    setTimeout(()=>{
+      // Hero score bars
+      document.querySelectorAll('.sb-fill').forEach(el=>{el.style.width=el.dataset.p+'%'});
+      // Dimension bars (stagger slightly after load)
+      document.querySelectorAll('.dim-bar-fill[data-pct]').forEach(el=>{
+        el.style.width=el.dataset.pct+'%';
+        const dot=el.nextElementSibling;
+        if(dot) dot.style.left=el.dataset.pct+'%';
+      });
+      // Mixed-type blend bar
+      document.querySelectorAll('.mix-bar-fill[data-pct]').forEach(el=>{
+        el.style.width=el.dataset.pct+'%';
+      });
+    },300);
   },2200);
 });
 </script>

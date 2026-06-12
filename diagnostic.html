@@ -135,9 +135,22 @@ body{background:var(--cr);color:var(--t1);font-family:var(--fb);font-size:16px;l
   .scale-btn{font-size:12px;height:40px}
 }
 </style>
-<!-- Brevo -->
-<script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>
-<script>window.Brevo=window.Brevo||[];Brevo.push(["init",{client_key:"1zabutdb8zbhdqvuly1n0jz1"}]);</script>
+<!-- Brevo: nur nach Cookie-Zustimmung laden -->
+<script>
+var _brevoReady=false;
+function initBrevo(){
+  if(_brevoReady) return;
+  if(localStorage.getItem('nb_cookie_consent')!=='all') return;
+  _brevoReady=true;
+  window.Brevo=window.Brevo||[];
+  Brevo.push(["init",{client_key:"1zabutdb8zbhdqvuly1n0jz1"}]);
+  var s=document.createElement('script');
+  s.src='https://cdn.brevo.com/js/sdk-loader.js';
+  s.async=true;
+  document.head.appendChild(s);
+}
+initBrevo();
+</script>
 </head>
 <body>
 
@@ -885,6 +898,30 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   }, 2000);
 });
+</script>
+
+<!-- ── COOKIE CONSENT BANNER ── -->
+<div id="nb-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1814;border-top:1px solid rgba(201,169,110,0.25);padding:18px 24px;font-family:'Outfit',sans-serif">
+  <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between">
+    <div style="flex:1;min-width:240px">
+      <p style="margin:0 0 4px;font-size:13px;color:#fff;font-weight:500">Diese Website verwendet Cookies</p>
+      <p style="margin:0;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5">Wir nutzen Brevo für E-Mail-Marketing und Analyse. Mit „Alle akzeptieren" stimmst du dem Setzen von Marketing-Cookies zu.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap">
+      <button onclick="nbSetConsent('essential')" style="background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);padding:9px 18px;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit;white-space:nowrap">Nur essenzielle</button>
+      <button onclick="nbSetConsent('all')" style="background:#c9a96e;border:none;color:#1a1814;padding:9px 18px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:600;font-family:inherit;white-space:nowrap">Alle akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+if(!localStorage.getItem('nb_cookie_consent')){
+  document.getElementById('nb-cookie-banner').style.display='block';
+}
+function nbSetConsent(v){
+  localStorage.setItem('nb_cookie_consent',v);
+  document.getElementById('nb-cookie-banner').style.display='none';
+  if(v==='all') initBrevo();
+}
 </script>
 </body>
 </html>

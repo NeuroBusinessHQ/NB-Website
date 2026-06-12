@@ -342,6 +342,20 @@ body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-siz
     <div class="gate-error" id="gate-error"></div>
     <div class="gate-success" id="gate-success"></div>
     <div class="gate-note" id="g-note">SECURE · ENCRYPTED · PERSONALIZED</div>
+    <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:10px">
+      <span style="font-size:11px;color:rgba(250,248,244,0.3);display:flex;align-items:center;gap:4px">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span id="trust-gdpr">DSGVO-konform</span>
+      </span>
+      <span style="font-size:11px;color:rgba(250,248,244,0.3);display:flex;align-items:center;gap:4px">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+        <span id="trust-eu">EU-Server</span>
+      </span>
+      <span style="font-size:11px;color:rgba(250,248,244,0.3);display:flex;align-items:center;gap:4px">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="trust-delete">Jederzeit löschbar</span>
+      </span>
+    </div>
   </div>
 </div>
 
@@ -1326,6 +1340,9 @@ function updateGateLang() {
   document.getElementById('gate-btn-txt').textContent = isDE ? 'Zugangscode senden' : 'Send access link';
   document.getElementById('g-note').textContent = isDE ? 'SICHER · VERSCHLÜSSELT · PERSONALISIERT' : 'SECURE · ENCRYPTED · PERSONALIZED';
   document.getElementById('gate-email').placeholder = isDE ? 'deine@email.com' : 'your@email.com';
+  document.getElementById('trust-gdpr').textContent = isDE ? 'DSGVO-konform' : 'GDPR compliant';
+  document.getElementById('trust-eu').textContent = isDE ? 'EU-Server' : 'EU servers';
+  document.getElementById('trust-delete').textContent = isDE ? 'Jederzeit löschbar' : 'Delete anytime';
 }
 
 // ── GATE ENTER KEY ──

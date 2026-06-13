@@ -605,6 +605,61 @@ footer {
 .quiz-result-teaser-icon{width:40px;height:40px;background:var(--dark);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .quiz-result-teaser-text{font-size:14px;color:var(--text2);line-height:1.5}
 .quiz-result-teaser-text strong{color:var(--dark)}
+
+/* ══ INSTANT RESULT — Sofort-Ergebnis (kein E-Mail-Gate) ══ */
+.qr-reveal{animation:qrFadeUp .5s cubic-bezier(.16,1,.3,1) both}
+@keyframes qrFadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+/* Typ-Hero */
+.qr-hero{background:var(--dark);border-radius:0;padding:36px 40px;text-align:center}
+.qr-hero-eye{font-family:var(--font-mono);font-size:10px;color:rgba(201,169,110,.65);letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.qr-hero-letter{font-family:var(--font-display);font-size:80px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px;font-style:italic}
+.qr-hero-name{font-family:var(--font-display);font-size:28px;font-weight:300;color:#fff;margin-bottom:10px}
+.qr-hero-tag{font-size:15px;color:rgba(255,255,255,.5);line-height:1.6;max-width:340px;margin:0 auto}
+/* Share Card */
+.qr-share-wrap{padding:20px 40px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.qr-share-btn{display:inline-flex;align-items:center;gap:8px;background:var(--cream2);border:1.5px solid var(--border);border-radius:10px;padding:10px 18px;font-size:13px;font-weight:500;color:var(--text);font-family:var(--font-body);cursor:pointer;transition:all .18s;flex-shrink:0}
+.qr-share-btn:hover{border-color:var(--dark);background:var(--cream)}
+.qr-share-btn svg{flex-shrink:0}
+.qr-share-copied{font-family:var(--font-mono);font-size:11px;color:var(--gold2);letter-spacing:.06em;display:none}
+.qr-share-copied.show{display:block}
+/* Accuracy notice */
+.qr-accuracy{margin:0 40px;padding:12px 16px;background:var(--cream2);border-radius:8px;border:1px solid var(--border);font-size:12px;color:var(--text3);font-family:var(--font-mono);line-height:1.6}
+/* Sections */
+.qr-section{margin:14px 40px 0;background:var(--cream2);border:1px solid var(--border);border-radius:14px;padding:20px 24px}
+.qr-section-eye{font-family:var(--font-mono);font-size:10px;color:var(--gold2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.qr-section-text{font-size:14px;color:var(--text2);line-height:1.75}
+.qr-section-text strong{color:var(--text);font-weight:500}
+/* Locked section */
+.qr-locked-wrap{margin:14px 40px 0;position:relative;border-radius:14px;overflow:hidden}
+.qr-locked-content{background:var(--cream2);border:1px solid var(--border);border-radius:14px;padding:20px 24px;filter:blur(5px);user-select:none;pointer-events:none}
+.qr-locked-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(250,248,244,.82);backdrop-filter:blur(2px)}
+.qr-locked-icon{font-size:20px}
+.qr-locked-label{font-family:var(--font-mono);font-size:11px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase}
+.qr-locked-label.unlocked-lbl{color:var(--gold2)}
+/* Email optional section */
+.qr-email-section{margin:20px 40px 0;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:22px 24px}
+.qr-email-eye{font-family:var(--font-mono);font-size:10px;color:var(--gold2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.qr-email-title{font-size:15px;font-weight:500;color:var(--dark);margin-bottom:4px}
+.qr-email-sub{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px}
+.qr-email-row{display:flex;gap:8px;flex-wrap:wrap}
+.qr-email-input{flex:1;min-width:160px;background:var(--cream2);border:1.5px solid var(--border);border-radius:9px;padding:11px 14px;font-size:14px;font-family:var(--font-body);color:var(--dark);outline:none;transition:border-color .15s}
+.qr-email-input:focus{border-color:var(--dark)}
+.qr-email-btn{background:var(--dark);color:#fff;border:none;border-radius:9px;padding:11px 20px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-body);white-space:nowrap;transition:all .18s}
+.qr-email-btn:hover{background:var(--gold);color:var(--dark)}
+.qr-email-consent{font-size:11px;color:var(--text3);margin-top:8px;line-height:1.5}
+/* CTA row */
+.qr-cta-wrap{padding:20px 40px 32px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--border);margin-top:20px}
+.qr-cta-primary{width:100%;background:var(--dark);color:#fff;border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:all .18s;text-align:center;display:block;text-decoration:none}
+.qr-cta-primary:hover{background:var(--gold);color:var(--dark)}
+.qr-cta-note{text-align:center;font-family:var(--font-mono);font-size:11px;color:var(--text3);letter-spacing:.04em}
+.qr-restart{background:none;border:1px solid var(--border);color:var(--text3);font-family:var(--font-mono);font-size:11px;padding:8px;border-radius:8px;cursor:pointer;transition:all .15s;letter-spacing:.06em;margin-top:4px}
+.qr-restart:hover{border-color:var(--dark);color:var(--text)}
+@media(max-width:600px){
+  .qr-hero{padding:28px 20px}
+  .qr-hero-letter{font-size:64px}
+  .qr-section,.qr-locked-wrap,.qr-email-section,.qr-accuracy,.qr-share-wrap{margin-left:16px;margin-right:16px}
+  .qr-cta-wrap{padding:16px 20px 28px}
+}
 </style>
 <!-- Brevo: geladen erst nach Nutzeraktion (TTDSG §25) -->
 </head>
@@ -630,7 +685,7 @@ footer {
 <!-- QUIZ STRIP -->
 <div class="quiz-strip" style="margin-top:64px">
   <div class="quiz-strip-text" id="strip-text">
-    <em>Welcher Psychotyp bist du?</em> — Mach den kostenlosen 7-Fragen-Test
+    <em>Welcher Psychotyp bist du?</em> — Mach den kostenlosen Schnelltest
   </div>
   <a href="#quiz" class="btn-quiz-strip" id="strip-btn">Test machen</a>
 </div>
@@ -996,21 +1051,21 @@ footer {
 <section class="quiz-section" id="quiz">
   <div class="quiz-wrap">
     <div style="text-align:center;margin-bottom:40px" class="fade-up">
-      <div class="section-eyebrow" id="quiz-eyebrow" style="justify-content:center;display:block">7-Fragen-Test</div>
+      <div class="section-eyebrow" id="quiz-eyebrow" style="justify-content:center;display:block">Kostenloser Schnelltest</div>
       <h2 class="section-title" id="quiz-title" style="margin-bottom:12px">Welcher Typ <em>bist du?</em></h2>
-      <p style="font-size:15px;color:var(--text2);max-width:480px;margin:0 auto;line-height:1.7" id="quiz-sub">7 Fragen · 90 Sekunden · Sofort-Ergebnis. Kostenlos.</p>
+      <p style="font-size:15px;color:var(--text2);max-width:480px;margin:0 auto;line-height:1.7" id="quiz-sub">10 Fragen · 2 Minuten · Sofort-Ergebnis. Kostenlos.</p>
     </div>
     <div class="quiz-shell fade-up" id="quizShell">
       <!-- PROGRESS -->
       <div class="quiz-top" id="quizTop">
-        <div class="quiz-prog-label"><span id="qBlockLabel">Frage 1 von 7</span><span id="qPct">0%</span></div>
+        <div class="quiz-prog-label"><span id="qBlockLabel">Frage 1 von 10</span><span id="qPct">0%</span></div>
         <div class="quiz-prog-bar"><div class="quiz-prog-fill" id="qProgFill" style="width:0%"></div></div>
       </div>
       <!-- QUESTION -->
       <div class="quiz-q" id="quizQuestion"></div>
       <!-- NAV -->
       <div class="quiz-nav" id="quizNav">
-        <span class="quiz-nav-info" id="qNavInfo">90 Sekunden</span>
+        <span class="quiz-nav-info" id="qNavInfo">2 Minuten</span>
         <button class="quiz-nav-btn" id="qNextBtn" onclick="quizNext()" disabled>Weiter →</button>
       </div>
 
@@ -1050,9 +1105,9 @@ footer {
   <div class="cta-inner">
     <div class="section-eyebrow" style="text-align:center" id="cta-eyebrow">Jetzt starten</div>
     <h2 class="cta-title fade-up" id="cta-title">Finde deinen<br><em>NeuroBusiness-Psychotyp.</em></h2>
-    <p class="cta-sub fade-up" id="cta-sub">Beginne mit dem kostenlosen 7-Fragen-Test — oder starte direkt mit der vollständigen Diagnostik.</p>
+    <p class="cta-sub fade-up" id="cta-sub">Beginne mit dem kostenlosen 10-Fragen-Test — oder starte direkt mit der vollständigen Diagnostik.</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap" class="fade-up">
-      <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" class="btn-primary" id="cta-btn1">Meinen Typ in 90 Sekunden finden</button>
+      <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" class="btn-primary" id="cta-btn1">Meinen Typ in 2 Minuten finden</button>
       <button onclick="openModal('modalDiagnostik')" class="btn-outline" id="cta-btn2">Vollständige Diagnostik</button>
     </div>
     <div style="margin-top:40px;padding-top:40px;border-top:1px solid var(--border)" class="fade-up">
@@ -1159,7 +1214,7 @@ footer {
         <li><a href="#produkte" id="fl1">NeuroBusiness™ Strategist</a></li>
         <li><a href="/teams" id="fl2">Für Teams</a></li>
         <li><a href="#core-programme" id="fl3">12-Wochen Transformation</a></li>
-        <li><a href="#quiz" id="fl4">7-Fragen-Test</a></li>
+        <li><a href="#quiz" id="fl4">Schnelltest</a></li>
       </ul>
     </div>
     <div>
@@ -1200,7 +1255,7 @@ const T = {
     'nav-coaches': 'Für Coaches', 'nav-contact': 'Kontakt',
     'coach-strip-label': 'Für Professionals', 'coach-strip-main': 'Du möchtest die NeuroBusiness™ Diagnostik in deiner Coaching-Praxis einsetzen, Workshops leiten oder selbst als NeuroBusiness Strategist ausgebildet werden?', 'coach-strip-cta': 'German Institute of Positive Psychology →',
     'nav-cta': 'Jetzt starten',
-    'strip-text': '<em>Welcher Psychotyp bist du?</em> \u2014 Mach den kostenlosen 7-Fragen-Test',
+    'strip-text': '<em>Welcher Psychotyp bist du?</em> \u2014 Mach den kostenlosen Schnelltest',
     'strip-btn': 'Test machen',
     'hero-eyebrow': 'Business-Diagnostik für Selbstständige',
     'hero-sub': 'Für Coaches, Berater:innen und selbstständige Expert:innen, die fachlich stark sind \u2014 aber merken, dass ihr Business-Modell, ihre Sichtbarkeit und ihr Wachstum sie mehr Energie kosten, als sie sollten.',
@@ -1244,17 +1299,17 @@ const T = {
     'tt1': '"Der Report hat in 10 Minuten erklärt, warum mein Business 3 Jahre lang gegen die Wand gelaufen ist. Ich habe ein Builder-Business geführt \u2014 als Strategin."',
     'tt2': '"Nach 18 Jahren Corporate war ich überzeugt, ich brauche besseres Marketing. NeuroBusiness hat mir gezeigt, dass ich das falsche Business-Modell hatte. Komplett."',
     'tt3': '"Die NeuroBusiness AI gibt mir jeden Montag konkrete Aufgaben, die zu mir passen. Nicht generisch \u2014 für meinen Psychotyp. Das ist der Unterschied zu allem anderen."',
-    'quiz-eyebrow': '7-Fragen-Test',
+    'quiz-eyebrow': 'Kostenloser Schnelltest',
     'quiz-title': 'Welcher Typ <em>bist du?</em>',
-    'quiz-sub': '7 Fragen · 90 Sekunden · Sofort-Ergebnis. Kostenlos.',
+    'quiz-sub': '10 Fragen · 2 Minuten · Sofort-Ergebnis. Kostenlos.',
     'cta-eyebrow': 'Jetzt starten', 'cta-title': 'Finde deinen<br><em>NeuroBusiness-Psychotyp.</em>',
-    'cta-sub': 'Beginne mit dem kostenlosen 7-Fragen-Test \u2014 oder starte direkt mit der vollständigen Diagnostik.',
-    'cta-btn1': 'Meinen Typ in 90 Sekunden finden', 'cta-btn2': 'Vollständige Diagnostik',
+    'cta-sub': 'Beginne mit dem kostenlosen 10-Fragen-Test \u2014 oder starte direkt mit der vollständigen Diagnostik.',
+    'cta-btn1': 'Meinen Typ in 2 Minuten finden', 'cta-btn2': 'Vollständige Diagnostik',
     'cta-note': 'Entwickelt von Eva Kolontai · Diplom-Psychologin & NeuroBusiness Strategist · Berlin',
     'footer-desc': 'Neuropsychologische Business-Diagnostik für selbstständige Expert:innen. Berlin · London · Dubai. Entwickelt von Eva Kolontai, Diplom-Psychologin & NeuroBusiness Strategist.',
     'fc1-title': 'Produkte', 'fc2-title': 'Kontakt',
     'fl1': 'NeuroBusiness™ Strategist', 'fl2': 'Für Teams',
-    'fl3': '12-Wochen Transformation', 'fl4': '7-Fragen-Test', 'fl5': 'Strategiegespräch',
+    'fl3': '12-Wochen Transformation', 'fl4': 'Schnelltest', 'fl5': 'Strategiegespräch',
     'footer-copy': '© 2026 NeuroBusiness™ · neurobusiness.one',
     'ap1': ['Du hast klare Expertise, aber noch keine Unternehmer:innen-Identität', 'Du kopierst Strategien von anderen \u2014 sie passen nicht zu dir', 'Du weißt nicht, welches Business-Modell wirklich zu dir passt', 'Du hast Abfindung oder Ersparnisse und willst sie klug investieren'],
     'ap2': ['Dein Business läuft, aber es fühlt sich wie Gegenwind an', 'Du bist gut \u2014 aber dein Preis spiegelt das nicht wider', 'Deine Sichtbarkeits-Strategie laugt dich aus', 'Du weißt, du kannst mehr \u2014 aber nicht wie'],
@@ -1287,7 +1342,7 @@ const T = {
     'nav-coaches': 'For Coaches', 'nav-contact': 'Contact',
     'coach-strip-label': 'For professionals', 'coach-strip-main': 'You want to apply NeuroBusiness™ diagnostics in your coaching practice, run workshops, or train as a NeuroBusiness Strategist yourself?', 'coach-strip-cta': 'German Institute of Positive Psychology →',
     'nav-cta': 'Get started',
-    'strip-text': '<em>What\'s your psychotype?</em> \u2014 Take the free 7-question test',
+    'strip-text': '<em>What\'s your psychotype?</em> \u2014 Take the free quick test',
     'strip-btn': 'Take test',
     'hero-eyebrow': 'Business Diagnostics for Independent Professionals',
     'hero-sub': 'For coaches, consultants and independent experts who deliver excellent work \u2014 but feel their business model, visibility and growth strategy are draining more energy than they should.',
@@ -1334,10 +1389,10 @@ const T = {
     'tt3': '"The NeuroBusiness AI gives me concrete tasks every Monday that fit me. Not generic \u2014 for my psychotype. That\'s the difference from everything else."',
     'quiz-eyebrow': '7-Question Test',
     'quiz-title': 'Which type <em>are you?</em>',
-    'quiz-sub': '7 questions · 90 seconds · Instant result. Free.',
+    'quiz-sub': '10 questions · 2 minutes · Instant result. Free.',
     'cta-eyebrow': 'Get started', 'cta-title': 'Find your<br><em>NeuroBusiness Psychotype.</em>',
-    'cta-sub': 'Start with the free 7-question test \u2014 or go straight to the full diagnostic.',
-    'cta-btn1': 'Find my type in 90 seconds', 'cta-btn2': 'Full diagnostics',
+    'cta-sub': 'Start with the free 10-question test \u2014 or go straight to the full diagnostic.',
+    'cta-btn1': 'Find my type in 2 minutes', 'cta-btn2': 'Full diagnostics',
     'cta-note': 'Developed by Eva Kolontai · Diplom-Psychologin & NeuroBusiness Strategist · Berlin',
     'footer-desc': 'Neuropsychological business diagnostics for independent professionals. Berlin · London · Dubai. Developed by Eva Kolontai, Diplom-Psychologin & NeuroBusiness Strategist.',
     'fc1-title': 'Products', 'fc2-title': 'Contact',
@@ -1522,6 +1577,36 @@ const QUIZ = {
         {t:"Ich will schnell wachsen, aber etwas bremst mich.", type:'M'}
       ]
     },
+    {
+      q: "Wie gehst du mit öffentlicher Sichtbarkeit um?",
+      opts: [
+        {t:"Ich teile Wissen am liebsten schriftlich, präzise und mit Tiefe.", type:'S'},
+        {t:"Ich liebe die Bühne — live, laut, inspirierend.", type:'V'},
+        {t:"Meine Ergebnisse sprechen für mich — das ist mein Marketing.", type:'M'},
+        {t:"Meine besten Kunden kommen durch persönliche Weiterempfehlung.", type:'C'},
+        {t:"Öffentlichkeit fühlt sich unangenehm an — ich vermeide sie.", type:'G'}
+      ]
+    },
+    {
+      q: "Wenn ein Projekt scheitert, was ist dein erster Gedanke?",
+      opts: [
+        {t:"Was genau ist schiefgelaufen — und wie fixe ich das systematisch?", type:'S'},
+        {t:"Super, was lerne ich daraus für mein nächstes Vorhaben?", type:'V'},
+        {t:"Egal — beim nächsten Mal mache ich es schneller und besser.", type:'M'},
+        {t:"Was denken jetzt meine Kunden und Kollegen über mich?", type:'C'},
+        {t:"Vielleicht hätte ich das nie anfangen sollen.", type:'G'}
+      ]
+    },
+    {
+      q: "Welches Wort beschreibt deinen Arbeitsstil am besten?",
+      opts: [
+        {t:"Präzise — ich gehe in die Tiefe, bevor ich handle.", type:'S'},
+        {t:"Visionär — ich denke in Möglichkeiten, nicht in Grenzen.", type:'V'},
+        {t:"Schnell — ich probiere, korrigiere und liefere.", type:'M'},
+        {t:"Verbindend — Menschen und Vertrauen sind mein Treibstoff.", type:'C'},
+        {t:"Gründlich — Qualität geht vor Geschwindigkeit.", type:'G'}
+      ]
+    },
   ],
   en: [
     {
@@ -1592,6 +1677,36 @@ const QUIZ = {
         {t:"I work a lot but don't see enough results.", type:'G'},
         {t:"I love helping others but forget about myself.", type:'C'},
         {t:"I want to grow fast but something is slowing me down.", type:'M'}
+      ]
+    },
+    {
+      q: "How do you approach being publicly visible?",
+      opts: [
+        {t:"I prefer sharing knowledge in writing — precise and deep.", type:'S'},
+        {t:"I love the stage — live, loud, and inspiring.", type:'V'},
+        {t:"My results speak for me — that is my marketing.", type:'M'},
+        {t:"My best clients come through personal referrals.", type:'C'},
+        {t:"Public visibility feels uncomfortable — I tend to avoid it.", type:'G'}
+      ]
+    },
+    {
+      q: "When a project fails, what is your first thought?",
+      opts: [
+        {t:"What exactly went wrong — and how do I fix it systematically?", type:'S'},
+        {t:"Great, what can I learn for my next venture?", type:'V'},
+        {t:"Doesn't matter — next time I'll do it faster and better.", type:'M'},
+        {t:"What will my clients and colleagues think of me now?", type:'C'},
+        {t:"Maybe I should never have started it.", type:'G'}
+      ]
+    },
+    {
+      q: "Which word best describes your working style?",
+      opts: [
+        {t:"Precise — I go deep before I act.", type:'S'},
+        {t:"Visionary — I think in possibilities, not limitations.", type:'V'},
+        {t:"Fast — I try, adjust, and deliver.", type:'M'},
+        {t:"Connecting — people and trust are my fuel.", type:'C'},
+        {t:"Thorough — quality comes before speed.", type:'G'}
       ]
     },
   ]
@@ -1712,7 +1827,7 @@ function renderQuizQ() {
   document.getElementById('qBlockLabel').textContent = (lang==='de'?'Frage ':'Question ') + (quizCurrent+1) + (lang==='de' ? ' von ' : ' of ') + total;
   document.getElementById('qPct').textContent = pct + '%';
   document.getElementById('qProgFill').style.width = pct + '%';
-  document.getElementById('qNavInfo').textContent = lang==='de' ? '90 Sekunden' : '90 seconds';
+  document.getElementById('qNavInfo').textContent = lang==='de' ? '2 Minuten' : '2 minutes';
 
   const sel = quizAnswers[quizCurrent];
   document.getElementById('quizQuestion').innerHTML =
@@ -1743,12 +1858,223 @@ function quizNext() {
     renderQuizQ();
     document.getElementById('quizShell').scrollIntoView({behavior:'smooth', block:'start'});
   } else {
-    showEmailGate();
+    showInstantResult();
   }
 }
 
 
-// EMAIL GATE
+// ══════════════════════════════════════════════════════
+// SOFORT-ERGEBNIS — kein E-Mail-Gate vorgeschaltet
+// ══════════════════════════════════════════════════════
+function showInstantResult() {
+  const qs = QUIZ[lang] || QUIZ.de;
+  const scores = {S:0, V:0, M:0, C:0, G:0};
+  quizAnswers.forEach((ans, qi) => {
+    if (ans !== undefined && qs[qi]) {
+      const type = qs[qi].opts[ans].type;
+      if (scores[type] !== undefined) scores[type]++;
+    }
+  });
+  const typeMap = {S:'Strategist', V:'Visionary', M:'Builder', C:'Connector', G:'G'};
+  const letterMap = {S:'S', V:'V', M:'M', C:'C', G:'G'};
+  const winnerKey = Object.keys(scores).reduce((a,b) => scores[a]>scores[b]?a:b);
+  const winner = typeMap[winnerKey] || 'Strategist';
+  const r = (QUIZ_RESULTS[winner] || QUIZ_RESULTS.Strategist)[lang] || (QUIZ_RESULTS[winner] || QUIZ_RESULTS.Strategist).de;
+  const isDE = lang === 'de';
+  const typeLetter = letterMap[winnerKey] || 'S';
+
+  // Hide quiz UI
+  document.getElementById('quizTop').style.display = 'none';
+  document.getElementById('quizQuestion').style.display = 'none';
+  document.getElementById('quizNav').style.display = 'none';
+  document.getElementById('quizGate').style.display = 'none';
+
+  // Share text
+  const shareText = isDE
+    ? `Ich bin ${r.name} — das sagt die NeuroBusiness™ Diagnostik über mich. Mach den Test: neurobusiness.one`
+    : `I'm a ${r.name} — that's what NeuroBusiness™ diagnostics reveal about me. Take the test: neurobusiness.one`;
+
+  // Save to Brevo (non-blocking, no consent yet)
+  try {
+    if (window.Brevo) {
+      window.Brevo.push(['track', 'quiz_type_revealed', {psychotype: winner, lang}]);
+    }
+  } catch(e){}
+
+  const el = document.getElementById('quizResult');
+  el.style.display = 'block';
+  el.className = 'quiz-result qr-reveal';
+  el.innerHTML = `
+    <!-- ── TYP-HERO ── -->
+    <div class="qr-hero">
+      <div class="qr-hero-eye">${isDE ? 'Dein NeuroBusiness™ Psychotyp' : 'Your NeuroBusiness™ Psychotype'}</div>
+      <div class="qr-hero-letter">${typeLetter}</div>
+      <div class="qr-hero-name">${r.name}</div>
+      <div class="qr-hero-tag">${r.tagline}</div>
+    </div>
+
+    <!-- ── SHARE ── -->
+    <div class="qr-share-wrap">
+      <button class="qr-share-btn" onclick="shareResult('${typeLetter}','${winner}','${encodeURIComponent(shareText)}',this)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        ${isDE ? 'Profil teilen' : 'Share profile'}
+      </button>
+      <span class="qr-share-copied" id="qrShareCopied">${isDE ? '✓ Link kopiert!' : '✓ Link copied!'}</span>
+      <span style="font-family:var(--font-mono);font-size:11px;color:var(--text3)">${isDE ? '~80% Genauigkeit · Vollständige Diagnostik: 50 Fragen' : '~80% accuracy · Full diagnostic: 50 questions'}</span>
+    </div>
+
+    <!-- ── SICHTBAR: Superkraft ── -->
+    <div class="qr-section" style="margin-top:16px">
+      <div class="qr-section-eye">${isDE ? 'Deine Superkraft' : 'Your superpower'}</div>
+      <div class="qr-section-text">${r.strength}</div>
+    </div>
+
+    <!-- ── GESPERRT: Blindstelle ── -->
+    <div class="qr-locked-wrap" id="qrLockBlind">
+      <div class="qr-locked-content">
+        <div class="qr-section-eye">${isDE ? 'Deine Blindstelle' : 'Your blind spot'}</div>
+        <div class="qr-section-text">${r.blindspot}</div>
+      </div>
+      <div class="qr-locked-overlay" id="qrOverlayBlind">
+        <div class="qr-locked-icon">🔒</div>
+        <div class="qr-locked-label">${isDE ? 'E-Mail eingeben zum Entsperren' : 'Enter email to unlock'}</div>
+      </div>
+    </div>
+
+    <!-- ── GESPERRT: Business-Modell ── -->
+    <div class="qr-locked-wrap" id="qrLockModel">
+      <div class="qr-locked-content">
+        <div class="qr-section-eye">${isDE ? 'Dein natürliches Business-Modell' : 'Your natural business model'}</div>
+        <div class="qr-section-text">${r.model}</div>
+      </div>
+      <div class="qr-locked-overlay" id="qrOverlayModel">
+        <div class="qr-locked-icon">🔒</div>
+        <div class="qr-locked-label">${isDE ? 'E-Mail eingeben zum Entsperren' : 'Enter email to unlock'}</div>
+      </div>
+    </div>
+
+    <!-- ── OPTIONALER E-MAIL-UNLOCK ── -->
+    <div class="qr-email-section" id="qrEmailSection">
+      <div class="qr-email-eye">${isDE ? 'Kostenlos freischalten' : 'Unlock for free'}</div>
+      <div class="qr-email-title">${isDE ? 'Blindstelle + Business-Modell entsperren' : 'Unlock blind spot + business model'}</div>
+      <div class="qr-email-sub">${isDE ? 'Gib deine E-Mail ein — du erhältst dein vollständiges Kurzprofil kostenlos per Mail.' : 'Enter your email — we send you the full short profile for free.'}</div>
+      <div class="qr-email-row" style="margin-bottom:8px">
+        <input class="qr-email-input" id="qrNameInput" type="text" placeholder="${isDE ? 'Dein Vorname' : 'Your first name'}" autocomplete="given-name" style="flex:1;min-width:160px">
+      </div>
+      <div class="qr-email-row">
+        <input class="qr-email-input" id="qrEmailInput" type="email" placeholder="${isDE ? 'deine@email.com' : 'your@email.com'}" autocomplete="email">
+        <button class="qr-email-btn" id="qrEmailBtn" onclick="submitQuickEmail('${winner}','${typeLetter}')">
+          ${isDE ? 'Freischalten →' : 'Unlock →'}
+        </button>
+      </div>
+      <div class="qr-email-consent">${isDE
+        ? '🔒 Kein Spam. Jederzeit abmeldbar. Du erhältst dein Profil + NeuroBusiness-Impulse. (<a href="#" onclick="openLegal(\'datenschutzOverlay\');return false;" style="color:var(--text3)">Datenschutz</a>)'
+        : '🔒 No spam. Unsubscribe anytime. You receive your profile + NeuroBusiness insights. (<a href="#" onclick="openLegal(\'datenschutzOverlay\');return false;" style="color:var(--text3)">Privacy policy</a>)'
+      }</div>
+    </div>
+
+    <!-- ── VOLLSTÄNDIGE DIAGNOSTIK CTA ── -->
+    <div class="qr-cta-wrap">
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;text-align:center;margin-bottom:6px">${isDE ? 'Dein exaktes 5-Dimensionen-Profil' : 'Your exact 5-dimension profile'}</div>
+      <button onclick="openModal('modalDiagnostik')" class="qr-cta-primary">
+        ${isDE ? 'Vollständigen Report erhalten — 147 €' : 'Get full report — €147'}
+      </button>
+      <div class="qr-cta-note">${isDE ? '50 Fragen · Radar-Chart · Burnout-Score · sofort' : '50 questions · radar chart · burnout score · instant'}</div>
+      <button class="qr-restart" onclick="quizInit()">${isDE ? 'Test wiederholen' : 'Retake test'}</button>
+    </div>`;
+
+  document.getElementById('quizShell').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// Share-Funktion: Web Share API auf Mobile, Clipboard auf Desktop
+function shareResult(letter, typeKey, encodedText, btn) {
+  const text = decodeURIComponent(encodedText);
+  const url = 'https://neurobusiness.one/#quiz';
+  if (navigator.share) {
+    navigator.share({ title: 'NeuroBusiness™ Psychotyp', text, url }).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(text + ' → ' + url).then(()=>{
+      const c = document.getElementById('qrShareCopied');
+      if(c){c.classList.add('show');setTimeout(()=>c.classList.remove('show'),2500);}
+    }).catch(()=>{});
+  }
+}
+
+// Optionaler E-Mail-Unlock
+async function submitQuickEmail(psychotype, typeLetter) {
+  const emailEl = document.getElementById('qrEmailInput');
+  const nameEl = document.getElementById('qrNameInput');
+  const btn = document.getElementById('qrEmailBtn');
+  const isDE = lang === 'de';
+  const email = emailEl ? emailEl.value.trim() : '';
+  const name = nameEl ? nameEl.value.trim() : '';
+  if (!email || !email.includes('@')) {
+    if(emailEl){emailEl.style.borderColor='#e94560';emailEl.focus();}
+    setTimeout(()=>{if(emailEl)emailEl.style.borderColor='';},2200);
+    return;
+  }
+  if(btn){btn.disabled=true;btn.textContent=isDE?'Wird gespeichert…':'Saving…';}
+
+  // Supabase
+  try {
+    if (typeof sb !== 'undefined') {
+      await sb.from('quiz_leads').upsert({
+        email, psychotype, quiz_completed:true, marketing_consent:true,
+        consent_at:new Date().toISOString(), lang, created_at:new Date().toISOString()
+      },{onConflict:'email'});
+    }
+  } catch(e){}
+
+  // n8n → Brevo Nurture-Sequenz
+  try {
+    fetch('https://evakolontai.app.n8n.cloud/webhook/nb-quiz-lead', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({email, name, psychotype, psycholetter:typeLetter})
+    }).catch(()=>{});
+  } catch(e){}
+
+  // Brevo
+  try {
+    initBrevo();
+    if(window.Brevo){
+      window.Brevo.push(['identify',{identifiers:{email_id:email},attributes:{FIRSTNAME:name,PSYCHOTYPE:psychotype,QUELLE:'Quiz-Unlock neurobusiness.one',SPRACHE:lang,MARKETING_CONSENT:true}}]);
+      window.Brevo.push(['track','quiz_email_unlock',{psychotype,lang}]);
+    }
+  } catch(e){}
+
+  // Sperren aufheben
+  ['qrOverlayBlind','qrOverlayModel'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){
+      el.innerHTML=`<div class="qr-locked-icon">✓</div><div class="qr-locked-label unlocked-lbl">${isDE?'Entsperrt':'Unlocked'}</div>`;
+      setTimeout(()=>{
+        el.style.transition='opacity .5s';el.style.opacity='0';
+        setTimeout(()=>{el.style.display='none';},500);
+      },600);
+    }
+    const wrap=document.getElementById(id.replace('Overlay','Lock').replace('Blind','Blind').replace('Model','Model'));
+    if(wrap){const c=wrap.querySelector('.qr-locked-content');if(c){c.style.filter='none';c.style.pointerEvents='auto';c.style.userSelect='auto';}}
+  });
+  ['qrLockBlind','qrLockModel'].forEach(id=>{
+    const c=document.getElementById(id)?.querySelector('.qr-locked-content');
+    if(c){setTimeout(()=>{c.style.filter='none';c.style.pointerEvents='auto';c.style.userSelect='auto';},700);}
+  });
+
+  // E-Mail-Section ersetzen
+  const sec = document.getElementById('qrEmailSection');
+  if(sec){
+    sec.innerHTML=`<div style="text-align:center;padding:12px 0">
+      <div style="font-size:20px;margin-bottom:8px">📬</div>
+      <div style="font-size:14px;color:var(--text);font-weight:500;margin-bottom:4px">${isDE?'Dein Profil ist unterwegs!':'Your profile is on its way!'}</div>
+      <div style="font-size:13px;color:var(--text3);line-height:1.6">${isDE?`Prüf dein Postfach — <strong style="color:var(--dark)">${email}</strong>`:`Check your inbox — <strong style="color:var(--dark)">${email}</strong>`}</div>
+    </div>`;
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// EMAIL GATE (Legacy — wird nicht mehr als primärer Flow genutzt)
+// ══════════════════════════════════════════════════════
 function showEmailGate() {
   document.getElementById('quizTop').style.display = 'none';
   document.getElementById('quizQuestion').style.display = 'none';

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroBusiness™ Coach · Login</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SUPABASE JS v2  (öffentliche CDN — kein Key nötig)
+     ═══════════════════════════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+/* ── CSS-Tokens (identisch zu app.html / index.html) ── */
+:root {
+  --c:  #1a3d35;
+  --c2: #15312a;
+  --c3: #0f2420;
+  --g:  #c9a96e;
+  --g2: #a8813e;
+  --p:  #7c6990;
+  --cr: #faf8f4;
+  --cr2:#f4f1eb;
+  --cr3:#ede9e0;
+  --dk: #1a1814;
+  --t1: #1a1814;
+  --t2: #4a4540;
+  --t3: #8a837a;
+  --fd: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Outfit', system-ui, sans-serif;
+  --fm: 'DM Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { min-height: 100%; }
+body {
+  background: var(--c3);
+  color: var(--cr);
+  font-family: var(--fb);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+/* ── Login-Box ── */
+.box {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 24px;
+  padding: 52px 48px 44px;
+  width: 100%;
+  max-width: 440px;
+}
+.logo {
+  font-family: var(--fd);
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--cr);
+  letter-spacing: -.02em;
+  margin-bottom: 6px;
+}
+.logo em { font-style: italic; color: var(--g); }
+.badge {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 40px;
+}
+
+/* ── Tabs (Login | Passwort vergessen) ── */
+.tabs { display: flex; gap: 0; margin-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.tab {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  padding: 0 0 12px;
+  margin-right: 28px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all .2s;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.tab.active { color: var(--g); border-bottom-color: var(--g); }
+
+/* ── Formular-Elemente ── */
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+label { font-size: 12px; color: rgba(255,255,255,.4); font-family: var(--fm); letter-spacing: .05em; }
+input[type="email"],
+input[type="password"] {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  padding: 13px 16px;
+  color: var(--cr);
+  font-family: var(--fb);
+  font-size: 15px;
+  outline: none;
+  transition: border-color .2s;
+  width: 100%;
+}
+input:focus { border-color: var(--g); }
+input::placeholder { color: rgba(255,255,255,.2); }
+
+/* ── Buttons ── */
+.btn-primary {
+  width: 100%;
+  background: var(--g);
+  color: var(--dk);
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: var(--fb);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s;
+  margin-top: 4px;
+}
+.btn-primary:hover { background: #d4b47a; }
+.btn-primary:disabled { background: rgba(255,255,255,.12); color: rgba(255,255,255,.3); cursor: not-allowed; }
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: rgba(255,255,255,.2);
+  font-size: 12px;
+  font-family: var(--fm);
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,.1);
+}
+
+.btn-google {
+  width: 100%;
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.8);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 10px;
+  padding: 13px;
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.btn-google:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.22); }
+
+/* Google-Icon als Inline-SVG */
+.google-icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* ── Meldungen ── */
+.msg {
+  font-size: 13px;
+  line-height: 1.65;
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-top: 16px;
+  display: none;
+}
+.msg.error { background: rgba(232,112,112,.12); border: 1px solid rgba(232,112,112,.25); color: #e87070; }
+.msg.success { background: rgba(201,169,110,.1); border: 1px solid rgba(201,169,110,.25); color: var(--g); }
+
+/* ── Panel-Umschalter ── */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── Logged-in-State ── */
+#logged-in { text-align: center; display: none; }
+.user-avatar {
+  width: 56px; height: 56px;
+  background: rgba(201,169,110,.15);
+  border: 1px solid rgba(201,169,110,.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fd); font-size: 22px; color: var(--g);
+  margin: 0 auto 20px;
+}
+.user-email { font-family: var(--fm); font-size: 12px; color: rgba(255,255,255,.35); margin-bottom: 28px; }
+.user-name { font-size: 17px; color: var(--cr); margin-bottom: 6px; }
+.btn-dashboard {
+  display: inline-block;
+  background: var(--g);
+  color: var(--dk);
+  border: none;
+  border-radius: 10px;
+  padding: 13px 32px;
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: background .2s;
+}
+.btn-dashboard:hover { background: #d4b47a; }
+.btn-logout {
+  display: block;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.25);
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: .06em;
+  cursor: pointer;
+  margin-top: 10px;
+  text-decoration: underline;
+}
+.btn-logout:hover { color: rgba(255,255,255,.5); }
+
+/* ── Footer-Note ── */
+.foot { font-family: var(--fm); font-size: 10px; color: rgba(255,255,255,.18); text-align: center; margin-top: 32px; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════
+     LOGIN-BOX
+     ════════════════════════════════════════════════════════════════ -->
+<div class="box">
+
+  <!-- Logo -->
+  <div class="logo">Neuro<em>Business</em>™</div>
+  <div class="badge">Coach-Portal</div>
+
+  <!-- ── Logged-in State ── -->
+  <div id="logged-in">
+    <div class="user-avatar" id="user-initials">?</div>
+    <div class="user-name" id="user-name-display">Willkommen</div>
+    <div class="user-email" id="user-email-display"></div>
+    <!-- TODO Phase 4: Link zu admin.html oder coach-dashboard.html ergänzen -->
+    <a href="coach-dashboard.html" class="btn-dashboard">Coach-Dashboard öffnen →</a>
+    <button class="btn-logout" onclick="handleLogout()">Abmelden</button>
+  </div>
+
+  <!-- ── Auth Forms ── -->
+  <div id="auth-forms">
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('login')">Anmelden</button>
+      <button class="tab" onclick="switchTab('reset')">Passwort vergessen</button>
+    </div>
+
+    <!-- Panel: Login -->
+    <div class="panel active" id="panel-login">
+
+      <!-- E-Mail + Passwort -->
+      <form onsubmit="handleEmailLogin(event)">
+        <div class="field">
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" placeholder="deine@email.de" required>
+        </div>
+        <div class="field">
+          <label for="password">Passwort</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-primary" id="btn-login">Anmelden</button>
+      </form>
+
+      <div class="divider">oder</div>
+
+      <!-- Google OAuth -->
+      <button class="btn-google" onclick="handleGoogleLogin()">
+        <svg class="google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Mit Google anmelden
+      </button>
+
+      <div class="msg error" id="login-error"></div>
+    </div>
+
+    <!-- Panel: Passwort zurücksetzen -->
+    <div class="panel" id="panel-reset">
+      <form onsubmit="handlePasswordReset(event)">
+        <div class="field">
+          <label for="reset-email">Deine E-Mail-Adresse</label>
+          <input type="email" id="reset-email" placeholder="deine@email.de" required>
+        </div>
+        <button type="submit" class="btn-primary" id="btn-reset">Reset-Link senden</button>
+      </form>
+      <div class="msg error" id="reset-error"></div>
+      <div class="msg success" id="reset-success"></div>
+    </div>
+
+  </div><!-- /#auth-forms -->
+
+  <div class="foot">NeuroBusiness™ · Coach-Portal · Alle Zugänge sind personenbezogen</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════════════════════════ -->
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// ⚠️  KONFIGURATION — HIER TRÄGST DU DEINE EIGENEN WERTE EIN
+//
+//  SUPABASE_URL  → Supabase Dashboard → Project Settings → API → Project URL
+//  SUPABASE_ANON_KEY → Project Settings → API → anon / public key
+//
+//  NIEMALS den service_role-Key hier eintragen!
+// ═══════════════════════════════════════════════════════════════════════════
+const SUPABASE_URL      = 'https://psqfrdpitjmfwvupmfdp.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzcWZyZHBpdGptZnd2dXBtZmRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDQ1NjQsImV4cCI6MjA5MzkyMDU2NH0.yUD24iRrINHLBRIJElmOJZPoBuoBcPGfayNGX38Oldg';
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ⚙️  SUPABASE-KONSOLE: Was du aktivieren musst
+//
+//  1. Authentication → Providers → Google → Enable
+//     Client ID     → von Google Cloud Console (OAuth 2.0 Client IDs)
+//     Client Secret → von Google Cloud Console
+//
+//  2. Authentication → URL Configuration:
+//     Site URL        → https://neurobusiness.one
+//     Redirect URLs   → https://neurobusiness.one/coach-login.html
+//                       (+ localhost:PORT für lokale Entwicklung)
+//
+//  3. Authentication → Email → "Enable email confirmations" prüfen
+//     (für Password-Reset muss Email-Versand aktiv sein)
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ⚙️  GOOGLE CLOUD CONSOLE: Was du anlegen musst
+//
+//  1. https://console.cloud.google.com → Neues Projekt oder bestehendes wählen
+//  2. APIs & Services → Credentials → + Create Credentials → OAuth Client ID
+//  3. Application type: Web application
+//  4. Authorized JavaScript origins:
+//       https://neurobusiness.one
+//       https://psqfrdpitjmfwvupmfdp.supabase.co
+//  5. Authorized redirect URIs:
+//       https://psqfrdpitjmfwvupmfdp.supabase.co/auth/v1/callback
+//  6. Client ID + Secret → in Supabase unter Authentication → Providers → Google eintragen
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Supabase Client initialisieren
+const { createClient } = window.supabase;
+const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ── Hilfsfunktionen ────────────────────────────────────────────────────────
+function showMsg(id, text, type = 'error') {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = text;
+  el.className = `msg ${type}`;
+  el.style.display = 'block';
+}
+function hideMsg(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = 'none';
+}
+function setLoading(btnId, loading, defaultText) {
+  const btn = document.getElementById(btnId);
+  if (!btn) return;
+  btn.disabled = loading;
+  btn.textContent = loading ? 'Bitte warten…' : defaultText;
+}
+
+// ── Tab-Umschalter ─────────────────────────────────────────────────────────
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(el => el.classList.remove('active'));
+  document.getElementById(`panel-${tab}`).classList.add('active');
+  event.currentTarget.classList.add('active');
+  hideMsg('login-error');
+  hideMsg('reset-error');
+  hideMsg('reset-success');
+}
+
+// ── Eingeloggt-Anzeige ─────────────────────────────────────────────────────
+function showLoggedIn(user) {
+  document.getElementById('auth-forms').style.display = 'none';
+  const li = document.getElementById('logged-in');
+  li.style.display = 'block';
+  const email = user.email || '';
+  const name  = user.user_metadata?.full_name || user.user_metadata?.name || email.split('@')[0];
+  document.getElementById('user-email-display').textContent = email;
+  document.getElementById('user-name-display').textContent = name;
+  document.getElementById('user-initials').textContent = name.charAt(0).toUpperCase();
+}
+function showLoggedOut() {
+  document.getElementById('auth-forms').style.display = 'block';
+  document.getElementById('logged-in').style.display = 'none';
+}
+
+// ── A: E-Mail + Passwort Login ─────────────────────────────────────────────
+async function handleEmailLogin(e) {
+  e.preventDefault();
+  hideMsg('login-error');
+  const email    = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  setLoading('btn-login', true, 'Anmelden');
+
+  const { data, error } = await sb.auth.signInWithPassword({ email, password });
+
+  setLoading('btn-login', false, 'Anmelden');
+  if (error) {
+    const msg = error.message === 'Invalid login credentials'
+      ? 'E-Mail oder Passwort falsch.'
+      : error.message;
+    showMsg('login-error', msg);
+    return;
+  }
+  // Erfolgreich → showLoggedIn wird via onAuthStateChange ausgelöst
+}
+
+// ── B: Google OAuth ────────────────────────────────────────────────────────
+async function handleGoogleLogin() {
+  const { error } = await sb.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      // ⚠️  Diese URL muss 1:1 in Supabase → Authentication → URL Configuration
+      //     unter "Redirect URLs" eingetragen sein.
+      redirectTo: `${window.location.origin}/coach-login.html`,
+    },
+  });
+  if (error) showMsg('login-error', error.message);
+  // Bei Erfolg leitet Supabase den Browser automatisch um → kein weiterer Code nötig.
+}
+
+// ── C: Passwort zurücksetzen ───────────────────────────────────────────────
+async function handlePasswordReset(e) {
+  e.preventDefault();
+  hideMsg('reset-error');
+  hideMsg('reset-success');
+  const email = document.getElementById('reset-email').value.trim();
+  setLoading('btn-reset', true, 'Reset-Link senden');
+
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
+    // ⚠️  Diese URL muss in Supabase → Authentication → URL Configuration
+    //     unter "Redirect URLs" eingetragen sein.
+    //     Nach dem Klick landet der Coach auf dieser Seite, wo du dann
+    //     Phase 1b (Passwort-ändern-Formular) einbauen kannst.
+    redirectTo: `${window.location.origin}/coach-login.html?mode=update-password`,
+  });
+
+  setLoading('btn-reset', false, 'Reset-Link senden');
+  if (error) {
+    showMsg('reset-error', error.message);
+    return;
+  }
+  showMsg('reset-success',
+    `✓ Link gesendet an ${email}. Prüfe dein Postfach (ggf. Spam-Ordner).`,
+    'success'
+  );
+}
+
+// ── Logout ─────────────────────────────────────────────────────────────────
+async function handleLogout() {
+  await sb.auth.signOut();
+  // showLoggedOut() wird via onAuthStateChange ausgelöst
+}
+
+// ── Auth-State-Listener (zentrale Stelle für alle State-Wechsel) ──────────
+sb.auth.onAuthStateChange((event, session) => {
+  if (session?.user) {
+    showLoggedIn(session.user);
+  } else {
+    showLoggedOut();
+  }
+});
+
+// ── Initialer Session-Check (z.B. nach Google-OAuth-Redirect) ─────────────
+(async () => {
+  const { data: { session } } = await sb.auth.getSession();
+  if (session?.user) {
+    showLoggedIn(session.user);
+  }
+
+  // ⚠️  Passwort-Update nach Reset-Link (mode=update-password in URL)
+  //     Hier könnte Phase 1b ein Formular einblenden, das
+  //     sb.auth.updateUser({ password: '...' }) aufruft.
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('mode') === 'update-password') {
+    // TODO Phase 1b: Formular "Neues Passwort setzen" einblenden
+    console.log('Password-Update-Modus erkannt.');
+  }
+})();
+</script>
+</body>
+</html>

@@ -362,9 +362,9 @@ footer a:hover{color:rgba(255,255,255,.6)}
      ══════════════════════════════════════════════════ -->
 <section id="psychotyp-visual">
   <div class="sec-in">
-    <div class="sec-eye reveal" id="lbl-pt-eye">Psychotyp-Profil</div>
-    <h2 class="sec-h reveal" id="lbl-pt-h">Deine <em id="lbl-pt-em">Typ-Gestalt</em></h2>
-    <p class="sec-sub reveal" id="lbl-pt-sub">Feste Reihenfolge S·V·M·C·G — damit Profile im Team direkt vergleichbar bleiben. Die Intervalle zeigen den Messbereich statt eines Scheinpräzisions-Punktwerts.</p>
+    <div class="sec-eye reveal" id="lbl-pt-eye">theoriegeleitetes Diagnostikmodell</div>
+    <h2 class="sec-h reveal" id="lbl-pt-h">Dein NeuroBusiness™ <em id="lbl-pt-em">Profil</em></h2>
+    <p class="sec-sub reveal" id="lbl-pt-sub">Kein Einzeltyp, sondern ein kontinuierliches Profil über fünf Dimensionen — feste Reihenfolge für die Vergleichbarkeit im Team.</p>
     <div class="pt-grid">
       <div class="pt-radar-wrap reveal">
         <div class="pt-radar-lbl" id="lbl-pt-radar">Profil-Gestalt</div>
@@ -1480,7 +1480,7 @@ const NB_Profile = {
       return `<div class="pt-bar-item">
         <div class="pt-bar-header">
           <span class="pt-bar-name ${cls}">${t} · ${TN[t]}</span>
-          <span class="pt-bar-ci ${cls}">${lo}–${hi}</span>
+          <span class="pt-bar-ci ${cls}">${v} (${lo}–${hi})</span>
         </div>
         <div class="pt-bar-track">
           <div class="pt-ci-band ${cls}" data-lo="${lo}" data-hi="${hi}"></div>
@@ -1847,9 +1847,9 @@ function render(d){
   NB_Profile.modeA({ scores: d.scores, primary: d.primary, secondary: d.secondary, isEN });
   // EN-Labels für Psychotyp-Sektion
   if(isEN){
-    const el=document.getElementById('lbl-pt-eye');if(el)el.textContent='Psychotype Profile';
-    const h=document.getElementById('lbl-pt-h');if(h)h.innerHTML='Your <em>Type Shape</em>';
-    const s=document.getElementById('lbl-pt-sub');if(s)s.textContent='Fixed order S·V·M·C·G — so profiles stay comparable across teams. Intervals show the measurement range rather than a false-precision point score.';
+    const el=document.getElementById('lbl-pt-eye');if(el)el.textContent='Theory-Based Diagnostic Model';
+    const h=document.getElementById('lbl-pt-h');if(h)h.innerHTML='Your NeuroBusiness™ <em>Profile</em>';
+    const s=document.getElementById('lbl-pt-sub');if(s)s.textContent='Not a single type, but a continuous profile across five dimensions — fixed order for comparability within teams.';
     const r=document.getElementById('lbl-pt-radar');if(r)r.textContent='Profile Shape';
     const leg=document.getElementById('lbl-pt-legend');if(leg)leg.textContent='Legend';
     const lp=document.getElementById('lbl-pt-leg-primary');if(lp)lp.textContent='Primary type';

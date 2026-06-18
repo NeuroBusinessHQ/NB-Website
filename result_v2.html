@@ -248,6 +248,74 @@ footer a:hover{color:rgba(255,255,255,.6)}
 .meth-cta{display:inline-block;border:1px solid rgba(201,169,110,.35);color:var(--g);font-family:var(--fb);font-size:13px;font-weight:400;padding:12px 22px;border-radius:9px;text-decoration:none;white-space:nowrap;transition:all .2s;flex-shrink:0}
 .meth-cta:hover{background:rgba(201,169,110,.1);border-color:rgba(201,169,110,.6)}
 @media(max-width:600px){#dim-visual{padding:64px 20px}#methodology{padding:64px 20px}}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   #PSYCHOTYP-VISUAL — S·V·M·C·G Profil
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#psychotyp-visual{background:var(--cr);padding:96px 48px}
+.pt-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-top:52px}
+@media(max-width:860px){.pt-grid{grid-template-columns:1fr;gap:48px}}
+.pt-radar-wrap{display:flex;flex-direction:column;align-items:center;gap:16px}
+.pt-radar-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);text-align:center}
+.pt-radar-box{width:100%;max-width:380px}
+.pt-bars{display:flex;flex-direction:column;gap:20px}
+.pt-bar-item{display:flex;flex-direction:column;gap:7px}
+.pt-bar-header{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.pt-bar-name{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+.pt-bar-name.primary{color:var(--c);font-weight:500}
+.pt-bar-name.secondary{color:var(--p);font-weight:500}
+.pt-bar-ci{font-family:var(--fm);font-size:12px;color:var(--t3);white-space:nowrap}
+.pt-bar-ci.primary{color:var(--g)}
+.pt-bar-ci.secondary{color:var(--p)}
+.pt-bar-track{height:8px;background:var(--cr3);border-radius:4px;position:relative;overflow:visible}
+.pt-ci-band{position:absolute;top:0;bottom:0;border-radius:4px;background:rgba(201,169,110,.22);left:0;width:0;transition:left 1.4s cubic-bezier(.16,1,.3,1),width 1.4s cubic-bezier(.16,1,.3,1)}
+.pt-ci-band.primary{background:rgba(26,61,53,.18)}
+.pt-ci-band.secondary{background:rgba(124,105,144,.2)}
+.pt-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:var(--t3);border:2.5px solid var(--cr);box-shadow:0 0 0 2px var(--t3);left:0;transition:left 1.4s cubic-bezier(.16,1,.3,1)}
+.pt-dot.primary{background:var(--c);box-shadow:0 0 0 2px var(--c)}
+.pt-dot.secondary{background:var(--p);box-shadow:0 0 0 2px var(--p)}
+.pt-ci-note{font-size:11px;color:var(--t3);font-family:var(--fm);letter-spacing:.03em}
+.pt-legend{margin-top:28px;background:var(--cr2);border:1px solid var(--b);border-radius:12px;padding:16px 18px}
+.pt-legend-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
+.pt-legend-row{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.pt-legend-row:last-child{margin-bottom:0}
+.pt-legend-swatch{width:22px;height:6px;border-radius:3px;flex-shrink:0}
+.pt-legend-txt{font-size:12px;color:var(--t2)}
+@media(max-width:600px){#psychotyp-visual{padding:64px 20px}}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   #TEAM-VISUAL — Modus B Team-Overlay
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#team-visual{background:var(--cr2);padding:96px 48px}
+.tm-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-top:52px}
+@media(max-width:860px){.tm-grid{grid-template-columns:1fr;gap:48px}}
+.tm-radar-wrap{display:flex;flex-direction:column;align-items:center;gap:20px}
+.tm-radar-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);text-align:center}
+/* Team-Legende */
+.tm-legend{display:flex;flex-direction:column;gap:10px;width:100%;max-width:360px}
+.tm-legend-row{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--cr);border:1px solid var(--b);border-radius:8px}
+.tm-legend-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.tm-legend-name{font-size:13px;color:var(--t1);font-weight:500;flex:1}
+.tm-legend-type{font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);white-space:nowrap}
+/* Team-Mittelwert-Balken */
+.tm-bars-label{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:20px}
+.tm-bars{display:flex;flex-direction:column;gap:22px}
+.tm-bar-item{display:flex;flex-direction:column;gap:8px}
+.tm-bar-header{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.tm-bar-name{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)}
+.tm-bar-stat{font-family:var(--fm);font-size:12px;color:var(--g);white-space:nowrap}
+.tm-bar-track{height:10px;background:var(--cr3);border-radius:5px;position:relative;overflow:visible;margin-bottom:4px}
+.tm-sd-band{position:absolute;top:0;bottom:0;border-radius:5px;background:rgba(201,169,110,.25);left:0;width:0;transition:left 1.4s cubic-bezier(.16,1,.3,1),width 1.4s cubic-bezier(.16,1,.3,1)}
+.tm-mean-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:var(--g);border:2.5px solid var(--cr);box-shadow:0 0 0 2px var(--g);left:0;transition:left 1.4s cubic-bezier(.16,1,.3,1)}
+/* Einzel-Member-Ticks unterhalb des Balkens */
+.tm-member-dots{position:relative;height:8px}
+.tm-member-tick{position:absolute;top:0;width:3px;height:8px;border-radius:1px;opacity:.75;transform:translateX(-50%);left:0;transition:left 1.4s cubic-bezier(.16,1,.3,1)}
+/* Team-Insight-Box (einseitige Dimensionen) */
+.tm-insight-box{margin-top:24px;padding:16px 20px;background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.22);border-radius:12px;display:none}
+.tm-insight-box.show{display:block}
+.tm-insight-box-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:8px}
+.tm-insight-box-text{font-size:13px;color:var(--t2);line-height:1.7}
+@media(max-width:600px){#team-visual{padding:64px 20px}}
 /* ── Access bar ── */
 #access-bar{display:none;position:sticky;top:0;z-index:100;background:rgba(14,13,11,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,169,110,0.25);padding:0 48px}
 #access-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;height:52px}
@@ -256,6 +324,8 @@ footer a:hover{color:rgba(255,255,255,.6)}
 .ab-btn:hover{background:var(--c2)}
 @media(max-width:600px){#access-bar{padding:0 20px}.ab-text{display:none}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
 <body>
 <div id="access-bar">
@@ -284,6 +354,43 @@ footer a:hover{color:rgba(255,255,255,.6)}
     <h2 class="sec-h reveal" id="lbl-mirror-h">Was wir <em id="lbl-mirror-em">in dir sehen</em></h2>
     <p class="mirror-intro reveal" id="mirror-intro"></p>
     <div class="mirror-grid reveal" id="mirror-grid"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     PSYCHOTYP-PROFIL — S·V·M·C·G Radar + CI-Balken
+     ══════════════════════════════════════════════════ -->
+<section id="psychotyp-visual">
+  <div class="sec-in">
+    <div class="sec-eye reveal" id="lbl-pt-eye">Psychotyp-Profil</div>
+    <h2 class="sec-h reveal" id="lbl-pt-h">Deine <em id="lbl-pt-em">Typ-Gestalt</em></h2>
+    <p class="sec-sub reveal" id="lbl-pt-sub">Feste Reihenfolge S·V·M·C·G — damit Profile im Team direkt vergleichbar bleiben. Die Intervalle zeigen den Messbereich statt eines Scheinpräzisions-Punktwerts.</p>
+    <div class="pt-grid">
+      <div class="pt-radar-wrap reveal">
+        <div class="pt-radar-lbl" id="lbl-pt-radar">Profil-Gestalt</div>
+        <div class="pt-radar-box">
+          <canvas id="pt-radar-canvas" width="380" height="380"></canvas>
+        </div>
+      </div>
+      <div>
+        <div class="pt-bars reveal" id="pt-bars-wrap"></div>
+        <div class="pt-legend reveal">
+          <div class="pt-legend-lbl" id="lbl-pt-legend">Legende</div>
+          <div class="pt-legend-row">
+            <div class="pt-legend-swatch" style="background:var(--c)"></div>
+            <span class="pt-legend-txt" id="lbl-pt-leg-primary">Primärtyp</span>
+          </div>
+          <div class="pt-legend-row">
+            <div class="pt-legend-swatch" style="background:var(--p)"></div>
+            <span class="pt-legend-txt" id="lbl-pt-leg-secondary">Sekundärtyp</span>
+          </div>
+          <div class="pt-legend-row">
+            <div class="pt-legend-swatch" style="background:rgba(201,169,110,.35);border:1px solid rgba(201,169,110,.4)"></div>
+            <span class="pt-legend-txt" id="lbl-pt-leg-ci">80 %-Konfidenzband (±9 Punkte)</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -379,6 +486,19 @@ footer a:hover{color:rgba(255,255,255,.6)}
     <h2 class="sec-h reveal" id="lbl-steps-h">3 konkrete Schritte <em id="lbl-steps-em">ab heute</em></h2>
     <p class="steps-intro reveal" id="steps-intro"></p>
     <div class="steps-list reveal" id="steps-list"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     AI-UPGRADE BLOCK — nach #schritte, vor #eva-quote
+     ══════════════════════════════════════════════════ -->
+<section id="ai-upgrade" class="sec" style="background:linear-gradient(135deg,rgba(26,61,53,0.08) 0%,rgba(201,169,110,0.06) 100%);border-top:1px solid rgba(201,169,110,0.15);border-bottom:1px solid rgba(201,169,110,0.15)">
+  <div class="sec-in" style="text-align:center;max-width:680px">
+    <div class="sec-eye reveal" id="lbl-ai-eye">NeuroBusiness AI</div>
+    <h2 class="sec-h reveal" style="margin-bottom:16px" id="lbl-ai-h">Deine NeuroBusiness AI<br><em id="lbl-ai-em">ist bereit für dich.</em></h2>
+    <p class="reveal" style="font-size:17px;line-height:1.7;color:var(--text2);margin-bottom:12px" id="lbl-ai-p1">Du kennst jetzt deinen Psychotyp. Aber Wissen allein verändert noch nichts — es geht darum, es täglich zu leben. Die NeuroBusiness AI kennt deinen Typ, denkt mit dir mit und begleitet dich konkret: Entscheidungen, Strategien, Wochen-Agenda.</p>
+    <p class="reveal" style="font-size:15px;color:var(--text3);margin-bottom:40px;font-family:var(--font-mono);letter-spacing:.02em" id="lbl-ai-note">49 €/Monat · jederzeit kündbar · zzgl. MwSt.</p>
+    <a href="https://buy.stripe.com/eVq7sN77v73u2SKaHhasg06" class="btn-primary reveal" style="display:inline-block;padding:18px 48px;font-size:16px" id="cta-ai-upgrade">NeuroBusiness AI freischalten →</a>
   </div>
 </section>
 
@@ -505,6 +625,43 @@ footer a:hover{color:rgba(255,255,255,.6)}
             <span style="font-family:var(--fm);font-size:13px;color:var(--c);font-weight:500">49 €/Monat</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     #team-visual — Modus B: Team-Overlay
+     Einbinden auf Team-Seite: <div id="team-visual">…</div> ausschneiden
+     und per iframe / include einfügen; dann NB_Profile.modeB({ … }) aufrufen.
+     ══════════════════════════════════════════════════════════════════════ -->
+<section id="team-visual">
+  <div class="sec-in">
+    <div class="sec-eye reveal" id="lbl-tm-eye">Team-Profil</div>
+    <h2 class="sec-h reveal" id="lbl-tm-h">Eure <em id="lbl-tm-em">Typ-Konstellation</em></h2>
+    <p class="sec-sub reveal" id="lbl-tm-sub">Fünf Dimensionen, alle Profile auf einen Blick. Wo hat das Team Stärke — und wo fehlt Diversität?</p>
+
+    <div class="tm-grid reveal">
+      <!-- Radar links -->
+      <div>
+        <div class="tm-bars-label" id="lbl-tm-radar">Profil-Gestalt · Team</div>
+        <div class="pt-radar-box">
+          <canvas id="tm-radar-canvas" width="380" height="380"></canvas>
+        </div>
+      </div>
+
+      <!-- Legende + Balken rechts -->
+      <div>
+        <!-- Mitglieder-Legende -->
+        <div class="tm-bars-label" id="lbl-tm-legend">Mitglieder</div>
+        <div class="tm-legend" id="tm-legend-list"></div>
+
+        <!-- MW ± SD je Dimension -->
+        <div class="tm-bars-label" style="margin-top:36px" id="lbl-tm-bars">Dimensionsprofil des Teams</div>
+        <div class="tm-bars" id="tm-bars-wrap"></div>
+
+        <!-- Team-Blindstellen (wird nur angezeigt wenn gaps vorhanden) -->
+        <div class="tm-insight-box" id="tm-insight-box"></div>
       </div>
     </div>
   </div>
@@ -1177,6 +1334,392 @@ function buildDimBars(dims, isEN) {
   }).join('');
 }
 
+// ══════════════════════════════════════════════════════════════════════════════
+// NB_Profile — wiederverwendbares Profil-Modul
+// Modus A: Einzelprofil (Radar + CI-Balken)  → NB_Profile.modeA({ … })
+// Modus B: Team-Overlay (Multi-Radar + MW)   → NB_Profile.modeB({ … })
+// ══════════════════════════════════════════════════════════════════════════════
+
+const NB_Profile = {
+
+  // ── Achsenreihenfolge — NIEMALS nach Höhe sortieren ──────────────────────
+  // Feste Reihenfolge garantiert, dass Profile teamweit direkt vergleichbar sind.
+  ORDER: ['S', 'V', 'M', 'C', 'G'],
+
+  // ── Standardmessfehler (SEM) je Skala ───────────────────────────────────
+  // TODO: Diese Platzhalterwerte (SEM = 7) durch empirisch berechnete Werte
+  // aus McDonald's Omega ersetzen, sobald ausreichend Diagnostikdaten vorliegen.
+  // Formel: SEM_k = SD_k × √(1 − ω_k)
+  //   SD_k  = empirische Standardabweichung der Rohwerte für Skala k
+  //   ω_k   = McDonald's Omega (Reliabilität) für Skala k
+  // Berechnung mit R-Paket 'psych' (omega()) oder Python 'pingouin' (reliability()).
+  SEM: { S: 7, V: 7, M: 7, C: 7, G: 7 },
+
+  // z-Wert für 80 %-Konfidenzintervall (zweiseitig, 10 % je Seite)
+  Z80: 1.282,
+
+  // ── Namen (DE / EN) ──────────────────────────────────────────────────────
+  NAMES:    { S:'Strateg',    V:'Visionär',  M:'Builder', C:'Connector', G:'High Performer' },
+  NAMES_EN: { S:'Strategist', V:'Visionary', M:'Builder', C:'Connector', G:'High Performer' },
+
+  // ── Farbpalette für Team-Overlay (bis zu 6 Personen) ────────────────────
+  TEAM_PALETTE: [
+    { border:'#1a3d35', fill:'rgba(26,61,53,0.13)',    dot:'#c9a96e' }, // Emerald
+    { border:'#7c6990', fill:'rgba(124,105,144,0.12)', dot:'#b09ac8' }, // Violett
+    { border:'#b87333', fill:'rgba(184,115,51,0.10)',  dot:'#e8a04a' }, // Kupfer
+    { border:'#2a5f8a', fill:'rgba(42,95,138,0.10)',   dot:'#6aa3d4' }, // Schieferblau
+    { border:'#7a3045', fill:'rgba(122,48,69,0.10)',   dot:'#c47a8a' }, // Weinrot
+    { border:'#3d6b45', fill:'rgba(61,107,69,0.10)',   dot:'#7db88a' }, // Waldgrün
+  ],
+
+  _chartA: null, // Chart.js-Instanz Modus A
+  _chartB: null, // Chart.js-Instanz Modus B
+
+  // ── Konfidenzintervall berechnen ─────────────────────────────────────────
+  _ci(score, skala) {
+    const sem = this.SEM[skala] ?? 7;
+    return {
+      lo: Math.max(0,   Math.round(score - this.Z80 * sem)),
+      hi: Math.min(100, Math.round(score + this.Z80 * sem)),
+    };
+  },
+
+  // ════════════════════════════════════════════════════════════════════════
+  // MODUS A — Einzelprofil (im Report)
+  // Entscheidung: ergänzend, nicht ersetzend.
+  // Die Hero-Score-Bars (3 px, dunkler Hintergrund) dienen als emotionaler
+  // Teaser beim Seitenladen. Modus A liefert die vollständige Analyse mit
+  // CI-Intervallen einen Scroll weiter unten — Einstieg vs. Tiefe.
+  // ════════════════════════════════════════════════════════════════════════
+  modeA({ scores, primary, secondary = null, isEN = false,
+          canvasId = 'pt-radar-canvas', barsId = 'pt-bars-wrap' }) {
+    this._buildSingleRadar({ scores, primary, secondary, isEN, canvasId });
+    this._buildCIBars({ scores, primary, secondary, isEN, barsId });
+  },
+
+  _buildSingleRadar({ scores, primary, secondary, isEN, canvasId }) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas || typeof Chart === 'undefined') return;
+    const TN = isEN ? this.NAMES_EN : this.NAMES;
+    if (this._chartA) { this._chartA.destroy(); this._chartA = null; }
+    this._chartA = new Chart(canvas.getContext('2d'), {
+      type: 'radar',
+      data: {
+        labels: this.ORDER.map(t => TN[t]),
+        datasets: [{
+          label: isEN ? 'Your Profile' : 'Dein Profil',
+          data: this.ORDER.map(t => scores[t] || 0),
+          fill: true,
+          backgroundColor: 'rgba(26,61,53,0.12)',
+          borderColor: '#1a3d35',
+          borderWidth: 2.5,
+          pointBackgroundColor: this.ORDER.map(t =>
+            t === primary ? '#c9a96e' : t === secondary ? '#7c6990' : '#1a3d35'),
+          pointBorderColor: '#faf8f4',
+          pointBorderWidth: 2.5,
+          pointRadius: this.ORDER.map(t => t === primary ? 8 : t === secondary ? 6 : 5),
+          pointHoverRadius: 9,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        animation: { duration: 1100, easing: 'easeOutQuart' },
+        scales: {
+          r: {
+            min: 0, max: 100,
+            ticks: { display: false },
+            grid: {
+              color: c => c.index === 3 ? 'rgba(26,24,20,.15)' : 'rgba(26,24,20,.07)',
+              lineWidth: c => c.index === 3 ? 1.5 : 1,
+            },
+            angleLines: { color: 'rgba(26,24,20,.08)', lineWidth: 1 },
+            pointLabels: {
+              font: { family: "'DM Mono',monospace", size: 11 },
+              color: c => {
+                const t = this.ORDER[c.index];
+                return t === primary ? '#c9a96e' : t === secondary ? '#7c6990' : '#8a837a';
+              },
+            },
+          },
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              title: items => {
+                const t = this.ORDER[items[0].dataIndex];
+                return `${t} · ${(isEN ? this.NAMES_EN : this.NAMES)[t]}`;
+              },
+              label: item => {
+                const t = this.ORDER[item.dataIndex];
+                const { lo, hi } = this._ci(item.raw, t);
+                return ` ${lo}–${hi}` + (isEN ? ' (80% CI)' : ' (80%-KI)');
+              },
+            },
+            backgroundColor: '#1a1814',
+            titleColor: '#c9a96e',
+            titleFont: { family: "'DM Mono',monospace", size: 11 },
+            bodyColor: 'rgba(250,248,244,.8)',
+            bodyFont: { family: "'DM Mono',monospace", size: 12 },
+            padding: 12, cornerRadius: 8, displayColors: false,
+          },
+        },
+      },
+    });
+  },
+
+  _buildCIBars({ scores, primary, secondary, isEN, barsId }) {
+    const cont = document.getElementById(barsId);
+    if (!cont) return;
+    const TN = isEN ? this.NAMES_EN : this.NAMES;
+    cont.innerHTML = this.ORDER.map(t => {
+      const v = scores[t] || 0;
+      const { lo, hi } = this._ci(v, t);
+      const cls = t === primary ? 'primary' : t === secondary ? 'secondary' : '';
+      return `<div class="pt-bar-item">
+        <div class="pt-bar-header">
+          <span class="pt-bar-name ${cls}">${t} · ${TN[t]}</span>
+          <span class="pt-bar-ci ${cls}">${lo}–${hi}</span>
+        </div>
+        <div class="pt-bar-track">
+          <div class="pt-ci-band ${cls}" data-lo="${lo}" data-hi="${hi}"></div>
+          <div class="pt-dot ${cls}" data-pct="${v}"></div>
+        </div>
+        <div class="pt-ci-note">${isEN ? '80 % confidence interval' : '80%-Konfidenzintervall'}</div>
+      </div>`;
+    }).join('');
+  },
+
+  animateCIBars(scope = document) {
+    scope.querySelectorAll('.pt-ci-band[data-lo][data-hi]').forEach(el => {
+      el.style.left  = el.dataset.lo + '%';
+      el.style.width = (parseFloat(el.dataset.hi) - parseFloat(el.dataset.lo)) + '%';
+    });
+    scope.querySelectorAll('.pt-dot[data-pct]').forEach(el => {
+      el.style.left = el.dataset.pct + '%';
+    });
+  },
+
+  // ════════════════════════════════════════════════════════════════════════
+  // MODUS B — Team-Overlay
+  //
+  // Einbindung auf einer eigenen Team-Seite:
+  //   const profiles = await loadTeamProfiles({ teamId: 'xyz' });
+  //   NB_Profile.modeB({ profiles, isEN: false });
+  //   setTimeout(() => NB_Profile.animateTeamBars(), 300);
+  //
+  // profiles-Format:
+  //   [{ name: 'Anna M.', scores: { S:72, V:45, M:58, C:81, G:63 } }, …]
+  //
+  // Daten aus Supabase: siehe loadTeamProfiles() weiter unten.
+  // ════════════════════════════════════════════════════════════════════════
+  modeB({ profiles, isEN = false,
+          canvasId = 'tm-radar-canvas',
+          barsId   = 'tm-bars-wrap',
+          legendId = 'tm-legend-list',
+          insightId = 'tm-insight-box' }) {
+    if (!profiles || profiles.length === 0) return;
+    this._buildTeamRadar({ profiles, isEN, canvasId });
+    this._buildTeamBars({ profiles, isEN, barsId });
+    this._buildTeamLegend({ profiles, isEN, legendId });
+    this._buildTeamInsight({ profiles, isEN, insightId });
+  },
+
+  _buildTeamRadar({ profiles, isEN, canvasId }) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas || typeof Chart === 'undefined') return;
+    const TN = isEN ? this.NAMES_EN : this.NAMES;
+    if (this._chartB) { this._chartB.destroy(); this._chartB = null; }
+    this._chartB = new Chart(canvas.getContext('2d'), {
+      type: 'radar',
+      data: {
+        labels: this.ORDER.map(t => TN[t]),
+        datasets: profiles.map((p, i) => {
+          const col = this.TEAM_PALETTE[i % this.TEAM_PALETTE.length];
+          return {
+            label: p.name || `Profil ${i + 1}`,
+            data: this.ORDER.map(t => p.scores[t] || 0),
+            fill: true,
+            backgroundColor: col.fill,
+            borderColor: col.border,
+            borderWidth: 2,
+            pointBackgroundColor: col.dot,
+            pointBorderColor: '#faf8f4',
+            pointBorderWidth: 2,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          };
+        }),
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        animation: { duration: 1200, easing: 'easeOutQuart' },
+        scales: {
+          r: {
+            min: 0, max: 100,
+            ticks: { display: false },
+            grid: {
+              color: c => c.index === 3 ? 'rgba(26,24,20,.15)' : 'rgba(26,24,20,.07)',
+              lineWidth: c => c.index === 3 ? 1.5 : 1,
+            },
+            angleLines: { color: 'rgba(26,24,20,.08)', lineWidth: 1 },
+            pointLabels: {
+              font: { family: "'DM Mono',monospace", size: 11 },
+              color: '#8a837a',
+            },
+          },
+        },
+        plugins: {
+          legend: { display: false }, // eigene Legende via _buildTeamLegend
+          tooltip: {
+            callbacks: {
+              title: items => {
+                const t = this.ORDER[items[0].dataIndex];
+                return `${t} · ${(isEN ? this.NAMES_EN : this.NAMES)[t]}`;
+              },
+              label: item => ` ${item.dataset.label}: ${item.raw}`,
+            },
+            backgroundColor: '#1a1814',
+            titleColor: '#c9a96e',
+            titleFont: { family: "'DM Mono',monospace", size: 11 },
+            bodyColor: 'rgba(250,248,244,.8)',
+            bodyFont: { family: "'DM Mono',monospace", size: 12 },
+            padding: 12, cornerRadius: 8,
+          },
+        },
+      },
+    });
+  },
+
+  _buildTeamBars({ profiles, isEN, barsId }) {
+    const cont = document.getElementById(barsId);
+    if (!cont) return;
+    const TN = isEN ? this.NAMES_EN : this.NAMES;
+    const n = profiles.length;
+    cont.innerHTML = this.ORDER.map(t => {
+      const vals = profiles.map(p => p.scores[t] || 0);
+      const mean = vals.reduce((a, b) => a + b, 0) / n;
+      const sd   = Math.sqrt(vals.reduce((s, v) => s + (v - mean) ** 2, 0) / n);
+      const mR   = Math.round(mean);
+      const sdR  = Math.round(sd);
+      const lo   = Math.max(0,   mR - sdR);
+      const hi   = Math.min(100, mR + sdR);
+      const stat = sdR > 0 ? `${mR} ± ${sdR}` : `${mR}`;
+      return `<div class="tm-bar-item">
+        <div class="tm-bar-header">
+          <span class="tm-bar-name">${t} · ${TN[t]}</span>
+          <span class="tm-bar-stat">${stat}</span>
+        </div>
+        <div class="tm-bar-track">
+          <div class="tm-sd-band" data-lo="${lo}" data-hi="${hi}"></div>
+          <div class="tm-mean-dot" data-pct="${mR}"></div>
+        </div>
+        <div class="tm-member-dots">
+          ${vals.map((v, i) => {
+            const col = this.TEAM_PALETTE[i % this.TEAM_PALETTE.length];
+            return `<div class="tm-member-tick" data-pct="${Math.round(v)}" style="background:${col.border}"></div>`;
+          }).join('')}
+        </div>
+      </div>`;
+    }).join('');
+  },
+
+  _buildTeamLegend({ profiles, isEN, legendId }) {
+    const cont = document.getElementById(legendId);
+    if (!cont) return;
+    const TN = isEN ? this.NAMES_EN : this.NAMES;
+    cont.innerHTML = profiles.map((p, i) => {
+      const col     = this.TEAM_PALETTE[i % this.TEAM_PALETTE.length];
+      const primary = this.ORDER.reduce((b, t) =>
+        (p.scores[t] || 0) > (p.scores[b] || 0) ? t : b, 'S');
+      return `<div class="tm-legend-row">
+        <div class="tm-legend-dot" style="background:${col.border};box-shadow:0 0 0 3px ${col.dot}55"></div>
+        <span class="tm-legend-name">${p.name || `Profil ${i + 1}`}</span>
+        <span class="tm-legend-type">${primary} · ${TN[primary]}</span>
+      </div>`;
+    }).join('');
+  },
+
+  _buildTeamInsight({ profiles, isEN, insightId }) {
+    const cont = document.getElementById(insightId);
+    if (!cont) return;
+    // Einseitige Dimension = SD > 15 oder alle gleichen Typ
+    const TN = isEN ? this.NAMES_EN : this.NAMES;
+    const gaps = this.ORDER.filter(t => {
+      const vals = profiles.map(p => p.scores[t] || 0);
+      const mean = vals.reduce((a, b) => a + b, 0) / profiles.length;
+      return mean < 35; // Dimension deutlich unterrepräsentiert im Team
+    });
+    if (gaps.length === 0) { cont.classList.remove('show'); return; }
+    cont.classList.add('show');
+    const gapNames = gaps.map(t => `${t} (${TN[t]})`).join(', ');
+    cont.innerHTML = `<div class="tm-insight-box-lbl">${isEN ? 'Team blind spots' : 'Team-Blindstellen'}</div>
+      <div class="tm-insight-box-text">${isEN
+        ? `The team is underrepresented in: ${gapNames}. Diversity in these dimensions can strengthen strategic resilience.`
+        : `Das Team ist unterrepräsentiert in: ${gapNames}. Diversität in diesen Dimensionen kann die strategische Resilienz stärken.`
+      }</div>`;
+  },
+
+  animateTeamBars(scope = document) {
+    scope.querySelectorAll('.tm-sd-band[data-lo][data-hi]').forEach(el => {
+      el.style.left  = el.dataset.lo + '%';
+      el.style.width = (parseFloat(el.dataset.hi) - parseFloat(el.dataset.lo)) + '%';
+    });
+    scope.querySelectorAll('.tm-mean-dot[data-pct]').forEach(el => {
+      el.style.left = el.dataset.pct + '%';
+    });
+    scope.querySelectorAll('.tm-member-tick[data-pct]').forEach(el => {
+      el.style.left = el.dataset.pct + '%';
+    });
+  },
+};
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SUPABASE-ANBINDUNG
+// Nur anon/publishable key — NIEMALS den service_role-Key im Frontend nutzen!
+// ══════════════════════════════════════════════════════════════════════════════
+const SUPABASE_URL = "https://psqfrdpitjmfwvupmfdp.supabase.co";
+const SUPABASE_KEY = "sb_publishable_ugez4cA60tWtuawiuyRoaQ_Au7Wl__L";
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// ── Modus A: Einzelprofil laden ─────────────────────────────────────────────
+async function loadSingleProfile(profileId) {
+  const { data, error } = await sb
+    .from('profiles')
+    .select('first_name, score_s, score_v, score_m, score_c, score_g')
+    .eq('id', profileId)
+    .single();
+  if (error) throw error;
+  return {
+    name: data.first_name,
+    scores: { S: data.score_s, V: data.score_v, M: data.score_m,
+              C: data.score_c, G: data.score_g },
+  };
+}
+
+// ── Modus B: Team laden ──────────────────────────────────────────────────────
+async function loadTeamProfiles(filter = {}) {
+  let q = sb
+    .from('v_team_profiles')  // View: nur share_consent = true
+    .select('id, first_name, score_s, score_v, score_m, score_c, score_g');
+
+  // TODO: Team-Filter — wähle eine der Optionen:
+  // Option A — team_id (jetzt verfügbar nach Schema-Migration):
+  if (filter.teamId) q = q.eq('team_id', filter.teamId);
+  // Option B — Liste von Profil-IDs:
+  //   if (filter.ids?.length) q = q.in('id', filter.ids);
+
+  const { data, error } = await q.order('first_name').limit(20);
+  if (error) throw error;
+  return data.map(d => ({
+    id: d.id, name: d.first_name,
+    scores: { S: d.score_s, V: d.score_v, M: d.score_m,
+              C: d.score_c, G: d.score_g },
+  }));
+}
+
 // ─── MIXED-TYPE COMPOSITION ──────────────────────────────────
 function buildMixComp(d, isEN) {
   if(!d.secondary) return;
@@ -1300,6 +1843,19 @@ function render(d){
   const barsCont=$id('dim-bars-wrap');
   if(barsCont) barsCont.innerHTML=buildDimBars(d.dims,isEN);
   buildMixComp(d,isEN);
+  // ── Psychotyp S·V·M·C·G Radar + CI-Balken (Modus A) ────────
+  NB_Profile.modeA({ scores: d.scores, primary: d.primary, secondary: d.secondary, isEN });
+  // EN-Labels für Psychotyp-Sektion
+  if(isEN){
+    const el=document.getElementById('lbl-pt-eye');if(el)el.textContent='Psychotype Profile';
+    const h=document.getElementById('lbl-pt-h');if(h)h.innerHTML='Your <em>Type Shape</em>';
+    const s=document.getElementById('lbl-pt-sub');if(s)s.textContent='Fixed order S·V·M·C·G — so profiles stay comparable across teams. Intervals show the measurement range rather than a false-precision point score.';
+    const r=document.getElementById('lbl-pt-radar');if(r)r.textContent='Profile Shape';
+    const leg=document.getElementById('lbl-pt-legend');if(leg)leg.textContent='Legend';
+    const lp=document.getElementById('lbl-pt-leg-primary');if(lp)lp.textContent='Primary type';
+    const ls=document.getElementById('lbl-pt-leg-secondary');if(ls)ls.textContent='Secondary type';
+    const lc=document.getElementById('lbl-pt-leg-ci');if(lc)lc.textContent='80 % confidence band (±9 points)';
+  }
   translateDimVisual(isEN);
   translateMethodology(isEN);
   set('steps-intro',r.stepsIntro);
@@ -1317,29 +1873,94 @@ function initReveal(){
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 }
 
-window.addEventListener('DOMContentLoaded',()=>{
-  const d=getParams();render(d);
-  let mi=0;const lmEl=$id('l-msg');
-  const li=setInterval(()=>{mi++;if(mi<LOAD_MSGS.length)lmEl.textContent=LOAD_MSGS[mi];else clearInterval(li)},700);
-  setTimeout(()=>{
+// ── Supabase-Profil laden (via access_token → user_id → profiles) ──────────
+async function loadFromSupabase(token) {
+  // 1. Token → user_id + Ablaufprüfung
+  const tokRes = await sb
+    .from('access_tokens')
+    .select('user_id, expires_at')
+    .eq('token', token)
+    .single();
+  if (tokRes.error || !tokRes.data) throw new Error('Token nicht gefunden');
+  if (new Date(tokRes.data.expires_at) < new Date()) throw new Error('Token abgelaufen');
+
+  const userId = tokRes.data.user_id;
+
+  // 2. user_id → Profil
+  // Spaltenbezeichnungen aus workers/ai.js (save-diagnostic):
+  //   psychotype, secondary_psychotype, score_s–g, burnout_alert, report_context (JSON mit d1–d5)
+  const profRes = await sb
+    .from('profiles')
+    .select('first_name, psychotype, secondary_psychotype, score_s, score_v, score_m, score_c, score_g, burnout_alert, report_context')
+    .eq('id', userId)
+    .single();
+  if (profRes.error || !profRes.data) throw new Error('Profil nicht gefunden');
+
+  const r = profRes.data;
+
+  // d1–d5 und responseSetWarning liegen als JSON in report_context
+  let ctx = {};
+  try { ctx = JSON.parse(r.report_context || '{}'); } catch {}
+  const pn = v => Math.min(100, Math.max(0, parseInt(v) || 50));
+
+  return {
+    primary:            (r.psychotype            || 'S').toUpperCase(),
+    secondary:          r.secondary_psychotype   ? r.secondary_psychotype.toUpperCase() : null,
+    scores:             { S: r.score_s||0, V: r.score_v||0, M: r.score_m||0, C: r.score_c||0, G: r.score_g||0 },
+    burnout:            !!r.burnout_alert,
+    name:               r.first_name || '',
+    responseSetWarning: !!ctx.responseSetWarning,
+    dims:               { d1: pn(ctx.d1), d2: pn(ctx.d2), d3: pn(ctx.d3), d4: pn(ctx.d4), d5: pn(ctx.d5) },
+  };
+}
+
+// ── Animations-Helfer (nach render aufrufen) ────────────────────────────────
+function runAnimations() {
+  document.querySelectorAll('.sb-fill').forEach(el => { el.style.width = el.dataset.p + '%'; });
+  document.querySelectorAll('.dim-bar-fill[data-pct]').forEach(el => {
+    el.style.width = el.dataset.pct + '%';
+    const dot = el.nextElementSibling;
+    if (dot) dot.style.left = el.dataset.pct + '%';
+  });
+  document.querySelectorAll('.mix-bar-fill[data-pct]').forEach(el => { el.style.width = el.dataset.pct + '%'; });
+  NB_Profile.animateCIBars();
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  // Ladescreen-Nachrichten rotieren
+  let mi = 0;
+  const lmEl = $id('l-msg');
+  const li = setInterval(() => {
+    mi++;
+    if (mi < LOAD_MSGS.length) lmEl.textContent = LOAD_MSGS[mi];
+    else clearInterval(li);
+  }, 700);
+
+  // ── Daten laden: Supabase wenn Token vorhanden, sonst URL-Parameter ──────
+  const token = new URLSearchParams(window.location.search).get('token');
+  let d;
+  if (token) {
+    try {
+      d = await loadFromSupabase(token);
+      // Lang aus URL weiterhin respektieren (kein Profil-Feld)
+      d.lang = new URLSearchParams(window.location.search).get('lang') || 'de';
+    } catch (err) {
+      console.warn('Supabase-Laden fehlgeschlagen, Fallback auf URL-Parameter:', err.message);
+      d = getParams();
+    }
+  } else {
+    d = getParams();
+  }
+
+  render(d);
+
+  // ── Loader ausblenden & Animationen starten ───────────────────────────────
+  setTimeout(() => {
     $id('loader').classList.add('out');
-    setTimeout(()=>{const l=$id('loader');if(l)l.remove()},800);
+    setTimeout(() => { const l = $id('loader'); if (l) l.remove(); }, 800);
     initReveal();
-    setTimeout(()=>{
-      // Hero score bars
-      document.querySelectorAll('.sb-fill').forEach(el=>{el.style.width=el.dataset.p+'%'});
-      // Dimension bars (stagger slightly after load)
-      document.querySelectorAll('.dim-bar-fill[data-pct]').forEach(el=>{
-        el.style.width=el.dataset.pct+'%';
-        const dot=el.nextElementSibling;
-        if(dot) dot.style.left=el.dataset.pct+'%';
-      });
-      // Mixed-type blend bar
-      document.querySelectorAll('.mix-bar-fill[data-pct]').forEach(el=>{
-        el.style.width=el.dataset.pct+'%';
-      });
-    },300);
-  },2200);
+    setTimeout(runAnimations, 300);
+  }, 2200);
 });
 </script>
 </body>

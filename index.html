@@ -889,9 +889,9 @@ footer {
   <div class="section-inner">
     <div class="section-eyebrow fade-up" id="prod-eyebrow">Unsere Produkte</div>
     <h2 class="section-title fade-up" id="prod-title">Für jeden Schritt der <em>richtigen</em> Strategie</h2>
-    <div class="products-grid fade-up" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:880px;margin:0 auto">
+    <div class="products-grid fade-up" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));max-width:1120px;margin:0 auto">
 
-      <!-- CARD 1: Solo Report (Entry) -->
+      <!-- CARD 1: Solo Report — Einstieg, kein Abo -->
       <div class="product-card">
         <div class="product-card-header">
           <div class="product-badge" id="pb0">NeuroBusiness™ Diagnostik</div>
@@ -909,14 +909,15 @@ footer {
           </ul>
           <div class="product-price" id="pp0">147 €</div>
           <div class="product-price-note" id="ppn0">Einmalig · zzgl. MwSt. · Kein Abo</div>
+          <div style="font-size:12px;color:var(--gold2);margin-bottom:20px;font-family:var(--font-mono);letter-spacing:.02em" id="pp0-ai-hint">NeuroBusiness AI jederzeit für 49 €/Monat dazubuchbar.</div>
           <a href="https://buy.stripe.com/5kQfZj1NbbjK50Sg1Basg08" class="btn-outline" style="display:block;text-align:center;width:100%" id="pcta0">Meinen Report bestellen</a>
         </div>
       </div>
 
-      <!-- CARD 2: Diagnostik + NeuroBusiness AI (Featured) -->
+      <!-- CARD 2: Diagnostik + NeuroBusiness AI — bester Deal, Featured -->
       <div class="product-card featured">
         <div class="product-card-header" style="position:relative">
-          <div style="position:absolute;top:20px;right:20px;background:var(--gold);color:var(--dark);font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px;font-weight:500">Beliebteste</div>
+          <div style="position:absolute;top:20px;right:20px;background:var(--gold);color:var(--dark);font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px;font-weight:500" id="pb1-badge">Beliebteste</div>
           <div class="product-badge" id="pb1">NeuroBusiness™ Strategist</div>
           <div class="product-name" id="pn1">Diagnostik<br>+ NeuroBusiness AI</div>
           <div class="product-tagline" id="pt1">Für Selbstständige, die nicht nur wissen wollen, welcher Typ sie sind — sondern ihre Entscheidungen typgerecht ausrichten wollen.</div>
@@ -931,8 +932,32 @@ footer {
             <li style="color:rgba(250,248,244,0.5)">Nach 12 Monaten: 49 €/Monat, jederzeit kündbar</li>
           </ul>
           <div class="product-price" id="pp1">490 €</div>
-          <div class="product-price-note" id="ppn1" style="color:rgba(250,248,244,0.5)">12 Monate NeuroBusiness AI inklusive · danach 49 €/Monat · zzgl. MwSt.</div>
+          <div class="product-price-note" id="ppn1" style="color:rgba(250,248,244,0.5)">Einmalig · 12 Monate AI inklusive · danach 49 €/Monat · zzgl. MwSt.</div>
+          <!-- Spar-Hinweis: 147 + (12×49) = 735 €, Ersparnis 245 € — rechnerisch belegt -->
+          <div style="font-size:12px;color:var(--gold);margin-bottom:20px;font-family:var(--font-mono);letter-spacing:.02em" id="pp1-saving">Sparst 245 € gegenüber Einzelbuchung (147 € + 12 × 49 €)</div>
           <button onclick="openModal('modalDiagnostik')" class="btn-primary" style="display:block;text-align:center;width:100%;background:var(--gold);color:var(--dark);border:none;cursor:pointer" id="pcta1">Mein typgerechtes System starten</button>
+        </div>
+      </div>
+
+      <!-- CARD 3: NeuroBusiness AI Abo — für Bestandskunden mit Solo Report -->
+      <div class="product-card">
+        <div class="product-card-header">
+          <div class="product-badge" id="pb2">NeuroBusiness™ AI</div>
+          <div class="product-name" id="pn2">NeuroBusiness<br>AI</div>
+          <div class="product-tagline" id="pt2">Für alle, die die Diagnostik bereits haben — und jetzt mit ihrem Typ täglich arbeiten wollen.</div>
+        </div>
+        <div class="product-card-body">
+          <ul class="product-features" id="pf2">
+            <li>Psychotyp-spezifisches AI-Coaching täglich</li>
+            <li>Wöchentliche Agenda jeden Montag — für deinen Typ</li>
+            <li>Business-Brainstorming & Entscheidungs-Helfer</li>
+            <li>NeuroBusiness AI mit Gedächtnis — kennt deinen Typ</li>
+            <li>Jederzeit kündbar — keine Mindestlaufzeit</li>
+            <li style="color:var(--text3)">Diagnostik nicht enthalten (separat buchbar)</li>
+          </ul>
+          <div class="product-price" id="pp2">49 €<span style="font-size:18px;font-weight:300">/Monat</span></div>
+          <div class="product-price-note" id="ppn2">Monatlich kündbar · zzgl. MwSt.</div>
+          <a href="https://buy.stripe.com/eVq7sN77v73u2SKaHhasg06" onclick="handleStripeClick(event,'abo')" class="btn-outline" style="display:block;text-align:center;width:100%" id="pcta2">NeuroBusiness AI freischalten →</a>
         </div>
       </div>
 
@@ -1182,6 +1207,7 @@ footer {
           <select class="form-input form-select" id="f-interest">
             <option value="" id="f-opt-placeholder">Bitte wählen...</option>
             <option value="solo" id="f-opt0">Solo Report (147 €)</option>
+            <option value="abo" id="f-opt-abo">NeuroBusiness AI Abo (49 €/Monat)</option>
             <option value="diagnostik" id="f-opt1">Diagnostik + NeuroBusiness AI (490 €)</option>
             <option value="core" id="f-opt2">12-Wochen Transformation (4.990 €)</option>
             <option value="teams" id="f-opt3">Team Intelligence (Anfrage)</option>
@@ -1286,7 +1312,12 @@ const T = {
     'pb1': 'NeuroBusiness™ Strategist', 'pn1': 'Diagnostik<br>+ NeuroBusiness AI',
     'pt1': 'Für Selbstständige, die nicht nur wissen wollen, welcher Typ sie sind \u2014 sondern ihre Entscheidungen typgerecht ausrichten wollen.',
     'pp1': '490 €',
-    'ppn1': '12 Monate NeuroBusiness AI inklusive · danach 49 €/Monat · zzgl. MwSt.', 'pcta1': 'Mein typgerechtes System starten',
+    'ppn1': 'Einmalig · 12 Monate AI inklusive · danach 49 €/Monat · zzgl. MwSt.', 'pcta1': 'Mein typgerechtes System starten',
+    'pp0-ai-hint': 'NeuroBusiness AI jederzeit für 49 €/Monat dazubuchbar.',
+    'pp1-saving': 'Sparst 245 € gegenüber Einzelbuchung (147 € + 12 × 49 €)',
+    'pb2': 'NeuroBusiness™ AI', 'pn2': 'NeuroBusiness<br>AI',
+    'pt2': 'Für alle, die die Diagnostik bereits haben — und jetzt mit ihrem Typ täglich arbeiten wollen.',
+    'pp2': '49 €<span style="font-size:18px;font-weight:300">/Monat</span>', 'ppn2': 'Monatlich kündbar · zzgl. MwSt.', 'pcta2': 'NeuroBusiness AI freischalten →',
     'cp-badge': 'Core Programme', 'cp-title': '12-Wochen NeuroBusiness™ Transformation',
     'cp-desc': 'Das intensive 1:1- und Gruppen-Coaching-Programm für Selbstständige, die ihr Business grundlegend neu ausrichten wollen.',
     'cp-note': '12 Wochen · Hybrid · Zoom · zzgl. MwSt.', 'cp-cta': 'Strategiegespräch buchen',
@@ -1374,7 +1405,12 @@ const T = {
     'pb1': 'NeuroBusiness™ Strategist', 'pn1': 'Diagnostics<br>+ NeuroBusiness AI',
     'pt1': 'For independents who want not just to know their type \u2014 but to align their decisions with it.',
     'pp1': '490 €',
-    'ppn1': '12 months NeuroBusiness AI included · then 49 €/month · excl. VAT', 'pcta1': 'Start my aligned system',
+    'ppn1': 'One-time · 12 months AI included · then 49 €/month · excl. VAT', 'pcta1': 'Start my aligned system',
+    'pp0-ai-hint': 'NeuroBusiness AI can be added at any time for 49 €/month.',
+    'pp1-saving': 'Save 245 € vs. individual booking (147 € + 12 × 49 €)',
+    'pb2': 'NeuroBusiness™ AI', 'pn2': 'NeuroBusiness<br>AI',
+    'pt2': 'For everyone who already has the Diagnostics — and wants to work with their type every day.',
+    'pp2': '49 €<span style="font-size:18px;font-weight:300">/month</span>', 'ppn2': 'Cancel anytime · excl. VAT', 'pcta2': 'Unlock NeuroBusiness AI →',
     'cp-badge': 'Core Programme', 'cp-title': '12-Week NeuroBusiness™ Transformation',
     'cp-desc': 'The intensive 1:1 + group coaching programme for independent professionals who want to fundamentally realign their business.',
     'cp-note': '12 weeks · Hybrid · Zoom · excl. VAT', 'cp-cta': 'Book strategy call',
@@ -2272,6 +2308,7 @@ const CONTACT_TR = {
     'f-interest-label': 'Interesse', 'f-msg-label': 'Nachricht',
     'f-opt-placeholder': 'Bitte wählen...',
     'f-opt0': 'Solo Report (147 €)',
+    'f-opt-abo': 'NeuroBusiness AI Abo (49 €/Monat)',
     'f-opt1': 'Diagnostik + NeuroBusiness AI (490 €)',
     'f-opt2': '12-Wochen Transformation (4.990 €)',
     'f-opt3': 'Team Intelligence (Anfrage)',
@@ -2288,6 +2325,7 @@ const CONTACT_TR = {
     'f-interest-label': 'Interest', 'f-msg-label': 'Message',
     'f-opt-placeholder': 'Please select...',
     'f-opt0': 'Solo Report (€147)',
+    'f-opt-abo': 'NeuroBusiness AI Subscription (€49/month)',
     'f-opt1': 'Diagnostics + NeuroBusiness AI (€490)',
     'f-opt2': '12-Week Transformation (€4,990)',
     'f-opt3': 'Team Intelligence (enquiry)',
@@ -2313,9 +2351,10 @@ function applyContactTranslations() {
 
 // STRIPE LINKS
 const STRIPE_LINKS = {
-  solo:       'https://buy.stripe.com/5kQfZj1NbbjK50Sg1Basg08',  // \u20ac97 Solo Report
-  companion:  'https://buy.stripe.com/eVq7sN77v73u2SKaHhasg06',  // \u20ac49/Monat NeuroBusiness AI
-  diagnostik: 'https://buy.stripe.com/6oU9AVfE187yalc6r1asg09',                    // TODO: \u20ac490 Bundle in Stripe anlegen (Diagnostik + 12 Monate AI), dann hier eintragen
+  solo:       'https://buy.stripe.com/5kQfZj1NbbjK50Sg1Basg08',  // 147 \u20ac Solo Report
+  companion:  'https://buy.stripe.com/eVq7sN77v73u2SKaHhasg06',  // 49 \u20ac/Monat NeuroBusiness AI Abo (Bestandskunden)
+  diagnostik: 'https://buy.stripe.com/6oU9AVfE187yalc6r1asg09',  // 490 \u20ac Bundle (Diagnostik + 12 Monate AI)
+  abo:        'https://buy.stripe.com/eVq7sN77v73u2SKaHhasg06',  // 49 \u20ac/Monat NeuroBusiness AI Subscription (prod_UcRcX2xSWRysYp)
 };
 
 
@@ -2352,13 +2391,38 @@ document.addEventListener('keydown', e => {
 
 function handleStripeClick(e, product) {
   const link = STRIPE_LINKS[product];
-  if (link.includes('PLACEHOLDER')) {
+  if (!link || link === 'STRIPE_ABO_LINK' || link.includes('PLACEHOLDER')) {
     e.preventDefault();
-    alert(lang === 'de' 
+    alert(lang === 'de'
       ? 'Zahlung wird gerade eingerichtet \u2014 bitte kontaktiere uns direkt: hello@neurobusiness.one'
       : 'Payment is being set up \u2014 please contact us directly: hello@neurobusiness.one');
+    return;
   }
+  // Brevo: Kauf-Intent tracken (Stripe-Weiterleitung folgt sofort)
+  try {
+    if (window.Brevo) {
+      window.Brevo.push(["track", "stripe_checkout_started", { product: product, link: link }]);
+    }
+  } catch(e2){}
 }
+
+// \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// TODO (n8n / Brevo Upgrade-Automation):
+//
+// Nach Solo Report Kauf (product = 'solo', 147 \u20ac):
+//   \u2192 Brevo-Automation: 2\u20133 Tage nach Kauf \u2192 Follow-up-E-Mail
+//     Betreff: "Du hast deinen Report \u2014 und jetzt?"
+//     Inhalt: NeuroBusiness AI vorstellen, Abo-Angebot (49 \u20ac/Monat)
+//     CTA: Link zu STRIPE_ABO_LINK (Subscription)
+//
+// Trigger-Logik:
+//   Option A (Brevo-nativ): Brevo-Automation auf Event "stripe_checkout_started"
+//     mit property product="solo" \u2014 Brevo wartet 3 Tage, sendet Upgrade-E-Mail
+//   Option B (n8n): Stripe Webhook (checkout.session.completed) \u2192 n8n-Workflow
+//     \u2192 filtert nach Preis-ID des Solo Reports \u2192 Brevo API: sendet Upgrade-Sequenz
+//
+// Voraussetzung: STRIPE_ABO_LINK muss eingetragen sein (siehe STRIPE_LINKS.abo)
+// \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 
 const MODAL_TR = {
   de: {

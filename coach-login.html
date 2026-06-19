@@ -269,6 +269,19 @@ input::placeholder { color: rgba(255,255,255,.2); }
 /* ── Footer-Note ── */
 .foot { font-family: var(--fm); font-size: 10px; color: rgba(255,255,255,.18); text-align: center; margin-top: 32px; letter-spacing: .04em; }
 
+/* ── Loading State ── */
+#loading-state { text-align: center; padding: 40px 0; }
+.spinner {
+  width: 32px; height: 32px;
+  border: 2px solid rgba(201,169,110,.2);
+  border-top-color: var(--g);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  margin: 0 auto 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+#loading-state p { font-size: 12px; color: rgba(255,255,255,.25); font-family: var(--fm); letter-spacing: .05em; }
+
 /* ── Demo-Banner ── */
 .demo-banner {
   display: none;
@@ -380,8 +393,14 @@ input::placeholder { color: rgba(255,255,255,.2); }
     <button class="btn-logout" onclick="handleLogout()">Abmelden</button>
   </div>
 
+  <!-- ── Loading State ── -->
+  <div id="loading-state">
+    <div class="spinner"></div>
+    <p>Lade…</p>
+  </div>
+
   <!-- ── Auth Forms ── -->
-  <div id="auth-forms">
+  <div id="auth-forms" style="display:none;">
 
     <!-- Tabs -->
     <div class="tabs">
@@ -432,6 +451,26 @@ input::placeholder { color: rgba(255,255,255,.2); }
       </form>
       <div class="msg error" id="reset-error"></div>
       <div class="msg success" id="reset-success"></div>
+    </div>
+
+    <!-- Panel: Neues Passwort setzen (nach Reset-Link) -->
+    <div class="panel" id="panel-update-password">
+      <p style="font-size:13px;color:rgba(255,255,255,.45);margin-bottom:20px;line-height:1.6;">
+        Wähle ein neues Passwort für deinen Account.
+      </p>
+      <form onsubmit="handleUpdatePassword(event)">
+        <div class="field">
+          <label for="new-password">Neues Passwort</label>
+          <input type="password" id="new-password" placeholder="••••••••" required minlength="8">
+        </div>
+        <div class="field">
+          <label for="confirm-password">Passwort bestätigen</label>
+          <input type="password" id="confirm-password" placeholder="••••••••" required minlength="8">
+        </div>
+        <button type="submit" class="btn-primary" id="btn-update">Passwort setzen</button>
+      </form>
+      <div class="msg error" id="update-error"></div>
+      <div class="msg success" id="update-success"></div>
     </div>
 
   </div><!-- /#auth-forms -->
@@ -518,6 +557,11 @@ function switchTab(tab) {
   hideMsg('reset-success');
 }
 
+// ── UI-State-Helfer ────────────────────────────────────────────────────────
+function hideLoading() {
+  document.getElementById('loading-state').style.display = 'none';
+}
+
 // ── Eingeloggt-Anzeige (mit Demo-Check via RPC) ────────────────────────────
 async function showLoggedIn(user) {
   document.getElementById('auth-forms').style.display = 'none';
@@ -546,6 +590,8 @@ async function showLoggedIn(user) {
     console.warn('ensure_coach_profile Fehler:', err);
   }
 
+  hideLoading();
+
   // Gesperrten Coach → Blocked Screen zeigen
   if (isBlocked) {
     document.getElementById('blocked-screen').style.display = 'block';
@@ -572,6 +618,7 @@ async function showLoggedIn(user) {
 }
 
 function showLoggedOut() {
+  hideLoading();
   document.getElementById('auth-forms').style.display = 'block';
   document.getElementById('logged-in').style.display = 'none';
   document.getElementById('blocked-screen').style.display = 'none';
@@ -692,6 +739,40 @@ async function handlePasswordReset(e) {
   );
 }
 
+// ── D: Neues Passwort setzen (nach Reset-Link) ─────────────────────────────
+async function handleUpdatePassword(e) {
+  e.preventDefault();
+  hideMsg('update-error');
+  hideMsg('update-success');
+  const pw  = document.getElementById('new-password').value;
+  const pw2 = document.getElementById('confirm-password').value;
+  if (pw !== pw2) {
+    showMsg('update-error', 'Passwörter stimmen nicht überein.');
+    return;
+  }
+  setLoading('btn-update', true, 'Passwort setzen');
+  const { error } = await sb.auth.updateUser({ password: pw });
+  setLoading('btn-update', false, 'Passwort setzen');
+  if (error) {
+    showMsg('update-error', error.message);
+    return;
+  }
+  showMsg('update-success', '✓ Passwort erfolgreich gesetzt. Du kannst dich jetzt anmelden.', 'success');
+  // Nach 2s zur normalen Login-Ansicht
+  setTimeout(() => {
+    window.history.replaceState({}, '', window.location.pathname);
+    switchTabDirect('login');
+  }, 2000);
+}
+
+function switchTabDirect(tab) {
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(el => el.classList.remove('active'));
+  document.getElementById(`panel-${tab}`).classList.add('active');
+  const tabs = document.querySelectorAll('.tab');
+  if (tab === 'login') tabs[0].classList.add('active');
+}
+
 // ── Logout ─────────────────────────────────────────────────────────────────
 async function handleLogout() {
   await sb.auth.signOut();
@@ -707,21 +788,27 @@ sb.auth.onAuthStateChange(async (event, session) => {
   }
 });
 
-// ── Initialer Session-Check (z.B. nach Google-OAuth-Redirect) ─────────────
+// ── Initialer Session-Check ────────────────────────────────────────────────
 (async () => {
+  const params = new URLSearchParams(window.location.search);
+  const isUpdateMode = params.get('mode') === 'update-password';
+
   const { data: { session } } = await sb.auth.getSession();
+
+  if (isUpdateMode && session?.user) {
+    // Passwort-setzen-Formular nach Reset-Link zeigen
+    hideLoading();
+    document.getElementById('auth-forms').style.display = 'block';
+    document.querySelectorAll('.panel').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('panel-update-password').classList.add('active');
+    return;
+  }
+
   if (session?.user) {
     showLoggedIn(session.user);
   }
-
-  // ⚠️  Passwort-Update nach Reset-Link (mode=update-password in URL)
-  //     Hier könnte Phase 1b ein Formular einblenden, das
-  //     sb.auth.updateUser({ password: '...' }) aufruft.
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('mode') === 'update-password') {
-    // TODO Phase 1b: Formular "Neues Passwort setzen" einblenden
-    console.log('Password-Update-Modus erkannt.');
-  }
+  // Falls keine Session: onAuthStateChange handelt es
 })();
 </script>
 </body>

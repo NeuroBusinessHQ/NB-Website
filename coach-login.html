@@ -525,6 +525,9 @@ async function showLoggedIn(user) {
 
   const email = user.email || '';
   const name  = user.user_metadata?.full_name || user.user_metadata?.name || email.split('@')[0];
+      // Spinner sofort ausblenden
+          hideLoading();
+          
 
   let coachStatus = null;
   let daysLeft = null;
@@ -731,8 +734,7 @@ sb.auth.onAuthStateChange(async (event, session) => {
   if (isUpdateMode && session?.user) {
     hideLoading();
     document.getElementById('auth-forms').style.display = 'block';
-    document.querySelectorAll('.panel').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(el => el.classList.remove('active'));    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
     document.getElementById('panel-update-password').classList.add('active');
     return;
   }

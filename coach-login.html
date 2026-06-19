@@ -183,6 +183,42 @@ input::placeholder { color: rgba(255,255,255,.2); }
 .msg.error { background: rgba(232,112,112,.12); border: 1px solid rgba(232,112,112,.25); color: #e87070; }
 .msg.success { background: rgba(201,169,110,.1); border: 1px solid rgba(201,169,110,.25); color: var(--g); }
 
+/* ── Invite Box ── */
+.invite-box {
+  margin: 20px 0 16px;
+  padding: 20px;
+  background: rgba(201,169,110,.07);
+  border: 1px solid rgba(201,169,110,.2);
+  border-radius: 12px;
+  text-align: left;
+}
+.invite-title {
+  font-family: var(--fd);
+  font-size: 16px;
+  color: var(--g);
+  margin-bottom: 4px;
+}
+.invite-desc {
+  font-size: 13px;
+  color: var(--t3);
+  margin-bottom: 14px;
+}
+.btn-invite {
+  width: 100%;
+  padding: 11px 20px;
+  background: rgba(201,169,110,.15);
+  border: 1px solid rgba(201,169,110,.4);
+  border-radius: 8px;
+  color: var(--g);
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-invite:hover { background: rgba(201,169,110,.25); }
+.btn-invite:disabled { opacity: .5; cursor: not-allowed; }
+
 /* ── Panel-Umschalter ── */
 .panel { display: none; }
 .panel.active { display: block; }
@@ -320,8 +356,27 @@ input::placeholder { color: rgba(255,255,255,.2); }
     <div class="user-avatar" id="user-initials">?</div>
     <div class="user-name" id="user-name-display">Willkommen</div>
     <div class="user-email" id="user-email-display"></div>
-    <!-- TODO Phase 4: Link zu admin.html oder coach-dashboard.html ergänzen -->
-    <a href="coach-dashboard.html" class="btn-dashboard">Coach-Dashboard öffnen →</a>
+
+    <!-- ── Klient einladen ── -->
+    <div class="invite-box">
+      <div class="invite-title">Klient einladen</div>
+      <div class="invite-desc">Generiere einen personalisierten Checkout-Link für deinen Klienten.</div>
+      <div class="field" style="text-align:left;margin-bottom:12px;">
+        <label for="invite-email" style="font-size:12px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;">E-Mail des Klienten (optional)</label>
+        <input type="email" id="invite-email" placeholder="klient@email.de" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:10px 14px;color:var(--cr);font-family:var(--fb);font-size:14px;outline:none;">
+      </div>
+      <button class="btn-invite" id="btn-invite" onclick="createCheckoutLink()">Checkout-Link erstellen →</button>
+      <div id="invite-result" style="display:none;margin-top:14px;">
+        <div style="font-size:12px;color:var(--t3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;">Dein Checkout-Link:</div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <input id="invite-url" readonly style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(201,169,110,.3);border-radius:8px;padding:10px 14px;color:var(--g);font-family:var(--fm);font-size:12px;outline:none;">
+          <button onclick="copyInviteLink()" style="background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.3);border-radius:8px;padding:10px 14px;color:var(--g);cursor:pointer;font-size:12px;white-space:nowrap;">Kopieren</button>
+        </div>
+        <div id="invite-copied" style="display:none;font-size:12px;color:var(--g);margin-top:6px;text-align:center;">✓ Link kopiert!</div>
+      </div>
+      <div id="invite-error" style="display:none;font-size:13px;color:#e57373;margin-top:10px;text-align:center;"></div>
+    </div>
+
     <button class="btn-logout" onclick="handleLogout()">Abmelden</button>
   </div>
 
@@ -520,6 +575,59 @@ function showLoggedOut() {
   document.getElementById('auth-forms').style.display = 'block';
   document.getElementById('logged-in').style.display = 'none';
   document.getElementById('blocked-screen').style.display = 'none';
+}
+
+// ── Checkout-Link für Klient erstellen ──────────────────────────────────────
+async function createCheckoutLink() {
+  const btn = document.getElementById('btn-invite');
+  const errEl = document.getElementById('invite-error');
+  const resultEl = document.getElementById('invite-result');
+  const urlInput = document.getElementById('invite-url');
+  const copiedEl = document.getElementById('invite-copied');
+
+  // Reset
+  errEl.style.display = 'none';
+  resultEl.style.display = 'none';
+  copiedEl.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Erstelle Link…';
+
+  try {
+    // Supabase JWT holen
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session?.access_token) throw new Error('Nicht eingeloggt');
+
+    const clientEmail = document.getElementById('invite-email').value.trim() || null;
+
+    const res = await fetch('https://neurobusiness.one/api/create-checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${session.access_token}`,
+      },
+      body: JSON.stringify({ client_email: clientEmail }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Unbekannter Fehler');
+
+    urlInput.value = data.url;
+    resultEl.style.display = 'block';
+  } catch (err) {
+    errEl.textContent = err.message;
+    errEl.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Checkout-Link erstellen →';
+  }
+}
+
+function copyInviteLink() {
+  const urlInput = document.getElementById('invite-url');
+  navigator.clipboard.writeText(urlInput.value).then(() => {
+    document.getElementById('invite-copied').style.display = 'block';
+    setTimeout(() => { document.getElementById('invite-copied').style.display = 'none'; }, 2000);
+  });
 }
 
 // ── A: E-Mail + Passwort Login ─────────────────────────────────────────────

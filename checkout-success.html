@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zahlung erfolgreich · NeuroBusiness™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c: #1a3d35; --c3: #0f2420;
+  --g: #c9a96e; --cr: #faf8f4; --t3: #8a837a;
+  --fd: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Outfit', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--c3);
+  color: var(--cr);
+  font-family: var(--fb);
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+.card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px;
+  padding: 48px 40px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+}
+.icon {
+  width: 64px; height: 64px;
+  background: rgba(201,169,110,.15);
+  border: 1px solid rgba(201,169,110,.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 28px;
+}
+h1 {
+  font-family: var(--fd);
+  font-weight: 300;
+  font-size: 28px;
+  color: var(--g);
+  margin-bottom: 12px;
+}
+p {
+  font-size: 15px;
+  color: var(--t3);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 12px 28px;
+  background: rgba(201,169,110,.15);
+  border: 1px solid rgba(201,169,110,.4);
+  border-radius: 10px;
+  color: var(--g);
+  font-family: var(--fb);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background .2s;
+}
+.btn:hover { background: rgba(201,169,110,.25); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">✓</div>
+  <h1>Zahlung erfolgreich</h1>
+  <p>Vielen Dank für dein Vertrauen.</p>
+  <p>Dein Coach wird dich in Kürze kontaktieren und alles weitere mit dir besprechen.</p>
+  <a href="https://neurobusiness.one" class="btn">Zur Startseite →</a>
+</div>
+</body>
+</html>

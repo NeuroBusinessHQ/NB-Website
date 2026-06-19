@@ -50,6 +50,13 @@ export default {
       return handleStripeWebhook(request, env);
     }
 
+    // ── /api/create-checkout ─────────────────────────────────────
+    // Coach erstellt einen Stripe Checkout-Link für einen Klienten.
+    // Auth: Supabase JWT im Authorization-Header.
+    if (pathname === '/api/create-checkout') {
+      return handleCreateCheckout(request, env, corsHeaders);
+    }
+
     // ── /api/save-diagnostic ──────────────────────────────────────
     if (pathname === '/api/save-diagnostic') {
       let body;
@@ -680,6 +687,88 @@ async function upsertSubscription(data, env) {
     const errText = await res.text();
     throw new Error(`Supabase upsert fehlgeschlagen (${res.status}): ${errText}`);
   }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// STRIPE CHECKOUT SESSION ERSTELLEN
+// ═══════════════════════════════════════════════════════════════
+
+async function handleCreateCheckout(request, env, corsHeaders) {
+  // 1. Auth: Supabase JWT aus Authorization-Header
+  const authHeader = request.headers.get('Authorization') || '';
+  const jwt = authHeader.replace('Bearer ', '').trim();
+  if (!jwt) return json({ error: 'Nicht authentifiziert' }, 401, corsHeaders);
+
+  // 2. JWT bei Supabase verifizieren → user.email holen
+  const userRes = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
+    headers: {
+      'apikey':        env.SUPABASE_SERVICE_KEY,
+      'Authorization': `Bearer ${jwt}`,
+    },
+  });
+  if (!userRes.ok) return json({ error: 'Ungültige Session' }, 401, corsHeaders);
+  const user = await userRes.json();
+  if (!user?.email) return json({ error: 'Kein User in Session' }, 401, corsHeaders);
+
+  // 3. Coach aus coaches-Tabelle laden (über email)
+  const coachRes = await fetch(
+    `${env.SUPABASE_URL}/rest/v1/coaches?email=eq.${encodeURIComponent(user.email)}&select=id,status&limit=1`,
+    {
+      headers: {
+        'apikey':        env.SUPABASE_SERVICE_KEY,
+        'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+      },
+    }
+  );
+  const coaches = await coachRes.json();
+  if (!coaches?.length) return json({ error: 'Kein Coach-Profil gefunden' }, 403, corsHeaders);
+
+  const coach = coaches[0];
+  if (coach.status === 'blocked') return json({ error: 'Account gesperrt' }, 403, corsHeaders);
+
+  // 4. Optional: client_email aus Request-Body
+  let body = {};
+  try { body = await request.json(); } catch { /* leer ist ok */ }
+  const { client_email } = body;
+
+  // 5. Stripe Checkout Session erstellen
+  const PRICE_ID = 'price_1TdCjjRpVrML8PN3Jkj5iNPh';
+
+  const params = new URLSearchParams({
+    'mode':                                    'subscription',
+    'success_url':                             'https://neurobusiness.one/checkout-success.html?session_id={CHECKOUT_SESSION_ID}',
+    'cancel_url':                              'https://neurobusiness.one/coach-login.html',
+    'line_items[0][price]':                    PRICE_ID,
+    'line_items[0][quantity]':                 '1',
+    // coach_id in beiden Metadata-Feldern (session + subscription)
+    'metadata[coach_id]':                      coach.id,
+    'subscription_data[metadata][coach_id]':   coach.id,
+  });
+
+  if (client_email) {
+    params.set('customer_email',                              client_email);
+    params.set('metadata[client_email]',                      client_email);
+    params.set('subscription_data[metadata][client_email]',   client_email);
+  }
+
+  const stripeRes = await fetch('https://api.stripe.com/v1/checkout/sessions', {
+    method: 'POST',
+    headers: {
+      'Authorization':  `Bearer ${env.STRIPE_SECRET_KEY}`,
+      'Content-Type':   'application/x-www-form-urlencoded',
+    },
+    body: params.toString(),
+  });
+
+  if (!stripeRes.ok) {
+    const err = await stripeRes.text();
+    console.error('[Checkout] Stripe Fehler:', err);
+    return json({ error: 'Checkout-Erstellung fehlgeschlagen', detail: err }, 500, corsHeaders);
+  }
+
+  const session = await stripeRes.json();
+  console.log(`[Checkout] Session ${session.id} für Coach ${coach.id} erstellt`);
+  return json({ url: session.url, session_id: session.id }, 200, corsHeaders);
 }
 
 // ═══════════════════════════════════════════════════════════════

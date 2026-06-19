@@ -40,6 +40,16 @@ export default {
 
     const pathname = new URL(request.url).pathname;
 
+    // ── /api/stripe-webhook ───────────────────────────────────────
+    // Stripe sendet immer POST ohne CORS-Preflight — kein Origin-Check nötig.
+    // Secrets kommen AUS CLOUDFLARE ENV, niemals hartcodiert:
+    //   STRIPE_SECRET_KEY       → Cloudflare Pages → Settings → Environment variables
+    //   STRIPE_WEBHOOK_SECRET   → Cloudflare Pages → Settings → Environment variables
+    //   SUPABASE_SERVICE_KEY    → bereits vorhanden
+    if (pathname === '/api/stripe-webhook') {
+      return handleStripeWebhook(request, env);
+    }
+
     // ── /api/save-diagnostic ──────────────────────────────────────
     if (pathname === '/api/save-diagnostic') {
       let body;
@@ -432,6 +442,244 @@ async function callClaude(messages, systemPrompt, env) {
 
   const data = await res.json();
   return data.content?.[0]?.text || '';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// STRIPE WEBHOOK HANDLER
+// ═══════════════════════════════════════════════════════════════
+
+async function handleStripeWebhook(request, env) {
+  // 1. Rohen Body als Text lesen (für Signaturprüfung zwingend)
+  let rawBody;
+  try {
+    rawBody = await request.text();
+  } catch (err) {
+    console.error('[Stripe] Body lesen fehlgeschlagen:', err);
+    return new Response('Bad Request', { status: 400 });
+  }
+
+  // 2. Stripe-Signatur verifizieren (Web Crypto — kein SDK nötig)
+  const sigHeader = request.headers.get('stripe-signature') || '';
+  const webhookSecret = env.STRIPE_WEBHOOK_SECRET; // ← Cloudflare Env Variable
+
+  if (!webhookSecret) {
+    console.error('[Stripe] STRIPE_WEBHOOK_SECRET fehlt in Env-Variablen');
+    return new Response('Server misconfigured', { status: 500 });
+  }
+
+  const isValid = await verifyStripeSignature(rawBody, sigHeader, webhookSecret);
+  if (!isValid) {
+    console.warn('[Stripe] Ungültige Signatur — Request verworfen');
+    return new Response('Invalid signature', { status: 400 });
+  }
+
+  // 3. Event parsen
+  let event;
+  try {
+    event = JSON.parse(rawBody);
+  } catch (err) {
+    console.error('[Stripe] JSON-Parse-Fehler:', err);
+    return new Response('Invalid JSON', { status: 400 });
+  }
+
+  console.log(`[Stripe] Event empfangen: ${event.type} (${event.id})`);
+
+  // 4. Events verarbeiten
+  try {
+    switch (event.type) {
+
+      // ── Neues Abo nach erfolgreichem Checkout ──────────────────
+      case 'checkout.session.completed': {
+        const session = event.data.object;
+        if (session.mode !== 'subscription' || !session.subscription) break;
+
+        // Vollständiges Subscription-Objekt von Stripe holen
+        const sub = await fetchStripeSubscription(session.subscription, env);
+        if (!sub) { console.error('[Stripe] Sub nicht geladen:', session.subscription); break; }
+
+        // Metadata: profile_id + coach_id kommen aus session.metadata
+        // (du übergibst sie beim Erstellen der Checkout-Session)
+        const meta = session.metadata || {};
+
+        await upsertSubscription({
+          stripe_subscription_id: sub.id,
+          stripe_customer_id:     typeof sub.customer === 'string' ? sub.customer : sub.customer?.id,
+          client_email:           session.customer_email || session.customer_details?.email || null,
+          profile_id:             meta.profile_id || null,
+          coach_id:               meta.coach_id   || null,
+          status:                 sub.status,
+          current_period_end:     new Date(sub.current_period_end * 1000).toISOString(),
+        }, env);
+
+        console.log(`[Stripe] checkout.session.completed — Sub ${sub.id} angelegt (${sub.status})`);
+        break;
+      }
+
+      // ── Abo geändert (Verlängerung, Status-Wechsel, etc.) ──────
+      case 'customer.subscription.updated': {
+        const sub = event.data.object;
+        const meta = sub.metadata || {};
+
+        await upsertSubscription({
+          stripe_subscription_id: sub.id,
+          stripe_customer_id:     typeof sub.customer === 'string' ? sub.customer : sub.customer?.id,
+          profile_id:             meta.profile_id || null,
+          coach_id:               meta.coach_id   || null,
+          status:                 sub.status,
+          current_period_end:     new Date(sub.current_period_end * 1000).toISOString(),
+        }, env);
+
+        console.log(`[Stripe] subscription.updated — Sub ${sub.id} → ${sub.status}`);
+        break;
+      }
+
+      // ── Abo gekündigt ──────────────────────────────────────────
+      case 'customer.subscription.deleted': {
+        const sub = event.data.object;
+
+        await upsertSubscription({
+          stripe_subscription_id: sub.id,
+          stripe_customer_id:     typeof sub.customer === 'string' ? sub.customer : sub.customer?.id,
+          status:                 'canceled',
+          current_period_end:     new Date(sub.current_period_end * 1000).toISOString(),
+        }, env);
+
+        console.log(`[Stripe] subscription.deleted — Sub ${sub.id} auf canceled gesetzt`);
+        break;
+      }
+
+      // ── Zahlung fehlgeschlagen ─────────────────────────────────
+      case 'invoice.payment_failed': {
+        const invoice = event.data.object;
+        if (!invoice.subscription) break;
+
+        await upsertSubscription({
+          stripe_subscription_id: invoice.subscription,
+          stripe_customer_id:     typeof invoice.customer === 'string' ? invoice.customer : invoice.customer?.id,
+          status:                 'past_due',
+        }, env);
+
+        console.log(`[Stripe] invoice.payment_failed — Sub ${invoice.subscription} auf past_due gesetzt`);
+        break;
+      }
+
+      default:
+        console.log(`[Stripe] Event ${event.type} ignoriert (kein Handler)`);
+    }
+  } catch (err) {
+    console.error(`[Stripe] Fehler beim Verarbeiten von ${event.type}:`, err);
+    // Wir geben trotzdem 200 zurück — Stripe soll nicht unendlich retrien
+    // bei Logik-Fehlern. Nur bei Signatur-Problemen geben wir 400.
+    return new Response(JSON.stringify({ received: true, warning: err.message }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  return new Response(JSON.stringify({ received: true }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
+// ── Stripe-Signatur verifizieren (HMAC-SHA256, Web Crypto) ────────────────
+async function verifyStripeSignature(rawBody, sigHeader, secret) {
+  try {
+    // Header parsen: "t=...,v1=..."
+    const parts = {};
+    for (const part of sigHeader.split(',')) {
+      const idx = part.indexOf('=');
+      if (idx > 0) parts[part.slice(0, idx)] = part.slice(idx + 1);
+    }
+
+    const timestamp = parts.t;
+    const signature = parts.v1;
+    if (!timestamp || !signature) return false;
+
+    // Timestamp-Check: max. 5 Minuten Toleranz (Replay-Schutz)
+    if (Math.abs(Date.now() / 1000 - parseInt(timestamp, 10)) > 300) {
+      console.warn('[Stripe] Signatur-Timestamp zu alt');
+      return false;
+    }
+
+    // HMAC-SHA256 berechnen
+    const signedPayload = `${timestamp}.${rawBody}`;
+    const key = await crypto.subtle.importKey(
+      'raw',
+      new TextEncoder().encode(secret),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['sign']
+    );
+    const sigBytes = await crypto.subtle.sign(
+      'HMAC',
+      key,
+      new TextEncoder().encode(signedPayload)
+    );
+
+    // Hex-String bilden
+    const expected = Array.from(new Uint8Array(sigBytes))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('');
+
+    // Timing-sicherer Vergleich
+    return timingSafeEqual(expected, signature);
+  } catch (err) {
+    console.error('[Stripe] Signaturprüfung Fehler:', err);
+    return false;
+  }
+}
+
+// Timing-sicherer String-Vergleich (verhindert Timing-Angriffe)
+function timingSafeEqual(a, b) {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) {
+    diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return diff === 0;
+}
+
+// ── Stripe Subscription-Objekt abrufen ────────────────────────────────────
+async function fetchStripeSubscription(subscriptionId, env) {
+  // STRIPE_SECRET_KEY → Cloudflare Env Variable (niemals im Code!)
+  const res = await fetch(`https://api.stripe.com/v1/subscriptions/${subscriptionId}`, {
+    headers: {
+      'Authorization': `Bearer ${env.STRIPE_SECRET_KEY}`,
+    },
+  });
+  if (!res.ok) {
+    console.error(`[Stripe] Subscription ${subscriptionId} abruf fehlgeschlagen: ${res.status}`);
+    return null;
+  }
+  return res.json();
+}
+
+// ── Supabase Upsert (INSERT OR UPDATE via stripe_subscription_id) ─────────
+async function upsertSubscription(data, env) {
+  // Felder mit undefined rausfiltern (partial updates bei invoice.payment_failed)
+  const payload = Object.fromEntries(
+    Object.entries(data).filter(([, v]) => v !== undefined)
+  );
+  payload.updated_at = new Date().toISOString();
+
+  const res = await fetch(`${env.SUPABASE_URL}/rest/v1/subscriptions`, {
+    method: 'POST',
+    headers: {
+      // SUPABASE_SERVICE_KEY → Cloudflare Env Variable (niemals im Frontend!)
+      'apikey':        env.SUPABASE_SERVICE_KEY,
+      'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+      'Content-Type':  'application/json',
+      // Upsert: bei Konflikt auf stripe_subscription_id → Update
+      'Prefer':        'resolution=merge-duplicates',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`Supabase upsert fehlgeschlagen (${res.status}): ${errText}`);
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════

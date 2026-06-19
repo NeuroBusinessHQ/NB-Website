@@ -232,6 +232,62 @@ input::placeholder { color: rgba(255,255,255,.2); }
 
 /* ── Footer-Note ── */
 .foot { font-family: var(--fm); font-size: 10px; color: rgba(255,255,255,.18); text-align: center; margin-top: 32px; letter-spacing: .04em; }
+
+/* ── Demo-Banner ── */
+.demo-banner {
+  display: none;
+  background: rgba(201,169,110,.08);
+  border: 1px solid rgba(201,169,110,.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--g);
+  letter-spacing: .04em;
+  text-align: center;
+}
+.demo-banner.visible { display: block; }
+.demo-banner span { opacity: .6; }
+
+/* ── Blocked Screen (Demo abgelaufen) ── */
+#blocked-screen {
+  display: none;
+  text-align: center;
+}
+#blocked-screen .blocked-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+  opacity: .5;
+}
+#blocked-screen h2 {
+  font-family: var(--fd);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--cr);
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+#blocked-screen p {
+  font-size: 14px;
+  color: rgba(255,255,255,.45);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+#blocked-screen .btn-contact {
+  display: inline-block;
+  background: transparent;
+  color: var(--g);
+  border: 1px solid rgba(201,169,110,.4);
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-family: var(--fb);
+  font-size: 14px;
+  text-decoration: none;
+  transition: all .2s;
+  margin-bottom: 12px;
+}
+#blocked-screen .btn-contact:hover { background: rgba(201,169,110,.08); border-color: var(--g); }
 </style>
 </head>
 <body>
@@ -245,8 +301,22 @@ input::placeholder { color: rgba(255,255,255,.2); }
   <div class="logo">Neuro<em>Business</em>™</div>
   <div class="badge">Coach-Portal</div>
 
+  <!-- ── Blocked Screen (Demo abgelaufen) ── -->
+  <div id="blocked-screen">
+    <div class="blocked-icon">🔒</div>
+    <h2>Demo-Zugang abgelaufen</h2>
+    <p>Dein kostenloser 30-Tage-Zugang ist abgelaufen.<br>
+       Kontaktiere uns, um deinen Zugang zu aktivieren.</p>
+    <a href="mailto:hello@neurobusiness.one" class="btn-contact">hello@neurobusiness.one</a>
+    <br>
+    <button class="btn-logout" onclick="handleLogout()">Abmelden</button>
+  </div>
+
   <!-- ── Logged-in State ── -->
   <div id="logged-in">
+    <div class="demo-banner" id="demo-banner">
+      <span>Demo-Zugang aktiv —</span> noch <strong id="demo-days">?</strong> Tage verbleibend
+    </div>
     <div class="user-avatar" id="user-initials">?</div>
     <div class="user-name" id="user-name-display">Willkommen</div>
     <div class="user-email" id="user-email-display"></div>
@@ -393,20 +463,63 @@ function switchTab(tab) {
   hideMsg('reset-success');
 }
 
-// ── Eingeloggt-Anzeige ─────────────────────────────────────────────────────
-function showLoggedIn(user) {
+// ── Eingeloggt-Anzeige (mit Demo-Check via RPC) ────────────────────────────
+async function showLoggedIn(user) {
   document.getElementById('auth-forms').style.display = 'none';
-  const li = document.getElementById('logged-in');
-  li.style.display = 'block';
+
   const email = user.email || '';
   const name  = user.user_metadata?.full_name || user.user_metadata?.name || email.split('@')[0];
+
+  // Demo-Status via Supabase-Funktion prüfen (erstellt Coach-Profil falls neu)
+  let coachStatus = null;
+  let daysLeft = null;
+  let isBlocked = false;
+
+  try {
+    const { data, error } = await sb.rpc('ensure_coach_profile', {
+      p_uid:   user.id,
+      p_email: email,
+      p_name:  name || null,
+    });
+    if (!error && data && data.length > 0) {
+      const row = data[0];
+      coachStatus = row.coach_status;
+      daysLeft    = row.days_left;
+      isBlocked   = row.is_blocked;
+    }
+  } catch (err) {
+    console.warn('ensure_coach_profile Fehler:', err);
+  }
+
+  // Gesperrten Coach → Blocked Screen zeigen
+  if (isBlocked) {
+    document.getElementById('blocked-screen').style.display = 'block';
+    document.getElementById('logged-in').style.display = 'none';
+    return;
+  }
+
+  // Normalen Login-State aufbauen
+  const li = document.getElementById('logged-in');
+  li.style.display = 'block';
+  document.getElementById('blocked-screen').style.display = 'none';
+
   document.getElementById('user-email-display').textContent = email;
   document.getElementById('user-name-display').textContent = name;
   document.getElementById('user-initials').textContent = name.charAt(0).toUpperCase();
+
+  // Demo-Banner anzeigen wenn Status = demo
+  if (coachStatus === 'demo' && daysLeft !== null) {
+    document.getElementById('demo-days').textContent = daysLeft;
+    document.getElementById('demo-banner').classList.add('visible');
+  } else {
+    document.getElementById('demo-banner').classList.remove('visible');
+  }
 }
+
 function showLoggedOut() {
   document.getElementById('auth-forms').style.display = 'block';
   document.getElementById('logged-in').style.display = 'none';
+  document.getElementById('blocked-screen').style.display = 'none';
 }
 
 // ── A: E-Mail + Passwort Login ─────────────────────────────────────────────
@@ -478,9 +591,9 @@ async function handleLogout() {
 }
 
 // ── Auth-State-Listener (zentrale Stelle für alle State-Wechsel) ──────────
-sb.auth.onAuthStateChange((event, session) => {
+sb.auth.onAuthStateChange(async (event, session) => {
   if (session?.user) {
-    showLoggedIn(session.user);
+    await showLoggedIn(session.user);
   } else {
     showLoggedOut();
   }

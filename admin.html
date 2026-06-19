@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroBusiness™ Admin · Coach-Übersicht</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+:root {
+  --c:  #1a3d35;
+  --c2: #15312a;
+  --c3: #0f2420;
+  --g:  #c9a96e;
+  --g2: #a8813e;
+  --p:  #7c6990;
+  --cr: #faf8f4;
+  --cr2:#f4f1eb;
+  --cr3:#ede9e0;
+  --dk: #1a1814;
+  --t1: #1a1814;
+  --t2: #4a4540;
+  --t3: #8a837a;
+  --fd: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Outfit', system-ui, sans-serif;
+  --fm: 'DM Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--c3); min-height: 100%; }
+body {
+  background: var(--c3);
+  color: var(--cr);
+  font-family: var(--fb);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Screens ── */
+#screen-loading,
+#screen-denied,
+#screen-main { display: none; }
+#screen-loading.visible,
+#screen-denied.visible,
+#screen-main.visible { display: block; }
+
+/* ── Loading ── */
+#screen-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.loading-text {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: rgba(255,255,255,.3);
+  text-transform: uppercase;
+}
+
+/* ── Denied ── */
+#screen-denied {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 24px;
+}
+.denied-box {
+  max-width: 380px;
+}
+.denied-box h2 {
+  font-family: var(--fd);
+  font-size: 26px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: rgba(255,255,255,.6);
+}
+.denied-box p {
+  font-size: 14px;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 24px;
+}
+.btn-back {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--g);
+  text-decoration: none;
+  border: 1px solid rgba(201,169,110,.3);
+  padding: 10px 24px;
+  border-radius: 8px;
+  display: inline-block;
+  transition: all .2s;
+}
+.btn-back:hover { background: rgba(201,169,110,.08); }
+
+/* ── Main Layout ── */
+#screen-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 32px 80px;
+}
+
+/* ── Header ── */
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.page-logo {
+  font-family: var(--fd);
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: -.02em;
+}
+.page-logo em { font-style: italic; color: var(--g); }
+.page-badge {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-top: 4px;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.admin-tag {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: rgba(201,169,110,.1);
+  border: 1px solid rgba(201,169,110,.25);
+  color: var(--g);
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+.btn-logout-header {
+  font-family: var(--fm);
+  font-size: 11px;
+  letter-spacing: .05em;
+  color: rgba(255,255,255,.25);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.btn-logout-header:hover { color: rgba(255,255,255,.5); }
+
+/* ── Summary Tiles ── */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+@media (max-width: 900px) {
+  .tiles { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .tiles { grid-template-columns: repeat(2, 1fr); }
+}
+.tile {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 24px 22px 20px;
+}
+.tile-label {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 10px;
+}
+.tile-value {
+  font-family: var(--fd);
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--cr);
+}
+.tile.tile-active .tile-value { color: var(--g); }
+.tile.tile-expired .tile-value { color: #e87070; }
+.tile.tile-demo .tile-value { color: var(--p); }
+
+/* ── Table ── */
+.table-wrap {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.table-title {
+  font-family: var(--fd);
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255,255,255,.7);
+}
+.table-refresh {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  background: none;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.table-refresh:hover { color: rgba(255,255,255,.5); border-color: rgba(255,255,255,.2); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  padding: 14px 16px 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: color .15s;
+}
+th:hover { color: rgba(255,255,255,.55); }
+th.sort-asc::after  { content: ' ↑'; color: var(--g); }
+th.sort-desc::after { content: ' ↓'; color: var(--g); }
+td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  font-size: 14px;
+  vertical-align: middle;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255,255,255,.02); }
+
+.coach-name { font-weight: 400; color: var(--cr); }
+.coach-email { font-family: var(--fm); font-size: 11px; color: rgba(255,255,255,.35); margin-top: 2px; }
+
+/* Status-Badges */
+.badge-status {
+  display: inline-block;
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+.badge-active  { background: rgba(201,169,110,.12); color: var(--g); border: 1px solid rgba(201,169,110,.25); }
+.badge-demo    { background: rgba(124,105,144,.12); color: #a899bb; border: 1px solid rgba(124,105,144,.25); }
+.badge-expired { background: rgba(232,112,112,.1);  color: #e87070; border: 1px solid rgba(232,112,112,.2); }
+
+/* Tier-Badges */
+.badge-tier {
+  display: inline-block;
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255,255,255,.05);
+}
+
+.days-left { font-family: var(--fm); font-size: 12px; color: rgba(255,255,255,.4); }
+.days-left.urgent { color: #e87070; }
+.client-count { font-family: var(--fm); font-size: 13px; color: rgba(255,255,255,.55); }
+.date-cell { font-family: var(--fm); font-size: 11px; color: rgba(255,255,255,.3); }
+
+/* ── Empty / Error States ── */
+.table-empty {
+  padding: 60px 24px;
+  text-align: center;
+  font-family: var(--fm);
+  font-size: 12px;
+  color: rgba(255,255,255,.2);
+  letter-spacing: .04em;
+}
+
+/* ── Last Updated ── */
+.last-updated {
+  font-family: var(--fm);
+  font-size: 10px;
+  color: rgba(255,255,255,.18);
+  text-align: right;
+  margin-top: 16px;
+  letter-spacing: .04em;
+}
+</style>
+</head>
+<body>
+
+<!-- ── Loading ── -->
+<div id="screen-loading" class="visible">
+  <div class="loading-text">Wird geladen…</div>
+</div>
+
+<!-- ── Kein Zugriff ── -->
+<div id="screen-denied">
+  <div class="denied-box">
+    <h2>Kein Zugriff</h2>
+    <p>Diese Seite ist nur für Administratoren zugänglich.</p>
+    <a href="coach-login.html" class="btn-back">← Zurück zum Login</a>
+  </div>
+</div>
+
+<!-- ── Haupt-Admin-Ansicht ── -->
+<div id="screen-main">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <div class="page-logo">Neuro<em>Business</em>™</div>
+      <div class="page-badge">Admin · Coach-Übersicht</div>
+    </div>
+    <div class="header-right">
+      <span class="admin-tag">Eva · Admin</span>
+      <button class="btn-logout-header" onclick="handleLogout()">Abmelden</button>
+    </div>
+  </div>
+
+  <!-- Summary Tiles -->
+  <div class="tiles">
+    <div class="tile">
+      <div class="tile-label">Coaches gesamt</div>
+      <div class="tile-value" id="tile-total">—</div>
+    </div>
+    <div class="tile tile-active">
+      <div class="tile-label">Coach aktiv</div>
+      <div class="tile-value" id="tile-active">—</div>
+    </div>
+    <div class="tile tile-demo">
+      <div class="tile-label">Demo</div>
+      <div class="tile-value" id="tile-demo">—</div>
+    </div>
+    <div class="tile tile-expired">
+      <div class="tile-label">Abgelaufen</div>
+      <div class="tile-value" id="tile-expired">—</div>
+    </div>
+    <div class="tile tile-active">
+      <div class="tile-label">Aktive Abos (49 €)</div>
+      <div class="tile-value" id="tile-subs">—</div>
+    </div>
+  </div>
+
+  <!-- Tabelle -->
+  <div class="table-wrap">
+    <div class="table-header">
+      <div class="table-title">Alle Coaches</div>
+      <button class="table-refresh" onclick="loadData()">↻ Aktualisieren</button>
+    </div>
+    <div id="table-container">
+      <div class="table-empty">Daten werden geladen…</div>
+    </div>
+  </div>
+
+  <div class="last-updated" id="last-updated"></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════════════════════════ -->
+<script>
+const SUPABASE_URL      = 'https://psqfrdpitjmfwvupmfdp.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzcWZyZHBpdGptZnd2dXBtZmRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDQ1NjQsImV4cCI6MjA5MzkyMDU2NH0.yUD24iRrINHLBRIJElmOJZPoBuoBcPGfayNGX38Oldg';
+// NIEMALS den service_role-Key verwenden!
+
+const { createClient } = window.supabase;
+const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const ADMIN_EMAIL = 'evaa.com@gmail.com';
+
+// Sortier-Status
+let sortCol = 'created_at';
+let sortDir = 'desc';
+let coachData = [];
+
+// ── Screen-Umschalter ──────────────────────────────────────────────────────
+function show(screenId) {
+  ['screen-loading', 'screen-denied', 'screen-main'].forEach(id => {
+    document.getElementById(id).classList.toggle('visible', id === screenId);
+  });
+}
+
+// ── Datum formatieren ──────────────────────────────────────────────────────
+function fmtDate(iso) {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+// ── Status-Badge HTML ──────────────────────────────────────────────────────
+function statusBadge(s) {
+  const map = { active: 'badge-active', demo: 'badge-demo', expired: 'badge-expired' };
+  const label = { active: 'Aktiv', demo: 'Demo', expired: 'Abgelaufen' };
+  return `<span class="badge-status ${map[s] || ''}">${label[s] || s}</span>`;
+}
+
+// ── Tier-Badge HTML ────────────────────────────────────────────────────────
+function tierBadge(t) {
+  return `<span class="badge-tier">${t || '—'}</span>`;
+}
+
+// ── Tabelle rendern ────────────────────────────────────────────────────────
+function renderTable(data) {
+  if (!data.length) {
+    document.getElementById('table-container').innerHTML =
+      '<div class="table-empty">Noch keine Coaches registriert.</div>';
+    return;
+  }
+
+  // Tiles aktualisieren
+  document.getElementById('tile-total').textContent   = data.length;
+  document.getElementById('tile-active').textContent  = data.filter(r => r.status === 'active').length;
+  document.getElementById('tile-demo').textContent    = data.filter(r => r.status === 'demo').length;
+  document.getElementById('tile-expired').textContent = data.filter(r => r.status === 'expired').length;
+  const totalSubs = data.reduce((sum, r) => sum + Number(r.active_subscriptions || 0), 0);
+  document.getElementById('tile-subs').textContent    = totalSubs;
+
+  // Spalten-Header mit Sort-Indikatoren
+  const cols = [
+    { key: 'first_name',           label: 'Coach' },
+    { key: 'status',               label: 'Status' },
+    { key: 'tier',                 label: 'Tier' },
+    { key: 'days_left',            label: 'Demo-Ablauf' },
+    { key: 'client_count',         label: 'Klienten' },
+    { key: 'active_subscriptions', label: 'Aktive Abos' },
+    { key: 'created_at',           label: 'Seit' },
+  ];
+
+  const thead = `<thead><tr>${
+    cols.map(c => {
+      const cls = sortCol === c.key ? `sort-${sortDir}` : '';
+      return `<th class="${cls}" onclick="sortBy('${c.key}')">${c.label}</th>`;
+    }).join('')
+  }</tr></thead>`;
+
+  // Zeilen
+  const rows = data.map(r => {
+    const name = [r.first_name, r.last_name].filter(Boolean).join(' ') || '—';
+    const daysHtml = r.status === 'demo'
+      ? `<div class="days-left ${r.days_left <= 5 ? 'urgent' : ''}">${r.days_left} Tage</div><div class="date-cell">${fmtDate(r.demo_expires_at)}</div>`
+      : `<div class="date-cell">—</div>`;
+
+    return `<tr>
+      <td>
+        <div class="coach-name">${name}</div>
+        <div class="coach-email">${r.email || '—'}</div>
+      </td>
+      <td>${statusBadge(r.status)}</td>
+      <td>${tierBadge(r.tier)}</td>
+      <td>${daysHtml}</td>
+      <td><span class="client-count">${r.client_count ?? 0}</span></td>
+      <td><span class="client-count">${r.active_subscriptions ?? 0}</span></td>
+      <td><span class="date-cell">${fmtDate(r.created_at)}</span></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('table-container').innerHTML =
+    `<table>${thead}<tbody>${rows}</tbody></table>`;
+
+  document.getElementById('last-updated').textContent =
+    'Zuletzt aktualisiert: ' + new Date().toLocaleTimeString('de-DE');
+}
+
+// ── Sortieren ──────────────────────────────────────────────────────────────
+function sortBy(col) {
+  if (sortCol === col) {
+    sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+  } else {
+    sortCol = col;
+    sortDir = 'asc';
+  }
+  const sorted = [...coachData].sort((a, b) => {
+    const va = a[col] ?? '';
+    const vb = b[col] ?? '';
+    const cmp = va < vb ? -1 : va > vb ? 1 : 0;
+    return sortDir === 'asc' ? cmp : -cmp;
+  });
+  renderTable(sorted);
+}
+
+// ── Daten laden ────────────────────────────────────────────────────────────
+async function loadData() {
+  document.getElementById('table-container').innerHTML =
+    '<div class="table-empty">Wird geladen…</div>';
+
+  const { data, error } = await sb.rpc('get_coaches_admin');
+  if (error) {
+    document.getElementById('table-container').innerHTML =
+      `<div class="table-empty">Fehler: ${error.message}</div>`;
+    return;
+  }
+
+  coachData = data || [];
+  // Standard-Sortierung: neueste zuerst
+  coachData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  renderTable(coachData);
+}
+
+// ── Logout ─────────────────────────────────────────────────────────────────
+async function handleLogout() {
+  await sb.auth.signOut();
+  window.location.href = 'coach-login.html';
+}
+
+// ── Init ───────────────────────────────────────────────────────────────────
+(async () => {
+  const { data: { session } } = await sb.auth.getSession();
+
+  if (!session?.user) {
+    // Nicht eingeloggt → weiterleiten
+    window.location.href = 'coach-login.html';
+    return;
+  }
+
+  if (session.user.email !== ADMIN_EMAIL) {
+    // Kein Admin
+    show('screen-denied');
+    return;
+  }
+
+  // Admin → Daten laden und Seite zeigen
+  show('screen-main');
+  await loadData();
+})();
+</script>
+</body>
+</html>

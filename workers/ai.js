@@ -694,6 +694,11 @@ async function upsertSubscription(data, env) {
 // ═══════════════════════════════════════════════════════════════
 
 async function handleCreateCheckout(request, env, corsHeaders) {
+    try {
+        if (!env.STRIPE_SECRET_KEY) {
+              console.error('[Checkout] STRIPE_SECRET_KEY fehlt als Worker-Secret');
+                    return json({ error: 'Checkout nicht konfiguriert — bitte STRIPE_SECRET_KEY als Worker-Secret setzen' }, 503, corsHeaders);
+                        }
   // 1. Auth: Supabase JWT aus Authorization-Header
   const authHeader = request.headers.get('Authorization') || '';
   const jwt = authHeader.replace('Bearer ', '').trim();
@@ -768,8 +773,11 @@ async function handleCreateCheckout(request, env, corsHeaders) {
 
   const session = await stripeRes.json();
   console.log(`[Checkout] Session ${session.id} für Coach ${coach.id} erstellt`);
-  return json({ url: session.url, session_id: session.id }, 200, corsHeaders);
-}
+  return json({ url: session.url, session_id: session.id }, 200, corsHeaders);} catch (err) {
+  console.error('[Checkout] Unerwarteter Fehler:', err.message || err);
+    return json({ error: 'Interner Checkout-Fehler', detail: err.message }, 500, corsHeaders);
+    }
+    }
 
 // ═══════════════════════════════════════════════════════════════
 // UTILITY

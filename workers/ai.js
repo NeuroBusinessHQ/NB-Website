@@ -704,16 +704,24 @@ async function handleCreateCheckout(request, env, corsHeaders) {
   const jwt = authHeader.replace('Bearer ', '').trim();
   if (!jwt) return json({ error: 'Nicht authentifiziert' }, 401, corsHeaders);
 
-  // 2. JWT bei Supabase verifizieren → user.email holen
-  const userRes = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
-    headers: {
-      'apikey':        env.SUPABASE_SERVICE_KEY,
-      'Authorization': `Bearer ${jwt}`,
-    },
-  });
-  if (!userRes.ok) return json({ error: 'Ungültige Session' }, 401, corsHeaders);
-  const user = await userRes.json();
-  if (!user?.email) return json({ error: 'Kein User in Session' }, 401, corsHeaders);
+      // 2. JWT lokal dekodieren (kein API-Aufruf nötig)
+          let userEmail, userId;
+              try {
+                    const parts = jwt.split('.');
+                          if (parts.length !== 3) return json({ error: 'Ungültiges Token' }, 401, corsHeaders);
+                                const payload = JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
+                                      if (!payload.email || payload.role !== 'authenticated') {
+                                              return json({ error: 'Nicht authentifiziert' }, 401, corsHeaders);
+                                                    }
+                                                          if (payload.exp && payload.exp < Math.floor(Date.now() / 1000)) {
+                                                                  return json({ error: 'Session abgelaufen' }, 401, corsHeaders);
+                                                                        }
+                                                                              userEmail = payload.email;
+                                                                                    userId = payload.sub;
+                                                                                        } catch (e) {
+                                                                                              return json({ error: 'Token-Fehler' }, 401, corsHeaders);
+                                                                                                  }
+                                                                                                      const user = { email: userEmail, id: userId };
 
   // 3. Coach aus coaches-Tabelle laden (über email)
   const coachRes = await fetch(

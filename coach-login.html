@@ -526,9 +526,9 @@ async function showLoggedIn(user) {
   const email = user.email || '';
   const name  = user.user_metadata?.full_name || user.user_metadata?.name || email.split('@')[0];
       // Spinner sofort ausblenden
-          hideLoading();
-          
+          hideLoading();    document.getElementById('logged-in').style.display = 'block';    document.getElementById('blocked-screen').style.display = 'none';
 
+    document.getElementById('user-email-display').textContent = email;    document.getElementById('user-name-display').textContent  = name;    document.getElementById('user-initials').textContent = name.charAt(0).toUpperCase();
   let coachStatus = null;
   let daysLeft = null;
   let isBlocked = false;

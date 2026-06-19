@@ -739,7 +739,9 @@ sb.auth.onAuthStateChange(async (event, session) => {
 
   if (session?.user) {
     showLoggedIn(session.user);
-  }
+  } else {
+  showLoggedOut();
+  }}
 })();
 </script>
 </body>

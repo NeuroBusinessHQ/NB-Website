@@ -694,21 +694,34 @@ async function upsertSubscription(data, env) {
 // ═══════════════════════════════════════════════════════════════
 
 async function handleCreateCheckout(request, env, corsHeaders) {
+    try {
+        if (!env.STRIPE_SECRET_KEY) {
+              console.error('[Checkout] STRIPE_SECRET_KEY fehlt als Worker-Secret');
+                    return json({ error: 'Checkout nicht konfiguriert — bitte STRIPE_SECRET_KEY als Worker-Secret setzen' }, 503, corsHeaders);
+                        }
   // 1. Auth: Supabase JWT aus Authorization-Header
   const authHeader = request.headers.get('Authorization') || '';
   const jwt = authHeader.replace('Bearer ', '').trim();
   if (!jwt) return json({ error: 'Nicht authentifiziert' }, 401, corsHeaders);
 
-  // 2. JWT bei Supabase verifizieren → user.email holen
-  const userRes = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
-    headers: {
-      'apikey':        env.SUPABASE_SERVICE_KEY,
-      'Authorization': `Bearer ${jwt}`,
-    },
-  });
-  if (!userRes.ok) return json({ error: 'Ungültige Session' }, 401, corsHeaders);
-  const user = await userRes.json();
-  if (!user?.email) return json({ error: 'Kein User in Session' }, 401, corsHeaders);
+      // 2. JWT lokal dekodieren (kein API-Aufruf nötig)
+          let userEmail, userId;
+              try {
+                    const parts = jwt.split('.');
+                          if (parts.length !== 3) return json({ error: 'Ungültiges Token' }, 401, corsHeaders);
+                                const payload = JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
+                                      if (!payload.email || payload.role !== 'authenticated') {
+                                              return json({ error: 'Nicht authentifiziert' }, 401, corsHeaders);
+                                                    }
+                                                          if (payload.exp && payload.exp < Math.floor(Date.now() / 1000)) {
+                                                                  return json({ error: 'Session abgelaufen' }, 401, corsHeaders);
+                                                                        }
+                                                                              userEmail = payload.email;
+                                                                                    userId = payload.sub;
+                                                                                        } catch (e) {
+                                                                                              return json({ error: 'Token-Fehler' }, 401, corsHeaders);
+                                                                                                  }
+                                                                                                      const user = { email: userEmail, id: userId };
 
   // 3. Coach aus coaches-Tabelle laden (über email)
   const coachRes = await fetch(
@@ -768,8 +781,11 @@ async function handleCreateCheckout(request, env, corsHeaders) {
 
   const session = await stripeRes.json();
   console.log(`[Checkout] Session ${session.id} für Coach ${coach.id} erstellt`);
-  return json({ url: session.url, session_id: session.id }, 200, corsHeaders);
-}
+  return json({ url: session.url, session_id: session.id }, 200, corsHeaders);} catch (err) {
+  console.error('[Checkout] Unerwarteter Fehler:', err.message || err);
+    return json({ error: 'Interner Checkout-Fehler', detail: err.message }, 500, corsHeaders);
+    }
+    }
 
 // ═══════════════════════════════════════════════════════════════
 // UTILITY

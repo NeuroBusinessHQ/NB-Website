@@ -482,52 +482,12 @@ input::placeholder { color: rgba(255,255,255,.2); }
      JAVASCRIPT
      ════════════════════════════════════════════════════════════════ -->
 <script>
-// ═══════════════════════════════════════════════════════════════════════════
-// ⚠️  KONFIGURATION — HIER TRÄGST DU DEINE EIGENEN WERTE EIN
-//
-//  SUPABASE_URL  → Supabase Dashboard → Project Settings → API → Project URL
-//  SUPABASE_ANON_KEY → Project Settings → API → anon / public key
-//
-//  NIEMALS den service_role-Key hier eintragen!
-// ═══════════════════════════════════════════════════════════════════════════
 const SUPABASE_URL      = 'https://psqfrdpitjmfwvupmfdp.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzcWZyZHBpdGptZnd2dXBtZmRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDQ1NjQsImV4cCI6MjA5MzkyMDU2NH0.yUD24iRrINHLBRIJElmOJZPoBuoBcPGfayNGX38Oldg';
 
-// ═══════════════════════════════════════════════════════════════════════════
-// ⚙️  SUPABASE-KONSOLE: Was du aktivieren musst
-//
-//  1. Authentication → Providers → Google → Enable
-//     Client ID     → von Google Cloud Console (OAuth 2.0 Client IDs)
-//     Client Secret → von Google Cloud Console
-//
-//  2. Authentication → URL Configuration:
-//     Site URL        → https://neurobusiness.one
-//     Redirect URLs   → https://neurobusiness.one/coach-login.html
-//                       (+ localhost:PORT für lokale Entwicklung)
-//
-//  3. Authentication → Email → "Enable email confirmations" prüfen
-//     (für Password-Reset muss Email-Versand aktiv sein)
-// ═══════════════════════════════════════════════════════════════════════════
-
-// ═══════════════════════════════════════════════════════════════════════════
-// ⚙️  GOOGLE CLOUD CONSOLE: Was du anlegen musst
-//
-//  1. https://console.cloud.google.com → Neues Projekt oder bestehendes wählen
-//  2. APIs & Services → Credentials → + Create Credentials → OAuth Client ID
-//  3. Application type: Web application
-//  4. Authorized JavaScript origins:
-//       https://neurobusiness.one
-//       https://psqfrdpitjmfwvupmfdp.supabase.co
-//  5. Authorized redirect URIs:
-//       https://psqfrdpitjmfwvupmfdp.supabase.co/auth/v1/callback
-//  6. Client ID + Secret → in Supabase unter Authentication → Providers → Google eintragen
-// ═══════════════════════════════════════════════════════════════════════════
-
-// Supabase Client initialisieren
 const { createClient } = window.supabase;
 const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// ── Hilfsfunktionen ────────────────────────────────────────────────────────
 function showMsg(id, text, type = 'error') {
   const el = document.getElementById(id);
   if (!el) return;
@@ -546,7 +506,6 @@ function setLoading(btnId, loading, defaultText) {
   btn.textContent = loading ? 'Bitte warten…' : defaultText;
 }
 
-// ── Tab-Umschalter ─────────────────────────────────────────────────────────
 function switchTab(tab) {
   document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(el => el.classList.remove('active'));
@@ -557,19 +516,19 @@ function switchTab(tab) {
   hideMsg('reset-success');
 }
 
-// ── UI-State-Helfer ────────────────────────────────────────────────────────
 function hideLoading() {
   document.getElementById('loading-state').style.display = 'none';
 }
 
-// ── Eingeloggt-Anzeige (mit Demo-Check via RPC) ────────────────────────────
 async function showLoggedIn(user) {
   document.getElementById('auth-forms').style.display = 'none';
 
   const email = user.email || '';
   const name  = user.user_metadata?.full_name || user.user_metadata?.name || email.split('@')[0];
+      // Spinner sofort ausblenden
+          hideLoading();    document.getElementById('logged-in').style.display = 'block';    document.getElementById('blocked-screen').style.display = 'none';
 
-  // Demo-Status via Supabase-Funktion prüfen (erstellt Coach-Profil falls neu)
+    document.getElementById('user-email-display').textContent = email;    document.getElementById('user-name-display').textContent  = name;    document.getElementById('user-initials').textContent = name.charAt(0).toUpperCase();
   let coachStatus = null;
   let daysLeft = null;
   let isBlocked = false;
@@ -592,14 +551,12 @@ async function showLoggedIn(user) {
 
   hideLoading();
 
-  // Gesperrten Coach → Blocked Screen zeigen
   if (isBlocked) {
     document.getElementById('blocked-screen').style.display = 'block';
     document.getElementById('logged-in').style.display = 'none';
     return;
   }
 
-  // Normalen Login-State aufbauen
   const li = document.getElementById('logged-in');
   li.style.display = 'block';
   document.getElementById('blocked-screen').style.display = 'none';
@@ -608,7 +565,6 @@ async function showLoggedIn(user) {
   document.getElementById('user-name-display').textContent = name;
   document.getElementById('user-initials').textContent = name.charAt(0).toUpperCase();
 
-  // Demo-Banner anzeigen wenn Status = demo
   if (coachStatus === 'demo' && daysLeft !== null) {
     document.getElementById('demo-days').textContent = daysLeft;
     document.getElementById('demo-banner').classList.add('visible');
@@ -624,7 +580,6 @@ function showLoggedOut() {
   document.getElementById('blocked-screen').style.display = 'none';
 }
 
-// ── Checkout-Link für Klient erstellen ──────────────────────────────────────
 async function createCheckoutLink() {
   const btn = document.getElementById('btn-invite');
   const errEl = document.getElementById('invite-error');
@@ -632,7 +587,6 @@ async function createCheckoutLink() {
   const urlInput = document.getElementById('invite-url');
   const copiedEl = document.getElementById('invite-copied');
 
-  // Reset
   errEl.style.display = 'none';
   resultEl.style.display = 'none';
   copiedEl.style.display = 'none';
@@ -640,7 +594,6 @@ async function createCheckoutLink() {
   btn.textContent = 'Erstelle Link…';
 
   try {
-    // Supabase JWT holen
     const { data: { session } } = await sb.auth.getSession();
     if (!session?.access_token) throw new Error('Nicht eingeloggt');
 
@@ -677,7 +630,6 @@ function copyInviteLink() {
   });
 }
 
-// ── A: E-Mail + Passwort Login ─────────────────────────────────────────────
 async function handleEmailLogin(e) {
   e.preventDefault();
   hideMsg('login-error');
@@ -695,24 +647,18 @@ async function handleEmailLogin(e) {
     showMsg('login-error', msg);
     return;
   }
-  // Erfolgreich → showLoggedIn wird via onAuthStateChange ausgelöst
 }
 
-// ── B: Google OAuth ────────────────────────────────────────────────────────
 async function handleGoogleLogin() {
   const { error } = await sb.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      // ⚠️  Diese URL muss 1:1 in Supabase → Authentication → URL Configuration
-      //     unter "Redirect URLs" eingetragen sein.
       redirectTo: `${window.location.origin}/coach-login.html`,
     },
   });
   if (error) showMsg('login-error', error.message);
-  // Bei Erfolg leitet Supabase den Browser automatisch um → kein weiterer Code nötig.
 }
 
-// ── C: Passwort zurücksetzen ───────────────────────────────────────────────
 async function handlePasswordReset(e) {
   e.preventDefault();
   hideMsg('reset-error');
@@ -721,10 +667,6 @@ async function handlePasswordReset(e) {
   setLoading('btn-reset', true, 'Reset-Link senden');
 
   const { error } = await sb.auth.resetPasswordForEmail(email, {
-    // ⚠️  Diese URL muss in Supabase → Authentication → URL Configuration
-    //     unter "Redirect URLs" eingetragen sein.
-    //     Nach dem Klick landet der Coach auf dieser Seite, wo du dann
-    //     Phase 1b (Passwort-ändern-Formular) einbauen kannst.
     redirectTo: `${window.location.origin}/coach-login.html?mode=update-password`,
   });
 
@@ -739,7 +681,6 @@ async function handlePasswordReset(e) {
   );
 }
 
-// ── D: Neues Passwort setzen (nach Reset-Link) ─────────────────────────────
 async function handleUpdatePassword(e) {
   e.preventDefault();
   hideMsg('update-error');
@@ -758,7 +699,6 @@ async function handleUpdatePassword(e) {
     return;
   }
   showMsg('update-success', '✓ Passwort erfolgreich gesetzt. Du kannst dich jetzt anmelden.', 'success');
-  // Nach 2s zur normalen Login-Ansicht
   setTimeout(() => {
     window.history.replaceState({}, '', window.location.pathname);
     switchTabDirect('login');
@@ -773,13 +713,10 @@ function switchTabDirect(tab) {
   if (tab === 'login') tabs[0].classList.add('active');
 }
 
-// ── Logout ─────────────────────────────────────────────────────────────────
 async function handleLogout() {
   await sb.auth.signOut();
-  // showLoggedOut() wird via onAuthStateChange ausgelöst
 }
 
-// ── Auth-State-Listener (zentrale Stelle für alle State-Wechsel) ──────────
 sb.auth.onAuthStateChange(async (event, session) => {
   if (session?.user) {
     await showLoggedIn(session.user);
@@ -788,7 +725,6 @@ sb.auth.onAuthStateChange(async (event, session) => {
   }
 });
 
-// ── Initialer Session-Check ────────────────────────────────────────────────
 (async () => {
   const params = new URLSearchParams(window.location.search);
   const isUpdateMode = params.get('mode') === 'update-password';
@@ -796,19 +732,18 @@ sb.auth.onAuthStateChange(async (event, session) => {
   const { data: { session } } = await sb.auth.getSession();
 
   if (isUpdateMode && session?.user) {
-    // Passwort-setzen-Formular nach Reset-Link zeigen
     hideLoading();
     document.getElementById('auth-forms').style.display = 'block';
-    document.querySelectorAll('.panel').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(el => el.classList.remove('active'));    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
     document.getElementById('panel-update-password').classList.add('active');
     return;
   }
 
   if (session?.user) {
     showLoggedIn(session.user);
+  } else {
+  showLoggedOut();
   }
-  // Falls keine Session: onAuthStateChange handelt es
 })();
 </script>
 </body>

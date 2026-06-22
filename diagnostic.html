@@ -105,6 +105,17 @@ body{background:var(--cr);color:var(--t1);font-family:var(--fb);font-size:16px;l
 .btn-next{background:var(--dk);color:var(--cr);font-family:var(--fb);font-size:15px;font-weight:500;padding:14px 32px;border-radius:8px;border:none;cursor:pointer;transition:all .2s}
 .btn-next:hover:not(:disabled){background:var(--go);color:var(--dk)}
 .btn-next:disabled{background:var(--cr3);color:var(--t3);cursor:not-allowed}
+.research-consent-box{margin:24px 0 8px;padding:16px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px}
+.research-consent-label{display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:12px;line-height:1.6;color:var(--t3)}
+.research-consent-label input[type=checkbox]{flex-shrink:0;margin-top:3px;width:16px;height:16px;accent-color:var(--go);cursor:pointer}
+.consent-block{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;padding:20px;background:var(--cr2);border:1px solid var(--bd);border-radius:12px}
+.consent-row{display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:13px;line-height:1.65;color:var(--t2);padding:12px;border-radius:8px;transition:background .15s}
+.consent-row:hover{background:var(--cr3)}
+.consent-row input[type=checkbox]{flex-shrink:0;margin-top:3px;width:16px;height:16px;accent-color:var(--dk);cursor:pointer}
+.consent-required{border-left:3px solid var(--dk)}
+.consent-optional{border-left:3px solid var(--go);opacity:.85}
+.consent-required-badge{display:inline-block;background:var(--dk);color:var(--cr);font-size:10px;font-family:var(--fm);letter-spacing:.06em;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;font-style:normal}
+.consent-optional-badge{display:inline-block;background:var(--go);color:var(--dk);font-size:10px;font-family:var(--fm);letter-spacing:.06em;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;font-style:normal}
 .block-progress-info{font-family:var(--fm);font-size:11px;color:var(--t3)}
 
 /* ── CALCULATING ── */
@@ -215,7 +226,24 @@ initBrevo();
       <input class="field-input" id="f-years" type="text">
     </div>
   </div>
-  <button class="btn-start" onclick="startQuiz()" id="btn-start">
+  <!-- ── EINWILLIGUNGEN (vor Teststart) ── -->
+  <div class="consent-block">
+
+    <!-- DSGVO-Pflicht (Teststart gesperrt ohne Häkchen) -->
+    <label class="consent-row consent-required" id="lbl-consent-dsgvo">
+      <input type="checkbox" id="consent-dsgvo" onchange="updateStartBtn()">
+      <span id="consent-dsgvo-txt">I agree that my answers will be processed to create my personal NeuroBusiness™ report. Data is stored securely (Supabase EU) and will not be shared with third parties. I can request deletion at any time at <a href="mailto:hello@germaninstitute.eu">hello@germaninstitute.eu</a>. (<a href="https://neurobusiness.one/?legal=datenschutz" target="_blank">Privacy policy</a>) <em class="consent-required-badge">Required</em></span>
+    </label>
+
+    <!-- Forschungs-Einwilligung (freiwillig, getrennt, default unchecked) -->
+    <label class="consent-row consent-optional" id="lbl-consent-research">
+      <input type="checkbox" id="consent-research-intro">
+      <span id="consent-research-txt">I voluntarily agree that my anonymised answers (no name, no email, no profile link) may be used for the scientific development and validation of the NeuroBusiness™ diagnostic model. This consent is independent of the above, entirely voluntary, and can be withdrawn at any time (<a href="mailto:hello@germaninstitute.eu">hello@germaninstitute.eu</a>). <em class="consent-optional-badge">Optional</em></span>
+    </label>
+
+  </div>
+
+  <button class="btn-start" onclick="startQuiz()" id="btn-start" disabled>
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     <span id="btn-start-txt">Start diagnostic now</span>
   </button>
@@ -267,6 +295,8 @@ const TR = {
     'lbl-fn':'First name','lbl-ln':'Last name','lbl-em':'Email','lbl-ind':'Industry','lbl-yrs':'Years self-employed',
     'btn-start-txt':'Start diagnostic now',
     'i-note':'🔒 Your answers are saved securely and used exclusively for your personal NeuroBusiness report.',
+    'consent-dsgvo-txt':'I agree that my answers will be processed to create my personal NeuroBusiness™ report. Data is stored securely (Supabase EU) and will not be shared with third parties. I can request deletion at any time at <a href="mailto:hello@germaninstitute.eu">hello@germaninstitute.eu</a>. (<a href="https://neurobusiness.one/?legal=datenschutz" target="_blank">Privacy policy</a>) <em class="consent-required-badge">Required</em>',
+    'consent-research-txt':'I voluntarily agree that my anonymised answers (no name, no email, no profile link) may be used for the scientific development and validation of the NeuroBusiness™ diagnostic model. This consent is independent of the above, entirely voluntary, and can be withdrawn at any time (<a href="mailto:hello@germaninstitute.eu">hello@germaninstitute.eu</a>). <em class="consent-optional-badge">Optional</em>',
     'nav-step':'Diagnostic',
     'scale-low':'Strongly disagree','scale-high':'Strongly agree',
     'btn-prev-txt':'← Back','btn-next-txt':'Continue →','btn-submit-txt':'Calculate my result →',
@@ -294,6 +324,8 @@ const TR = {
     'i-m3':'Sofortiger vollständiger Report',
     'lbl-fn':'Vorname','lbl-ln':'Nachname','lbl-em':'E-Mail','lbl-ind':'Branche','lbl-yrs':'Jahre selbstständig',
     'btn-start-txt':'Diagnostik jetzt starten',
+    'consent-dsgvo-txt':'Ich stimme zu, dass meine Antworten zur Erstellung meines persönlichen NeuroBusiness™-Reports verarbeitet werden. Die Daten werden sicher gespeichert (Supabase EU) und nicht an Dritte weitergegeben. Löschung jederzeit möglich unter <a href="mailto:hello@germaninstitute.eu">hello@germaninstitute.eu</a>. (<a href="https://neurobusiness.one/?legal=datenschutz" target="_blank">Datenschutzerklärung</a>) <em class="consent-required-badge">Pflichtfeld</em>',
+    'consent-research-txt':'Ich stimme freiwillig zu, dass meine anonymisierten Antworten (ohne Name, E-Mail oder Profilverknüpfung) zur wissenschaftlichen Weiterentwicklung und Validierung des NeuroBusiness™-Diagnostikmodells genutzt werden dürfen. Diese Einwilligung ist unabhängig von der obigen, vollständig freiwillig und kann jederzeit widerrufen werden (<a href="mailto:hello@germaninstitute.eu">hello@germaninstitute.eu</a>). <em class="consent-optional-badge">Freiwillig</em>',
     'i-note':'🔒 Deine Antworten werden sicher gespeichert und ausschließlich für deinen persönlichen NeuroBusiness Report verwendet.',
     'nav-step':'Diagnostik',
     'scale-low':'Stimme gar nicht zu','scale-high':'Stimme voll zu',
@@ -463,7 +495,10 @@ const BLOCK_NAMES_DE = ['Energieprofil & Sichtbarkeit','Kognitionsstil & Entsche
 // D2: A=Analytical(S), B=Intuitive(V/C)
 // D3: A=Promotion(V/M) at Q21,23,25,27,29 / B=Prevention(S/G) at Q22,24,26,28,30
 // D4: A=Systematic(S/G), B=Experimental(M/V)
-// D5: A=HighRisk(G), B=Resilient(M/C)
+//     Separate: D4_deleg=Q34,40 (Kontrollbedürfnis→G), D4_vision=Q37,38inv (Zukunftsklarheit→V)
+// D5: drei Subscores (EFA-validiert, 2026-06):
+//     D5_coping_A=Q41,43 (Rückzug/Struktur→S/G), D5_coping_B=Q42,44 (Austausch/Bewegung→M/C/V)
+//     D5_risk=Q45,46,47,50 (Vulnerabilität→G), D5_res=Q48,49 (Resilienz→M/C)
 // ═══════════════════════════════════════════
 function computeScores(ans) {
   // ans = array of 50 values, 1-indexed from 1
@@ -482,35 +517,43 @@ function computeScores(ans) {
   const D3_prom  = avg([a[20],a[22],a[24],a[26],a[28]]); // Q21,23,25,27,29
   const D3_prev  = avg([a[21],a[23],a[25],a[27],a[29]]); // Q22,24,26,28,30
 
-  // D4: Q31-40
-  const D4_sys   = avg([a[30],a[32],a[34],a[36],a[38]]); // Q31,33,35,37,39
-  const D4_exp   = avg([a[31],a[33],a[35],a[37],a[39]]); // Q32,34,36,38,40
+  // D4: Q31-40 — REFACTORED (EFA-basiert, 2026-06)
+  // Reine Arbeitsstil-Items (systematic ↔ experimental):
+  //   Systematic: Q31 (Schritt-für-Schritt), Q33 (Systeme bauen), Q35 (Routinen), Q39 (Skalierung=Systeme)
+  //   Experimental: Q32 (Start schnell), Q36 (ungeduldig mit Struktur)
+  const D4_sys   = avg([a[30],a[32],a[34],a[38]]); // Q31,33,35,39 — systematic pole (4 Items)
+  const D4_exp   = avg([a[31],a[35]]);              // Q32,36 — experimental pole (2 Items)
+  // Separate Subscores (EFA zeigt eigenständige Faktoren — nicht in D4_sys/D4_exp):
+  //   D4_deleg: Kontrollbedürfnis / Delegationsschwäche → trägt zu G-Typ bei
+  const D4_deleg = avg([a[33],a[39]]);              // Q34,40
+  //   D4_vision: Zukunftsklarheit / strategische Visionsorientierung → trägt zu V-Typ bei
+  //   Q37 = positive Vision, Q38 invertiert (reaktiv statt planerisch)
+  const D4_vision= avg([a[36], 6-a[37]]);           // Q37, Q38(inv)
 
-  // D5: Q41-50
-  // D5_risk: klinisch etablierte Burnout-Vulnerabilitätsmarker
-  //   Q41 (Rückzug nötig), Q43 (Struktur nötig), Q45 (Perfektionismus),
-  //   Q46 (Rumination/Fehler), Q47 (Burnout-Blindheit), Q50 (externe Validierungsabhängigkeit)
-  // NOTE: Q50 wurde hierher verschoben — externe Bestätigungsabhängigkeit ist ein
-  // Risikofaktor (external locus of control), KEINE Resilienzmarke.
-  const D5_risk  = avg([a[40],a[42],a[44],a[45],a[46],a[49]]); // Q41,43,45,46,47,50
-  // D5_res: Selbstregulations- und Resilienzindikatoren
-  //   Q42 (soziales Coping), Q44 (kognitive Flexibilität), Q48 (Bounce-Back), Q49 (Grenzen setzen)
-  const D5_res   = avg([a[41],a[43],a[47],a[48]]); // Q42,44,48,49
+  // D5: Q41-50 — REFACTORED (EFA-basiert, 2026-06)
+  // Coping-Stil (bipolar, wertneutral) — eigenständiger Faktor, getrennt von Vulnerabilität/Resilienz:
+  //   Rückzug/Struktur-Pol: Q41 (Rückzug unter Druck), Q43 (Struktur in unklaren Phasen)
+  //   Austausch/Bewegung-Pol: Q42 (Austausch unter Druck), Q44 (Bewegung/Abstand)
+  const D5_coping_A = avg([a[40],a[42]]); // Q41,Q43 — introvertierter Coping-Stil
+  const D5_coping_B = avg([a[41],a[43]]); // Q42,Q44 — extravertierter Coping-Stil
+  // D5_risk: reine Burnout-Vulnerabilitätsmarker (ohne Coping-Items)
+  //   Q45 (Perfektionismus), Q46 (Rumination), Q47 (Burnout-Blindheit), Q50 (externe Validierung)
+  const D5_risk  = avg([a[44],a[45],a[46],a[49]]); // Q45,46,47,50 (4 reine Risikomarker)
+  // D5_res: Resilienz / Selbstführung
+  //   Q48 (Bounce-Back), Q49 (Grenzen setzen)
+  const D5_res   = avg([a[47],a[48]]);              // Q48,49
 
-  // Psychotype raw scores (scale 1-5 → 0-100 after norm)
-  // S: introverted + analytical + prevention-focused + systematic
-  const S_raw = (D1_intro*1.2 + D2_anal*1.2 + D3_prev*0.8 + D4_sys*0.8) / 4;
-  // V: extroverted + intuitive + promotion-focused + experimental
-  const V_raw = (D1_extro*0.8 + D2_intuit*1.2 + D3_prom*1.2 + D4_exp*0.8) / 4;
-  // M: extroverted + analytical-fast + promotion + experimental + resilient
-  const M_raw = (D1_extro*0.7 + D2_anal*0.3 + D2_intuit*0.7 + D3_prom*1.0 + D4_exp*1.0 + D5_res*0.8) / 4.5;
-  // C: extroverted + intuitive + resilient (soziales Coping, Flexibilität, Grenzen)
-  // FIX: Q50 (externe Bestätigung) war hier doppelt verrechnet — positiv via D5_res UND
-  // invertiert via (6-a[49]). Da Q50 nun korrekt in D5_risk liegt, wird der direkte
-  // Inversionsterm entfernt. Divisor angepasst: 1.2+0.8+0.8 = 2.8
-  const C_raw = (D1_extro*1.2 + D2_intuit*0.8 + D5_res*0.8) / 2.8;
-  // G: introverted + analytical + prevention + systematic + high burnout risk
-  const G_raw = (D1_intro*0.8 + D2_anal*0.8 + D3_prev*1.2 + D4_sys*0.8 + D5_risk*1.2) / 4.8;
+  // Psychotyp-Rohscores (1–5 Skala → 0–100 nach norm)
+  // S: introvertiert + analytisch + präventiv + systematisch + Rückzug-Coping
+  const S_raw = (D1_intro*1.2 + D2_anal*1.2 + D3_prev*0.8 + D4_sys*0.8 + D5_coping_A*0.4) / 4.4;
+  // V: extravertiert + intuitiv + Promotion + experimentell + Vision + Austausch-Coping
+  const V_raw = (D1_extro*0.8 + D2_intuit*1.2 + D3_prom*1.2 + D4_exp*0.8 + D4_vision*0.6 + D5_coping_B*0.2) / 4.8;
+  // M: extravertiert + analytisch-schnell + Promotion + experimentell + resilient + Austausch-Coping
+  const M_raw = (D1_extro*0.7 + D2_anal*0.3 + D2_intuit*0.7 + D3_prom*1.0 + D4_exp*1.0 + D5_res*0.8 + D5_coping_B*0.3) / 4.8;
+  // C: extravertiert + intuitiv + resilient + soziales Coping (Austausch ist für C zentral)
+  const C_raw = (D1_extro*1.2 + D2_intuit*0.8 + D5_res*0.8 + D5_coping_B*0.6) / 3.4;
+  // G: introvertiert + analytisch + präventiv + systematisch + Vulnerabilität + Kontrollbedürfnis + Rückzug
+  const G_raw = (D1_intro*0.8 + D2_anal*0.8 + D3_prev*1.2 + D4_sys*0.8 + D5_risk*1.2 + D4_deleg*0.4 + D5_coping_A*0.3) / 5.5;
 
   function norm(x){ return Math.min(100, Math.max(0, Math.round((x-1)/4*100))); }
 
@@ -527,9 +570,10 @@ function computeScores(ans) {
   // bei primary=40 → threshold 25 (63%) — zu breite Streuung.
   const secondary = (sorted[1][1] >= sorted[0][1] * 0.80 && sorted[1][1] >= 25) ? sorted[1][0] : null;
 
-  // Burnout-Alert: D5_risk ≥ 3.8 (von max. 5) über 6 Vulnerabilitätsmarker.
-  // Entspricht ~70% Zustimmung zu Erschöpfungsindikatoren — klinisch als
-  // "erhöhtes Risiko" interpretierbar (angelehnt an MBI-Konzept von Maslach & Jackson 1981).
+  // Burnout-Alert: D5_risk ≥ 3.8 (von max. 5) über 4 reine Vulnerabilitätsmarker (Q45,46,47,50).
+  // Schwelle bleibt bei 3.8/5.0 = 76% Zustimmung — klinisch als "erhöhtes Risiko" interpretierbar
+  // (angelehnt an MBI-Konzept, Maslach & Jackson 1981). Coping-Items (Q41–44) sind aus diesem
+  // Score herausgelöst — D5_risk misst jetzt ausschließlich Erschöpfungsindikatoren.
   // ⚠️  Nicht als Diagnose kommunizieren — als Handlungsempfehlung formulieren.
   const burnout = D5_risk >= 3.8;
 
@@ -583,6 +627,11 @@ function setLang(l) {
     if(el) el.innerHTML=t[id]||'';
   });
   document.getElementById('i-title').innerHTML = t['i-title'];
+  // Consent-Texte aktualisieren
+  const cdEl = document.getElementById('consent-dsgvo-txt');
+  const crEl = document.getElementById('consent-research-txt');
+  if(cdEl) cdEl.innerHTML = t['consent-dsgvo-txt'];
+  if(crEl) crEl.innerHTML = t['consent-research-txt'];
   // Update placeholders
   document.getElementById('f-firstname').placeholder = l==='de'?'Max':'Alex';
   document.getElementById('f-email').placeholder = l==='de'?'deine@email.de':'your@email.com';
@@ -592,6 +641,11 @@ function setLang(l) {
   if(document.getElementById('quiz').classList.contains('show')) {
     renderBlock(currentBlock);
   }
+}
+
+function updateStartBtn() {
+  const checked = document.getElementById('consent-dsgvo')?.checked === true;
+  document.getElementById('btn-start').disabled = !checked;
 }
 
 // ═══════════════════════════════════════════
@@ -642,12 +696,25 @@ function startQuiz() {
     document.getElementById('f-firstname').focus();
     return;
   }
+  // DSGVO-Pflicht nochmals prüfen (Button sollte schon geblockt sein)
+  if(!document.getElementById('consent-dsgvo')?.checked) return;
+
+  // Consent-Werte einmalig beim Start erfassen
+  const consentTimestamp = new Date().toISOString();
+  const urlParams = new URLSearchParams(window.location.search);
+  const consentSource = urlParams.get('source') || 'solo_direct';
+
   userData = {
     firstName: fn,
     lastName: document.getElementById('f-lastname').value.trim(),
     email: em,
     industry: document.getElementById('f-industry').value.trim(),
-    years: document.getElementById('f-years').value.trim()
+    years: document.getElementById('f-years').value.trim(),
+    consentDsgvo: true,
+    consentResearch: document.getElementById('consent-research-intro')?.checked === true,
+    consentResearchVersion: 'v1.0_2026-06',
+    consentTimestamp: consentTimestamp,
+    consentSource: consentSource,
   };
 
   // Track start in Brevo
@@ -712,8 +779,10 @@ function renderBlock(blockIdx) {
   });
 
   const isLast = blockIdx === 4;
+  const researchConsentHtml = ''; // Consent wurde auf den Intro-Screen verschoben
   html += `
     </div>
+    ${researchConsentHtml}
     <div class="block-nav">
       <button class="btn-prev" onclick="prevBlock()" ${blockIdx===0?'style="visibility:hidden"':''}>
         ${t['btn-prev-txt']}
@@ -806,6 +875,7 @@ function submitQuiz() {
     // ── 1. Profil via Cloudflare Worker speichern (service role, bypasses RLS) ──
     try {
       const diagToken = new URLSearchParams(window.location.search).get('token');
+      const researchConsent = userData.consentResearch === true;
       if(diagToken) {
         await fetch('https://neurobusiness.one/api/save-diagnostic', {
           method: 'POST',
@@ -820,6 +890,12 @@ function submitQuiz() {
             years:     userData.years    || null,
             d1: result.d1, d2: result.d2, d3: result.d3, d4: result.d4, d5: result.d5,
             responseSetWarning: result.responseSetWarning || false,
+            answers:                answers,
+            consentResearch:        researchConsent,
+            consentResearchVersion: userData.consentResearchVersion || null,
+            consentDsgvo:           userData.consentDsgvo === true,
+            consentTimestamp:       userData.consentTimestamp || null,
+            consentSource:          userData.consentSource || 'solo_direct',
           })
         });
       }

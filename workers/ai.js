@@ -58,7 +58,7 @@ export default {
       let body;
       try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
 
-      const { token: diagToken, primary, secondary, scores, burnout, industry, years, d1, d2, d3, d4, d5, responseSetWarning } = body;
+      const { token: diagToken, primary, secondary, scores, burnout, industry, years, d1, d2, d3, d4, d5, responseSetWarning, answers, lang, consentResearch, consentResearchVersion, consentDsgvo, consentTimestamp, consentSource } = body;
       if (!diagToken || !primary) return json({ error: 'Missing token or primary' }, 400, corsHeaders);
 
       // Validate token → get user_id
@@ -80,6 +80,9 @@ export default {
         years_self_employed: years || null,
         diagnostic_completed_at: new Date().toISOString(),
         report_context: JSON.stringify({ primary, secondary: secondary || null, scores, burnout, industry, years, d1, d2, d3, d4, d5 }),
+        consent_dsgvo: consentDsgvo === true,
+        consent_timestamp: consentTimestamp || new Date().toISOString(),
+        consent_source: consentSource || 'solo_direct',
       };
 
       const patchRes = await fetch(`${env.SUPABASE_URL}/rest/v1/profiles?id=eq.${row.user_id}`, {
@@ -96,6 +99,34 @@ export default {
       if (!patchRes.ok) {
         const err = await patchRes.text();
         return json({ error: 'Profile update failed', detail: err }, 500, corsHeaders);
+      }
+
+      // ── Topf 2: Forschungsdaten (anonym) ────────────────────────────
+      // Nur schreiben wenn: (a) aktive Einwilligung, (b) genau 50 Antworten, (c) alle Werte 1–5
+      // KEIN user_id — Tabelle bleibt strikt anonym (Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO)
+      if (consentResearch === true && Array.isArray(answers) && answers.length === 50) {
+        const allValid = answers.every(v => Number.isInteger(v) && v >= 1 && v <= 5);
+        if (allValid) {
+          const answerRow = {};  // bewusst kein user_id
+          answers.forEach((val, i) => { answerRow['q' + (i + 1)] = val; });
+          answerRow.lang = lang || null;
+          answerRow.industry = industry || null;
+          answerRow.years = years || null;
+          answerRow.response_set_warning = !!responseSetWarning;
+          answerRow.consent_research = true;
+          answerRow.consent_research_version = consentResearchVersion || 'v1.0_2026-06';
+          answerRow.consent_source = consentSource || 'solo_direct';
+          fetch(`${env.SUPABASE_URL}/rest/v1/diagnostic_responses`, {
+            method: 'POST',
+            headers: {
+              'apikey': env.SUPABASE_SERVICE_KEY,
+              'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+              'Content-Type': 'application/json',
+              'Prefer': 'return=minimal',
+            },
+            body: JSON.stringify(answerRow),
+          }).catch(console.error);
+        }
       }
 
       return json({ ok: true }, 200, corsHeaders);

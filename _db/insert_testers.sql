@@ -17,7 +17,8 @@ FROM (VALUES
   ('evaa.com@gmail.com',        'Eva'),
   ('elan.kolontaiu@gmail.com',  'Elan'),
   ('jkjazz19@yahoo.co.uk',      'Tester'),
-  ('oliveri.jerome@gmail.com',  'Jerome')
+  ('oliveri.jerome@gmail.com',  'Jerome'),
+  ('mark.gregg@bonago.de',      'Mark')
 ) AS v(email, first_name)
 WHERE NOT EXISTS (
   SELECT 1 FROM profiles p WHERE p.email = v.email

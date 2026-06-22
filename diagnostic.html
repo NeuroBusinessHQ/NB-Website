@@ -247,8 +247,7 @@ initBrevo();
 <script>
 // ── CONFIG ──
 // ⚠️  BEFORE LAUNCH: gleiche Werte wie in app.html
-const SUPABASE_URL = 'https://psqfrdpitjmfwvupmfdp.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzcWZyZHBpdGptZnd2dXBtZmRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDQ1NjQsImV4cCI6MjA5MzkyMDU2NH0.yUD24iRrINHLBRIJElmOJZPoBuoBcPGfayNGX38Oldg';
+const WORKER_URL = 'https://neurobusiness.one/api';
 
 // ═══════════════════════════════════════════
 // TRANSLATIONS
@@ -611,35 +610,20 @@ async function checkAccess() {
   }
 
   try {
-    // 1. Token in access_tokens prüfen
-    const tokenRes = await fetch(
-      `${SUPABASE_URL}/rest/v1/access_tokens?token=eq.${encodeURIComponent(token)}&select=id,user_id,email,expires_at`,
-      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
-    );
-    const tokenData = await tokenRes.json();
-    const row = tokenData?.[0];
-
-    if(!row || new Date(row.expires_at) < new Date()) {
-      return false; // Token ungültig oder abgelaufen
-    }
-
-    // 2. Profil laden für Name/Email Prefill
-    const profileRes = await fetch(
-      `${SUPABASE_URL}/rest/v1/profiles?id=eq.${row.user_id}&select=email,first_name`,
-      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
-    );
-    const profileData = await profileRes.json();
-    const profile = profileData?.[0];
+    const res = await fetch(`${WORKER_URL}/validate-token`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token })
+    });
+    if (!res.ok) return false;
+    const data = await res.json();
+    const user = data.user;
 
     // Felder vorab ausfüllen
     const emailField = document.getElementById('f-email');
     const nameField  = document.getElementById('f-firstname');
-    if(emailField && (profile?.email || row.email)) {
-      emailField.value = profile?.email || row.email;
-    }
-    if(nameField && profile?.first_name) {
-      nameField.value = profile.first_name;
-    }
+    if(emailField && user?.email) emailField.value = user.email;
+    if(nameField && user?.firstName) nameField.value = user.firstName;
 
     return true;
   } catch(e) {

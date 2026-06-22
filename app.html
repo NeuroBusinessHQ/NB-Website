@@ -474,8 +474,7 @@ body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-siz
 // ── CONFIG ──
 // Supabase anon key ist öffentlich sicher — dient nur zur Identifizierung, nicht als Secret
 // Der Claude API Key ist NIEMALS hier — er liegt sicher im Cloudflare Worker
-const SUPABASE_URL = 'https://psqfrdpitjmfwvupmfdp.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzcWZyZHBpdGptZnd2dXBtZmRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDQ1NjQsImV4cCI6MjA5MzkyMDU2NH0.yUD24iRrINHLBRIJElmOJZPoBuoBcPGfayNGX38Oldg';
+const WORKER_URL = 'https://neurobusiness.one/api';
 // KI-Anfragen gehen ausschließlich durch den sicheren Cloudflare Worker — kein API Key im Frontend
 const AI_ENDPOINT = 'https://neurobusiness.one/api/ai'; // Cloudflare Worker via Route
 
@@ -605,13 +604,13 @@ async function requestAccess() {
   document.getElementById('gate-btn-txt').textContent = LANG === 'de' ? 'Wird gesendet…' : 'Sending…';
 
   try {
-    // Check if email exists in Supabase purchases
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}&select=*`, {
-      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    const res = await fetch(`${WORKER_URL}/request-access`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, lang: LANG })
     });
-    const data = await res.json();
 
-    if (!data || data.length === 0) {
+    if (res.status === 404) {
       errEl.textContent = LANG === 'de'
         ? 'Diese E-Mail ist nicht registriert. Hast du die Diagnostik gekauft? → hello@neurobusiness.one'
         : 'This email is not registered. Did you purchase the diagnostic? → hello@neurobusiness.one';
@@ -620,29 +619,7 @@ async function requestAccess() {
       document.getElementById('gate-btn-txt').textContent = LANG === 'de' ? 'Zugangscode senden' : 'Send access link';
       return;
     }
-
-    // Generate magic token, save to Supabase, send via Brevo
-    const token = Math.random().toString(36).substr(2, 16) + Date.now().toString(36);
-    const userData = data[0];
-
-    // Save token (access_tokens table — needs to be created via SQL below)
-    await fetch(`${SUPABASE_URL}/rest/v1/access_tokens`, {
-      method: 'POST',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, token, user_id: userData.id, expires_at: new Date(Date.now() + 7*24*60*60*1000).toISOString() })
-    });
-
-    // Send magic link email via n8n webhook
-    const appUrl = `${window.location.origin}${window.location.pathname}?token=${token}`;
-    await fetch('https://evakolontai.app.n8n.cloud/webhook/nb-magic-link', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, token, appUrl, name: userData.first_name || '', lang: LANG })
-    }).catch(() => {}); // fire and forget
+    if (!res.ok) throw new Error('Worker error');
 
     succEl.innerHTML = LANG === 'de'
       ? `✓ Link gesendet! Schau in dein Postfach — <strong>${email}</strong>. Der Link ist 7 Tage gültig.`
@@ -660,19 +637,22 @@ async function requestAccess() {
 
 async function validateToken(token) {
   try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/access_tokens?token=eq.${token}&select=*`, {
-      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    const res = await fetch(`${WORKER_URL}/validate-token`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token })
     });
+    if (!res.ok) return null;
     const data = await res.json();
-    if (!data || data.length === 0) return null;
-    const row = data[0];
-    if (new Date(row.expires_at) < new Date()) return null;
-    // Fetch profile separately
-    const pres = await fetch(`${SUPABASE_URL}/rest/v1/profiles?id=eq.${row.user_id}&select=*`, {
-      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
-    });
-    const profiles = await pres.json();
-    return profiles?.[0] || null;
+    // Remap worker response to profile shape expected by the rest of the app
+    const u = data.user;
+    return {
+      id: u.id, email: u.email, first_name: u.firstName,
+      psychotype: u.psychotype, secondary_psychotype: u.secondaryPsychotype,
+      score_s: u.scoreS, score_v: u.scoreV, score_m: u.scoreM,
+      score_c: u.scoreC, score_g: u.scoreG,
+      burnout_alert: u.burnoutAlert, lang: u.lang,
+    };
   } catch(e) { return null; }
 }
 
@@ -759,22 +739,14 @@ function updateSidebar() {
 // ── STATS ──
 async function loadStats() {
   try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/conversations?user_id=eq.${encodeURIComponent(USER.userId)}&select=created_at&order=created_at.desc`, {
-      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    const res = await fetch(`${WORKER_URL}/stats`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${USER.token}` },
+      body: JSON.stringify({})
     });
     const data = await res.json();
-    document.getElementById('stat-sessions').textContent = data.length || 0;
-    let streak = 0;
-    if (data.length > 0) {
-      const dates = [...new Set(data.map(r => r.created_at.split('T')[0]))].sort().reverse();
-      let prev = new Date(); prev.setHours(0,0,0,0);
-      for (const d of dates) {
-        const cur = new Date(d);
-        const diff = Math.round((prev - cur) / 86400000);
-        if (diff <= 1) { streak++; prev = cur; } else break;
-      }
-    }
-    document.getElementById('stat-streak').textContent = streak + (LANG === 'de' ? ' Tage' : ' days');
+    document.getElementById('stat-sessions').textContent = data.sessions || 0;
+    document.getElementById('stat-streak').textContent = (data.streak || 0) + (LANG === 'de' ? ' Tage' : ' days');
   } catch(e) {
     document.getElementById('stat-sessions').textContent = '—';
     document.getElementById('stat-streak').textContent = '—';
@@ -786,13 +758,12 @@ async function logEnergy(level) {
   document.querySelectorAll('.energy-btn').forEach((b,i) => b.classList.toggle('sel', i === level-1));
   ENERGY_TODAY = level;
   try {
-    await fetch(`${SUPABASE_URL}/rest/v1/checkins`, {
+    await fetch(`${WORKER_URL}/checkin`, {
       method: 'POST',
-      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${USER.token}` },
       body: JSON.stringify({
-        user_id: USER.userId,
         energy_level: level,
-        stress_level: level <= 2 ? 4 : level === 3 ? 2 : 1, // invert: low energy = high stress
+        stress_level: level <= 2 ? 4 : level === 3 ? 2 : 1,
         focus_level: level,
         note: `Auto check-in · psychotype ${USER.type} · ${LANG}`
       })
@@ -1202,23 +1173,13 @@ async function saveSession(_data) {
 async function saveTask(taskText, weekTag) {
   if (!USER || USER.userId === 'dev') return null;
   try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/tasks`, {
+    const res = await fetch(`${WORKER_URL}/tasks`, {
       method: 'POST',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=representation'
-      },
-      body: JSON.stringify({
-        user_id: USER.userId,
-        task_text: taskText,
-        status: 'planned',
-        week_tag: weekTag || null
-      })
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${USER.token}` },
+      body: JSON.stringify({ action: 'create', task_text: taskText, week_tag: weekTag || null })
     });
     const data = await res.json();
-    return data?.[0]?.id || null;
+    return data?.id || null;
   } catch(e) { return null; }
 }
 
@@ -1226,14 +1187,10 @@ async function saveTask(taskText, weekTag) {
 async function updateTaskStatus(taskId, status) {
   if (!USER || USER.userId === 'dev' || !taskId) return;
   try {
-    await fetch(`${SUPABASE_URL}/rest/v1/tasks?id=eq.${taskId}`, {
-      method: 'PATCH',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ status })
+    await fetch(`${WORKER_URL}/tasks`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${USER.token}` },
+      body: JSON.stringify({ action: 'update', taskId, status })
     });
   } catch(e) {}
 }
@@ -1242,18 +1199,10 @@ async function updateTaskStatus(taskId, status) {
 async function saveFeedback(helpfulScore, comment = '') {
   if (!USER || USER.userId === 'dev') return;
   try {
-    await fetch(`${SUPABASE_URL}/rest/v1/feedback`, {
+    await fetch(`${WORKER_URL}/feedback`, {
       method: 'POST',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user_id: USER.userId,
-        helpful_score: helpfulScore,
-        comment: comment || null
-      })
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${USER.token}` },
+      body: JSON.stringify({ helpful_score: helpfulScore, comment: comment || null })
     });
   } catch(e) {}
 }

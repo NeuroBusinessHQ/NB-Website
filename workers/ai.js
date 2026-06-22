@@ -26,16 +26,12 @@ export default {
     const allowed = env.ALLOWED_ORIGIN || 'https://neurobusiness.one';
     const corsHeaders = {
       'Access-Control-Allow-Origin': (origin === allowed || origin.includes('localhost') || origin.includes('pages.dev')) ? origin : allowed,
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Methods': 'GET, POST, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     };
 
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: corsHeaders });
-    }
-
-    if (request.method !== 'POST') {
-      return json({ error: 'Method not allowed' }, 405, corsHeaders);
     }
 
     const pathname = new URL(request.url).pathname;
@@ -102,6 +98,122 @@ export default {
         return json({ error: 'Profile update failed', detail: err }, 500, corsHeaders);
       }
 
+      return json({ ok: true }, 200, corsHeaders);
+    }
+
+    // ── /api/validate-token ──────────────────────────────────────
+    if (pathname === '/api/validate-token') {
+      let body;
+      try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+      const { token: vToken } = body;
+      if (!vToken) return json({ error: 'Missing token' }, 400, corsHeaders);
+      const vProfile = await validateTokenAndGetProfile(vToken, env);
+      if (!vProfile) return json({ error: 'Invalid or expired token' }, 401, corsHeaders);
+      return json({ user: {
+        id: vProfile.id,
+        email: vProfile.email,
+        firstName: vProfile.first_name,
+        psychotype: vProfile.psychotype,
+        secondaryPsychotype: vProfile.secondary_psychotype,
+        scoreS: vProfile.score_s, scoreV: vProfile.score_v, scoreM: vProfile.score_m,
+        scoreC: vProfile.score_c, scoreG: vProfile.score_g,
+        burnoutAlert: vProfile.burnout_alert,
+        lang: vProfile.lang,
+      }}, 200, corsHeaders);
+    }
+
+    // ── /api/request-access ──────────────────────────────────────
+    if (pathname === '/api/request-access') {
+      let body;
+      try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+      const { email, lang = 'de' } = body;
+      if (!email) return json({ error: 'Missing email' }, 400, corsHeaders);
+
+      const profiles = await supabaseGet(`profiles?email=eq.${encodeURIComponent(email)}&select=id,first_name,email&limit=1`, env);
+      const userData = profiles?.[0];
+      if (!userData) return json({ error: 'not_found' }, 404, corsHeaders);
+
+      const token = Math.random().toString(36).substr(2, 16) + Date.now().toString(36);
+      const expires_at = new Date(Date.now() + 7*24*60*60*1000).toISOString();
+      await supabasePost('access_tokens', { email, token, user_id: userData.id, expires_at }, env);
+
+      const appUrl = `https://neurobusiness.one/app?token=${token}`;
+      fetch('https://evakolontai.app.n8n.cloud/webhook/nb-magic-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, token, appUrl, name: userData.first_name || '', lang }),
+      }).catch(() => {});
+
+      return json({ ok: true }, 200, corsHeaders);
+    }
+
+    // ── /api/stats ────────────────────────────────────────────────
+    if (pathname === '/api/stats') {
+      const stToken = (request.headers.get('Authorization') || '').replace('Bearer ', '').trim();
+      const stProfile = await validateTokenAndGetProfile(stToken, env);
+      if (!stProfile) return json({ error: 'Unauthorized' }, 401, corsHeaders);
+
+      const convs = await supabaseGet(`conversations?user_id=eq.${stProfile.id}&select=created_at&order=created_at.desc`, env) || [];
+      let streak = 0;
+      if (convs.length > 0) {
+        const dates = [...new Set(convs.map(r => r.created_at.split('T')[0]))].sort().reverse();
+        let prev = new Date(); prev.setHours(0,0,0,0);
+        for (const d of dates) {
+          const cur = new Date(d);
+          const diff = Math.round((prev - cur) / 86400000);
+          if (diff <= 1) { streak++; prev = cur; } else break;
+        }
+      }
+      return json({ sessions: convs.length, streak }, 200, corsHeaders);
+    }
+
+    // ── /api/checkin ─────────────────────────────────────────────
+    if (pathname === '/api/checkin') {
+      const ciToken = (request.headers.get('Authorization') || '').replace('Bearer ', '').trim();
+      const ciProfile = await validateTokenAndGetProfile(ciToken, env);
+      if (!ciProfile) return json({ error: 'Unauthorized' }, 401, corsHeaders);
+      let body;
+      try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+      await supabasePost('checkins', { user_id: ciProfile.id, ...body }, env);
+      return json({ ok: true }, 200, corsHeaders);
+    }
+
+    // ── /api/tasks ───────────────────────────────────────────────
+    if (pathname === '/api/tasks') {
+      const tkToken = (request.headers.get('Authorization') || '').replace('Bearer ', '').trim();
+      const tkProfile = await validateTokenAndGetProfile(tkToken, env);
+      if (!tkProfile) return json({ error: 'Unauthorized' }, 401, corsHeaders);
+      let body;
+      try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+      const { action, taskId, task_text, week_tag, status: taskStatus } = body;
+
+      if (action === 'list') {
+        const tasks = await supabaseGet(`tasks?user_id=eq.${tkProfile.id}&select=*&order=created_at.desc&limit=20`, env) || [];
+        return json({ tasks }, 200, corsHeaders);
+      }
+      if (action === 'create') {
+        const result = await supabasePost('tasks', { user_id: tkProfile.id, task_text, status: 'planned', week_tag: week_tag || null }, env);
+        return json({ id: result?.id || null }, 200, corsHeaders);
+      }
+      if (action === 'update' && taskId) {
+        await fetch(`${env.SUPABASE_URL}/rest/v1/tasks?id=eq.${taskId}&user_id=eq.${tkProfile.id}`, {
+          method: 'PATCH',
+          headers: { 'apikey': env.SUPABASE_SERVICE_KEY, 'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify({ status: taskStatus }),
+        });
+        return json({ ok: true }, 200, corsHeaders);
+      }
+      return json({ error: 'Unknown action' }, 400, corsHeaders);
+    }
+
+    // ── /api/feedback ─────────────────────────────────────────────
+    if (pathname === '/api/feedback') {
+      const fbToken = (request.headers.get('Authorization') || '').replace('Bearer ', '').trim();
+      const fbProfile = await validateTokenAndGetProfile(fbToken, env);
+      if (!fbProfile) return json({ error: 'Unauthorized' }, 401, corsHeaders);
+      let body;
+      try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+      await supabasePost('feedback', { user_id: fbProfile.id, ...body }, env);
       return json({ ok: true }, 200, corsHeaders);
     }
 

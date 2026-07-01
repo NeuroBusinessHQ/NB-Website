@@ -209,6 +209,42 @@ export default {
       return json({ ok: true }, 200, corsHeaders);
     }
 
+    // ── /api/checkins (Historie für Insights & Alignment Score) ──
+    if (pathname === '/api/checkins') {
+      const chToken = (request.headers.get('Authorization') || '').replace('Bearer ', '').trim();
+      const chProfile = await validateTokenAndGetProfile(chToken, env);
+      if (!chProfile) return json({ error: 'Unauthorized' }, 401, corsHeaders);
+      const rows = await supabaseGet(`checkins?user_id=eq.${chProfile.id}&select=energy_level,stress_level,focus_level,note,created_at&order=created_at.desc&limit=60`, env) || [];
+      return json({ checkins: rows }, 200, corsHeaders);
+    }
+
+    // ── /api/decisions (Decision Log) ─────────────────────────────
+    if (pathname === '/api/decisions') {
+      const dcToken = (request.headers.get('Authorization') || '').replace('Bearer ', '').trim();
+      const dcProfile = await validateTokenAndGetProfile(dcToken, env);
+      if (!dcProfile) return json({ error: 'Unauthorized' }, 401, corsHeaders);
+      let body;
+      try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+      const { action, title, note, aligned, energy_at } = body;
+
+      if (action === 'list') {
+        const decisions = await supabaseGet(`decisions?user_id=eq.${dcProfile.id}&select=*&order=created_at.desc&limit=50`, env) || [];
+        return json({ decisions }, 200, corsHeaders);
+      }
+      if (action === 'create') {
+        if (!title) return json({ error: 'title required' }, 400, corsHeaders);
+        const result = await supabasePost('decisions', {
+          user_id: dcProfile.id,
+          title: String(title).slice(0, 300),
+          note: note ? String(note).slice(0, 1000) : null,
+          aligned: ['yes','no','unsure'].includes(aligned) ? aligned : 'unsure',
+          energy_at: energy_at || null,
+        }, env);
+        return json({ id: result?.id || null }, 200, corsHeaders);
+      }
+      return json({ error: 'Unknown action' }, 400, corsHeaders);
+    }
+
     // ── /api/tasks ───────────────────────────────────────────────
     if (pathname === '/api/tasks') {
       const tkToken = (request.headers.get('Authorization') || '').replace('Bearer ', '').trim();

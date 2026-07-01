@@ -299,6 +299,85 @@ body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-siz
 }
 .qp-btn:hover { border-color: var(--g); color: var(--g2); background: rgba(201,169,110,.05); }
 
+/* ── DASHBOARD / VIEWS (merged from AI Companion prototype) ── */
+.view-wrap { max-width: 760px; margin: 0 auto; }
+.view-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.view-grid.g3 { grid-template-columns: repeat(3, 1fr); }
+.v-card {
+  background: var(--cr); border: 1px solid var(--b);
+  border-radius: 14px; padding: 20px;
+}
+.v-card.tint { background: var(--cr2); }
+.v-eye { font-family: var(--fm); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--g2); margin-bottom: 12px; }
+.v-big { font-family: var(--fd); font-size: 30px; font-weight: 300; color: var(--dk); letter-spacing: -.01em; }
+.v-sub { font-size: 12px; color: var(--t3); margin-top: 4px; line-height: 1.6; }
+
+/* alignment ring */
+.ringwrap { display: flex; align-items: center; gap: 18px; }
+.ring { position: relative; width: 96px; height: 96px; flex-shrink: 0; }
+.ring svg { transform: rotate(-90deg); }
+.ring .ring-val { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-size: 28px; font-weight: 400; color: var(--dk); }
+
+/* energy bars */
+.bars { display: flex; align-items: flex-end; gap: 7px; height: 96px; padding-bottom: 20px; }
+.bar { flex: 1; border-radius: 5px 5px 2px 2px; background: linear-gradient(180deg, var(--g), rgba(201,169,110,.35)); position: relative; min-height: 6px; }
+.bar.mut { background: linear-gradient(180deg, rgba(26,61,53,.45), rgba(26,61,53,.15)); }
+.bar span { position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); font-family: var(--fm); font-size: 9px; color: var(--t3); }
+
+/* dimension / score rows */
+.dims { display: flex; flex-direction: column; gap: 12px; }
+.dim { display: grid; grid-template-columns: 140px 1fr 34px; align-items: center; gap: 12px; font-size: 13px; color: var(--t2); }
+.dim .track { height: 7px; border-radius: 20px; background: var(--cr3); overflow: hidden; }
+.dim .fill { height: 100%; border-radius: 20px; background: linear-gradient(90deg, var(--c), var(--g)); }
+.dim b { font-family: var(--fm); font-size: 11px; font-weight: 400; color: var(--t2); text-align: right; }
+
+/* pattern / data rows */
+.dp { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--b2); font-size: 13px; color: var(--t1); }
+.dp:last-child { border-bottom: none; }
+.dp small { display: block; font-size: 11px; color: var(--t3); margin-top: 2px; }
+.dp .dp-val { font-family: var(--fm); font-size: 11px; color: var(--g2); white-space: nowrap; }
+
+/* decisions */
+.dec-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 6px; }
+.dec-input {
+  width: 100%; background: var(--cr2); border: 1.5px solid var(--b);
+  border-radius: 10px; padding: 12px 14px; font-family: var(--fb);
+  font-size: 14px; color: var(--t1); outline: none;
+}
+.dec-input:focus { border-color: var(--g); }
+.dec-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.dec-tag {
+  background: none; border: 1px solid var(--b); border-radius: 20px;
+  padding: 6px 14px; font-size: 12px; color: var(--t3); cursor: pointer;
+  font-family: var(--fb); transition: all .15s;
+}
+.dec-tag.sel { border-color: var(--g); color: var(--g2); background: rgba(201,169,110,.08); }
+.dec-entry { padding: 14px 0; border-bottom: 1px solid var(--b2); }
+.dec-entry:last-child { border-bottom: none; }
+.dec-title { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; font-weight: 500; color: var(--dk); }
+.dec-title small { font-family: var(--fm); font-size: 10px; color: var(--t3); font-weight: 400; white-space: nowrap; }
+.dec-note { font-size: 12.5px; color: var(--t2); line-height: 1.6; margin-top: 4px; }
+.dec-badge { display: inline-block; margin-top: 8px; font-family: var(--fm); font-size: 9px; letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; }
+.dec-badge.y { background: rgba(26,61,53,.08); color: var(--c); }
+.dec-badge.n { background: rgba(220,80,60,.08); color: #b05540; }
+.dec-badge.u { background: rgba(201,169,110,.12); color: var(--g2); }
+
+.v-btn {
+  background: var(--c); color: var(--g); border: none; border-radius: 10px;
+  padding: 11px 20px; font-family: var(--fb); font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all .2s; align-self: flex-start;
+}
+.v-btn:hover { background: var(--g); color: var(--dk); }
+.v-btn.ghost { background: none; border: 1px solid var(--b); color: var(--t2); }
+.v-btn.ghost:hover { border-color: var(--g); color: var(--g2); }
+
+.task-check { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px solid var(--b2); font-size: 13px; color: var(--t1); }
+.task-check:last-child { border-bottom: none; }
+.task-check input { margin-top: 3px; accent-color: var(--c); cursor: pointer; }
+.task-check.done span { text-decoration: line-through; color: var(--t3); }
+
+@media(max-width: 720px) { .view-grid, .view-grid.g3 { grid-template-columns: 1fr; } .dim { grid-template-columns: 110px 1fr 30px; } }
+
 /* ── MOBILE ── */
 #menu-toggle { display: none; }
 @media(max-width: 768px) {
@@ -374,6 +453,10 @@ body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-siz
 
     <div class="sb-nav">
       <div class="sb-section-label" id="lbl-nav-main">Main</div>
+      <button class="sb-btn" id="btn-today" onclick="setMode('today')">
+        <span class="sb-btn-icon">🏠</span>
+        <span id="lbl-today">Today</span>
+      </button>
       <button class="sb-btn active" id="btn-chat" onclick="setMode('chat')">
         <span class="sb-btn-icon">💬</span>
         <span id="lbl-chat">AI Sparring</span>
@@ -381,6 +464,18 @@ body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-siz
       <button class="sb-btn" id="btn-agenda" onclick="setMode('agenda')">
         <span class="sb-btn-icon">📋</span>
         <span id="lbl-agenda">Weekly Agenda</span>
+      </button>
+      <button class="sb-btn" id="btn-insights" onclick="setMode('insights')">
+        <span class="sb-btn-icon">📈</span>
+        <span id="lbl-insights">Insights</span>
+      </button>
+      <button class="sb-btn" id="btn-decisions" onclick="setMode('decisions')">
+        <span class="sb-btn-icon">⚖️</span>
+        <span id="lbl-decisions">Decision Log</span>
+      </button>
+      <button class="sb-btn" id="btn-profile" onclick="setMode('profile')">
+        <span class="sb-btn-icon">🧭</span>
+        <span id="lbl-profile">My Psychotype</span>
       </button>
 
       <div class="sb-section-label" id="lbl-nav-tools">Tools</div>
@@ -662,9 +757,11 @@ async function init() {
   const token = params.get('token');
   LANG = params.get('lang') || navigator.language.startsWith('de') ? 'de' : 'en';
 
-  // Dev mode: bypass auth with URL params
-  const devType = params.get('type');
-  if (devType && params.get('dev') === '1') {
+  // Dev mode: bypass auth with URL params.
+  // Lokal geöffnete Datei (file://) startet automatisch als Demo — greift NIE auf dem Live-Server.
+  const isLocalFile = window.location.protocol === 'file:';
+  const devType = params.get('type') || (isLocalFile ? 'V' : null);
+  if (devType && (params.get('dev') === '1' || isLocalFile)) {
     USER = {
       email: 'dev@test.com',
       name: params.get('name') || 'Test User',
@@ -725,7 +822,7 @@ function launchApp() {
   setLang(LANG);
   updateSidebar();
   loadStats();
-  showWelcome();
+  setMode('today'); // Dashboard als Startscreen — der tägliche Einstieg
 }
 
 // ── SIDEBAR UPDATE ──
@@ -769,6 +866,7 @@ async function logEnergy(level) {
       })
     });
   } catch(e) {}
+  CHECKINS_CACHE = null; // Insights/Alignment beim nächsten Aufruf neu laden
   if (level <= 2 && MODE === 'chat') {
     setTimeout(() => injectPrompt('burnout_low'), 500);
   }
@@ -851,16 +949,425 @@ function setMode(mode) {
   document.querySelectorAll('.sb-btn[id^="btn-"]').forEach(b => b.classList.remove('active'));
   const btn = document.getElementById('btn-' + mode);
   if (btn) btn.classList.add('active');
+  document.getElementById('sidebar').classList.remove('open');
 
   const isEN = LANG === 'en';
   const titles = {
-    chat: isEN ? 'AI <em>Sparring</em>' : 'AI <em>Sparring</em>',
-    agenda: isEN ? 'Weekly <em>Agenda</em>' : 'Wochen<em>agenda</em>'
+    chat: 'AI <em>Sparring</em>',
+    agenda: isEN ? 'Weekly <em>Agenda</em>' : 'Wochen<em>agenda</em>',
+    today: isEN ? 'To<em>day</em>' : 'Heu<em>te</em>',
+    insights: 'In<em>sights</em>',
+    decisions: isEN ? 'Decision <em>Log</em>' : 'Entscheidungs<em>log</em>',
+    profile: isEN ? 'My <em>Psychotype</em>' : 'Mein <em>Psychotyp</em>'
   };
   document.getElementById('topbar-title').innerHTML = titles[mode] || titles.chat;
 
   if (mode === 'agenda') showAgenda();
+  if (mode === 'today') showToday();
+  if (mode === 'insights') showInsights();
+  if (mode === 'decisions') showDecisions();
+  if (mode === 'profile') showProfile();
   updateQuickPrompts();
+}
+
+// ── API HELPER ──
+async function apiPost(path, body) {
+  const res = await fetch(`${WORKER_URL}${path}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${USER.token}` },
+    body: JSON.stringify(body || {})
+  });
+  if (!res.ok) throw new Error(`API ${path}: ${res.status}`);
+  return res.json();
+}
+
+// ── DATA CACHE (pro Session) ──
+let CHECKINS_CACHE = null;
+async function getCheckins() {
+  if (CHECKINS_CACHE) return CHECKINS_CACHE;
+  if (USER.userId === 'dev') {
+    // Demo-Daten für ?dev=1 Preview
+    CHECKINS_CACHE = Array.from({length: 10}, (_, i) => ({
+      energy_level: [3,4,2,3,4,3,2,4,3,4][i], stress_level: [2,1,3,2,1,2,3,1,2,1][i],
+      focus_level: [3,4,2,3,4,3,3,4,3,4][i],
+      created_at: new Date(Date.now() - i*86400000).toISOString()
+    }));
+    return CHECKINS_CACHE;
+  }
+  try {
+    const data = await apiPost('/checkins');
+    CHECKINS_CACHE = data.checkins || [];
+  } catch(e) { CHECKINS_CACHE = []; }
+  return CHECKINS_CACHE;
+}
+
+// ── ALIGNMENT SCORE ──
+// v1: berechnet aus Check-ins (Energie, Fokus, invertierter Stress) + Konstanz-Bonus.
+// Wird mit wachsender Datenbasis serverseitig ersetzt.
+function computeAlignment(checkins, streak) {
+  if (!checkins || checkins.length === 0) return null;
+  const rec = checkins.slice(0, 14);
+  const avg = (key) => rec.reduce((s, c) => s + (c[key] || 0), 0) / rec.length;
+  const e = avg('energy_level') / 4, f = avg('focus_level') / 4, st = 1 - (avg('stress_level') / 4);
+  const score = Math.round(38 * e + 27 * f + 20 * st + Math.min(streak || 0, 10) * 1.5);
+  return Math.max(5, Math.min(100, score));
+}
+
+function ringHtml(score) {
+  const r = 40, c = 2 * Math.PI * r;
+  const off = score == null ? c : c * (1 - score / 100);
+  return `<div class="ring">
+    <svg width="96" height="96"><circle cx="48" cy="48" r="${r}" stroke="var(--cr3)" stroke-width="8" fill="none"/>
+    <circle cx="48" cy="48" r="${r}" stroke="var(--g)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/></svg>
+    <div class="ring-val">${score == null ? '–' : score}</div>
+  </div>`;
+}
+
+// ── TODAY (Dashboard) ──
+async function showToday() {
+  const area = document.getElementById('chat-area');
+  const isEN = LANG === 'en';
+  const typeName = isEN ? USER.typeEN : USER.typeName;
+  const hour = new Date().getHours();
+  const greeting = isEN
+    ? (hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening')
+    : (hour < 12 ? 'Guten Morgen' : hour < 18 ? 'Guten Tag' : 'Guten Abend');
+  const name = USER.name ? `, ${USER.name.split(' ')[0]}` : '';
+
+  area.innerHTML = `<div class="view-wrap">
+    <div class="welcome-hero" style="padding:28px 32px;margin-bottom:14px">
+      <div class="wh-eye">${isEN ? 'YOUR DAY · ' : 'DEIN TAG · '}${typeName.toUpperCase()}</div>
+      <div class="wh-title" style="font-size:clamp(22px,3vw,32px)">${greeting}${name}.</div>
+      <div class="wh-sub">${isEN ? 'One aligned day at a time.' : 'Ein stimmiger Tag nach dem anderen.'}</div>
+    </div>
+    <div class="view-grid">
+      <div class="v-card">
+        <div class="v-eye">Alignment Score</div>
+        <div class="ringwrap">
+          <div id="today-ring">${ringHtml(null)}</div>
+          <div class="v-sub" id="today-ring-sub">${isEN ? 'Loading your data…' : 'Deine Daten werden geladen…'}</div>
+        </div>
+      </div>
+      <div class="v-card tint">
+        <div class="v-eye">${isEN ? "Today's energy" : 'Energie heute'}</div>
+        <div class="v-sub" style="margin:0 0 12px">${isEN ? 'One tap — your Companion adapts.' : 'Ein Tipp — dein Companion passt sich an.'}</div>
+        <div class="energy-row">
+          <button class="energy-btn ${ENERGY_TODAY===1?'sel':''}" onclick="logEnergy(1);showToday()">😔</button>
+          <button class="energy-btn ${ENERGY_TODAY===2?'sel':''}" onclick="logEnergy(2);showToday()">😐</button>
+          <button class="energy-btn ${ENERGY_TODAY===3?'sel':''}" onclick="logEnergy(3);showToday()">🙂</button>
+          <button class="energy-btn ${ENERGY_TODAY===4?'sel':''}" onclick="logEnergy(4);showToday()">🔥</button>
+        </div>
+      </div>
+    </div>
+    <div class="v-card tint" style="margin-bottom:14px" id="today-focus">
+      <div class="v-eye">⚡ ${isEN ? "Today's aligned focus" : 'Dein stimmiger Fokus heute'}</div>
+      <div style="text-align:center;padding:12px"><div class="spinner"></div></div>
+    </div>
+    <div class="v-card">
+      <div class="v-eye">${isEN ? 'Open tasks' : 'Offene Aufgaben'}</div>
+      <div id="today-tasks"><div class="v-sub">${isEN ? 'Loading…' : 'Wird geladen…'}</div></div>
+    </div>
+  </div>`;
+
+  // Alignment ring (async)
+  getCheckins().then(async (cks) => {
+    let streak = 0;
+    try { const s = await apiPost('/stats'); streak = s.streak || 0; } catch(e) {}
+    const score = computeAlignment(cks, streak);
+    const ringEl = document.getElementById('today-ring');
+    const subEl = document.getElementById('today-ring-sub');
+    if (!ringEl) return;
+    ringEl.innerHTML = ringHtml(score);
+    subEl.textContent = score == null
+      ? (isEN ? 'Log a few daily check-ins and your score appears here.' : 'Logge ein paar Check-ins, dann erscheint hier dein Score.')
+      : (isEN ? 'How well your days currently fit your structure — based on your check-ins.' : 'Wie gut deine Tage aktuell zu deiner Struktur passen — basierend auf deinen Check-ins.');
+  });
+
+  // Daily focus via AI (1× pro Tag gecacht)
+  const focusEl = document.getElementById('today-focus');
+  const cacheKey = `nb-focus-${new Date().toISOString().slice(0,10)}-${LANG}`;
+  const cached = sessionStorage.getItem(cacheKey);
+  const renderFocus = (text) => {
+    if (!focusEl) return;
+    focusEl.innerHTML = `<div class="v-eye">⚡ ${isEN ? "Today's aligned focus" : 'Dein stimmiger Fokus heute'}</div>
+      <div style="font-size:14.5px;color:var(--t1);line-height:1.75">${text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')}</div>
+      <div style="margin-top:14px"><button class="v-btn ghost" onclick="setMode('chat');injectPrompt('focus_question')">${isEN ? 'Discuss with your AI →' : 'Mit deinem AI besprechen →'}</button></div>`;
+  };
+  if (USER.userId === 'dev') {
+    renderFocus(isEN
+      ? '**Demo:** Block 9:00–11:00 for your licensing concept — no calls, no admin. As a Visionary, your ideation peaks in the morning; execution details drain you, so they move to the afternoon.'
+      : '**Demo:** Blocke 9:00–11:00 für dein Lizenz-Konzept — keine Calls, kein Admin. Als Visionär liegt dein Ideen-Peak am Morgen; Ausführungsdetails ziehen Energie und wandern in den Nachmittag.');
+  }
+  else if (cached) { renderFocus(cached); }
+  else {
+    const fPrompt = isEN
+      ? `Give me ONE focused priority for today (${new Date().toLocaleDateString('en-GB')}), tailored to my psychotype. 2-3 sentences: what to do, and one sentence WHY it fits how my brain works. No greeting, no list.`
+      : `Gib mir EINE fokussierte Priorität für heute (${new Date().toLocaleDateString('de-DE')}), zugeschnitten auf meinen Psychotyp. 2-3 Sätze: was zu tun ist, und ein Satz WARUM es zu meiner Denkweise passt. Keine Begrüßung, keine Liste.`;
+    callClaude([{ role: 'user', content: fPrompt }], buildSystemPrompt(USER))
+      .then(text => { sessionStorage.setItem(cacheKey, text); renderFocus(text); })
+      .catch(() => renderFocus(isEN ? 'Could not load your focus. Try again later.' : 'Fokus konnte nicht geladen werden. Versuche es später erneut.'));
+  }
+
+  // Open tasks
+  loadTodayTasks();
+}
+
+async function loadTodayTasks() {
+  const el = document.getElementById('today-tasks');
+  if (!el) return;
+  const isEN = LANG === 'en';
+  if (USER.userId === 'dev') {
+    el.innerHTML = `<div class="v-sub">${isEN ? 'Demo mode — tasks appear here.' : 'Demo-Modus — Aufgaben erscheinen hier.'}</div>`;
+    return;
+  }
+  try {
+    const data = await apiPost('/tasks', { action: 'list' });
+    const open = (data.tasks || []).filter(t => t.status !== 'done').slice(0, 6);
+    if (open.length === 0) {
+      el.innerHTML = `<div class="v-sub">${isEN ? 'No open tasks. Save one from any AI answer with 📌.' : 'Keine offenen Aufgaben. Speichere eine aus jeder AI-Antwort mit 📌.'}</div>`;
+      return;
+    }
+    el.innerHTML = open.map(t => `
+      <label class="task-check" id="task-${t.id}">
+        <input type="checkbox" onchange="completeTask('${t.id}')">
+        <span>${t.task_text}</span>
+      </label>`).join('');
+  } catch(e) {
+    el.innerHTML = `<div class="v-sub">${isEN ? 'Tasks could not be loaded.' : 'Aufgaben konnten nicht geladen werden.'}</div>`;
+  }
+}
+
+async function completeTask(id) {
+  const row = document.getElementById(`task-${id}`);
+  if (row) row.classList.add('done');
+  await updateTaskStatus(id, 'done');
+}
+
+// ── INSIGHTS ──
+async function showInsights() {
+  const area = document.getElementById('chat-area');
+  const isEN = LANG === 'en';
+  area.innerHTML = `<div class="view-wrap"><div class="agenda-card loading"><div class="spinner"></div><div style="font-size:13px;color:var(--t3)">${isEN ? 'Reading your patterns…' : 'Deine Muster werden gelesen…'}</div></div></div>`;
+
+  const cks = await getCheckins();
+  let stats = { sessions: 0, streak: 0 };
+  try { stats = await apiPost('/stats'); } catch(e) {}
+
+  if (MODE !== 'insights') return;
+
+  if (cks.length === 0) {
+    area.innerHTML = `<div class="view-wrap"><div class="v-card" style="text-align:center;padding:40px">
+      <div class="v-eye">INSIGHTS</div>
+      <div style="font-family:var(--fd);font-size:22px;color:var(--dk);margin-bottom:8px">${isEN ? 'Your patterns start with your first check-in' : 'Deine Muster beginnen mit dem ersten Check-in'}</div>
+      <div class="v-sub" style="max-width:400px;margin:0 auto 18px">${isEN ? 'Log your energy daily in the sidebar — after a few days, this page shows what your data reveals about how you work best.' : 'Logge täglich deine Energie in der Sidebar — nach ein paar Tagen zeigt diese Seite, was deine Daten über deine beste Arbeitsweise verraten.'}</div>
+      <button class="v-btn" onclick="setMode('today')">${isEN ? 'Do first check-in' : 'Ersten Check-in machen'}</button>
+    </div></div>`;
+    return;
+  }
+
+  // 7-Tage-Energie (nach Tag gruppiert)
+  const dayNames = isEN ? ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'] : ['So','Mo','Di','Mi','Do','Fr','Sa'];
+  const byDay = {};
+  cks.forEach(c => { const d = c.created_at.slice(0,10); (byDay[d] = byDay[d] || []).push(c); });
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(Date.now() - i*86400000);
+    const key = d.toISOString().slice(0,10);
+    const list = byDay[key] || [];
+    const avgE = list.length ? list.reduce((s,c) => s + (c.energy_level||0), 0) / list.length : 0;
+    days.push({ label: dayNames[d.getDay()], val: avgE });
+  }
+  const barsHtml = days.map(d => `<div class="bar ${d.val===0?'mut':''}" style="height:${d.val===0?6:Math.round(d.val/4*100)}%"><span>${d.label}</span></div>`).join('');
+
+  // Muster-Erkennung (einfache Regeln, clientseitig — v1)
+  const avg = (key) => cks.reduce((s,c) => s + (c[key]||0), 0) / cks.length;
+  const avgE = avg('energy_level'), avgS = avg('stress_level'), avgF = avg('focus_level');
+  const lowShare = Math.round(cks.filter(c => (c.energy_level||0) <= 2).length / cks.length * 100);
+  const patterns = [];
+  if (lowShare >= 40) patterns.push({ t: isEN ? 'Frequent low-energy days' : 'Häufige Niedrig-Energie-Tage', s: isEN ? `${lowShare}% of your check-ins — worth discussing with your AI` : `${lowShare}% deiner Check-ins — sprich mit deinem AI darüber`, v: isEN ? 'Watch' : 'Beobachten' });
+  else patterns.push({ t: isEN ? 'Energy mostly stable' : 'Energie überwiegend stabil', s: isEN ? `Only ${lowShare}% low-energy check-ins` : `Nur ${lowShare}% Niedrig-Energie-Check-ins`, v: isEN ? 'Strong' : 'Stark' });
+  if (avgS >= 3) patterns.push({ t: isEN ? 'Elevated stress level' : 'Erhöhtes Stresslevel', s: isEN ? `Average ${avgS.toFixed(1)}/4 — your type guidance is calibrated for this` : `Durchschnitt ${avgS.toFixed(1)}/4 — deine Typ-Beratung berücksichtigt das`, v: isEN ? 'High' : 'Hoch' });
+  if (avgF >= 3) patterns.push({ t: isEN ? 'Good focus days' : 'Gute Fokus-Tage', s: isEN ? `Average focus ${avgF.toFixed(1)}/4` : `Durchschnittlicher Fokus ${avgF.toFixed(1)}/4`, v: isEN ? 'Strong' : 'Stark' });
+  patterns.push({ t: isEN ? 'Consistency streak' : 'Konstanz-Serie', s: isEN ? `${stats.streak || 0} days in a row — consistency sharpens your recommendations` : `${stats.streak || 0} Tage in Folge — Konstanz schärft deine Empfehlungen`, v: `${stats.streak || 0}d` });
+
+  const score = computeAlignment(cks, stats.streak);
+
+  area.innerHTML = `<div class="view-wrap">
+    <div class="view-grid">
+      <div class="v-card">
+        <div class="v-eye">${isEN ? 'Energy · last 7 days' : 'Energie · letzte 7 Tage'}</div>
+        <div class="bars">${barsHtml}</div>
+      </div>
+      <div class="v-card">
+        <div class="v-eye">Alignment</div>
+        <div class="ringwrap">${ringHtml(score)}
+          <div class="v-sub">${isEN ? 'Based on your energy, focus and stress check-ins.' : 'Basierend auf deinen Energie-, Fokus- und Stress-Check-ins.'}</div>
+        </div>
+      </div>
+    </div>
+    <div class="v-card" style="margin-bottom:14px">
+      <div class="v-eye">${isEN ? 'Detected patterns' : 'Erkannte Muster'}</div>
+      ${patterns.map(p => `<div class="dp"><div>${p.t}<small>${p.s}</small></div><span class="dp-val">${p.v}</span></div>`).join('')}
+    </div>
+    <div class="v-card tint">
+      <div class="v-eye">${isEN ? 'Your data asset' : 'Dein Daten-Wert'}</div>
+      <div class="view-grid g3" style="margin:0">
+        <div><div class="v-big">${cks.length}</div><div class="v-sub">${isEN ? 'check-ins logged' : 'Check-ins geloggt'}</div></div>
+        <div><div class="v-big">${stats.sessions || 0}</div><div class="v-sub">${isEN ? 'AI sessions' : 'AI-Sessions'}</div></div>
+        <div><div class="v-big">${stats.streak || 0}</div><div class="v-sub">${isEN ? 'day streak' : 'Tage Serie'}</div></div>
+      </div>
+      <div class="v-sub" style="margin-top:14px">${isEN
+        ? 'Every data point makes your Companion more precise. Anonymized patterns will power type-cohort benchmarks — you\'ll see how you compare to entrepreneurs with your exact structure.'
+        : 'Jeder Datenpunkt macht deinen Companion präziser. Anonymisierte Muster speisen künftig Typ-Kohorten-Benchmarks — du siehst dann, wie du im Vergleich zu Unternehmern mit genau deiner Struktur stehst.'}</div>
+    </div>
+  </div>`;
+}
+
+// ── DECISION LOG ──
+let DEC_ALIGNED = 'unsure';
+async function showDecisions() {
+  const area = document.getElementById('chat-area');
+  const isEN = LANG === 'en';
+  area.innerHTML = `<div class="view-wrap">
+    <div class="v-card tint" style="margin-bottom:14px">
+      <div class="v-eye">${isEN ? 'Log a decision' : 'Entscheidung loggen'}</div>
+      <div class="v-sub" style="margin:0 0 12px">${isEN ? 'Your Companion learns how you decide best — and warns you before misaligned choices.' : 'Dein Companion lernt, wie du am besten entscheidest — und warnt dich vor unstimmigen Entscheidungen.'}</div>
+      <div class="dec-form">
+        <input class="dec-input" id="dec-title" placeholder="${isEN ? 'What did you decide?' : 'Was hast du entschieden?'}">
+        <input class="dec-input" id="dec-note" placeholder="${isEN ? 'Why? (optional)' : 'Warum? (optional)'}">
+        <div class="dec-row">
+          <span style="font-family:var(--fm);font-size:10px;color:var(--t3);letter-spacing:.06em">${isEN ? 'FITS MY TYPE?' : 'PASST ZU MEINEM TYP?'}</span>
+          <button class="dec-tag" id="dt-yes" onclick="pickAligned('yes')">${isEN ? 'Yes' : 'Ja'}</button>
+          <button class="dec-tag" id="dt-no" onclick="pickAligned('no')">${isEN ? 'No' : 'Nein'}</button>
+          <button class="dec-tag sel" id="dt-unsure" onclick="pickAligned('unsure')">${isEN ? 'Unsure' : 'Unsicher'}</button>
+        </div>
+        <div class="dec-row">
+          <button class="v-btn" onclick="saveDecision()">${isEN ? 'Save' : 'Speichern'}</button>
+          <button class="v-btn ghost" onclick="discussDecision()">${isEN ? 'Sparring first →' : 'Erst Sparring →'}</button>
+        </div>
+      </div>
+    </div>
+    <div class="v-card">
+      <div class="v-eye">${isEN ? 'Your decisions' : 'Deine Entscheidungen'}</div>
+      <div id="dec-list"><div class="v-sub">${isEN ? 'Loading…' : 'Wird geladen…'}</div></div>
+    </div>
+  </div>`;
+  loadDecisions();
+}
+
+function pickAligned(val) {
+  DEC_ALIGNED = val;
+  ['yes','no','unsure'].forEach(v => document.getElementById('dt-'+v)?.classList.toggle('sel', v === val));
+}
+
+async function saveDecision() {
+  const isEN = LANG === 'en';
+  const title = document.getElementById('dec-title')?.value.trim();
+  if (!title) return;
+  const note = document.getElementById('dec-note')?.value.trim() || null;
+  if (USER.userId !== 'dev') {
+    try {
+      await apiPost('/decisions', { action: 'create', title, note, aligned: DEC_ALIGNED, energy_at: ENERGY_TODAY });
+    } catch(e) {}
+  }
+  showDecisions();
+}
+
+function discussDecision() {
+  const title = document.getElementById('dec-title')?.value.trim();
+  setMode('chat');
+  const input = document.getElementById('msg-input');
+  const isEN = LANG === 'en';
+  input.value = (isEN ? 'I\'m facing this decision and want to think it through for my type: ' : 'Ich stehe vor dieser Entscheidung und will sie für meinen Typ durchdenken: ') + (title || '');
+  input.focus(); autoResize(input); checkSendEnabled();
+}
+
+async function loadDecisions() {
+  const el = document.getElementById('dec-list');
+  if (!el) return;
+  const isEN = LANG === 'en';
+  let decisions = [];
+  if (USER.userId === 'dev') {
+    decisions = [{ title: isEN ? 'Turned down retainer offer' : 'Retainer-Angebot abgelehnt', note: isEN ? 'Would lock me into operator mode.' : 'Hätte mich in den Operator-Modus gezwungen.', aligned: 'yes', created_at: new Date().toISOString() }];
+  } else {
+    try { const data = await apiPost('/decisions', { action: 'list' }); decisions = data.decisions || []; } catch(e) {}
+  }
+  if (decisions.length === 0) {
+    el.innerHTML = `<div class="v-sub">${isEN ? 'No decisions logged yet. Your decision patterns become one of your most valuable data assets.' : 'Noch keine Entscheidungen geloggt. Deine Entscheidungsmuster werden einer deiner wertvollsten Datenschätze.'}</div>`;
+    return;
+  }
+  const badge = { yes: ['y', isEN ? 'Fits my type ✓' : 'Passt zu meinem Typ ✓'], no: ['n', isEN ? 'Misaligned — lesson logged' : 'Unstimmig — Lektion geloggt'], unsure: ['u', isEN ? 'Reviewing' : 'In Prüfung'] };
+  el.innerHTML = decisions.slice(0, 20).map(d => {
+    const b = badge[d.aligned] || badge.unsure;
+    const date = new Date(d.created_at).toLocaleDateString(isEN ? 'en-GB' : 'de-DE', { day: 'numeric', month: 'short' });
+    return `<div class="dec-entry">
+      <div class="dec-title">${d.title}<small>${date}</small></div>
+      ${d.note ? `<div class="dec-note">${d.note}</div>` : ''}
+      <span class="dec-badge ${b[0]}">${b[1]}</span>
+    </div>`;
+  }).join('');
+}
+
+// ── PSYCHOTYPE PROFILE ──
+const TYPE_PROFILE = {
+  S: {
+    de: { desc: 'Du bist analytisch, gründlich und denkst in Systemen. Dein Business braucht Strukturen, die dich handeln lassen, bevor alles perfekt ist — Perfektion ist bei dir keine Tugend, sondern eine Bremse.', do1: 'Preise nach Wert, nicht nach Aufwand', do2: 'Feste Launch-Deadlines mit 80%-Standard', dont1: 'Endlose Analyse vor Sichtbarkeit', dont2: 'Warten bis es „fertig" ist' },
+    en: { desc: 'You are analytical, thorough and think in systems. Your business needs structures that let you act before everything is perfect — for you, perfectionism is not a virtue but a brake.', do1: 'Price by value, not effort', do2: 'Fixed launch deadlines at the 80% mark', dont1: 'Endless analysis before visibility', dont2: 'Waiting until it feels "finished"' }
+  },
+  V: {
+    de: { desc: 'Du bist ein Ideen-Generator und siehst Zukünfte, die andere nicht sehen. Dein Business braucht EINEN Fokus und Systeme, die andere für dich betreiben — sonst verpufft deine Energie in zehn Projekten.', do1: 'EIN Projekt bis zum Umsatz führen', do2: 'Operative Arbeit früh delegieren', dont1: 'Zum nächsten Projekt springen', dont2: 'Selbst zum Operator werden' },
+    en: { desc: 'You are an idea generator and see futures others don\'t. Your business needs ONE focus and systems others operate for you — otherwise your energy dissipates across ten projects.', do1: 'Take ONE project all the way to revenue', do2: 'Delegate operations early', dont1: 'Jumping to the next project', dont2: 'Becoming the operator yourself' }
+  },
+  M: {
+    de: { desc: 'Du lieferst schnell, verlässlich und in hoher Qualität — und unterpreist genau deshalb chronisch. Deine Geschwindigkeit ist außergewöhnlich und ein Premium-Argument, kein Rabattgrund.', do1: 'Preise × 3 denken — dein Tempo ist Premium', do2: 'Scope-Grenzen schriftlich festhalten', dont1: 'Kostenlose Extras „weil es schnell geht"', dont2: 'Arbeiten ohne Feierabend-Grenze' },
+    en: { desc: 'You deliver fast, reliably and at high quality — and chronically underprice precisely because of it. Your speed is extraordinary and a premium argument, not a discount reason.', do1: 'Think prices × 3 — your speed is premium', do2: 'Put scope boundaries in writing', dont1: 'Free extras "because it\'s quick"', dont2: 'Working without an end-of-day boundary' }
+  },
+  C: {
+    de: { desc: 'Vertrauen und Beziehungen sind dein natürliches Kapital. Dein Business braucht Preise und Grenzen, die deine Empathie monetarisieren — Grenzen zerstören keine Beziehungen, sie professionalisieren sie.', do1: 'Geldgespräche als Serviceleistung sehen', do2: 'Kostenloses Geben in Angebote verwandeln', dont1: 'Dauerhaft gratis beraten', dont2: 'Preise aus Angst vor Ablehnung senken' },
+    en: { desc: 'Trust and relationships are your natural capital. Your business needs prices and boundaries that monetise your empathy — boundaries don\'t destroy relationships, they professionalise them.', do1: 'Treat money conversations as a service', do2: 'Turn free giving into structured offers', dont1: 'Consulting for free indefinitely', dont2: 'Lowering prices out of fear of rejection' }
+  },
+  G: {
+    de: { desc: 'Du kannst mehr leisten als fast jeder um dich herum — und genau das ist dein größtes Risiko. Dein Business braucht eingebaute Regeneration, sonst bezahlst du Wachstum mit Substanz.', do1: 'Regeneration als KPI behandeln', do2: 'Kapazität planen wie Umsatz', dont1: 'Erschöpfung rationalisieren', dont2: 'Pausen als Schwäche werten' },
+    en: { desc: 'You can outperform almost everyone around you — and that is exactly your biggest risk. Your business needs built-in recovery, or you pay for growth with your substance.', do1: 'Treat recovery as a KPI', do2: 'Plan capacity like revenue', dont1: 'Rationalising exhaustion', dont2: 'Treating breaks as weakness' }
+  }
+};
+
+function showProfile() {
+  const area = document.getElementById('chat-area');
+  const isEN = LANG === 'en';
+  const baseType = USER.type.length > 1 ? USER.type[0] : USER.type;
+  const typeName = isEN ? USER.typeEN : USER.typeName;
+  const prof = (TYPE_PROFILE[baseType] || TYPE_PROFILE.S)[isEN ? 'en' : 'de'];
+  const scores = USER.scores || {};
+  const maxScore = Math.max(1, ...Object.values(scores));
+  const dimLabels = { S: isEN ? 'Strategist' : 'Stratege', V: isEN ? 'Visionary' : 'Visionär', M: 'Builder', C: 'Connector', G: isEN ? 'High Performer' : 'Hochleister' };
+  const dimsHtml = ['S','V','M','C','G'].map(k => {
+    const pct = Math.round((scores[k] || 0) / maxScore * 100);
+    return `<div class="dim"><span>${dimLabels[k]}</span><div class="track"><div class="fill" style="width:${pct}%"></div></div><b>${scores[k] || 0}</b></div>`;
+  }).join('');
+
+  area.innerHTML = `<div class="view-wrap">
+    <div class="welcome-hero" style="padding:28px 32px;margin-bottom:14px">
+      <div class="wh-eye">${isEN ? 'YOUR NEUROBUSINESS™ PSYCHOTYPE' : 'DEIN NEUROBUSINESS™ PSYCHOTYP'}</div>
+      <div class="wh-title" style="font-size:clamp(24px,3vw,34px)"><em>${typeName}</em></div>
+      <div class="wh-sub">${isEN ? 'Not every business fits every brain — yours is built like this:' : 'Not every business fits every brain — deins ist so gebaut:'}</div>
+    </div>
+    <div class="view-grid">
+      <div class="v-card">
+        <div class="v-eye">${isEN ? 'Your type profile' : 'Dein Typ-Profil'}</div>
+        <div class="dims">${dimsHtml}</div>
+        <div class="v-sub" style="margin-top:14px">${prof.desc}</div>
+      </div>
+      <div class="v-card">
+        <div class="v-eye">${isEN ? 'Aligned vs. misaligned' : 'Stimmig vs. unstimmig'}</div>
+        <div class="dp"><div>${prof.do1}</div><span class="dp-val" style="color:var(--c)">✓</span></div>
+        <div class="dp"><div>${prof.do2}</div><span class="dp-val" style="color:var(--c)">✓</span></div>
+        <div class="dp"><div>${prof.dont1}</div><span class="dp-val" style="color:#b05540">✗</span></div>
+        <div class="dp"><div>${prof.dont2}</div><span class="dp-val" style="color:#b05540">✗</span></div>
+        <div style="margin-top:16px"><button class="v-btn ghost" onclick="setMode('chat');injectPrompt('type_question')">${isEN ? 'Ask about your type →' : 'Frag zu deinem Typ →'}</button></div>
+      </div>
+    </div>
+  </div>`;
 }
 
 // ── AGENDA ──
@@ -989,6 +1496,14 @@ const INJECT_PROMPTS = {
   agenda_question: {
     de: 'Ich habe eine Frage zu meiner Wochenagenda: ',
     en: 'I have a question about my weekly agenda: '
+  },
+  focus_question: {
+    de: 'Ich möchte über meinen heutigen Fokus sprechen: ',
+    en: 'I want to talk about my focus for today: '
+  },
+  type_question: {
+    de: 'Ich habe eine Frage zu meinem Psychotyp: ',
+    en: 'I have a question about my psychotype: '
   }
 };
 
@@ -1106,6 +1621,14 @@ async function sendMessage() {
   input.value = '';
   autoResize(input);
   checkSendEnabled();
+
+  // Aus jeder View heraus tippen → wechselt in den Chat-Modus
+  if (MODE !== 'chat') {
+    MODE = 'chat';
+    document.querySelectorAll('.sb-btn[id^="btn-"]').forEach(b => b.classList.remove('active'));
+    document.getElementById('btn-chat')?.classList.add('active');
+    document.getElementById('topbar-title').innerHTML = 'AI <em>Sparring</em>';
+  }
 
   // Show chat area if on welcome screen
   if (!document.getElementById('msg-list')) {
@@ -1243,6 +1766,7 @@ document.getElementById('msg-input').addEventListener('input', checkSendEnabled)
 const UI = {
   de: {
     'lbl-nav-main': 'Hauptmenü', 'lbl-nav-tools': 'Tools', 'lbl-nav-more': 'Mehr',
+    'lbl-today': 'Heute', 'lbl-insights': 'Insights', 'lbl-decisions': 'Entscheidungslog', 'lbl-profile': 'Mein Psychotyp',
     'lbl-chat': 'AI Sparring', 'lbl-agenda': 'Wochenagenda',
     'lbl-pricing': 'Preis-Hilfe', 'lbl-visibility': 'Sichtbarkeit',
     'lbl-decision': 'Entscheidung', 'lbl-offer': 'Angebots-Builder',
@@ -1253,6 +1777,7 @@ const UI = {
   },
   en: {
     'lbl-nav-main': 'Main', 'lbl-nav-tools': 'Tools', 'lbl-nav-more': 'More',
+    'lbl-today': 'Today', 'lbl-insights': 'Insights', 'lbl-decisions': 'Decision Log', 'lbl-profile': 'My Psychotype',
     'lbl-chat': 'AI Sparring', 'lbl-agenda': 'Weekly Agenda',
     'lbl-pricing': 'Pricing Help', 'lbl-visibility': 'Visibility',
     'lbl-decision': 'Decision Support', 'lbl-offer': 'Offer Builder',

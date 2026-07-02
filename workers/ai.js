@@ -58,7 +58,7 @@ export default {
       let body;
       try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
 
-      const { token: diagToken, primary, secondary, scores, burnout, industry, years, d1, d2, d3, d4, d5, responseSetWarning, answers, lang, consentResearch, consentResearchVersion, consentDsgvo, consentTimestamp, consentSource } = body;
+      const { token: diagToken, primary, secondary, scores, burnout, industry, years, d1, d2, d3, d4, d5, responseSetWarning, answers, lang, consentResearch, consentResearchVersion, consentDsgvo, consentTimestamp, consentSource, teamCode } = body;
       if (!diagToken || !primary) return json({ error: 'Missing token or primary' }, 400, corsHeaders);
 
       // Validate token → get user_id
@@ -84,6 +84,12 @@ export default {
         consent_timestamp: consentTimestamp || new Date().toISOString(),
         consent_source: consentSource || 'solo_direct',
       };
+
+      // Team-Zuordnung (B2B): nur setzen wenn der Code ein existierendes Team ist
+      if (teamCode && /^[A-Z0-9]{4,12}$/i.test(teamCode)) {
+        const teamCheck = await supabaseGet(`teams?code=eq.${encodeURIComponent(teamCode.toUpperCase())}&select=code`, env);
+        if (teamCheck?.[0]) patch.team_code = teamCheck[0].code;
+      }
 
       const patchRes = await fetch(`${env.SUPABASE_URL}/rest/v1/profiles?id=eq.${row.user_id}`, {
         method: 'PATCH',
@@ -282,6 +288,63 @@ export default {
       try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
       await supabasePost('feedback', { user_id: fbProfile.id, ...body }, env);
       return json({ ok: true }, 200, corsHeaders);
+    }
+
+    // ── /api/team-create (B2B) ────────────────────────────────────
+    // Eva legt ein Team an. Schutz: ADMIN_KEY (wrangler secret put ADMIN_KEY).
+    if (pathname === '/api/team-create') {
+      if (!env.ADMIN_KEY) return json({ error: 'ADMIN_KEY not configured' }, 503, corsHeaders);
+      const adminKey = request.headers.get('x-admin-key') || '';
+      if (adminKey !== env.ADMIN_KEY) return json({ error: 'Unauthorized' }, 401, corsHeaders);
+      let body;
+      try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+      const { name, ownerEmail, seats } = body;
+      if (!name) return json({ error: 'name required' }, 400, corsHeaders);
+      // Kurzen, gut diktierbaren Code + Owner-Key generieren
+      const rand = (len) => { const chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; let s = ''; const buf = crypto.getRandomValues(new Uint8Array(len)); for (const b of buf) s += chars[b % chars.length]; return s; };
+      const code = rand(6);
+      const ownerKey = rand(12);
+      const created = await supabasePost('teams', { code, owner_key: ownerKey, name: String(name).slice(0, 120), owner_email: ownerEmail || null, seats: Math.min(Math.max(parseInt(seats) || 10, 1), 500) }, env);
+      if (!created) return json({ error: 'Team creation failed' }, 500, corsHeaders);
+      return json({
+        code, ownerKey,
+        diagnosticLink: `https://neurobusiness.one/diagnostic.html?team=${code}`,
+        dashboard: `https://neurobusiness.one/team-dashboard.html`,
+      }, 200, corsHeaders);
+    }
+
+    // ── /api/team-report (B2B Team Intelligence Dashboard) ────────
+    // Aggregiert — keine Einzelpersonen-Daten an den Team-Owner (DSGVO).
+    if (pathname === '/api/team-report') {
+      let body;
+      try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+      const { code, ownerKey } = body;
+      if (!code || !ownerKey) return json({ error: 'code and ownerKey required' }, 400, corsHeaders);
+      const teamRows = await supabaseGet(`teams?code=eq.${encodeURIComponent(code)}&select=code,owner_key,name,seats,created_at`, env);
+      const team = teamRows?.[0];
+      if (!team || team.owner_key !== ownerKey) return json({ error: 'Unauthorized' }, 401, corsHeaders);
+
+      const members = await supabaseGet(`profiles?team_code=eq.${encodeURIComponent(code)}&diagnostic_completed_at=not.is.null&select=psychotype,secondary_psychotype,score_s,score_v,score_m,score_c,score_g,burnout_alert`, env) || [];
+      const n = members.length;
+      const report = { teamName: team.name, seats: team.seats, completed: n, minReached: n >= 3 };
+
+      // Aggregat erst ab 3 abgeschlossenen Tests — schützt Einzelpersonen vor Rückschlüssen
+      if (n >= 3) {
+        const dist = { S: 0, V: 0, M: 0, C: 0, G: 0 };
+        let burnout = 0;
+        const sums = { s: 0, v: 0, m: 0, c: 0, g: 0 };
+        for (const p of members) {
+          const t = (p.psychotype || 'S')[0];
+          if (dist[t] !== undefined) dist[t]++;
+          if (p.burnout_alert) burnout++;
+          sums.s += p.score_s || 0; sums.v += p.score_v || 0; sums.m += p.score_m || 0; sums.c += p.score_c || 0; sums.g += p.score_g || 0;
+        }
+        report.distribution = dist;
+        report.burnoutShare = Math.round((burnout / n) * 100);
+        report.avgScores = { S: +(sums.s / n).toFixed(1), V: +(sums.v / n).toFixed(1), M: +(sums.m / n).toFixed(1), C: +(sums.c / n).toFixed(1), G: +(sums.g / n).toFixed(1) };
+        report.missingTypes = Object.keys(dist).filter(k => dist[k] === 0);
+      }
+      return json(report, 200, corsHeaders);
     }
 
     // ── TOKEN-VALIDIERUNG (für /api/ai) ───────────────────────────

@@ -505,6 +505,10 @@ body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-siz
       </button>
 
       <div class="sb-section-label" id="lbl-nav-more">More</div>
+      <button class="sb-btn" id="btn-upgrade" onclick="setMode('upgrade')">
+        <span class="sb-btn-icon">⭐</span>
+        <span id="lbl-upgrade">Next Level</span>
+      </button>
       <button class="sb-btn" onclick="newChat()">
         <span class="sb-btn-icon">✨</span>
         <span id="lbl-new">New Chat</span>
@@ -582,6 +586,7 @@ let CONV_ID = null; // aktuelle Conversation ID
 let IS_SENDING = false;
 let SESSION_START = Date.now();
 let ENERGY_TODAY = null;
+let STATS = { sessions: 0, streak: 0 };
 
 // ── PSYCHOTYPE DATA ──
 const TYPES = {
@@ -842,6 +847,7 @@ async function loadStats() {
       body: JSON.stringify({})
     });
     const data = await res.json();
+    STATS = { sessions: data.sessions || 0, streak: data.streak || 0 };
     document.getElementById('stat-sessions').textContent = data.sessions || 0;
     document.getElementById('stat-streak').textContent = (data.streak || 0) + (LANG === 'de' ? ' Tage' : ' days');
   } catch(e) {
@@ -958,7 +964,8 @@ function setMode(mode) {
     today: isEN ? 'To<em>day</em>' : 'Heu<em>te</em>',
     insights: 'In<em>sights</em>',
     decisions: isEN ? 'Decision <em>Log</em>' : 'Entscheidungs<em>log</em>',
-    profile: isEN ? 'My <em>Psychotype</em>' : 'Mein <em>Psychotyp</em>'
+    profile: isEN ? 'My <em>Psychotype</em>' : 'Mein <em>Psychotyp</em>',
+    upgrade: isEN ? 'Next <em>Level</em>' : 'Nächster <em>Schritt</em>'
   };
   document.getElementById('topbar-title').innerHTML = titles[mode] || titles.chat;
 
@@ -967,6 +974,7 @@ function setMode(mode) {
   if (mode === 'insights') showInsights();
   if (mode === 'decisions') showDecisions();
   if (mode === 'profile') showProfile();
+  if (mode === 'upgrade') showUpgrade();
   updateQuickPrompts();
 }
 
@@ -1110,6 +1118,133 @@ async function showToday() {
 
   // Open tasks
   loadTodayTasks();
+
+  // Kontextueller nächster Schritt (Upsell-Engine)
+  renderUpsellCard();
+}
+
+// ── UPSELL ENGINE ─────────────────────────────────────────────────
+// Kontextuelle, psychotyp-spezifische Angebote — Alignment-Framing, nie Druck.
+const OFFERS = {
+  abo:  'https://buy.stripe.com/eVq7sN77v73u2SKaHhasg06',   // 49 €/Monat AI Companion
+  call: 'https://zeeg.me/evak/15min',                        // Strategiegespräch (Core Program / Team)
+  team: 'teams.html',
+};
+
+const CORE_HOOK = {
+  S: { de: 'Als Stratege weißt du: Die richtige Struktur schlägt mehr Anstrengung. Genau daran arbeiten wir im Core Program.', en: 'As a Strategist you know: the right structure beats more effort. That is exactly what we build in the Core Program.' },
+  V: { de: 'Als Visionär hast du die Richtung — im Core Program bauen wir das System, das sie trägt.', en: 'As a Visionary you have the direction — in the Core Program we build the system that carries it.' },
+  M: { de: 'Als Builder lieferst du längst genug — im Core Program sorgen wir dafür, dass es sich endlich entsprechend auszahlt.', en: 'As a Builder you already deliver more than enough — in the Core Program we make sure it finally pays accordingly.' },
+  C: { de: 'Als Connector trägst du alle anderen — im Core Program bauen wir das Business, das auch dich trägt.', en: 'As a Connector you carry everyone else — in the Core Program we build the business that also carries you.' },
+  G: { de: 'Als Hochleister brauchst du kein Mehr an Tempo — sondern ein Business, das zu deiner Kapazität passt. Dafür ist das Core Program da.', en: 'As a High Performer you don\'t need more speed — you need a business that fits your capacity. That is what the Core Program is for.' },
+};
+
+function upsellDismissed(key) {
+  try { const ts = localStorage.getItem('nb-upsell-' + key); return ts && (Date.now() - (+ts)) < 14 * 86400000; } catch(e) { return false; }
+}
+function dismissUpsell(key) {
+  try { localStorage.setItem('nb-upsell-' + key, String(Date.now())); } catch(e) {}
+  const el = document.getElementById('upsell-card');
+  if (el) el.remove();
+}
+
+async function renderUpsellCard() {
+  const wrap = document.querySelector('#chat-area .view-wrap');
+  if (!wrap || document.getElementById('upsell-card')) return;
+  const isEN = LANG === 'en';
+  const baseType = USER.type.length > 1 ? USER.type[0] : USER.type;
+
+  let cks = [];
+  try { cks = await getCheckins(); } catch(e) {}
+  const last3 = cks.slice(0, 3);
+  const lowEnergy = last3.length === 3 && last3.every(c => (c.energy_level || 3) <= 2);
+
+  let key = null, eye = '', title = '', text = '', btnTxt = '', link = '';
+
+  if (lowEnergy && !upsellDismissed('recovery')) {
+    key = 'recovery';
+    eye = isEN ? 'YOUR DATA IS SPEAKING' : 'DEINE DATEN SPRECHEN';
+    title = isEN ? 'Three low-energy days in a row.' : 'Drei Tage niedrige Energie in Folge.';
+    text = isEN
+      ? 'That is not a discipline problem — it usually means your current business setup does not fit your neuropsychological structure. A free 15-minute clarity call with Eva can show what to change first.'
+      : 'Das ist kein Disziplin-Problem — meist heißt es, dass dein aktuelles Business-Setup nicht zu deiner neuropsychologischen Struktur passt. Ein kostenloses 15-Minuten-Klarheitsgespräch mit Eva zeigt, was zuerst zu ändern ist.';
+    btnTxt = isEN ? 'Book clarity call →' : 'Klarheitsgespräch buchen →';
+    link = OFFERS.call;
+  } else if ((STATS.sessions || 0) >= 5 && !upsellDismissed('core')) {
+    key = 'core';
+    const hook = (CORE_HOOK[baseType] || CORE_HOOK.S)[isEN ? 'en' : 'de'];
+    eye = isEN ? 'YOU ARE USING THIS SERIOUSLY' : 'DU ARBEITEST ERNSTHAFT DAMIT';
+    title = isEN ? 'Ready to go deeper than sparring?' : 'Bereit für mehr als Sparring?';
+    text = hook + ' ' + (isEN
+      ? 'The NeuroBusiness™ Core Program: 1:1 with Diplom-Psychologin Eva Kolontai, built on your diagnostic.'
+      : 'Das NeuroBusiness™ Core Program: 1:1 mit Diplom-Psychologin Eva Kolontai, aufgebaut auf deiner Diagnostik.');
+    btnTxt = isEN ? 'Book free strategy call →' : 'Kostenloses Strategiegespräch →';
+    link = OFFERS.call;
+  }
+
+  if (!key) return;
+  wrap.insertAdjacentHTML('beforeend', `
+    <div class="v-card tint" id="upsell-card" style="margin-top:14px;position:relative">
+      <button onclick="dismissUpsell('${key}')" style="position:absolute;top:10px;right:14px;background:none;border:none;color:var(--t2);cursor:pointer;font-size:16px" title="${isEN ? 'Hide for 14 days' : 'Für 14 Tage ausblenden'}">×</button>
+      <div class="v-eye">✦ ${eye}</div>
+      <div style="font-size:17px;font-weight:500;color:var(--t0,var(--t1));margin-bottom:6px">${title}</div>
+      <div style="font-size:14.5px;color:var(--t1);line-height:1.7;margin-bottom:14px">${text}</div>
+      <a class="v-btn" href="${link}" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">${btnTxt}</a>
+    </div>`);
+}
+
+// ── UPGRADE / NEXT LEVEL SCREEN ───────────────────────────────────
+function showUpgrade() {
+  const area = document.getElementById('chat-area');
+  const isEN = LANG === 'en';
+  const typeName = isEN ? USER.typeEN : USER.typeName;
+
+  const offerCard = (eye, title, price, desc, btnTxt, link, dark) => `
+    <div class="v-card${dark ? '' : ' tint'}" style="${dark ? 'background:var(--d1,#1a1814);border-color:transparent;' : ''}margin-bottom:14px">
+      <div class="v-eye" style="${dark ? 'color:var(--g);' : ''}">${eye}</div>
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px">
+        <span style="font-size:19px;font-weight:500;color:${dark ? '#fff' : 'var(--t1)'}">${title}</span>
+        <span style="font-family:var(--fm);font-size:13px;color:var(--g)">${price}</span>
+      </div>
+      <div style="font-size:14.5px;color:${dark ? 'rgba(255,255,255,.72)' : 'var(--t1)'};line-height:1.7;margin-bottom:14px">${desc}</div>
+      <a class="v-btn" href="${link}" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block;${dark ? 'background:var(--g);color:#1a1814;' : ''}">${btnTxt}</a>
+    </div>`;
+
+  area.innerHTML = `<div class="view-wrap">
+    <div class="welcome-hero" style="padding:28px 32px;margin-bottom:14px">
+      <div class="wh-eye">${isEN ? 'YOUR NEXT STEP · ' : 'DEIN NÄCHSTER SCHRITT · '}${typeName.toUpperCase()}</div>
+      <div class="wh-title" style="font-size:clamp(22px,3vw,32px)">${isEN ? 'You know your type. Now build around it.' : 'Du kennst deinen Typ. Jetzt baue dein Business darum.'}</div>
+      <div class="wh-sub">${isEN ? 'Three ways to go deeper — pick the one that fits your stage.' : 'Drei Wege in die Tiefe — wähle den, der zu deiner Phase passt.'}</div>
+    </div>
+
+    ${offerCard(
+      isEN ? 'FOR EVERY DAY' : 'FÜR JEDEN TAG',
+      'NeuroBusiness™ AI Companion',
+      isEN ? '€49/month' : '49 €/Monat',
+      isEN ? 'Your psychotype-aware sparring partner, daily check-ins, insights and decision log — everything in this app, without limits. If you are not subscribed yet, this keeps your access active.'
+           : 'Dein psychotyp-bewusster Sparringspartner, tägliche Check-ins, Insights und Entscheidungslog — alles in dieser App, ohne Limits. Falls du noch kein Abo hast, bleibt dein Zugang damit aktiv.',
+      isEN ? 'Activate subscription →' : 'Abo aktivieren →',
+      OFFERS.abo, false)}
+
+    ${offerCard(
+      isEN ? 'FOR YOUR TEAM' : 'FÜR DEIN TEAM',
+      'Team Intelligence',
+      isEN ? '€300/test' : '300 €/Test',
+      isEN ? 'You lead people? See your team the way you now see yourself: type distribution, blind spots, burnout signals — aggregated in one dashboard, GDPR-clean.'
+           : 'Du führst Menschen? Sieh dein Team so, wie du jetzt dich selbst siehst: Typ-Verteilung, blinde Flecken, Burnout-Signale — aggregiert in einem Dashboard, DSGVO-sauber.',
+      isEN ? 'Learn more →' : 'Mehr erfahren →',
+      OFFERS.team, false)}
+
+    ${offerCard(
+      isEN ? 'THE DEEP WORK' : 'DIE TIEFENARBEIT',
+      'Core Program',
+      isEN ? '€4,990' : '4.990 €',
+      (CORE_HOOK[USER.type.length > 1 ? USER.type[0] : USER.type] || CORE_HOOK.S)[isEN ? 'en' : 'de'] + ' ' + (isEN
+        ? '12 weeks, 1:1 with Diplom-Psychologin Eva Kolontai. Starts with a free strategy call.'
+        : '12 Wochen, 1:1 mit Diplom-Psychologin Eva Kolontai. Start mit einem kostenlosen Strategiegespräch.'),
+      isEN ? 'Book free strategy call →' : 'Kostenloses Strategiegespräch →',
+      OFFERS.call, true)}
+  </div>`;
 }
 
 async function loadTodayTasks() {
@@ -1771,7 +1906,7 @@ const UI = {
     'lbl-pricing': 'Preis-Hilfe', 'lbl-visibility': 'Sichtbarkeit',
     'lbl-decision': 'Entscheidung', 'lbl-offer': 'Angebots-Builder',
     'lbl-burnout-btn': 'Burnout-Check', 'lbl-client': 'Kunden-Situation',
-    'lbl-new': 'Neues Gespräch', 'lbl-checkin': 'Energie heute',
+    'lbl-new': 'Neues Gespräch', 'lbl-upgrade': 'Nächster Schritt', 'lbl-checkin': 'Energie heute',
     'lbl-sessions': 'Sessions', 'lbl-streak': 'Serie',
     'lbl-clear': 'Leeren',
   },
@@ -1782,7 +1917,7 @@ const UI = {
     'lbl-pricing': 'Pricing Help', 'lbl-visibility': 'Visibility',
     'lbl-decision': 'Decision Support', 'lbl-offer': 'Offer Builder',
     'lbl-burnout-btn': 'Burnout Check', 'lbl-client': 'Client Situation',
-    'lbl-new': 'New Chat', 'lbl-checkin': 'Today\'s energy',
+    'lbl-new': 'New Chat', 'lbl-upgrade': 'Next Level', 'lbl-checkin': 'Today\'s energy',
     'lbl-sessions': 'Sessions', 'lbl-streak': 'Streak',
     'lbl-clear': 'Clear',
   }

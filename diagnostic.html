@@ -702,7 +702,8 @@ function startQuiz() {
   // Consent-Werte einmalig beim Start erfassen
   const consentTimestamp = new Date().toISOString();
   const urlParams = new URLSearchParams(window.location.search);
-  const consentSource = urlParams.get('source') || 'solo_direct';
+  const teamParam = (urlParams.get('team') || '').trim().toUpperCase();
+  const consentSource = urlParams.get('source') || (teamParam ? 'team' : 'solo_direct');
 
   userData = {
     firstName: fn,
@@ -715,6 +716,7 @@ function startQuiz() {
     consentResearchVersion: 'v1.0_2026-06',
     consentTimestamp: consentTimestamp,
     consentSource: consentSource,
+    teamCode: teamParam || null,
   };
 
   // Track start in Brevo
@@ -896,6 +898,7 @@ function submitQuiz() {
             consentDsgvo:           userData.consentDsgvo === true,
             consentTimestamp:       userData.consentTimestamp || null,
             consentSource:          userData.consentSource || 'solo_direct',
+            teamCode:               userData.teamCode || null,
           })
         });
       }

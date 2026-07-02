@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>NeuroBusiness™ Team Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#faf8f4;--cream2:#f4f1eb;--cream3:#ede9e0;
+  --dark:#1a1814;--dark2:#2e2b26;
+  --gold:#c9a96e;--gold2:#a8813e;--gold-light:#f0e4cc;
+  --text:#2e2b26;--text2:#6b6560;--text3:#a09a92;
+  --border:rgba(26,24,20,0.1);--border2:rgba(26,24,20,0.06);
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'Outfit',sans-serif;
+  --font-mono:'DM Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);color:var(--text);font-family:var(--font-body);font-size:16px;font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+em{font-style:italic;color:var(--gold2)}
+.wrap{max-width:860px;margin:0 auto;padding:60px 24px 100px}
+.logo{font-family:var(--font-display);font-size:22px;color:var(--dark);margin-bottom:6px}
+.logo em{color:var(--gold);font-style:normal}
+.eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin:40px 0 14px}
+h1{font-family:var(--font-display);font-size:40px;font-weight:300;color:var(--dark);line-height:1.15;margin-bottom:14px}
+.lead{color:var(--text2);max-width:560px;margin-bottom:36px}
+.card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:20px}
+label{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:14px 0 6px}
+input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:9px;font-family:var(--font-mono);font-size:15px;background:var(--cream);color:var(--dark);letter-spacing:.06em}
+input:focus{outline:none;border-color:var(--gold)}
+button{margin-top:20px;background:var(--dark);color:#fff;border:none;border-radius:9px;padding:13px 26px;font-family:var(--font-body);font-size:15px;cursor:pointer;transition:background .2s}
+button:hover{background:var(--gold2)}
+button:disabled{opacity:.5;cursor:default}
+.err{color:#a0432e;font-size:14px;margin-top:12px;display:none}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.kpi{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px}
+.kpi-val{font-family:var(--font-display);font-size:36px;color:var(--dark);line-height:1}
+.kpi-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-top:8px}
+.bar-row{display:flex;align-items:center;gap:12px;margin:10px 0}
+.bar-name{width:150px;font-size:14px;color:var(--text2);flex-shrink:0}
+.bar-track{flex:1;height:10px;background:var(--cream3);border-radius:5px;overflow:hidden}
+.bar-fill{height:100%;background:var(--gold);border-radius:5px;transition:width .6s}
+.bar-num{width:34px;text-align:right;font-family:var(--font-mono);font-size:13px;color:var(--text2)}
+h2{font-family:var(--font-display);font-size:26px;font-weight:400;color:var(--dark);margin-bottom:14px}
+.gap{border-left:3px solid var(--gold);background:var(--gold-light);border-radius:0 10px 10px 0;padding:14px 18px;margin:10px 0;font-size:15px}
+.note{font-size:13px;color:var(--text3);margin-top:16px}
+.cta{display:inline-block;margin-top:10px;background:var(--dark);color:#fff;text-decoration:none;border-radius:9px;padding:13px 26px;font-size:15px}
+.cta:hover{background:var(--gold2)}
+#report{display:none}
+@media(max-width:640px){h1{font-size:32px}.bar-name{width:110px;font-size:13px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">NeuroBusiness<em>™</em> <span style="font-family:var(--font-mono);font-size:11px;color:var(--gold2);letter-spacing:.1em">TEAM INTELLIGENCE</span></div>
+
+  <!-- LOGIN -->
+  <div id="login">
+    <div class="eyebrow">Team Dashboard</div>
+    <h1>Dein Team, <em>psychologisch sichtbar.</em></h1>
+    <p class="lead">Gib deinen Team-Code und deinen Zugangsschlüssel ein. Beides hast du beim Kauf der Team-Diagnostik erhalten.</p>
+    <div class="card" style="max-width:460px">
+      <label for="f-code">Team-Code</label>
+      <input id="f-code" placeholder="z. B. ACME24" autocomplete="off">
+      <label for="f-key">Zugangsschlüssel</label>
+      <input id="f-key" placeholder="12-stelliger Schlüssel" autocomplete="off">
+      <button id="btn-load" onclick="loadReport()">Dashboard öffnen</button>
+      <div class="err" id="err"></div>
+    </div>
+    <p class="note">Kein Team-Zugang? <a href="teams.html" style="color:var(--gold2)">Team-Diagnostik anfragen →</a></p>
+  </div>
+
+  <!-- REPORT -->
+  <div id="report">
+    <div class="eyebrow" id="r-name">Team</div>
+    <h1>Team <em>Intelligence Report</em></h1>
+
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-val" id="k-completed">–</div><div class="kpi-lbl">Tests abgeschlossen</div></div>
+      <div class="kpi"><div class="kpi-val" id="k-seats">–</div><div class="kpi-lbl">Plätze gebucht</div></div>
+      <div class="kpi"><div class="kpi-val" id="k-burnout">–</div><div class="kpi-lbl">Burnout-Signale im Team</div></div>
+    </div>
+
+    <div class="card" id="c-waiting" style="display:none">
+      <h2>Noch nicht genug Daten</h2>
+      <p style="color:var(--text2)">Der aggregierte Report wird ab <strong>3 abgeschlossenen Tests</strong> angezeigt — so bleiben einzelne Antworten anonym. Lade dein Team ein, den Diagnostik-Link zu nutzen.</p>
+    </div>
+
+    <div id="c-data" style="display:none">
+      <div class="card">
+        <h2>Psychotyp-Verteilung</h2>
+        <div id="dist"></div>
+      </div>
+      <div class="card">
+        <h2>Team-Profil <span style="font-size:14px;color:var(--text3);font-family:var(--font-body)">(Ø Dimensionswerte)</span></h2>
+        <div id="avgs"></div>
+      </div>
+      <div class="card" id="c-gaps" style="display:none">
+        <h2>Abdeckungslücken</h2>
+        <div id="gaps"></div>
+        <p class="note">Eine Lücke ist kein Mangel — sie zeigt, welche Perspektive im Team bewusst kompensiert werden sollte.</p>
+      </div>
+      <div class="card" style="background:var(--dark);border-color:var(--dark)">
+        <h2 style="color:#fff">Nächster Schritt: Team-Debrief</h2>
+        <p style="color:rgba(255,255,255,.7);margin-bottom:8px">Die Daten zeigen das Was — im 60-minütigen Debrief mit Diplom-Psychologin Eva Kolontai bekommt dein Team das Warum und die konkreten Arbeitsregeln.</p>
+        <a class="cta" style="background:var(--gold);color:var(--dark)" href="https://zeeg.me/evak/15min">Debrief-Termin anfragen →</a>
+      </div>
+    </div>
+    <p class="note">DSGVO-Hinweis: Dieses Dashboard zeigt ausschließlich aggregierte Teamwerte — niemals Einzelergebnisse. Jedes Teammitglied erhält seinen persönlichen Report privat.</p>
+  </div>
+</div>
+
+<script>
+const TYPES = {
+  S: 'Der Stratege', V: 'Der Visionär', M: 'Der Builder', C: 'Der Connector', G: 'Der Hochleister'
+};
+const GAP_TEXT = {
+  S: 'Kein Stratege im Team — wer prüft Entscheidungen systematisch auf Risiken und Langfrist-Folgen?',
+  V: 'Kein Visionär im Team — wer bringt neue Richtungen und größere Bilder ein, bevor der Markt es erzwingt?',
+  M: 'Kein Builder im Team — wer sorgt dafür, dass Beschlossenes zuverlässig und schnell umgesetzt wird?',
+  C: 'Kein Connector im Team — wer hält Beziehungen zu Kunden, Partnern und im Team aktiv zusammen?',
+  G: 'Kein Hochleister im Team — wer zieht das Tempo an, wenn es auf Durchsetzung und Ergebnisse ankommt?'
+};
+
+async function loadReport() {
+  const code = document.getElementById('f-code').value.trim().toUpperCase();
+  const key = document.getElementById('f-key').value.trim();
+  const err = document.getElementById('err');
+  const btn = document.getElementById('btn-load');
+  err.style.display = 'none';
+  if (!code || !key) { err.textContent = 'Bitte Code und Schlüssel eingeben.'; err.style.display = 'block'; return; }
+  btn.disabled = true; btn.textContent = 'Lade…';
+  try {
+    const res = await fetch('https://neurobusiness.one/api/team-report', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code, ownerKey: key })
+    });
+    if (res.status === 401) throw new Error('Code oder Schlüssel ungültig.');
+    if (!res.ok) throw new Error('Fehler beim Laden. Bitte später erneut versuchen.');
+    render(await res.json());
+  } catch(e) {
+    err.textContent = e.message || 'Fehler beim Laden.';
+    err.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Dashboard öffnen';
+  }
+}
+
+function bars(el, data, max, suffix) {
+  el.innerHTML = Object.keys(data).map(k => {
+    const pct = max ? Math.round((data[k] / max) * 100) : 0;
+    return `<div class="bar-row"><div class="bar-name">${TYPES[k] || k}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-num">${data[k]}${suffix || ''}</div></div>`;
+  }).join('');
+}
+
+function render(r) {
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('report').style.display = 'block';
+  document.getElementById('r-name').textContent = r.teamName || 'Team';
+  document.getElementById('k-completed').textContent = r.completed;
+  document.getElementById('k-seats').textContent = r.seats || '–';
+  document.getElementById('k-burnout').textContent = r.minReached ? r.burnoutShare + '%' : '–';
+
+  if (!r.minReached) { document.getElementById('c-waiting').style.display = 'block'; return; }
+  document.getElementById('c-data').style.display = 'block';
+
+  const maxDist = Math.max(...Object.values(r.distribution), 1);
+  bars(document.getElementById('dist'), r.distribution, maxDist, '');
+  const maxAvg = Math.max(...Object.values(r.avgScores), 1);
+  bars(document.getElementById('avgs'), r.avgScores, maxAvg, '');
+
+  if (r.missingTypes && r.missingTypes.length > 0 && r.missingTypes.length < 4) {
+    document.getElementById('c-gaps').style.display = 'block';
+    document.getElementById('gaps').innerHTML = r.missingTypes.map(t => `<div class="gap">${GAP_TEXT[t] || ''}</div>`).join('');
+  }
+}
+
+document.getElementById('f-key').addEventListener('keydown', e => { if (e.key === 'Enter') loadReport(); });
+</script>
+</body>
+</html>

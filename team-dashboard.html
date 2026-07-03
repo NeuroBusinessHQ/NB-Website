@@ -179,6 +179,23 @@ function render(r) {
 }
 
 document.getElementById('f-key').addEventListener('keydown', e => { if (e.key === 'Enter') loadReport(); });
+
+// ── DEMO-MODUS (?demo=1) — Beispieldaten für Vertrieb, kein Login nötig ──
+if (new URLSearchParams(location.search).get('demo') === '1') {
+  render({
+    teamName: 'Beispiel: Führungsteam TechCo GmbH',
+    seats: 8,
+    completed: 8,
+    minReached: true,
+    distribution: { S: 1, V: 3, M: 0, C: 2, G: 2 },
+    burnoutShare: 25,
+    avgScores: { S: 6.1, V: 8.4, M: 4.2, C: 7.0, G: 7.8 },
+    missingTypes: ['M']
+  });
+  document.querySelector('#report .eyebrow').textContent = 'DEMO · BEISPIELDATEN';
+  document.querySelector('#report').insertAdjacentHTML('afterbegin',
+    `<div class="gap" style="margin-bottom:20px"><strong>Demo-Ansicht mit fiktiven Daten.</strong> So sieht dein Team-Report aus, sobald dein Team die Diagnostik abgeschlossen hat. <a href="teams.html" style="color:var(--gold2)">Team-Diagnostik anfragen →</a></div>`);
+}
 </script>
 </body>
 </html>

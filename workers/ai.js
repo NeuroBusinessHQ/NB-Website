@@ -380,6 +380,13 @@ export default {
       if (!coach) {
         coach = await supabasePost('coaches', { user_id: chSub, email: chEmail, status: 'pending', credits: 0 }, env);
         if (!coach) return { err: json({ error: 'Coach-Profil konnte nicht angelegt werden' }, 500, corsHeaders) };
+        // Nurture-Hook: Eva benachrichtigen + Willkommensmail (fire-and-forget)
+        try {
+          await fetch('https://evakolontai.app.n8n.cloud/webhook/nb-practitioner-registered', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: chEmail }),
+          });
+        } catch (e) { console.error('[Practitioner] Registrierungs-Webhook fehlgeschlagen:', e); }
       }
       if (coach.status === 'blocked') return { err: json({ error: 'Account gesperrt' }, 403, corsHeaders) };
       return { coach };
@@ -473,6 +480,91 @@ export default {
         ccClients.push({ email: p.email, firstName: p.first_name, psychotype: p.psychotype, secondary: p.secondary_psychotype, burnout: !!p.burnout_alert, completedAt: p.diagnostic_completed_at, reportUrl });
       }
       return json({ clients: ccClients }, 200, corsHeaders);
+    }
+
+    // ══ SALES COCKPIT (Admin, x-admin-key) ════════════════════════
+    if (pathname === '/api/sales-prospects' || pathname === '/api/sales-generate') {
+      if (!env.ADMIN_KEY) return json({ error: 'ADMIN_KEY not configured' }, 503, corsHeaders);
+      if ((request.headers.get('x-admin-key') || '') !== env.ADMIN_KEY) return json({ error: 'Unauthorized' }, 401, corsHeaders);
+      let spBody; try { spBody = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+
+      if (pathname === '/api/sales-prospects') {
+        const spAction = spBody.action;
+        if (spAction === 'list') {
+          const spRows = await supabaseGet(`sales_prospects?select=*&order=updated_at.desc&limit=300`, env) || [];
+          return json({ prospects: spRows }, 200, corsHeaders);
+        }
+        if (spAction === 'create') {
+          if (!spBody.name) return json({ error: 'name required' }, 400, corsHeaders);
+          const spRow = await supabasePost('sales_prospects', {
+            name: String(spBody.name).slice(0, 120),
+            linkedin_url: spBody.linkedin_url || null,
+            role: spBody.role || null,
+            company: spBody.company || null,
+            type_guess: spBody.type_guess || null,
+            target: spBody.target || 'practitioner',
+            notes: spBody.notes || null,
+            status: 'neu',
+          }, env);
+          return json({ prospect: spRow }, 200, corsHeaders);
+        }
+        if (spAction === 'update' && spBody.id) {
+          const spPatch = { updated_at: new Date().toISOString() };
+          for (const k of ['status', 'notes', 'next_action_at', 'type_guess', 'target']) {
+            if (spBody[k] !== undefined) spPatch[k] = spBody[k];
+          }
+          await fetch(`${env.SUPABASE_URL}/rest/v1/sales_prospects?id=eq.${encodeURIComponent(spBody.id)}`, {
+            method: 'PATCH',
+            headers: { 'apikey': env.SUPABASE_SERVICE_KEY, 'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+            body: JSON.stringify(spPatch),
+          });
+          return json({ ok: true }, 200, corsHeaders);
+        }
+        return json({ error: 'Unknown action' }, 400, corsHeaders);
+      }
+
+      // /api/sales-generate — personalisierte Outreach-Nachrichten via Claude
+      const genRows = await supabaseGet(`sales_prospects?id=eq.${encodeURIComponent(spBody.id || '')}&select=*`, env);
+      const pr = genRows?.[0];
+      if (!pr) return json({ error: 'Prospect nicht gefunden' }, 404, corsHeaders);
+
+      const salesSystem = `Du bist Eva Kolontai, Diplom-Psychologin mit 20+ Jahren Erfahrung, Gründerin von NeuroBusiness™ (neurobusiness.one) — einem neuropsychologischen Diagnostik-System mit 5 Psychotypen (Stratege, Visionär, Builder, Connector, Hochleister) und 5 Dimensionen.
+
+Du schreibst LinkedIn-Outreach in Evas Stimme: warm, direkt, psychologisch fundiert, nie marktschreierisch, per Du. Kurze Sätze. Keine Emojis. Keine Floskeln wie "Ich hoffe, es geht dir gut".
+
+Angebote je nach Ziel:
+- practitioner: Certified-Practitioner-Programm — Diagnostik-Lizenz für Coaches, Credits ab 79 €/Test, Klient zahlt marktüblich 147 €+. Einstieg: Portal-Registrierung (neurobusiness.one/coaches.html) oder 15-Min-Call (zeeg.me/evak/15min).
+- team: Team Intelligence — Team-Diagnostik 300 €/Test, aggregiertes Team-Dashboard (Typ-Verteilung, Burnout-Signale, Lücken). Demo: neurobusiness.one/team-dashboard.html?demo=1
+- core: Core Program 4.990 € — 12 Wochen 1:1 Business-Transformation auf Basis der Diagnostik.
+
+Stil-Referenz (Evas bestehende Templates, Psychotyp-Hook je nach Profil des Prospects):
+"Ich sehe in Deinem Profil einen sehr analytischen Ansatz — das deckt sich mit dem, was ich als Neuropsychologin als Strategen-Profil bezeichne..." (Typ S)
+"Dein Content hat mich sofort angesprochen — Du denkst in Möglichkeiten, nicht in Grenzen..." (Typ V)
+"Direkt: Ich entwickle ein neuropsychologisches Diagnostik-Tool für Coaches..." (Typ M/Builder)
+
+Antworte AUSSCHLIESSLICH mit validem JSON, ohne Markdown:
+{"connectionNote": "max 280 Zeichen, persönlich, kein Pitch", "dm": "Erste DM nach Connect (Tag 2), max 700 Zeichen, mit Psychotyp-Hook und einer konkreten Frage", "followUp": "Follow-up (Tag 4) falls keine Antwort, max 400 Zeichen, Angebot Klarheitsgespräch/Demo-Link, kein Druck"}`;
+
+      const salesUser = `Prospect: ${pr.name}${pr.role ? ' · ' + pr.role : ''}${pr.company ? ' · ' + pr.company : ''}
+Ziel: ${pr.target || 'practitioner'}
+Vermuteter Psychotyp: ${pr.type_guess || 'unbekannt — neutral formulieren'}
+Notizen von Eva: ${pr.notes || '—'}
+
+Erstelle die drei Nachrichten als JSON.`;
+
+      let genText;
+      try { genText = await callClaude([{ role: 'user', content: salesUser }], salesSystem, env); }
+      catch (e) { return json({ error: 'AI-Fehler: ' + e.message }, 500, corsHeaders); }
+      let genMsgs;
+      try { genMsgs = JSON.parse(genText.replace(/^```json?\s*|\s*```$/g, '')); }
+      catch { genMsgs = { connectionNote: genText, dm: '', followUp: '' }; }
+
+      await fetch(`${env.SUPABASE_URL}/rest/v1/sales_prospects?id=eq.${encodeURIComponent(pr.id)}`, {
+        method: 'PATCH',
+        headers: { 'apikey': env.SUPABASE_SERVICE_KEY, 'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ generated_messages: genMsgs, updated_at: new Date().toISOString() }),
+      }).catch(console.error);
+      return json({ messages: genMsgs }, 200, corsHeaders);
     }
 
     // ── TOKEN-VALIDIERUNG (für /api/ai) ───────────────────────────

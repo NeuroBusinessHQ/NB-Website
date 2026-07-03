@@ -32,6 +32,7 @@ if(NB.name.startsWith("{{")){Object.assign(NB,{
   kernaussage:"Ihr Gehirn ist darauf ausgelegt, Komplexität zu durchdringen — nicht zu vereinfachen. Das ist Ihre größte Stärke und Ihr häufigster Engpass."
 });}
 document.addEventListener('DOMContentLoaded',()=>{
+  NB.sekundaerKurz=(NB.sekundaer||'').replace('The ','');
   document.querySelectorAll('[data-nb]').forEach(el=>{
     const k=el.getAttribute('data-nb');
     if(NB[k]!==undefined)el.textContent=NB[k];
@@ -44,7 +45,56 @@ document.addEventListener('DOMContentLoaded',()=>{
   const needle=document.getElementById('burnout-needle');
   if(needle)needle.style.left=NB.burnoutPct+'%';
   renderRadar();
+  renderHeatmapAndComm();
 });
+// ═══════════════════════════════════════════════
+// Performance-Heatmap & Kommunikations-Regler
+// Dynamisch berechnet aus D1–D5 statt hartcodiert.
+// Transparente, dokumentierte Heuristik (Version 1) — bei Bedarf durch
+// Evas eigene Gewichtung/Datenquelle ersetzbar. Kernidee: jede Dimension
+// bekommt pro Kontext ein Gewicht in [-1,1]. Positiv = ein hoher Score in
+// dieser Dimension hilft in diesem Kontext; negativ = er kostet Leistung.
+// contextScore = 50 + weight * (dScore - 50), auf 0–100 begrenzt.
+// ═══════════════════════════════════════════════
+const HEATMAP_WEIGHTS = {
+  d1:{Solo:0.9, Team:-0.3, Krise:-0.1, Pitch:-0.6, Wachstum:-0.4},   // Energie: introvertiert-fokussiert (hoch) vs. extravertiert (niedrig)
+  d2:{Solo:0.5, Team:0.3,  Krise:0.5,  Pitch:0.2,  Wachstum:0.4},    // Kognition: analytisch (hoch) hilft überall, v.a. Solo/Krise
+  d3:{Solo:0.0, Team:-0.2, Krise:0.6,  Pitch:-0.6, Wachstum:-0.4},   // Regulation: Prevention (hoch) hilft in der Krise, kostet bei Pitch/Wachstum
+  d4:{Solo:0.3, Team:0.5,  Krise:-0.3, Pitch:0.2,  Wachstum:0.6},    // Umsetzung: geplant (hoch) hilft Team/Wachstum, kostet in spontaner Krise
+  d5:{Solo:-0.2,Team:-0.3, Krise:-0.7, Pitch:-0.3, Wachstum:-0.4}    // Stress: vulnerabel (hoch) kostet überall, am stärksten in der Krise
+};
+const HEATMAP_CONTEXTS=['Solo','Team','Krise','Pitch','Wachstum'];
+function clamp(v,lo,hi){return Math.max(lo,Math.min(hi,v));}
+function contextScore(dScore,weight){return clamp(50+weight*(dScore-50),0,100);}
+function scoreToStars(score){ if(score>=70)return 4; if(score>=50)return 3; if(score>=30)return 2; return 1; }
+function renderHeatmapAndComm(){
+  const d={d1:parseInt(NB.d1)||50,d2:parseInt(NB.d2)||50,d3:parseInt(NB.d3)||50,d4:parseInt(NB.d4)||50,d5:parseInt(NB.d5)||50};
+  ['d1','d2','d3','d4','d5'].forEach(dim=>{
+    HEATMAP_CONTEXTS.forEach(ctx=>{
+      const cell=document.getElementById('hm-'+dim+'-'+ctx);
+      if(!cell)return;
+      const s=contextScore(d[dim],HEATMAP_WEIGHTS[dim][ctx]);
+      const stars=scoreToStars(s);
+      cell.className='hmc h'+stars;
+      cell.textContent='★'.repeat(stars);
+    });
+  });
+  // Kommunikations-Stil-Parameter — abgeleitet aus denselben D1–D5-Scores.
+  const direktheit=clamp(Math.round(40+0.4*(d.d2-50)+0.3*(50-d.d3)-0.1*(d.d5-50)),0,100);
+  const faktendichte=clamp(Math.round(50+0.5*(d.d2-50)+0.2*(d.d1-50)),0,100);
+  const empathie=clamp(Math.round(55-0.35*(d.d1-50)-0.25*(d.d2-50)),0,100);
+  const reaktion=clamp(Math.round(55-0.4*(d.d3-50)-0.3*(d.d2-50)-0.2*(d.d5-50)),0,100);
+  setCommBar('direktheit',direktheit);
+  setCommBar('faktendichte',faktendichte);
+  setCommBar('empathie',empathie);
+  setCommBar('reaktion',reaktion);
+}
+function setCommBar(key,val){
+  const bar=document.getElementById('comm-bar-'+key);
+  const num=document.getElementById('comm-val-'+key);
+  if(bar)bar.style.width=val+'%';
+  if(num)num.textContent=val;
+}
 function renderRadar(){
   const vals=[parseInt(NB.d1),parseInt(NB.d2),parseInt(NB.d3),parseInt(NB.d4),parseInt(NB.d5)];
   const cx=190,cy=160,r=130;
@@ -524,7 +574,7 @@ p:last-child{margin-bottom:0;}
           <line x1="30" y1="285" x2="50" y2="285" stroke="#1C3A2F" stroke-width="2"/>
           <text x="54" y="289" fill="#8A9E92" font-size="9" font-family="DM Sans">Ihr Profil</text>
           <line x1="110" y1="285" x2="130" y2="285" stroke="#B8973A" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <text x="134" y="289" fill="#8A9E92" font-size="9" font-family="DM Sans">Ø Strategist</text>
+          <text x="134" y="289" fill="#8A9E92" font-size="9" font-family="DM Sans">Ø <tspan data-nb="typKurz">Strategist</tspan></text>
         </svg>
       </div>
       <div>
@@ -542,8 +592,8 @@ p:last-child{margin-bottom:0;}
         <div class="div"></div>
         <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--gold);margin-bottom:7px;">TYPVERTEILUNG</div>
         <div style="display:flex;gap:3px;height:26px;">
-          <div style="flex:6.4;background:var(--em);display:flex;align-items:center;padding:0 8px;"><span style="font-size:9px;color:var(--gold);">Strategist <span data-nb="typScore">64</span>%</span></div>
-          <div style="flex:2.4;background:var(--em2);display:flex;align-items:center;padding:0 7px;"><span style="font-size:9px;color:rgba(255,255,255,0.65);">Visionary <span data-nb="sekundaerScore">24</span>%</span></div>
+          <div style="flex:6.4;background:var(--em);display:flex;align-items:center;padding:0 8px;"><span style="font-size:9px;color:var(--gold);"><span data-nb="typKurz">Strategist</span> <span data-nb="typScore">64</span>%</span></div>
+          <div style="flex:2.4;background:var(--em2);display:flex;align-items:center;padding:0 7px;"><span style="font-size:9px;color:rgba(255,255,255,0.65);"><span data-nb="sekundaerKurz">Visionary</span> <span data-nb="sekundaerScore">24</span>%</span></div>
           <div style="flex:1.2;background:var(--smoke);display:flex;align-items:center;padding:0 5px;"><span style="font-size:8px;color:var(--muted);">12%</span></div>
         </div>
       </div>
@@ -680,11 +730,11 @@ p:last-child{margin-bottom:0;}
     </div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--gold);margin:11px 0 7px;">DIMENSIONEN × KONTEXT — PERFORMANCE-HEATMAP</div>
     <div class="hmh"><div class="hmhc">Solo</div><div class="hmhc">Team</div><div class="hmhc">Krise</div><div class="hmhc">Pitch</div><div class="hmhc">Wachstum</div></div>
-    <div class="hmr"><span class="hmrl">D1 Energie</span><div class="hmc h4">★★★★</div><div class="hmc h2">★★</div><div class="hmc h3">★★★</div><div class="hmc h1">★</div><div class="hmc h3">★★★</div></div>
-    <div class="hmr"><span class="hmrl">D2 Kognition</span><div class="hmc h4">★★★★</div><div class="hmc h3">★★★</div><div class="hmc h4">★★★★</div><div class="hmc h2">★★</div><div class="hmc h3">★★★</div></div>
-    <div class="hmr"><span class="hmrl">D3 Regulation</span><div class="hmc h3">★★★</div><div class="hmc h2">★★</div><div class="hmc h1">★</div><div class="hmc h1">★</div><div class="hmc h3">★★★</div></div>
-    <div class="hmr"><span class="hmrl">D4 Umsetzung</span><div class="hmc h4">★★★★</div><div class="hmc h3">★★★</div><div class="hmc h2">★★</div><div class="hmc h2">★★</div><div class="hmc h4">★★★★</div></div>
-    <div class="hmr"><span class="hmrl">D5 Stress</span><div class="hmc h3">★★★</div><div class="hmc h2">★★</div><div class="hmc h1">★</div><div class="hmc h1">★</div><div class="hmc h2">★★</div></div>
+    <div class="hmr"><span class="hmrl">D1 Energie</span><div class="hmc" id="hm-d1-Solo"></div><div class="hmc" id="hm-d1-Team"></div><div class="hmc" id="hm-d1-Krise"></div><div class="hmc" id="hm-d1-Pitch"></div><div class="hmc" id="hm-d1-Wachstum"></div></div>
+    <div class="hmr"><span class="hmrl">D2 Kognition</span><div class="hmc" id="hm-d2-Solo"></div><div class="hmc" id="hm-d2-Team"></div><div class="hmc" id="hm-d2-Krise"></div><div class="hmc" id="hm-d2-Pitch"></div><div class="hmc" id="hm-d2-Wachstum"></div></div>
+    <div class="hmr"><span class="hmrl">D3 Regulation</span><div class="hmc" id="hm-d3-Solo"></div><div class="hmc" id="hm-d3-Team"></div><div class="hmc" id="hm-d3-Krise"></div><div class="hmc" id="hm-d3-Pitch"></div><div class="hmc" id="hm-d3-Wachstum"></div></div>
+    <div class="hmr"><span class="hmrl">D4 Umsetzung</span><div class="hmc" id="hm-d4-Solo"></div><div class="hmc" id="hm-d4-Team"></div><div class="hmc" id="hm-d4-Krise"></div><div class="hmc" id="hm-d4-Pitch"></div><div class="hmc" id="hm-d4-Wachstum"></div></div>
+    <div class="hmr"><span class="hmrl">D5 Stress</span><div class="hmc" id="hm-d5-Solo"></div><div class="hmc" id="hm-d5-Team"></div><div class="hmc" id="hm-d5-Krise"></div><div class="hmc" id="hm-d5-Pitch"></div><div class="hmc" id="hm-d5-Wachstum"></div></div>
     <div style="font-size:9px;color:var(--muted);margin-top:4px;">★ = hohe Kosten / geringer Output &nbsp;·&nbsp; ★★★★ = optimale Leistungszone</div>
   </div>
   <div class="pf"><span class="pft">NBIF · German Institute of Positive Psychology · germaninstitute.eu</span><span class="pfn">07</span></div>
@@ -799,10 +849,10 @@ p:last-child{margin-bottom:0;}
         <div class="tg"><div class="td r"></div><span class="tl">Small Talk &amp; Improv-Networking</span><span class="tt r">Hoher Aufwand</span></div>
         <div style="margin-top:11px;">
           <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--gold);margin-bottom:7px;">STIL-PARAMETER</div>
-          <div class="dr"><div class="dl">Direktheit</div><div class="dt"><div class="df" style="width:65%"></div></div><div class="dsc">65</div></div>
-          <div class="dr"><div class="dl">Faktendichte</div><div class="dt"><div class="df" style="width:88%"></div></div><div class="dsc">88</div></div>
-          <div class="dr"><div class="dl">Empathie-Signal</div><div class="dt"><div class="df go" style="width:42%"></div></div><div class="dsc">42</div></div>
-          <div class="dr"><div class="dl">Reaktionsgeschwindigkeit</div><div class="dt"><div class="df re" style="width:38%"></div></div><div class="dsc">38</div></div>
+          <div class="dr"><div class="dl">Direktheit</div><div class="dt"><div class="df" id="comm-bar-direktheit" style="width:0%"></div></div><div class="dsc" id="comm-val-direktheit">–</div></div>
+          <div class="dr"><div class="dl">Faktendichte</div><div class="dt"><div class="df" id="comm-bar-faktendichte" style="width:0%"></div></div><div class="dsc" id="comm-val-faktendichte">–</div></div>
+          <div class="dr"><div class="dl">Empathie-Signal</div><div class="dt"><div class="df go" id="comm-bar-empathie" style="width:0%"></div></div><div class="dsc" id="comm-val-empathie">–</div></div>
+          <div class="dr"><div class="dl">Reaktionsgeschwindigkeit</div><div class="dt"><div class="df re" id="comm-bar-reaktion" style="width:0%"></div></div><div class="dsc" id="comm-val-reaktion">–</div></div>
         </div>
       </div>
       <div>

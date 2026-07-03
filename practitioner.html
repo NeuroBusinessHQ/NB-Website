@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>NeuroBusiness™ Practitioner Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{
+  --cream:#faf8f4;--cream2:#f4f1eb;--cream3:#ede9e0;
+  --dark:#1a1814;--gold:#c9a96e;--gold2:#a8813e;--gold-light:#f0e4cc;
+  --text:#2e2b26;--text2:#6b6560;--text3:#a09a92;
+  --border:rgba(26,24,20,0.1);--err:#a0432e;--ok:#4a7c59;
+  --fd:'Cormorant Garamond',Georgia,serif;--fb:'Outfit',sans-serif;--fm:'DM Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);color:var(--text);font-family:var(--fb);font-size:16px;font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+em{font-style:italic;color:var(--gold2)}
+.wrap{max-width:960px;margin:0 auto;padding:50px 24px 100px}
+.logo{font-family:var(--fd);font-size:22px;color:var(--dark)}
+.logo em{color:var(--gold);font-style:normal}
+.topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;flex-wrap:wrap;gap:10px}
+.eyebrow{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:12px}
+h1{font-family:var(--fd);font-size:38px;font-weight:300;color:var(--dark);line-height:1.15;margin-bottom:12px}
+h2{font-family:var(--fd);font-size:24px;font-weight:400;color:var(--dark);margin-bottom:14px}
+.lead{color:var(--text2);max-width:600px;margin-bottom:30px}
+.card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px}
+label{display:block;font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:12px 0 6px}
+input,select{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:9px;font-family:var(--fb);font-size:15px;background:var(--cream);color:var(--dark)}
+input:focus,select:focus{outline:none;border-color:var(--gold)}
+button{background:var(--dark);color:#fff;border:none;border-radius:9px;padding:12px 24px;font-family:var(--fb);font-size:15px;cursor:pointer;transition:background .2s}
+button:hover{background:var(--gold2)}
+button:disabled{opacity:.5;cursor:default}
+.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--cream2);color:var(--dark)}
+.msg{font-size:14px;margin-top:12px;display:none;padding:10px 14px;border-radius:8px}
+.msg.err{color:var(--err);background:#f8ece8;display:block}
+.msg.ok{color:var(--ok);background:#ecf3ee;display:block}
+.tabs{display:flex;gap:6px;margin-bottom:18px}
+.tab{flex:1;padding:10px;text-align:center;border-radius:8px;background:var(--cream2);cursor:pointer;font-size:14px;color:var(--text2)}
+.tab.active{background:var(--dark);color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:18px}
+.kpi{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px}
+.kpi-val{font-family:var(--fd);font-size:34px;color:var(--dark);line-height:1}
+.kpi-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-top:8px}
+.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.pack{border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--cream)}
+.pack.best{border-color:var(--gold);background:var(--gold-light)}
+.pack-n{font-family:var(--fd);font-size:30px;color:var(--dark)}
+.pack-p{font-family:var(--fm);font-size:13px;color:var(--gold2);margin:4px 0 12px}
+.banner{border-left:3px solid var(--gold);background:var(--gold-light);border-radius:0 10px 10px 0;padding:16px 20px;margin-bottom:18px;font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+td{padding:10px;border-bottom:1px solid var(--border)}
+a{color:var(--gold2)}
+.pill{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;background:var(--cream3)}
+.pill.done{background:#ecf3ee;color:var(--ok)}
+#portal{display:none}
+@media(max-width:640px){h1{font-size:30px}.wrap{padding:30px 16px 80px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topline">
+    <div class="logo">NeuroBusiness<em>™</em> <span style="font-family:var(--fm);font-size:11px;color:var(--gold2);letter-spacing:.1em">PRACTITIONER</span></div>
+    <div id="userbox" style="display:none;font-size:14px;color:var(--text2)">
+      <span id="u-email"></span> · <a href="#" onclick="logout();return false">Abmelden</a>
+    </div>
+  </div>
+
+  <!-- ═══ AUTH ═══ -->
+  <div id="auth">
+    <div class="eyebrow">Practitioner Portal</div>
+    <h1>Dein Diagnostik-Werkzeug. <em>Deine Klienten.</em></h1>
+    <p class="lead">Kaufe Test-Credits, lade Klienten zur NeuroBusiness™ Diagnostik ein und arbeite mit ihren vollständigen Reports — wissenschaftlich fundiert, sofort einsatzbereit.</p>
+    <div class="card" style="max-width:440px">
+      <div class="tabs">
+        <div class="tab active" id="tab-login" onclick="switchTab('login')">Anmelden</div>
+        <div class="tab" id="tab-register" onclick="switchTab('register')">Registrieren</div>
+      </div>
+      <div id="panel-login">
+        <label>E-Mail</label><input id="l-email" type="email" autocomplete="email">
+        <label>Passwort</label><input id="l-pass" type="password" autocomplete="current-password">
+        <div style="margin-top:18px;display:flex;gap:10px;align-items:center">
+          <button id="btn-login" onclick="login()">Anmelden</button>
+          <a href="#" style="font-size:13px" onclick="resetPw();return false">Passwort vergessen?</a>
+        </div>
+      </div>
+      <div id="panel-register" style="display:none">
+        <label>E-Mail</label><input id="r-email" type="email" autocomplete="email">
+        <label>Passwort (min. 8 Zeichen)</label><input id="r-pass" type="password" autocomplete="new-password">
+        <div style="margin-top:18px"><button id="btn-register" onclick="register()">Konto erstellen</button></div>
+        <p style="font-size:13px;color:var(--text3);margin-top:12px">Nach der Registrierung prüft Eva deinen Zugang persönlich und schaltet dich frei.</p>
+      </div>
+      <div class="msg" id="auth-msg"></div>
+    </div>
+  </div>
+
+  <!-- ═══ PORTAL ═══ -->
+  <div id="portal">
+    <div class="eyebrow">Dein Portal</div>
+    <h1 style="margin-bottom:24px">Practitioner <em>Dashboard</em></h1>
+
+    <div class="banner" id="pending-banner" style="display:none">
+      <strong>Dein Zugang wird geprüft.</strong> Eva schaltet neue Practitioner persönlich frei — du bekommst eine E-Mail, sobald es losgeht. Fragen? <a href="mailto:hello@neurobusiness.one">hello@neurobusiness.one</a>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-val" id="k-credits">–</div><div class="kpi-lbl">Credits verfügbar</div></div>
+      <div class="kpi"><div class="kpi-val" id="k-clients">–</div><div class="kpi-lbl">Klienten</div></div>
+    </div>
+
+    <div class="card">
+      <h2>Credits kaufen</h2>
+      <p style="color:var(--text2);font-size:14px;margin-bottom:16px">1 Credit = 1 vollständige Diagnostik (50 Fragen + kompletter Report). Endkundenpreis: 147 €.</p>
+      <div class="packs">
+        <div class="pack">
+          <div class="pack-n">10 Tests</div>
+          <div class="pack-p">990 € · 99 €/Test</div>
+          <button onclick="buy(10)">Kaufen</button>
+        </div>
+        <div class="pack best">
+          <div class="pack-n">25 Tests</div>
+          <div class="pack-p">2.225 € · 89 €/Test</div>
+          <button onclick="buy(25)">Kaufen</button>
+        </div>
+        <div class="pack">
+          <div class="pack-n">50 Tests</div>
+          <div class="pack-p">3.950 € · 79 €/Test</div>
+          <button onclick="buy(50)">Kaufen</button>
+        </div>
+      </div>
+      <div class="msg" id="buy-msg"></div>
+    </div>
+
+    <div class="card">
+      <h2>Klient einladen <span style="font-size:14px;color:var(--text3);font-family:var(--fb)">(kostet 1 Credit)</span></h2>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:12px;align-items:end">
+        <div><label>E-Mail des Klienten</label><input id="i-email" type="email"></div>
+        <div><label>Vorname</label><input id="i-name"></div>
+        <div><label>Sprache</label><select id="i-lang"><option value="de">Deutsch</option><option value="en">English</option></select></div>
+        <button id="btn-invite" onclick="invite()" style="height:47px">Einladen</button>
+      </div>
+      <p style="font-size:13px;color:var(--text3);margin-top:10px">Dein Klient erhält sofort eine E-Mail mit seinem persönlichen Diagnostik-Link (60 Tage gültig).</p>
+      <div class="msg" id="invite-msg"></div>
+    </div>
+
+    <div class="card">
+      <h2>Deine Klienten <button class="btn-ghost" style="float:right;padding:6px 14px;font-size:13px" onclick="loadClients()">Aktualisieren</button></h2>
+      <div id="clients">Lade…</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://psqfrdpitjmfwvupmfdp.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzcWZyZHBpdGptZnd2dXBtZmRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDQ1NjQsImV4cCI6MjA5MzkyMDU2NH0.yUD24iRrINHLBRIJElmOJZPoBuoBcPGfayNGX38Oldg';
+const API = 'https://neurobusiness.one/api';
+const TYPES = { S: 'Stratege', V: 'Visionär', M: 'Builder', C: 'Connector', G: 'Hochleister' };
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let ME = null;
+
+function esc(s){const d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML}
+function msg(id, text, type){const el=document.getElementById(id);el.textContent=text;el.className='msg '+(type||'err');if(!text)el.className='msg'}
+function switchTab(t){
+  document.getElementById('tab-login').classList.toggle('active',t==='login');
+  document.getElementById('tab-register').classList.toggle('active',t==='register');
+  document.getElementById('panel-login').style.display=t==='login'?'block':'none';
+  document.getElementById('panel-register').style.display=t==='register'?'block':'none';
+  msg('auth-msg','');
+}
+
+async function login(){
+  const b=document.getElementById('btn-login');b.disabled=true;
+  const {error}=await sb.auth.signInWithPassword({email:document.getElementById('l-email').value.trim(),password:document.getElementById('l-pass').value});
+  b.disabled=false;
+  if(error){msg('auth-msg',error.message==='Invalid login credentials'?'E-Mail oder Passwort falsch.':error.message);return}
+}
+async function register(){
+  const b=document.getElementById('btn-register');b.disabled=true;
+  const {error}=await sb.auth.signUp({email:document.getElementById('r-email').value.trim(),password:document.getElementById('r-pass').value});
+  b.disabled=false;
+  if(error){msg('auth-msg',error.message);return}
+  msg('auth-msg','✓ Konto erstellt. Bitte bestätige deine E-Mail (Postfach prüfen), dann melde dich an.','ok');
+}
+async function resetPw(){
+  const email=document.getElementById('l-email').value.trim();
+  if(!email){msg('auth-msg','Gib oben deine E-Mail ein, dann klicke erneut auf „Passwort vergessen".');return}
+  const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+'/coach-login.html?mode=update-password'});
+  msg('auth-msg',error?error.message:'✓ Reset-Link gesendet an '+email,error?'err':'ok');
+}
+async function logout(){await sb.auth.signOut();location.reload()}
+
+async function api(path, body){
+  const {data:{session}}=await sb.auth.getSession();
+  if(!session)throw new Error('Nicht eingeloggt');
+  const res=await fetch(API+path,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+session.access_token},body:JSON.stringify(body||{})});
+  const data=await res.json().catch(()=>({}));
+  if(!res.ok)throw Object.assign(new Error(data.error||('Fehler '+res.status)),{code:data.error});
+  return data;
+}
+
+async function showPortal(){
+  document.getElementById('auth').style.display='none';
+  document.getElementById('portal').style.display='block';
+  document.getElementById('userbox').style.display='block';
+  try{
+    ME=await api('/coach-me');
+    document.getElementById('u-email').textContent=ME.email;
+    document.getElementById('k-credits').textContent=ME.credits;
+    document.getElementById('k-clients').textContent=ME.clients;
+    document.getElementById('pending-banner').style.display=ME.status==='active'?'none':'block';
+  }catch(e){msg('buy-msg',e.message)}
+  loadClients();
+  if(new URLSearchParams(location.search).get('purchase')==='success'){
+    msg('buy-msg','✓ Zahlung erhalten! Deine Credits werden in wenigen Sekunden gutgeschrieben — Seite ggf. neu laden.','ok');
+    history.replaceState({},'',location.pathname);
+  }
+}
+
+async function buy(n){
+  msg('buy-msg','');
+  try{
+    const d=await api('/coach-buy-credits',{package:n});
+    if(d.url)location.href=d.url;
+  }catch(e){
+    msg('buy-msg',e.code==='not_active'?'Dein Zugang ist noch nicht freigeschaltet — Eva meldet sich in Kürze.':e.message);
+  }
+}
+
+async function invite(){
+  msg('invite-msg','');
+  const b=document.getElementById('btn-invite');b.disabled=true;b.textContent='Sende…';
+  try{
+    const d=await api('/coach-invite',{clientEmail:document.getElementById('i-email').value,firstName:document.getElementById('i-name').value,lang:document.getElementById('i-lang').value});
+    msg('invite-msg','✓ Einladung verschickt. Verbleibende Credits: '+d.creditsLeft,'ok');
+    document.getElementById('i-email').value='';document.getElementById('i-name').value='';
+    document.getElementById('k-credits').textContent=d.creditsLeft;
+    loadClients();
+  }catch(e){
+    msg('invite-msg',e.code==='not_active'?'Dein Zugang ist noch nicht freigeschaltet.':e.message);
+  }finally{b.disabled=false;b.textContent='Einladen'}
+}
+
+async function loadClients(){
+  const el=document.getElementById('clients');
+  try{
+    const d=await api('/coach-clients');
+    const cs=d.clients||[];
+    document.getElementById('k-clients').textContent=cs.length;
+    if(cs.length===0){el.innerHTML='<span style="color:var(--text3)">Noch keine Klienten — lade oben deinen ersten ein.</span>';return}
+    el.innerHTML='<table><thead><tr><th>Klient</th><th>Psychotyp</th><th>Status</th><th>Report</th></tr></thead><tbody>'+cs.map(c=>`<tr>
+      <td>${esc(c.firstName||'')} <span style="color:var(--text3)">${esc(c.email)}</span></td>
+      <td>${c.psychotype?esc(TYPES[c.psychotype[0]]||c.psychotype)+(c.burnout?' <span title="Burnout-Signal">🔥</span>':''):'—'}</td>
+      <td>${c.completedAt?'<span class="pill done">Abgeschlossen</span>':'<span class="pill">Eingeladen</span>'}</td>
+      <td>${c.reportUrl?`<a href="${c.reportUrl}" target="_blank" rel="noopener">Report öffnen →</a>`:'—'}</td>
+    </tr>`).join('')+'</tbody></table>';
+  }catch(e){el.innerHTML='<span style="color:var(--err)">'+esc(e.message)+'</span>'}
+}
+
+sb.auth.onAuthStateChange((event,session)=>{
+  if(session)showPortal();
+  else{document.getElementById('auth').style.display='block';document.getElementById('portal').style.display='none';document.getElementById('userbox').style.display='none'}
+});
+</script>
+</body>
+</html>

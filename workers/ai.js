@@ -25,9 +25,9 @@ export default {
     const origin = request.headers.get('Origin') || '';
     const allowed = env.ALLOWED_ORIGIN || 'https://neurobusiness.one';
     const corsHeaders = {
-      'Access-Control-Allow-Origin': (origin === allowed || origin.includes('localhost') || origin.includes('pages.dev')) ? origin : allowed,
+      'Access-Control-Allow-Origin': (origin === allowed || origin.includes('localhost') || origin.includes('pages.dev') || origin.endsWith('.evaa-com.workers.dev')) ? origin : allowed,
       'Access-Control-Allow-Methods': 'GET, POST, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-admin-key',
     };
 
     if (request.method === 'OPTIONS') {
@@ -313,6 +313,18 @@ export default {
       }, 200, corsHeaders);
     }
 
+    // ── /api/team-list (Admin: alle Teams mit Fortschritt) ────────
+    if (pathname === '/api/team-list') {
+      if (!env.ADMIN_KEY) return json({ error: 'ADMIN_KEY not configured' }, 503, corsHeaders);
+      const tlKey = request.headers.get('x-admin-key') || '';
+      if (tlKey !== env.ADMIN_KEY) return json({ error: 'Unauthorized' }, 401, corsHeaders);
+      const allTeams = await supabaseGet(`teams?code=not.is.null&select=code,name,owner_email,seats,created_at&order=created_at.desc&limit=200`, env) || [];
+      const counts = await supabaseGet(`profiles?team_code=not.is.null&diagnostic_completed_at=not.is.null&select=team_code`, env) || [];
+      const byCode = {};
+      for (const c of counts) byCode[c.team_code] = (byCode[c.team_code] || 0) + 1;
+      return json({ teams: allTeams.map(t => ({ ...t, completed: byCode[t.code] || 0 })) }, 200, corsHeaders);
+    }
+
     // ── /api/team-report (B2B Team Intelligence Dashboard) ────────
     // Aggregiert — keine Einzelpersonen-Daten an den Team-Owner (DSGVO).
     if (pathname === '/api/team-report') {
@@ -345,6 +357,122 @@ export default {
         report.missingTypes = Object.keys(dist).filter(k => dist[k] === 0);
       }
       return json(report, 200, corsHeaders);
+    }
+
+    // ══ PRACTITIONER PORTAL ═══════════════════════════════════════
+    // Auth: Supabase-JWT des Coaches. Coach-Zeile wird bei Erstkontakt angelegt (status: pending).
+    const getCoach = async () => {
+      const chAuth = request.headers.get('Authorization') || '';
+      const chJwt = chAuth.replace('Bearer ', '').trim();
+      if (!chJwt) return { err: json({ error: 'Nicht authentifiziert' }, 401, corsHeaders) };
+      let chEmail, chSub;
+      try {
+        const parts = chJwt.split('.');
+        if (parts.length !== 3) throw 0;
+        const payload = JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
+        if (!payload.email || payload.role !== 'authenticated') throw 0;
+        if (payload.exp && payload.exp < Math.floor(Date.now() / 1000)) return { err: json({ error: 'Session abgelaufen' }, 401, corsHeaders) };
+        chEmail = payload.email.toLowerCase();
+        chSub = payload.sub;
+      } catch { return { err: json({ error: 'Token-Fehler' }, 401, corsHeaders) }; }
+      const chRows = await supabaseGet(`coaches?email=eq.${encodeURIComponent(chEmail)}&select=id,email,status,credits&limit=1`, env);
+      let coach = chRows?.[0];
+      if (!coach) {
+        coach = await supabasePost('coaches', { user_id: chSub, email: chEmail, status: 'pending', credits: 0 }, env);
+        if (!coach) return { err: json({ error: 'Coach-Profil konnte nicht angelegt werden' }, 500, corsHeaders) };
+      }
+      if (coach.status === 'blocked') return { err: json({ error: 'Account gesperrt' }, 403, corsHeaders) };
+      return { coach };
+    };
+
+    // ── /api/coach-me ─────────────────────────────────────────────
+    if (pathname === '/api/coach-me') {
+      const { coach, err } = await getCoach(); if (err) return err;
+      const cmClients = await supabaseGet(`profiles?coach_id=eq.${coach.id}&select=id`, env) || [];
+      return json({ email: coach.email, status: coach.status, credits: coach.credits || 0, clients: cmClients.length }, 200, corsHeaders);
+    }
+
+    // ── /api/coach-buy-credits → Stripe Checkout (mode=payment) ──
+    if (pathname === '/api/coach-buy-credits') {
+      const { coach, err } = await getCoach(); if (err) return err;
+      if (coach.status !== 'active') return json({ error: 'not_active' }, 403, corsHeaders);
+      if (!env.STRIPE_SECRET_KEY) return json({ error: 'Stripe nicht konfiguriert' }, 503, corsHeaders);
+      let body; try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+      const PACKAGES = { 10: 99000, 25: 222500, 50: 395000 };  // Cent: 99 € / 89 € / 79 € pro Test
+      const crNum = parseInt(body.package);
+      if (!PACKAGES[crNum]) return json({ error: 'Unbekanntes Paket' }, 400, corsHeaders);
+      const spParams = new URLSearchParams({
+        'mode': 'payment',
+        'success_url': 'https://neurobusiness.one/practitioner.html?purchase=success',
+        'cancel_url': 'https://neurobusiness.one/practitioner.html',
+        'customer_email': coach.email,
+        'line_items[0][quantity]': '1',
+        'line_items[0][price_data][currency]': 'eur',
+        'line_items[0][price_data][unit_amount]': String(PACKAGES[crNum]),
+        'line_items[0][price_data][product_data][name]': `NeuroBusiness™ Practitioner Credits — ${crNum} Diagnostik-Tests`,
+        'metadata[type]': 'credits',
+        'metadata[coach_id]': coach.id,
+        'metadata[credits]': String(crNum),
+      });
+      const spRes = await fetch('https://api.stripe.com/v1/checkout/sessions', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${env.STRIPE_SECRET_KEY}`, 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: spParams.toString(),
+      });
+      const spSession = await spRes.json();
+      if (!spRes.ok) { console.error('[Credits] Stripe-Fehler:', JSON.stringify(spSession.error || {})); return json({ error: 'Stripe-Fehler' }, 500, corsHeaders); }
+      return json({ url: spSession.url }, 200, corsHeaders);
+    }
+
+    // ── /api/coach-invite → 1 Credit abbuchen, Klient einladen ───
+    if (pathname === '/api/coach-invite') {
+      const { coach, err } = await getCoach(); if (err) return err;
+      if (coach.status !== 'active') return json({ error: 'not_active' }, 403, corsHeaders);
+      let body; try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
+      const clientEmail = (body.clientEmail || '').trim().toLowerCase();
+      if (!clientEmail.includes('@') || clientEmail.length < 6) return json({ error: 'Gültige Klienten-E-Mail nötig' }, 400, corsHeaders);
+      // 1. Credit atomar abbuchen (NULL = nicht genug)
+      const spend = await supabaseRpc('add_coach_credits', { p_coach: coach.id, p_delta: -1 }, env);
+      if (spend === null || spend === undefined) return json({ error: 'Kein Credit verfügbar — bitte Paket kaufen.' }, 402, corsHeaders);
+      // 2. Klient anlegen + Diagnostik-Mail via n8n (bestehender Admin-Workflow)
+      let inviteOk = false, inviteMsg = '';
+      try {
+        const nRes = await fetch('https://evakolontai.app.n8n.cloud/webhook/nb-admin-create-user', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: clientEmail, first_name: body.firstName || '', lang: body.lang || 'de', validity: '60', send_email: true, product: 'diagnostic', source: 'practitioner' })
+        });
+        const nJson = await nRes.json().catch(() => ({}));
+        inviteOk = nRes.ok && nJson.ok !== false && nJson.success !== false;
+        inviteMsg = nJson.message || '';
+      } catch (e) { inviteMsg = 'n8n nicht erreichbar'; }
+      if (!inviteOk) {
+        await supabaseRpc('add_coach_credits', { p_coach: coach.id, p_delta: 1 }, env);  // Credit zurückgeben
+        return json({ error: inviteMsg || 'Einladung fehlgeschlagen — Credit wurde zurückgebucht.' }, 500, corsHeaders);
+      }
+      // 3. Klient dem Coach zuordnen + Transaktion loggen
+      await fetch(`${env.SUPABASE_URL}/rest/v1/profiles?email=eq.${encodeURIComponent(clientEmail)}`, {
+        method: 'PATCH',
+        headers: { 'apikey': env.SUPABASE_SERVICE_KEY, 'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ coach_id: coach.id }),
+      }).catch(console.error);
+      supabasePost('credit_transactions', { coach_id: coach.id, delta: -1, reason: 'invite:' + clientEmail }, env);
+      return json({ ok: true, creditsLeft: spend }, 200, corsHeaders);
+    }
+
+    // ── /api/coach-clients → Klienten-Liste mit Report-Links ─────
+    if (pathname === '/api/coach-clients') {
+      const { coach, err } = await getCoach(); if (err) return err;
+      const ccProfiles = await supabaseGet(`profiles?coach_id=eq.${coach.id}&select=id,email,first_name,psychotype,secondary_psychotype,burnout_alert,diagnostic_completed_at&order=diagnostic_completed_at.desc.nullslast&limit=200`, env) || [];
+      const ccClients = [];
+      for (const p of ccProfiles) {
+        let reportUrl = null;
+        if (p.diagnostic_completed_at) {
+          const tk = await supabaseGet(`access_tokens?user_id=eq.${p.id}&select=token,expires_at&order=expires_at.desc&limit=1`, env);
+          if (tk?.[0]) reportUrl = `https://neurobusiness.one/result_v2.html?token=${encodeURIComponent(tk[0].token)}`;
+        }
+        ccClients.push({ email: p.email, firstName: p.first_name, psychotype: p.psychotype, secondary: p.secondary_psychotype, burnout: !!p.burnout_alert, completedAt: p.diagnostic_completed_at, reportUrl });
+      }
+      return json({ clients: ccClients }, 200, corsHeaders);
     }
 
     // ── TOKEN-VALIDIERUNG (für /api/ai) ───────────────────────────
@@ -443,6 +571,20 @@ async function supabasePost(path, body, env) {
   if (!res.ok) return null;
   const data = await res.json();
   return data?.[0] || data;
+}
+
+async function supabaseRpc(fn, args, env) {
+  const res = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/${fn}`, {
+    method: 'POST',
+    headers: {
+      'apikey': env.SUPABASE_SERVICE_KEY,
+      'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(args),
+  });
+  if (!res.ok) return null;
+  return res.json();
 }
 
 async function validateTokenAndGetProfile(token, env) {
@@ -740,6 +882,19 @@ async function handleStripeWebhook(request, env) {
       // ── Neues Abo nach erfolgreichem Checkout ──────────────────
       case 'checkout.session.completed': {
         const session = event.data.object;
+
+        // ── Practitioner Credit-Kauf (mode=payment) ────────────────
+        if (session.metadata?.type === 'credits') {
+          const crCoach = session.metadata.coach_id;
+          const crNum = parseInt(session.metadata.credits) || 0;
+          if (crCoach && crNum > 0) {
+            const crBal = await supabaseRpc('add_coach_credits', { p_coach: crCoach, p_delta: crNum }, env);
+            await supabasePost('credit_transactions', { coach_id: crCoach, delta: crNum, reason: 'purchase', stripe_session: session.id }, env);
+            console.log(`[Credits] +${crNum} für Coach ${crCoach} (neuer Saldo: ${crBal})`);
+          }
+          break;
+        }
+
         if (session.mode !== 'subscription' || !session.subscription) break;
 
         // Vollständiges Subscription-Objekt von Stripe holen

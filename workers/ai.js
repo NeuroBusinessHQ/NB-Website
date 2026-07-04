@@ -135,6 +135,56 @@ export default {
         }
       }
 
+      // ── Validierungs-Topf: nbif_sessions / nbif_raw_responses / nbif_scores (anonym) ──
+      if (consentResearch === true && Array.isArray(answers) && answers.length === 50 &&
+          answers.every(v => Number.isInteger(v) && v >= 1 && v <= 5) && body.sessionId) {
+        const sv = body.scoringVersion || 'nbif-2026-06-efa';
+        const startedAt = body.startedAt || null;
+        const completedAt = body.completedAt || new Date().toISOString();
+        const durMs = (startedAt && completedAt) ? (new Date(completedAt) - new Date(startedAt)) : null;
+        const sbH = { 'apikey': env.SUPABASE_SERVICE_KEY, 'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' };
+        const sbPost = (table, payload) => fetch(`${env.SUPABASE_URL}/rest/v1/${table}`, { method: 'POST', headers: sbH, body: JSON.stringify(payload) });
+        try {
+          // 1. Session zuerst (FK-Ziel)
+          await sbPost('nbif_sessions', {
+            session_id: body.sessionId,
+            started_at: startedAt,
+            completed_at: completedAt,
+            completion_status: 'completed',
+            duration_ms: durMs,
+            device_type: body.deviceType || null,
+            user_agent: (body.userAgent || '').slice(0, 400) || null,
+            referrer_source: body.referrerSource || null,
+            lang: lang || null,
+            scoring_version: sv,
+            consent_research: true,
+            consent_source: consentSource || 'solo_direct',
+            consent_research_version: consentResearchVersion || 'v1.0_2026-06',
+            response_set_warning: !!responseSetWarning,
+          });
+          // 2. Roh-Items (Long-Format, 50 Zeilen in einem Batch)
+          const timings = Array.isArray(body.itemTimings) ? body.itemTimings : [];
+          const rawRows = answers.map((val, i) => ({
+            session_id: body.sessionId,
+            question_id: i + 1,
+            dimension: 'D' + (Math.floor(i / 10) + 1),
+            response_value: val,
+            response_time_ms: Number.isFinite(timings[i]) ? timings[i] : null,
+          }));
+          await sbPost('nbif_raw_responses', rawRows);
+          // 3. Scores (versioniert)
+          await sbPost('nbif_scores', {
+            session_id: body.sessionId,
+            scoring_version: sv,
+            d1_score: d1 ?? null, d2_score: d2 ?? null, d3_score: d3 ?? null, d4_score: d4 ?? null, d5_score: d5 ?? null,
+            s_score: scores?.S ?? null, v_score: scores?.V ?? null, m_score: scores?.M ?? null, c_score: scores?.C ?? null, g_score: scores?.G ?? null,
+            primary_type: primary || null,
+            secondary_type: secondary || null,
+            burnout_flag: burnout ? true : false,
+          });
+        } catch (nbifErr) { console.error('nbif write failed (non-blocking):', nbifErr); }
+      }
+
       return json({ ok: true }, 200, corsHeaders);
     }
 

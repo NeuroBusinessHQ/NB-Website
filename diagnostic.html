@@ -610,6 +610,11 @@ let lang = 'en';
 let currentBlock = 0;
 let answers = new Array(50).fill(0); // 0 = unanswered
 let userData = {};
+// ── Validierungs-Instrumentierung (Phase 0.1) ──
+const SCORING_VERSION = 'nbif-2026-06-efa';
+let sessionMeta = null;
+let lastInteractionAt = 0;
+const itemTimeMs = new Array(50).fill(null);
 
 // ═══════════════════════════════════════════
 // LANGUAGE
@@ -729,6 +734,15 @@ function startQuiz() {
 
   document.getElementById('intro').classList.remove('show');
   document.getElementById('quiz').classList.add('show');
+  // Session-Instrumentierung starten (anonym, für Validierung)
+  sessionMeta = {
+    sessionId: (self.crypto && crypto.randomUUID) ? crypto.randomUUID() : (Date.now()+'-'+Math.random().toString(36).slice(2)),
+    startedAt: new Date().toISOString(),
+    deviceType: /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'mobile' : (/iPad|Tablet/i.test(navigator.userAgent) ? 'tablet' : 'desktop'),
+    userAgent: (navigator.userAgent||'').slice(0,400),
+    referrer: document.referrer || new URLSearchParams(window.location.search).get('source') || null,
+  };
+  lastInteractionAt = Date.now();
   currentBlock = 0;
   renderBlock(0);
   window.scrollTo({top:0,behavior:'smooth'});
@@ -738,6 +752,7 @@ function startQuiz() {
 // RENDER BLOCK
 // ═══════════════════════════════════════════
 function renderBlock(blockIdx) {
+  lastInteractionAt = Date.now();
   const t = TR[lang];
   const block = BLOCKS[blockIdx];
   const questions = lang==='de' ? block.de : block.en;
@@ -800,6 +815,9 @@ function renderBlock(blockIdx) {
 }
 
 function selectAnswer(idx, val) {
+  const _now = Date.now();
+  if (lastInteractionAt) itemTimeMs[idx] = _now - lastInteractionAt;
+  lastInteractionAt = _now;
   answers[idx] = val;
   // Update button visuals
   const qi = document.getElementById('qi-'+idx);
@@ -899,6 +917,14 @@ function submitQuiz() {
             consentTimestamp:       userData.consentTimestamp || null,
             consentSource:          userData.consentSource || 'solo_direct',
             teamCode:               userData.teamCode || null,
+            sessionId:              sessionMeta && sessionMeta.sessionId || null,
+            startedAt:              sessionMeta && sessionMeta.startedAt || null,
+            completedAt:            new Date().toISOString(),
+            deviceType:             sessionMeta && sessionMeta.deviceType || null,
+            userAgent:              sessionMeta && sessionMeta.userAgent || null,
+            referrerSource:         sessionMeta && sessionMeta.referrer || null,
+            scoringVersion:         SCORING_VERSION,
+            itemTimings:            itemTimeMs,
           })
         });
       }

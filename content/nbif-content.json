@@ -1,0 +1,1918 @@
+{
+  "generated_at": "2026-07-04T15:44:29.753Z",
+  "source": "NB Report-Content Deploy / rows (EN Content 4)",
+  "count": 273,
+  "anchors": [
+    {
+      "s": "Sie wissen mehr als genug, um zu handeln.",
+      "V": "Sie sehen die Zukunft klarer als die meisten Menschen.",
+      "M": "Sie setzen um, was andere nur ankündigen.",
+      "C": "Sie öffnen Türen, die für andere verschlossen bleiben.",
+      "G": "Sie leisten mehr als fast jeder in Ihrem Umfeld."
+    },
+    {
+      "s": "Ihr Gehirn sucht trotzdem nach mehr Gewissheit.",
+      "V": "Ihr Gehirn springt trotzdem zum nächsten Bild, bevor das erste steht.",
+      "M": "Ihr Gehirn hält trotzdem alles in den eigenen Händen.",
+      "C": "Ihr Gehirn stellt trotzdem alle anderen vor sich selbst.",
+      "G": "Ihr Gehirn kennt trotzdem nur ein Tempo: schneller."
+    },
+    {
+      "s": "Execution-Paradox: Alles läuft durch Sie. Wachstumsdeckel ist neuropsychologisch erklärt, nicht motivational.",
+      "V": "Start-Paradox: Vieles beginnt, weniges landet. Die Umsetzungslücke ist neuropsychologisch erklärt, nicht mangelnde Disziplin.",
+      "M": "Operator-Paradox: Alles läuft durch Ihre Hände. Der Wachstumsdeckel ist neuropsychologisch erklärt, nicht motivational.",
+      "C": "Gefallen-Paradox: Alle werden versorgt, außer Ihr Business. Das Preisproblem ist neuropsychologisch erklärt, nicht kaufmännisch.",
+      "G": "Tempo-Paradox: Höchstleistung ohne Richtungs-Check. Das Erschöpfungsrisiko ist neuropsychologisch erklärt, keine Schwäche."
+    },
+    {
+      "s": "Analyse-Sicherheitsfalle: Kostet 20–40% realisierbaren Jahresumsatz durch Verzögerungen und Unterpreisen.",
+      "V": "Shiny-Object-Falle: Kostet 20–40% realisierbaren Jahresumsatz durch verwaiste Projekte und verpasste Monetarisierung.",
+      "M": "Aufwands-Preis-Falle: Kostet 20–40% realisierbaren Jahresumsatz durch Verkauf über Stunden statt Wirkung.",
+      "C": "Gratis-Wert-Falle: Kostet 20–40% realisierbaren Jahresumsatz durch verschenkte Leistung und weiche Preise.",
+      "G": "Volumen-Falle: Kostet 20–40% realisierbaren Jahresumsatz durch mehr Arbeit statt besserer Hebel."
+    },
+    {
+      "s": "nur beim Strategist",
+      "V": "nur beim Visionary",
+      "M": "nur beim Builder",
+      "C": "nur beim Connector",
+      "G": "nur beim High Performer"
+    },
+    {
+      "s": "Systemisches Denken",
+      "V": "Zukunftsbilder",
+      "M": "Umsetzungskraft",
+      "C": "Vertrauensaufbau",
+      "G": "Zielfokus"
+    },
+    {
+      "s": "Risikokalkulation",
+      "V": "Chancenerkennung",
+      "M": "Prozessarchitektur",
+      "C": "Netzwerkintelligenz",
+      "G": "Disziplin"
+    },
+    {
+      "s": "Strategische Tiefe",
+      "V": "Sinnstiftung",
+      "M": "Verlässlichkeit",
+      "C": "Empathische Präzision",
+      "G": "Tempo"
+    },
+    {
+      "s": "Präzision im Urteil",
+      "V": "Storytelling",
+      "M": "Qualitätsinstinkt",
+      "C": "Team-Kitt",
+      "G": "Belastbarkeit im Sprint"
+    },
+    {
+      "s": "Langfristige Planung",
+      "V": "Innovationsmut",
+      "M": "Pragmatismus",
+      "C": "Empfehlungsmagnet",
+      "G": "Hohe Standards"
+    },
+    {
+      "s": "Entscheidungslatenz",
+      "V": "Umsetzungslücke",
+      "M": "Loslass-Widerstand",
+      "C": "People-Pleasing",
+      "G": "Regenerations-Defizit"
+    },
+    {
+      "s": "Delegationswiderstand",
+      "V": "Detailaversion",
+      "M": "Strategie-Aufschub",
+      "C": "Preis-Weichheit",
+      "G": "Ungeduld mit anderen"
+    },
+    {
+      "s": "Unsichtbarkeit nach außen",
+      "V": "Fokus-Streuung",
+      "M": null,
+      "C": "Grenzen-Setzen",
+      "G": "Kontrollbedürfnis"
+    },
+    {
+      "s": "Systemdesign & Strategie",
+      "V": "Vision & Positionierung",
+      "M": "Delivery & Qualität",
+      "C": "Beziehungsvertrieb",
+      "G": "Hochintensive Sprints"
+    },
+    {
+      "s": "High-Ticket Beratung",
+      "V": "Keynotes & Storytelling",
+      "M": "Produktisierte Services",
+      "C": "Community & Partnerschaften",
+      "G": "Performance-Angebote"
+    },
+    {
+      "s": "Schnelle Markt-Iteration",
+      "V": "Operative Abschluss-Routinen",
+      "M": "Strategische Positionierung",
+      "C": "Preis- & Angebotsklarheit",
+      "G": "Nachhaltige Taktung"
+    },
+    {
+      "s": "Content & Sichtbarkeit",
+      "V": "Systeme & Delegation",
+      "M": "Sichtbarkeit & Marke",
+      "C": "Struktur & Prozesse",
+      "G": "Team-Aufbau & Delegation"
+    },
+    {
+      "s": "Improv-Netzwerken",
+      "V": "Detail-Administration",
+      "M": "Improvisierte Pitches",
+      "C": "Isolierte Tiefenarbeit",
+      "G": "Dauerlast ohne Pause"
+    },
+    {
+      "s": "Stilles Überarbeiten",
+      "V": "Begeisterungs-Crash",
+      "M": null,
+      "C": "Leeres Geben",
+      "G": "Ausbrennen im Sprint"
+    },
+    {
+      "s": "D1×D2 — Der stille Stratege",
+      "V": "D2×D3 — Der Möglichkeiten-Motor",
+      "M": "D4×D2 — Der Systembauer",
+      "C": "D1×D2 — Der Beziehungs-Stratege",
+      "G": "D4×D3 — Die Leistungsmaschine"
+    },
+    {
+      "s": "Introvertierte Tiefe + analytische Präzision = natürlicher Systemarchitekt.",
+      "V": "Intuitive Kognition + Promotion-Fokus = permanenter Ideenstrom.",
+      "M": "Starke Struktur + praktische Kognition = verlässliche Liefermaschine.",
+      "C": "Soziale Energie + intuitive Menschenkenntnis = natürlicher Vertrauensarchitekt.",
+      "G": "Hohe Struktur + Promotion-Fokus = außergewöhnliche Zielerreichung unter Druck."
+    },
+    {
+      "s": "Ihre stärksten Leistungen entstehen unsichtbar — was Marketing strukturell notwendig macht, nicht optional.",
+      "V": "Ihre Stärke ist der Anfang. Umsetzung braucht bei Ihnen Struktur von außen — sonst bleibt Wert liegen.",
+      "M": "Ihre stärksten Leistungen verschwinden im Tagesgeschäft — was Positionierung strukturell notwendig macht, nicht optional.",
+      "C": "Ihre stärksten Leistungen entstehen zwischen Menschen — was klare Angebote strukturell notwendig macht, nicht optional.",
+      "G": "Ihre stärksten Leistungen entstehen im Sprint — was bewusste Regeneration strukturell notwendig macht, nicht optional."
+    },
+    {
+      "s": "D1×D4 — Das Execution-Paradox",
+      "V": "D4×D3 — Die Umsetzungslücke",
+      "M": "D4×D1 — Das Operator-Paradox",
+      "C": "D1×D3 — Das Gefallen-Paradox",
+      "G": "D4×D5 — Das Tempo-Paradox"
+    },
+    {
+      "s": "Tiefer Fokus + starke Struktur = exzellente Einzelleistung mit unsichtbarer Wachstumsdecke.",
+      "V": "Spontaner Umsetzungsstil + Chancenfokus = viele offene Schleifen gleichzeitig.",
+      "M": "Hohe Umsetzungsdichte + Fokus aufs Doing = exzellente Delivery mit unsichtbarer Wachstumsdecke.",
+      "C": "Beziehungsfokus + Harmoniebedürfnis = großzügige Leistung mit unsichtbarem Preis-Deckel.",
+      "G": "Hohe Intensität + begrenzte Regeneration = Spitzenleistung mit eingebautem Verfallsdatum."
+    },
+    {
+      "s": "Ihre Wachstumsgrenze ist kein Marktproblem — es ist ein Delegationsdesign-Problem.",
+      "V": "Ihre Wachstumsgrenze ist kein Ideenproblem — es ist ein Abschluss-Design-Problem.",
+      "M": "Ihre Wachstumsgrenze ist kein Fleißproblem — es ist ein Delegationsdesign-Problem.",
+      "C": "Ihre Ertragsgrenze ist kein Marktproblem — es ist ein Grenzen-Design-Problem.",
+      "G": "Ihre Leistungsgrenze ist kein Willensproblem — es ist ein Taktungs-Design-Problem."
+    },
+    {
+      "s": "D2×D3 — Die Analyse-Sicherheitsfalle ⚠",
+      "V": "D2×D4 — Die Shiny-Object-Falle ⚠",
+      "M": "D2×D3 — Die Aufwands-Preis-Falle ⚠",
+      "C": "D3×D2 — Die Gratis-Wert-Falle ⚠",
+      "G": "D3×D2 — Die Volumen-Falle ⚠"
+    },
+    {
+      "s": "Analytik + Prevention-Fokus = systematische Analyse-Paralyse.",
+      "V": "Intuition + Spontaneität = systematischer Projektwechsel kurz vor der Ernte.",
+      "M": "Praktische Kognition + Absicherungsfokus = Preise nach Stunden statt nach Wirkung.",
+      "C": "Harmoniefokus + Menschenorientierung = systematisches Verschenken von Expertise.",
+      "G": "Chancenfokus + Pragmatismus = mehr Aufträge statt besserer Hebel."
+    },
+    {
+      "s": "Kostet Strategists im Schnitt 20–40% des realisierbaren Jahresumsatzes durch vertagte Launches und Unterpreisen.",
+      "V": "Kostet Visionaries im Schnitt 20–40% des realisierbaren Jahresumsatzes durch verwaiste Projekte und verschobene Launches.",
+      "M": "Kostet Builder im Schnitt 20–40% des realisierbaren Jahresumsatzes durch Unterpreisen und unbezahlte Extrameilen.",
+      "C": "Kostet Connectoren im Schnitt 20–40% des realisierbaren Jahresumsatzes durch Gratisarbeit und weiche Honorare.",
+      "G": "Kostet High Performer im Schnitt 20–40% des realisierbaren Jahresumsatzes durch Arbeit an den erstbesten statt den richtigen Zielen."
+    },
+    {
+      "s": "D3×D5 — Das Vorsichts-Energie-Profil",
+      "V": "D3×D5 — Das Begeisterungs-Energie-Profil",
+      "M": "D4×D5 — Das Dauerlast-Profil",
+      "C": "D1×D5 — Das Resonanz-Energie-Profil",
+      "G": "D5×D1 — Das Überdreh-Profil"
+    },
+    {
+      "s": "Prevention + moderate Resilienz = Ihr System meidet unsichere Situationen.",
+      "V": "Promotion-Fokus + schwankende Regeneration = Ihre Energie folgt der Begeisterung, nicht dem Plan.",
+      "M": "Hohe Taktung + solide Resilienz = Ihr System hält lange durch und meldet Überlast zu spät.",
+      "C": "Soziale Energie + beziehungsabhängige Resilienz = Ihr Zustand spiegelt die Qualität Ihrer Kontakte.",
+      "G": "Begrenzte Regeneration + hohe Eigenerwartung = Ihr System überstimmt die eigenen Warnsignale."
+    },
+    {
+      "s": "Eine Preiserhöhung um 25–30% ist Ihr ROI-stärkster Hebel — noch vor jedem Marketingbudget.",
+      "V": "Ein fester Abschluss-Rhythmus — ein Projekt pro Quartal konsequent zu Ende — ist Ihr ROI-stärkster Hebel, noch vor jeder neuen Idee.",
+      "M": "Produktisierte Angebote mit Festpreis sind Ihr ROI-stärkster Hebel — noch vor jedem zusätzlichen Auftrag.",
+      "C": "Ein geschützter Solo-Block pro Woche ist Ihr ROI-stärkster Hebel — noch vor jedem weiteren Netzwerktermin.",
+      "G": "Fest eingeplante Regenerationsblöcke sind Ihr ROI-stärkster Hebel — noch vor jedem weiteren Sprint."
+    },
+    {
+      "s": "Ø Strategist",
+      "V": "Ø Visionary",
+      "M": "Ø Builder",
+      "C": "Ø Connector",
+      "G": "Ø High Performer"
+    },
+    {
+      "s": "Ihre Energie ist stark innenorientiert — Sie tanken durch Tiefe, nicht durch Breite. Fokussierte Einzelarbeit erzeugt Leistung; multistimulative Umgebungen kosten proportional mehr Kraft. Dieser Modus ist keine Schwäche — er ist die Voraussetzung für die analytische Tiefe, die Strategists auszeichnet. Das Risiko: In Business-Kontexten, die Sichtbarkeit und Networking belohnen, wird dieser Modus systematisch unterschätzt.",
+      "V": "Ihre Energie folgt der Inspiration — Sie tanken durch neue Bilder, Menschen und Möglichkeiten. Monotone Detailarbeit kostet proportional mehr Kraft. Dieser Modus ist keine Schwäche — er ist die Voraussetzung für die Zukunftskognition, die Visionaries auszeichnet. Das Risiko: In Business-Kontexten, die Routine und Detailtreue belohnen, wird dieser Modus systematisch unterschätzt.",
+      "M": "Ihre Energie ist aufgabenorientiert — Sie tanken durch sichtbaren Fortschritt und saubere Ergebnisse. Zerredete Meetings und vage Konzepte kosten proportional mehr Kraft. Dieser Modus ist keine Schwäche — er ist die Voraussetzung für die Umsetzungskraft, die Builder auszeichnet. Das Risiko: In Business-Kontexten, die laute Selbstdarstellung belohnen, wird dieser Modus systematisch unterschätzt.",
+      "C": "Ihre Energie ist stark außenorientiert — Sie tanken durch Begegnung, Austausch und Resonanz. Lange Alleinarbeit kostet proportional mehr Kraft. Dieser Modus ist keine Schwäche — er ist die Voraussetzung für die Beziehungsintelligenz, die Connectoren auszeichnet. Das Risiko: In Business-Kontexten, die stille Einzelleistung belohnen, wird dieser Modus systematisch unterschätzt.",
+      "G": "Ihre Energie ist zielgebunden — Sie tanken durch Fortschritt, Wettbewerb und erreichte Marken. Ziellose Phasen kosten proportional mehr Kraft. Dieser Modus ist keine Schwäche — er ist die Voraussetzung für die Leistungsdichte, die High Performer auszeichnet. Das Risiko: In Business-Kontexten ohne messbare Ziele wird dieser Modus systematisch unterschätzt."
+    },
+    {
+      "s": "Tiefes Einarbeiten, komplexe Analyse, qualitative Entscheidungen",
+      "V": "Ideenentwicklung, Vision kommunizieren, Menschen begeistern",
+      "M": "Fokussierte Umsetzung, Prozessaufbau, verlässliche Delivery",
+      "C": "Beziehungsaufbau, Moderation, Vertrauen schaffen",
+      "G": "Sprint-Phasen, klare Ziele, messbare Ergebnisse"
+    },
+    {
+      "s": "Sichtbarkeit, Netzwerken, spontane Repräsentation",
+      "V": "Routinepflege, Detailkontrolle, lange Administrationsphasen",
+      "M": "Dauerpräsenz auf Bühnen, Improvisation ohne Vorbereitung",
+      "C": "Lange Solo-Phasen, reine Zahlenarbeit ohne Austausch",
+      "G": "Leerlauf, unklare Prioritäten, Warten auf andere"
+    },
+    {
+      "s": "3–4 h Deep Work täglich · klare Offline-Blöcke · asynchrone Kommunikation",
+      "V": "2–3 Kreativblöcke pro Woche · fester Abschluss-Slot täglich · Reizschutz in Umsetzungsphasen",
+      "M": "3–4 h Maker-Time täglich · gebündelte Kommunikation · wöchentlicher Strategie-Slot",
+      "C": "Begegnungsblöcke am Vormittag · 1 geschützter Solo-Block pro Woche · Puffer nach intensiven Terminen",
+      "G": "Sprints mit definiertem Ende · feste Regenerationsfenster · wöchentlicher Richtungs-Check"
+    },
+    {
+      "s": "Ihr Kognitionsstil ist deutlich analytisch geprägt — Sie verarbeiten sequenziell, suchen Kausalität, konstruieren mentale Modelle. Was Strategists von anderen analytischen Typen unterscheidet: Sie kombinieren datenbasierte Analyse mit langfristiger Mustererkennung. Das ermöglicht Systemdesign — nicht nur Problemlösung. Kehrseite: Ihre Erkenntnisse sind schwer kommunizierbar, weil der Weg zum Schluss für andere unsichtbar ist.",
+      "V": "Ihr Kognitionsstil ist intuitiv-holistisch geprägt — Sie erfassen Muster, bevor andere die Daten sortiert haben, und denken vom Zielbild rückwärts. Was Visionaries von anderen intuitiven Typen unterscheidet: Sie verbinden Zukunftsbilder mit echter Begeisterungsfähigkeit für Menschen. Das ermöglicht Sinnstiftung — nicht nur Ideen. Kehrseite: Ihre Sprünge sind für andere schwer nachvollziehbar, weil Zwischenschritte im Kopf bleiben.",
+      "M": "Ihr Kognitionsstil ist praktisch-analytisch geprägt — Sie denken in Schritten, Zuständigkeiten und Machbarkeit. Was Builder von anderen analytischen Typen unterscheidet: Sie denken nicht nur durch, sie bauen. Das ermöglicht verlässliche Systeme — nicht nur Pläne. Kehrseite: Im Doing verschwindet der Blick auf die Landkarte, und strategische Fragen werden vertagt.",
+      "C": "Ihr Kognitionsstil ist sozial-intuitiv geprägt — Sie lesen Zwischentöne, Motive und Stimmungen schneller als Zahlen. Was Connectoren von anderen intuitiven Typen unterscheidet: Sie übersetzen Menschenkenntnis in tragfähige Beziehungen. Das ermöglicht Vertrauensaufbau — nicht nur Kontakte. Kehrseite: Harte Fakten und Konfrontationen werden aufgeschoben, wenn sie Beziehungen belasten könnten.",
+      "G": "Ihr Kognitionsstil ist pragmatisch-zielorientiert geprägt — Sie denken in Ergebnissen, Benchmarks und dem nächsten konkreten Schritt. Was High Performer von anderen pragmatischen Typen unterscheidet: Sie koppeln Denken direkt an Handlung. Das ermöglicht Tempo — nicht nur Absicht. Kehrseite: Reflexionsschleifen fühlen sich wie Stillstand an und werden übersprungen."
+    },
+    {
+      "s": "Ihr Gehirn überspringt Marketing als überflüssig. Es ist es nicht.",
+      "V": "Ihr Gehirn überspringt Abschluss-Routinen als langweilig. Sie sind es nicht.",
+      "M": "Ihr Gehirn verbucht Sichtbarkeit als Zeitverschwendung. Sie ist es nicht.",
+      "C": "Ihr Gehirn verbucht Preisverhandlung als Beziehungsrisiko. Sie ist es nicht.",
+      "G": "Ihr Gehirn verbucht Regeneration als verlorene Zeit. Sie ist es nicht."
+    },
+    {
+      "s": "Kombinations-Effekt D1×D2:",
+      "V": "Kombinations-Effekt D2×D3:",
+      "M": "Kombinations-Effekt D4×D2:",
+      "C": null,
+      "G": "Kombinations-Effekt D4×D3:"
+    },
+    {
+      "s": "Business-Konsequenz: Warum Sie trotz Kompetenz unterschätzt werden",
+      "V": "Business-Konsequenz: Warum Ihre Ideen ohne System nicht kassieren",
+      "M": "Business-Konsequenz: Warum Sie trotz Leistung unterbezahlt bleiben",
+      "C": "Business-Konsequenz: Warum Beliebtheit nicht automatisch Umsatz wird",
+      "G": "Business-Konsequenz: Warum mehr Leistung nicht mehr Ergebnis bringt"
+    },
+    {
+      "s": "D1 (Tiefenfokus) + D2 (Analytik) erzeugen eine Wissenstiefe, die in kurzen Begegnungen nicht übertragbar ist. Andere urteilen schnell — Ihr Gehirn kommuniziert langsam. Ihr Marktwert entspricht oft nicht Ihrer tatsächlichen Leistungsfähigkeit. Das ist kein Charismaproblem. Es ist ein Sichtbarkeits-Systemfehler.",
+      "V": "D2 (Intuition) + D3 (Chancenfokus) erzeugen einen Ideenvorsprung, der ohne Abschluss-System nicht monetarisiert wird. Andere ernten langsamer — aber sie ernten. Ihr Marktwert entspricht oft nicht Ihrer tatsächlichen Originalität. Das ist kein Disziplinproblem. Es ist ein Struktur-Systemfehler.",
+      "M": "D4 (Struktur) + D2 (Praxis) erzeugen eine Delivery-Qualität, die im Hintergrund unsichtbar bleibt. Andere reden lauter — Ihr Gehirn arbeitet lieber. Ihr Marktwert entspricht oft nicht Ihrer tatsächlichen Leistungsfähigkeit. Das ist kein Kompetenzproblem. Es ist ein Sichtbarkeits-Systemfehler.",
+      "C": "D1 (Beziehungsenergie) + D2 (Menschenkenntnis) erzeugen ein Vertrauenskapital, das ohne klare Angebote nicht abgerechnet wird. Andere verkaufen härter — Sie helfen erst einmal. Ihr Ertrag entspricht oft nicht Ihrem tatsächlichen Wert im Markt. Das ist kein Verkaufsproblem. Es ist ein Angebots-Systemfehler.",
+      "G": "D4 (Intensität) + D3 (Chancenfokus) erzeugen ein Arbeitsvolumen, das ohne Richtungs-Check in die Breite statt in die Höhe wächst. Andere arbeiten weniger — an den richtigen Hebeln. Ihr Ergebnis entspricht oft nicht Ihrem tatsächlichen Einsatz. Das ist kein Leistungsproblem. Es ist ein Fokus-Systemfehler."
+    },
+    {
+      "s": "Prevention-Fokus priorisiert Fehlervermeidung über Chancenverfolgung. Sie setzen Preise konservativ, liefern mehr als zugesagt, starten erst bei 95% Sicherheit. Beim Strategist trifft dieser Fokus auf starke Analytik (D2) — was besonders lange interne Prüfschleifen erzeugt.",
+      "V": "Promotion-Fokus priorisiert Chancen über Absicherung. Sie starten früh, versprechen mutig, denken groß. Beim Visionary trifft dieser Fokus auf intuitive Kognition (D2) — was besonders viele parallel geöffnete Projekte erzeugt.",
+      "M": "Ihr Regulationsfokus balanciert Absicherung und Fortschritt — mit Hang zur sicheren Seite. Sie liefern lieber mehr als zugesagt und kalkulieren eng. Beim Builder trifft dieser Fokus auf hohe Umsetzungsdichte (D4) — was unbezahlte Extrameilen zur Gewohnheit macht.",
+      "C": "Ihr Regulationsfokus priorisiert Beziehungssicherheit über Ertragsmaximierung. Sie geben lieber zu viel als zu wenig und vermeiden harte Forderungen. Beim Connector trifft dieser Fokus auf soziale Energie (D1) — was Gratisleistung zur unsichtbaren Gewohnheit macht.",
+      "G": "Promotion-Fokus priorisiert Vorankommen über Absicherung. Sie sagen zu, erhöhen den Einsatz, ziehen durch. Beim High Performer trifft dieser Fokus auf hohe Intensität (D4) — was Überlastung zur Systemeigenschaft macht."
+    },
+    {
+      "s": "Prevention-dominierte Unternehmer verdienen 22–35% unter Marktwert. Rechenbeispiel: +30% Preis, 20% weniger Kunden = +4% Nettoumsatz bei weniger Aufwand. Ihr Gehirn überschätzt die Ablehnungs-Wahrscheinlichkeit systematisch.",
+      "V": "Visionäre Unternehmer verlieren 22–35% Jahresumsatz durch nicht abgeschlossene Projekte. Rechenbeispiel: 1 konsequent gelaunchtes Projekt pro Quartal schlägt 4 halbfertige — bei gleicher Arbeitszeit. Ihr Gehirn überschätzt den Wert des nächsten Anfangs systematisch.",
+      "M": "Aufwandsbasiert kalkulierende Unternehmer verdienen 22–35% unter Marktwert. Rechenbeispiel: Festpreis nach Wirkung statt Stundensatz = +30% Marge bei gleicher Leistung. Ihr Gehirn unterschätzt den Wert Ihrer Ergebnisse systematisch.",
+      "C": "Beziehungsorientierte Unternehmer verdienen 22–35% unter Marktwert. Rechenbeispiel: Klarer Paketpreis statt „schauen wir mal“ = +30% Ertrag bei besseren Beziehungen. Ihr Gehirn überschätzt das Beziehungsrisiko klarer Preise systematisch.",
+      "G": "Volumengetriebene Unternehmer verschenken 22–35% Jahresertrag an den falschen Hebeln. Rechenbeispiel: 20% weniger Aufträge zum 30% höheren Preis = mehr Ertrag bei weniger Last. Ihr Gehirn überschätzt den Wert von „mehr“ systematisch."
+    },
+    {
+      "s": "Stark strukturierter Umsetzungsstil: Sie denken in Phasen, Meilensteinen und Systemen. Das macht Sie zum exzellenten Prozess-Architekten — und zu jemandem, dem ungeplantes Loslaufen schwerfällt. Was beim Builder als Stärke zählt (schnell anfangen), ist beim Strategist eine Überforderung der Wohlfühlzone.",
+      "V": "Spontan-agiler Umsetzungsstil: Sie starten aus Begeisterung, nicht aus Planung. Das macht Sie zum exzellenten Initiator — und zu jemandem, dem Routine-Abschluss schwerfällt. Was beim Builder Selbstverständlichkeit ist (fertig machen), ist beim Visionary eine bewusste Disziplinleistung.",
+      "M": "Stark strukturierter Umsetzungsstil: Sie denken in Aufgaben, Abläufen und sauberen Übergaben. Das macht Sie zum exzellenten Operator — und zu jemandem, dem ungeplante Kurswechsel schwerfallen. Was beim Visionary Energiequelle ist (Neues beginnen), ist beim Builder eine Störung des Systems.",
+      "C": "Flexibel-responsiver Umsetzungsstil: Sie richten Ihren Tag an Menschen und Anfragen aus. Das macht Sie zum exzellenten Möglichmacher — und zu jemandem, dessen eigene Projekte hinten anstehen. Was beim Builder Standard ist (eigene Blöcke schützen), ist beim Connector aktive Grenzziehung.",
+      "G": "Hochgetakteter Umsetzungsstil: Sie arbeiten in Zielen, Deadlines und Sprints. Das macht Sie zum exzellenten Finisher — und zu jemandem, dem Pausen wie Rückschritt vorkommen. Was bei anderen als gesundes Tempo gilt, ist beim High Performer erst der Aufwärmmodus."
+    },
+    {
+      "s": "Mittlere Stressresistenz mit Rückzugstendenz. D1+D4+D5 erzeugen das typische Strategist-Burnout-Muster: funktional nach außen, leer nach innen.",
+      "V": "Schwankende Stressresistenz mit Begeisterungs-Kopplung. D3+D4+D5 erzeugen das typische Visionary-Burnout-Muster: euphorischer Start, stiller Absturz zwischen den Projekten.",
+      "M": "Solide Stressresistenz mit Dauerlast-Toleranz. D4+D1+D5 erzeugen das typische Builder-Burnout-Muster: funktionieren, weiterliefern, bis nichts mehr geht.",
+      "C": "Beziehungsgekoppelte Stressresistenz. D1+D3+D5 erzeugen das typische Connector-Burnout-Muster: nach außen warm und präsent, nach innen leer gegeben.",
+      "G": "Hohe Belastbarkeit im Sprint, Verwundbarkeit im Marathon. D4+D3+D5 erzeugen das typische High-Performer-Burnout-Muster: Höchstleistung bis zur harten Kante."
+    },
+    {
+      "s": "Schleichender Qualitätsverlust und unsichtbare Entscheidungsverschlechterung über Monate.",
+      "V": "Verlorene Monetarisierung und wachsender Selbstzweifel durch die Lücke zwischen Vision und sichtbarem Ergebnis.",
+      "M": "Schleichende Margenerosion und Stillstand der Weiterentwicklung, weil das Tagesgeschäft jede Strategiezeit frisst.",
+      "C": "Schleichende Erschöpfung und stille Verbitterung, weil Geben und Bekommen aus der Balance geraten.",
+      "G": "Abrupter Leistungseinbruch statt schleichendem Verlust — das System hält, bis es kippt."
+    },
+    {
+      "s": "Wie der Strategist",
+      "V": "Wie der Visionary",
+      "M": "Wie der Builder",
+      "C": "Wie der Connector",
+      "G": "Wie der High Performer"
+    },
+    {
+      "s": "Ihr Entscheidungsprozess folgt einem charakteristischen 4-Phasen-Muster — direkt ableitbar aus D2 (analytisch) + D3 (Prevention-Fokus) + D4 (strukturiert). Kein anderer Psychotyp hat genau diese Konfiguration.",
+      "V": "Ihr Entscheidungsprozess folgt einem charakteristischen 4-Phasen-Muster — direkt ableitbar aus D2 (intuitiv) + D3 (Promotion-Fokus) + D4 (spontan). Kein anderer Psychotyp hat genau diese Konfiguration.",
+      "M": "Ihr Entscheidungsprozess folgt einem charakteristischen 4-Phasen-Muster — direkt ableitbar aus D2 (praktisch) + D4 (strukturiert) + D3 (absichernd). Kein anderer Psychotyp hat genau diese Konfiguration.",
+      "C": "Ihr Entscheidungsprozess folgt einem charakteristischen 4-Phasen-Muster — direkt ableitbar aus D1 (sozial) + D2 (intuitiv) + D3 (harmonieorientiert). Kein anderer Psychotyp hat genau diese Konfiguration.",
+      "G": "Ihr Entscheidungsprozess folgt einem charakteristischen 4-Phasen-Muster — direkt ableitbar aus D3 (Promotion-Fokus) + D4 (hochgetaktet) + D2 (pragmatisch). Kein anderer Psychotyp hat genau diese Konfiguration."
+    },
+    {
+      "s": "Informationssammlung (überdurchschnittlich lang)",
+      "V": "Impuls & Zielbild (blitzschnell)",
+      "M": "Machbarkeits-Check (gründlich)",
+      "C": "Resonanz-Check (Wer ist betroffen?)",
+      "G": "Zielabgleich (sofort)"
+    },
+    {
+      "s": "Mehr Daten als nötig — weil Ihr Prevention-Fokus (D3) noch mehr Gewissheit signalisiert.",
+      "V": "Das Zielbild steht in Sekunden — weil Ihre Intuition (D2) Muster vor den Daten erkennt.",
+      "M": "Was kostet es, wer macht es, funktioniert es — Ihr Praxisfilter (D2) prüft zuerst die Umsetzbarkeit.",
+      "C": "Ihr erster Filter ist sozial (D1): Wie wirkt die Entscheidung auf Team, Kunden, Beziehungen?",
+      "G": "Bringt es mich dem Ziel näher? Ihr Chancenfokus (D3) beantwortet das schneller als jede Analyse."
+    },
+    {
+      "s": "Interne Modellbildung",
+      "V": "Begeisterungs-Kaskade",
+      "M": "Plan & Ressourcen",
+      "C": "Abstimmungs-Schleife",
+      "G": "Commitment & Sprintplan"
+    },
+    {
+      "s": "Mentale Simulation aller Szenarien. Entscheidung rückblickend meist richtig — zeitlich teuer.",
+      "V": "Die Idee wird kommuniziert, bevor sie geprüft ist. Das erzeugt Momentum — und Erwartungen.",
+      "M": "Aufgaben, Reihenfolge, Zuständigkeiten. Rückblickend solide — aber strategische Alternativen bleiben ungeprüft.",
+      "C": "Meinungen werden eingeholt, Konsens gesucht. Das sichert Mitträgerschaft — und kostet Zeit und Klarheit.",
+      "G": "Entschieden ist entschieden: Ziel, Deadline, los. Schnell und kraftvoll — Kurskorrekturen fühlen sich danach wie Niederlagen an."
+    },
+    {
+      "s": "Risikosimulation (D3-Schleife)",
+      "V": "Interesse-Verfall (D4-Schleife)",
+      "M": "Absicherungs-Schleife (D3)",
+      "C": "Harmonie-Schleife (D3)",
+      "G": "Eskalations-Schleife (D3×D4)"
+    },
+    {
+      "s": "„Was kann schiefgehen?“ läuft automatisch. Kann zur Entscheidungsblockade führen, wenn Risiken unquantifizierbar bleiben.",
+      "V": "Sobald die Entscheidung Routine wird, sinkt die Energie. Kann zum stillen Projektabbruch führen, bevor Ergebnisse sichtbar sind.",
+      "M": "„Lieber noch selbst prüfen“ läuft automatisch. Kann zur Delegationsblockade führen, wenn Vertrauen in Übergaben fehlt.",
+      "C": "„Wen verletze ich damit?“ läuft automatisch. Kann zur Entscheidungsblockade führen, wenn jede Option jemanden enttäuscht.",
+      "G": "„Mit mehr Einsatz geht es doch“ läuft automatisch. Kann zur Eskalation führen, wenn Aufhören die klügere Entscheidung wäre."
+    },
+    {
+      "s": "Commitment mit Überzeugung",
+      "V": "Neustart mit neuem Bild",
+      "M": "Lieferung mit Qualität",
+      "C": "Entscheidung mit Mitträgern",
+      "G": "Ergebnis mit Ansage"
+    },
+    {
+      "s": "Wenn entschieden: voll dahinter. Strategist-Entscheidungen sind selten impulsiv — und selten falsch.",
+      "V": "Wenn das Bild trägt: volle Kraft. Visionary-Entscheidungen sind selten klein — und selten zu Ende gerechnet.",
+      "M": "Wenn geliefert wird, dann richtig. Builder-Entscheidungen sind selten spektakulär — und selten schlecht umgesetzt.",
+      "C": "Wenn alle an Bord sind: volle Wirkung. Connector-Entscheidungen sind selten einsam — und selten schnell.",
+      "G": "Wenn zugesagt: geliefert. High-Performer-Entscheidungen sind selten zögerlich — und selten reflektiert genug."
+    },
+    {
+      "s": "Strategische Langzeitentscheidungen",
+      "V": "Visions- & Richtungsentscheidungen",
+      "M": "Operative Umsetzungsentscheidungen",
+      "C": "Team- & Beziehungsentscheidungen",
+      "G": "Ziel- & Tempoentscheidungen"
+    },
+    {
+      "s": "Komplexe Analyse-Entscheidungen",
+      "V": "Kreative Neuansätze",
+      "M": "Qualitäts- & Prozessentscheidungen",
+      "C": "Kunden- & Partnerentscheidungen",
+      "G": "Entscheidungen unter Druck"
+    },
+    {
+      "s": "Taktische Schnell-Entscheidungen",
+      "V": "Priorisierung zwischen Ideen",
+      "M": "Strategische Weichenstellungen",
+      "C": "Preis- & Konditionsentscheidungen",
+      "G": "Stopp- & Verzichtsentscheidungen"
+    },
+    {
+      "s": "Spontane Impuls-Entscheidungen",
+      "V": "Routine- & Detailentscheidungen",
+      "M": "Spontane Kurswechsel",
+      "C": "Trennungs- & Absage-Entscheidungen",
+      "G": "Pausen- & Regenerationsentscheidungen"
+    },
+    {
+      "s": "Analysis Paralysis:",
+      "V": "Shiny-Object-Reflex:",
+      "M": "Selbstmach-Reflex:",
+      "C": "Konsens-Falle:",
+      "G": "Sunk-Effort-Eskalation:"
+    },
+    {
+      "s": "Bei unvollständigen Informationen verschiebt sich der Zeitpunkt — während Markt-Windows sich schließen. Typisch für Strategist D2×D3-Kombination.",
+      "V": "Die neue Idee fühlt sich immer wichtiger an als das laufende Projekt — während halbfertige Assets Wert verlieren. Typisch für Visionary D2×D4-Kombination.",
+      "M": "Übernehmen statt übergeben fühlt sich effizienter an — während der Kalender die Wachstumsgrenze zementiert. Typisch für Builder D4×D2-Kombination.",
+      "C": "Noch eine Abstimmungsrunde fühlt sich sicherer an — während klare Ansagen liegen bleiben. Typisch für Connector D1×D3-Kombination.",
+      "G": "Mehr Einsatz fühlt sich immer richtig an — während der Hebel längst woanders liegt. Typisch für High-Performer D3×D4-Kombination."
+    },
+    {
+      "s": "Sunk-Cost-Resistenz:",
+      "V": "Erwartungs-Schulden:",
+      "M": "Plan-Fixierung:",
+      "C": "Nachgiebigkeits-Drift:",
+      "G": "Warnsignal-Override:"
+    },
+    {
+      "s": "Einmal gefasste Pläne werden auch bei veränderten Rahmenbedingungen beibehalten — Ihr Systemdenken als Fixierungsfalle.",
+      "V": "Früh kommunizierte Visionen erzeugen Erwartungen, die später als Druck zurückkommen — Ihre Begeisterung als Verpflichtungsfalle.",
+      "M": "Einmal gebaute Abläufe werden verteidigt, auch wenn der Markt sich dreht — Ihre Prozessliebe als Fixierungsfalle.",
+      "C": "Zusagen werden gedehnt, Preise weich, Grenzen poröser — Ihre Hilfsbereitschaft als Ertragsfalle.",
+      "G": "Müdigkeit, Fehlerquote, Gereiztheit werden als Schwäche abgetan statt als Daten gelesen — Ihr Stolz als Erschöpfungsfalle."
+    },
+    {
+      "s": "Harte Deadline-Rituale: „Bis Freitag 12 Uhr entscheide ich — mit den Informationen, die ich bis dann habe.“ Bei Preisentscheidungen: Testpreise für 30 Tage — keine permanente Verpflichtung.",
+      "V": "Abschluss-Rituale: „Kein neues Projekt, bevor das aktuelle gelauncht ist.“ Bei neuen Ideen: 72-Stunden-Parkplatz — was danach noch begeistert, kommt auf die Liste.",
+      "M": "Delegations-Rituale: „Jede Woche wandert eine wiederkehrende Aufgabe mit SOP an jemand anderen.“ Bei Anfragen: erst Kapazität prüfen, dann zusagen — nicht umgekehrt.",
+      "C": "Klarheits-Rituale: „Preis und Grenzen stehen vor dem Gespräch fest — nicht währenddessen.“ Bei Anfragen: 24 Stunden Bedenkzeit statt sofortiger Zusage.",
+      "G": "Stopp-Rituale: „Jeder Sprint hat ein definiertes Ende — und das Ende wird gefeiert, nicht übersprungen.“ Bei neuen Zielen: erst ein altes abschließen oder streichen."
+    },
+    {
+      "s": "Welche Entscheidung vertage ich gerade — und was kostet mich das konkret pro Woche?",
+      "V": "Welches meiner offenen Projekte hätte gelauncht den größten Effekt — und was hindert mich am Abschluss?",
+      "M": "Welche Aufgabe erledige ich diese Woche selbst, die jemand anderes zu 80% genauso gut könnte?",
+      "C": "Wo sage ich gerade Ja, obwohl ein Nein besser für mich und mein Business wäre?",
+      "G": "Welches meiner Ziele verdient gerade mehr Qualität — und welches sollte ich bewusst streichen?"
+    },
+    {
+      "s": "Bei anhaltend hoher Komplexitätsdichte",
+      "V": "Bei zu vielen offenen Projekten gleichzeitig",
+      "M": "Bei anhaltender Dauerlast ohne Übergaben",
+      "C": "Bei anhaltendem Geben ohne Ausgleich",
+      "G": "Bei Dauersprint ohne Regenerationsfenster"
+    },
+    {
+      "s": "Regeneration durch Sinn, nicht Entspannung",
+      "V": "Regeneration durch neue Inspiration, nicht Stillstand",
+      "M": "Regeneration durch abgeschlossene Arbeit, nicht Ablenkung",
+      "C": "Regeneration durch nährende Beziehungen, nicht Rückzug allein",
+      "G": "Regeneration durch bewusste Erholung, nicht durch weniger wichtige Arbeit"
+    },
+    {
+      "s": "Kontrollverlust",
+      "V": "Routine-Zwang",
+      "M": "Chaos & Unterbrechungen",
+      "C": "Konflikt & Ablehnung",
+      "G": "Stillstand & Zielverlust"
+    },
+    {
+      "s": "+ erzwungene Qualitätskompromisse",
+      "V": "+ erzwungene Detail-Administration",
+      "M": "+ ständig wechselnde Anforderungen",
+      "C": "+ dauerhafte Disharmonie im Umfeld",
+      "G": "+ Ziele, die sich ständig verschieben"
+    },
+    {
+      "s": "Strategist-Frühwarnsignale",
+      "V": "Visionary-Frühwarnsignale",
+      "M": "Builder-Frühwarnsignale",
+      "C": "Connector-Frühwarnsignale",
+      "G": "High-Performer-Frühwarnsignale"
+    },
+    {
+      "s": "Perfektionismus eskaliert",
+      "V": "Ideenflut ohne Umsetzung eskaliert",
+      "M": "Arbeitstage werden immer länger",
+      "C": "Zusagen stapeln sich unerfüllbar",
+      "G": "Schlaf wird dem Ziel geopfert"
+    },
+    {
+      "s": "Sozialer Rückzug nimmt zu",
+      "V": "Begeisterung kippt in Zynismus",
+      "M": "Gereiztheit bei Unterbrechungen steigt",
+      "C": "Kontakte fühlen sich wie Pflicht an",
+      "G": "Gereiztheit bei langsamen Menschen steigt"
+    },
+    {
+      "s": "Entscheidungslatenz steigt stark",
+      "V": "Projekte werden still beerdigt",
+      "M": "Qualität sinkt trotz Mehrarbeit",
+      "C": "Eigene Bedürfnisse werden unsichtbar",
+      "G": "Fehlerquote steigt trotz Einsatz"
+    },
+    {
+      "s": "Kreativ-Energie nimmt ab",
+      "V": "Selbstzweifel an der eigenen Vision",
+      "M": "Strategiefragen werden monatelang vertagt",
+      "C": "Kleine Kritik trifft unverhältnismäßig tief",
+      "G": "Erfolge fühlen sich leer an"
+    },
+    {
+      "s": "Routine fühlt sich schwer an",
+      "V": "Umsetzungsstart fällt immer schwerer",
+      "M": "Feierabend existiert nur auf dem Papier",
+      "C": "Alleinsein fühlt sich wie Versagen an",
+      "G": "Pausen erzeugen Schuldgefühle"
+    },
+    {
+      "s": "Strukturierte Reflexion",
+      "V": "Abschluss-Momente",
+      "M": "Echte Übergaben",
+      "C": "Nährende Beziehungen",
+      "G": "Geplante Regeneration"
+    },
+    {
+      "s": "Wöchentlicher Review, Journal — nicht als Entspannung, sondern als Kontrollrückgewinn",
+      "V": "Gelaunchte Projekte sichtbar feiern — Ihr Gehirn braucht den Beweis, dass Visionen landen",
+      "M": "Aufgaben wirklich abgeben und abgegeben lassen — Entlastung, die bleibt, statt Pause, die aufholt",
+      "C": "Zeit mit Menschen, die geben statt nur nehmen — Beziehungen als Quelle, nicht als Leistung",
+      "G": "Erholung mit Termin und Dauer wie ein Sprint geplant — sonst verliert sie gegen jedes Ziel"
+    },
+    {
+      "s": "Messbarer Fortschritt",
+      "V": "Kreative Freiräume",
+      "M": "Sichtbare Ergebnisse",
+      "C": "Echte Anerkennung",
+      "G": "Messbare Erholung"
+    },
+    {
+      "s": "Milestones, die abgehakt werden — Ihr Gehirn braucht sichtbaren Beweis des Vorangehens",
+      "V": "Geschützte Zeit zum Denken ohne Umsetzungsdruck — hier entsteht Ihre eigentliche Wertschöpfung",
+      "M": "Fertige Arbeit, die jemand sieht und würdigt — unsichtbare Delivery erschöpft doppelt",
+      "C": "Gesehen werden für den Menschen, nicht nur die Hilfe — das füllt das Konto, aus dem Sie geben",
+      "G": "HRV, Schlaf, Trainingspausen als Kennzahlen — Ihr Gehirn respektiert, was gemessen wird"
+    },
+    {
+      "s": "Kompetenz-Bestätigung",
+      "V": "Resonanz auf Ideen",
+      "M": "Verlässliche Strukturen",
+      "C": "Klare eigene Grenzen",
+      "G": "Sinn hinter dem Ziel"
+    },
+    {
+      "s": "Umgebungen, in denen Ihre Analyse zählt und Tiefe Respekt erzeugt",
+      "V": "Menschen, die Ihre Bilder ernst nehmen und weiterdenken, statt sie zu zerreden",
+      "M": "Feste Abläufe und geschützte Maker-Zeit, auf die Verlass ist — Planbarkeit ist Ihre Erholung",
+      "C": "Ein geübtes Nein pro Woche — jede gehaltene Grenze zahlt auf Ihr Energiekonto ein",
+      "G": "Ziele, die mit Ihren Werten verbunden sind — Leistung ohne Sinn verbrennt doppelt so schnell"
+    },
+    {
+      "s": "Das stille Burnout-Muster — typisch Strategist",
+      "V": "Das Achterbahn-Burnout-Muster — typisch Visionary",
+      "M": "Das Lastesel-Burnout-Muster — typisch Builder",
+      "C": "Das Geber-Burnout-Muster — typisch Connector",
+      "G": "Das Hochleistungs-Burnout-Muster — typisch High Performer"
+    },
+    {
+      "s": "Strategists brennen nicht laut aus. Sie arbeiten leiser weiter, während ihre innere Energie schwindet. Die äußerliche Funktionalität bleibt lange intakt — deshalb erkennen weder das Umfeld noch Sie selbst die Erschöpfung rechtzeitig. Ihr Schutzfaktor: ehrliche, wöchentliche Energie-Inventur — nicht als Reflexion, sondern als Datengrundlage für Entscheidungen.",
+      "V": "Visionaries brennen in Wellen aus. Auf euphorische Hochphasen folgen stille Täler, die das Umfeld selten sieht — nach außen wirkt nur die nächste Begeisterung. Gefährlich wird die Summe unbeendeter Projekte, die sich als leiser Selbstvorwurf ansammelt. Ihr Schutzfaktor: ein fester Abschluss-Rhythmus — jedes gelandete Projekt füllt den Tank stärker als drei neue Ideen.",
+      "M": "Builder brennen nicht spektakulär aus. Sie schultern still immer mehr, weil Tragen ihre Normalität ist — bis der Körper die Entscheidung übernimmt. Das Umfeld bemerkt es zuletzt, weil die Lieferqualität bis kurz vor dem Ende stabil bleibt. Ihr Schutzfaktor: echte Übergaben mit SOP — Entlastung, die strukturell ist, nicht nur ein freies Wochenende.",
+      "C": "Connectoren brennen lächelnd aus. Sie bleiben warm, hilfsbereit und präsent, während das eigene Konto leerläuft — die Erschöpfung versteckt sich hinter Freundlichkeit. Gefährlich ist die Unsichtbarkeit der eigenen Bedürfnisse, auch für Sie selbst. Ihr Schutzfaktor: Grenzen als Routine — ein klares Nein pro Woche und ein geschützter Solo-Block, der nicht verhandelbar ist.",
+      "G": "High Performer brennen mit Ansage aus — nur hört die Ansage niemand, weil die Leistung stimmt. Das System kompensiert bis zur harten Kante, dann kippt es abrupt: vom Spitzenwert in den Ausfall. Ihr Schutzfaktor: Regeneration als Disziplin — geplant, gemessen und mit demselben Ehrgeiz verteidigt wie jedes Umsatzziel."
+    },
+    {
+      "s": "Präzise. Substanziell. Zeitverzögert. Lieber einmal durchdacht als dreimal spontan — das ist kein Kommunikationsproblem. Es ist Ihr Standard. Das Problem entsteht in Umgebungen, die Schnelligkeit über Tiefe stellen.",
+      "V": "Bildhaft. Mitreißend. Sprunghaft. Lieber ein großes Bild als zehn Details — das ist kein Kommunikationsproblem. Es ist Ihr Standard. Das Problem entsteht in Umgebungen, die Präzision über Inspiration stellen.",
+      "M": "Konkret. Verlässlich. Knapp. Lieber zeigen als erklären — das ist kein Kommunikationsproblem. Es ist Ihr Standard. Das Problem entsteht in Umgebungen, die Selbstdarstellung über Substanz stellen.",
+      "C": "Warm. Zugewandt. Verbindend. Lieber im Dialog als im Monolog — das ist kein Kommunikationsproblem. Es ist Ihr Standard. Das Problem entsteht in Umgebungen, die Konfrontation über Beziehung stellen.",
+      "G": "Direkt. Fordernd. Schnell. Lieber klare Ansage als lange Abstimmung — das ist kein Kommunikationsproblem. Es ist Ihr Standard. Das Problem entsteht in Umgebungen, die Konsens über Ergebnis stellen."
+    },
+    {
+      "s": "Schriftliche Analyse & Memos",
+      "V": "Vision-Pitches & Storytelling",
+      "M": "Demos & gezeigte Ergebnisse",
+      "C": "1:1-Gespräche & Beziehungspflege",
+      "G": "Klare Ziel-Briefings & Ansagen"
+    },
+    {
+      "s": "1:1 Tiefgespräche (vorbereitet)",
+      "V": "Keynotes & Bühnenmomente",
+      "M": "Schriftliche Prozess-Doku",
+      "C": "Moderation & Gruppenformate",
+      "G": "Verhandlungen unter Druck"
+    },
+    {
+      "s": "Präsentationen mit Vorlaufzeit",
+      "V": "Brainstormings & Ideenrunden",
+      "M": "Strukturierte Arbeitsmeetings",
+      "C": "Networking & Community-Events",
+      "G": "Status-Updates mit Zahlen"
+    },
+    {
+      "s": "Gruppenmoderationen ad hoc",
+      "V": "Detail-Reviews & Zahlenrunden",
+      "M": "Spontane Bühnenauftritte",
+      "C": "Harte Preisverhandlungen",
+      "G": "Lange Konsensrunden"
+    },
+    {
+      "s": "Small Talk & Improv-Networking",
+      "V": "Administrative Abstimmungen",
+      "M": "Small Talk ohne Anlass",
+      "C": "Konfrontative Kritikgespräche",
+      "G": "Empathie-Gespräche ohne Agenda"
+    },
+    {
+      "s": "Führungsprofil: Visionär-Architekt",
+      "V": "Führungsprofil: Sinnstifter",
+      "M": "Führungsprofil: Verlässlicher Kapitän",
+      "C": "Führungsprofil: Beziehungs-Leader",
+      "G": "Führungsprofil: Antreiber an der Spitze"
+    },
+    {
+      "s": "Strategists führen durch Richtung und System — nicht durch Kontrolle oder Beziehungspflege. Ihr Team braucht keine Micromanagement-Impulse — es braucht Klarheit über das Ziel und das „Warum dahinter“.",
+      "V": "Visionaries führen durch Sinn und Begeisterung — nicht durch Prozesse oder Kontrolle. Ihr Team braucht keine neuen Visionen im Wochentakt — es braucht Stabilität zwischen den Bildern und jemanden, der Prioritäten hält.",
+      "M": "Builder führen durch Vorbild und Verlässlichkeit — nicht durch große Reden. Ihr Team braucht keine perfekten Vorgaben — es braucht echte Verantwortung, die Sie wirklich abgeben, statt sie nachts zurückzuholen.",
+      "C": "Connectoren führen durch Vertrauen und Nähe — nicht durch Hierarchie oder Druck. Ihr Team braucht keine noch bessere Stimmung — es braucht klare Erwartungen und Entscheidungen auch dann, wenn sie jemandem wehtun.",
+      "G": "High Performer führen durch Tempo und Anspruch — nicht durch Geduld oder Prozesspflege. Ihr Team braucht keinen höheren Takt — es braucht erreichbare Etappen und das Wissen, dass Ihr Standard nicht sein Mindestmaß ist."
+    },
+    {
+      "s": "Strategische Richtung geben, Komplexität reduzieren, Systeme und Strukturen schaffen",
+      "V": "Sinn stiften, Menschen für Zukunftsbilder gewinnen, Energie im Team entfachen",
+      "M": "Verlässlichkeit vorleben, Qualität sichern, funktionierende Abläufe aufbauen",
+      "C": "Vertrauen aufbauen, Talente verbinden, Konflikte früh spüren und entschärfen",
+      "G": "Hohe Standards setzen, Ergebnisse einfordern, in kritischen Phasen vorangehen"
+    },
+    {
+      "s": "Emotionale Präsenz, spontane Anerkennung, Delegationstiefe systematisch erhöhen",
+      "V": "Prioritäten halten, Erwartungen realistisch dosieren, Umsetzung strukturell absichern",
+      "M": "Echte Verantwortung abgeben, strategische Führungszeit schützen, Erfolge sichtbar machen",
+      "C": "Klare Ansagen trainieren, unpopuläre Entscheidungen treffen, Distanz zulassen",
+      "G": "Geduld mit Lernkurven entwickeln, Anerkennung dosieren, eigenes Tempo entkoppeln"
+    },
+    {
+      "s": "Team-Isolation durch zu wenige Touchpoints; Wissens-Silos durch unzureichend dokumentierte eigene Denkprozesse",
+      "V": "Team-Erschöpfung durch Visionswechsel im Wochentakt; Glaubwürdigkeitsverlust durch nicht eingelöste Ankündigungen",
+      "M": "Flaschenhals-Führung, weil alles über Ihren Tisch läuft; Teamstillstand, weil niemand Fehler machen darf",
+      "C": "Entscheidungsstau durch Harmoniebedürfnis; Überlastung einzelner, weil klare Zuordnung Konflikt bedeuten würde",
+      "G": "Team-Verschleiß durch Dauervollgas; verdeckte Fluktuation, weil niemand Ihrem Takt dauerhaft folgen kann"
+    },
+    {
+      "s": "Mindestens ein Connector-Profil im Team — der Ihre Strategie emotionalisiert und ins Team trägt, während Sie planen. Ohne diese Ergänzung bleibt die beste Strategie im Kopf des Strategists.",
+      "V": "Mindestens ein Builder-Profil im Team — der Ihre Bilder in Meilensteine übersetzt und liefert, während Sie das nächste Kapitel denken. Ohne diese Ergänzung bleibt die beste Vision eine Ankündigung.",
+      "M": "Mindestens ein Visionary- oder Connector-Profil im Team — das Richtung und Sichtbarkeit erzeugt, während Sie das Fundament bauen. Ohne diese Ergänzung bleibt die beste Delivery ein Geheimtipp.",
+      "C": "Mindestens ein Strategist- oder Builder-Profil im Team — das Struktur und Klarheit hält, während Sie Beziehungen bauen. Ohne diese Ergänzung bleibt das beste Netzwerk unter Wert.",
+      "G": "Mindestens ein Strategist-Profil im Team — das Richtung und Hebel prüft, bevor Sie beschleunigen. Ohne diese Ergänzung wird die beste Leistung am falschen Ziel verbrannt."
+    },
+    {
+      "s": "Sie verkaufen durch Substanz, nicht durch Charme. Ihre natürliche Verkaufs-Energie liegt in der Tiefenberatung — nicht im Pitch. Das ist ein massiver Vorteil in hochpreisigen, komplexen Verkaufssituationen. Und eine strukturelle Schwäche bei Impulskäufern.",
+      "V": "Sie verkaufen durch Vision, nicht durch Feature-Listen. Ihre natürliche Verkaufs-Energie liegt im Zukunftsbild — nicht im Kleingedruckten. Das ist ein massiver Vorteil bei Frühentscheidern und Innovationskäufern. Und eine strukturelle Schwäche bei Detailprüfern.",
+      "M": "Sie verkaufen durch Beweis, nicht durch Versprechen. Ihre natürliche Verkaufs-Energie liegt im gezeigten Ergebnis — nicht im großen Pitch. Das ist ein massiver Vorteil bei skeptischen, erfahrenen Käufern. Und eine strukturelle Schwäche, wenn Sichtbarkeit fehlt.",
+      "C": "Sie verkaufen durch Vertrauen, nicht durch Druck. Ihre natürliche Verkaufs-Energie liegt in der Beziehung — nicht in der Kaltakquise. Das ist ein massiver Vorteil im Empfehlungs- und Wiederkaufgeschäft. Und eine strukturelle Schwäche beim Preisdurchsetzen.",
+      "G": "Sie verkaufen durch Ergebnisse, nicht durch Umwege. Ihre natürliche Verkaufs-Energie liegt im Performance-Versprechen — belegt durch Ihre Bilanz. Das ist ein massiver Vorteil bei ergebnisorientierten Käufern. Und eine strukturelle Schwäche bei beziehungsgetriebenen Entscheidern."
+    },
+    {
+      "s": "Discovery Call",
+      "V": "Vision-Pitch",
+      "M": "Live-Demo & Case",
+      "C": "Empfehlungsgespräch",
+      "G": "Ergebnis-Pitch"
+    },
+    {
+      "s": "1:1, vorbereitet, strukturiert",
+      "V": "Zukunftsbild, live, mitreißend",
+      "M": "Gezeigtes Ergebnis, konkret, belegbar",
+      "C": "Warm eingefädelt, persönlich, auf Vertrauen",
+      "G": "Zahlen, Track Record, klare Zusage"
+    },
+    {
+      "s": "Kalt-Networking",
+      "V": "Detail-Nachfassen",
+      "M": "Kalt-Pitch auf Bühnen",
+      "C": "Kaltakquise mit Skript",
+      "G": "Langsamer Beziehungsaufbau"
+    },
+    {
+      "s": "Ohne Agenda, improv-basiert",
+      "V": "Kleingedrucktes, Formulare, Follow-ups",
+      "M": "Ohne Vorbereitung, reine Show",
+      "C": "Ohne Beziehung, gegen Widerstand",
+      "G": "Ohne Ziel, ergebnisoffen"
+    },
+    {
+      "s": "€2.000+ — darunter unterwerten Sie sich",
+      "V": "€2.000+ — Visionen verkaufen sich nicht im Discount",
+      "M": "Festpreis nach Wirkung — nie nach Stunden",
+      "C": "Paketpreise — Beziehung ersetzt keine Marge",
+      "G": "Performance-Premium — Ihr Tempo hat einen Preis"
+    },
+    {
+      "s": "Prevention-dominierte Profile setzen Preise 22–35% unter Marktwert. Sofortmaßnahme: Erhöhen Sie Ihren aktuellen Preis um 20% für Neukunden und beobachten Sie die Conversion 30 Tage lang.",
+      "V": "Visionaries verlieren Marge durch Rabatte im Begeisterungsmoment. Sofortmaßnahme: Preise stehen schriftlich fest, bevor Sie pitchen — und werden im Gespräch nie spontan gesenkt.",
+      "M": "Builder kalkulieren nach Aufwand und verschenken die Wirkung. Sofortmaßnahme: Ihr nächstes Angebot nennt einen Festpreis fürs Ergebnis — den Stundensatz kennt nur noch Ihre interne Kalkulation.",
+      "C": "Connectoren senken Preise, um Beziehungen zu schützen — und schwächen beide. Sofortmaßnahme: Preis und Leistungsumfang stehen vor jedem Gespräch fest; Rabatt gibt es nur gegen Gegenleistung.",
+      "G": "High Performer kompensieren weiche Preise mit mehr Volumen — und bezahlen mit Substanz. Sofortmaßnahme: +25% auf das Kernangebot, dafür 20% weniger parallele Projekte. Beobachten Sie Ertrag und Energie 30 Tage."
+    },
+    {
+      "s": "Mein aktueller Preis ist [X]. Was ist die datenbasierte Begründung für eine Erhöhung auf [X+30%]?",
+      "V": "Welches meiner Projekte hat das größte Monetarisierungspotenzial — und wie sieht der schnellste Weg zum Launch aus?",
+      "M": "Wie verpacke ich meine Leistung als Festpreis-Produkt — und was ist es auf Wirkungsbasis wirklich wert?",
+      "C": "Wie kommuniziere ich meiner langjährigen Kundin eine Preiserhöhung, ohne die Beziehung zu gefährden?",
+      "G": "Welche 20% meiner Aufträge erzeugen 80% meines Ertrags — und was streiche ich dafür?"
+    },
+    {
+      "s": "LinkedIn (Langform-Content, Analyse)",
+      "V": "LinkedIn (Vision-Posts, Thesen)",
+      "M": "LinkedIn (Cases, Vorher-Nachher)",
+      "C": "LinkedIn (Community, Dialogformate)",
+      "G": "LinkedIn (Ergebnisse, Benchmarks)"
+    },
+    {
+      "s": "E-Mail-Newsletter",
+      "V": "Keynotes & Bühnen",
+      "M": "Referenzen & Empfehlungen",
+      "C": "Events & Communities",
+      "G": "Webinare mit klarem Ergebnisversprechen"
+    },
+    {
+      "s": "Podcast (Experten-Interview)",
+      "V": "Podcast (eigene Show, große Fragen)",
+      "M": "Fachbeiträge mit Substanz",
+      "C": "Podcast (Gesprächsformat, Gastauftritte)",
+      "G": "Challenges & Sprints als Format"
+    },
+    {
+      "s": "Instagram (Story, strukturiert)",
+      "V": "Instagram (Reels, Storytelling)",
+      "M": "YouTube (How-to, Demos)",
+      "C": "Instagram (Community-Stories)",
+      "G": "Instagram (Ergebnis-Dokumentation)"
+    },
+    {
+      "s": "TikTok / Spontan-Video",
+      "V": "Excel-Tabellen & Detailreports",
+      "M": "TikTok / Trend-Hopping",
+      "C": "Anonyme Massen-Funnel",
+      "G": "Langsame Organik ohne Messbarkeit"
+    },
+    {
+      "s": "Keine „Tips & Tricks“-Posts. Ihr natürliches Format: tiefe Analyse mit unerwarteter Schlussfolgerung. Das ist schwer zu kopieren.",
+      "V": "Keine „Tips & Tricks“-Posts. Ihr natürliches Format: das große Bild, das andere noch nicht sehen — mit einer These, die hängen bleibt. Das ist schwer zu kopieren.",
+      "M": "Keine Meinungs-Posts ohne Substanz. Ihr natürliches Format: der gezeigte Case — Ausgangslage, Vorgehen, messbares Ergebnis. Das ist schwer zu kopieren.",
+      "C": "Keine anonymen Broadcast-Posts. Ihr natürliches Format: echte Geschichten aus echten Beziehungen — Content, der Gespräche startet statt Reichweite zu jagen. Das ist schwer zu kopieren.",
+      "G": "Keine Motivations-Floskeln. Ihr natürliches Format: dokumentierte Leistung — Ziel, Weg, Zahl. Ihre Bilanz ist Ihr Content. Das ist schwer zu kopieren."
+    },
+    {
+      "s": "Daten, Benchmarks, Prozessklarheit — Sie sind in Ihrem Element.",
+      "V": "Zukunftsbild zuerst, Zahlen als Beleg nachreichen — strukturierte Unterlagen schließen Ihre Lücke.",
+      "M": "Cases, Referenzen, Garantien — Sie sind in Ihrem Element.",
+      "C": "Daten vorbereiten und mitbringen — Ihre Beziehung öffnet die Tür, die Unterlage schließt ab.",
+      "G": "Benchmarks und Track Record — Sie sind in Ihrem Element."
+    },
+    {
+      "s": "Tempo anpassen — trainierbar durch klare Schnellentscheidungs-Frames.",
+      "V": "Erdung liefern — Impulskäufer brauchen bei Ihnen vor allem einen konkreten ersten Schritt.",
+      "M": "Momentum nutzen — Impulskäufer nicht mit Prozessdetails bremsen; Abschluss zuerst, Feinplanung danach.",
+      "C": "Im Moment abschließen — Ihre Sympathie trägt; zögern Sie den Sack nicht zu, verpufft sie.",
+      "G": "Ihr Heimspiel — aber sichern Sie nach: Impulskäufer brauchen nach dem schnellen Ja ein starkes Onboarding."
+    },
+    {
+      "s": "Meisterschaft",
+      "V": "Bedeutung",
+      "M": "Gelingen",
+      "C": "Verbundenheit",
+      "G": "Sieg"
+    },
+    {
+      "s": "Expertise & Tiefe",
+      "V": "Zukunft gestalten",
+      "M": "Dinge, die funktionieren",
+      "C": "Menschen & Resonanz",
+      "G": "Ziele & Bestleistung"
+    },
+    {
+      "s": "Systeme, die funktionieren",
+      "V": "Ideen, die Wirklichkeit werden",
+      "M": "Sichtbarer Fortschritt",
+      "C": "Beziehungen, die tragen",
+      "G": "Messbarer Vorsprung"
+    },
+    {
+      "s": "Willkür",
+      "V": "Kleinteiligkeit",
+      "M": "Vage Vorgaben",
+      "C": "Kälte im Umgang",
+      "G": "Mittelmaß"
+    },
+    {
+      "s": "Unklar definierte Aufgaben",
+      "V": "Detailkontrolle ohne Gestaltungsraum",
+      "M": "Ständig wechselnde Prioritäten",
+      "C": "Rein transaktionale Zusammenarbeit",
+      "G": "Ziele ohne Anspruch und Konsequenz"
+    },
+    {
+      "s": "Ohne Agenda & Ergebnis",
+      "V": "Ohne Vision & Spielraum",
+      "M": "Ohne Entscheidung & Abschluss",
+      "C": "Ohne echten menschlichen Kontakt",
+      "G": "Ohne Ziel & Zeitlimit"
+    },
+    {
+      "s": "Deep Work Blöcke",
+      "V": "Ideation-Sessions",
+      "M": "Maker-Time am Stück",
+      "C": "Energiegebende Begegnungen",
+      "G": "Sprint-Fenster"
+    },
+    {
+      "s": "Komplexe Probleme",
+      "V": "Neue Projekte gestalten",
+      "M": "Sichtbare Fertigstellung",
+      "C": "Menschen verbinden",
+      "G": "Ambitionierte Deadlines"
+    },
+    {
+      "s": "Strategie entwickeln",
+      "V": "Vor Menschen begeistern",
+      "M": "Prozesse verbessern",
+      "C": "Team-Erfolge feiern",
+      "G": "Wettbewerb & Vergleich"
+    },
+    {
+      "s": "Bedeutungsvolle 1:1s",
+      "V": "Austausch mit Vordenkern",
+      "M": "Handwerkliche Qualität",
+      "C": "Tiefe Einzelgespräche",
+      "G": "Neue Bestmarken"
+    },
+    {
+      "s": "Messbare Fortschritte",
+      "V": "Resonanz auf Ideen",
+      "M": "Verlässliche Routinen",
+      "C": "Dankbarkeit & Feedback",
+      "G": "Sichtbare Rankings"
+    },
+    {
+      "s": "Lesen & Forschen",
+      "V": "Reisen & neue Eindrücke",
+      "M": "Aufgeräumte Systeme",
+      "C": "Gemeinsame Rituale",
+      "G": "Training & Selbstoptimierung"
+    },
+    {
+      "s": "Flow-Unterbrechungen",
+      "V": "Umsetzungs-Monotonie",
+      "M": "Ständige Unterbrechungen",
+      "C": "Einsame Detailarbeit",
+      "G": "Warten auf andere"
+    },
+    {
+      "s": "Qualitätskompromisse",
+      "V": "Bürokratie & Formulare",
+      "M": "Halbfertig übergebene Arbeit",
+      "C": "Dauerkonflikte im Umfeld",
+      "G": "Ziellose Meetings"
+    },
+    {
+      "s": "Oberflächliche Interaktionen",
+      "V": "Zahlenkolonnen ohne Kontext",
+      "M": "Meetings ohne Beschluss",
+      "C": "Undankbare Nehmer-Beziehungen",
+      "G": "Prozesse ohne Tempo"
+    },
+    {
+      "s": "Unklare Verantwortung",
+      "V": "Perfektionistische Detailschleifen",
+      "M": "Chaotische Zuständigkeiten",
+      "C": "Anerkennungsfreie Räume",
+      "G": "Aufgezwungene Pausen ohne Plan"
+    },
+    {
+      "s": "Strategische Planung",
+      "V": "Ideen-Zeit",
+      "M": "Tagesplan & Setup",
+      "C": "Beziehungs-Check",
+      "G": "Ziel-Setup"
+    },
+    {
+      "s": "Prioritäten setzen, komplexe Analyse, Tagesstruktur",
+      "V": "Kreative Frühphase nutzen: denken, skizzieren, große Linien",
+      "M": "Klarer Plan, aufgeräumter Start, erste Aufgabe sofort",
+      "C": "Kurzer Kontakt-Rundblick: Wer braucht was, wo ist Energie?",
+      "G": "Tagesziel definieren, Messlatte festlegen, Fokus scharf stellen"
+    },
+    {
+      "s": "Deep Work Block",
+      "V": "Umsetzungs-Slot (geschützt)",
+      "M": "Maker-Time",
+      "C": "Begegnungs-Block",
+      "G": "Leistungs-Sprint"
+    },
+    {
+      "s": "Keine Unterbrechungen — Kernaufgaben, kreative Leistung",
+      "V": "Ein Projekt, ein Slot — Abschluss vor Neustart",
+      "M": "Keine Unterbrechungen — liefern, was geplant ist",
+      "C": "Gespräche, Calls, Termine — hier fließt Ihre beste Energie",
+      "G": "Höchste Intensität auf das wichtigste Ziel — mit definiertem Ende"
+    },
+    {
+      "s": "Meetings & Kommunikation",
+      "V": "Austausch & Feedback",
+      "M": "Kommunikation gebündelt",
+      "C": "Fokus-Block (geschützt)",
+      "G": "Puffer & Regeneration"
+    },
+    {
+      "s": "Vorbereitet, zeitboxed, klare Agenda",
+      "V": "Ideen teilen, Resonanz holen, Energie tanken",
+      "M": "E-Mails, Calls und Abstimmungen in einem Slot — nicht verteilt",
+      "C": "Eigene Projekte hinter geschlossener Tür — der Kalender schützt Sie",
+      "G": "Bewusst runterschalten — die nächste Spitze braucht dieses Tal"
+    },
+    {
+      "s": "Operatives & Review",
+      "V": "Abschluss-Ritual",
+      "M": "Abschluss & Übergabe",
+      "C": "Ausklang & Verbindung",
+      "G": "Bilanz & Abschalten"
+    },
+    {
+      "s": "Abschluss, nächsten Tag vorbereiten",
+      "V": "Was wurde heute fertig? Sichtbar abhaken, dann erst Neues denken",
+      "M": "Sauber übergeben, dokumentieren, Feierabend wirklich beginnen",
+      "C": "Positiver Tagesabschluss mit Menschen, die guttun",
+      "G": "Ergebnis messen, Erfolg anerkennen, bewusst den Stecker ziehen"
+    },
+    {
+      "s": "des Strategists",
+      "V": "des Visionarys",
+      "M": "des Builders",
+      "C": "des Connectors",
+      "G": "des High Performers"
+    },
+    {
+      "s": "Diese Muster entstehen nicht aus Schwäche — sie entstehen direkt aus Ihren Stärken. Und sie sind spezifisch für den Strategist-Typ: Andere Psychotypen haben andere blinde Flecken.",
+      "V": "Diese Muster entstehen nicht aus Schwäche — sie entstehen direkt aus Ihren Stärken. Und sie sind spezifisch für den Visionary-Typ: Andere Psychotypen haben andere blinde Flecken.",
+      "M": "Diese Muster entstehen nicht aus Schwäche — sie entstehen direkt aus Ihren Stärken. Und sie sind spezifisch für den Builder-Typ: Andere Psychotypen haben andere blinde Flecken.",
+      "C": "Diese Muster entstehen nicht aus Schwäche — sie entstehen direkt aus Ihren Stärken. Und sie sind spezifisch für den Connector-Typ: Andere Psychotypen haben andere blinde Flecken.",
+      "G": "Diese Muster entstehen nicht aus Schwäche — sie entstehen direkt aus Ihren Stärken. Und sie sind spezifisch für den High-Performer-Typ: Andere Psychotypen haben andere blinde Flecken."
+    },
+    {
+      "s": "Der „Noch nicht fertig“-Loop",
+      "V": "Der „Nächste Idee“-Loop",
+      "M": "Der „Mach ich schnell selbst“-Loop",
+      "C": "Der „Ich will niemanden enttäuschen“-Loop",
+      "G": "Der „Noch eine Schippe“-Loop"
+    },
+    {
+      "s": "Expertise-Bias",
+      "V": "Begeisterungs-Bias",
+      "M": "Aufwands-Bias",
+      "C": "Harmonie-Bias",
+      "G": "Tempo-Bias"
+    },
+    {
+      "s": "Sie bewerten andere primär nach Kompetenz — und unterschätzen, wie stark emotionale Kaufmotive wirken. „Die Zahlen sprechen für sich.“ Tun sie für die wenigsten Käufer.",
+      "V": "Sie schließen von Ihrer Begeisterung auf die der anderen — und überspringen den Beweis. „Das Potenzial ist doch offensichtlich.“ Für die meisten Käufer ist es das nicht.",
+      "M": "Sie bewerten Leistung nach investierter Arbeit — und unterschätzen, dass Käufer Wirkung kaufen. „Da stecken 80 Stunden drin.“ Der Kunde bezahlt das Ergebnis, nicht die Stunden.",
+      "C": "Sie bewerten Entscheidungen nach Beziehungswirkung — und unterschätzen, dass Klarheit Vertrauen schafft. „Das sage ich lieber vorsichtig.“ Weichheit wirkt oft unklarer als ein ehrliches Nein.",
+      "G": "Sie bewerten Menschen nach Tempo und Einsatz — und unterschätzen, was langsamere Gründlichkeit beiträgt. „Das hätte ich in der halben Zeit geschafft.“ Vielleicht — aber nicht alles ist ein Sprint."
+    },
+    {
+      "s": "Stiller Perfektionismus",
+      "V": "Ankündigungs-Überschuss",
+      "M": "Unsichtbare Extrameilen",
+      "C": "Gratis-Expertise",
+      "G": "Selbstwert = Scoreboard"
+    },
+    {
+      "s": "Ein hoher interner Qualitätsstandard, der selten kommuniziert wird. Führt zu Frustration, wenn das Umfeld anders priorisiert — ohne zu wissen, dass Sie es anders sehen.",
+      "V": "Visionen werden früh und groß kommuniziert — die Umsetzung hält selten Schritt. Führt zu Glaubwürdigkeitsverlust, obwohl jede einzelne Idee ernst gemeint war.",
+      "M": "Sie liefern regelmäßig mehr als vereinbart — ohne es sichtbar zu machen oder zu berechnen. Führt zu Margenverlust und Kunden, die Extrameilen als Standard erwarten.",
+      "C": "Ihr Wissen fließt im Gespräch, im Chat, am Rande von Events — kostenlos. Führt zu einem Markt, der Ihre Beratung schätzt, aber nicht gelernt hat, sie zu bezahlen.",
+      "G": "Ihr Selbstwert hängt an der letzten Bestleistung. Führt zu innerer Unruhe selbst nach Erfolgen — die Latte steigt automatisch, das Gefühl von Ankommen bleibt aus."
+    },
+    {
+      "s": "Delegations-Kontrolle",
+      "V": "System-Allergie",
+      "M": "Strategie-Blindflug",
+      "C": "Konflikt-Aufschub",
+      "G": "Delegations-Ungeduld"
+    },
+    {
+      "s": "Sie wissen, dass Delegation nötig ist — geben aber selten wirklich los. „Geht schneller und besser, wenn ich es selbst mache.“ Stimmt kurzfristig. Skaliert nicht.",
+      "V": "Sie wissen, dass Strukturen nötig sind — empfinden sie aber als Käfig. „Prozesse bremsen meine Kreativität.“ Stimmt punktuell. Ohne System verpufft sie.",
+      "M": "Sie wissen, dass Strategie nötig ist — aber das Tagesgeschäft ruft lauter. „Erst mal das hier fertig machen.“ Stimmt heute. In fünf Jahren hat es Sie festgebaut.",
+      "C": "Sie wissen, dass Konflikte nötig sind — schieben sie aber auf. „Das klärt sich von selbst.“ Tut es selten. Aufgeschobene Konflikte werden teurer, nicht kleiner.",
+      "G": "Sie wissen, dass Delegation nötig ist — aber niemand ist schnell genug. „Bis ich das erklärt habe, ist es erledigt.“ Stimmt einmal. Als Dauerprinzip bleibt alles an Ihnen hängen."
+    },
+    {
+      "s": "Die Unsichtbarkeits-Falle",
+      "V": "Die Erdungs-Lücke",
+      "M": "Die Bescheidenheits-Falle",
+      "C": "Die Selbstaufgabe-Falle",
+      "G": "Die Regenerations-Lüge"
+    },
+    {
+      "s": "Exzellente Arbeit reicht nicht, wenn niemand von ihr weiß. Selbstvermarktung ist keine Eitelkeit — es ist eine Business-Kompetenz. Strategists neigen dazu, das zu unterschätzen.",
+      "V": "Große Bilder brauchen einen ersten Schritt, den jemand morgen gehen kann. Konkretisierung ist keine Verkleinerung — sie ist eine Business-Kompetenz. Visionaries neigen dazu, das zu unterschätzen.",
+      "M": "Exzellente Delivery reicht nicht, wenn niemand davon erfährt. Über Ergebnisse sprechen ist keine Angeberei — es ist eine Business-Kompetenz. Builder neigen dazu, das zu unterschätzen.",
+      "C": "Wer allen hilft, braucht jemanden, der ihm hilft — und sei es er selbst. Selbstfürsorge ist kein Egoismus — sie ist eine Business-Kompetenz. Connectoren neigen dazu, das zu unterschätzen.",
+      "G": "„Ich erhole mich, wenn das Ziel erreicht ist“ — aber nach dem Ziel ist vor dem Ziel. Regeneration ist keine Belohnung — sie ist eine Business-Kompetenz. High Performer neigen dazu, das zu unterschätzen."
+    },
+    {
+      "s": "Chief Strategy Officer / Advisor",
+      "V": "Founder / Visionsgeber",
+      "M": "COO / Operations-Lead",
+      "C": "Community- / Partnership-Lead",
+      "G": "CEO / Wachstums-Lead"
+    },
+    {
+      "s": "Unternehmensberater (B2B, komplex)",
+      "V": "Keynote Speaker / Thought Leader",
+      "M": "Umsetzungsberater (Hands-on)",
+      "C": "Key-Account- & Beziehungsmanagement",
+      "G": "Interim-Manager (Turnaround)"
+    },
+    {
+      "s": "Diagnostik- / Framework-Experte",
+      "V": "Produkt-Visionär / Innovator",
+      "M": "Produktisierte Dienstleistungen",
+      "C": "Coach / Mentor mit Netzwerk",
+      "G": "Performance-Coach / Vertriebsleitung"
+    },
+    {
+      "s": "Executive Coach (High-Level)",
+      "V": "Markengründer / Kreativdirektor",
+      "M": "Qualitäts- & Prozessexperte",
+      "C": "Moderator / Facilitator",
+      "G": "Sales-Experte (High-Performance)"
+    },
+    {
+      "s": "Founder (komplexe Service-Produkte)",
+      "V": "Serien-Ideengeber mit Umsetzungspartner",
+      "M": "Technischer Co-Founder / Macher",
+      "C": "Co-Founder für Kultur & Kunden",
+      "G": "Founder in Wachstumsphasen"
+    },
+    {
+      "s": "High-Ticket Consulting (€5k–50k)",
+      "V": "Signature-Programme mit eigener Methode",
+      "M": "Produktisierte Services (Festpreis)",
+      "C": "Retainer auf Beziehungsbasis",
+      "G": "Performance-basierte Vergütung"
+    },
+    {
+      "s": "Lizenz- / Framework-Modelle",
+      "V": "Bühnen-, Buch- & Medienformate",
+      "M": "Wartungs- & Betreuungsverträge",
+      "C": "Community & Membership",
+      "G": "High-Ticket-Sprints & Bootcamps"
+    },
+    {
+      "s": "Certified Practitioner Programme",
+      "V": "Innovations-Workshops (B2B)",
+      "M": "Done-for-you-Angebote",
+      "C": "Empfehlungs- & Partnernetzwerke",
+      "G": "Challenge-basierte Programme"
+    },
+    {
+      "s": "Advisory-Retainer (Monats-Fee)",
+      "V": "Early-Adopter-Launches",
+      "M": "Standardisierte Audits & Setups",
+      "C": "Events & Masterminds",
+      "G": "Skalierung mit klaren KPIs"
+    },
+    {
+      "s": "Premium Diagnostik-Tools",
+      "V": "Lizenzierung der eigenen Ideen",
+      "M": "Templates & Systeme als Produkt",
+      "C": "Vermittlungs- & Matchingmodelle",
+      "G": "Wettbewerbs- & Ranking-Formate"
+    },
+    {
+      "s": "Thought Leadership Aufbau",
+      "V": "Umsetzungs-Systeme & Delegation",
+      "M": "Strategische Positionierung",
+      "C": "Preis- & Verhandlungskompetenz",
+      "G": "Nachhaltige Team-Strukturen"
+    },
+    {
+      "s": "Skalierbare Online-Produkte",
+      "V": "Finanz- & Projektcontrolling",
+      "M": "Personal Brand & Sichtbarkeit",
+      "C": "Skalierbare Angebote jenseits von 1:1",
+      "G": "Delegation & Coaching-Führungsstil"
+    },
+    {
+      "s": "Community / Membership",
+      "V": "Operative Co-Führung aufbauen",
+      "M": "Vertriebs-Fähigkeiten",
+      "C": "Struktur & Prozessdisziplin",
+      "G": "Strategische Geduld"
+    },
+    {
+      "s": "Public Speaking (vorbereitet)",
+      "V": "Abschluss-Disziplin",
+      "M": "Delegation & Teamaufbau",
+      "C": "Eigene Content-Assets",
+      "G": "Regenerations-Routinen"
+    },
+    {
+      "s": "Massenmarkt B2C (Volumen)",
+      "V": "Reines Detail- & Verwaltungsbusiness",
+      "M": "Reines Bühnen-Business ohne Substanz",
+      "C": "Anonymes Volumengeschäft ohne Kontakt",
+      "G": "Passives Business ohne Leistungsbezug"
+    },
+    {
+      "s": "Impulshandel / E-Commerce",
+      "V": "Langfristige Einzelmandate ohne Neues",
+      "M": "Trend-Hopping ohne Substanzaufbau",
+      "C": "Konfrontatives Hardselling",
+      "G": "Langsame Konsens-Organisationen"
+    },
+    {
+      "s": "Social-Media-First Business",
+      "V": "Reines Prozess- & Wartungsgeschäft",
+      "M": "Spekulative Modelle ohne Kontrolle",
+      "C": "Reine Zahlen-Arbitrage ohne Menschen",
+      "G": "Verwaltung ohne Gestaltungsraum"
+    },
+    {
+      "s": "Das zentrale Unternehmer-Spannungsfeld des Strategists",
+      "V": "Das zentrale Unternehmer-Spannungsfeld des Visionarys",
+      "M": "Das zentrale Unternehmer-Spannungsfeld des Builders",
+      "C": "Das zentrale Unternehmer-Spannungsfeld des Connectors",
+      "G": "Das zentrale Unternehmer-Spannungsfeld des High Performers"
+    },
+    {
+      "s": "Strategists bauen die besten Frameworks — haben aber die größte Herausforderung beim Loslassen. Das Ziel: ein Business, das ohne ständige direkte Beteiligung funktioniert. Kein Persönlichkeits-Redesign — sondern ein Systemdesign, das Ihre Stärken multipliziert und Ihre Engpässe umgeht.",
+      "V": "Visionaries sehen die besten Möglichkeiten — haben aber die größte Herausforderung beim Fertigmachen. Das Ziel: ein Business, in dem Ideen systematisch landen statt zu verwaisen. Kein Persönlichkeits-Redesign — sondern ein Systemdesign, das Ihre Stärken multipliziert und Ihre Engpässe umgeht.",
+      "M": "Builder bauen die verlässlichsten Businesses — haben aber die größte Herausforderung, sich selbst entbehrlich zu machen. Das Ziel: ein Business, das auch liefert, wenn Sie nicht anpacken. Kein Persönlichkeits-Redesign — sondern ein Systemdesign, das Ihre Stärken multipliziert und Ihre Engpässe umgeht.",
+      "C": "Connectoren bauen die tragfähigsten Beziehungen — haben aber die größte Herausforderung, sie in Ertrag zu übersetzen. Das Ziel: ein Business, in dem Nähe und klare Preise koexistieren. Kein Persönlichkeits-Redesign — sondern ein Systemdesign, das Ihre Stärken multipliziert und Ihre Engpässe umgeht.",
+      "G": "High Performer erreichen die ambitioniertesten Ziele — haben aber die größte Herausforderung, das Tempo zu überleben. Das Ziel: ein Business, das Spitzenleistung erlaubt, ohne Sie zu verbrauchen. Kein Persönlichkeits-Redesign — sondern ein Systemdesign, das Ihre Stärken multipliziert und Ihre Engpässe umgeht."
+    },
+    {
+      "s": "Peer-Ebene. Risiko: zu viel Analyse, zu wenig Aktion. Rollen klar trennen.",
+      "V": "Ihr Substanz-Partner: Der Strategist gibt Ihren Bildern Tiefe und prüft, was trägt.",
+      "M": "Ihr Landkarten-Partner: Der Strategist denkt voraus, was Sie bauen — ideale Arbeitsteilung.",
+      "C": "Ihr Klarheits-Partner: Der Strategist gibt Struktur und Substanz hinter Ihre Beziehungen.",
+      "G": "Ihr Richtungs-Partner: Der Strategist prüft die Hebel, bevor Sie beschleunigen."
+    },
+    {
+      "s": "Stärkste Synergie. Visionary gibt Richtung — Strategist gibt Substanz.",
+      "V": "Peer-Ebene. Risiko: zwei Visionen, keine Landung. Einer hält den Fokus, sonst niemand.",
+      "M": "Stärkste Synergie. Visionary gibt Richtung und Sinn — Sie bauen, was trägt.",
+      "C": "Inspirations-Partner: Der Visionary gibt Ihren Netzwerken ein gemeinsames Zukunftsbild.",
+      "G": "Sinn-Partner: Der Visionary verbindet Ihre Leistung mit einer Richtung, die trägt."
+    },
+    {
+      "s": "Exzellente Ergänzung. Builder setzt um, was der Strategist plant.",
+      "V": "Stärkste Synergie. Sie geben das Bild — der Builder landet es Stück für Stück.",
+      "M": "Peer-Ebene. Risiko: zwei Macher, keine Richtung. Strategie extern holen oder bewusst einplanen.",
+      "C": "Verlässlichkeits-Partner: Der Builder liefert, was Sie versprechen — Ihre Empfehlungen bleiben sicher.",
+      "G": "Stabilitäts-Partner: Der Builder hält das System, während Sie die Spitze stürmen."
+    },
+    {
+      "s": "Connector schafft Sichtbarkeit für Ihre Strategie und bringt die richtigen Menschen.",
+      "V": "Der Connector trägt Ihre Vision in Netzwerke, die Sie allein nie erreichen.",
+      "M": "Der Connector verschafft Ihrer stillen Qualität die Bühne und die Kontakte.",
+      "C": "Peer-Ebene. Risiko: viel Wärme, wenig Abschluss. Einer muss die Zahlen halten.",
+      "G": "Der Connector hält die Beziehungen warm, die Ihr Tempo sonst überrollt."
+    },
+    {
+      "s": "High Performer als Polarisation",
+      "V": "High Performer als Verstärker",
+      "M": "High Performer als Taktgeber",
+      "C": "High Performer als Gegenpol",
+      "G": "Der zweite High Performer als Spiegel"
+    },
+    {
+      "s": "The High Performer arbeitet mit hoher Intensität — aber aus intrinsischem Antrieb, nicht strategischer Analyse. Reibungspunkte entstehen bei Tempo-Differenzen. Gemeinsamer Nenner: Qualitätsanspruch. Das ist die Brücke.",
+      "V": "The High Performer bringt die Schlagkraft, die Ihre Visionen in Rekordzeit testen kann. Reibungspunkte entstehen, wenn Richtung wechselt, bevor Ergebnisse reifen. Gemeinsamer Nenner: großer Ehrgeiz. Das ist die Brücke.",
+      "M": "The High Performer treibt das Tempo, während Sie die Qualität sichern. Reibungspunkte entstehen, wenn Geschwindigkeit auf Gründlichkeit trifft. Gemeinsamer Nenner: Leistungsstolz. Das ist die Brücke.",
+      "C": "The High Performer fordert Tempo, wo Sie Beziehung pflegen. Reibungspunkte entstehen, wenn Menschen zu Mitteln werden. Gemeinsamer Nenner: Loyalität zum gemeinsamen Ziel. Das ist die Brücke.",
+      "G": "Zwei High Performer beschleunigen einander — im besten wie im gefährlichsten Sinn. Reibungspunkte entstehen im Konkurrenzmodus. Gemeinsamer Nenner: Respekt vor Leistung. Das ist die Brücke — wenn die Ziele getrennt sind."
+    },
+    {
+      "s": "STRATEGIST × CONNECTOR — DETAILANALYSE",
+      "V": "VISIONARY × BUILDER — DETAILANALYSE",
+      "M": "BUILDER × VISIONARY — DETAILANALYSE",
+      "C": "CONNECTOR × STRATEGIST — DETAILANALYSE",
+      "G": "HIGH PERFORMER × STRATEGIST — DETAILANALYSE"
+    },
+    {
+      "s": "Was der Connector Ihnen gibt",
+      "V": "Was der Builder Ihnen gibt",
+      "M": "Was der Visionary Ihnen gibt",
+      "C": "Was der Strategist Ihnen gibt",
+      "G": "Was der Strategist Ihnen gibt"
+    },
+    {
+      "s": "Beziehungs-Netzwerk, das Sie sich nicht aufbauen würden",
+      "V": "Umsetzungs-Struktur, die Ihre Ideen zu Ende bringt",
+      "M": "Richtung und Sinn, die über das nächste Projekt hinausgehen",
+      "C": "Struktur und Prioritäten, die Ihr Geben kanalisieren",
+      "G": "Hebel-Analyse, bevor Sie Kraft investieren"
+    },
+    {
+      "s": "Emotionale Übersetzung Ihrer Strategie ins Team und nach außen",
+      "V": "Realistische Meilensteine und ein Ende für jedes Projekt",
+      "M": "Begeisterung und Kühnheit, die Ihre Delivery größer denken",
+      "C": "Objektive Kriterien für Preise, Kunden und Grenzen",
+      "G": "Langfrist-Perspektive jenseits des nächsten Sprints"
+    },
+    {
+      "s": "Marktpuls & soziale Signale, die Sie aus der Tiefenarbeit nicht sehen",
+      "V": "Frühwarnung, wenn Ressourcen und Versprechen auseinanderlaufen",
+      "M": "Neue Märkte und Angebote, auf die Sie im Tagesgeschäft nicht stoßen",
+      "C": "Rückendeckung bei unpopulären Entscheidungen",
+      "G": "Ein nüchternes Korrektiv, wenn Ehrgeiz die Daten überstimmt"
+    },
+    {
+      "s": "WAS SIE DEM CONNECTOR GEBEN",
+      "V": "WAS SIE DEM BUILDER GEBEN",
+      "M": "WAS SIE DEM VISIONARY GEBEN",
+      "C": "WAS SIE DEM STRATEGIST GEBEN",
+      "G": "WAS SIE DEM STRATEGIST GEBEN"
+    },
+    {
+      "s": "Strukturierte Richtung für soziale Energie",
+      "V": "Sinn und Zukunftsbild für die tägliche Arbeit",
+      "M": "Einen Boden, auf dem Visionen landen können",
+      "C": "Menschliche Resonanz für seine Systeme",
+      "G": "Schlagkraft für seine Strategien"
+    },
+    {
+      "s": "Analytische Tiefe hinter dem Pitch",
+      "V": "Priorität und Rückendeckung für fokussierte Arbeit",
+      "M": "Verlässlichkeit, die aus Ideen Referenzen macht",
+      "C": "Netzwerke und Vertrauen, die Analyse allein nie öffnet",
+      "G": "Beweise, dass Pläne in Rekordzeit funktionieren"
+    },
+    {
+      "s": "Entscheidungsrahmen & Qualitätssicherung",
+      "V": "Anerkennung für das Unsichtbare: fertige Arbeit",
+      "M": "Ehrliches Feedback aus der Umsetzungsrealität",
+      "C": "Frühwarnsignale aus dem Beziehungsfeld",
+      "G": "Energie und Tempo in kritischen Phasen"
+    },
+    {
+      "s": "5 Aufgaben identifizieren, die Sie regelmäßig übernehmen, die aber kein Strategist-Level erfordern. Für jede eine Übergabe-SOP bauen. Erste Skalierungs-Investition.",
+      "V": "Alle offenen Projekte auflisten. Eines wählen, das in 4 Wochen launchbar ist — alle anderen einfrieren. Der erste bewusste Abschluss-Sprint.",
+      "M": "5 Aufgaben identifizieren, die Sie regelmäßig übernehmen, die aber kein Builder-Level erfordern. Für jede eine Übergabe-SOP bauen. Erste Skalierungs-Investition.",
+      "C": "Alle laufenden Zusagen auflisten: Was davon ist bezahlt, was gratis, was aus Gewohnheit? Zwei Gratis-Leistungen in ein bezahltes Angebot überführen.",
+      "G": "Ihre Ziele auflisten und hart priorisieren: Eines bekommt volle Kraft, zwei werden pausiert, der Rest gestrichen. Der erste bewusste Fokus-Schnitt."
+    },
+    {
+      "s": "4 LinkedIn-Posts (1 pro Woche) — keine Meinungen, sondern Analysen. Nichts Oberflächliches. Messen: Resonanz, Anfragen, Energie danach. Das Ergebnis wird überraschen.",
+      "V": "4 LinkedIn-Posts (1 pro Woche) — Ihre Vision in Etappen: Bild, These, erster Schritt. Messen: Resonanz, Anfragen, Energie danach. Das Ergebnis wird überraschen.",
+      "M": "4 LinkedIn-Posts (1 pro Woche) — gezeigte Cases: Ausgangslage, Vorgehen, Ergebnis. Messen: Resonanz, Anfragen, Energie danach. Das Ergebnis wird überraschen.",
+      "C": "4 LinkedIn-Posts (1 pro Woche) — echte Geschichten aus Ihrer Arbeit mit Menschen. Messen: Gespräche, Anfragen, Energie danach. Das Ergebnis wird überraschen.",
+      "G": "4 LinkedIn-Posts (1 pro Woche) — dokumentierte Leistung: Ziel, Weg, Zahl. Messen: Resonanz, Anfragen, Energie danach. Das Ergebnis wird überraschen."
+    },
+    {
+      "s": "Entscheidungstagebuch: Welche Entscheidungen wurden vertagt? Warum? Was wäre passiert, wenn früher entschieden worden wäre? Erzeugt Lernschleifen für dauerhaft schnelleres Entscheiden.",
+      "V": "Abschluss-Tagebuch: Was wurde diese Woche wirklich fertig? Was wurde angefangen? Das Verhältnis ist Ihre wichtigste Kennzahl — Ziel: mehr Landungen als Starts.",
+      "M": "Delegations-Tagebuch: Was wurde abgegeben — und blieb es abgegeben? Wo haben Sie zurückgeholt? Erzeugt Lernschleifen für echte Entlastung statt Schein-Delegation.",
+      "C": "Grenzen-Tagebuch: Wo kam ein Nein — wo ein Ja wider besseres Wissen? Was hat jedes Ja gekostet? Erzeugt Lernschleifen für gehaltene Grenzen ohne schlechtes Gewissen.",
+      "G": "Energie-Tagebuch: Leistung UND Erholung protokollieren wie ein Profi-Athlet. Wo wurde Regeneration dem Ziel geopfert? Erzeugt Lernschleifen für nachhaltige Spitzenleistung."
+    },
+    {
+      "s": "Energie-Architektur · Delegation · Selbst-Diagnose",
+      "V": "Fokus-Architektur · Abschluss-System · Selbst-Diagnose",
+      "M": "Energie-Architektur · Übergaben · Selbst-Diagnose",
+      "C": "Grenzen-Architektur · Angebotsklarheit · Selbst-Diagnose",
+      "G": "Taktung-Architektur · Fokus-Schnitt · Selbst-Diagnose"
+    },
+    {
+      "s": "Thought Leadership · Content · Netzwerk",
+      "V": "Launch-Rhythmus · Content · Bühne",
+      "M": "Positionierung · Cases · Sichtbarkeit",
+      "C": "Angebote · Preise · Content",
+      "G": "Hebel-Fokus · Angebote · Team"
+    },
+    {
+      "s": "Produkt-Launch · Team · Lizenzpartner",
+      "V": "Skalierbares Produkt · Umsetzungspartner",
+      "M": "Produktisierung · Team · Delegation",
+      "C": "Community-Produkt · Partnerschaften",
+      "G": "Team-Aufbau · Systeme · Skalierung"
+    },
+    {
+      "s": "Framework-Dokumentation",
+      "V": "Launch-Kalender",
+      "M": "Signature-Produkt",
+      "C": "Angebots-Architektur",
+      "G": "Hebel-Portfolio"
+    },
+    {
+      "s": "Ihre Methodik schriftlich systematisiert — Grundlage für Skalierung und Lizenzierung",
+      "V": "Vier fixe Launch-Termine im Jahr — Ihre Visionen bekommen Landebahnen statt Warteschleifen",
+      "M": "Ihre beste Leistung als Festpreis-Produkt verpackt — Grundlage für Marge und Skalierung",
+      "C": "Klare Pakete mit klaren Preisen — Ihr Netzwerk weiß endlich, was es bei Ihnen kaufen kann",
+      "G": "Ihre Angebote nach Ertrag pro Energieeinheit sortiert — Grundlage für Wachstum ohne Verschleiß"
+    },
+    {
+      "s": "Signature Content-Asset",
+      "V": "Signature-Keynote",
+      "M": "Referenz-Case-Sammlung",
+      "C": "Community-Kern",
+      "G": "Ergebnis-Dokumentation"
+    },
+    {
+      "s": "1 tiefgehender Artikel oder Whitepaper, der Ihren Expertenstatus definiert",
+      "V": "1 Vortrag, der Ihre Vision auf den Punkt bringt — Ihr wichtigstes Verkaufsinstrument",
+      "M": "3 dokumentierte Kunden-Cases mit Zahlen — Ihr stärkstes Verkaufsargument",
+      "C": "1 regelmäßiges Format (Roundtable, Stammtisch, Mastermind), das Ihr Netzwerk verdichtet",
+      "G": "1 öffentlich dokumentierte Erfolgs-Bilanz — Ihre Zahlen verkaufen, bevor Sie sprechen"
+    },
+    {
+      "s": "Referenz-Kundenprojekt",
+      "V": "Gelaunchtes Leuchtturm-Projekt",
+      "M": "Strategie-Rhythmus",
+      "C": "Preis-Upgrade",
+      "G": "Regenerations-System"
+    },
+    {
+      "s": "1 Anchor-Case mit messbaren Ergebnissen — wichtigstes Verkaufsargument",
+      "V": "1 Projekt komplett gelandet und monetarisiert — der Beweis, dass Ihre Bilder tragen",
+      "M": "1 fester Strategie-Tag pro Monat außerhalb des Tagesgeschäfts — nicht verhandelbar",
+      "C": "Bestandskunden auf neue, faire Preise gehoben — der Beweis, dass Beziehung Klarheit trägt",
+      "G": "Erholung fest im Kalender wie Kundentermine — die Grundlage für jedes weitere Jahr Spitzenleistung"
+    },
+    {
+      "s": "Team-Kern aufbauen",
+      "V": "Umsetzungs-Partner etablieren",
+      "M": "Vertriebs-Sichtbarkeit",
+      "C": "Struktur-Partner etablieren",
+      "G": "Zweite Führungsebene"
+    },
+    {
+      "s": "Mindestens 1 Connector-Profil im näheren Arbeitsumfeld etablieren",
+      "V": "Mindestens 1 Builder-Profil im näheren Arbeitsumfeld etablieren",
+      "M": "Mindestens 1 Visionary- oder Connector-Profil im näheren Arbeitsumfeld etablieren",
+      "C": "Mindestens 1 Strategist- oder Builder-Profil im näheren Arbeitsumfeld etablieren",
+      "G": "Mindestens 1 Strategist-Profil im näheren Arbeitsumfeld etablieren"
+    },
+    {
+      "s": "Der Strategist-Fehler im Jahresplan:",
+      "V": "Der Visionary-Fehler im Jahresplan:",
+      "M": "Der Builder-Fehler im Jahresplan:",
+      "C": "Der Connector-Fehler im Jahresplan:",
+      "G": "Der High-Performer-Fehler im Jahresplan:"
+    },
+    {
+      "s": "Die Roadmap zu detailliert bauen und vergessen, sie zu leben. Setzen Sie flexible Entscheidungspunkte statt starrer Meilensteine.",
+      "V": "Die Roadmap im Januar lieben und im März gegen eine neue tauschen. Halten Sie die Quartalsziele — neue Ideen kommen auf die Q+1-Liste.",
+      "M": "Die Roadmap dem Tagesgeschäft opfern. Strategiezeit ist ein Kundentermin mit Ihrem wichtigsten Kunden: Ihrem Business.",
+      "C": "Die Roadmap den Wünschen anderer anpassen, bis nichts mehr von Ihnen drinsteht. Ihre Ziele haben denselben Rang wie jede Zusage an andere.",
+      "G": "Die Roadmap in sechs Monaten durchsprinten wollen. Tempo ist Ihre Stärke — Timing ist der Unterschied zwischen Rekord und Ausfall."
+    },
+    {
+      "s": "Erstelle mir einen Q1-Plan basierend auf meinem Strategist-Profil — mit Priorisierung nach Umsatz-Impact, nicht nach Dringlichkeitsgefühl.",
+      "V": "Erstelle mir einen Q1-Plan basierend auf meinem Visionary-Profil — mit maximal einem Launch-Ziel und einem Abschluss-System, das mich hält.",
+      "M": "Erstelle mir einen Q1-Plan basierend auf meinem Builder-Profil — mit fester Strategiezeit und einem Delegations-Ziel pro Monat.",
+      "C": "Erstelle mir einen Q1-Plan basierend auf meinem Connector-Profil — mit klaren Angeboten, festen Preisen und geschützter Zeit für mich.",
+      "G": "Erstelle mir einen Q1-Plan basierend auf meinem High-Performer-Profil — mit einem Fokus-Ziel, harten Stopp-Regeln und geplanter Regeneration."
+    },
+    {
+      "s": "Welche Entscheidung vertagst du gerade — und was kostet dich dieses Vertagen wirklich?",
+      "V": "Welches deiner angefangenen Projekte würde — fertig gelauncht — am meisten verändern?",
+      "M": "Welche Aufgabe hältst du fest, obwohl sie längst jemand anderes machen könnte?",
+      "C": "Wem gibst du gerade mehr, als dir guttut — und warum fällt das Nein so schwer?",
+      "G": "Welches Ziel jagst du gerade aus Gewohnheit — und welches verdient deine Kraft wirklich?"
+    },
+    {
+      "s": "Was wäre deine erste Handlung, wenn du nur 80% der Informationen hättest?",
+      "V": "Was wäre der kleinste erste Schritt, der deine größte Idee heute konkret macht?",
+      "M": "Was würdest du bauen, wenn du einen Monat frei von Kundenarbeit hättest?",
+      "C": "Wie sähe dein Angebot aus, wenn jede Leistung einen klaren Preis hätte?",
+      "G": "Was würdest du anders machen, wenn Erholung genauso zählte wie Ergebnis?"
+    },
+    {
+      "s": "Welchen Teil deiner Arbeit würdest du anderen nie delegieren — und warum?",
+      "V": "Welche Erwartungen hast du geweckt, die dich heute unter Druck setzen?",
+      "M": "Woran würde dein Business scheitern, wenn du vier Wochen ausfällst — und was sagt dir das?",
+      "C": "Welche Beziehung in deinem Umfeld gibt dir wirklich Energie — und welche nimmt nur?",
+      "G": "Wen in deinem Umfeld überforderst du gerade mit deinem Tempo — und was kostet dich das?"
+    },
+    {
+      "s": "Wenn dein Business in 3 Jahren doppelt so groß ist — was musst du heute loslassen?",
+      "V": "Wenn dein Business in 3 Jahren trägt — welches deiner heutigen Projekte hat es dorthin gebracht?",
+      "M": "Wenn dein Business in 3 Jahren ohne dich läuft — was hast du heute dafür abgegeben?",
+      "C": "Wenn dein Netzwerk in 3 Jahren dein Business trägt — welche klaren Angebote haben das möglich gemacht?",
+      "G": "Wenn du in 3 Jahren noch auf Spitzenniveau arbeitest — welche Routinen haben das gesichert?"
+    },
+    {
+      "s": "Dieses Muster ist kein Fehler — es ist die Kehrseite Ihrer stärksten Eigenschaft. Analytische Tiefe (D2=",
+      "V": "Dieses Muster ist kein Fehler — es ist die Kehrseite Ihrer stärksten Eigenschaft. Intuitive Kognition (D2=",
+      "M": "Dieses Muster ist kein Fehler — es ist die Kehrseite Ihrer stärksten Eigenschaft. Praktische Kognition (D2=",
+      "C": "Dieses Muster ist kein Fehler — es ist die Kehrseite Ihrer stärksten Eigenschaft. Menschenkenntnis (D2=",
+      "G": "Dieses Muster ist kein Fehler — es ist die Kehrseite Ihrer stärksten Eigenschaft. Pragmatische Kognition (D2="
+    },
+    {
+      "s": ") kombiniert mit Prevention-Fokus (D3=",
+      "V": ") kombiniert mit starkem Promotion-Fokus (D3=",
+      "M": ") kombiniert mit Absicherungsfokus (D3=",
+      "C": ") kombiniert mit Harmonie-Fokus (D3=",
+      "G": ") kombiniert mit Promotion-Fokus (D3="
+    },
+    {
+      "s": ") erzeugt eine interne „Noch-nicht-fertig“-Schleife. Dieser Report macht den Mechanismus transparent — damit er Sie weniger kostet.",
+      "V": ") erzeugt eine interne „Nächste-Idee“-Schleife. Dieser Report macht den Mechanismus transparent — damit er Sie weniger kostet.",
+      "M": ") erzeugt eine interne „Mach-ich-lieber-selbst“-Schleife. Dieser Report macht den Mechanismus transparent — damit er Sie weniger kostet.",
+      "C": ") erzeugt eine interne „Erst-die-anderen“-Schleife. Dieser Report macht den Mechanismus transparent — damit er Sie weniger kostet.",
+      "G": ") erzeugt eine interne „Noch-eine-Schippe“-Schleife. Dieser Report macht den Mechanismus transparent — damit er Sie weniger kostet."
+    },
+    {
+      "s": "Sie halten Projekte zurück, weil „noch etwas fehlt“. Ursache: Prevention-Fokus (D3=",
+      "V": "Sie verlassen Projekte, sobald sie Routine werden. Ursache: Promotion-Fokus (D3=",
+      "M": "Sie übernehmen Aufgaben, statt sie zu übergeben. Ursache: Absicherungsfokus (D3=",
+      "C": "Sie sagen Ja, bevor Sie Ihre Kapazität prüfen. Ursache: Harmonie-Fokus (D3=",
+      "G": "Sie erhöhen den Einsatz, wenn etwas hakt — statt den Hebel zu prüfen. Ursache: Promotion-Fokus (D3="
+    },
+    {
+      "s": ") + Qualitätsstandard (D2=",
+      "V": ") + intuitive Kognition (D2=",
+      "M": ") + Qualitätsinstinkt (D2=",
+      "C": ") + Menschenorientierung (D2=",
+      "G": ") + Handlungskopplung (D2="
+    },
+    {
+      "s": "). Das Markt-Window schließt sich trotzdem.",
+      "V": "). Der Wert entsteht aber erst nach der Routine-Phase.",
+      "M": "). Kurzfristig schneller — langfristig der Deckel über allem.",
+      "C": "). Jedes Ja zu anderen ist ein stilles Nein zu Ihrem Business.",
+      "G": "). Mehr Kraft am falschen Punkt bleibt der falsche Punkt."
+    },
+    {
+      "s": "Story first, Zahlen second. Visionary-Anteil (",
+      "V": "Ihr Heimspiel — dosieren Sie: ein Bild, eine Botschaft, ein nächster Schritt. Sekundär-Anteil (",
+      "M": "Story vor Prozess: Erzählen Sie den Kunden-Case als Geschichte, nicht als Ablaufplan. Sekundär-Anteil (",
+      "C": "Ihr Heimspiel — aber schließen Sie ab: Am Ende steht ein konkretes Angebot. Sekundär-Anteil (",
+      "G": "Tempo drosseln: Emotionale Käufer brauchen Beziehung vor Benchmark. Sekundär-Anteil ("
+    },
+    {
+      "s": "Strategist-Muster",
+      "V": "Visionary-Muster",
+      "M": "Builder-Muster",
+      "C": "Connector-Muster",
+      "G": "High Performer-Muster"
+    },
+    {
+      "s": "Strategist-DNA",
+      "V": "Visionary-DNA",
+      "M": "Builder-DNA",
+      "C": "Connector-DNA",
+      "G": "High Performer-DNA"
+    },
+    {
+      "s": "Strategist-Verkaufswahrheit",
+      "V": "Visionary-Verkaufswahrheit",
+      "M": "Builder-Verkaufswahrheit",
+      "C": "Connector-Verkaufswahrheit",
+      "G": "High Performer-Verkaufswahrheit"
+    },
+    {
+      "s": "Content-Positionierung Strategist:",
+      "V": "Content-Positionierung Visionary:",
+      "M": "Content-Positionierung Builder:",
+      "C": "Content-Positionierung Connector:",
+      "G": "Content-Positionierung High Performer:"
+    },
+    {
+      "s": "für The Strategist",
+      "V": "für The Visionary",
+      "M": "für The Builder",
+      "C": "für The Connector",
+      "G": "für The High Performer"
+    },
+    {
+      "s": "in the Strategist pattern",
+      "V": "in the Visionary pattern",
+      "M": "in the Builder pattern",
+      "C": "in the Connector pattern",
+      "G": "in the High Performer pattern"
+    },
+    {
+      "s": "through Strategist DNA",
+      "V": "through Visionary DNA",
+      "M": "through Builder DNA",
+      "C": "through Connector DNA",
+      "G": "through High Performer DNA"
+    },
+    {
+      "s": "The Strategist sales truth",
+      "V": "The Visionary sales truth",
+      "M": "The Builder sales truth",
+      "C": "The Connector sales truth",
+      "G": "The High Performer sales truth"
+    },
+    {
+      "s": "Strategist content positioning:",
+      "V": "Visionary content positioning:",
+      "M": "Builder content positioning:",
+      "C": "Connector content positioning:",
+      "G": "High Performer content positioning:"
+    },
+    {
+      "s": "to The Strategist",
+      "V": "to The Visionary",
+      "M": "to The Builder",
+      "C": "to The Connector",
+      "G": "to The High Performer"
+    },
+    {
+      "s": "for The Strategist",
+      "V": "for The Visionary",
+      "M": "for The Builder",
+      "C": "for The Connector",
+      "G": "for The High Performer"
+    },
+    {
+      "s": "5 core strengths — unique to the Strategist",
+      "V": "5 core strengths — unique to the Visionary",
+      "M": "5 core strengths — unique to the Builder",
+      "C": "5 core strengths — unique to the Connector",
+      "G": "5 core strengths — unique to the High Performer"
+    },
+    {
+      "s": "the Strategist type: other psychotypes have different blind spots.",
+      "V": "the Visionary type: other psychotypes have different blind spots.",
+      "M": "the Builder type: other psychotypes have different blind spots.",
+      "C": "the Connector type: other psychotypes have different blind spots.",
+      "G": "the High Performer type: other psychotypes have different blind spots."
+    },
+    {
+      "s": "Strategist early-warning signs",
+      "V": "Visionary early-warning signs",
+      "M": "Builder early-warning signs",
+      "C": "Connector early-warning signs",
+      "G": "High Performer early-warning signs"
+    },
+    {
+      "s": "The Strategist's communication DNA",
+      "V": "The Visionary's communication DNA",
+      "M": "The Builder's communication DNA",
+      "C": "The Connector's communication DNA",
+      "G": "The High Performer's communication DNA"
+    },
+    {
+      "s": "The Strategist's central entrepreneurial tension",
+      "V": "The Visionary's central entrepreneurial tension",
+      "M": "The Builder's central entrepreneurial tension",
+      "C": "The Connector's central entrepreneurial tension",
+      "G": "The High Performer's central entrepreneurial tension"
+    },
+    {
+      "s": "Leadership profile: Visionary Architect",
+      "V": "Leadership profile: Meaning-Maker",
+      "M": "Leadership profile: Dependable Captain",
+      "C": "Leadership profile: Relationship Leader",
+      "G": "Leadership profile: Front-Line Driver"
+    },
+    {
+      "s": "You already know more than enough to act.",
+      "V": "You see the future more clearly than most people.",
+      "M": "You deliver what others only announce.",
+      "C": "You open doors that stay closed for others.",
+      "G": "You achieve more than almost anyone around you."
+    },
+    {
+      "s": "Your brain keeps searching for more certainty anyway.",
+      "V": "Your brain still jumps to the next image before the first one lands.",
+      "M": "Your brain still keeps everything in your own hands.",
+      "C": "Your brain still puts everyone else ahead of yourself.",
+      "G": "Your brain still knows only one pace: faster."
+    },
+    {
+      "s": "it's the flip side of your strongest trait. Analytical depth (D2=",
+      "V": "it's the flip side of your strongest trait. Intuitive cognition (D2=",
+      "M": "it's the flip side of your strongest trait. Practical cognition (D2=",
+      "C": "it's the flip side of your strongest trait. People-reading (D2=",
+      "G": "it's the flip side of your strongest trait. Pragmatic cognition (D2="
+    },
+    {
+      "s": ") combined with a prevention focus (D3=",
+      "V": ") combined with a strong promotion focus (D3=",
+      "M": ") combined with a safety focus (D3=",
+      "C": ") combined with a harmony focus (D3=",
+      "G": ") combined with a promotion focus (D3="
+    },
+    {
+      "s": ") creates an internal \"not-quite-ready\" loop. This report makes the mechanism visible — so it costs you less.",
+      "V": ") creates an internal \"next-idea\" loop. This report makes the mechanism visible — so it costs you less.",
+      "M": ") creates an internal \"I'd-rather-do-it-myself\" loop. This report makes the mechanism visible — so it costs you less.",
+      "C": ") creates an internal \"others-first\" loop. This report makes the mechanism visible — so it costs you less.",
+      "G": ") creates an internal \"one-more-push\" loop. This report makes the mechanism visible — so it costs you less."
+    },
+    {
+      "s": "Execution paradox: everything runs through you. The growth ceiling is neuropsychologically explained, not motivational.",
+      "V": "Start paradox: much begins, little lands. The execution gap is neuropsychologically explained, not a lack of discipline.",
+      "M": "Operator paradox: everything runs through your hands. The growth ceiling is neuropsychologically explained, not motivational.",
+      "C": "People-pleasing paradox: everyone gets served except your business. The pricing problem is neuropsychologically explained, not commercial.",
+      "G": "Pace paradox: peak output without a direction check. The exhaustion risk is neuropsychologically explained, not a weakness."
+    },
+    {
+      "s": "Analysis-safety trap: costs 20–40% of achievable annual revenue through delays and underpricing.",
+      "V": "Shiny-object trap: costs 20–40% of achievable annual revenue through abandoned projects and missed monetisation.",
+      "M": "Effort-price trap: costs 20–40% of achievable annual revenue by selling hours instead of impact.",
+      "C": "Free-value trap: costs 20–40% of achievable annual revenue through given-away work and soft prices.",
+      "G": "Volume trap: costs 20–40% of achievable annual revenue through more work instead of better leverage."
+    },
+    {
+      "s": "Introverted depth + analytical precision = a natural systems architect. <strong style=\"color:var(--em);\">Business implication:</strong> your strongest work happens invisibly — which makes marketing structurally necessary, not optional.",
+      "V": "Intuitive cognition + promotion focus = a permanent stream of ideas. <strong style=\"color:var(--em);\">Business implication:</strong> your strength is the beginning. Execution needs structure from outside — otherwise value is left on the table.",
+      "M": "Strong structure + practical cognition = a reliable delivery machine. <strong style=\"color:var(--em);\">Business implication:</strong> your strongest work disappears into day-to-day operations — which makes positioning structurally necessary, not optional.",
+      "C": "Social energy + intuitive people-reading = a natural architect of trust. <strong style=\"color:var(--em);\">Business implication:</strong> your strongest work happens between people — which makes clear offers structurally necessary, not optional.",
+      "G": "High structure + promotion focus = exceptional goal attainment under pressure. <strong style=\"color:var(--em);\">Business implication:</strong> your strongest work happens in the sprint — which makes deliberate recovery structurally necessary, not optional."
+    },
+    {
+      "s": "Deep focus + strong structure = excellent individual output with an invisible growth ceiling. <strong style=\"color:var(--em);\">Business implication:</strong> your growth limit isn't a market problem — it's a delegation-design problem.",
+      "V": "Spontaneous execution + opportunity focus = many open loops at once. <strong style=\"color:var(--em);\">Business implication:</strong> your growth limit isn't an idea problem — it's a completion-design problem.",
+      "M": "High execution density + a focus on doing = excellent delivery with an invisible growth ceiling. <strong style=\"color:var(--em);\">Business implication:</strong> your growth limit isn't an effort problem — it's a delegation-design problem.",
+      "C": "Relationship focus + a need for harmony = generous work with an invisible price ceiling. <strong style=\"color:var(--em);\">Business implication:</strong> your earnings limit isn't a market problem — it's a boundary-design problem.",
+      "G": "High intensity + limited recovery = peak output with a built-in expiry date. <strong style=\"color:var(--em);\">Business implication:</strong> your performance limit isn't a willpower problem — it's a pacing-design problem."
+    },
+    {
+      "s": "Analytics + prevention focus = systematic analysis paralysis. <strong style=\"color:var(--red);\">Business cost:</strong> costs Strategists an average of 20–40% of achievable annual revenue through delayed launches and underpricing.",
+      "V": "Intuition + spontaneity = systematically switching projects just before the harvest. <strong style=\"color:var(--red);\">Business cost:</strong> costs Visionaries an average of 20–40% of achievable annual revenue through abandoned projects and postponed launches.",
+      "M": "Practical cognition + a safety focus = pricing by the hour instead of by impact. <strong style=\"color:var(--red);\">Business cost:</strong> costs Builders an average of 20–40% of achievable annual revenue through underpricing and unpaid extra miles.",
+      "C": "Harmony focus + people-orientation = systematically giving away expertise. <strong style=\"color:var(--red);\">Business cost:</strong> costs Connectors an average of 20–40% of achievable annual revenue through free work and soft fees.",
+      "G": "Opportunity focus + pragmatism = more contracts instead of better leverage. <strong style=\"color:var(--red);\">Business cost:</strong> costs High Performers an average of 20–40% of achievable annual revenue by working on the nearest goals instead of the right ones."
+    },
+    {
+      "s": "Prevention + moderate resilience = your system avoids uncertain situations. <strong style=\"color:var(--em);\">Business implication:</strong> a 25–30% price increase is your strongest ROI lever — ahead of any marketing budget.",
+      "V": "Promotion focus + fluctuating recovery = your energy follows enthusiasm, not the plan. <strong style=\"color:var(--em);\">Business implication:</strong> a fixed completion rhythm — one project finished per quarter — is your strongest ROI lever, ahead of any new idea.",
+      "M": "High output cadence + solid resilience = your system holds out for a long time and flags overload too late. <strong style=\"color:var(--em);\">Business implication:</strong> productised fixed-price offers are your strongest ROI lever — ahead of any additional project.",
+      "C": "Social energy + relationship-dependent resilience = your state mirrors the quality of your contacts. <strong style=\"color:var(--em);\">Business implication:</strong> one protected solo block per week is your strongest ROI lever — ahead of any further networking date.",
+      "G": "Limited recovery + high self-expectation = your system overrides its own warning signals. <strong style=\"color:var(--em);\">Business implication:</strong> firmly scheduled recovery blocks are your strongest ROI lever — ahead of any further sprint."
+    },
+    {
+      "s": "Your energy is strongly inward-facing — you recharge through depth, not breadth. Focused solo work generates output; multi-stimulus environments cost proportionally more energy. This mode isn't a weakness — it's the precondition for the analytical depth that defines Strategists. The risk: in business contexts that reward visibility and networking, this mode is systematically undervalued.",
+      "V": "Your energy follows inspiration — you recharge through new images, people and possibilities. Monotonous detail work costs proportionally more energy. This mode isn't a weakness — it's the precondition for the future-cognition that defines Visionaries. The risk: in business contexts that reward routine and precision, this mode is systematically undervalued.",
+      "M": "Your energy is task-oriented — you recharge through visible progress and clean results. Talked-out meetings and vague concepts cost proportionally more energy. This mode isn't a weakness — it's the precondition for the delivery power that defines Builders. The risk: in business contexts that reward loud self-presentation, this mode is systematically undervalued.",
+      "C": "Your energy is strongly outward-facing — you recharge through encounter, exchange and resonance. Long stretches of solo work cost proportionally more energy. This mode isn't a weakness — it's the precondition for the relationship intelligence that defines Connectors. The risk: in business contexts that reward quiet solo output, this mode is systematically undervalued.",
+      "G": "Your energy is goal-bound — you recharge through progress, competition and milestones reached. Aimless phases cost proportionally more energy. This mode isn't a weakness — it's the precondition for the performance density that defines High Performers. The risk: in business contexts without measurable goals, this mode is systematically undervalued."
+    },
+    {
+      "s": "Your cognitive style is clearly analytical — you process sequentially, look for causality, and build mental models. What sets Strategists apart from other analytical types: you combine data-based analysis with long-term pattern recognition. That enables systems design — not just problem-solving. The flip side: your insights are hard to communicate, because the path to your conclusion is invisible to others.",
+      "V": "Your cognitive style is intuitive-holistic — you grasp patterns before others have sorted the data, and think backwards from the end image. What sets Visionaries apart from other intuitive types: you connect future images with genuine enthusiasm for people. That enables meaning-making — not just ideas. The flip side: your leaps are hard for others to follow, because the intermediate steps stay in your head.",
+      "M": "Your cognitive style is practical-analytical — you think in steps, ownership and feasibility. What sets Builders apart from other analytical types: you don't just think things through, you build them. That enables reliable systems — not just plans. The flip side: in the doing, the map disappears from view, and strategic questions get postponed.",
+      "C": "Your cognitive style is socially intuitive — you read undertones, motives and moods faster than numbers. What sets Connectors apart from other intuitive types: you translate people-reading into durable relationships. That enables trust-building — not just contacts. The flip side: hard facts and confrontations get postponed when they might strain a relationship.",
+      "G": "Your cognitive style is pragmatic and goal-oriented — you think in results, benchmarks and the next concrete step. What sets High Performers apart from other pragmatic types: you couple thinking directly to action. That enables pace — not just intent. The flip side: reflection loops feel like standing still and get skipped."
+    },
+    {
+      "s": "<strong>Combination effect D1×D2:</strong> introverted depth + analytical precision = a natural systems architect. Your brain skips marketing as unnecessary. It isn't.",
+      "V": "<strong>Combination effect D2×D3:</strong> intuitive cognition + promotion focus = a permanent stream of ideas. Your brain skips completion routines as boring. They aren't.",
+      "M": "<strong>Combination effect D4×D2:</strong> strong structure + practical cognition = a reliable delivery machine. Your brain files visibility as wasted time. It isn't.",
+      "C": "<strong>Combination effect D1×D2:</strong> social energy + intuitive people-reading = a natural architect of trust. Your brain files price negotiation as a relationship risk. It isn't.",
+      "G": "<strong>Combination effect D4×D3:</strong> high structure + promotion focus = exceptional goal attainment under pressure. Your brain files recovery as lost time. It isn't."
+    },
+    {
+      "s": "D1 (depth focus) + D2 (analytics) create a depth of knowledge that can't be transferred in short encounters. Others judge quickly — your brain communicates slowly. Your market value often doesn't match your actual capability. That's not a charisma problem. It's a visibility system failure.",
+      "V": "D2 (intuition) + D3 (opportunity focus) create an idea head-start that isn't monetised without a completion system. Others harvest more slowly — but they harvest. Your market value often doesn't match your actual originality. That's not a discipline problem. It's a structure system failure.",
+      "M": "D4 (structure) + D2 (practice) create a delivery quality that stays invisible in the background. Others talk louder — your brain would rather work. Your market value often doesn't match your actual capability. That's not a competence problem. It's a visibility system failure.",
+      "C": "D1 (relationship energy) + D2 (people-reading) create a capital of trust that isn't billed without clear offers. Others sell harder — you help first. Your earnings often don't match your actual value in the market. That's not a sales problem. It's an offer system failure.",
+      "G": "D4 (intensity) + D3 (opportunity focus) create a volume of work that grows wide instead of tall without a direction check. Others work less — on the right levers. Your result often doesn't match your actual effort. That's not a performance problem. It's a focus system failure."
+    },
+    {
+      "s": "Prevention focus prioritizes avoiding mistakes over pursuing opportunities. You price conservatively, deliver more than promised, and only launch at 95% certainty. In the Strategist, this focus meets strong analytics (D2) — which produces especially long internal review loops.",
+      "V": "Promotion focus prioritises opportunities over safety. You start early, promise boldly, think big. In the Visionary, this focus meets intuitive cognition (D2) — which opens especially many projects in parallel.",
+      "M": "Your regulatory focus balances safety and progress — with a lean towards the safe side. You'd rather deliver more than promised and cost things tightly. In the Builder, this focus meets high execution density (D4) — which turns unpaid extra miles into a habit.",
+      "C": "Your regulatory focus prioritises relationship safety over maximising earnings. You'd rather give too much than too little and avoid hard demands. In the Connector, this focus meets social energy (D1) — which turns free work into an invisible habit.",
+      "G": "Promotion focus prioritises getting ahead over safety. You commit, raise the stakes, push through. In the High Performer, this focus meets high intensity (D4) — which makes overload a property of the system."
+    },
+    {
+      "s": "A strongly structured execution style: you think in phases, milestones, and systems. That makes you an excellent process architect — and someone for whom unplanned starts are hard. What counts as a strength for a Builder (starting fast) is, for the Strategist, a stretch beyond the comfort zone.",
+      "V": "A spontaneous, agile execution style: you start from enthusiasm, not from planning. That makes you an excellent initiator — and someone for whom routine completion is hard. What is second nature for a Builder (finishing) is, for the Visionary, a deliberate act of discipline.",
+      "M": "A strongly structured execution style: you think in tasks, workflows and clean handovers. That makes you an excellent operator — and someone for whom unplanned course changes are hard. What is an energy source for a Visionary (starting something new) is, for the Builder, a disturbance to the system.",
+      "C": "A flexible, responsive execution style: you shape your day around people and requests. That makes you an excellent enabler — and someone whose own projects wait at the back of the queue. What is standard for a Builder (protecting your own blocks) is, for the Connector, active boundary-setting.",
+      "G": "A high-cadence execution style: you work in goals, deadlines and sprints. That makes you an excellent finisher — and someone for whom breaks feel like going backwards. What others call a healthy pace is, for the High Performer, only warm-up mode."
+    },
+    {
+      "s": "Medium stress resistance with a tendency to withdraw. D1+D4+D5 produce the classic Strategist burnout pattern: functional on the outside, empty on the inside. <strong>Business consequence:</strong> creeping quality loss and invisible decision decay over months.",
+      "V": "Fluctuating stress resistance coupled to enthusiasm. D3+D4+D5 produce the classic Visionary burnout pattern: euphoric start, quiet crash between projects. <strong>Business consequence:</strong> lost monetisation and growing self-doubt from the gap between vision and visible result.",
+      "M": "Solid stress resistance with a tolerance for sustained load. D4+D1+D5 produce the classic Builder burnout pattern: keep functioning, keep delivering, until nothing works any more. <strong>Business consequence:</strong> creeping margin erosion and a standstill in development, because day-to-day operations eat every hour of strategy time.",
+      "C": "Relationship-coupled stress resistance. D1+D3+D5 produce the classic Connector burnout pattern: warm and present on the outside, given-empty on the inside. <strong>Business consequence:</strong> creeping exhaustion and quiet resentment, because giving and receiving fall out of balance.",
+      "G": "High resilience in the sprint, vulnerability in the marathon. D4+D3+D5 produce the classic High Performer burnout pattern: peak output right up to the hard edge. <strong>Business consequence:</strong> an abrupt collapse in performance rather than a slow decline — the system holds until it tips."
+    },
+    {
+      "s": "Medium stress resistance with a tendency to withdraw",
+      "V": "Fluctuating stress resistance coupled to enthusiasm",
+      "M": "Solid stress resistance with sustained-load tolerance",
+      "C": "Relationship-coupled stress resistance",
+      "G": "High resilience in the sprint, vulnerability in the marathon"
+    },
+    {
+      "s": "Your decision process follows a characteristic four-phase pattern — directly derived from D2 (analytical) + D3 (prevention focus) + D4 (structured). No other psychotype has exactly this configuration.",
+      "V": "Your decision process follows a characteristic four-phase pattern — directly derived from D2 (intuitive) + D3 (promotion focus) + D4 (spontaneous). No other psychotype has exactly this configuration.",
+      "M": "Your decision process follows a characteristic four-phase pattern — directly derived from D2 (practical) + D4 (structured) + D3 (safety). No other psychotype has exactly this configuration.",
+      "C": "Your decision process follows a characteristic four-phase pattern — directly derived from D1 (social) + D2 (intuitive) + D3 (harmony-oriented). No other psychotype has exactly this configuration.",
+      "G": "Your decision process follows a characteristic four-phase pattern — directly derived from D3 (promotion focus) + D4 (high-cadence) + D2 (pragmatic). No other psychotype has exactly this configuration."
+    },
+    {
+      "s": "<strong>Information gathering (above-average length)</strong>More data than needed — because your prevention focus (D3) keeps signaling that more certainty is possible.",
+      "V": "<strong>Impulse &amp; end image (lightning-fast)</strong>The end image is there in seconds — because your intuition (D2) recognises patterns before the data.",
+      "M": "<strong>Feasibility check (thorough)</strong>What does it cost, who does it, does it work — your practical filter (D2) checks whether it can be built first.",
+      "C": "<strong>Resonance check (who is affected?)</strong>Your first filter is social (D1): how does the decision land on the team, clients, relationships?",
+      "G": "<strong>Goal alignment (instant)</strong>Does it get me closer to the goal? Your opportunity focus (D3) answers that faster than any analysis."
+    },
+    {
+      "s": "<strong>Internal model-building</strong>Mental simulation of every scenario. In hindsight, usually the right call — but expensive in time.",
+      "V": "<strong>Enthusiasm cascade</strong>The idea is communicated before it's tested. That creates momentum — and expectations.",
+      "M": "<strong>Plan &amp; resources</strong>Tasks, sequence, ownership. Solid in hindsight — but strategic alternatives stay unexamined.",
+      "C": "<strong>Alignment loop</strong>Opinions are gathered, consensus sought. That secures buy-in — and costs time and clarity.",
+      "G": "<strong>Commitment &amp; sprint plan</strong>Decided is decided: goal, deadline, go. Fast and forceful — course corrections then feel like defeats."
+    },
+    {
+      "s": "<strong>Risk simulation (D3 loop)</strong>\"What could go wrong?\" runs automatically. Can lead to decision deadlock when risks stay unquantifiable.",
+      "V": "<strong>Interest decay (D4 loop)</strong>As soon as the decision becomes routine, energy drops. Can lead to quietly abandoning a project before results are visible.",
+      "M": "<strong>Safety loop (D3)</strong>\"Better check it myself\" runs automatically. Can turn into a delegation block when trust in handovers is missing.",
+      "C": "<strong>Harmony loop (D3)</strong>\"Who am I hurting with this?\" runs automatically. Can lead to decision deadlock when every option disappoints someone.",
+      "G": "<strong>Escalation loop (D3×D4)</strong>\"More effort will do it\" runs automatically. Can lead to escalation when stopping would be the smarter decision."
+    },
+    {
+      "s": "<strong>Commitment with conviction</strong>Once decided: fully behind it. Strategist decisions are rarely impulsive — and rarely wrong.",
+      "V": "<strong>Restart with a new image</strong>When the image holds: full force. Visionary decisions are rarely small — and rarely thought through to the finish.",
+      "M": "<strong>Delivery with quality</strong>When it ships, it ships properly. Builder decisions are rarely spectacular — and rarely badly executed.",
+      "C": "<strong>Decision with buy-in</strong>When everyone's on board: full effect. Connector decisions are rarely lonely — and rarely fast.",
+      "G": "<strong>Result on record</strong>When promised: delivered. High Performer decisions are rarely hesitant — and rarely reflective enough."
+    },
+    {
+      "s": "<strong>Analysis paralysis:</strong> with incomplete information, timing keeps slipping — while market windows close. Typical of the Strategist D2×D3 combination.",
+      "V": "<strong>Shiny-object reflex:</strong> the new idea always feels more important than the running project — while half-finished assets lose value. Typical of the Visionary D2×D4 combination.",
+      "M": "<strong>Do-it-myself reflex:</strong> taking it on instead of handing it over feels more efficient — while the calendar cements the growth ceiling. Typical of the Builder D4×D2 combination.",
+      "C": "<strong>Consensus trap:</strong> one more alignment round feels safer — while clear decisions are left undone. Typical of the Connector D1×D3 combination.",
+      "G": "<strong>Sunk-effort escalation:</strong> more effort always feels right — while the lever has long been elsewhere. Typical of the High Performer D3×D4 combination."
+    },
+    {
+      "s": "<strong>Sunk-cost resistance:</strong> once a plan is set, it's kept even as conditions change — your systems thinking becomes a fixation trap.",
+      "V": "<strong>Expectation debt:</strong> visions communicated early create expectations that return later as pressure — your enthusiasm becomes a commitment trap.",
+      "M": "<strong>Plan fixation:</strong> once a workflow is built, it's defended even as the market turns — your love of process becomes a fixation trap.",
+      "C": "<strong>Yielding drift:</strong> commitments get stretched, prices soft, boundaries more porous — your helpfulness becomes an earnings trap.",
+      "G": "<strong>Warning-signal override:</strong> tiredness, error rate, irritability get dismissed as weakness instead of read as data — your pride becomes an exhaustion trap."
+    },
+    {
+      "s": "<strong>Your override mechanism:</strong> hard deadline rituals: \"I'll decide by Friday noon — with whatever information I have by then.\" For pricing decisions: 30-day test prices — no permanent commitment.",
+      "V": "<strong>Your override mechanism:</strong> completion rituals: \"No new project before the current one is launched.\" For new ideas: a 72-hour parking spot — whatever still excites you after that goes on the list.",
+      "M": "<strong>Your override mechanism:</strong> delegation rituals: \"Every week, one recurring task moves to someone else with an SOP.\" For requests: check capacity first, then commit — not the other way round.",
+      "C": "<strong>Your override mechanism:</strong> clarity rituals: \"Price and boundaries are set before the conversation — not during it.\" For requests: 24 hours to think instead of an instant yes.",
+      "G": "<strong>Your override mechanism:</strong> stop rituals: \"Every sprint has a defined end — and the end is celebrated, not skipped.\" For new goals: finish or cut an old one first."
+    },
+    {
+      "s": "Strategists don't burn out loudly. They keep working more quietly while their inner energy drains. Outward functionality stays intact for a long time — which is why neither the people around them nor they themselves catch the exhaustion in time. Your protective factor: an honest, weekly energy inventory — not as reflection, but as a data basis for decisions.",
+      "V": "Visionaries burn out in waves. Euphoric highs are followed by quiet valleys the environment rarely sees — from the outside only the next enthusiasm shows. What becomes dangerous is the sum of unfinished projects, which builds up as a quiet self-reproach. Your protective factor: a fixed completion rhythm — every landed project refills the tank more than three new ideas.",
+      "M": "Builders don't burn out spectacularly. They quietly shoulder more and more, because carrying the load is their normal — until the body makes the decision for them. The people around them notice last, because delivery quality stays stable until just before the end. Your protective factor: real handovers with SOPs — relief that is structural, not just a free weekend.",
+      "C": "Connectors burn out smiling. They stay warm, helpful and present while their own account runs empty — the exhaustion hides behind friendliness. What's dangerous is the invisibility of their own needs, even to themselves. Your protective factor: boundaries as routine — one clear no per week and a protected solo block that isn't negotiable.",
+      "G": "High Performers burn out on record — only no one hears the record, because the performance holds up. The system compensates right up to the hard edge, then tips abruptly: from peak value to breakdown. Your protective factor: recovery as discipline — planned, measured and defended with the same ambition as any revenue target."
+    },
+    {
+      "s": "The quiet burnout pattern — typical of the Strategist",
+      "V": "The rollercoaster burnout pattern — typical of the Visionary",
+      "M": "The workhorse burnout pattern — typical of the Builder",
+      "C": "The giver burnout pattern — typical of the Connector",
+      "G": "The high-performance burnout pattern — typical of the High Performer"
+    },
+    {
+      "s": "Precise. Substantial. Delayed. Better thought through once than said spontaneously three times — that's not a communication problem. It's your standard. The problem arises in environments that value speed over depth.",
+      "V": "Vivid. Compelling. Leaping. Rather one big picture than ten details — that's not a communication problem. It's your standard. The problem arises in environments that value precision over inspiration.",
+      "M": "Concrete. Reliable. Brief. Rather show than explain — that's not a communication problem. It's your standard. The problem arises in environments that put self-presentation above substance.",
+      "C": "Warm. Attentive. Connecting. Rather dialogue than monologue — that's not a communication problem. It's your standard. The problem arises in environments that put confrontation above relationship.",
+      "G": "Direct. Demanding. Fast. Rather a clear call than a long alignment — that's not a communication problem. It's your standard. The problem arises in environments that put consensus above results."
+    },
+    {
+      "s": "Strategists lead through direction and systems — not through control or relationship maintenance. Your team doesn't need micromanagement impulses — it needs clarity about the goal and the \"why\" behind it.",
+      "V": "Visionaries lead through meaning and enthusiasm — not through processes or control. Your team doesn't need a new vision every week — it needs stability between the images and someone who holds priorities.",
+      "M": "Builders lead through example and reliability — not through big speeches. Your team doesn't need perfect specifications — it needs real responsibility that you genuinely hand over, instead of pulling it back at night.",
+      "C": "Connectors lead through trust and closeness — not through hierarchy or pressure. Your team doesn't need an even better mood — it needs clear expectations and decisions even when they hurt someone.",
+      "G": "High Performers lead through pace and standards — not through patience or process care. Your team doesn't need a higher cadence — it needs reachable stages and the knowledge that your standard isn't its minimum."
+    },
+    {
+      "s": "at least one Connector profile on the team — someone who translates your strategy emotionally and carries it into the team while you plan. Without that complement, the best strategy stays in the Strategist's head.",
+      "V": "at least one Builder profile on the team — someone who translates your images into milestones and delivers while you think up the next chapter. Without that complement, the best vision stays an announcement.",
+      "M": "at least one Visionary or Connector profile on the team — someone who creates direction and visibility while you build the foundation. Without that complement, the best delivery stays a well-kept secret.",
+      "C": "at least one Strategist or Builder profile on the team — someone who holds structure and clarity while you build relationships. Without that complement, the best network stays undervalued.",
+      "G": "at least one Strategist profile on the team — someone who checks the direction and the lever before you accelerate. Without that complement, the best performance is burned on the wrong goal."
+    },
+    {
+      "s": "You sell through substance, not charm. Your natural sales energy lives in deep consultation — not the pitch. That's a massive advantage in high-ticket, complex sales situations. And a structural weakness with impulse buyers.",
+      "V": "You sell through vision, not feature lists. Your natural sales energy lives in the future image — not the small print. That's a massive advantage with early adopters and innovation buyers. And a structural weakness with detail-checkers.",
+      "M": "You sell through proof, not promises. Your natural sales energy lives in the demonstrated result — not the big pitch. That's a massive advantage with sceptical, experienced buyers. And a structural weakness when visibility is missing.",
+      "C": "You sell through trust, not pressure. Your natural sales energy lives in the relationship — not cold outreach. That's a massive advantage in referral and repeat business. And a structural weakness when it comes to enforcing prices.",
+      "G": "You sell through results, not detours. Your natural sales energy lives in the performance promise — backed by your track record. That's a massive advantage with results-driven buyers. And a structural weakness with relationship-driven decision-makers."
+    },
+    {
+      "s": "prevention-dominant profiles set prices 22–35% below market value. Immediate action: raise your current price by 20% for new clients and watch conversion for 30 days.",
+      "V": "Visionaries lose margin to discounts in the heat of enthusiasm. Immediate action: prices are fixed in writing before you pitch — and never lowered spontaneously in the conversation.",
+      "M": "Builders cost by effort and give away the impact. Immediate action: your next offer names a fixed price for the result — the hourly rate stays in your internal costing only.",
+      "C": "Connectors lower prices to protect relationships — and weaken both. Immediate action: price and scope are fixed before every conversation; a discount only comes in exchange for something.",
+      "G": "High Performers compensate for soft prices with more volume — and pay with their substance. Immediate action: +25% on the core offer, in exchange for 20% fewer parallel projects. Watch earnings and energy for 30 days."
+    },
+    {
+      "s": "no \"tips &amp; tricks\" posts. Your natural format: deep analysis with an unexpected conclusion. That's hard to copy.",
+      "V": "no \"tips &amp; tricks\" posts. Your natural format: the big picture others can't see yet — with a thesis that sticks. That's hard to copy.",
+      "M": "no opinion posts without substance. Your natural format: the demonstrated case — starting point, approach, measurable result. That's hard to copy.",
+      "C": "no anonymous broadcast posts. Your natural format: real stories from real relationships — content that starts conversations instead of chasing reach. That's hard to copy.",
+      "G": "no motivational platitudes. Your natural format: documented performance — goal, path, number. Your track record is your content. That's hard to copy."
+    },
+    {
+      "s": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">The \"not quite ready\" loop</div><div style=\"font-size:11.5px;color:var(--inks);\">You hold back projects because \"something's still missing.\" Cause: prevention focus (D3=",
+      "V": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">The \"next idea\" loop</div><div style=\"font-size:11.5px;color:var(--inks);\">You leave projects the moment they become routine. Cause: promotion focus (D3=",
+      "M": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">The \"I'll just do it myself\" loop</div><div style=\"font-size:11.5px;color:var(--inks);\">You take tasks on instead of handing them over. Cause: safety focus (D3=",
+      "C": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">The \"I don't want to disappoint anyone\" loop</div><div style=\"font-size:11.5px;color:var(--inks);\">You say yes before checking your capacity. Cause: harmony focus (D3=",
+      "G": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">The \"one more push\" loop</div><div style=\"font-size:11.5px;color:var(--inks);\">You add effort when something stalls instead of checking the lever. Cause: promotion focus (D3="
+    },
+    {
+      "s": ") + quality standard (D2=<span data-nb=\"d2\">71</span>). The market window closes regardless.",
+      "V": ") + intuitive cognition (D2=<span data-nb=\"d2\">71</span>). But the value only appears after the routine phase.",
+      "M": ") + quality instinct (D2=<span data-nb=\"d2\">71</span>). Faster in the short term — the ceiling over everything in the long term.",
+      "C": ") + people-orientation (D2=<span data-nb=\"d2\">71</span>). Every yes to others is a silent no to your business.",
+      "G": ") + action-coupling (D2=<span data-nb=\"d2\">71</span>). More force at the wrong point stays the wrong point."
+    },
+    {
+      "s": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Expertise bias</div><div style=\"font-size:11.5px;color:var(--inks);\">You judge others primarily by competence — and underestimate how strongly emotional buying motives operate. \"The numbers speak for themselves.\" They do, for very few buyers.</div>",
+      "V": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Enthusiasm bias</div><div style=\"font-size:11.5px;color:var(--inks);\">You infer others' excitement from your own — and skip the proof. \"The potential is obvious.\" For most buyers, it isn't.</div>",
+      "M": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Effort bias</div><div style=\"font-size:11.5px;color:var(--inks);\">You judge performance by the work invested — and underestimate that buyers buy impact. \"There are 80 hours in this.\" The client pays for the result, not the hours.</div>",
+      "C": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Harmony bias</div><div style=\"font-size:11.5px;color:var(--inks);\">You judge decisions by their relationship impact — and underestimate that clarity builds trust. \"I'd better say that carefully.\" Softness often reads as less clear than an honest no.</div>",
+      "G": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Pace bias</div><div style=\"font-size:11.5px;color:var(--inks);\">You judge people by pace and effort — and underestimate what slower thoroughness contributes. \"I'd have done that in half the time.\" Maybe — but not everything is a sprint.</div>"
+    },
+    {
+      "s": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Silent perfectionism</div><div style=\"font-size:11.5px;color:var(--inks);\">A high internal quality bar that's rarely communicated. Leads to frustration when others prioritize differently — without knowing you see it differently.</div>",
+      "V": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Announcement surplus</div><div style=\"font-size:11.5px;color:var(--inks);\">Visions get communicated early and big — execution rarely keeps pace. Leads to a loss of credibility, even though every single idea was meant sincerely.</div>",
+      "M": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Invisible extra miles</div><div style=\"font-size:11.5px;color:var(--inks);\">You regularly deliver more than agreed — without making it visible or charging for it. Leads to margin loss and clients who come to expect the extra mile as standard.</div>",
+      "C": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Free expertise</div><div style=\"font-size:11.5px;color:var(--inks);\">Your knowledge flows in conversations, in chats, on the edge of events — for free. Leads to a market that values your advice but never learned to pay for it.</div>",
+      "G": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Self-worth = scoreboard</div><div style=\"font-size:11.5px;color:var(--inks);\">Your self-worth hangs on the last personal best. Leads to inner restlessness even after wins — the bar rises automatically, the feeling of having arrived never comes.</div>"
+    },
+    {
+      "s": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Delegation control</div><div style=\"font-size:11.5px;color:var(--inks);\">You know delegation is necessary — but rarely truly let go. \"It's faster and better if I do it myself.\" True in the short term. Doesn't scale.</div>",
+      "V": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">System allergy</div><div style=\"font-size:11.5px;color:var(--inks);\">You know structures are necessary — but experience them as a cage. \"Processes slow down my creativity.\" True in places. Without a system, it evaporates.</div>",
+      "M": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Strategy blind flight</div><div style=\"font-size:11.5px;color:var(--inks);\">You know strategy is needed — but day-to-day operations shout louder. \"Let me just finish this first.\" True today. In five years it has built you in.</div>",
+      "C": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Conflict deferral</div><div style=\"font-size:11.5px;color:var(--inks);\">You know conflicts are necessary — but you put them off. \"It'll sort itself out.\" It rarely does. Deferred conflicts get more expensive, not smaller.</div>",
+      "G": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">Delegation impatience</div><div style=\"font-size:11.5px;color:var(--inks);\">You know delegation is necessary — but no one is fast enough. \"By the time I've explained it, it's done.\" True once. As a lasting principle, everything stays on you.</div>"
+    },
+    {
+      "s": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">The invisibility trap</div><div style=\"font-size:11.5px;color:var(--inks);\">Excellent work isn't enough if no one knows about it. Self-promotion isn't vanity — it's a business competence. Strategists tend to underestimate that.</div>",
+      "V": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">The grounding gap</div><div style=\"font-size:11.5px;color:var(--inks);\">Big pictures need a first step someone can take tomorrow. Making things concrete isn't shrinking them — it's a business competence. Visionaries tend to underestimate that.</div>",
+      "M": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">The modesty trap</div><div style=\"font-size:11.5px;color:var(--inks);\">Excellent delivery isn't enough if no one hears about it. Talking about results isn't boasting — it's a business competence. Builders tend to underestimate that.</div>",
+      "C": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">The self-sacrifice trap</div><div style=\"font-size:11.5px;color:var(--inks);\">Whoever helps everyone needs someone to help them — even if that's themselves. Self-care isn't selfishness — it's a business competence. Connectors tend to underestimate that.</div>",
+      "G": "<div style=\"font-size:12.5px;font-weight:600;color:var(--em);margin-bottom:2px;\">The recovery lie</div><div style=\"font-size:11.5px;color:var(--inks);\">\"I'll recover once the goal is reached\" — but after the goal is before the goal. Recovery isn't a reward — it's a business competence. High Performers tend to underestimate that.</div>"
+    },
+    {
+      "s": "Strategists build the best frameworks — but face the biggest challenge in letting go. The goal: a business that runs without your constant direct involvement. Not a personality redesign — a systems design that multiplies your strengths and routes around your bottlenecks.",
+      "V": "Visionaries see the best possibilities — but face the biggest challenge in finishing. The goal: a business where ideas land systematically instead of being abandoned. Not a personality redesign — a systems design that multiplies your strengths and routes around your bottlenecks.",
+      "M": "Builders build the most reliable businesses — but face the biggest challenge in making themselves dispensable. The goal: a business that delivers even when you don't get hands-on. Not a personality redesign — a systems design that multiplies your strengths and routes around your bottlenecks.",
+      "C": "Connectors build the most durable relationships — but face the biggest challenge in translating them into earnings. The goal: a business where closeness and clear prices coexist. Not a personality redesign — a systems design that multiplies your strengths and routes around your bottlenecks.",
+      "G": "High Performers reach the most ambitious goals — but face the biggest challenge in surviving the pace. The goal: a business that allows peak performance without consuming you. Not a personality redesign — a systems design that multiplies your strengths and routes around your bottlenecks."
+    },
+    {
+      "s": "The High Performer as polarization",
+      "V": "The High Performer as amplifier",
+      "M": "The High Performer as pace-setter",
+      "C": "The High Performer as counterpole",
+      "G": "The second High Performer as mirror"
+    },
+    {
+      "s": "The High Performer works with high intensity — but from intrinsic drive, not strategic analysis. Friction arises from pace differences. Common ground: a shared standard for quality. That's the bridge.",
+      "V": "The High Performer brings the firepower to test your visions in record time. Friction arises when direction changes before results ripen. Common ground: big ambition. That's the bridge.",
+      "M": "The High Performer drives the pace while you secure the quality. Friction arises when speed meets thoroughness. Common ground: pride in performance. That's the bridge.",
+      "C": "The High Performer demands pace where you tend relationships. Friction arises when people become means. Common ground: loyalty to the shared goal. That's the bridge.",
+      "G": "Two High Performers accelerate each other — in the best and the most dangerous sense. Friction arises in competition mode. Common ground: respect for performance. That's the bridge — when the goals are kept separate."
+    },
+    {
+      "s": "Identify 5 tasks you regularly take on that don't require Strategist-level skill. Build a handover SOP for each. Your first scaling investment.",
+      "V": "List all your open projects. Choose one that can launch in 4 weeks — freeze all the others. The first deliberate completion sprint.",
+      "M": "Identify 5 tasks you regularly take on that don't require Builder-level skill. Build a handover SOP for each. Your first scaling investment.",
+      "C": "List all your ongoing commitments: which are paid, which are free, which are habit? Turn two free services into one paid offer.",
+      "G": "List your goals and prioritise hard: one gets full force, two are paused, the rest are cut. The first deliberate focus cut."
+    },
+    {
+      "s": "4 LinkedIn posts (1 per week) — not opinions, analyses. Nothing superficial. Measure: engagement, inquiries, energy afterward. The result will surprise you.",
+      "V": "4 LinkedIn posts (1 per week) — your vision in stages: image, thesis, first step. Measure: engagement, inquiries, energy afterwards. The result will surprise you.",
+      "M": "4 LinkedIn posts (1 per week) — demonstrated cases: starting point, approach, result. Measure: engagement, inquiries, energy afterwards. The result will surprise you.",
+      "C": "4 LinkedIn posts (1 per week) — real stories from your work with people. Measure: conversations, inquiries, energy afterwards. The result will surprise you.",
+      "G": "4 LinkedIn posts (1 per week) — documented performance: goal, path, number. Measure: engagement, inquiries, energy afterwards. The result will surprise you."
+    },
+    {
+      "s": "<strong>The Strategist's annual-plan mistake:</strong> building the roadmap in too much detail and forgetting to live it. Set flexible decision points instead of rigid milestones.",
+      "V": "<strong>The Visionary's annual-plan mistake:</strong> loving the roadmap in January and swapping it for a new one in March. Hold the quarterly goals — new ideas go on the Q+1 list.",
+      "M": "<strong>The Builder's annual-plan mistake:</strong> sacrificing the roadmap to day-to-day operations. Strategy time is a client meeting with your most important client: your business.",
+      "C": "<strong>The Connector's annual-plan mistake:</strong> bending the roadmap to everyone else's wishes until nothing of yours is left in it. Your goals rank as high as any commitment to others.",
+      "G": "<strong>The High Performer's annual-plan mistake:</strong> trying to sprint the whole roadmap in six months. Pace is your strength — timing is the difference between a record and a breakdown."
+    }
+  ]
+}

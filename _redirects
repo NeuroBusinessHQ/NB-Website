@@ -1,3 +1,0 @@
-# Cloudflare Pages redirects
-# Block direct public access to the raw content JSON (P1 source-of-truth, not for public download)
-/content/*  /404.html  404

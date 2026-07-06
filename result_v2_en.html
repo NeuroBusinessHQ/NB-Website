@@ -126,7 +126,7 @@ function renderRadar(){
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--white);font-size:14px;line-height:1.65;}
-.page{width:794px;min-height:1123px;margin:0 auto 2px;background:var(--white);color:var(--ink);position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column;}
+.page{width:794px;min-height:1123px;margin:0 auto 28px;background:var(--white);color:var(--ink);position:relative;overflow:visible;page-break-after:always;display:flex;flex-direction:column;}
 .ph{background:var(--em);padding:17px 48px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
 .ph-logo{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;}
 .ph-ch{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:1px;}
@@ -256,7 +256,7 @@ p:last-child{margin-bottom:0;}
 .cv-id{font-family:'DM Mono',monospace;font-size:9px;color:rgba(184,151,58,0.55);}
 @media print{
   body{background:white;}
-  .page{margin:0;page-break-after:always;}
+  .page{margin:0;overflow:hidden;page-break-after:always;break-after:page;}
   .print-btn-wrap{display:none !important;}
   .cover{background:var(--em) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   .ph{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
@@ -1066,11 +1066,11 @@ p:last-child{margin-bottom:0;}
         <div class="ai2" style="border:none;"><div class="aic em">+</div><div class="ait">Decision frameworks &amp; quality assurance</div></div>
       </div>
     </div>
-  </div>
     <div style="background:rgba(184,151,58,0.06);border:1px solid rgba(184,151,58,0.25);padding:11px 15px;margin-top:13px;display:flex;justify-content:space-between;align-items:center;gap:16px;">
       <div style="font-size:11px;color:var(--inks);line-height:1.5;"><strong style="color:var(--em);">Your next step:</strong> analyze your team for psychotype fit — before you fill the next role.</div>
       <a href="https://neurobusiness.one/teams" style="display:inline-block;white-space:nowrap;background:var(--em);color:var(--gold);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;padding:8px 14px;text-decoration:none;flex-shrink:0;">neurobusiness.one/teams →</a>
     </div>
+  </div>
   <div class="pf"><span class="pft">NBIF · German Institute of Positive Psychology · germaninstitute.eu</span><span class="pfn">15</span></div>
 </div>
 

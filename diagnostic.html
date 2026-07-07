@@ -944,6 +944,8 @@ function submitQuiz() {
             primary:   result.primary,
             secondary: result.secondary || null,
             scores:    { S: result.S, V: result.V, M: result.M, C: result.C, G: result.G },
+            subscales: result.subscales || null,
+            scorePayload: result,
             burnout:   result.burnout ? true : false,
             industry:  userData.industry || null,
             years:     userData.years    || null,

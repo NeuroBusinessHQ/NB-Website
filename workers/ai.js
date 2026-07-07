@@ -58,7 +58,7 @@ export default {
       let body;
       try { body = await request.json(); } catch { return json({ error: 'Invalid JSON' }, 400, corsHeaders); }
 
-      const { token: diagToken, primary, secondary, scores, burnout, industry, years, d1, d2, d3, d4, d5, responseSetWarning, answers, lang, consentResearch, consentResearchVersion, consentDsgvo, consentTimestamp, consentSource, teamCode } = body;
+      const { token: diagToken, primary, secondary, scores, subscales, scorePayload, burnout, industry, years, d1, d2, d3, d4, d5, responseSetWarning, answers, lang, consentResearch, consentResearchVersion, consentDsgvo, consentTimestamp, consentSource, teamCode } = body;
       if (!diagToken || !primary) return json({ error: 'Missing token or primary' }, 400, corsHeaders);
 
       // Validate token → get user_id
@@ -79,7 +79,7 @@ export default {
         industry: industry || null,
         years_self_employed: years || null,
         diagnostic_completed_at: new Date().toISOString(),
-        report_context: JSON.stringify({ primary, secondary: secondary || null, scores, burnout, industry, years, d1, d2, d3, d4, d5 }),
+        report_context: JSON.stringify({ primary, secondary: secondary || null, scores, subscales: subscales || null, burnout, industry, years, d1, d2, d3, d4, d5 }),
         consent_dsgvo: consentDsgvo === true,
         consent_timestamp: consentTimestamp || new Date().toISOString(),
         consent_source: consentSource || 'solo_direct',
@@ -181,6 +181,10 @@ export default {
             primary_type: primary || null,
             secondary_type: secondary || null,
             burnout_flag: burnout ? true : false,
+            subscales_json: subscales && typeof subscales === 'object' ? subscales : null,
+            score_payload_json: scorePayload && typeof scorePayload === 'object'
+              ? scorePayload
+              : { primary, secondary: secondary || null, scores, subscales: subscales || null, burnout: !!burnout, d1, d2, d3, d4, d5 },
           });
         } catch (nbifErr) { console.error('nbif write failed (non-blocking):', nbifErr); }
       }

@@ -622,6 +622,10 @@ footer {
 .qr-share-btn svg{flex-shrink:0}
 .qr-share-copied{font-family:var(--font-mono);font-size:11px;color:var(--gold2);letter-spacing:.06em;display:none}
 .qr-share-copied.show{display:block}
+.qr-meta-grid{margin:16px 40px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.qr-meta-card{background:var(--cream2);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.qr-meta-label{font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.qr-meta-value{font-size:14px;color:var(--dark);font-weight:500;line-height:1.35}
 /* Accuracy notice */
 .qr-accuracy{margin:0 40px;padding:12px 16px;background:var(--cream2);border-radius:8px;border:1px solid var(--border);font-size:12px;color:var(--text3);font-family:var(--font-mono);line-height:1.6}
 /* Sections */
@@ -657,7 +661,8 @@ footer {
 @media(max-width:600px){
   .qr-hero{padding:28px 20px}
   .qr-hero-letter{font-size:64px}
-  .qr-section,.qr-locked-wrap,.qr-email-section,.qr-accuracy,.qr-share-wrap{margin-left:16px;margin-right:16px}
+  .qr-section,.qr-locked-wrap,.qr-email-section,.qr-accuracy,.qr-share-wrap,.qr-meta-grid{margin-left:16px;margin-right:16px}
+  .qr-meta-grid{grid-template-columns:1fr}
   .qr-cta-wrap{padding:16px 20px 28px}
 }
 </style>
@@ -1072,7 +1077,7 @@ footer {
 
 <!-- CTA -->
 
-<!-- 7-FRAGEN QUIZ -->
+<!-- 10-FRAGEN QUICK-SCAN -->
 <section class="quiz-section" id="quiz">
   <div class="quiz-wrap">
     <div style="text-align:center;margin-bottom:40px" class="fade-up">
@@ -1100,7 +1105,7 @@ footer {
           <div class="quiz-result-teaser-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
           </div>
-          <div class="quiz-result-teaser-text" id="gate-teaser">Dein Ergebnis ist bereit — <strong>wir haben deinen Psychotyp identifiziert.</strong> Gib deine Daten ein, um dein vollständiges Profil zu sehen.</div>
+          <div class="quiz-result-teaser-text" id="gate-teaser">Dein Ergebnis ist bereit — <strong>wir haben deine stärkste Typ-Tendenz erkannt.</strong> Gib deine Daten ein, um die nächsten Hinweise zu sehen.</div>
         </div>
         <div class="quiz-gate-icon">📊</div>
         <div class="quiz-gate-title" id="gate-title">Dein NeuroBusiness<br>Psychotyp ist bereit.</div>
@@ -1423,7 +1428,7 @@ const T = {
     'tt1': '"The report explained in 10 minutes why my business had been running into a wall for 3 years. I was running a Builder business \u2014 as a Strategist."',
     'tt2': '"After 18 years in corporate I was convinced I needed better marketing. NeuroBusiness showed me I had the wrong business model. Entirely."',
     'tt3': '"The NeuroBusiness AI gives me concrete tasks every Monday that fit me. Not generic \u2014 for my psychotype. That\'s the difference from everything else."',
-    'quiz-eyebrow': '7-Question Test',
+    'quiz-eyebrow': 'Free Quick Scan',
     'quiz-title': 'Which type <em>are you?</em>',
     'quiz-sub': '10 questions · 2 minutes · Instant result. Free.',
     'cta-eyebrow': 'Get started', 'cta-title': 'Find your<br><em>NeuroBusiness Psychotype.</em>',
@@ -1433,7 +1438,7 @@ const T = {
     'footer-desc': 'Neuropsychological business diagnostics for independent professionals. Berlin · London · Dubai. Developed by Eva Kolontai, Diplom-Psychologin & NeuroBusiness Strategist.',
     'fc1-title': 'Products', 'fc2-title': 'Contact',
     'fl1': 'NeuroBusiness™ Strategist', 'fl2': 'For Teams',
-    'fl3': '12-Week Transformation', 'fl4': '7-Question Test', 'fl5': 'Strategy call',
+    'fl3': '12-Week Transformation', 'fl4': 'Quick scan', 'fl5': 'Strategy call',
     'footer-copy': '© 2026 NeuroBusiness™ · neurobusiness.one',
     'ap1': ['You have clear expertise but no entrepreneurial identity', 'You copy strategies from others \u2014 they don\'t fit you', 'You don\'t know which business model truly suits you', 'You have savings or a settlement and want to invest wisely'],
     'ap2': ['Your business runs, but it feels like headwinds', 'You\'re good \u2014 but your pricing doesn\'t reflect that', 'Your visibility strategy exhausts you', 'You know you can do more \u2014 but not how'],
@@ -1540,209 +1545,210 @@ async function submitForm() {
 }
 
 
-// ── 7-FRAGEN QUIZ ──
+// ── 10-FRAGEN QUICK-SCAN ──
+const QUIZ_VERSION = 'quickscan-2026-07-11-v2';
 const QUIZ = {
   de: [
     {
-      q: "Wenn du an dein Business denkst, was fühlt sich am schwersten an?",
+      q: "Wenn dein Business gerade nicht rund läuft: Wo entsteht die meiste Reibung?",
       opts: [
-        {t:"Ich weiß nicht genau, WEM ich wirklich helfe.", type:'V'},
-        {t:"Ich tue mich schwer, mich so laut zu zeigen wie andere.", type:'S'},
-        {t:"Ich plane zu viel, komme aber nicht ins schnelle Tun.", type:'G'},
-        {t:"Ich verkaufe mich oft unter Wert.", type:'C'},
-        {t:"Ich will einfach Ergebnisse, aber etwas hält mich zurück.", type:'M'}
+        {t:"Ich sehe zu viele Möglichkeiten und verliere den klaren Fokus.", type:'V'},
+        {t:"Ich brauche mehr fachliche Sicherheit, bevor ich sichtbar werde.", type:'S'},
+        {t:"Ich halte Qualität und Kontrolle hoch, auch wenn es Tempo kostet.", type:'G'},
+        {t:"Ich gebe viel in Beziehungen, aber monetarisiere zu wenig.", type:'C'},
+        {t:"Ich komme schnell ins Tun, aber das System dahinter fehlt.", type:'M'}
       ]
     },
     {
       q: "Wie triffst du wichtige Business-Entscheidungen?",
       opts: [
-        {t:"Ich analysiere alle Daten, bis ich sicher bin.", type:'S'},
-        {t:"Ich höre auf mein Bauchgefühl und meine Vision.", type:'V'},
-        {t:"Ich probiere es einfach aus und korrigiere den Kurs.", type:'M'},
-        {t:"Ich frage erst mein Netzwerk oder suche den Austausch.", type:'C'},
-        {t:"Ich grüble lange, weil ich keine Fehler machen will.", type:'G'}
+        {t:"Ich sammle Informationen, vergleiche Optionen und will die Logik verstehen.", type:'S'},
+        {t:"Ich folge einem inneren Bild davon, wohin es gehen soll.", type:'V'},
+        {t:"Ich teste schnell und entscheide nach realer Rückmeldung.", type:'M'},
+        {t:"Ich spreche mit passenden Menschen und achte auf Resonanz.", type:'C'},
+        {t:"Ich prüfe Risiken, Konsequenzen und ob ich es sauber leisten kann.", type:'G'}
       ]
     },
     {
-      q: "Was gibt dir im Arbeitsalltag am meisten Energie?",
+      q: "Welche Aufgabe zieht dich natürlicherweise zuerst an?",
       opts: [
-        {t:"Tiefe, fokussierte Arbeit ohne Ablenkung.", type:'S'},
-        {t:"Inspiration durch neue, große Ideen.", type:'V'},
-        {t:"Schnelle Ergebnisse und sichtbare Fortschritte.", type:'M'},
-        {t:"Austausch mit Menschen, die ich unterstützen kann.", type:'C'},
-        {t:"Das Gefühl, alles im Griff zu haben.", type:'G'}
+        {t:"Ein komplexes Thema in eine klare Struktur bringen.", type:'S'},
+        {t:"Eine neue Idee, Richtung oder Möglichkeit entwickeln.", type:'V'},
+        {t:"Etwas bauen, veröffentlichen oder praktisch umsetzen.", type:'M'},
+        {t:"Menschen verbinden, zuhören oder Vertrauen aufbauen.", type:'C'},
+        {t:"Qualität sichern, Details prüfen und Verlässlichkeit schaffen.", type:'G'}
       ]
     },
     {
-      q: "Wie gehst du mit Widerstand oder Kritik um?",
+      q: "Was passiert bei Widerstand oder Kritik am ehesten?",
       opts: [
-        {t:"Ich ziehe mich zurück und reflektiere lange.", type:'S'},
-        {t:"Ich werde kreativ und finde einen ganz neuen Weg.", type:'V'},
-        {t:"Ich bleibe hartnäckig und arbeite einfach härter.", type:'M'},
-        {t:"Ich suche das direkte Gespräch, um es zu klären.", type:'C'},
-        {t:"Ich zweifle an mir selbst und hinterfrage alles.", type:'G'}
+        {t:"Ich analysiere, welche Annahme oder Struktur nicht stimmt.", type:'S'},
+        {t:"Ich suche einen neuen Blickwinkel oder eine andere Route.", type:'V'},
+        {t:"Ich erhöhe das Tempo und versuche, es praktisch zu lösen.", type:'M'},
+        {t:"Ich kläre die Beziehungsebene und suche das Gespräch.", type:'C'},
+        {t:"Ich prüfe sehr genau, ob ich etwas übersehen habe.", type:'G'}
       ]
     },
     {
-      q: "Was wünschst du dir am meisten für dein Business?",
+      q: "Was wäre für dein Business aktuell der größte Hebel?",
       opts: [
-        {t:"Klarheit & ein System, das funktioniert.", type:'S'},
-        {t:"Mehr Leichtigkeit & weniger Druck.", type:'G'},
-        {t:"Echte Verbindung zu meinen Kunden.", type:'C'},
-        {t:"Schnelleres Wachstum durch klare Struktur.", type:'M'},
-        {t:"Die Freiheit, meinen Visionen zu folgen.", type:'V'}
+        {t:"Ein präzises Angebot, das meine Expertise klar positioniert.", type:'S'},
+        {t:"Eine fokussierte Richtung, damit meine Ideen Wirkung bekommen.", type:'V'},
+        {t:"Ein wiederholbarer Prozess, der Wachstum tragfähig macht.", type:'M'},
+        {t:"Klare Grenzen, damit Vertrauen auch Umsatz erzeugt.", type:'C'},
+        {t:"Ein belastbares System, das Qualität ohne Daueranspannung hält.", type:'G'}
       ]
     },
     {
-      q: "Wenn du an Verkauf denkst, was ist dein größtes Problem?",
+      q: "Was ist beim Verkaufen typischerweise dein Muster?",
       opts: [
-        {t:"Ich fühle mich wie ein 'Verkäufer' \u2013 und das mag ich nicht.", type:'S'},
-        {t:"Ich weiß nicht, wie ich mein Angebot richtig positioniere.", type:'V'},
-        {t:"Ich habe Angst, zu viel zu verlangen.", type:'C'},
-        {t:"Ich tue mich schwer, überhaupt damit anzufangen.", type:'G'},
-        {t:"Ich will einfach verkaufen, aber es fühlt sich nicht leicht an.", type:'M'}
+        {t:"Ich erkläre viel, bevor ich klar zum Angebot komme.", type:'S'},
+        {t:"Ich spreche stark über die Vision, aber manchmal zu breit.", type:'V'},
+        {t:"Ich gehe direkt in die Lösung, bevor der Wert sauber gerahmt ist.", type:'M'},
+        {t:"Ich will die Beziehung schützen und setze Preise zu vorsichtig.", type:'C'},
+        {t:"Ich warte, bis alles sehr stimmig ist, bevor ich aktiv verkaufe.", type:'G'}
       ]
     },
     {
-      q: "Welches Statement trifft am meisten auf dich zu?",
+      q: "Welcher Satz beschreibt dich in arbeitsintensiven Phasen am besten?",
       opts: [
-        {t:"Ich bin besser im Denken als im Handeln.", type:'S'},
-        {t:"Ich habe viele Ideen, aber setze wenige um.", type:'V'},
-        {t:"Ich arbeite viel, aber sehe nicht genug Ergebnis.", type:'G'},
-        {t:"Ich helfe gerne, aber vergesse mich dabei selbst.", type:'C'},
-        {t:"Ich will schnell wachsen, aber etwas bremst mich.", type:'M'}
+        {t:"Ich denke tiefer, wenn der Druck steigt.", type:'S'},
+        {t:"Ich öffne neue Optionen, wenn es eng wird.", type:'V'},
+        {t:"Ich mache mehr und schneller, wenn etwas stockt.", type:'M'},
+        {t:"Ich halte Kontakt und kümmere mich, auch wenn es viel wird.", type:'C'},
+        {t:"Ich ziehe die Standards hoch, wenn Unsicherheit entsteht.", type:'G'}
       ]
     },
     {
       q: "Wie gehst du mit öffentlicher Sichtbarkeit um?",
       opts: [
-        {t:"Ich teile Wissen am liebsten schriftlich, präzise und mit Tiefe.", type:'S'},
-        {t:"Ich liebe die Bühne — live, laut, inspirierend.", type:'V'},
-        {t:"Meine Ergebnisse sprechen für mich — das ist mein Marketing.", type:'M'},
-        {t:"Meine besten Kunden kommen durch persönliche Weiterempfehlung.", type:'C'},
-        {t:"Öffentlichkeit fühlt sich unangenehm an — ich vermeide sie.", type:'G'}
+        {t:"Ich teile am liebsten fundierte Gedanken mit Substanz.", type:'S'},
+        {t:"Ich wirke stark, wenn ich Zukunftsbilder und Ideen teile.", type:'V'},
+        {t:"Ich zeige am liebsten Ergebnisse, Prozesse und Umsetzung.", type:'M'},
+        {t:"Ich werde sichtbar über Gespräche, Vertrauen und Empfehlungen.", type:'C'},
+        {t:"Ich zeige mich, wenn Qualität, Ton und Timing wirklich passen.", type:'G'}
       ]
     },
     {
-      q: "Wenn ein Projekt scheitert, was ist dein erster Gedanke?",
+      q: "Wenn ein Projekt nicht funktioniert: Was machst du zuerst?",
       opts: [
-        {t:"Was genau ist schiefgelaufen — und wie fixe ich das systematisch?", type:'S'},
-        {t:"Super, was lerne ich daraus für mein nächstes Vorhaben?", type:'V'},
-        {t:"Egal — beim nächsten Mal mache ich es schneller und besser.", type:'M'},
-        {t:"Was denken jetzt meine Kunden und Kollegen über mich?", type:'C'},
-        {t:"Vielleicht hätte ich das nie anfangen sollen.", type:'G'}
+        {t:"Ich rekonstruiere die Ursachen und suche den Systemfehler.", type:'S'},
+        {t:"Ich leite daraus eine neue Richtung oder bessere Idee ab.", type:'V'},
+        {t:"Ich passe sofort an und gehe in den nächsten Versuch.", type:'M'},
+        {t:"Ich schaue, wen es betrifft und was kommunikativ geklärt werden muss.", type:'C'},
+        {t:"Ich prüfe Standards, Risiken und was künftig abgesichert werden muss.", type:'G'}
       ]
     },
     {
-      q: "Welches Wort beschreibt deinen Arbeitsstil am besten?",
+      q: "Was beschreibt deinen natürlichen Arbeitsmodus am besten?",
       opts: [
-        {t:"Präzise — ich gehe in die Tiefe, bevor ich handle.", type:'S'},
-        {t:"Visionär — ich denke in Möglichkeiten, nicht in Grenzen.", type:'V'},
-        {t:"Schnell — ich probiere, korrigiere und liefere.", type:'M'},
-        {t:"Verbindend — Menschen und Vertrauen sind mein Treibstoff.", type:'C'},
-        {t:"Gründlich — Qualität geht vor Geschwindigkeit.", type:'G'}
+        {t:"Tief und präzise.", type:'S'},
+        {t:"Ideenreich und richtungsgebend.", type:'V'},
+        {t:"Pragmatisch und umsetzungsstark.", type:'M'},
+        {t:"Beziehungsorientiert und verbindend.", type:'C'},
+        {t:"Qualitätsbewusst und verlässlich.", type:'G'}
       ]
     },
   ],
   en: [
     {
-      q: "Thinking about your business, what feels hardest right now?",
+      q: "When your business is not running smoothly, where does most friction appear?",
       opts: [
-        {t:"I don't know exactly WHO I'm really helping.", type:'V'},
-        {t:"I struggle to be as visible and loud as others.", type:'S'},
-        {t:"I plan too much but don't move into action fast enough.", type:'G'},
-        {t:"I often undersell myself.", type:'C'},
-        {t:"I want results but something keeps holding me back.", type:'M'}
+        {t:"I see too many possibilities and lose the clear focus.", type:'V'},
+        {t:"I need more expert certainty before I become visible.", type:'S'},
+        {t:"I keep quality and control high, even when it costs speed.", type:'G'},
+        {t:"I invest a lot in relationships but monetise too little.", type:'C'},
+        {t:"I move fast, but the system behind it is missing.", type:'M'}
       ]
     },
     {
       q: "How do you make important business decisions?",
       opts: [
-        {t:"I analyse all the data until I feel certain.", type:'S'},
-        {t:"I trust my gut and my vision.", type:'V'},
-        {t:"I just try it and adjust as I go.", type:'M'},
-        {t:"I ask my network first and seek exchange.", type:'C'},
-        {t:"I overthink because I can't afford to make mistakes.", type:'G'}
+        {t:"I gather information, compare options and want to understand the logic.", type:'S'},
+        {t:"I follow an inner picture of where things should go.", type:'V'},
+        {t:"I test quickly and decide from real feedback.", type:'M'},
+        {t:"I talk to relevant people and pay attention to resonance.", type:'C'},
+        {t:"I check risks, consequences and whether I can deliver it cleanly.", type:'G'}
       ]
     },
     {
-      q: "What gives you the most energy in your day-to-day work?",
+      q: "Which task naturally pulls you in first?",
       opts: [
-        {t:"Deep, focused work without distraction.", type:'S'},
-        {t:"Inspiration from big new ideas.", type:'V'},
-        {t:"Fast results and visible progress.", type:'M'},
-        {t:"Connecting with people I can support.", type:'C'},
-        {t:"The feeling of having everything under control.", type:'G'}
+        {t:"Turning a complex topic into a clear structure.", type:'S'},
+        {t:"Developing a new idea, direction or possibility.", type:'V'},
+        {t:"Building, publishing or implementing something practical.", type:'M'},
+        {t:"Connecting people, listening or building trust.", type:'C'},
+        {t:"Securing quality, checking details and creating reliability.", type:'G'}
       ]
     },
     {
-      q: "How do you handle resistance or criticism?",
+      q: "What tends to happen when you face resistance or criticism?",
       opts: [
-        {t:"I withdraw and reflect for a long time.", type:'S'},
-        {t:"I get creative and find a completely new approach.", type:'V'},
-        {t:"I stay persistent and just work harder.", type:'M'},
-        {t:"I seek a direct conversation to resolve it.", type:'C'},
-        {t:"I doubt myself and question everything.", type:'G'}
+        {t:"I analyse which assumption or structure is wrong.", type:'S'},
+        {t:"I look for a new angle or a different route.", type:'V'},
+        {t:"I increase speed and try to solve it practically.", type:'M'},
+        {t:"I clarify the relationship layer and seek conversation.", type:'C'},
+        {t:"I check very carefully whether I missed something.", type:'G'}
       ]
     },
     {
-      q: "What do you want most for your business?",
+      q: "What would currently create the biggest leverage in your business?",
       opts: [
-        {t:"Clarity and a system that works.", type:'S'},
-        {t:"More ease and less pressure.", type:'G'},
-        {t:"Genuine connection with my clients.", type:'C'},
-        {t:"Faster growth through clear structure.", type:'M'},
-        {t:"The freedom to follow my vision.", type:'V'}
+        {t:"A precise offer that positions my expertise clearly.", type:'S'},
+        {t:"A focused direction so my ideas can become effective.", type:'V'},
+        {t:"A repeatable process that makes growth sustainable.", type:'M'},
+        {t:"Clear boundaries so trust also creates revenue.", type:'C'},
+        {t:"A reliable system that keeps quality without constant tension.", type:'G'}
       ]
     },
     {
-      q: "When you think about selling, what is your biggest challenge?",
+      q: "What is your typical pattern when selling?",
       opts: [
-        {t:"I feel like a 'salesperson' \u2014 and I don't like that.", type:'S'},
-        {t:"I don't know how to position my offer correctly.", type:'V'},
-        {t:"I'm afraid to charge what I'm worth.", type:'C'},
-        {t:"I find it hard to even get started.", type:'G'},
-        {t:"I want to sell but it doesn't feel natural.", type:'M'}
+        {t:"I explain a lot before I clearly make the offer.", type:'S'},
+        {t:"I speak strongly about the vision, but sometimes too broadly.", type:'V'},
+        {t:"I jump into the solution before framing the value cleanly.", type:'M'},
+        {t:"I want to protect the relationship and price too carefully.", type:'C'},
+        {t:"I wait until everything feels very coherent before actively selling.", type:'G'}
       ]
     },
     {
-      q: "Which statement fits you most?",
+      q: "Which sentence describes you best in work-intensive phases?",
       opts: [
-        {t:"I'm better at thinking than at doing.", type:'S'},
-        {t:"I have many ideas but implement very few.", type:'V'},
-        {t:"I work a lot but don't see enough results.", type:'G'},
-        {t:"I love helping others but forget about myself.", type:'C'},
-        {t:"I want to grow fast but something is slowing me down.", type:'M'}
+        {t:"I think more deeply when pressure rises.", type:'S'},
+        {t:"I open up new options when things get tight.", type:'V'},
+        {t:"I do more and move faster when something stalls.", type:'M'},
+        {t:"I stay in contact and take care of people, even when it gets busy.", type:'C'},
+        {t:"I raise standards when uncertainty appears.", type:'G'}
       ]
     },
     {
       q: "How do you approach being publicly visible?",
       opts: [
-        {t:"I prefer sharing knowledge in writing — precise and deep.", type:'S'},
-        {t:"I love the stage — live, loud, and inspiring.", type:'V'},
-        {t:"My results speak for me — that is my marketing.", type:'M'},
-        {t:"My best clients come through personal referrals.", type:'C'},
-        {t:"Public visibility feels uncomfortable — I tend to avoid it.", type:'G'}
+        {t:"I prefer sharing substantial, well-founded thoughts.", type:'S'},
+        {t:"I am strongest when I share future images and ideas.", type:'V'},
+        {t:"I prefer showing results, processes and implementation.", type:'M'},
+        {t:"I become visible through conversations, trust and referrals.", type:'C'},
+        {t:"I show up when quality, tone and timing really fit.", type:'G'}
       ]
     },
     {
-      q: "When a project fails, what is your first thought?",
+      q: "When a project does not work, what do you do first?",
       opts: [
-        {t:"What exactly went wrong — and how do I fix it systematically?", type:'S'},
-        {t:"Great, what can I learn for my next venture?", type:'V'},
-        {t:"Doesn't matter — next time I'll do it faster and better.", type:'M'},
-        {t:"What will my clients and colleagues think of me now?", type:'C'},
-        {t:"Maybe I should never have started it.", type:'G'}
+        {t:"I reconstruct the causes and look for the system error.", type:'S'},
+        {t:"I derive a new direction or better idea from it.", type:'V'},
+        {t:"I adjust immediately and move into the next attempt.", type:'M'},
+        {t:"I look at who is affected and what needs communication.", type:'C'},
+        {t:"I check standards, risks and what must be secured next time.", type:'G'}
       ]
     },
     {
-      q: "Which word best describes your working style?",
+      q: "What best describes your natural working mode?",
       opts: [
-        {t:"Precise — I go deep before I act.", type:'S'},
-        {t:"Visionary — I think in possibilities, not limitations.", type:'V'},
-        {t:"Fast — I try, adjust, and deliver.", type:'M'},
-        {t:"Connecting — people and trust are my fuel.", type:'C'},
-        {t:"Thorough — quality comes before speed.", type:'G'}
+        {t:"Deep and precise.", type:'S'},
+        {t:"Idea-rich and direction-setting.", type:'V'},
+        {t:"Pragmatic and implementation-driven.", type:'M'},
+        {t:"Relationship-oriented and connecting.", type:'C'},
+        {t:"Quality-conscious and reliable.", type:'G'}
       ]
     },
   ]
@@ -1799,7 +1805,7 @@ const QUIZ_RESULTS = {
   },
   G: {
     de: {
-      name: 'Der Hochleister',
+      name: 'The High Performer',
       tagline: 'Du lieferst auf einem Niveau das die meisten nicht erreichen.',
       strength: 'Durchhaltevermögen und Detailgenauigkeit. Du lieferst Qualität auf die sich andere verlassen können. Deine Zuverlässigkeit ist legend.',
       blindspot: 'Du verwechselst Kontrolle mit Sicherheit \u2014 und zahlst den Preis mit deiner Energie. Pause fühlt sich wie Versagen an. Das kostet dich mehr als du weißt.',
@@ -1830,6 +1836,105 @@ const QUIZ_RESULTS = {
     }
   },
 };
+
+const QUIZ_TYPE_LABELS = {
+  S: { key: 'Strategist', letter: 'S', de: 'Strategist', en: 'Strategist' },
+  V: { key: 'Visionary', letter: 'V', de: 'Visionary', en: 'Visionary' },
+  M: { key: 'Builder', letter: 'B', de: 'Builder', en: 'Builder' },
+  C: { key: 'Connector', letter: 'C', de: 'Connector', en: 'Connector' },
+  G: { key: 'G', letter: 'H', de: 'High Performer', en: 'High Performer' },
+};
+
+const QUIZ_INSIGHTS = {
+  S: {
+    de: {
+      friction: 'Du brauchst fachliche Tiefe, aber dein Markt reagiert auf sichtbare Entscheidungen.',
+      overdrive: 'Analyse wird zur Warteschleife: Du optimierst, bevor etwas verkauft wurde.',
+      action: 'Formuliere ein klares 1-Satz-Angebot und teste es diese Woche bei drei passenden Kontakten.',
+      unknown: 'Der Quick-Scan sieht noch nicht, ob dein Engpass eher Angebot, Preis, Sichtbarkeit oder Umsetzungsrhythmus ist.'
+    },
+    en: {
+      friction: 'You need depth, while your market responds to visible decisions.',
+      overdrive: 'Analysis becomes a waiting loop: you optimise before anything has been sold.',
+      action: 'Write a one-sentence offer and test it with three relevant contacts this week.',
+      unknown: 'The quick scan cannot yet tell whether your bottleneck is offer, pricing, visibility or execution rhythm.'
+    }
+  },
+  V: {
+    de: {
+      friction: 'Du denkst in Möglichkeiten, aber dein Business braucht eine engere Auswahl.',
+      overdrive: 'Ideenreichtum kippt in Parallelstarts ohne Abschluss.',
+      action: 'Wähle ein einziges Angebot und definiere, welches Ergebnis es in 30 Tagen liefert.',
+      unknown: 'Der Quick-Scan sieht noch nicht, welche Idee tragfähig ist und welche nur Energie bindet.'
+    },
+    en: {
+      friction: 'You think in possibilities, while your business needs narrower choices.',
+      overdrive: 'Idea flow turns into too many parallel starts without completion.',
+      action: 'Choose one offer and define the result it creates within 30 days.',
+      unknown: 'The quick scan cannot yet tell which idea has business traction and which only consumes energy.'
+    }
+  },
+  M: {
+    de: {
+      friction: 'Du kommst schnell ins Tun, aber Wachstum braucht wiederholbare Systeme.',
+      overdrive: 'Tempo ersetzt Strategie: Du lieferst viel, baust aber zu wenig Substanz auf.',
+      action: 'Dokumentiere deinen besten Lieferprozess und mache daraus ein wiederholbares Angebot.',
+      unknown: 'Der Quick-Scan sieht noch nicht, ob dein nächster Hebel Struktur, Positionierung oder Preis ist.'
+    },
+    en: {
+      friction: 'You move quickly, while growth needs repeatable systems.',
+      overdrive: 'Speed replaces strategy: you deliver a lot but build too little structure.',
+      action: 'Document your strongest delivery process and turn it into a repeatable offer.',
+      unknown: 'The quick scan cannot yet tell whether your next lever is structure, positioning or price.'
+    }
+  },
+  C: {
+    de: {
+      friction: 'Du erzeugst Vertrauen, aber dein Business braucht klarere Grenzen.',
+      overdrive: 'Beziehung wird zur Gratis-Verfügbarkeit.',
+      action: 'Ziehe eine klare Grenze: Was ist kostenloser Austausch, was ist bezahlte Begleitung?',
+      unknown: 'Der Quick-Scan sieht noch nicht, wie stark Beziehung, Preisangst und Angebotsstruktur zusammenhängen.'
+    },
+    en: {
+      friction: 'You create trust, while your business needs clearer boundaries.',
+      overdrive: 'Relationship turns into free availability.',
+      action: 'Draw one clear line: what is free conversation, and what is paid support?',
+      unknown: 'The quick scan cannot yet tell how strongly relationship, pricing fear and offer structure interact.'
+    }
+  },
+  G: {
+    de: {
+      friction: 'Du lieferst zuverlässig hohe Qualität, aber dein System lebt zu stark von deiner Energie.',
+      overdrive: 'Exzellenz wird zur Daueranspannung: Pause fühlt sich zu schnell wie Kontrollverlust an.',
+      action: 'Streiche diese Woche eine Aufgabe, die Qualität signalisiert, aber keinen Umsatz oder echten Nutzen schafft.',
+      unknown: 'Der Quick-Scan sieht noch nicht, ob dein Risiko eher Überlastung, Perfektionismus oder falsche Kapazitätsplanung ist.'
+    },
+    en: {
+      friction: 'You deliver reliably high quality, while your system depends too heavily on your energy.',
+      overdrive: 'Excellence turns into constant tension: rest feels too much like losing control.',
+      action: 'Remove one task this week that signals quality but creates no revenue or real value.',
+      unknown: 'The quick scan cannot yet tell whether your risk is overload, perfectionism or poor capacity planning.'
+    }
+  }
+};
+
+function getQuizProfile() {
+  const qs = QUIZ[lang] || QUIZ.de;
+  const scores = {S:0, V:0, M:0, C:0, G:0};
+  quizAnswers.forEach((ans, qi) => {
+    if (ans !== undefined && qs[qi]) {
+      const type = qs[qi].opts[ans].type;
+      if (scores[type] !== undefined) scores[type]++;
+    }
+  });
+  const ranked = Object.keys(scores).sort((a,b) => scores[b] - scores[a]);
+  const primaryKey = ranked[0] || 'S';
+  const secondaryKey = ranked.find(k => k !== primaryKey && scores[k] > 0) || ranked[1] || 'V';
+  const total = Math.max(1, quizAnswers.filter(a => a !== undefined).length);
+  const gap = scores[primaryKey] - scores[secondaryKey];
+  const confidence = gap >= 3 ? 'clear' : gap >= 1 ? 'moderate' : 'mixed';
+  return { scores, ranked, primaryKey, secondaryKey, total, confidence };
+}
 
 let quizAnswers = [];
 let quizCurrent = 0;
@@ -1903,21 +2008,20 @@ function quizNext() {
 // SOFORT-ERGEBNIS — kein E-Mail-Gate vorgeschaltet
 // ══════════════════════════════════════════════════════
 function showInstantResult() {
-  const qs = QUIZ[lang] || QUIZ.de;
-  const scores = {S:0, V:0, M:0, C:0, G:0};
-  quizAnswers.forEach((ans, qi) => {
-    if (ans !== undefined && qs[qi]) {
-      const type = qs[qi].opts[ans].type;
-      if (scores[type] !== undefined) scores[type]++;
-    }
-  });
-  const typeMap = {S:'Strategist', V:'Visionary', M:'Builder', C:'Connector', G:'G'};
-  const letterMap = {S:'S', V:'V', M:'M', C:'C', G:'G'};
-  const winnerKey = Object.keys(scores).reduce((a,b) => scores[a]>scores[b]?a:b);
-  const winner = typeMap[winnerKey] || 'Strategist';
+  const profile = getQuizProfile();
+  const winnerKey = profile.primaryKey;
+  const secondaryKey = profile.secondaryKey;
+  const primaryMeta = QUIZ_TYPE_LABELS[winnerKey] || QUIZ_TYPE_LABELS.S;
+  const secondaryMeta = QUIZ_TYPE_LABELS[secondaryKey] || QUIZ_TYPE_LABELS.V;
+  const winner = primaryMeta.key;
   const r = (QUIZ_RESULTS[winner] || QUIZ_RESULTS.Strategist)[lang] || (QUIZ_RESULTS[winner] || QUIZ_RESULTS.Strategist).de;
   const isDE = lang === 'de';
-  const typeLetter = letterMap[winnerKey] || 'S';
+  const typeLetter = primaryMeta.letter || 'S';
+  const insights = (QUIZ_INSIGHTS[winnerKey] || QUIZ_INSIGHTS.S)[lang] || QUIZ_INSIGHTS.S.de;
+  const confidenceLabel = isDE
+    ? (profile.confidence === 'clear' ? 'klare Tendenz' : profile.confidence === 'moderate' ? 'wahrscheinliche Tendenz' : 'Mischprofil möglich')
+    : (profile.confidence === 'clear' ? 'clear tendency' : profile.confidence === 'moderate' ? 'likely tendency' : 'mixed profile possible');
+  const secondaryLabel = secondaryMeta[lang] || secondaryMeta.en;
 
   // Hide quiz UI
   document.getElementById('quizTop').style.display = 'none';
@@ -1927,13 +2031,13 @@ function showInstantResult() {
 
   // Share text
   const shareText = isDE
-    ? `Ich bin ${r.name} — das sagt die NeuroBusiness™ Diagnostik über mich. Mach den Test: neurobusiness.one`
-    : `I'm a ${r.name} — that's what NeuroBusiness™ diagnostics reveal about me. Take the test: neurobusiness.one`;
+    ? `Meine NeuroBusiness™ Quick-Scan-Tendenz: ${r.name}. Mach den Test: neurobusiness.one`
+    : `My NeuroBusiness™ quick-scan tendency: ${r.name}. Take the test: neurobusiness.one`;
 
   // Save to Brevo (non-blocking, no consent yet)
   try {
     if (window.Brevo) {
-      window.Brevo.push(['track', 'quiz_type_revealed', {psychotype: winner, lang}]);
+      window.Brevo.push(['track', 'quiz_type_revealed', {psychotype: winner, secondary_psychotype: secondaryMeta.key, confidence: profile.confidence, quiz_version: QUIZ_VERSION, lang}]);
     }
   } catch(e){}
 
@@ -1943,7 +2047,7 @@ function showInstantResult() {
   el.innerHTML = `
     <!-- ── TYP-HERO ── -->
     <div class="qr-hero">
-      <div class="qr-hero-eye">${isDE ? 'Dein NeuroBusiness™ Psychotyp' : 'Your NeuroBusiness™ Psychotype'}</div>
+      <div class="qr-hero-eye">${isDE ? 'Deine NeuroBusiness™ Typ-Tendenz' : 'Your NeuroBusiness™ Type Tendency'}</div>
       <div class="qr-hero-letter">${typeLetter}</div>
       <div class="qr-hero-name">${r.name}</div>
       <div class="qr-hero-tag">${r.tagline}</div>
@@ -1956,7 +2060,18 @@ function showInstantResult() {
         ${isDE ? 'Profil teilen' : 'Share profile'}
       </button>
       <span class="qr-share-copied" id="qrShareCopied">${isDE ? '✓ Link kopiert!' : '✓ Link copied!'}</span>
-      <span style="font-family:var(--font-mono);font-size:11px;color:var(--text3)">${isDE ? '~80% Genauigkeit · Vollständige Diagnostik: 50 Fragen' : '~80% accuracy · Full diagnostic: 50 questions'}</span>
+      <span style="font-family:var(--font-mono);font-size:11px;color:var(--text3)">${isDE ? 'Quick-Scan · keine Diagnose · 50-Fragen-Report vertieft das Profil' : 'Quick scan · not a diagnosis · 50-question report deepens the profile'}</span>
+    </div>
+
+    <div class="qr-meta-grid">
+      <div class="qr-meta-card">
+        <div class="qr-meta-label">${isDE ? 'Confidence' : 'Confidence'}</div>
+        <div class="qr-meta-value">${confidenceLabel}</div>
+      </div>
+      <div class="qr-meta-card">
+        <div class="qr-meta-label">${isDE ? 'Sekundärtendenz' : 'Secondary tendency'}</div>
+        <div class="qr-meta-value">${secondaryLabel}</div>
+      </div>
     </div>
 
     <!-- ── SICHTBAR: Superkraft ── -->
@@ -1965,11 +2080,16 @@ function showInstantResult() {
       <div class="qr-section-text">${r.strength}</div>
     </div>
 
+    <div class="qr-section">
+      <div class="qr-section-eye">${isDE ? 'Stärkste Business-Reibung' : 'Main business friction'}</div>
+      <div class="qr-section-text">${insights.friction}</div>
+    </div>
+
     <!-- ── GESPERRT: Blindstelle ── -->
     <div class="qr-locked-wrap" id="qrLockBlind">
       <div class="qr-locked-content">
-        <div class="qr-section-eye">${isDE ? 'Deine Blindstelle' : 'Your blind spot'}</div>
-        <div class="qr-section-text">${r.blindspot}</div>
+        <div class="qr-section-eye">${isDE ? 'Typische Übersteuerung' : 'Typical overdrive'}</div>
+        <div class="qr-section-text"><strong>${insights.overdrive}</strong><br>${r.blindspot}</div>
       </div>
       <div class="qr-locked-overlay" id="qrOverlayBlind">
         <div class="qr-locked-icon">🔒</div>
@@ -1980,8 +2100,8 @@ function showInstantResult() {
     <!-- ── GESPERRT: Business-Modell ── -->
     <div class="qr-locked-wrap" id="qrLockModel">
       <div class="qr-locked-content">
-        <div class="qr-section-eye">${isDE ? 'Dein natürliches Business-Modell' : 'Your natural business model'}</div>
-        <div class="qr-section-text">${r.model}</div>
+        <div class="qr-section-eye">${isDE ? 'Nächster Schritt + Business-Modell' : 'Next step + business model'}</div>
+        <div class="qr-section-text"><strong>${insights.action}</strong><br>${r.model}</div>
       </div>
       <div class="qr-locked-overlay" id="qrOverlayModel">
         <div class="qr-locked-icon">🔒</div>
@@ -1992,14 +2112,14 @@ function showInstantResult() {
     <!-- ── OPTIONALER E-MAIL-UNLOCK ── -->
     <div class="qr-email-section" id="qrEmailSection">
       <div class="qr-email-eye">${isDE ? 'Kostenlos freischalten' : 'Unlock for free'}</div>
-      <div class="qr-email-title">${isDE ? 'Blindstelle + Business-Modell entsperren' : 'Unlock blind spot + business model'}</div>
-      <div class="qr-email-sub">${isDE ? 'Gib deine E-Mail ein — du erhältst dein vollständiges Kurzprofil kostenlos per Mail.' : 'Enter your email — we send you the full short profile for free.'}</div>
+      <div class="qr-email-title">${isDE ? 'Übersteuerung + nächsten Schritt entsperren' : 'Unlock overdrive + next step'}</div>
+      <div class="qr-email-sub">${isDE ? 'Gib deine E-Mail ein — du erhältst dein Quick-Scan-Profil und die offene Schleife zur vollständigen Diagnostik.' : 'Enter your email — we send your quick-scan profile and the open loop to the full diagnostic.'}</div>
       <div class="qr-email-row" style="margin-bottom:8px">
         <input class="qr-email-input" id="qrNameInput" type="text" placeholder="${isDE ? 'Dein Vorname' : 'Your first name'}" autocomplete="given-name" style="flex:1;min-width:160px">
       </div>
       <div class="qr-email-row">
         <input class="qr-email-input" id="qrEmailInput" type="email" placeholder="${isDE ? 'deine@email.com' : 'your@email.com'}" autocomplete="email">
-        <button class="qr-email-btn" id="qrEmailBtn" onclick="submitQuickEmail('${winner}','${typeLetter}')">
+        <button class="qr-email-btn" id="qrEmailBtn" onclick="submitQuickEmail('${winner}','${typeLetter}','${secondaryMeta.key}','${profile.confidence}')">
           ${isDE ? 'Freischalten →' : 'Unlock →'}
         </button>
       </div>
@@ -2011,11 +2131,12 @@ function showInstantResult() {
 
     <!-- ── VOLLSTÄNDIGE DIAGNOSTIK CTA ── -->
     <div class="qr-cta-wrap">
-      <div style="font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;text-align:center;margin-bottom:6px">${isDE ? 'Dein exaktes 5-Dimensionen-Profil' : 'Your exact 5-dimension profile'}</div>
-      <button onclick="openModal('modalDiagnostik')" class="qr-cta-primary">
-        ${isDE ? 'Vollständigen Report erhalten — 147 €' : 'Get full report — €147'}
-      </button>
-      <div class="qr-cta-note">${isDE ? '50 Fragen · Radar-Chart · Burnout-Score · sofort' : '50 questions · radar chart · burnout score · instant'}</div>
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;text-align:center;margin-bottom:6px">${isDE ? 'Was der Quick-Scan noch nicht erkennen kann' : 'What the quick scan cannot yet detect'}</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.7;text-align:center;margin-bottom:4px">${insights.unknown}</div>
+      <a href="https://buy.stripe.com/5kQfZj1NbbjK50Sg1Basg08" onclick="handleStripeClick(event,'solo')" class="qr-cta-primary">
+        ${isDE ? 'Vollständige Diagnostik starten — 147 €' : 'Start full diagnostic — €147'}
+      </a>
+      <div class="qr-cta-note">${isDE ? '50 Fragen · Primär-/Sekundärtyp · 5-Dimensionen-Profil · Sofort-Report' : '50 questions · primary/secondary type · 5-dimension profile · instant report'}</div>
       <button class="qr-restart" onclick="quizInit()">${isDE ? 'Test wiederholen' : 'Retake test'}</button>
     </div>`;
 
@@ -2037,7 +2158,7 @@ function shareResult(letter, typeKey, encodedText, btn) {
 }
 
 // Optionaler E-Mail-Unlock
-async function submitQuickEmail(psychotype, typeLetter) {
+async function submitQuickEmail(psychotype, typeLetter, secondaryType, confidence) {
   const emailEl = document.getElementById('qrEmailInput');
   const nameEl = document.getElementById('qrNameInput');
   const btn = document.getElementById('qrEmailBtn');
@@ -2050,6 +2171,7 @@ async function submitQuickEmail(psychotype, typeLetter) {
     return;
   }
   if(btn){btn.disabled=true;btn.textContent=isDE?'Wird gespeichert…':'Saving…';}
+  const profile = getQuizProfile();
 
   // Supabase
   try {
@@ -2058,6 +2180,14 @@ async function submitQuickEmail(psychotype, typeLetter) {
         email, psychotype, quiz_completed:true, marketing_consent:true,
         consent_at:new Date().toISOString(), lang, created_at:new Date().toISOString()
       },{onConflict:'email'});
+      await sb.from('quiz_leads')
+        .update({
+          secondary_psychotype: secondaryType || null,
+          confidence: confidence || null,
+          quiz_version: QUIZ_VERSION,
+          quiz_scores: profile.scores || null
+        })
+        .eq('email', email);
     }
   } catch(e){}
 
@@ -2066,7 +2196,7 @@ async function submitQuickEmail(psychotype, typeLetter) {
     fetch('https://evakolontai.app.n8n.cloud/webhook/nb-quiz-lead', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({email, name, psychotype, psycholetter:typeLetter})
+      body: JSON.stringify({email, name, psychotype, psycholetter:typeLetter, secondary_psychotype:secondaryType || null, confidence:confidence || null, quiz_version:QUIZ_VERSION})
     }).catch(()=>{});
   } catch(e){}
 
@@ -2074,8 +2204,8 @@ async function submitQuickEmail(psychotype, typeLetter) {
   try {
     initBrevo();
     if(window.Brevo){
-      window.Brevo.push(['identify',{identifiers:{email_id:email},attributes:{FIRSTNAME:name,PSYCHOTYPE:psychotype,QUELLE:'Quiz-Unlock neurobusiness.one',SPRACHE:lang,MARKETING_CONSENT:true}}]);
-      window.Brevo.push(['track','quiz_email_unlock',{psychotype,lang}]);
+      window.Brevo.push(['identify',{identifiers:{email_id:email},attributes:{FIRSTNAME:name,PSYCHOTYPE:psychotype,SECONDARY_PSYCHOTYPE:secondaryType || '',QUIZ_CONFIDENCE:confidence || '',QUIZ_VERSION:QUIZ_VERSION,QUELLE:'Quiz-Unlock neurobusiness.one',SPRACHE:lang,MARKETING_CONSENT:true}}]);
+      window.Brevo.push(['track','quiz_email_unlock',{psychotype,secondary_psychotype:secondaryType || '',confidence:confidence || '',quiz_version:QUIZ_VERSION,lang}]);
     }
   } catch(e){}
 
@@ -2124,8 +2254,8 @@ function applyGateTranslations() {
   const isDE = lang === 'de';
   const t = {
     teaser: isDE
-      ? 'Dein Ergebnis ist bereit — <strong>wir haben deinen Psychotyp identifiziert.</strong> Gib deine Daten ein um dein vollständiges Profil zu sehen.'
-      : 'Your result is ready — <strong>we identified your psychotype.</strong> Enter your details to see your full profile.',
+      ? 'Dein Ergebnis ist bereit — <strong>wir haben deine stärkste Typ-Tendenz erkannt.</strong> Gib deine Daten ein um die nächsten Hinweise zu sehen.'
+      : 'Your result is ready — <strong>we identified your strongest type tendency.</strong> Enter your details to see the next insights.',
     title: isDE ? 'Dein NeuroBusiness<br>Psychotyp ist bereit.' : 'Your NeuroBusiness<br>Psychotype is ready.',
     sub: isDE
       ? 'Erhalte dein kostenloses Psychotyp-Profil — mit deiner Superkraft, Blindstelle und deinem natürlichen Business-Modell. Kein Spam.'
@@ -2179,17 +2309,10 @@ async function submitGate() {
   document.getElementById('gate-btn-text').textContent = lang === 'de' ? 'Wird gespeichert...' : 'Saving...';
 
   // Determine psychotype before showing result (for Brevo)
-  const qs = QUIZ[lang] || QUIZ.de;
-  const scores = {S:0, V:0, M:0, C:0, G:0};
-  quizAnswers.forEach((ans, qi) => {
-    if (ans !== undefined) {
-      const type = qs[qi].opts[ans].type;
-      if (scores[type] !== undefined) scores[type]++;
-    }
-  });
-  const typeMap = {S:'Strategist', V:'Visionary', M:'Builder', C:'Connector', G:'High Performer'};
-  const winnerKey = Object.keys(scores).reduce((a,b) => scores[a]>scores[b]?a:b);
-  const psychotype = typeMap[winnerKey] || 'Strategist';
+  const profile = getQuizProfile();
+  const primaryMeta = QUIZ_TYPE_LABELS[profile.primaryKey] || QUIZ_TYPE_LABELS.S;
+  const secondaryMeta = QUIZ_TYPE_LABELS[profile.secondaryKey] || QUIZ_TYPE_LABELS.V;
+  const psychotype = primaryMeta.key || 'Strategist';
 
   // Save to Supabase if available
   try {
@@ -2205,14 +2328,22 @@ async function submitGate() {
         lang,
         created_at: new Date().toISOString()
       }, { onConflict: 'email' });
+      await sb.from('quiz_leads')
+        .update({
+          secondary_psychotype: secondaryMeta.key || null,
+          confidence: profile.confidence || null,
+          quiz_version: QUIZ_VERSION,
+          quiz_scores: profile.scores || null
+        })
+        .eq('email', email);
     }
   } catch(e) { console.log('Lead save:', e.message); }
 
   // Brevo: Lead identifizieren & Quiz-Abschluss tracken
   try {
     if (window.Brevo) {
-      window.Brevo.push(["identify", { identifiers: { email_id: email }, attributes: { VORNAME: name || '', WHATSAPP: whatsapp || '', PSYCHOTYPE: psychotype, QUELLE: 'Quiz neurobusiness.one', SPRACHE: lang, MARKETING_CONSENT: true } }]);
-      window.Brevo.push(["track", "quiz_completed", { lang: lang, psychotype: psychotype, whatsapp: whatsapp || '', consent: true }]);
+      window.Brevo.push(["identify", { identifiers: { email_id: email }, attributes: { VORNAME: name || '', WHATSAPP: whatsapp || '', PSYCHOTYPE: psychotype, SECONDARY_PSYCHOTYPE: secondaryMeta.key || '', QUIZ_CONFIDENCE: profile.confidence || '', QUIZ_VERSION: QUIZ_VERSION, QUELLE: 'Quiz neurobusiness.one', SPRACHE: lang, MARKETING_CONSENT: true } }]);
+      window.Brevo.push(["track", "quiz_completed", { lang: lang, psychotype: psychotype, secondary_psychotype: secondaryMeta.key || '', confidence: profile.confidence || '', quiz_version: QUIZ_VERSION, whatsapp: whatsapp || '', consent: true }]);
     }
   } catch(e){}
 
@@ -2248,18 +2379,12 @@ async function submitGate() {
 }
 
 function showQuizResult(leadName) {
-  const qs = QUIZ[lang] || QUIZ.de;
-  const scores = {S:0, V:0, M:0, C:0, G:0};
-  quizAnswers.forEach((ans, qi) => {
-    if (ans !== undefined) {
-      const type = qs[qi].opts[ans].type;
-      if (scores[type] !== undefined) scores[type]++;
-    }
-  });
-  const typeMap = {S:'Strategist', V:'Visionary', M:'Builder', C:'Connector', G:'G'};
-  const winnerKey = Object.keys(scores).reduce((a,b) => scores[a]>scores[b]?a:b);
-  const winner = typeMap[winnerKey] || 'Strategist';
+  const profile = getQuizProfile();
+  const primaryMeta = QUIZ_TYPE_LABELS[profile.primaryKey] || QUIZ_TYPE_LABELS.S;
+  const secondaryMeta = QUIZ_TYPE_LABELS[profile.secondaryKey] || QUIZ_TYPE_LABELS.V;
+  const winner = primaryMeta.key;
   const r = (QUIZ_RESULTS[winner] || QUIZ_RESULTS.Strategist)[lang] || (QUIZ_RESULTS[winner] || QUIZ_RESULTS.Strategist).de;
+  const insights = (QUIZ_INSIGHTS[profile.primaryKey] || QUIZ_INSIGHTS.S)[lang] || QUIZ_INSIGHTS.S.de;
 
   document.getElementById('quizTop').style.display = 'none';
   document.getElementById('quizQuestion').style.display = 'none';
@@ -2268,28 +2393,37 @@ function showQuizResult(leadName) {
   const isDE = lang === 'de';
   // Personalize if name was captured
   const firstName = leadName || '';
+  const confidenceLabel = isDE
+    ? (profile.confidence === 'clear' ? 'klare Tendenz' : profile.confidence === 'moderate' ? 'wahrscheinliche Tendenz' : 'Mischprofil möglich')
+    : (profile.confidence === 'clear' ? 'clear tendency' : profile.confidence === 'moderate' ? 'likely tendency' : 'mixed profile possible');
   document.getElementById('quizResult').style.display = 'block';
   document.getElementById('quizResult').innerHTML = `
     <div class="quiz-result-hero">
-      <div class="quiz-result-label">${firstName ? (isDE ? firstName + ", dein" : firstName + ", your") : (isDE ? "Dein" : "Your")} NeuroBusiness Psychotype</div>
+      <div class="quiz-result-label">${firstName ? (isDE ? firstName + ", deine" : firstName + ", your") : (isDE ? "Deine" : "Your")} NeuroBusiness Typ-Tendenz</div>
       <div class="quiz-result-type">${r.name}</div>
       <div class="quiz-result-tagline">${r.tagline}</div>
     </div>
-    <div class="quiz-accuracy">${isDE?'⚡ Dieser Test gibt dir eine erste Tendenz (~80% Genauigkeit). Die vollständige 50-Fragen-Diagnostik zeigt dein exaktes 5-Dimensionen-Profil.':'⚡ This test gives you an initial indication (~80% accuracy). The full 50-question diagnostic reveals your exact 5-dimension profile.'}</div>
+    <div class="quiz-accuracy">${isDE
+      ? `Quick-Scan: ${confidenceLabel}. Sekundärtendenz: ${(secondaryMeta.de || secondaryMeta.en)}. Keine Diagnose, keine statistische Trefferquote.`
+      : `Quick scan: ${confidenceLabel}. Secondary tendency: ${(secondaryMeta.en || secondaryMeta.de)}. Not a diagnosis, no claimed statistical accuracy.`}</div>
     <div class="quiz-result-section">
       <div class="quiz-result-section-title">${isDE?'Deine Superkraft':'Your superpower'}</div>
       <div class="quiz-result-section-text">${r.strength}</div>
     </div>
     <div class="quiz-result-section">
-      <div class="quiz-result-section-title">${isDE?'Deine Blindstelle':'Your blind spot'}</div>
-      <div class="quiz-result-section-text">${r.blindspot}</div>
+      <div class="quiz-result-section-title">${isDE?'Stärkste Business-Reibung':'Main business friction'}</div>
+      <div class="quiz-result-section-text">${insights.friction}</div>
     </div>
     <div class="quiz-result-section">
-      <div class="quiz-result-section-title">${isDE?'Dein natürliches Business-Modell':'Your natural business model'}</div>
-      <div class="quiz-result-section-text">${r.model}</div>
+      <div class="quiz-result-section-title">${isDE?'Typische Übersteuerung':'Typical overdrive'}</div>
+      <div class="quiz-result-section-text">${insights.overdrive}</div>
+    </div>
+    <div class="quiz-result-section">
+      <div class="quiz-result-section-title">${isDE?'Nächster Schritt':'Next step'}</div>
+      <div class="quiz-result-section-text">${insights.action}</div>
     </div>
     <div class="quiz-cta-row">
-      <button onclick="openModal('modalDiagnostik')" class="btn-primary" style="width:100%;text-align:center">${isDE?'Vollständige Diagnostik starten \u2014 490 €':'Start full diagnostics \u2014 €490'}</button>
+      <a href="https://buy.stripe.com/5kQfZj1NbbjK50Sg1Basg08" onclick="handleStripeClick(event,'solo')" class="btn-primary" style="width:100%;text-align:center">${isDE?'Vollständige Diagnostik starten \u2014 147 €':'Start full diagnostic \u2014 €147'}</a>
       <a href="https://wa.me/4915565695582" target="_blank" class="btn-outline" style="display:block;text-align:center">${isDE?'Mit Eva sprechen (WhatsApp)':'Talk to Eva (WhatsApp)'}</a>
       <button class="quiz-restart" onclick="quizInit()">${isDE?'Test wiederholen':'Retake test'}</button>
     </div>`;

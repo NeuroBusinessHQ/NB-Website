@@ -3,15 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NeuroBusiness™ — Baue ein Business, das zu deinem Gehirn passt</title>
+<script>
+(function(){
+  var routes = {
+    "coach.neurobusiness.one": "/coach/",
+    "hr.neurobusiness.one": "/hr/",
+    "app.neurobusiness.one": "/app/",
+    "academy.neurobusiness.one": "/academy/"
+  };
+  var target = routes[window.location.hostname];
+  if (target && window.location.pathname === "/") {
+    window.location.replace(target);
+  }
+})();
+</script>
+<title>NeuroBusiness™ — Baue ein Business, das zu deiner Arbeitsweise passt</title>
 <meta name="description" content="Neuropsychologische Business-Diagnostik für Coaches, Berater:innen und selbstständige Expert:innen. Finde heraus, welches Business-Modell, welche Sichtbarkeit und welche Arbeitsweise wirklich zu dir passen. Berlin · London · Dubai.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://neurobusiness.one/">
-<meta property="og:title" content="NeuroBusiness™ — Baue ein Business, das zu deinem Gehirn passt">
+<meta property="og:title" content="NeuroBusiness™ — Baue ein Business, das zu deiner Arbeitsweise passt">
 <meta property="og:description" content="Neuropsychologische Business-Diagnostik für selbstständige Expert:innen. 50 Fragen. Dein Psychotyp. Deine Strategie. Für DACH, UK und den Mittleren Osten.">
 <meta property="og:image" content="https://neurobusiness.one/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NeuroBusiness™ — Baue ein Business, das zu deinem Gehirn passt">
+<meta name="twitter:title" content="NeuroBusiness™ — Baue ein Business, das zu deiner Arbeitsweise passt">
 <meta name="twitter:description" content="Finde deinen Psychotyp in 50 Fragen. Erhalte dein vollständiges NeuroBusiness-Profil — dein natürliches Business-Modell, deine Sichtbarkeitsstrategie und 3 konkrete nächste Schritte.">
 <meta name="twitter:image" content="https://neurobusiness.one/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -700,7 +714,7 @@ footer {
   <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap"><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--text3);border:1px solid var(--border);padding:3px 10px;border-radius:20px">London</span><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--text3);border:1px solid var(--border);padding:3px 10px;border-radius:20px">Dubai</span><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--text3);border:1px solid var(--border);padding:3px 10px;border-radius:20px">Berlin</span></div>
   <div class="hero-eyebrow" id="hero-eyebrow">Business-Diagnostik für Selbstständige</div>
   <h1 class="hero-title" id="hero-title">
-    Nicht jedes<br>Business passt<br>zu <em>jedem Gehirn.</em>
+    Nicht jedes<br>Business passt<br>zu <em>jeder Arbeitsweise.</em>
   </h1>
   <p class="hero-sub" id="hero-sub">
     Für Coaches, Berater:innen und selbstständige Expert:innen, die fachlich stark sind — aber merken, dass ihr Business-Modell, ihre Sichtbarkeit und ihr Wachstum sie mehr Energie kosten, als sie sollten.
@@ -738,7 +752,7 @@ footer {
   <div class="section-inner">
     <div class="section-eyebrow fade-up" id="prob-eyebrow">Das Problem</div>
     <h2 class="section-title fade-up" id="prob-title">Du scheiterst nicht, weil du<br><em>nicht gut genug bist.</em></h2>
-    <p class="section-sub fade-up" id="prob-sub">Du scheiterst, weil du Strategien kopierst, die für einen anderen Gehirntyp gebaut sind.</p>
+    <p class="section-sub fade-up" id="prob-sub">Du scheiterst, weil du Strategien kopierst, die für eine andere Arbeitsweise gebaut sind.</p>
     <div class="problem-grid fade-up">
       <div class="problem-item">
         <div class="problem-item-num">01</div>
@@ -798,7 +812,7 @@ footer {
         <div class="rp-check" id="rp-c2">5-Dimensionen-Profil als visuelle Darstellung</div>
         <div class="rp-check" id="rp-c3">Strukturanalyse — warum dein Business bisher nicht optimal läuft</div>
         <div class="rp-check" id="rp-c4">Dein natürliches Business-Modell und deine Sichtbarkeitsstrategie</div>
-        <div class="rp-check" id="rp-c5">Burnout-Risiko-Analyse basierend auf dem D5-Score</div>
+        <div class="rp-check" id="rp-c5">Überlastungsindikator basierend auf dem D5-Score</div>
         <div class="rp-check" id="rp-c6">3 konkrete nächste Schritte zur sofortigen Umsetzung</div>
         <div style="margin-top:28px">
           <button onclick="openModal('modalDiagnostik')" class="btn-primary" id="rp-cta">Meinen Report jetzt erhalten</button>
@@ -905,10 +919,10 @@ footer {
         </div>
         <div class="product-card-body">
           <ul class="product-features" id="pf0">
-            <li>50-Fragen neuropsychologischer Test</li>
+            <li>50-Fragen psychologisch fundierte Business-Diagnostik</li>
             <li>Vollständiger Report mit 5-Dimensionen-Profil</li>
             <li>Dein natürliches Business-Modell & Sichtbarkeitsstrategie</li>
-            <li>Stärken, Blindstellen & Burnout-Risiko</li>
+            <li>Stärken, Blindstellen & Überlastungsindikator</li>
             <li>3 konkrete nächste Schritte</li>
             <li style="color:var(--text3)">Keine NeuroBusiness AI enthalten</li>
           </ul>
@@ -1293,7 +1307,7 @@ const T = {
     'hero-cta1': 'Meinen Business-Fit analysieren', 'hero-cta2': 'Wie es funktioniert',
     'prob-eyebrow': 'Das Problem',
     'prob-title': 'Du scheiterst nicht, weil du<br><em>nicht gut genug bist.</em>',
-    'prob-sub': 'Du scheiterst, weil du Strategien kopierst, die für einen anderen Gehirntyp gebaut sind.',
+    'prob-sub': 'Du scheiterst, weil du Strategien kopierst, die für eine andere Arbeitsweise gebaut sind.',
     'pi1t': 'Chronischer innerer Widerstand', 'pi1d': 'Dein Business läuft, aber es fühlt sich wie permanenter Gegenwind an. Nicht wegen mangelnder Disziplin \u2014 wegen strukturellem Mismatch.',
     'pi2t': 'Kopierte Strategien, die nicht passen',
     'pi2d': 'Du postest täglich auf Instagram, weil alle sagen, du musst. Für eine:n Strateg:in ist das neuropsychologisch falsch ausgerichtet.',
@@ -1361,7 +1375,7 @@ const T = {
     'tm-cta': 'Team Intelligence ansehen →',
     'optin-eyebrow': 'Newsletter', 'optin-title': 'NeuroBusiness-Impulse erhalten', 'optin-sub': 'Impulse zu Business-Psychotypen, mentaler Leistungsfähigkeit und gesundem Wachstum \u2014 direkt in dein Postfach. Jederzeit abbestellbar.',
     'optin-btn': 'Eintragen', 'optin-consent': 'Ja, ich möchte Impulse per E-Mail erhalten. Jederzeit abbestellbar. Es gilt die Datenschutzerklärung.',
-    'hero-title': 'Nicht jedes<br>Business passt<br>zu <em>jedem Gehirn.</em>',
+    'hero-title': 'Nicht jedes<br>Business passt<br>zu <em>jeder Arbeitsweise.</em>',
     'rp-eyebrow': 'Report-Vorschau',
     'rp-title': 'So sieht dein <em>Report aus</em>',
     'rp-text': 'Nach dem 50-Fragen-Test erhältst du deinen vollständigen NeuroBusiness Report sofort \u2014 kein Warten, kein Call nötig.',
@@ -1369,7 +1383,7 @@ const T = {
     'rp-c2': '5-Dimensionen-Profil als visuelle Darstellung',
     'rp-c3': 'Strukturanalyse \u2014 warum dein Business bisher nicht optimal läuft',
     'rp-c4': 'Dein natürliches Business-Modell und deine Sichtbarkeitsstrategie',
-    'rp-c5': 'Burnout-Risiko-Analyse basierend auf dem D5-Score',
+    'rp-c5': 'Überlastungsindikator basierend auf dem D5-Score',
     'rp-c6': '3 konkrete nächste Schritte zur sofortigen Umsetzung',
     'rp-cta': 'Meinen Report jetzt erhalten',
   },
@@ -1386,7 +1400,7 @@ const T = {
     'dsgvo-1': 'GDPR compliant', 'dsgvo-2': 'Data encrypted', 'dsgvo-3': 'Dipl. Psychologist', 'dsgvo-4': 'EU servers',
     'prob-eyebrow': 'The problem',
     'prob-title': 'You\'re not failing because you lack<br><em>drive or talent.</em>',
-    'prob-sub': 'You are failing because you are copying strategies built for a different brain type.',
+    'prob-sub': 'You are struggling because you are copying strategies built for a different way of working.',
     'pi1t': 'Chronic inner resistance', 'pi1d': 'Your business runs, but it feels like permanent headwinds. Not from lack of discipline \u2014 from structural mismatch.',
     'pi2t': 'Copied strategies that do not fit',
     'pi2d': "You post daily on Instagram because everyone says you must. For a Strategist, that's neuropsychologically misaligned.",
@@ -1454,7 +1468,7 @@ const T = {
     'tm-cta': 'Explore Team Intelligence →',
     'optin-eyebrow': 'Newsletter', 'optin-title': 'Get NeuroBusiness insights', 'optin-sub': 'Insights on business psychotypes, mental performance and healthy growth \u2014 straight to your inbox. Unsubscribe anytime.',
     'optin-btn': 'Subscribe', 'optin-consent': 'Yes, I would like to receive insights by email. Unsubscribe anytime. The privacy policy applies.',
-    'hero-title': 'Not every<br>business fits<br><em>every brain.</em>',
+    'hero-title': 'Not every<br>business fits<br><em>every way of working.</em>',
     'rp-eyebrow': 'Report Preview',
     'rp-title': 'What your <em>report looks like</em>',
     'rp-text': 'After the 50-question test you receive your full NeuroBusiness Report instantly \u2014 no waiting, no call needed.',
@@ -1462,7 +1476,7 @@ const T = {
     'rp-c2': '5-dimension profile as a visual representation',
     'rp-c3': 'Structural analysis \u2014 why your business has not been running optimally',
     'rp-c4': 'Your natural business model and visibility strategy',
-    'rp-c5': 'Burnout risk analysis based on D5 score',
+    'rp-c5': 'Overload indicator based on the D5 score',
     'rp-c6': '3 concrete next steps for immediate implementation',
     'rp-cta': 'Get my report now',
   }
@@ -2566,7 +2580,7 @@ const MODAL_TR = {
     'md-btn-text': 'Jetzt sichern \u2014 490 €',
     'md-security': 'Sichere Zahlung via Stripe · SSL-verschlüsselt',
     'md-alt': 'Fragen? <a href="mailto:hello@neurobusiness.one">hello@neurobusiness.one</a>',
-    'md-features': ['50-Fragen neuropsychologischer Test', 'Vollständiger Report mit 5-Dimensionen-Profil', '12 Monate NeuroBusiness AI inklusive <span style="color:var(--gold);font-size:11px">(Wert: 588 €)</span>', 'Wöchentliche Agenda jeden Montag für deinen Typ', 'Business-Brainstorming & Entscheidungs-Helfer'],
+    'md-features': ['50-Fragen psychologisch fundierte Business-Diagnostik', 'Vollständiger Report mit 5-Dimensionen-Profil', '12 Monate NeuroBusiness AI inklusive <span style="color:var(--gold);font-size:11px">(Wert: 588 €)</span>', 'Wöchentliche Agenda jeden Montag für deinen Typ', 'Business-Brainstorming & Entscheidungs-Helfer'],
   },
   en: {
     'md-eyebrow': 'NeuroBusiness™ Strategist',
@@ -2575,7 +2589,7 @@ const MODAL_TR = {
     'md-btn-text': 'Secure now \u2014 €490',
     'md-security': 'Secure payment via Stripe · SSL encrypted · All prices excl. VAT',
     'md-alt': 'Questions? <a href="mailto:hello@neurobusiness.one">hello@neurobusiness.one</a>',
-    'md-features': ['50-question neuropsychological test', 'Full report with 5-dimension profile', '12 months NeuroBusiness AI included <span style="color:var(--gold);font-size:11px">(value: €588)</span>', 'Weekly agenda every Monday for your type', 'Business brainstorming & decision helper'],
+    'md-features': ['50-question psychologically grounded business diagnostic', 'Full report with 5-dimension profile', '12 months NeuroBusiness AI included <span style="color:var(--gold);font-size:11px">(value: €588)</span>', 'Weekly agenda every Monday for your type', 'Business brainstorming & decision helper'],
   }
 };
 
@@ -2765,16 +2779,16 @@ document.addEventListener("DOMContentLoaded", function() {
     <h2>6b. Website-Tracking (Brevo)</h2>
     <p>Auf dieser Website ist der Brevo-Tracker eingebunden, der – sofern du einwilligst – Nutzungsdaten (z. B. besuchte Seiten, ausgelöste Ereignisse) erfasst und ggf. mit deiner E-Mail-Adresse verknüpft, um unsere Kommunikation relevanter zu gestalten. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO bzw. § 25 Abs. 1 TTDSG), die du jederzeit mit Wirkung für die Zukunft widerrufen kannst.</p>
 
-    <h2>6c. Freiwillige Einwilligung zur wissenschaftlichen Nutzung anonymisierter Diagnosedaten</h2>
+    <h2>6c. Freiwillige Einwilligung zur wissenschaftlichen Nutzung von Diagnosedaten</h2>
     <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (ausdrückliche Einwilligung). Diese Verarbeitung ist vollständig getrennt von der Geschäftsverarbeitung unter Abschnitt 3.</p>
-    <p><strong>Was gespeichert wird:</strong> Wenn du am Ende des Diagnostik-Fragebogens die optionale Checkbox aktivierst, werden deine 50 Einzelantworten (Zahlenwerte 1–5) sowie Angaben zu Branche, Berufsjahren und Sprache in anonymisierter Form gespeichert. Diese Daten enthalten <strong>keine</strong> E-Mail-Adresse, keinen Namen und kein sonstiges Identifikationsmerkmal. Es findet <strong>keine Verknüpfung</strong> mit deinem Nutzerprofil oder deinem berechneten Psychotyp-Ergebnis statt.</p>
-    <p><strong>Zweck:</strong> Die anonymisierten Daten werden ausschließlich zur psychometrischen Validierung des NeuroBusiness™-Diagnostikinstruments verwendet (u. a. Reliabilitätsanalyse, Faktorenstruktur, Normierung). Eine kommerzielle Nutzung, Weitergabe an Dritte oder Nutzung zu Marketingzwecken findet nicht statt.</p>
-    <p><strong>Freiwilligkeit:</strong> Die Einwilligung ist vollständig freiwillig. Die Durchführung der Diagnostik und die Anzeige deines Ergebnisses sind unabhängig davon, ob du das Häkchen setzt. Es entstehen dir keinerlei Nachteile, wenn du die Einwilligung verweigern.</p>
-    <p><strong>Widerruf:</strong> Du kannst diese Einwilligung jederzeit ohne Angabe von Gründen widerrufen. Da die gespeicherten Daten keinen Rückschluss auf deine Person erlauben, ist eine nachträgliche Löschung deines spezifischen Datensatzes technisch nicht möglich. Durch den Widerruf wird die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung nicht berührt.</p>
+    <p><strong>Was gespeichert wird:</strong> Wenn du im Diagnostik-Fragebogen die optionale Forschungs-Checkbox aktivierst, werden deine 50 Einzelantworten (Zahlenwerte 1–5), berechnete Scores, Sprache, technische Session-Metadaten sowie Angaben zu Branche und Berufsjahren gespeichert. Diese Validierungsdaten können mit deinem Kundenprofil verknüpft werden, damit Support, erneuter Report-Versand, Retest und Widerruf bearbeitet werden können.</p>
+    <p><strong>Zweck:</strong> Die Daten werden ausschließlich zur Erstellung und erneuten Bereitstellung deines Reports sowie bei freiwilliger Einwilligung zur psychometrischen Validierung des NeuroBusiness™-Diagnostikinstruments verwendet (u. a. Reliabilitätsanalyse, Faktorenstruktur, Normierung). Eine Weitergabe an Dritte oder Nutzung zu Marketingzwecken findet nicht statt.</p>
+    <p><strong>Freiwilligkeit:</strong> Die Einwilligung ist vollständig freiwillig. Die Durchführung der Diagnostik und die Anzeige deines Ergebnisses sind unabhängig davon, ob du das Häkchen setzt. Es entstehen dir keinerlei Nachteile, wenn du die Einwilligung verweigerst.</p>
+    <p><strong>Widerruf:</strong> Du kannst dich jederzeit mit Fragen oder einem Widerruf an uns wenden. Weil die Validierungsdaten bei Einwilligung mit deinem Kundenprofil verknüpft werden können, können wir deine zugeordneten Forschungsdaten sperren oder löschen, soweit keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Durch einen Widerruf wird die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung nicht berührt.</p>
     <p><strong>Verantwortliche Stelle:</strong> Dipl.-Psychologin Eva Kolontai · Ritterstr. 59, 10969 Berlin · <a href="mailto:hello@germaninstitute.eu">hello@germaninstitute.eu</a></p>
 
     <p style="margin-top:16px;padding:12px 16px;background:rgba(255,255,255,0.04);border-left:3px solid rgba(201,169,110,0.4);border-radius:4px;font-size:13px;color:var(--text2)">
-      <em><strong>English summary — Voluntary Research Consent:</strong> If you check the optional box at the end of the questionnaire, your 50 anonymised answers (values 1–5) plus industry, years, and language may be used solely for scientific validation of this diagnostic instrument. No name, email, or identifier is stored. No link to your user profile is created. Consent is voluntary and may be withdrawn at any time by contacting <a href="mailto:hello@germaninstitute.eu" style="color:var(--text2)">hello@germaninstitute.eu</a>. Controller: Dipl.-Psychologin Eva Kolontai, Ritterstr. 59, 10969 Berlin, Germany.</em>
+      <em><strong>English summary — Voluntary Research Consent:</strong> If you check the optional research box, your 50 answers, computed scores, language, session metadata, industry and years may be used for scientific validation of this diagnostic instrument. The validation data may be linked to your customer profile so support, report re-send, retest and withdrawal requests can be handled. Consent is voluntary and can be withdrawn by contacting <a href="mailto:hello@germaninstitute.eu" style="color:var(--text2)">hello@germaninstitute.eu</a>. Controller: Dipl.-Psychologin Eva Kolontai, Ritterstr. 59, 10969 Berlin, Germany.</em>
     </p>
 
     <h2>7. Deine Rechte</h2>

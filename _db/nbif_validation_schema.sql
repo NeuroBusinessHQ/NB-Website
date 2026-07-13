@@ -6,16 +6,18 @@
 --       wissenschaftliche Validierung (N=500, CFA/SEM, IRT) extrahierbar —
 --       inkl. Item-Timing, Session-Metadaten, versioniertem Scoring und Audit.
 --
--- Grundprinzip: ANONYMER Forschungs-Topf. KEINE PII (kein user_id, keine E-Mail).
--- Die Person↔Report-Verknüpfung bleibt im bestehenden token→profiles-Flow.
+-- Grundprinzip: Bei freiwilliger Einwilligung verknuepfbarer Validierungs-Topf.
+-- PII bleibt in profiles; nbif_sessions speichert nur profile_id als Support-,
+-- Retest- und Widerrufsanker. E-Mail/Name werden nicht in NBIF-Tabellen kopiert.
 -- Additiv — bricht keine bestehenden Tabellen (profiles, diagnostic_responses …).
 --
 -- Ausführen im Supabase SQL Editor (einmalig).
 -- ============================================================================
 
--- 1. nbif_sessions — eine Zeile pro Testdurchlauf (anonym) -------------------
+-- 1. nbif_sessions — eine Zeile pro Testdurchlauf ----------------------------
 create table if not exists nbif_sessions (
   session_id               uuid primary key default gen_random_uuid(),
+  profile_id               uuid references profiles(id) on delete set null,
   participant_pseudonym    text,          -- optionaler stabiler Hash (KEIN Klartext-PII)
   started_at               timestamptz not null,
   completed_at             timestamptz,
@@ -33,6 +35,7 @@ create table if not exists nbif_sessions (
   response_set_warning     boolean default false,  -- Acquiescence-/Straightlining-Flag
   created_at               timestamptz default now()
 );
+create index if not exists idx_nbif_sessions_profile on nbif_sessions(profile_id);
 
 -- 2. nbif_raw_responses — LONG-Format: eine Zeile pro Item (50 pro Session) --
 --    Diese Struktur ist die saubere Basis für CFA/EFA/IRT + Timing-Analysen.
@@ -61,6 +64,8 @@ create table if not exists nbif_scores (
   primary_type   char(1),
   secondary_type char(1),
   burnout_flag   boolean,
+  subscales_json jsonb,
+  score_payload_json jsonb,
   computed_at    timestamptz default now()
 );
 
@@ -87,15 +92,17 @@ where se.consent_research = true
   and se.completion_status = 'completed'
   and coalesce(se.response_set_warning, false) = false;
 
--- 6. v_nbif_export — flacher, anonymer Export (Items + Scores) ---------------
+-- 6. v_nbif_export — flacher Validierungs-Export (Items + Scores) ------------
 --    Ziel-Format für CSV/JSON-Export an die Validierungs-Analyse (R/Python/SPSS).
 create or replace view v_nbif_export as
 select se.session_id, se.lang, se.scoring_version, se.completed_at, se.duration_ms,
        se.device_type, se.consent_source, se.response_set_warning,
+       se.profile_id,
        rr.question_id, rr.dimension, rr.response_value, rr.response_time_ms,
        sc.d1_score, sc.d2_score, sc.d3_score, sc.d4_score, sc.d5_score,
        sc.s_score, sc.v_score, sc.m_score, sc.c_score, sc.g_score,
-       sc.primary_type, sc.secondary_type, sc.burnout_flag
+       sc.primary_type, sc.secondary_type, sc.burnout_flag,
+       sc.subscales_json, sc.score_payload_json
 from nbif_sessions se
 join nbif_raw_responses rr on rr.session_id = se.session_id
 left join nbif_scores sc on sc.session_id = se.session_id
@@ -116,7 +123,15 @@ create policy nbif_audit_service    on nbif_audit_log     for all to service_rol
 -- ── Initialer Audit-Eintrag: aktuelle Scoring-Version festhalten ──
 insert into nbif_audit_log (event_type, scoring_version, detail)
 values ('scoring_version_deployed', 'nbif-2026-06-efa',
-        '{"note":"EFA-validierte Formel (D4/D5 refactored 2026-06). Quelle: diagnostic.html computeScores.","dims":"D1=Q1-10,D2=Q11-20,D3=Q21-30,D4=Q31-40,D5=Q41-50"}'::jsonb);
+        '{"note":"Pilot-Scoring-Formel (D4/D5 refactored 2026-06). Quelle: diagnostic.html computeScores.","dims":"D1=Q1-10,D2=Q11-20,D3=Q21-30,D4=Q31-40,D5=Q41-50"}'::jsonb);
+
+insert into nbif_audit_log (event_type, scoring_version, detail)
+values ('scoring_version_deployed', 'nbif-1.1-cognitive-pilot-2026-07',
+        '{"note":"NBIF 1.1 Cognitive Pilot. Speichert Subscales und vollständigen Score-Payload für reproduzierbare Validierungsaudits.","source":"diagnostic.html computeScores","payload_columns":["subscales_json","score_payload_json"]}'::jsonb);
+
+insert into nbif_audit_log (event_type, scoring_version, detail)
+values ('schema_migration', 'nbif-1.1-cognitive-pilot-2026-07',
+        '{"migration":"add_nbif_profile_link_for_consented_data","tables":["nbif_sessions"],"columns":["profile_id"],"reason":"Support, Report-Re-Send, Retest und Widerruf bei freiwilliger Datennutzung ermöglichen."}'::jsonb);
 
 -- ============================================================================
 -- Fertig. Nächste Schritte (Code, separat):

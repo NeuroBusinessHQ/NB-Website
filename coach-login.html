@@ -521,6 +521,18 @@ function hideLoading() {
 }
 
 async function showLoggedIn(user) {
+  // Der Login ist ausschließlich der Zugang zum Portal. Bestehende Coaches
+  // landen immer zuerst in ihrer Klient:innenverwaltung; neue Einladungen sind
+  // dort eine sekundäre Aktion. Der Passwort-Reset bleibt auf dieser Seite.
+  const isPasswordUpdate = new URLSearchParams(window.location.search).get('mode') === 'update-password';
+  if (!isPasswordUpdate) {
+    const dashboardUrl = window.location.protocol === 'file:'
+      ? './practitioner.html'
+      : '/practitioner.html';
+    window.location.replace(dashboardUrl);
+    return;
+  }
+
   document.getElementById('auth-forms').style.display = 'none';
 
   const email = user.email || '';

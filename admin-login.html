@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="canonical" href="https://admin.neurobusiness.one/admin-login.html">
+  <title>NeuroBusiness Admin – Anmeldung</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8/dist/umd/supabase.js"></script>
+  <style>
+    :root{color-scheme:dark;--bg:#171511;--card:#222019;--gold:#c9a84c;--text:#f7f2e8;--muted:#aaa398;--danger:#e78278}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(circle at top,#2b271e,var(--bg) 55%);font:15px/1.5 system-ui,sans-serif;color:var(--text)}
+    main{width:min(420px,calc(100% - 32px));padding:34px;border:1px solid #3d382d;border-radius:16px;background:var(--card);box-shadow:0 20px 70px #0008}
+    h1{font:30px Georgia,serif;margin:0 0 4px}h1 span{color:var(--gold)}p{color:var(--muted);margin:0 0 28px}
+    label{display:block;margin:14px 0 6px;font-weight:650}input{width:100%;padding:12px 14px;border:1px solid #494337;border-radius:8px;background:#171511;color:var(--text);font:inherit}
+    button{width:100%;margin-top:20px;padding:12px;border:0;border-radius:8px;background:var(--gold);color:#171511;font-weight:800;cursor:pointer}button:disabled{opacity:.55;cursor:wait}
+    #message{min-height:24px;margin-top:16px;color:var(--danger)}.fine{font-size:12px;margin-top:18px;color:#777167}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Neuro<span>Business</span></h1>
+  <p>Administrationsbereich</p>
+  <form id="login-form">
+    <label for="email">E-Mail</label>
+    <input id="email" name="email" type="email" autocomplete="username" required>
+    <label for="password">Passwort</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required>
+    <button id="submit" type="submit">Sicher anmelden</button>
+  </form>
+  <div id="message" role="alert"></div>
+  <div class="fine">Die Adminberechtigung wird serverseitig geprüft.</div>
+</main>
+<script>
+let sb;
+
+async function initializeAuth() {
+  const response = await fetch('/api/auth-config', { cache: 'no-store' });
+  if (!response.ok) throw new Error('Anmeldung ist derzeit nicht verfügbar.');
+  const config = await response.json();
+  sb = window.supabase.createClient(config.supabaseUrl, config.supabasePublishableKey);
+  const { data: { session } } = await sb.auth.getSession();
+  if (session?.access_token && await verifyAdmin(session.access_token)) location.replace('/admin.html');
+}
+
+async function verifyAdmin(token) {
+  const response = await fetch('/api/admin/overview', {
+    headers: { Authorization: `Bearer ${token}` },
+    cache: 'no-store',
+  });
+  if (response.status === 403) {
+    if (sb) await sb.auth.signOut();
+    throw new Error('Kein Adminzugriff');
+  }
+  if (response.status === 401) return false;
+  if (!response.ok) throw new Error('Adminprüfung ist derzeit nicht verfügbar.');
+  return true;
+}
+
+document.getElementById('login-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const button = document.getElementById('submit');
+  const message = document.getElementById('message');
+  button.disabled = true;
+  message.textContent = '';
+  try {
+    const { data, error } = await sb.auth.signInWithPassword({
+      email: document.getElementById('email').value.trim(),
+      password: document.getElementById('password').value,
+    });
+    if (error || !data.session?.access_token) throw new Error('Anmeldung fehlgeschlagen.');
+    if (!await verifyAdmin(data.session.access_token)) throw new Error('Anmeldung fehlgeschlagen.');
+    location.replace('/admin.html');
+  } catch (error) {
+    if (error.message === 'Kein Adminzugriff' && sb) await sb.auth.signOut();
+    message.textContent = error.message === 'Kein Adminzugriff' ? 'Kein Adminzugriff' : 'Anmeldung fehlgeschlagen.';
+  } finally {
+    button.disabled = false;
+  }
+});
+
+initializeAuth().catch(error => {
+  document.getElementById('message').textContent = error.message;
+  if (error.message !== 'Kein Adminzugriff') document.getElementById('submit').disabled = true;
+});
+</script>
+</body>
+</html>

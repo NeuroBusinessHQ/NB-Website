@@ -1,560 +1,323 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NeuroBusiness™ Admin · Coach-Übersicht</title>
-<meta name="robots" content="noindex, nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<style>
-:root {
-  --c:  #1a3d35;
-  --c2: #15312a;
-  --c3: #0f2420;
-  --g:  #c9a96e;
-  --g2: #a8813e;
-  --p:  #7c6990;
-  --cr: #faf8f4;
-  --cr2:#f4f1eb;
-  --cr3:#ede9e0;
-  --dk: #1a1814;
-  --t1: #1a1814;
-  --t2: #4a4540;
-  --t3: #8a837a;
-  --fd: 'Cormorant Garamond', Georgia, serif;
-  --fb: 'Outfit', system-ui, sans-serif;
-  --fm: 'DM Mono', monospace;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { background: var(--c3); min-height: 100%; }
-body {
-  background: var(--c3);
-  color: var(--cr);
-  font-family: var(--fb);
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-/* ── Screens ── */
-#screen-loading,
-#screen-denied,
-#screen-main { display: none; }
-#screen-loading.visible,
-#screen-denied.visible,
-#screen-main.visible { display: block; }
-
-/* ── Loading ── */
-#screen-loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-.loading-text {
-  font-family: var(--fm);
-  font-size: 11px;
-  letter-spacing: .1em;
-  color: rgba(255,255,255,.3);
-  text-transform: uppercase;
-}
-
-/* ── Denied ── */
-#screen-denied {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center;
-  padding: 24px;
-}
-.denied-box {
-  max-width: 380px;
-}
-.denied-box h2 {
-  font-family: var(--fd);
-  font-size: 26px;
-  font-weight: 300;
-  margin-bottom: 10px;
-  color: rgba(255,255,255,.6);
-}
-.denied-box p {
-  font-size: 14px;
-  color: rgba(255,255,255,.3);
-  margin-bottom: 24px;
-}
-.btn-back {
-  font-family: var(--fm);
-  font-size: 11px;
-  letter-spacing: .06em;
-  color: var(--g);
-  text-decoration: none;
-  border: 1px solid rgba(201,169,110,.3);
-  padding: 10px 24px;
-  border-radius: 8px;
-  display: inline-block;
-  transition: all .2s;
-}
-.btn-back:hover { background: rgba(201,169,110,.08); }
-
-/* ── Main Layout ── */
-#screen-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 32px 80px;
-}
-
-/* ── Header ── */
-.page-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255,255,255,.07);
-}
-.page-logo {
-  font-family: var(--fd);
-  font-size: 28px;
-  font-weight: 300;
-  letter-spacing: -.02em;
-}
-.page-logo em { font-style: italic; color: var(--g); }
-.page-badge {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.3);
-  margin-top: 4px;
-}
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.admin-tag {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  background: rgba(201,169,110,.1);
-  border: 1px solid rgba(201,169,110,.25);
-  color: var(--g);
-  padding: 5px 12px;
-  border-radius: 20px;
-}
-.btn-logout-header {
-  font-family: var(--fm);
-  font-size: 11px;
-  letter-spacing: .05em;
-  color: rgba(255,255,255,.25);
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-decoration: underline;
-}
-.btn-logout-header:hover { color: rgba(255,255,255,.5); }
-
-/* ── Summary Tiles ── */
-.tiles {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 36px;
-}
-@media (max-width: 900px) {
-  .tiles { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 600px) {
-  .tiles { grid-template-columns: repeat(2, 1fr); }
-}
-.tile {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 16px;
-  padding: 24px 22px 20px;
-}
-.tile-label {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.3);
-  margin-bottom: 10px;
-}
-.tile-value {
-  font-family: var(--fd);
-  font-size: 42px;
-  font-weight: 300;
-  line-height: 1;
-  color: var(--cr);
-}
-.tile.tile-active .tile-value { color: var(--g); }
-.tile.tile-expired .tile-value { color: #e87070; }
-.tile.tile-demo .tile-value { color: var(--p); }
-
-/* ── Table ── */
-.table-wrap {
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: 16px;
-  overflow: hidden;
-}
-.table-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.table-title {
-  font-family: var(--fd);
-  font-size: 18px;
-  font-weight: 300;
-  color: rgba(255,255,255,.7);
-}
-.table-refresh {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.25);
-  background: none;
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 6px;
-  padding: 6px 14px;
-  cursor: pointer;
-  transition: all .2s;
-}
-.table-refresh:hover { color: rgba(255,255,255,.5); border-color: rgba(255,255,255,.2); }
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-th {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.3);
-  padding: 14px 16px 12px;
-  text-align: left;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  transition: color .15s;
-}
-th:hover { color: rgba(255,255,255,.55); }
-th.sort-asc::after  { content: ' ↑'; color: var(--g); }
-th.sort-desc::after { content: ' ↓'; color: var(--g); }
-td {
-  padding: 14px 16px;
-  border-bottom: 1px solid rgba(255,255,255,.04);
-  font-size: 14px;
-  vertical-align: middle;
-}
-tr:last-child td { border-bottom: none; }
-tr:hover td { background: rgba(255,255,255,.02); }
-
-.coach-name { font-weight: 400; color: var(--cr); }
-.coach-email { font-family: var(--fm); font-size: 11px; color: rgba(255,255,255,.35); margin-top: 2px; }
-
-/* Status-Badges */
-.badge-status {
-  display: inline-block;
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-weight: 400;
-}
-.badge-active  { background: rgba(201,169,110,.12); color: var(--g); border: 1px solid rgba(201,169,110,.25); }
-.badge-demo    { background: rgba(124,105,144,.12); color: #a899bb; border: 1px solid rgba(124,105,144,.25); }
-.badge-expired { background: rgba(232,112,112,.1);  color: #e87070; border: 1px solid rgba(232,112,112,.2); }
-
-/* Tier-Badges */
-.badge-tier {
-  display: inline-block;
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.3);
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(255,255,255,.05);
-}
-
-.days-left { font-family: var(--fm); font-size: 12px; color: rgba(255,255,255,.4); }
-.days-left.urgent { color: #e87070; }
-.client-count { font-family: var(--fm); font-size: 13px; color: rgba(255,255,255,.55); }
-.date-cell { font-family: var(--fm); font-size: 11px; color: rgba(255,255,255,.3); }
-
-/* ── Empty / Error States ── */
-.table-empty {
-  padding: 60px 24px;
-  text-align: center;
-  font-family: var(--fm);
-  font-size: 12px;
-  color: rgba(255,255,255,.2);
-  letter-spacing: .04em;
-}
-
-/* ── Last Updated ── */
-.last-updated {
-  font-family: var(--fm);
-  font-size: 10px;
-  color: rgba(255,255,255,.18);
-  text-align: right;
-  margin-top: 16px;
-  letter-spacing: .04em;
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="canonical" href="https://admin.neurobusiness.one/">
+  <title>NeuroBusiness Admin</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8/dist/umd/supabase.js"></script>
+  <style>
+    :root{--bg:#f4f0e8;--card:#fff;--ink:#1d1a16;--muted:#746e65;--line:#ddd6ca;--gold:#aa8430;--dark:#1b1915;--danger:#a83c34;--ok:#25724a}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,sans-serif}button,input,select,textarea{font:inherit}
+    header{position:sticky;top:0;z-index:5;display:flex;gap:20px;align-items:center;justify-content:space-between;padding:14px 22px;background:var(--dark);color:#fff}header strong{font:21px Georgia,serif}header strong span{color:#d0aa55}.header-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.header-tools input{width:min(260px,32vw);padding:8px 10px;border:1px solid #4a463e;border-radius:7px;background:#292620;color:#fff}
+    nav{display:flex;gap:5px;overflow:auto;padding:10px 18px;background:#fff;border-bottom:1px solid var(--line)}nav button,.secondary{border:1px solid var(--line);background:#fff;border-radius:7px;padding:8px 11px;cursor:pointer;white-space:nowrap}nav button.active{background:var(--dark);color:#fff;border-color:var(--dark)}
+    .quickbar{display:flex;gap:7px;overflow:auto;padding:9px 18px;background:#eee8dc;border-bottom:1px solid var(--line)}.quickbar button{border:1px solid #cfc4b1;background:#fff;border-radius:7px;padding:7px 10px;white-space:nowrap;cursor:pointer}.quickbar button:first-child{background:var(--gold);color:#fff;border-color:var(--gold)}
+    main{max-width:1280px;margin:auto;padding:22px}.toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap}.toolbar input{width:min(360px,70vw);padding:9px 11px;border:1px solid var(--line);border-radius:7px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}.stat,.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}.stat b{display:block;font-size:26px}.stat span{color:var(--muted);font-size:12px}
+    table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line)}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:12px;color:var(--muted);background:#faf8f4}tr[data-id]{cursor:pointer}tr[data-id]:hover{background:#fffaf0}
+    .badge{display:inline-block;border-radius:99px;padding:3px 8px;background:#eee9df;font-size:11px}.badge.admin,.badge.active,.badge.success,.badge.resolved{background:#e5f4eb;color:var(--ok)}.badge.error,.badge.open,.badge.revoked{background:#f8e8e6;color:var(--danger)}
+    .primary{border:0;border-radius:7px;padding:9px 12px;background:var(--gold);color:#fff;font-weight:700;cursor:pointer}.danger{border:1px solid #ddb8b3;background:#fff;color:var(--danger);border-radius:7px;padding:7px 10px;cursor:pointer}.primary:disabled,.secondary:disabled{opacity:.55;cursor:wait}.stack{display:grid;gap:12px}.split{display:grid;grid-template-columns:minmax(280px,420px) 1fr;gap:16px}.notice{padding:12px;border:1px solid #e3cf92;background:#fff9df;border-radius:8px}.success{padding:12px;border:1px solid #b9dcc7;background:#edf8f1;border-radius:8px;color:var(--ok)}.danger-text{color:var(--danger)}pre{white-space:pre-wrap;word-break:break-word;background:#f7f4ee;padding:10px;border-radius:7px}.small{font-size:12px}.right{text-align:right}
+    #message{display:none;margin:0 0 14px;padding:12px;border-radius:8px;background:#f8e8e6;color:var(--danger)}#loading{padding:50px;text-align:center;color:var(--muted)}
+    dialog{width:min(760px,calc(100% - 28px));max-height:88vh;border:1px solid var(--line);border-radius:12px;padding:0;box-shadow:0 30px 90px #0007}dialog::backdrop{background:#0008}.modal-head{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border-bottom:1px solid var(--line)}.modal-body{padding:18px;overflow:auto}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid label{display:grid;gap:5px}.form-grid input,.form-grid select,.form-grid textarea{padding:9px;border:1px solid var(--line);border-radius:7px}.wide{grid-column:1/-1}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.muted{color:var(--muted)}
+    @media(max-width:800px){main{padding:14px}.form-grid,.split{grid-template-columns:1fr}.table-wrap{overflow:auto}header{padding:12px 14px}.header-tools input{width:46vw}th,td{padding:8px}}
+  </style>
 </head>
 <body>
-
-<!-- ── Loading ── -->
-<div id="screen-loading" class="visible">
-  <div class="loading-text">Wird geladen…</div>
+<header>
+  <strong>Neuro<span>Business</span> Admin</strong>
+  <div class="header-tools"><input id="global-user-search" type="email" placeholder="User per E-Mail prüfen"><button class="secondary" id="global-user-check">Prüfen</button><span id="admin-email"></span><button class="secondary" id="logout">Abmelden</button></div>
+</header>
+<nav id="nav">
+  <button data-view="overview" class="active">Übersicht</button>
+  <button data-view="users">Nutzer</button>
+  <button data-view="customers">Kunden</button>
+  <button data-view="access">Zugänge</button>
+  <button data-view="teams">Teams</button>
+  <button data-view="sales">Sales</button>
+  <button data-view="reports">Reports</button>
+  <button data-view="errors">Fehler</button>
+</nav>
+<div class="quickbar" id="quickbar">
+  <button data-action="custom-access">+ Sonderzugang</button>
+  <button data-action="report">Report senden</button>
+  <button data-action="token">Token verlängern</button>
+  <button data-action="errors">Fehler prüfen</button>
+  <button data-action="user-check">User prüfen</button>
 </div>
-
-<!-- ── Kein Zugriff ── -->
-<div id="screen-denied">
-  <div class="denied-box">
-    <h2>Kein Zugriff</h2>
-    <p>Diese Seite ist nur für Administratoren zugänglich.</p>
-    <a href="coach-login.html" class="btn-back">← Zurück zum Login</a>
-  </div>
-</div>
-
-<!-- ── Haupt-Admin-Ansicht ── -->
-<div id="screen-main">
-
-  <!-- Header -->
-  <div class="page-header">
-    <div>
-      <div class="page-logo">Neuro<em>Business</em>™</div>
-      <div class="page-badge">Admin · Coach-Übersicht</div>
-    </div>
-    <div class="header-right">
-      <span class="admin-tag">Eva · Admin</span>
-      <button class="btn-logout-header" onclick="handleLogout()">Abmelden</button>
-    </div>
-  </div>
-
-  <!-- Summary Tiles -->
-  <div class="tiles">
-    <div class="tile">
-      <div class="tile-label">Coaches gesamt</div>
-      <div class="tile-value" id="tile-total">—</div>
-    </div>
-    <div class="tile tile-active">
-      <div class="tile-label">Coach aktiv</div>
-      <div class="tile-value" id="tile-active">—</div>
-    </div>
-    <div class="tile tile-demo">
-      <div class="tile-label">Demo</div>
-      <div class="tile-value" id="tile-demo">—</div>
-    </div>
-    <div class="tile tile-expired">
-      <div class="tile-label">Abgelaufen</div>
-      <div class="tile-value" id="tile-expired">—</div>
-    </div>
-    <div class="tile tile-active">
-      <div class="tile-label">Aktive Abos (49 €)</div>
-      <div class="tile-value" id="tile-subs">—</div>
-    </div>
-  </div>
-
-  <!-- Tabelle -->
-  <div class="table-wrap">
-    <div class="table-header">
-      <div class="table-title">Alle Coaches</div>
-      <button class="table-refresh" onclick="loadData()">↻ Aktualisieren</button>
-    </div>
-    <div id="table-container">
-      <div class="table-empty">Daten werden geladen…</div>
-    </div>
-  </div>
-
-  <div class="last-updated" id="last-updated"></div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     JAVASCRIPT
-     ════════════════════════════════════════════════════════════════ -->
+<main>
+  <div id="message" role="alert"></div>
+  <div id="loading">Adminsession wird geprüft…</div>
+  <section id="content" hidden></section>
+</main>
+<dialog id="profile-dialog">
+  <div class="modal-head"><strong>Profil</strong><button class="secondary" onclick="document.getElementById('profile-dialog').close()">Schließen</button></div>
+  <div class="modal-body" id="profile-detail"></div>
+</dialog>
 <script>
-const SUPABASE_URL      = 'https://psqfrdpitjmfwvupmfdp.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzcWZyZHBpdGptZnd2dXBtZmRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDQ1NjQsImV4cCI6MjA5MzkyMDU2NH0.yUD24iRrINHLBRIJElmOJZPoBuoBcPGfayNGX38Oldg';
-// NIEMALS den service_role-Key verwenden!
+let sb;
+let session;
+let currentView = 'overview';
+const content = document.getElementById('content');
+const message = document.getElementById('message');
 
-const { createClient } = window.supabase;
-const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const fmt = value => value ? new Date(value).toLocaleString('de-DE') : '–';
+const badge = value => `<span class="badge ${esc(value)}">${esc(value || '–')}</span>`;
+const idempotencyKey = prefix => `${prefix}:${crypto.randomUUID()}`;
 
-const ADMIN_EMAIL = 'evaa.com@gmail.com';
-
-// Sortier-Status
-let sortCol = 'created_at';
-let sortDir = 'desc';
-let coachData = [];
-
-// ── Screen-Umschalter ──────────────────────────────────────────────────────
-function show(screenId) {
-  ['screen-loading', 'screen-denied', 'screen-main'].forEach(id => {
-    document.getElementById(id).classList.toggle('visible', id === screenId);
-  });
+function showError(text) {
+  message.textContent = text;
+  message.style.display = 'block';
 }
 
-// ── Datum formatieren ──────────────────────────────────────────────────────
-function fmtDate(iso) {
-  if (!iso) return '—';
-  return new Date(iso).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
-}
-
-// ── Status-Badge HTML ──────────────────────────────────────────────────────
-function statusBadge(s) {
-  const map = { active: 'badge-active', demo: 'badge-demo', expired: 'badge-expired' };
-  const label = { active: 'Aktiv', demo: 'Demo', expired: 'Abgelaufen' };
-  return `<span class="badge-status ${map[s] || ''}">${label[s] || s}</span>`;
-}
-
-// ── Tier-Badge HTML ────────────────────────────────────────────────────────
-function tierBadge(t) {
-  return `<span class="badge-tier">${t || '—'}</span>`;
-}
-
-// ── Tabelle rendern ────────────────────────────────────────────────────────
-function renderTable(data) {
-  if (!data.length) {
-    document.getElementById('table-container').innerHTML =
-      '<div class="table-empty">Noch keine Coaches registriert.</div>';
-    return;
+async function api(path, options = {}) {
+  const { data: { session: freshSession } } = await sb.auth.getSession();
+  session = freshSession;
+  if (!session?.access_token) {
+    location.replace('/admin-login.html');
+    throw new Error('Nicht angemeldet');
   }
+  const response = await fetch(`/api/admin${path}`, {
+    ...options,
+    headers: {
+      Authorization: `Bearer ${session.access_token}`,
+      ...(options.body ? {'Content-Type':'application/json'} : {}),
+      ...(options.headers || {}),
+    },
+    cache: 'no-store',
+  });
+  if (response.status === 401) {
+    await sb.auth.signOut();
+    location.replace('/admin-login.html');
+    throw new Error('Session abgelaufen');
+  }
+  if (response.status === 403) {
+    showError('Kein Adminzugriff');
+    throw new Error('Kein Adminzugriff');
+  }
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.message || 'Adminaktion fehlgeschlagen');
+  return data;
+}
 
-  // Tiles aktualisieren
-  document.getElementById('tile-total').textContent   = data.length;
-  document.getElementById('tile-active').textContent  = data.filter(r => r.status === 'active').length;
-  document.getElementById('tile-demo').textContent    = data.filter(r => r.status === 'demo').length;
-  document.getElementById('tile-expired').textContent = data.filter(r => r.status === 'expired').length;
-  const totalSubs = data.reduce((sum, r) => sum + Number(r.active_subscriptions || 0), 0);
-  document.getElementById('tile-subs').textContent    = totalSubs;
+function table(headers, rows) {
+  return `<div class="table-wrap"><table><thead><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`;
+}
 
-  // Spalten-Header mit Sort-Indikatoren
-  const cols = [
-    { key: 'first_name',           label: 'Coach' },
-    { key: 'status',               label: 'Status' },
-    { key: 'tier',                 label: 'Tier' },
-    { key: 'days_left',            label: 'Demo-Ablauf' },
-    { key: 'client_count',         label: 'Klienten' },
-    { key: 'active_subscriptions', label: 'Aktive Abos' },
-    { key: 'created_at',           label: 'Seit' },
+async function loadOverview() {
+  const data = await api('/overview');
+  const cards = [
+    ['Nutzer',data.profiles],['Aktive Tokens',data.active_tokens],['Abgelaufene Tokens',data.expired_tokens],
+    ['Diagnostiken gestartet',data.diagnostics],['Diagnostiken abgeschlossen',data.completed_diagnostics],
+    ['Offene Diagnostiken',data.open_diagnostics],['Reports versandt',data.sent_reports],
+    ['Fehler gesamt',data.errors],['Offene Fehler 24h',data.open_errors_24h],['Aktive Kunden',data.active_subscriptions]
   ];
-
-  const thead = `<thead><tr>${
-    cols.map(c => {
-      const cls = sortCol === c.key ? `sort-${sortDir}` : '';
-      return `<th class="${cls}" onclick="sortBy('${c.key}')">${c.label}</th>`;
-    }).join('')
-  }</tr></thead>`;
-
-  // Zeilen
-  const rows = data.map(r => {
-    const name = [r.first_name, r.last_name].filter(Boolean).join(' ') || '—';
-    const daysHtml = r.status === 'demo'
-      ? `<div class="days-left ${r.days_left <= 5 ? 'urgent' : ''}">${r.days_left} Tage</div><div class="date-cell">${fmtDate(r.demo_expires_at)}</div>`
-      : `<div class="date-cell">—</div>`;
-
-    return `<tr>
-      <td>
-        <div class="coach-name">${name}</div>
-        <div class="coach-email">${r.email || '—'}</div>
-      </td>
-      <td>${statusBadge(r.status)}</td>
-      <td>${tierBadge(r.tier)}</td>
-      <td>${daysHtml}</td>
-      <td><span class="client-count">${r.client_count ?? 0}</span></td>
-      <td><span class="client-count">${r.active_subscriptions ?? 0}</span></td>
-      <td><span class="date-cell">${fmtDate(r.created_at)}</span></td>
-    </tr>`;
-  }).join('');
-
-  document.getElementById('table-container').innerHTML =
-    `<table>${thead}<tbody>${rows}</tbody></table>`;
-
-  document.getElementById('last-updated').textContent =
-    'Zuletzt aktualisiert: ' + new Date().toLocaleTimeString('de-DE');
+  content.innerHTML = `<div class="toolbar"><div><h1>Übersicht</h1><div class="muted">Release A · sicherer operativer Bestand</div></div><button class="secondary" id="refresh-overview">Aktualisieren</button></div><div class="grid">${cards.map(([l,v])=>`<div class="stat"><b>${esc(v ?? '–')}</b><span>${esc(l)}</span></div>`).join('')}</div><div class="panel" style="margin-top:16px"><h2>Operative Hinweise</h2><div class="stack"><div>${Number(data.open_errors_24h||0)>0?`<span class="badge open">${esc(data.open_errors_24h)} neue/offene Fehler</span>`:'<span class="badge resolved">Keine neuen offenen Fehler</span>'}</div><div>${Number(data.open_diagnostics||0)>0?`<span class="badge">${esc(data.open_diagnostics)} Diagnostiken offen</span>`:'<span class="badge resolved">Keine offenen Diagnostiken</span>'}</div><div class="muted small">Coach-, Credit-, Provisions-, Order- und Organisationskennzahlen werden in Release A nicht angezeigt.</div></div></div>`;
+  document.getElementById('refresh-overview').addEventListener('click',()=>loadOverview().catch(e=>showError(e.message)));
 }
 
-// ── Sortieren ──────────────────────────────────────────────────────────────
-function sortBy(col) {
-  if (sortCol === col) {
-    sortDir = sortDir === 'asc' ? 'desc' : 'asc';
-  } else {
-    sortCol = col;
-    sortDir = 'asc';
+async function loadProfiles(search = '') {
+  const data = await api(`/profiles?limit=50&search=${encodeURIComponent(search)}`);
+  content.innerHTML = `<div class="toolbar"><div><h1>Nutzer</h1><div class="muted">Profile, Diagnostik- und Reportstatus</div></div><div><button class="secondary" id="open-diagnostics">Diagnostiken</button> <button class="primary" id="open-access">Sonderzugang</button> <input id="profile-search" placeholder="E-Mail oder Name" value="${esc(search)}"></div></div>` + table(
+    ['Name','E-Mail','Sprache','Rolle','Erstellt'],
+    data.rows.map(p=>`<tr data-id="${esc(p.id)}"><td>${esc(p.full_name||p.first_name||'–')}</td><td>${esc(p.email)}</td><td>${esc(p.lang||'–')}</td><td>${badge(p.role)}</td><td>${fmt(p.created_at)}</td></tr>`)
+  );
+  document.getElementById('profile-search').addEventListener('change', event => loadProfiles(event.target.value.trim()).catch(e=>showError(e.message)));
+  document.getElementById('open-access').addEventListener('click',()=>switchView('access'));
+  document.getElementById('open-diagnostics').addEventListener('click',()=>loadDiagnostics().catch(e=>showError(e.message)));
+  content.querySelectorAll('tr[data-id]').forEach(row => row.addEventListener('click', () => openProfile(row.dataset.id)));
+}
+
+async function loadDiagnostics() {
+  const data=await api('/diagnostics?limit=100');
+  content.innerHTML=`<div class="toolbar"><div><h1>Diagnostiken</h1><div class="muted">Bestehende Diagnostikläufe</div></div><button class="secondary" id="back-users">Zur Nutzerliste</button></div>${table(['User','Status','Typ','Erstellt','Abgeschlossen'],data.rows.map(row=>`<tr><td>${esc(row.user_id)}</td><td>${badge(row.status)}</td><td>${esc(row.psychotype||'–')}</td><td>${fmt(row.created_at)}</td><td>${fmt(row.completed_at)}</td></tr>`))}`;
+  document.getElementById('back-users').addEventListener('click',()=>switchView('users'));
+}
+
+async function checkUser(email) {
+  const clean = String(email||'').trim();
+  if (!clean) throw new Error('E-Mail fehlt');
+  const data = await api(`/users/check?email=${encodeURIComponent(clean)}`);
+  if (!data.exists) {
+    content.innerHTML = `<div class="toolbar"><h1>User prüfen</h1><button class="secondary" id="back-users">Zur Nutzerliste</button></div><div class="notice"><strong>Kein Nutzer gefunden</strong><div>${esc(clean)}</div><div class="actions"><button class="primary" id="create-checked-access">Sonderzugang anlegen</button></div></div>`;
+    document.getElementById('back-users').addEventListener('click',()=>switchView('users'));
+    document.getElementById('create-checked-access').addEventListener('click',()=>switchView('access',{email:clean}));
+    return;
   }
-  const sorted = [...coachData].sort((a, b) => {
-    const va = a[col] ?? '';
-    const vb = b[col] ?? '';
-    const cmp = va < vb ? -1 : va > vb ? 1 : 0;
-    return sortDir === 'asc' ? cmp : -cmp;
+  await openProfile(data.profile.id);
+}
+
+async function openProfile(id) {
+  const data = await api(`/profiles/${id}`);
+  const p = data.profile;
+  document.getElementById('profile-detail').innerHTML = `
+    <form id="profile-form" class="form-grid">
+      <label>Vorname<input name="first_name" value="${esc(p.first_name||'')}"></label>
+      <label>Vollständiger Name<input name="full_name" value="${esc(p.full_name||'')}"></label>
+      <label>Sprache<select name="lang"><option value="de" ${p.lang==='de'?'selected':''}>Deutsch</option><option value="en" ${p.lang==='en'?'selected':''}>English</option></select></label>
+      <label>Rolle<select name="role">${['user','tester','coach','admin'].map(r=>`<option ${p.role===r?'selected':''}>${r}</option>`).join('')}</select></label>
+      <label class="wide">Notizen<textarea name="notes" rows="4">${esc(p.notes||'')}</textarea></label>
+      <div class="wide muted">${esc(p.email)} · ID ${esc(p.id)}</div>
+      <div class="wide actions"><button class="primary" type="submit">Speichern</button><button class="secondary" type="button" id="new-token">Neuen Link senden</button></div>
+    </form>
+    <h3>Tokens</h3>${table(['Suffix','Status','Erstellt','Ablauf','Aktionen'],data.tokens.map(t=>`<tr><td>${esc(t.token_suffix)}</td><td>${badge(t.status)}</td><td>${fmt(t.created_at)}</td><td>${fmt(t.expires_at)}</td><td><button class="secondary token-action" data-id="${esc(t.id)}" data-action="extend">+30 Tage</button> <button class="secondary token-action" data-id="${esc(t.id)}" data-action="send_link">Senden</button> <button class="danger token-action" data-id="${esc(t.id)}" data-action="revoke">Widerrufen</button></td></tr>`))}
+    <h3>Letzte Diagnostik</h3><pre>${esc(JSON.stringify(data.diagnostic,null,2))}</pre>
+    <h3>Letzter Report</h3><pre>${esc(JSON.stringify(data.report,null,2))}</pre>
+    <h3>Admin-Aktivität</h3>${table(['Aktion','Status','Zeit'],(data.logs||[]).map(log=>`<tr><td>${esc(log.admin_action)}</td><td>${badge(log.status)}</td><td>${fmt(log.created_at)}</td></tr>`))}`;
+  const dialog = document.getElementById('profile-dialog');
+  if (!dialog.open) dialog.showModal();
+  document.getElementById('profile-form').addEventListener('submit', async event => {
+    event.preventDefault();
+    const form = new FormData(event.target);
+    await api(`/profiles/${id}`, {method:'PATCH',body:JSON.stringify(Object.fromEntries(form))});
+    await openProfile(id);
   });
-  renderTable(sorted);
+  document.getElementById('new-token').addEventListener('click', async () => {
+    await api('/tokens',{method:'POST',body:JSON.stringify({user_id:id,validity_days:7,send_link:true,idempotency_key:idempotencyKey('token-create')})});
+    await openProfile(id);
+  });
+  document.querySelectorAll('.token-action').forEach(button => button.addEventListener('click', async () => {
+    if (button.dataset.action === 'revoke' && !confirm('Token wirklich widerrufen?')) return;
+    await api(`/tokens/${button.dataset.id}/actions`,{method:'POST',body:JSON.stringify({action:button.dataset.action,days:30,idempotency_key:idempotencyKey('token-action')})});
+    await openProfile(id);
+  }));
 }
 
-// ── Daten laden ────────────────────────────────────────────────────────────
-async function loadData() {
-  document.getElementById('table-container').innerHTML =
-    '<div class="table-empty">Wird geladen…</div>';
-
-  const { data, error } = await sb.rpc('get_coaches_admin');
-  if (error) {
-    document.getElementById('table-container').innerHTML =
-      `<div class="table-empty">Fehler: ${error.message}</div>`;
-    return;
-  }
-
-  coachData = data || [];
-  // Standard-Sortierung: neueste zuerst
-  coachData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-  renderTable(coachData);
+function tokenRows(rows) {
+  return rows.map(t=>`<tr><td>${esc(t.email)}</td><td>${esc(t.token_suffix)}</td><td>${badge(t.status)}</td><td>${fmt(t.created_at)}</td><td>${fmt(t.expires_at)}</td><td><button class="secondary token-list-action" data-id="${esc(t.id)}" data-action="extend">+30 Tage</button> <button class="secondary token-list-action" data-id="${esc(t.id)}" data-action="send_link">Link senden</button> <button class="danger token-list-action" data-id="${esc(t.id)}" data-action="revoke">Widerrufen</button></td></tr>`);
 }
 
-// ── Logout ─────────────────────────────────────────────────────────────────
-async function handleLogout() {
-  await sb.auth.signOut();
-  window.location.href = 'coach-login.html';
+async function loadAccess(options = {}) {
+  const email = options.email || '';
+  const data = await api(`/tokens?limit=50${email?`&email=${encodeURIComponent(email)}`:''}`);
+  content.innerHTML = `<div class="toolbar"><div><h1>Zugänge und Tokens</h1><div class="muted">Sonderzugänge werden serverseitig erstellt und zugestellt.</div></div></div>
+  <div class="split"><form id="custom-access-form" class="panel form-grid">
+    <h2 class="wide">Sonderzugang</h2>
+    <label>Zugangstyp<select name="access_type"><option value="tester_research">Tester / Forschung</option><option value="demo">Demo</option><option value="partner">Kostenloser Partner</option><option value="offline_customer">Offline-Kunde / Rechnung</option><option value="internal_test">Interner Test</option></select></label>
+    <label>Grund<input name="reason" maxlength="500" placeholder="Pilot, Interview, interner Test"></label>
+    <label>E-Mail<input name="email" type="email" required value="${esc(email)}"></label>
+    <label>Vorname<input name="first_name" maxlength="160"></label>
+    <label>Sprache<select name="lang"><option value="de">Deutsch</option><option value="en">English</option></select></label>
+    <label>Produkt<select name="product"><option value="diagnostic">Diagnostic</option><option value="companion">Companion</option><option value="solo">Solo</option><option value="bundle">Bundle</option></select></label>
+    <label>Quelle<select name="source"><option value="manual_research">Manuell / Forschung</option><option value="linkedin">LinkedIn</option><option value="event">Event</option><option value="recommendation">Empfehlung</option><option value="offline_invoice">Offline-Rechnung</option><option value="other">Sonstiges</option></select></label>
+    <label>Gültigkeit<select name="validity_days"><option value="7">7 Tage</option><option value="14">14 Tage</option><option value="30" selected>30 Tage</option><option value="90">90 Tage</option></select></label>
+    <label>Forschungsstatus<select name="research_consent"><option value="yes">Explizit zugestimmt</option><option value="unknown" selected>Noch offen</option><option value="no">Nicht nutzen</option></select></label>
+    <div class="wide notice small">Der Magic Link wird ausschließlich serverseitig versendet. Vollständige Tokens werden nie angezeigt.</div>
+    <div class="wide actions"><button class="primary" type="submit">Sonderzugang erstellen</button><button class="secondary" type="button" id="check-access-user">User zuerst prüfen</button></div>
+    <div id="custom-access-result" class="wide"></div>
+  </form><section><div class="toolbar"><h2>Letzte Tokens</h2><input id="token-email-filter" type="email" placeholder="Nach E-Mail filtern" value="${esc(email)}"></div>${table(['E-Mail','Suffix','Status','Erstellt','Ablauf','Aktionen'],tokenRows(data.rows))}</section></div>`;
+  const form=document.getElementById('custom-access-form');
+  form.addEventListener('submit',async event=>{
+    event.preventDefault();const button=form.querySelector('button[type=submit]');button.disabled=true;
+    const body=Object.fromEntries(new FormData(form));body.validity_days=Number(body.validity_days);body.idempotency_key=idempotencyKey('custom-access');
+    try{const result=await api('/custom-access',{method:'POST',body:JSON.stringify(body)});document.getElementById('custom-access-result').innerHTML=`<div class="success"><strong>Zugang erstellt</strong><div>${esc(result.profile.email)} · Token ${esc(result.token.token_suffix)} · Link versandt</div></div>`;await loadAccess({email:body.email})}catch(error){showError(error.message)}finally{button.disabled=false}
+  });
+  document.getElementById('check-access-user').addEventListener('click',()=>checkUser(new FormData(form).get('email')).catch(e=>showError(e.message)));
+  document.getElementById('token-email-filter').addEventListener('change',event=>loadAccess({email:event.target.value.trim()}).catch(e=>showError(e.message)));
+  bindTokenActions(()=>loadAccess({email:document.getElementById('token-email-filter')?.value||''}));
 }
 
-// ── Init ───────────────────────────────────────────────────────────────────
-(async () => {
-  const { data: { session } } = await sb.auth.getSession();
+function bindTokenActions(reload) {
+  content.querySelectorAll('.token-list-action').forEach(button=>button.addEventListener('click',async()=>{
+    const action=button.dataset.action;if(action==='revoke'&&!confirm('Token wirklich widerrufen?'))return;
+    button.disabled=true;try{await api(`/tokens/${button.dataset.id}/actions`,{method:'POST',body:JSON.stringify({action,days:30,idempotency_key:idempotencyKey(`token-${action}`)})});await reload()}catch(error){showError(error.message)}finally{button.disabled=false}
+  }));
+}
 
-  if (!session?.user) {
-    // Nicht eingeloggt → weiterleiten
-    window.location.href = 'coach-login.html';
-    return;
-  }
+async function loadCustomers() {
+  const data=await api('/customers?limit=100');
+  const active=data.rows.filter(row=>['active','trialing'].includes(String(row.status||'').toLowerCase())).length;
+  const due=data.rows.filter(row=>['past_due','unpaid','incomplete'].includes(String(row.status||'').toLowerCase())).length;
+  content.innerHTML=`<div class="toolbar"><div><h1>Kunden</h1><div class="muted">Bestehende Subscriptions und verknüpfte Profile</div></div><button class="secondary" id="refresh-customers">Aktualisieren</button></div><div class="grid"><div class="stat"><b>${esc(active)}</b><span>Aktiv</span></div><div class="stat"><b>${esc(due)}</b><span>Zahlung offen</span></div><div class="stat"><b>${esc(data.rows.length)}</b><span>Gesamt</span></div></div><div style="margin-top:16px">${table(['Kunde','E-Mail','Status','Periode','Erstellt'],data.rows.map(row=>`<tr ${row.profile?.id?`data-id="${esc(row.profile.id)}"`:''}><td>${esc(row.profile?.full_name||row.profile?.first_name||'–')}</td><td>${esc(row.profile?.email||row.client_email||'–')}</td><td>${badge(row.status)}</td><td>${fmt(row.current_period_end)}</td><td>${fmt(row.created_at)}</td></tr>`))}</div>`;
+  document.getElementById('refresh-customers').addEventListener('click',()=>loadCustomers().catch(e=>showError(e.message)));
+  content.querySelectorAll('tr[data-id]').forEach(row=>row.addEventListener('click',()=>openProfile(row.dataset.id)));
+}
 
-  if (session.user.email !== ADMIN_EMAIL) {
-    // Kein Admin
-    show('screen-denied');
-    return;
-  }
+async function loadTeams() {
+  const data=await api('/teams?limit=100');
+  content.innerHTML=`<div class="toolbar"><div><h1>Teams</h1><div class="muted">Bestehende Team-Intelligence-Projekte</div></div></div><div class="split"><form id="team-form" class="panel form-grid"><h2 class="wide">Team anlegen</h2><label class="wide">Name<input name="name" required maxlength="120"></label><label>Owner-E-Mail<input name="owner_email" type="email"></label><label>Plätze<input name="seats" type="number" min="1" max="500" value="10"></label><div class="wide actions"><button class="primary" type="submit">Team erstellen</button></div><div id="team-result" class="wide"></div></form><section>${table(['Team','Code','Owner','Fortschritt','Erstellt'],data.rows.map(team=>`<tr><td>${esc(team.name)}</td><td>${esc(team.code||'–')}</td><td>${esc(team.owner_email||'–')}</td><td>${esc(team.completed)}/${esc(team.seats||'–')}</td><td>${fmt(team.created_at)}</td></tr>`))}</section></div>`;
+  const form=document.getElementById('team-form');form.addEventListener('submit',async event=>{event.preventDefault();const button=form.querySelector('button');button.disabled=true;const body=Object.fromEntries(new FormData(form));body.seats=Number(body.seats);body.idempotency_key=idempotencyKey('team-create');try{const result=await api('/teams',{method:'POST',body:JSON.stringify(body)});document.getElementById('team-result').innerHTML=`<div class="success"><strong>Team erstellt</strong><div>Code: ${esc(result.team.code)}</div><div>Owner-Key (nur jetzt anzeigen): <code>${esc(result.owner_key)}</code></div><div><a href="${esc(result.diagnostic_link)}" target="_blank" rel="noopener">Diagnostiklink öffnen</a></div></div>`;form.reset()}catch(error){showError(error.message)}finally{button.disabled=false}});
+}
 
-  // Admin → Daten laden und Seite zeigen
-  show('screen-main');
-  await loadData();
-})();
+async function loadSales() {
+  const data=await api('/sales/prospects?limit=200');
+  const statuses=['neu','angefragt','connected','dm','geantwortet','call','angebot','gewonnen','verloren','kein Interesse'];
+  content.innerHTML=`<div class="toolbar"><div><h1>Sales</h1><div class="muted">JWT-geschützte bestehende Sales-Pipeline</div></div><button class="secondary" id="sales-sprint">Wochen-Sprint vorbereiten</button></div><form id="sales-form" class="panel form-grid"><h2 class="wide">Prospect erfassen</h2><label>Name<input name="name" required maxlength="120"></label><label>LinkedIn-URL<input name="linkedin_url" maxlength="500"></label><label>Rolle<input name="role" maxlength="120"></label><label>Unternehmen<input name="company" maxlength="160"></label><label>Ziel<select name="target"><option value="practitioner">Practitioner</option><option value="team">Team Intelligence</option><option value="core">Core Program</option></select></label><label>Psychotyp<select name="type_guess"><option value="">Unbekannt</option><option>S</option><option>V</option><option>M</option><option>C</option><option>G</option></select></label><label class="wide">Notizen<textarea name="notes" rows="2" maxlength="4000"></textarea></label><div class="wide actions"><button class="primary" type="submit">Erfassen</button></div></form><div style="margin-top:16px">${table(['Prospect','Ziel','Fit','Status','Nächste Aktion','Aktionen'],data.prospects.map(p=>`<tr><td><strong>${esc(p.name)}</strong><div class="muted small">${esc([p.role,p.company].filter(Boolean).join(' · '))}</div></td><td>${esc(p.target||'–')}</td><td>${esc(p.fit_segment||'–')} ${esc(p.fit_score??'')}</td><td><select class="sales-status" data-id="${esc(p.id)}">${statuses.map(s=>`<option ${p.status===s?'selected':''}>${esc(s)}</option>`).join('')}</select></td><td>${esc(p.next_action||'–')}<div class="muted small">${fmt(p.next_action_at)}</div></td><td><button class="secondary sales-action" data-id="${esc(p.id)}" data-action="generate">Nachrichten</button> <button class="secondary sales-action" data-id="${esc(p.id)}" data-action="agent_run">Analyse</button></td></tr>`))}</div>`;
+  const form=document.getElementById('sales-form');form.addEventListener('submit',async event=>{event.preventDefault();const button=form.querySelector('button');button.disabled=true;const body=Object.fromEntries(new FormData(form));if(!body.type_guess)body.type_guess=null;try{await api('/sales/prospects',{method:'POST',body:JSON.stringify(body)});await loadSales()}catch(error){showError(error.message)}finally{button.disabled=false}});
+  content.querySelectorAll('.sales-status').forEach(select=>select.addEventListener('change',async()=>{select.disabled=true;try{await api(`/sales/prospects/${select.dataset.id}`,{method:'PATCH',body:JSON.stringify({status:select.value})})}catch(error){showError(error.message)}finally{select.disabled=false}}));
+  content.querySelectorAll('.sales-action').forEach(button=>button.addEventListener('click',async()=>{button.disabled=true;try{await api(`/sales/prospects/${button.dataset.id}/actions`,{method:'POST',body:JSON.stringify({action:button.dataset.action,agent:'phase3_all'})});await loadSales()}catch(error){showError(error.message)}finally{button.disabled=false}}));
+  document.getElementById('sales-sprint').addEventListener('click',async event=>{event.target.disabled=true;try{const result=await api('/sales/weekly-sprint',{method:'POST',body:JSON.stringify({weeklyLimit:100,minScore:58,generate:false})});alert(`Wochen-Sprint vorbereitet: ${result.prepared?.length||0}`)}catch(error){showError(error.message)}finally{event.target.disabled=false}});
+}
+
+async function loadGeneric(view, headers, rowFn) {
+  const data = await api(`/${view}?limit=50`);
+  content.innerHTML = `<h1>${esc(view[0].toUpperCase()+view.slice(1))}</h1>`+table(headers,data.rows.map(rowFn));
+}
+
+async function loadReports() {
+  const data = await api('/reports?limit=50');
+  content.innerHTML = `<h1>Reports</h1>`+table(['E-Mail','Status','Typ','Erstellt','Versand','Aktion'],data.rows.map(r=>`<tr><td>${esc(r.email||r.user_id)}</td><td>${badge(r.status)}</td><td>${esc(r.psychotype||'–')}</td><td>${fmt(r.created_at)}</td><td>${fmt(r.sent_at)}</td><td><button class="secondary resend" data-id="${esc(r.id)}">Erneut senden</button></td></tr>`));
+  content.querySelectorAll('.resend').forEach(button=>button.addEventListener('click',async()=>{
+    await api(`/reports/${button.dataset.id}/resend`,{method:'POST',body:JSON.stringify({lang:'de',idempotency_key:idempotencyKey('report')})});
+    await loadReports();
+  }));
+}
+
+async function loadErrors() {
+  const data = await api('/errors?limit=50');
+  content.innerHTML = `<h1>Fehler</h1>`+table(['Quelle','Code','Meldung','Status','Zeit','Aktion'],data.rows.map(e=>`<tr><td>${esc(e.source||'–')}</td><td>${esc(e.error_code||'–')}</td><td>${esc(e.error_message||'–')}</td><td>${badge(e.status)}</td><td>${fmt(e.created_at)}</td><td>${e.status!=='resolved'?`<button class="secondary resolve" data-id="${esc(e.id)}">Erledigt</button>`:''}</td></tr>`));
+  content.querySelectorAll('.resolve').forEach(button=>button.addEventListener('click',async()=>{
+    await api(`/errors/${button.dataset.id}`,{method:'PATCH',body:JSON.stringify({status:'resolved'})});
+    await loadErrors();
+  }));
+}
+
+const loaders = {
+  overview: loadOverview,
+  users: options => loadProfiles(options.search || ''),
+  customers: loadCustomers,
+  access: loadAccess,
+  teams: loadTeams,
+  sales: loadSales,
+  reports: loadReports,
+  errors: loadErrors,
+};
+
+async function switchView(view, options = {}) {
+  currentView = view;
+  message.style.display = 'none';
+  document.querySelectorAll('#nav button').forEach(button=>button.classList.toggle('active',button.dataset.view===view));
+  content.innerHTML = '<div id="loading">Daten werden geladen…</div>';
+  try { await loaders[view](options); } catch (error) { showError(error.message); }
+}
+
+document.getElementById('nav').addEventListener('click',event=>{
+  const view=event.target.dataset.view;if(view)switchView(view);
+});
+document.getElementById('quickbar').addEventListener('click',event=>{
+  const action=event.target.dataset.action;
+  if(action==='custom-access')switchView('access');
+  if(action==='report')switchView('reports');
+  if(action==='token')switchView('access');
+  if(action==='errors')switchView('errors');
+  if(action==='user-check'){document.getElementById('global-user-search').focus()}
+});
+document.getElementById('global-user-check').addEventListener('click',()=>checkUser(document.getElementById('global-user-search').value).catch(e=>showError(e.message)));
+document.getElementById('global-user-search').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();checkUser(event.target.value).catch(e=>showError(e.message))}});
+document.getElementById('logout').addEventListener('click',async()=>{await sb.auth.signOut();location.replace('/admin-login.html')});
+
+(async()=>{
+  const response=await fetch('/api/auth-config',{cache:'no-store'});
+  if(!response.ok)throw new Error('Auth-Konfiguration fehlt.');
+  const config=await response.json();
+  sb=window.supabase.createClient(config.supabaseUrl,config.supabasePublishableKey);
+  const result=await sb.auth.getSession();session=result.data.session;
+  if(!session?.access_token){location.replace('/admin-login.html');return}
+  document.getElementById('admin-email').textContent=session.user.email||'';
+  document.getElementById('loading').remove();content.hidden=false;
+  await switchView(currentView);
+})().catch(error=>showError(error.message));
 </script>
 </body>
 </html>

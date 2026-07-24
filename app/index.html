@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NeuroBusiness™ App Gateway | AI Companion & NBIS Platform™</title>
+    <meta name="description" content="Zugang zur bestehenden NeuroBusiness™ AI App und Preview der kommenden NBIS Platform™ für Practitioner, Teams und Organisationen.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://app.neurobusiness.one/">
+    <meta property="og:title" content="NeuroBusiness™ App Gateway">
+    <meta property="og:description" content="Öffnen Sie die bestehende NeuroBusiness™ AI App oder merken Sie sich für die kommende NBIS Platform™ vor.">
+    <meta property="og:image" content="https://neurobusiness.one/og-image.jpg">
+    <link rel="stylesheet" href="../assets/styles.css">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="topbar__inner">
+          <a class="brand" href="/">
+            <span class="brand__name">NeuroBusiness™</span>
+            <span class="brand__domain">app.neurobusiness.one</span>
+          </a>
+          <nav class="nav" aria-label="App Navigation">
+            <a href="#zugang">Zugang</a>
+            <a href="#platform">Platform</a>
+            <a href="#access">Warteliste</a>
+            <a class="button button--small" href="https://neurobusiness.one/app.html" data-cta="app-login">App öffnen</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero__content">
+            <p class="eyebrow">NeuroBusiness™ App Gateway</p>
+            <h1>Ein Eingang für AI Companion, Reports und die kommende NBIS Platform™.</h1>
+            <p class="lead">Die bestehende NeuroBusiness™ AI App ist bereits nutzbar. Die NBIS Platform™ wird der nächste Dashboard-Bereich für Practitioner, Teams, Credits, Reports und Organisationen.</p>
+            <p class="trust-line">Wenn Sie bereits einen NeuroBusiness-Zugang erhalten haben, öffnen Sie die AI App. Wenn Sie Practitioner- oder Team-Zugang möchten, können Sie sich hier vormerken.</p>
+            <div class="actions">
+              <!-- Login-Link: Dieser Button führt zur aktuell produktiven AI-App mit Access Gate. -->
+              <a class="button" href="https://neurobusiness.one/app.html" data-cta="app-login">Bestehenden Zugang öffnen</a>
+              <a class="button button--secondary" href="#access" data-cta="app-waitlist">Practitioner- oder Team-Zugang anfragen</a>
+            </div>
+          </div>
+          <aside class="visual screen" aria-label="NeuroBusiness App Vorschau">
+            <div class="rail"><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="screen-main">
+              <div class="metric-grid">
+                <div class="metric"><strong>AI</strong><span>Sparring</span></div>
+                <div class="metric"><strong>NBIS</strong><span>Platform</span></div>
+              </div>
+              <div class="matrix"><i></i><i></i><i></i><i></i></div>
+            </div>
+          </aside>
+        </section>
+
+        <section id="zugang" class="section section--surface">
+          <div class="section__inner">
+            <div class="section-heading">
+              <p class="section-kicker">Aktueller Zugang</p>
+              <h2>Die bestehende App bleibt dort, wo sie funktioniert.</h2>
+              <p class="lead">Die aktuelle NeuroBusiness™ AI App läuft weiter unter neurobusiness.one/app.html. Dort befinden sich Access Gate, Token-Validierung, AI Sparring, Weekly Agenda, Insights, Decision Log, Check-ins, Tasks und Feedback.</p>
+            </div>
+            <div class="grid grid--3">
+              <article class="card">
+                <h3>AI Companion</h3>
+                <p class="muted">Psychotyp-basiertes Business-Sparring mit sicherer Worker-Anbindung an die AI API.</p>
+              </article>
+              <article class="card">
+                <h3>Persönliches Dashboard</h3>
+                <p class="muted">Today View, Weekly Agenda, Insights, Decision Log und Profilansicht für bestehende Nutzer:innen.</p>
+              </article>
+              <article class="card">
+                <h3>Access Gate</h3>
+                <p class="muted">Zugang per registrierter E-Mail und Magic-Link-Token, inklusive Weiterleitung zur Diagnostik, falls noch kein Profil vorhanden ist.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="platform" class="section">
+          <div class="section__inner">
+            <div class="section-heading">
+              <p class="section-kicker">Nächste Ausbaustufe</p>
+              <h2>NBIS Platform™ wird der operative Bereich für Practitioner, Teams und Organisationen.</h2>
+              <p class="lead">Nicht als Ersatz für die bestehende AI App, sondern als Plattformschicht darüber: Kund:innen-Zuordnung, Reports, Credits, Practitioner-System und Team Intelligence.</p>
+            </div>
+            <div class="grid grid--4">
+              <article class="card">Client Profiles</article>
+              <article class="card">Reports</article>
+              <article class="card">Credits</article>
+              <article class="card">Practitioner Dashboard</article>
+              <article class="card">Team Matrix</article>
+              <article class="card">HR Overview</article>
+              <article class="card">Partner Network</article>
+              <article class="card">AI Companion</article>
+              <article class="card">Client Assignment</article>
+              <article class="card">Secure Login</article>
+            </div>
+          </div>
+        </section>
+
+        <section id="access" class="section section--surface">
+          <div class="section__inner">
+            <div class="section-heading">
+              <p class="section-kicker">Zugang vormerken</p>
+              <h2>Frühen Plattformzugang anfragen.</h2>
+              <p class="lead">Der erste Zugang zur NBIS Platform™ wird Founding Practitionern und Pilot-Unternehmen priorisiert bereitgestellt.</p>
+            </div>
+            <form class="card form" data-form="app-waitlist">
+              <!-- Cloudflare/Supabase: Dieses Formular später per Worker-Endpunkt speichern, z.B. /api/funnel-lead. -->
+              <!-- Partner-Dashboard: Hier später Practitioner-Rollen, Organisationen und Client Assignment verknüpfen. -->
+              <!-- Analytics Pixel: data-cta ist vorbereitet und wird in assets/main.js verarbeitet. -->
+              <div class="form-grid">
+                <div class="field"><label for="name">Name</label><input id="name" name="name" required></div>
+                <div class="field"><label for="email">E-Mail</label><input id="email" name="email" type="email" required></div>
+                <div class="field"><label for="type">Zugang</label><select id="type" name="type"><option>Practitioner</option><option>HR / Unternehmen</option><option>Partner</option><option>Bestehende:r Kund:in</option></select></div>
+                <div class="field"><label for="org">Organisation / Website</label><input id="org" name="org"></div>
+              </div>
+              <button class="button" type="submit" data-cta="app-waitlist">Zugang anfragen</button>
+              <p class="form-note" data-form-message></p>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer__inner">
+          <p><strong>NeuroBusiness™</strong></p>
+          <p>Businessbezogenes Analysemodell. Kein klinisches Testverfahren und keine medizinische Diagnostik.</p>
+          <div class="footer-links">
+            <a href="/impressum">Impressum</a>
+            <a href="/datenschutz">Datenschutz</a>
+            <a href="mailto:hello@neurobusiness.one">Kontakt</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="../assets/main.js"></script>
+  </body>
+</html>

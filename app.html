@@ -41,6 +41,16 @@ body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-siz
   padding: 24px;
 }
 #gate.hidden { display: none; }
+.gate-lang {
+  position: absolute; top: 24px; right: 32px;
+  display: flex; align-items: center; gap: 7px;
+  font-family: var(--fm); font-size: 11px; color: rgba(255,255,255,.35);
+}
+.gate-lang button {
+  padding: 3px 0; border: 0; background: transparent; color: var(--cr);
+  font: inherit; cursor: pointer; opacity: .42;
+}
+.gate-lang button.active { opacity: 1; font-weight: 500; }
 .gate-box {
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.1);
@@ -160,16 +170,12 @@ body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-siz
   cursor: pointer; transition: all .15s;
 }
 .tb-btn:hover { border-color: var(--dk); color: var(--dk); }
-.lang-pill {
-  display: flex; gap: 1px;
-  background: var(--cr2); border: 1px solid var(--b);
-  border-radius: 6px; overflow: hidden;
-}
+.lang-pill { display:flex;align-items:center;gap:7px; }
 .lang-pill span {
-  font-family: var(--fm); font-size: 10px; letter-spacing: .06em;
-  padding: 5px 9px; cursor: pointer; color: var(--t3); transition: all .15s;
+  font-family:var(--fm);font-size:11px;letter-spacing:.06em;padding:3px 0;cursor:pointer;color:var(--dk);opacity:.42;transition:opacity .15s;
 }
-.lang-pill span.active { background: var(--dk); color: var(--cr); }
+.lang-pill span.active { opacity:1;font-weight:500; }
+.lang-pill .lang-separator{cursor:default;opacity:.2}
 
 /* ── CHAT AREA ── */
 #chat-area { flex: 1; overflow-y: auto; padding: 28px; scroll-behavior: smooth; }
@@ -410,6 +416,11 @@ body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-siz
 
 <!-- ── GATE ── -->
 <div id="gate">
+  <div class="gate-lang" aria-label="Language">
+    <button id="gate-lang-de" type="button" onclick="setLang('de')">DE</button>
+    <span aria-hidden="true">/</span>
+    <button id="gate-lang-en" type="button" onclick="setLang('en')">EN</button>
+  </div>
   <div class="gate-box">
     <div class="gate-logo">NeuroBusiness<em>™</em></div>
     <div class="gate-title" id="g-title">Access your AI</div>
@@ -549,6 +560,7 @@ body { background: var(--cr); color: var(--t1); font-family: var(--fb); font-siz
       <div class="topbar-actions">
         <div class="lang-pill">
           <span id="lang-de" onclick="setLang('de')" class="active">DE</span>
+          <span class="lang-separator" aria-hidden="true">/</span>
           <span id="lang-en" onclick="setLang('en')">EN</span>
         </div>
         <button class="tb-btn" onclick="newChat()" id="lbl-clear">Clear</button>
@@ -580,6 +592,7 @@ const AI_ENDPOINT = 'https://neurobusiness.one/api/ai'; // Cloudflare Worker via
 // ── STATE ──
 let USER = null; // { email, name, type, typeName, typeEN, lang, token, userId, scores, burnoutAlert }
 let LANG = 'de';
+const NB_LANGUAGE_STORAGE_KEY = 'nb_language';
 let MODE = 'chat';
 let MESSAGES = []; // conversation history
 let CONV_ID = null; // aktuelle Conversation ID
@@ -760,7 +773,14 @@ async function validateToken(token) {
 async function init() {
   const params = new URLSearchParams(window.location.search);
   const token = params.get('token');
-  LANG = params.get('lang') || navigator.language.startsWith('de') ? 'de' : 'en';
+  const requestedLang = params.get('lang');
+  let storedLang = null;
+  try { storedLang = localStorage.getItem(NB_LANGUAGE_STORAGE_KEY); } catch(e) {}
+  LANG = requestedLang === 'en' || requestedLang === 'de'
+    ? requestedLang
+    : storedLang === 'en' || storedLang === 'de'
+      ? storedLang
+      : navigator.language.startsWith('de') ? 'de' : 'en';
 
   // Dev mode: bypass auth with URL params.
   // Lokal geöffnete Datei (file://) startet automatisch als Demo — greift NIE auf dem Live-Server.
@@ -788,7 +808,7 @@ async function init() {
     if (userData) {
       // No psychotype = hasn't done diagnostic yet → redirect there first
       if (!userData.psychotype) {
-        const redirectLang = userData.lang || LANG || 'de';
+        const redirectLang = requestedLang === 'en' || requestedLang === 'de' ? requestedLang : userData.lang || LANG || 'de';
         window.location.href = `diagnostic.html?token=${encodeURIComponent(token)}&lang=${redirectLang}`;
         return;
       }
@@ -798,7 +818,7 @@ async function init() {
         type: userData.psychotype || 'S',
         typeName: TYPES[userData.psychotype]?.de || userData.psychotype,
         typeEN: TYPES[userData.psychotype]?.en || userData.psychotype,
-        lang: userData.lang || LANG,
+        lang: requestedLang === 'en' || requestedLang === 'de' ? requestedLang : userData.lang || LANG,
         token,
         userId: userData.id,
         burnoutAlert: userData.burnout_alert || false,
@@ -817,7 +837,7 @@ async function init() {
   }
 
   // Show gate
-  updateGateLang();
+  setLang(LANG);
 }
 
 function launchApp() {
@@ -1924,20 +1944,26 @@ const UI = {
 };
 
 function setLang(lang) {
-  LANG = lang;
-  document.getElementById('lang-de').classList.toggle('active', lang === 'de');
-  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-  const labels = UI[lang] || UI.en;
+  LANG = lang === 'en' ? 'en' : 'de';
+  document.documentElement.lang = LANG;
+  try { localStorage.setItem(NB_LANGUAGE_STORAGE_KEY, LANG); } catch(e) {}
+  if (USER) USER.lang = LANG;
+  document.getElementById('lang-de').classList.toggle('active', LANG === 'de');
+  document.getElementById('lang-en').classList.toggle('active', LANG === 'en');
+  document.getElementById('gate-lang-de').classList.toggle('active', LANG === 'de');
+  document.getElementById('gate-lang-en').classList.toggle('active', LANG === 'en');
+  const labels = UI[LANG] || UI.en;
   Object.entries(labels).forEach(([id, txt]) => {
     const el = document.getElementById(id);
     if (el) el.textContent = txt;
   });
-  document.getElementById('msg-input').placeholder = lang === 'de' ? 'Frag deinen AI…' : 'Ask your AI…';
+  document.getElementById('msg-input').placeholder = LANG === 'de' ? 'Frag deinen AI…' : 'Ask your AI…';
   updateQuickPrompts();
   if (USER) {
     updateSidebar();
     if (MODE === 'chat' && MESSAGES.length === 0) showWelcome();
   }
+  updateGateLang();
 }
 
 function updateGateLang() {

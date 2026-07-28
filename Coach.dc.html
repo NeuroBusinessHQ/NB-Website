@@ -67,9 +67,10 @@
         <a href="./Team.dc.html" style="color:#15130f;text-decoration:none;font-size:14.5px;font-weight:500;opacity:0.78;" style-hover="opacity:1;">{{ navTeam }}</a>
         <a href="/coaches" style="color:#15130f;text-decoration:none;font-size:14.5px;font-weight:700;opacity:1;">{{ navCoach }}</a>
       </div>
-      <div style="display:flex;align-items:center;gap:4px;padding:3px;background:rgba(21,19,15,0.06);border-radius:20px;">
-        <button onClick="{{ setLangDe }}" style="border:none;background:{{ langDeBg }};color:#15130f;font-family:Manrope;font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:16px;cursor:pointer;">DE</button>
-        <button onClick="{{ setLangEn }}" style="border:none;background:{{ langEnBg }};color:#15130f;font-family:Manrope;font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:16px;cursor:pointer;">EN</button>
+      <div style="display:flex;align-items:center;gap:8px;font-family:Manrope;font-size:12px;letter-spacing:1px;">
+        <button onClick="{{ setLangDe }}" style="border:none;background:transparent;color:#15130f;font-family:Manrope;font-size:12px;font-weight:700;opacity:{{ langDeOpacity }};cursor:pointer;padding:0;">DE</button>
+        <span style="color:rgba(21,19,15,0.25);">/</span>
+        <button onClick="{{ setLangEn }}" style="border:none;background:transparent;color:#15130f;font-family:Manrope;font-size:12px;font-weight:700;opacity:{{ langEnOpacity }};cursor:pointer;padding:0;">EN</button>
       </div>
       <div style="position:relative;">
         <button onClick="{{ toggleLogin }}" style="border:none;background:transparent;color:#15130f;font-family:Manrope;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;padding:8px 0;">{{ loginLabel }}<span style="font-size:10px;">▾</span></button>
@@ -83,9 +84,10 @@
       </div>
       <a href="https://www.neurobusiness.one/quiz" style="background:#7c6fd6;color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:11px 20px;border-radius:8px;" style-hover="background:#6558c6;">{{ navCta }}</a>
     </div>
-    <div class="nb-mobile-lang" aria-label="Sprache" style="align-items:center;gap:1px;padding:3px;background:rgba(21,19,15,0.06);border-radius:18px;">
-      <button onClick="{{ setLangDe }}" style="border:none;background:{{ langDeBg }};color:#15130f;font-family:Manrope;font-size:11px;font-weight:700;padding:5px 7px;border-radius:14px;cursor:pointer;">DE</button>
-      <button onClick="{{ setLangEn }}" style="border:none;background:{{ langEnBg }};color:#15130f;font-family:Manrope;font-size:11px;font-weight:700;padding:5px 7px;border-radius:14px;cursor:pointer;">EN</button>
+    <div class="nb-mobile-lang" aria-label="Sprache" style="align-items:center;gap:6px;">
+      <button onClick="{{ setLangDe }}" style="border:none;background:transparent;color:#15130f;font-family:Manrope;font-size:11px;font-weight:700;padding:0;opacity:{{ langDeOpacity }};cursor:pointer;">DE</button>
+      <span style="color:rgba(21,19,15,0.25);">/</span>
+      <button onClick="{{ setLangEn }}" style="border:none;background:transparent;color:#15130f;font-family:Manrope;font-size:11px;font-weight:700;padding:0;opacity:{{ langEnOpacity }};cursor:pointer;">EN</button>
     </div>
     <a class="nb-mobile-cta" href="https://www.neurobusiness.one/quiz" style="background:#7c6fd6;color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;padding:9px 13px;border-radius:8px;">{{ navCtaMobile }}</a>
   </div>
@@ -635,9 +637,29 @@ const COPY = {
 
 const BAR_TARGETS = [60,120,80,170,130,210,160,240];
 
+const NB_LANGUAGE_STORAGE_KEY = "nb_language";
+function initialLanguage() {
+  const query = new URLSearchParams(window.location.search).get("lang");
+  if (query === "de" || query === "en") {
+    try { localStorage.setItem(NB_LANGUAGE_STORAGE_KEY, query); } catch (_) {}
+    return query;
+  }
+  try {
+    const stored = localStorage.getItem(NB_LANGUAGE_STORAGE_KEY);
+    if (stored === "de" || stored === "en") return stored;
+  } catch (_) {}
+  return (navigator.language || "").toLowerCase().startsWith("de") ? "de" : "en";
+}
+function persistLanguage(lang) {
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(NB_LANGUAGE_STORAGE_KEY, lang); } catch (_) {}
+}
+const INITIAL_LANGUAGE = initialLanguage();
+
 class Component extends DCLogic {
-  state = { lang:"de", loginOpen:false, barsGrown:false, contactSent:false };
+  state = { lang:INITIAL_LANGUAGE, loginOpen:false, barsGrown:false, contactSent:false };
   componentDidMount() {
+    persistLanguage(this.state.lang);
     setTimeout(() => this.setState({barsGrown:true}), 200);
     this.initMotion();
   }
@@ -697,8 +719,9 @@ class Component extends DCLogic {
     }));
     return {
       navProgramm:c.navProgramm, navInhalte:c.navInhalte, navPreise:c.navPreise, navKontakt:c.navKontakt, navSolo:c.navSolo, navTeam:c.navTeam, navCoach:c.navCoach, navCta:c.navCta, navCtaMobile:c.navCtaMobile,
-      setLangDe:()=>{document.documentElement.lang="de";this.setState({lang:"de"})}, setLangEn:()=>{document.documentElement.lang="en";this.setState({lang:"en"})},
+      setLangDe:()=>{persistLanguage("de");this.setState({lang:"de"})}, setLangEn:()=>{persistLanguage("en");this.setState({lang:"en"})},
       langDeBg: lang==="de"?"#fff":"transparent", langEnBg: lang==="en"?"#fff":"transparent",
+      langDeOpacity:lang==="de"?"1":"0.4", langEnOpacity:lang==="en"?"1":"0.4",
       loginLabel:c.loginLabel, loginItems:c.loginItems, loginOpen:this.state.loginOpen,
       toggleLogin:()=>this.setState(s=>({loginOpen:!s.loginOpen})),
 

@@ -106,6 +106,7 @@ export default {
         burnout_alert: burnout ? true : false,
         industry: industry || null,
         years_self_employed: years || null,
+        lang: lang === 'en' ? 'en' : 'de',
         diagnostic_completed_at: new Date().toISOString(),
         report_context: JSON.stringify({ primary, secondary: secondary || null, scores, subscales: subscales || null, burnout, industry, years, d1, d2, d3, d4, d5 }),
         consent_dsgvo: consentDsgvo === true,
@@ -257,11 +258,12 @@ export default {
       const expires_at = new Date(Date.now() + 7*24*60*60*1000).toISOString();
       await supabasePost('access_tokens', { email, token, user_id: userData.id, expires_at }, env);
 
-      const appUrl = `https://neurobusiness.one/app?token=${token}`;
+      const safeLang = lang === 'en' ? 'en' : 'de';
+      const appUrl = `https://neurobusiness.one/app?token=${encodeURIComponent(token)}&lang=${safeLang}`;
       fetch('https://evakolontai.app.n8n.cloud/webhook/nb-magic-link', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, token, appUrl, name: userData.first_name || '', lang }),
+        body: JSON.stringify({ email, token, appUrl, name: userData.first_name || '', lang: safeLang, language: safeLang }),
       }).catch(() => {});
 
       return json({ ok: true }, 200, corsHeaders);
@@ -552,15 +554,16 @@ export default {
     // ── /api/coach-clients → Klienten-Liste mit Report-Links ─────
     if (pathname === '/api/coach-clients') {
       const { coach, err } = await getCoach(); if (err) return err;
-      const ccProfiles = await supabaseGet(`profiles?coach_id=eq.${coach.id}&select=id,email,first_name,psychotype,secondary_psychotype,burnout_alert,diagnostic_completed_at&order=diagnostic_completed_at.desc.nullslast&limit=200`, env) || [];
+      const ccProfiles = await supabaseGet(`profiles?coach_id=eq.${coach.id}&select=id,email,first_name,lang,psychotype,secondary_psychotype,burnout_alert,diagnostic_completed_at&order=diagnostic_completed_at.desc.nullslast&limit=200`, env) || [];
       const ccClients = [];
       for (const p of ccProfiles) {
         let reportUrl = null;
         if (p.diagnostic_completed_at) {
           const tk = await supabaseGet(`access_tokens?user_id=eq.${p.id}&select=token,expires_at&order=expires_at.desc&limit=1`, env);
-          if (tk?.[0]) reportUrl = `https://neurobusiness.one/result_v2.html?token=${encodeURIComponent(tk[0].token)}`;
+          const reportFile = p.lang === 'en' ? 'result_v2_en.html' : 'result_v2.html';
+          if (tk?.[0]) reportUrl = `https://neurobusiness.one/${reportFile}?token=${encodeURIComponent(tk[0].token)}`;
         }
-        ccClients.push({ email: p.email, firstName: p.first_name, psychotype: p.psychotype, secondary: p.secondary_psychotype, burnout: !!p.burnout_alert, completedAt: p.diagnostic_completed_at, reportUrl });
+        ccClients.push({ email: p.email, firstName: p.first_name, lang: p.lang === 'en' ? 'en' : 'de', psychotype: p.psychotype, secondary: p.secondary_psychotype, burnout: !!p.burnout_alert, completedAt: p.diagnostic_completed_at, reportUrl });
       }
       return json({ clients: ccClients }, 200, corsHeaders);
     }

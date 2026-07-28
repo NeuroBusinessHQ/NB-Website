@@ -36,9 +36,10 @@ body{background:var(--cr);color:var(--t1);font-family:var(--fb);font-size:16px;l
 .nav-logo{font-family:var(--fd);font-size:22px;color:var(--dk);text-decoration:none;letter-spacing:-.01em}
 .nav-logo em{color:var(--go);font-style:normal}
 .nav-right{display:flex;align-items:center;gap:16px}
-.lang-sw{display:flex;gap:2px;background:var(--cr2);border:1px solid var(--bd);border-radius:6px;overflow:hidden}
-.lang-sw span{font-family:var(--fm);font-size:11px;letter-spacing:.06em;padding:5px 10px;cursor:pointer;transition:all .15s;color:var(--t3)}
-.lang-sw span.on{background:var(--dk);color:var(--cr)}
+.lang-sw{display:flex;align-items:center;gap:7px}
+.lang-sw span{font-family:var(--fm);font-size:11px;letter-spacing:.06em;padding:3px 0;cursor:pointer;transition:opacity .15s;color:var(--dk);opacity:.42}
+.lang-sw span.on{opacity:1;font-weight:500}
+.lang-sw .lang-separator{cursor:default;opacity:.2}
 .nav-step{font-family:var(--fm);font-size:11px;letter-spacing:.08em;color:var(--t3)}
 
 /* ── GATE (access check) ── */
@@ -178,6 +179,7 @@ initBrevo();
   <div class="nav-right">
     <div class="lang-sw">
       <span onclick="setLang('de')" id="lDE">DE</span>
+      <span class="lang-separator" aria-hidden="true">/</span>
       <span class="on" onclick="setLang('en')" id="lEN">EN</span>
     </div>
     <span class="nav-step" id="nav-step">Diagnostic</span>
@@ -646,6 +648,7 @@ function detectResponseSet(answers) {
 // STATE
 // ═══════════════════════════════════════════
 let lang = 'en';
+const NB_LANGUAGE_STORAGE_KEY = 'nb_language';
 let currentBlock = 0;
 let answers = new Array(50).fill(0); // 0 = unanswered
 let userData = {};
@@ -659,11 +662,12 @@ const itemTimeMs = new Array(50).fill(null);
 // LANGUAGE
 // ═══════════════════════════════════════════
 function setLang(l) {
-  lang = l;
-  document.documentElement.lang = l;
-  document.getElementById('lDE').classList.toggle('on', l==='de');
-  document.getElementById('lEN').classList.toggle('on', l==='en');
-  const t = TR[l];
+  lang = l === 'en' ? 'en' : 'de';
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(NB_LANGUAGE_STORAGE_KEY, lang); } catch(e) {}
+  document.getElementById('lDE').classList.toggle('on', lang==='de');
+  document.getElementById('lEN').classList.toggle('on', lang==='en');
+  const t = TR[lang];
   ['l-sub','gate-title','gate-sub','gate-btn','i-eye','i-sub','i-m1','i-m2','i-m3',
    'lbl-fn','lbl-ln','lbl-em','lbl-ind','lbl-yrs','btn-start-txt','i-note','nav-step',
    'calc-label'].forEach(id=>{
@@ -676,15 +680,40 @@ function setLang(l) {
   const crEl = document.getElementById('consent-research-txt');
   if(cdEl) cdEl.innerHTML = t['consent-dsgvo-txt'];
   if(crEl) crEl.innerHTML = t['consent-research-txt'];
+  updateCookieCopy();
   // Update placeholders
-  document.getElementById('f-firstname').placeholder = l==='de'?'Max':'Alex';
-  document.getElementById('f-email').placeholder = l==='de'?'deine@email.de':'your@email.com';
-  document.getElementById('f-industry').placeholder = l==='de'?'z.B. Coaching':'e.g. Consulting';
-  document.getElementById('f-years').placeholder = l==='de'?'z.B. 3':'e.g. 3';
+  document.getElementById('f-firstname').placeholder = lang==='de'?'Max':'Alex';
+  document.getElementById('f-email').placeholder = lang==='de'?'deine@email.de':'your@email.com';
+  document.getElementById('f-industry').placeholder = lang==='de'?'z.B. Coaching':'e.g. Consulting';
+  document.getElementById('f-years').placeholder = lang==='de'?'z.B. 3':'e.g. 3';
   // Re-render quiz if active
   if(document.getElementById('quiz').classList.contains('show')) {
     renderBlock(currentBlock);
   }
+}
+
+function updateCookieCopy() {
+  const copy = lang === 'en'
+    ? {
+        title: 'This website uses cookies',
+        body: 'We use Brevo for email marketing and analytics. By choosing “Accept all”, you consent to marketing cookies.',
+        essential: 'Essential only',
+        accept: 'Accept all'
+      }
+    : {
+        title: 'Diese Website verwendet Cookies',
+        body: 'Wir nutzen Brevo für E-Mail-Marketing und Analyse. Mit „Alle akzeptieren“ stimmst du dem Setzen von Marketing-Cookies zu.',
+        essential: 'Nur essenzielle',
+        accept: 'Alle akzeptieren'
+      };
+  const title = document.getElementById('cookie-title');
+  const body = document.getElementById('cookie-body');
+  const essential = document.getElementById('cookie-essential');
+  const accept = document.getElementById('cookie-accept');
+  if(title) title.textContent = copy.title;
+  if(body) body.textContent = copy.body;
+  if(essential) essential.textContent = copy.essential;
+  if(accept) accept.textContent = copy.accept;
 }
 
 function updateStartBtn() {
@@ -966,6 +995,7 @@ function submitQuiz() {
             referrerSource:         sessionMeta && sessionMeta.referrer || null,
             scoringVersion:         SCORING_VERSION,
             itemTimings:            itemTimeMs,
+            lang:                   lang,
           })
         });
       }
@@ -982,27 +1012,6 @@ function submitQuiz() {
       }
     } catch(e){}
 
-    // ── 3. n8n Webhook → löst Report-E-Mail aus (fire-and-forget) ──────
-    try {
-      fetch('https://evakolontai.app.n8n.cloud/webhook/diagnostic-complete', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          email:     userData.email,
-          firstName: userData.firstName,
-          lang:      lang,
-          primary:   result.primary,
-          secondary: result.secondary || null,
-          scores: { S: result.S, V: result.V, M: result.M, C: result.C, G: result.G },
-          burnout:   result.burnout ? true : false,
-          industry:  userData.industry || null,
-          years:     userData.years    || null,
-          token:     new URLSearchParams(window.location.search).get('token') || null
-        })
-      }).catch(()=>{});
-    } catch(e){}
-
-    // ── 4. Redirect zum Report ─────────────────────────────────────────
     const params = new URLSearchParams({
       type:    result.primary,
       s:       result.S,
@@ -1019,11 +1028,39 @@ function submitQuiz() {
     params.set('d3', result.d3); params.set('d4', result.d4);
     params.set('d5', result.d5);
     if(result.secondary) params.set('sec', result.secondary);
-    if(result.responseSetWarning) params.set('rsw', '1'); // response set warning flag
+    if(result.responseSetWarning) params.set('rsw', '1');
     const tkn = new URLSearchParams(window.location.search).get('token');
-    if(tkn) params.set('token', tkn); // Token weitergeben für nahtlosen Übergang zu app.html
+    if(tkn) params.set('token', tkn);
 
-    window.location.href = 'result_v2.html?' + params.toString();
+    const reportFile = lang === 'en' ? 'result_v2_en.html' : 'result_v2.html';
+    const reportUrl = new URL(reportFile, window.location.origin);
+    reportUrl.search = params.toString();
+
+    // ── 3. n8n Webhook → löst Report-E-Mail aus (fire-and-forget) ──────
+    try {
+      fetch('https://evakolontai.app.n8n.cloud/webhook/diagnostic-complete', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email:     userData.email,
+          firstName: userData.firstName,
+          lang:      lang,
+          language:  lang,
+          reportUrl: reportUrl.toString(),
+          report_url: reportUrl.toString(),
+          primary:   result.primary,
+          secondary: result.secondary || null,
+          scores: { S: result.S, V: result.V, M: result.M, C: result.C, G: result.G },
+          burnout:   result.burnout ? true : false,
+          industry:  userData.industry || null,
+          years:     userData.years    || null,
+          token:     new URLSearchParams(window.location.search).get('token') || null
+        })
+      }).catch(()=>{});
+    } catch(e){}
+
+    // ── 4. Redirect zum sprachrichtigen Report ─────────────────────────
+    window.location.href = reportUrl.toString();
   }, 4000);
 }
 
@@ -1033,8 +1070,14 @@ function submitQuiz() {
 document.addEventListener('DOMContentLoaded', ()=>{
   // Detect language from URL or browser
   const urlLang = new URLSearchParams(window.location.search).get('lang');
+  let storedLang = null;
+  try { storedLang = localStorage.getItem(NB_LANGUAGE_STORAGE_KEY); } catch(e) {}
   const browserLang = navigator.language?.startsWith('de') ? 'de' : 'en';
-  lang = urlLang || browserLang;
+  lang = urlLang === 'en' || urlLang === 'de'
+    ? urlLang
+    : storedLang === 'en' || storedLang === 'de'
+      ? storedLang
+      : browserLang;
   setLang(lang);
 
   // Check access (async — echte Supabase-Validierung)
@@ -1054,12 +1097,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 <div id="nb-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1814;border-top:1px solid rgba(201,169,110,0.25);padding:18px 24px;font-family:'Outfit',sans-serif">
   <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between">
     <div style="flex:1;min-width:240px">
-      <p style="margin:0 0 4px;font-size:13px;color:#fff;font-weight:500">Diese Website verwendet Cookies</p>
-      <p style="margin:0;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5">Wir nutzen Brevo für E-Mail-Marketing und Analyse. Mit „Alle akzeptieren" stimmst du dem Setzen von Marketing-Cookies zu.</p>
+      <p id="cookie-title" style="margin:0 0 4px;font-size:13px;color:#fff;font-weight:500">Diese Website verwendet Cookies</p>
+      <p id="cookie-body" style="margin:0;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5">Wir nutzen Brevo für E-Mail-Marketing und Analyse. Mit „Alle akzeptieren“ stimmst du dem Setzen von Marketing-Cookies zu.</p>
     </div>
     <div style="display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap">
-      <button onclick="nbSetConsent('essential')" style="background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);padding:9px 18px;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit;white-space:nowrap">Nur essenzielle</button>
-      <button onclick="nbSetConsent('all')" style="background:#c9a96e;border:none;color:#1a1814;padding:9px 18px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:600;font-family:inherit;white-space:nowrap">Alle akzeptieren</button>
+      <button id="cookie-essential" onclick="nbSetConsent('essential')" style="background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);padding:9px 18px;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit;white-space:nowrap">Nur essenzielle</button>
+      <button id="cookie-accept" onclick="nbSetConsent('all')" style="background:#c9a96e;border:none;color:#1a1814;padding:9px 18px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:600;font-family:inherit;white-space:nowrap">Alle akzeptieren</button>
     </div>
   </div>
 </div>
@@ -1067,6 +1110,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 if(!localStorage.getItem('nb_cookie_consent')){
   document.getElementById('nb-cookie-banner').style.display='block';
 }
+updateCookieCopy();
 function nbSetConsent(v){
   localStorage.setItem('nb_cookie_consent',v);
   document.getElementById('nb-cookie-banner').style.display='none';

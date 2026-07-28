@@ -24,6 +24,11 @@ em{font-style:italic;color:var(--gold2)}
 .wrap{max-width:860px;margin:0 auto;padding:60px 24px 100px}
 .logo{font-family:var(--font-display);font-size:22px;color:var(--dark);margin-bottom:6px}
 .logo em{color:var(--gold);font-style:normal}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.lang-switch{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:11px}
+.lang-switch button{margin:0;padding:3px 0;border:0;border-radius:0;background:transparent;color:var(--dark);font-family:var(--font-mono);font-size:11px;opacity:.42}
+.lang-switch button.active{background:transparent;color:var(--dark);opacity:1;font-weight:500}
+.lang-switch span{color:var(--text3);opacity:.4}
 .eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin:40px 0 14px}
 h1{font-family:var(--font-display);font-size:40px;font-weight:300;color:var(--dark);line-height:1.15;margin-bottom:14px}
 .lead{color:var(--text2);max-width:560px;margin-bottom:36px}
@@ -55,22 +60,29 @@ h2{font-family:var(--font-display);font-size:26px;font-weight:400;color:var(--da
 </head>
 <body>
 <div class="wrap">
-  <div class="logo">NeuroBusiness<em>™</em> <span style="font-family:var(--font-mono);font-size:11px;color:var(--gold2);letter-spacing:.1em">TEAM INTELLIGENCE</span></div>
+  <div class="topline">
+    <div class="logo">NeuroBusiness<em>™</em> <span style="font-family:var(--font-mono);font-size:11px;color:var(--gold2);letter-spacing:.1em">TEAM INTELLIGENCE</span></div>
+    <div class="lang-switch" aria-label="Language">
+      <button id="lang-de" type="button" onclick="setLanguage('de')">DE</button>
+      <span aria-hidden="true">/</span>
+      <button id="lang-en" type="button" onclick="setLanguage('en')">EN</button>
+    </div>
+  </div>
 
   <!-- LOGIN -->
   <div id="login">
     <div class="eyebrow">Team Dashboard</div>
-    <h1>Dein Team, <em>psychologisch sichtbar.</em></h1>
-    <p class="lead">Gib deinen Team-Code und deinen Zugangsschlüssel ein. Beides hast du beim Kauf der Team-Diagnostik erhalten.</p>
+    <h1 data-i18n-html="loginTitle">Dein Team, <em>psychologisch sichtbar.</em></h1>
+    <p class="lead" data-i18n="loginLead">Gib deinen Team-Code und deinen Zugangsschlüssel ein. Beides hast du beim Kauf der Team-Diagnostik erhalten.</p>
     <div class="card" style="max-width:460px">
-      <label for="f-code">Team-Code</label>
+      <label for="f-code" data-i18n="teamCode">Team-Code</label>
       <input id="f-code" placeholder="z. B. ACME24" autocomplete="off">
-      <label for="f-key">Zugangsschlüssel</label>
-      <input id="f-key" placeholder="12-stelliger Schlüssel" autocomplete="off">
-      <button id="btn-load" onclick="loadReport()">Dashboard öffnen</button>
+      <label for="f-key" data-i18n="accessKey">Zugangsschlüssel</label>
+      <input id="f-key" placeholder="12-stelliger Schlüssel" data-i18n-placeholder="accessKeyPlaceholder" autocomplete="off">
+      <button id="btn-load" onclick="loadReport()" data-i18n="openDashboard">Dashboard öffnen</button>
       <div class="err" id="err"></div>
     </div>
-    <p class="note">Kein Team-Zugang? <a href="teams.html" style="color:var(--gold2)">Team-Diagnostik anfragen →</a></p>
+    <p class="note" data-i18n-html="noAccess">Kein Team-Zugang? <a href="teams.html" style="color:var(--gold2)">Team-Diagnostik anfragen →</a></p>
   </div>
 
   <!-- REPORT -->
@@ -79,51 +91,106 @@ h2{font-family:var(--font-display);font-size:26px;font-weight:400;color:var(--da
     <h1>Team <em>Intelligence Report</em></h1>
 
     <div class="kpis">
-      <div class="kpi"><div class="kpi-val" id="k-completed">–</div><div class="kpi-lbl">Tests abgeschlossen</div></div>
-      <div class="kpi"><div class="kpi-val" id="k-seats">–</div><div class="kpi-lbl">Plätze gebucht</div></div>
-      <div class="kpi"><div class="kpi-val" id="k-burnout">–</div><div class="kpi-lbl">Burnout-Signale im Team</div></div>
+      <div class="kpi"><div class="kpi-val" id="k-completed">–</div><div class="kpi-lbl" data-i18n="testsCompleted">Tests abgeschlossen</div></div>
+      <div class="kpi"><div class="kpi-val" id="k-seats">–</div><div class="kpi-lbl" data-i18n="seatsBooked">Plätze gebucht</div></div>
+      <div class="kpi"><div class="kpi-val" id="k-burnout">–</div><div class="kpi-lbl" data-i18n="burnoutSignals">Burnout-Signale im Team</div></div>
     </div>
 
     <div class="card" id="c-waiting" style="display:none">
-      <h2>Noch nicht genug Daten</h2>
-      <p style="color:var(--text2)">Der aggregierte Report wird ab <strong>3 abgeschlossenen Tests</strong> angezeigt — so bleiben einzelne Antworten anonym. Lade dein Team ein, den Diagnostik-Link zu nutzen.</p>
+      <h2 data-i18n="notEnoughData">Noch nicht genug Daten</h2>
+      <p style="color:var(--text2)" data-i18n-html="notEnoughLead">Der aggregierte Report wird ab <strong>3 abgeschlossenen Tests</strong> angezeigt — so bleiben einzelne Antworten anonym. Lade dein Team ein, den Diagnostik-Link zu nutzen.</p>
     </div>
 
     <div id="c-data" style="display:none">
       <div class="card">
-        <h2>Psychotyp-Verteilung</h2>
+        <h2 data-i18n="typeDistribution">Psychotyp-Verteilung</h2>
         <div id="dist"></div>
       </div>
       <div class="card">
-        <h2>Team-Profil <span style="font-size:14px;color:var(--text3);font-family:var(--font-body)">(Ø Dimensionswerte)</span></h2>
+        <h2 data-i18n-html="teamProfile">Team-Profil <span style="font-size:14px;color:var(--text3);font-family:var(--font-body)">(Ø Dimensionswerte)</span></h2>
         <div id="avgs"></div>
       </div>
       <div class="card" id="c-gaps" style="display:none">
-        <h2>Abdeckungslücken</h2>
+        <h2 data-i18n="coverageGaps">Abdeckungslücken</h2>
         <div id="gaps"></div>
-        <p class="note">Eine Lücke ist kein Mangel — sie zeigt, welche Perspektive im Team bewusst kompensiert werden sollte.</p>
+        <p class="note" data-i18n="gapNotice">Eine Lücke ist kein Mangel — sie zeigt, welche Perspektive im Team bewusst kompensiert werden sollte.</p>
       </div>
       <div class="card" style="background:var(--dark);border-color:var(--dark)">
-        <h2 style="color:#fff">Nächster Schritt: Team-Debrief</h2>
-        <p style="color:rgba(255,255,255,.7);margin-bottom:8px">Die Daten zeigen das Was — im 60-minütigen Debrief mit Diplom-Psychologin Eva Kolontai bekommt dein Team das Warum und die konkreten Arbeitsregeln.</p>
-        <a class="cta" style="background:var(--gold);color:var(--dark)" href="https://zeeg.me/evak/15min">Debrief-Termin anfragen →</a>
+        <h2 style="color:#fff" data-i18n="nextStep">Nächster Schritt: Team-Debrief</h2>
+        <p style="color:rgba(255,255,255,.7);margin-bottom:8px" data-i18n="debriefLead">Die Daten zeigen das Was — im 60-minütigen Debrief mit Diplom-Psychologin Eva Kolontai bekommt dein Team das Warum und die konkreten Arbeitsregeln.</p>
+        <a class="cta" style="background:var(--gold);color:var(--dark)" href="https://zeeg.me/evak/15min" data-i18n="requestDebrief">Debrief-Termin anfragen →</a>
       </div>
     </div>
-    <p class="note">DSGVO-Hinweis: Dieses Dashboard zeigt ausschließlich aggregierte Teamwerte — niemals Einzelergebnisse. Jedes Teammitglied erhält seinen persönlichen Report privat.</p>
+    <p class="note" data-i18n="privacyNotice">DSGVO-Hinweis: Dieses Dashboard zeigt ausschließlich aggregierte Teamwerte — niemals Einzelergebnisse. Jedes Teammitglied erhält seinen persönlichen Report privat.</p>
   </div>
 </div>
 
 <script>
+const NB_LANGUAGE_STORAGE_KEY = 'nb_language';
+const COPY = {
+  de: {
+    loginTitle:'Dein Team, <em>psychologisch sichtbar.</em>', loginLead:'Gib deinen Team-Code und deinen Zugangsschlüssel ein. Beides hast du beim Kauf der Team-Diagnostik erhalten.',
+    teamCode:'Team-Code', accessKey:'Zugangsschlüssel', accessKeyPlaceholder:'12-stelliger Schlüssel', openDashboard:'Dashboard öffnen',
+    noAccess:'Kein Team-Zugang? <a href="teams.html" style="color:var(--gold2)">Team-Diagnostik anfragen →</a>',
+    testsCompleted:'Tests abgeschlossen', seatsBooked:'Plätze gebucht', burnoutSignals:'Burnout-Signale im Team',
+    notEnoughData:'Noch nicht genug Daten', notEnoughLead:'Der aggregierte Report wird ab <strong>3 abgeschlossenen Tests</strong> angezeigt — so bleiben einzelne Antworten anonym. Lade dein Team ein, den Diagnostik-Link zu nutzen.',
+    typeDistribution:'Psychotyp-Verteilung', teamProfile:'Team-Profil <span style="font-size:14px;color:var(--text3);font-family:var(--font-body)">(Ø Dimensionswerte)</span>',
+    coverageGaps:'Abdeckungslücken', gapNotice:'Eine Lücke ist kein Mangel — sie zeigt, welche Perspektive im Team bewusst kompensiert werden sollte.',
+    nextStep:'Nächster Schritt: Team-Debrief', debriefLead:'Die Daten zeigen das Was — im 60-minütigen Debrief mit Diplom-Psychologin Eva Kolontai bekommt dein Team das Warum und die konkreten Arbeitsregeln.',
+    requestDebrief:'Debrief-Termin anfragen →', privacyNotice:'DSGVO-Hinweis: Dieses Dashboard zeigt ausschließlich aggregierte Teamwerte — niemals Einzelergebnisse. Jedes Teammitglied erhält seinen persönlichen Report privat.',
+    missingCredentials:'Bitte Code und Schlüssel eingeben.', loading:'Lade…', invalidCredentials:'Code oder Schlüssel ungültig.', loadError:'Fehler beim Laden. Bitte später erneut versuchen.',
+    demoTeam:'Beispiel: Führungsteam TechCo GmbH', demoEyebrow:'DEMO · BEISPIELDATEN',
+    demoNotice:'<strong>Demo-Ansicht mit fiktiven Daten.</strong> So sieht dein Team-Report aus, sobald dein Team die Diagnostik abgeschlossen hat. <a href="teams.html" style="color:var(--gold2)">Team-Diagnostik anfragen →</a>'
+  },
+  en: {
+    loginTitle:'Your team, <em>psychologically visible.</em>', loginLead:'Enter your team code and access key. You received both when purchasing Team Intelligence.',
+    teamCode:'Team code', accessKey:'Access key', accessKeyPlaceholder:'12-character key', openDashboard:'Open dashboard',
+    noAccess:'No team access? <a href="Team.dc.html" style="color:var(--gold2)">Request Team Intelligence →</a>',
+    testsCompleted:'Assessments completed', seatsBooked:'Seats booked', burnoutSignals:'Overload signals in the team',
+    notEnoughData:'Not enough data yet', notEnoughLead:'The aggregated report is shown after <strong>3 completed assessments</strong>, keeping individual responses anonymous. Invite your team to use their diagnostic links.',
+    typeDistribution:'Psychotype distribution', teamProfile:'Team profile <span style="font-size:14px;color:var(--text3);font-family:var(--font-body)">(average dimension scores)</span>',
+    coverageGaps:'Coverage gaps', gapNotice:'A gap is not a deficit — it shows which perspective the team may need to reinforce consciously.',
+    nextStep:'Next step: team debrief', debriefLead:'The data shows what is happening. In a 60-minute debrief with psychologist Eva Kolontai, your team explores why and defines concrete working agreements.',
+    requestDebrief:'Request a debrief →', privacyNotice:'Privacy notice: This dashboard shows aggregated team values only — never individual results. Every team member receives their personal report privately.',
+    missingCredentials:'Please enter your code and access key.', loading:'Loading…', invalidCredentials:'Invalid code or access key.', loadError:'Could not load the dashboard. Please try again later.',
+    demoTeam:'Example: TechCo leadership team', demoEyebrow:'DEMO · SYNTHETIC DATA',
+    demoNotice:'<strong>Demo view with synthetic data.</strong> This is what your team report looks like after the team completes the diagnostic. <a href="Team.dc.html" style="color:var(--gold2)">Request Team Intelligence →</a>'
+  }
+};
 const TYPES = {
-  S: 'Der Stratege', V: 'Der Visionär', M: 'Der Builder', C: 'Der Connector', G: 'Der Hochleister'
+  de: { S:'Der Stratege', V:'Der Visionär', M:'Der Builder', C:'Der Connector', G:'Der Hochleister' },
+  en: { S:'The Strategist', V:'The Visionary', M:'The Builder', C:'The Connector', G:'The High Performer' }
 };
 const GAP_TEXT = {
-  S: 'Kein Stratege im Team — wer prüft Entscheidungen systematisch auf Risiken und Langfrist-Folgen?',
-  V: 'Kein Visionär im Team — wer bringt neue Richtungen und größere Bilder ein, bevor der Markt es erzwingt?',
-  M: 'Kein Builder im Team — wer sorgt dafür, dass Beschlossenes zuverlässig und schnell umgesetzt wird?',
-  C: 'Kein Connector im Team — wer hält Beziehungen zu Kunden, Partnern und im Team aktiv zusammen?',
-  G: 'Kein Hochleister im Team — wer zieht das Tempo an, wenn es auf Durchsetzung und Ergebnisse ankommt?'
+  de: {
+    S:'Kein Stratege im Team — wer prüft Entscheidungen systematisch auf Risiken und Langfrist-Folgen?', V:'Kein Visionär im Team — wer bringt neue Richtungen und größere Bilder ein, bevor der Markt es erzwingt?', M:'Kein Builder im Team — wer sorgt dafür, dass Beschlossenes zuverlässig und schnell umgesetzt wird?', C:'Kein Connector im Team — wer hält Beziehungen zu Kunden, Partnern und im Team aktiv zusammen?', G:'Kein Hochleister im Team — wer zieht das Tempo an, wenn es auf Durchsetzung und Ergebnisse ankommt?'
+  },
+  en: {
+    S:'No Strategist pattern in the team — who systematically tests decisions for risk and long-term consequences?', V:'No Visionary pattern in the team — who brings in new directions and the bigger picture before the market forces it?', M:'No Builder pattern in the team — who ensures decisions are implemented reliably and quickly?', C:'No Connector pattern in the team — who actively maintains relationships with customers, partners and colleagues?', G:'No High Performer pattern in the team — who raises the pace when execution and results matter most?'
+  }
 };
+function initialLanguage() {
+  const query = new URLSearchParams(location.search).get('lang');
+  if (query === 'de' || query === 'en') return query;
+  try {
+    const stored = localStorage.getItem(NB_LANGUAGE_STORAGE_KEY);
+    if (stored === 'de' || stored === 'en') return stored;
+  } catch(e) {}
+  return (navigator.language || '').toLowerCase().startsWith('de') ? 'de' : 'en';
+}
+let LANG = initialLanguage();
+let latestReport = null;
+function setLanguage(language) {
+  LANG = language === 'en' ? 'en' : 'de';
+  document.documentElement.lang = LANG;
+  try { localStorage.setItem(NB_LANGUAGE_STORAGE_KEY, LANG); } catch(e) {}
+  document.getElementById('lang-de').classList.toggle('active', LANG === 'de');
+  document.getElementById('lang-en').classList.toggle('active', LANG === 'en');
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = COPY[LANG][el.dataset.i18n]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = COPY[LANG][el.dataset.i18nHtml]; });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { el.placeholder = COPY[LANG][el.dataset.i18nPlaceholder]; });
+  if (latestReport) render(latestReport);
+}
 
 async function loadReport() {
   const code = document.getElementById('f-code').value.trim().toUpperCase();
@@ -131,32 +198,33 @@ async function loadReport() {
   const err = document.getElementById('err');
   const btn = document.getElementById('btn-load');
   err.style.display = 'none';
-  if (!code || !key) { err.textContent = 'Bitte Code und Schlüssel eingeben.'; err.style.display = 'block'; return; }
-  btn.disabled = true; btn.textContent = 'Lade…';
+  if (!code || !key) { err.textContent = COPY[LANG].missingCredentials; err.style.display = 'block'; return; }
+  btn.disabled = true; btn.textContent = COPY[LANG].loading;
   try {
     const res = await fetch('https://neurobusiness.one/api/team-report', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ code, ownerKey: key })
     });
-    if (res.status === 401) throw new Error('Code oder Schlüssel ungültig.');
-    if (!res.ok) throw new Error('Fehler beim Laden. Bitte später erneut versuchen.');
+    if (res.status === 401) throw new Error(COPY[LANG].invalidCredentials);
+    if (!res.ok) throw new Error(COPY[LANG].loadError);
     render(await res.json());
   } catch(e) {
-    err.textContent = e.message || 'Fehler beim Laden.';
+    err.textContent = e.message || COPY[LANG].loadError;
     err.style.display = 'block';
-    btn.disabled = false; btn.textContent = 'Dashboard öffnen';
+    btn.disabled = false; btn.textContent = COPY[LANG].openDashboard;
   }
 }
 
 function bars(el, data, max, suffix) {
   el.innerHTML = Object.keys(data).map(k => {
     const pct = max ? Math.round((data[k] / max) * 100) : 0;
-    return `<div class="bar-row"><div class="bar-name">${TYPES[k] || k}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-num">${data[k]}${suffix || ''}</div></div>`;
+    return `<div class="bar-row"><div class="bar-name">${TYPES[LANG][k] || k}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-num">${data[k]}${suffix || ''}</div></div>`;
   }).join('');
 }
 
 function render(r) {
+  latestReport = r;
   document.getElementById('login').style.display = 'none';
   document.getElementById('report').style.display = 'block';
   document.getElementById('r-name').textContent = r.teamName || 'Team';
@@ -174,7 +242,7 @@ function render(r) {
 
   if (r.missingTypes && r.missingTypes.length > 0 && r.missingTypes.length < 4) {
     document.getElementById('c-gaps').style.display = 'block';
-    document.getElementById('gaps').innerHTML = r.missingTypes.map(t => `<div class="gap">${GAP_TEXT[t] || ''}</div>`).join('');
+    document.getElementById('gaps').innerHTML = r.missingTypes.map(t => `<div class="gap">${GAP_TEXT[LANG][t] || ''}</div>`).join('');
   }
 }
 
@@ -183,7 +251,7 @@ document.getElementById('f-key').addEventListener('keydown', e => { if (e.key ==
 // ── DEMO-MODUS (?demo=1) — Beispieldaten für Vertrieb, kein Login nötig ──
 if (new URLSearchParams(location.search).get('demo') === '1') {
   render({
-    teamName: 'Beispiel: Führungsteam TechCo GmbH',
+    teamName: COPY[LANG].demoTeam,
     seats: 8,
     completed: 8,
     minReached: true,
@@ -192,10 +260,11 @@ if (new URLSearchParams(location.search).get('demo') === '1') {
     avgScores: { S: 6.1, V: 8.4, M: 4.2, C: 7.0, G: 7.8 },
     missingTypes: ['M']
   });
-  document.querySelector('#report .eyebrow').textContent = 'DEMO · BEISPIELDATEN';
+  document.querySelector('#report .eyebrow').textContent = COPY[LANG].demoEyebrow;
   document.querySelector('#report').insertAdjacentHTML('afterbegin',
-    `<div class="gap" style="margin-bottom:20px"><strong>Demo-Ansicht mit fiktiven Daten.</strong> So sieht dein Team-Report aus, sobald dein Team die Diagnostik abgeschlossen hat. <a href="teams.html" style="color:var(--gold2)">Team-Diagnostik anfragen →</a></div>`);
+    `<div class="gap" id="demo-notice" style="margin-bottom:20px">${COPY[LANG].demoNotice}</div>`);
 }
+setLanguage(LANG);
 </script>
 </body>
 </html>

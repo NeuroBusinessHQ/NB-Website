@@ -49,6 +49,16 @@ async function serveQuickScan(request) {
         element.append(languageCss, { html: true });
       },
     })
+    .on('main > .actions[aria-label="Language"]', {
+      element(element) {
+        element.remove();
+      },
+    })
+    .on('main > .actions[aria-label="Sprache"]', {
+      element(element) {
+        element.remove();
+      },
+    })
     .on("nav.site-nav a.button", {
       element(element) {
         element.before(languageSwitch, { html: true });

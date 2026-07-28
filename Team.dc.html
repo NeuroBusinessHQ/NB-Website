@@ -48,9 +48,10 @@
         <a href="/teams" style="color:#15130f;text-decoration:none;font-size:14.5px;font-weight:700;opacity:1;">{{ navTeam }}</a>
         <a href="./Coach.dc.html" style="color:#15130f;text-decoration:none;font-size:14.5px;font-weight:500;opacity:0.78;" style-hover="opacity:1;">{{ navCoach }}</a>
       </div>
-      <div style="display:flex;align-items:center;gap:4px;padding:3px;background:rgba(21,19,15,0.06);border-radius:20px;">
-        <button onClick="{{ setLangDe }}" style="border:none;background:{{ langDeBg }};color:#15130f;font-family:Manrope;font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:16px;cursor:pointer;">DE</button>
-        <button onClick="{{ setLangEn }}" style="border:none;background:{{ langEnBg }};color:#15130f;font-family:Manrope;font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:16px;cursor:pointer;">EN</button>
+      <div style="display:flex;align-items:center;gap:8px;font-family:Manrope;font-size:12px;letter-spacing:1px;">
+        <button onClick="{{ setLangDe }}" style="border:none;background:transparent;color:#15130f;font-family:Manrope;font-size:12px;font-weight:700;opacity:{{ langDeOpacity }};cursor:pointer;padding:0;">DE</button>
+        <span style="color:rgba(21,19,15,0.25);">/</span>
+        <button onClick="{{ setLangEn }}" style="border:none;background:transparent;color:#15130f;font-family:Manrope;font-size:12px;font-weight:700;opacity:{{ langEnOpacity }};cursor:pointer;padding:0;">EN</button>
       </div>
       <div style="position:relative;">
         <button onClick="{{ toggleLogin }}" style="border:none;background:transparent;color:#15130f;font-family:Manrope;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;padding:8px 0;">{{ loginLabel }}<span style="font-size:10px;">▾</span></button>
@@ -344,9 +345,28 @@ const COPY = {
 
 const BAR_TARGETS = [50,100,70,150,110,190,140,220];
 
+const NB_LANGUAGE_STORAGE_KEY = "nb_language";
+function initialLanguage() {
+  const query = new URLSearchParams(window.location.search).get("lang");
+  if (query === "de" || query === "en") {
+    try { localStorage.setItem(NB_LANGUAGE_STORAGE_KEY, query); } catch (_) {}
+    return query;
+  }
+  try {
+    const stored = localStorage.getItem(NB_LANGUAGE_STORAGE_KEY);
+    if (stored === "de" || stored === "en") return stored;
+  } catch (_) {}
+  return (navigator.language || "").toLowerCase().startsWith("de") ? "de" : "en";
+}
+function persistLanguage(lang) {
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(NB_LANGUAGE_STORAGE_KEY, lang); } catch (_) {}
+}
+const INITIAL_LANGUAGE = initialLanguage();
+
 class Component extends DCLogic {
-  state = { lang:"de", loginOpen:false, barsGrown:false };
-  componentDidMount() { setTimeout(() => this.setState({barsGrown:true}), 200); }
+  state = { lang:INITIAL_LANGUAGE, loginOpen:false, barsGrown:false };
+  componentDidMount() { persistLanguage(this.state.lang); setTimeout(() => this.setState({barsGrown:true}), 200); }
 
   renderVals() {
     const lang = this.state.lang;
@@ -358,8 +378,9 @@ class Component extends DCLogic {
     }));
     return {
       navSolo:c.navSolo, navTeam:c.navTeam, navLeistungen:c.navLeistungen, navCoach:c.navCoach, navCta:c.navCta,
-      setLangDe:()=>{document.documentElement.lang="de";this.setState({lang:"de"})}, setLangEn:()=>{document.documentElement.lang="en";this.setState({lang:"en"})},
+      setLangDe:()=>{persistLanguage("de");this.setState({lang:"de"})}, setLangEn:()=>{persistLanguage("en");this.setState({lang:"en"})},
       langDeBg: lang==="de"?"#fff":"transparent", langEnBg: lang==="en"?"#fff":"transparent",
+      langDeOpacity:lang==="de"?"1":"0.4", langEnOpacity:lang==="en"?"1":"0.4",
       loginLabel:c.loginLabel, loginItems:c.loginItems, loginOpen:this.state.loginOpen,
       toggleLogin:()=>this.setState(s=>({loginOpen:!s.loginOpen})),
 

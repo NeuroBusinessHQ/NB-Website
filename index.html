@@ -457,6 +457,24 @@ const COPY = {
 };
 
 const BAR_TARGETS = [40,90,60,140,100,200,150,230];
+const NB_LANGUAGE_STORAGE_KEY = "nb_language";
+function initialLanguage() {
+  const query = new URLSearchParams(window.location.search).get("lang");
+  if (query === "de" || query === "en") {
+    try { localStorage.setItem(NB_LANGUAGE_STORAGE_KEY, query); } catch (_) {}
+    return query;
+  }
+  try {
+    const stored = localStorage.getItem(NB_LANGUAGE_STORAGE_KEY);
+    if (stored === "de" || stored === "en") return stored;
+  } catch (_) {}
+  return (navigator.language || "").toLowerCase().startsWith("de") ? "de" : "en";
+}
+function persistLanguage(lang) {
+  document.documentElement.lang = lang;
+  try { localStorage.setItem(NB_LANGUAGE_STORAGE_KEY, lang); } catch (_) {}
+}
+const INITIAL_LANGUAGE = initialLanguage();
 const NODE_COLORS = ["#4f9d6e","#7c6fd6","#e07a7a","#c9963f"];
 const PILL_POS = [
   "position:absolute;top:2%;left:6%;display:flex;align-items:center;gap:8px;background:rgba(124,111,214,0.16);border:1px solid rgba(124,111,214,0.3);padding:8px 14px 8px 8px;border-radius:24px;animation:nb-float 6s ease-in-out infinite;",
@@ -481,9 +499,10 @@ function diagramFor(idx, color) {
 }
 
 class Component extends DCLogic {
-  state = { lang:"de", loginOpen:false, barsGrown:false, howActive:null, pixelsOn:false };
+  state = { lang:INITIAL_LANGUAGE, loginOpen:false, barsGrown:false, howActive:null, pixelsOn:false };
 
   componentDidMount() {
+    persistLanguage(this.state.lang);
     setTimeout(() => this.setState({ barsGrown: true }), 200);
     const el = document.getElementById('pixel-transition');
     if (el) {
@@ -547,8 +566,8 @@ class Component extends DCLogic {
     return {
       pixelsTop, pixelsBot,
       navSolo:c.navSolo, navTeam:c.navTeam, navCoach:c.navCoach, navCta:c.navCta,
-      setLangDe:() => { document.documentElement.lang="de"; this.setState({lang:"de"}); },
-      setLangEn:() => { document.documentElement.lang="en"; this.setState({lang:"en"}); },
+      setLangDe:() => { persistLanguage("de"); this.setState({lang:"de"}); },
+      setLangEn:() => { persistLanguage("en"); this.setState({lang:"en"}); },
       langDeBg: lang==="de" ? "#fff":"transparent", langEnBg: lang==="en" ? "#fff":"transparent",
       langDeOpacity: lang==="de" ? "1":"0.4", langEnOpacity: lang==="en" ? "1":"0.4",
       loginLabel:c.loginLabel, loginOpen:this.state.loginOpen,

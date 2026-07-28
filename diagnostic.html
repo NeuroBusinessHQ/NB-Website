@@ -192,7 +192,7 @@ initBrevo();
     <div class="gate-icon">🔐</div>
     <h1 class="gate-title" id="gate-title">Access Required</h1>
     <p class="gate-sub" id="gate-sub">This diagnostic is available exclusively to NeuroBusiness™ customers. Please use the personal link sent to your email after purchase.</p>
-    <a href="https://neurobusiness.one/#produkte" class="btn-gold" id="gate-btn">Get access →</a>
+    <a href="./Solo.dc.html#produkte" class="btn-gold" id="gate-btn">Get access →</a>
   </div>
 </div>
 
@@ -674,6 +674,7 @@ function setLang(l) {
     const el=document.getElementById(id);
     if(el) el.innerHTML=t[id]||'';
   });
+  document.getElementById('gate-btn').href = `./Solo.dc.html?lang=${lang}#produkte`;
   document.getElementById('i-title').innerHTML = t['i-title'];
   // Consent-Texte aktualisieren
   const cdEl = document.getElementById('consent-dsgvo-txt');

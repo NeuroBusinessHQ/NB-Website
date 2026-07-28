@@ -2,6 +2,7 @@ const QUICK_SCAN_ORIGIN = "https://preview.neurobusiness.one";
 
 async function serveQuickScan(request) {
   const requestUrl = new URL(request.url);
+  const locale = requestUrl.searchParams.get("lang") === "en" ? "en" : "de";
   const upstreamUrl = new URL("/quiz", QUICK_SCAN_ORIGIN);
   upstreamUrl.search = requestUrl.search;
 
@@ -24,11 +25,36 @@ async function serveQuickScan(request) {
   responseHeaders.delete("content-length");
   responseHeaders.delete("content-encoding");
 
-  return new Response(upstreamResponse.body, {
+  const response = new Response(upstreamResponse.body, {
     status: upstreamResponse.status,
     statusText: upstreamResponse.statusText,
     headers: responseHeaders,
   });
+
+  if (!responseHeaders.get("content-type")?.includes("text/html")) {
+    return response;
+  }
+
+  const languageSwitch = `<div class="nav-language" aria-label="${locale === "en" ? "Language" : "Sprache"}"><a href="/quiz?lang=de" lang="de"${locale === "de" ? ' aria-current="page"' : ""}>DE</a><span aria-hidden="true">/</span><a href="/quiz?lang=en" lang="en"${locale === "en" ? ' aria-current="page"' : ""}>EN</a></div>`;
+  const languageCss = `<style>
+    .site-nav .nav-language{display:flex;align-items:center;gap:8px;padding-left:20px;border-left:1px solid rgba(21,19,15,.12);font-size:12px;letter-spacing:1px;white-space:nowrap}
+    .site-nav .nav-language a{color:inherit;text-decoration:none;opacity:.4}
+    .site-nav .nav-language a[aria-current="page"]{opacity:1;font-weight:700}
+    .site-nav .nav-language span{opacity:.25}
+  </style>`;
+
+  return new HTMLRewriter()
+    .on("head", {
+      element(element) {
+        element.append(languageCss, { html: true });
+      },
+    })
+    .on("nav.site-nav a.button", {
+      element(element) {
+        element.before(languageSwitch, { html: true });
+      },
+    })
+    .transform(response);
 }
 
 export default {

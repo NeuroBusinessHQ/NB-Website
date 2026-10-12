@@ -1,4 +1,42 @@
+# Public search and user-directed discovery. Not an access-control mechanism.
 User-agent: *
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
 Allow: /
+Disallow: /quiz
+Disallow: /api/
+Disallow: /admin
+Disallow: /app
+Disallow: /coach-login
+Disallow: /practitioner
+Disallow: /team-dashboard
+Disallow: /diagnostic
+Disallow: /result_v2
+Disallow: /success
+Disallow: /checkout-success
+Disallow: /cancel
+Disallow: /reports/
+Disallow: /dashboard/
+Disallow: /login
+Disallow: /_db/
+Disallow: /_docs/
+Disallow: /_site-source/
+Disallow: /scripts/
+Disallow: /workers/
+Disallow: /content/
+Disallow: /*?*token=
+Disallow: /*?*session=
+Disallow: /*?*team=
+
+# Training policy is separate from search discovery.
+User-agent: GPTBot
+User-agent: ClaudeBot
+Disallow: /
 
 Sitemap: https://neurobusiness.one/sitemap.xml

@@ -67,14 +67,61 @@ async function serveQuickScan(request) {
     .transform(response);
 }
 
+// Keep API/assessment behavior separate from public discovery routing.
+const aliases = {
+  "/Solo.dc": "/solo", "/Solo.dc.html": "/solo",
+  "/Team.dc": "/teams", "/Team.dc.html": "/teams",
+  "/Coach.dc": "/coaches", "/Coach.dc.html": "/coaches",
+  "/ai-adoption-consulting": "/ai-adoption",
+  "/ai-transformation": "/human-ai-transformation",
+  "/Homepage.dc.html": "/", "/Homepage.dc": "/",
+};
+const marketingAssets = { "/solo": "/Solo.dc.html", "/teams": "/Team.dc.html", "/coaches": "/Coach.dc.html" };
+const privatePage = /^\/(?:admin(?:-login)?|app|coach-login|practitioner|team-dashboard|diagnostic|result_v2(?:_en)?|success|checkout-success|cancel|reports|dashboard|login)(?:\.html|\/|$)/;
+const internalFile = /^\/(?:_db|_docs|_site-source|scripts|workers|content|\.git|\.github)(?:\/|$)|\.(?:md|sql|toml|csv|docx)$|\/\.DS_Store$/i;
+function withPrivateHeaders(response) {
+  const headers = new Headers(response.headers);
+  headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+  headers.set("Cache-Control", "private, no-store");
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+}
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-
-    if (url.pathname === "/quiz") {
-      return serveQuickScan(request);
+    let pathname;
+    try { pathname = decodeURIComponent(url.pathname); } catch { return new Response("Bad request", {status: 400}); }
+    if (internalFile.test(pathname)) return new Response("Not found", {status:404, headers:{"X-Robots-Tag":"noindex", "Cache-Control":"no-store"}});
+    // Never normalize transaction URLs or change their query strings/methods.
+    if (pathname === "/quiz") return withPrivateHeaders(await serveQuickScan(request));
+    const privateRequest = privatePage.test(pathname) || pathname.startsWith("/api/") || ["token", "session", "team"].some(key => url.searchParams.has(key));
+    if (privateRequest) return withPrivateHeaders(await env.ASSETS.fetch(request));
+    if (request.method === "GET" || request.method === "HEAD") {
+      const normalized = pathname.replace(/\/$/, "");
+      const destination = aliases[normalized];
+      if (destination) {
+        url.pathname = destination;
+        return Response.redirect(url.toString(), 301);
+      }
+      // Only canonicalize the public host. Account/API/quiz requests remain untouched.
+      if (url.hostname === "www.neurobusiness.one") {
+        url.hostname = "neurobusiness.one";
+        return Response.redirect(url.toString(), 301);
+      }
+      if (marketingAssets[normalized]) {
+        const assetUrl = new URL(request.url);
+        assetUrl.pathname = marketingAssets[normalized];
+        let response = await env.ASSETS.fetch(new Request(assetUrl, request));
+        // Pages may canonicalize .html paths. Resolve only that internal asset redirect.
+        if ([301,302,307,308].includes(response.status)) {
+          const location = response.headers.get("location");
+          const target = location && new URL(location, assetUrl);
+          if (target && target.origin === assetUrl.origin && target.pathname === assetUrl.pathname.replace(/\.html$/, "")) {
+            response = await env.ASSETS.fetch(new Request(target, request));
+          }
+        }
+        return response;
+      }
     }
-
     return env.ASSETS.fetch(request);
   },
 };

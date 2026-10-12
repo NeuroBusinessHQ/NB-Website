@@ -1,0 +1,109 @@
+{
+  "pages": {
+    "/ai-readiness": {
+      "file": "ai-readiness.html",
+      "title": "AI readiness for companies",
+      "description": "Understand organizational, employee and leadership AI readiness, and plan an evidence-based assessment before scaling AI."
+    },
+    "/ai-readiness-assessment": {
+      "file": "ai-readiness-assessment.html",
+      "title": "AI readiness assessment for companies",
+      "description": "A transparent approach to assessing AI adoption conditions: scope, interviews, practical tasks, evidence and pilot decisions."
+    },
+    "/ai-adoption": {
+      "file": "ai-adoption.html",
+      "title": "Human-centered AI adoption and consulting",
+      "description": "Plan AI adoption around real work, employee participation, leadership support and measurable pilot outcomes."
+    },
+    "/human-ai-transformation": {
+      "file": "human-ai-transformation.html",
+      "title": "Human AI transformation: work, leadership and governance",
+      "description": "A practical approach to AI transformation that connects work design, human factors, leadership and governance."
+    },
+    "/team-intelligence": {
+      "file": "team-intelligence.html",
+      "title": "Team Intelligence and the NeuroBusiness Team Map",
+      "description": "Understand team work patterns, clarify contributions and connect team discussions to practical decisions."
+    },
+    "/leadership-intelligence": {
+      "file": "leadership-intelligence.html",
+      "title": "Leadership Intelligence and AI readiness",
+      "description": "Use structured leadership reflection to clarify decisions, delegation and the conditions for responsible AI adoption."
+    },
+    "/founder-intelligence": {
+      "file": "founder-intelligence.html",
+      "title": "Founder Intelligence and founder team assessment",
+      "description": "Clarify founder roles, decisions and working expectations using business diagnostics and structured team reflection."
+    },
+    "/enterprise-ai": {
+      "file": "enterprise-ai.html",
+      "title": "Enterprise AI: human context and product direction",
+      "description": "NeuroBusiness enterprise AI direction, with current capabilities separated from development work and planned integrations."
+    },
+    "/methodology": {
+      "file": "methodology.html",
+      "title": "NeuroBusiness methodology and research status",
+      "description": "NBIF, NeuroBusiness Types and proposed AI readiness methods: definitions, evidence boundaries and validation status."
+    },
+    "/research": {
+      "file": "research.html",
+      "title": "Research and evidence behind our AI guidance",
+      "description": "Primary references, their relevance and their limits, with a clear distinction from NeuroBusiness product validation."
+    },
+    "/about": {
+      "file": "about.html",
+      "title": "About NeuroBusiness",
+      "description": "NeuroBusiness business diagnostics, Team Intelligence and the human side of AI adoption."
+    },
+    "/founder": {
+      "file": "founder.html",
+      "title": "Eva Kolontai \u2014 NeuroBusiness founder",
+      "description": "Founder information for Eva Kolontai and the development of the NeuroBusiness Intelligence Framework."
+    },
+    "/contact": {
+      "file": "contact.html",
+      "title": "Contact NeuroBusiness",
+      "description": "Contact NeuroBusiness about AI readiness, company pilots, Team Intelligence or leadership assessment."
+    },
+    "/legal": {
+      "file": "legal.html",
+      "title": "Legal / Imprint",
+      "description": "Access the legal provider information linked by NeuroBusiness."
+    },
+    "/privacy": {
+      "file": "privacy.html",
+      "title": "Privacy information",
+      "description": "Access the privacy notice linked by NeuroBusiness and contact the team about data questions."
+    },
+    "/knowledge/what-is-ai-readiness": {
+      "file": "knowledge/what-is-ai-readiness.html",
+      "title": "What is AI readiness?",
+      "description": "A concise definition of AI readiness, its organizational and human dimensions, and how it differs from AI adoption."
+    },
+    "/knowledge/how-to-measure-ai-readiness": {
+      "file": "knowledge/how-to-measure-ai-readiness.html",
+      "title": "How do you measure AI readiness?",
+      "description": "Measure company AI readiness with task evidence, interviews and an action register rather than a survey score alone."
+    },
+    "/knowledge/why-ai-transformations-fail": {
+      "file": "knowledge/why-ai-transformations-fail.html",
+      "title": "Why do AI transformations fail?",
+      "description": "Investigate AI implementation risks through workflow fit, responsibility, evaluation and employee support."
+    },
+    "/knowledge/ai-adoption-barriers": {
+      "file": "knowledge/ai-adoption-barriers.html",
+      "title": "What prevents employees from adopting AI?",
+      "description": "Identify AI adoption barriers and prepare employees through practical support, participation and workflow evaluation."
+    },
+    "/knowledge/leadership-and-ai-adoption": {
+      "file": "knowledge/leadership-and-ai-adoption.html",
+      "title": "How does leadership affect AI adoption?",
+      "description": "Clarify leadership responsibilities for AI priorities, review rules, learning time and employee feedback."
+    },
+    "/knowledge": {
+      "file": "knowledge.html",
+      "title": "AI readiness and adoption knowledge",
+      "description": "Direct answers about organizational AI readiness, employee adoption, human implementation risks and leadership."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+// Local approximation of Pages asset routing plus the production Worker.
+import http from 'node:http';import fs from 'node:fs/promises';import path from 'node:path';import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const source=await fs.readFile(path.join(root,'_worker.js'),'utf8');const {default:worker}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.txt':'text/plain; charset=utf-8','.xml':'application/xml'};
+const env={ASSETS:{fetch:async req=>{const u=new URL(req.url);let name=decodeURIComponent(u.pathname).slice(1)||'index.html';const candidates=[name,name+'.html',path.join(name,'index.html')];let file;for(const c of candidates){const f=path.resolve(root,c);if(!f.startsWith(root+path.sep))continue;try{if((await fs.stat(f)).isFile()){file=f;break}}catch{}}const status=file?200:404;file??=path.join(root,'404.html');return new Response(req.method==='HEAD'?null:await fs.readFile(file),{status,headers:{'content-type':types[path.extname(file)]||'application/octet-stream'}})}}};
+const server=http.createServer(async(req,res)=>{try{const request=new Request('http://127.0.0.1:'+server.address().port+req.url,{method:req.method,headers:req.headers});const r=await worker.fetch(request,env);res.writeHead(r.status,Object.fromEntries(r.headers));res.end(Buffer.from(await r.arrayBuffer()))}catch(e){res.writeHead(500);res.end(String(e))}});
+server.listen(Number(process.env.PORT||8766),'127.0.0.1',()=>console.log('Test server http://127.0.0.1:'+server.address().port));

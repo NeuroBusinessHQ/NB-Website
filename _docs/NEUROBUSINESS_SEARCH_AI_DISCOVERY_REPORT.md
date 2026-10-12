@@ -2,7 +2,9 @@
 
 Stand: 12. Oktober 2026 · Repository: NeuroBusinessHQ/NB-Website · Ausgangscommit: `28a3107` · Arbeitsbranch: `codex/search-ai-discovery`
 
-**Ergebnis:** 21 neue statische Themen-, Wissens- und Unternehmensseiten, vier vorgerenderte bestehende Verkaufsseiten, eine Sitemap mit 25 kanonischen Kernseiten sowie eine getrennte Search-/Training-Crawler-Policy. Bestehende Diagnose-, Zahlungs-, Account- und API-Logik wurde beibehalten. Die Umsetzung ist für Review und Preview vorbereitet; eine Veröffentlichung auf der Produktionsdomain ist nicht Bestandteil des nachgewiesenen Ergebnisses.
+**Ergebnis:** 21 neue statische Themen-, Wissens- und Unternehmensseiten, vier vorgerenderte bestehende Verkaufsseiten, eine Sitemap mit 25 kanonischen Kernseiten sowie eine getrennte Search-/Training-Crawler-Policy. Bestehende Diagnose-, Zahlungs-, Account- und API-Logik wurde beibehalten. Die Umsetzung wurde lokal und auf einer echten Cloudflare-Preview geprüft; eine Veröffentlichung auf der Produktionsdomain ist nicht Bestandteil des nachgewiesenen Ergebnisses.
+
+Review: [Draft-PR #7](https://github.com/NeuroBusinessHQ/NB-Website/pull/7). Geprüfte Preview des Implementierungscommits `ff9ea9a`: [Cloudflare Preview](https://e96c937c.neurobusiness-website.pages.dev).
 
 **Wichtige Release-Grenze:** Die live ausgelieferte Website enthält bereits Änderungen, die im geklonten `master` fehlen. Dazu gehören SEO-Metadaten, Prerendering, llms.txt und die Route `/practitioner/apply/`. Vor einem Merge mit Produktionswirkung müssen Deployment-Quelle, Build und diese Funnel-Route abgeglichen werden. Ein lokaler Erfolg ist kein Nachweis für den Zustand nach einem Cloudflare-Deployment.
 
@@ -117,7 +119,7 @@ Live-HTTP-Prüfung am 12.10.2026:
 - www und non-www blieben beide erreichbar; die drei Angebotsrouten leiteten auf Dateinamenvarianten weiter.
 - Live-Build und Repository waren nicht synchron, einschließlich einer zusätzlichen Practitioner-Apply-Route.
 
-Die lokalen Korrekturen müssen in einer echten Pages-Preview bestätigt werden. WAF, AI Crawl Control, Bot Fight Mode, Managed Challenges, Rate Limits, Cache und DNS können nicht aus diesem Repository vollständig geprüft oder geändert werden. Keine globalen Sicherheitsregeln nur anhand eines leicht fälschbaren User-Agent-Headers deaktivieren. Cloudflare-Ereignisse und verifizierte Bot-Identitäten heranziehen.
+Die Korrekturen wurden inzwischen auf der echten Pages-Preview bestätigt: 25 Seiten mit und ohne JavaScript, Angebotsrouting, Discovery-Dateien, unbekannte URL mit 404 und interne Dateisperren. Die Preview trägt erwartungsgemäß `X-Robots-Tag: noindex`. Diese Ergebnisse ersetzen den Abgleich und Nachtest der Produktionsdomain nicht. WAF, AI Crawl Control, Bot Fight Mode, Managed Challenges, Rate Limits, Cache und DNS können nicht aus diesem Repository vollständig geprüft oder geändert werden. Keine globalen Sicherheitsregeln nur anhand eines leicht fälschbaren User-Agent-Headers deaktivieren. Cloudflare-Ereignisse und verifizierte Bot-Identitäten heranziehen.
 
 [Cloudflare Advanced Mode](https://developers.cloudflare.com/pages/functions/advanced-mode/) und [Serving Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/) beschreiben die Worker-/Asset-Zuständigkeit und das Hosting-Verhalten. Der lokale Testserver bildet die Plattform nur näherungsweise ab.
 
@@ -193,7 +195,7 @@ Messung: qualifizierte Anfragen, vereinbarte Piloten, unterstützende Landingpag
 
 ## Validierung und Grenzen
 
-- 25 öffentliche Kernseiten mit und ohne JavaScript bei 390 px Mobilbreite: 50 Browser-Prüfungen.
+- 25 öffentliche Kernseiten mit und ohne JavaScript bei 390 px Mobilbreite: 50 lokale und weitere 50 externe Browser-Prüfungen auf Cloudflare Pages, insgesamt 100 erfolgreiche Seitenprüfungen.
 - Je Seite: Status 200, eindeutige Canonical, Titel/Beschreibung, sichtbare H1, lesbarer Hauptinhalt, keine Vorlagen-Platzhalter, kein versehentliches noindex und kein horizontaler Überlauf.
 - Interne Pfade, JSON-LD-Struktur, Sitemap-Abgleich, eindeutige IDs, Sprungmarken und Crawler-Regeln geprüft.
 - Worker-Tests für interne Dateisperren, private Header, Query-Erhaltung, Alias-Routing, API-POST-Weitergabe und Quiz-Proxy.
@@ -204,4 +206,4 @@ Messung: qualifizierte Anfragen, vereinbarte Piloten, unterstützende Landingpag
 
 Nicht durchgeführt: reale Käufe, Kundendatenabruf, neue Einwilligungen, produktive Formulareinsendungen, vollständige authentifizierte Funnel-Durchläufe, unabhängige Accessibility-Zertifizierung, Rich-Results-Freigabe oder nachgelagerter Produktionstest der noch nicht veröffentlichten Änderungen.
 
-Technische Wartung und ausführbare Tests: `_docs/SEARCH_AI_DISCOVERY_MAINTENANCE.md` und `scripts/`. Auditdetails: `_site-source/baseline-audit.json`, `live-audit.json`, `validation-results.json`.
+Technische Wartung und ausführbare Tests: `_docs/SEARCH_AI_DISCOVERY_MAINTENANCE.md` und `scripts/`. Auditdetails: `_site-source/baseline-audit.json`, `live-audit.json`, `validation-results.json` und `validation-preview-results.json`.

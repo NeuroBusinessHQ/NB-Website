@@ -1,0 +1,358 @@
+{
+  "results": [
+    {
+      "route": "/",
+      "javaScript": false,
+      "title": "NeuroBusiness | Business-Diagnostik, Teams & AI Readiness",
+      "readableCharacters": 3123,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/solo",
+      "javaScript": false,
+      "title": "NeuroBusiness\u2122 Solo \u2013 Business-Diagnostik f\u00fcr Selbstst\u00e4ndige",
+      "readableCharacters": 4683,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/teams",
+      "javaScript": false,
+      "title": "NeuroBusiness\u2122 Team Intelligence \u2013 Rollen, Kommunikation & Blind Spots",
+      "readableCharacters": 4438,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/coaches",
+      "javaScript": false,
+      "title": "Diagnostik f\u00fcr evidenzbasiertes Business Coaching | NeuroBusiness\u2122",
+      "readableCharacters": 9070,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/ai-readiness",
+      "javaScript": false,
+      "title": "AI readiness for companies | NeuroBusiness",
+      "readableCharacters": 2108,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/ai-readiness-assessment",
+      "javaScript": false,
+      "title": "AI readiness assessment for companies | NeuroBusiness",
+      "readableCharacters": 2382,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/ai-adoption",
+      "javaScript": false,
+      "title": "Human-centered AI adoption and consulting | NeuroBusiness",
+      "readableCharacters": 2065,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/human-ai-transformation",
+      "javaScript": false,
+      "title": "Human AI transformation: work, leadership and governance | NeuroBusiness",
+      "readableCharacters": 1670,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/team-intelligence",
+      "javaScript": false,
+      "title": "Team Intelligence and the NeuroBusiness Team Map | NeuroBusiness",
+      "readableCharacters": 1795,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/leadership-intelligence",
+      "javaScript": false,
+      "title": "Leadership Intelligence and AI readiness | NeuroBusiness",
+      "readableCharacters": 1608,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/founder-intelligence",
+      "javaScript": false,
+      "title": "Founder Intelligence and founder team assessment | NeuroBusiness",
+      "readableCharacters": 1600,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/enterprise-ai",
+      "javaScript": false,
+      "title": "Enterprise AI: human context and product direction | NeuroBusiness",
+      "readableCharacters": 2086,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/methodology",
+      "javaScript": false,
+      "title": "NeuroBusiness methodology and research status | NeuroBusiness",
+      "readableCharacters": 3913,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/research",
+      "javaScript": false,
+      "title": "Research and evidence behind our AI guidance | NeuroBusiness",
+      "readableCharacters": 1744,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/about",
+      "javaScript": false,
+      "title": "About NeuroBusiness | NeuroBusiness",
+      "readableCharacters": 1017,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/founder",
+      "javaScript": false,
+      "title": "Eva Kolontai \u2014 NeuroBusiness founder | NeuroBusiness",
+      "readableCharacters": 1100,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/contact",
+      "javaScript": false,
+      "title": "Contact NeuroBusiness | NeuroBusiness",
+      "readableCharacters": 766,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/legal",
+      "javaScript": false,
+      "title": "Legal / Imprint | NeuroBusiness",
+      "readableCharacters": 438,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/privacy",
+      "javaScript": false,
+      "title": "Privacy information | NeuroBusiness",
+      "readableCharacters": 546,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge/what-is-ai-readiness",
+      "javaScript": false,
+      "title": "What is AI readiness? | NeuroBusiness",
+      "readableCharacters": 2045,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge/how-to-measure-ai-readiness",
+      "javaScript": false,
+      "title": "How do you measure AI readiness? | NeuroBusiness",
+      "readableCharacters": 2475,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge/why-ai-transformations-fail",
+      "javaScript": false,
+      "title": "Why do AI transformations fail? | NeuroBusiness",
+      "readableCharacters": 2309,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge/ai-adoption-barriers",
+      "javaScript": false,
+      "title": "What prevents employees from adopting AI? | NeuroBusiness",
+      "readableCharacters": 2232,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge/leadership-and-ai-adoption",
+      "javaScript": false,
+      "title": "How does leadership affect AI adoption? | NeuroBusiness",
+      "readableCharacters": 2007,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge",
+      "javaScript": false,
+      "title": "AI readiness and adoption knowledge | NeuroBusiness",
+      "readableCharacters": 1177,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/",
+      "javaScript": true,
+      "title": "NeuroBusiness | Business-Diagnostik, Teams & AI Readiness",
+      "readableCharacters": 3123,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/solo",
+      "javaScript": true,
+      "title": "NeuroBusiness\u2122 Solo \u2013 Business-Diagnostik f\u00fcr Selbstst\u00e4ndige",
+      "readableCharacters": 4683,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/teams",
+      "javaScript": true,
+      "title": "NeuroBusiness\u2122 Team Intelligence \u2013 Rollen, Kommunikation & Blind Spots",
+      "readableCharacters": 4438,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/coaches",
+      "javaScript": true,
+      "title": "Diagnostik f\u00fcr evidenzbasiertes Business Coaching | NeuroBusiness\u2122",
+      "readableCharacters": 9070,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/ai-readiness",
+      "javaScript": true,
+      "title": "AI readiness for companies | NeuroBusiness",
+      "readableCharacters": 2108,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/ai-readiness-assessment",
+      "javaScript": true,
+      "title": "AI readiness assessment for companies | NeuroBusiness",
+      "readableCharacters": 2382,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/ai-adoption",
+      "javaScript": true,
+      "title": "Human-centered AI adoption and consulting | NeuroBusiness",
+      "readableCharacters": 2065,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/human-ai-transformation",
+      "javaScript": true,
+      "title": "Human AI transformation: work, leadership and governance | NeuroBusiness",
+      "readableCharacters": 1670,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/team-intelligence",
+      "javaScript": true,
+      "title": "Team Intelligence and the NeuroBusiness Team Map | NeuroBusiness",
+      "readableCharacters": 1795,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/leadership-intelligence",
+      "javaScript": true,
+      "title": "Leadership Intelligence and AI readiness | NeuroBusiness",
+      "readableCharacters": 1608,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/founder-intelligence",
+      "javaScript": true,
+      "title": "Founder Intelligence and founder team assessment | NeuroBusiness",
+      "readableCharacters": 1600,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/enterprise-ai",
+      "javaScript": true,
+      "title": "Enterprise AI: human context and product direction | NeuroBusiness",
+      "readableCharacters": 2086,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/methodology",
+      "javaScript": true,
+      "title": "NeuroBusiness methodology and research status | NeuroBusiness",
+      "readableCharacters": 3913,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/research",
+      "javaScript": true,
+      "title": "Research and evidence behind our AI guidance | NeuroBusiness",
+      "readableCharacters": 1744,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/about",
+      "javaScript": true,
+      "title": "About NeuroBusiness | NeuroBusiness",
+      "readableCharacters": 1017,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/founder",
+      "javaScript": true,
+      "title": "Eva Kolontai \u2014 NeuroBusiness founder | NeuroBusiness",
+      "readableCharacters": 1100,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/contact",
+      "javaScript": true,
+      "title": "Contact NeuroBusiness | NeuroBusiness",
+      "readableCharacters": 766,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/legal",
+      "javaScript": true,
+      "title": "Legal / Imprint | NeuroBusiness",
+      "readableCharacters": 438,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/privacy",
+      "javaScript": true,
+      "title": "Privacy information | NeuroBusiness",
+      "readableCharacters": 546,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge/what-is-ai-readiness",
+      "javaScript": true,
+      "title": "What is AI readiness? | NeuroBusiness",
+      "readableCharacters": 2045,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge/how-to-measure-ai-readiness",
+      "javaScript": true,
+      "title": "How do you measure AI readiness? | NeuroBusiness",
+      "readableCharacters": 2475,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge/why-ai-transformations-fail",
+      "javaScript": true,
+      "title": "Why do AI transformations fail? | NeuroBusiness",
+      "readableCharacters": 2309,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge/ai-adoption-barriers",
+      "javaScript": true,
+      "title": "What prevents employees from adopting AI? | NeuroBusiness",
+      "readableCharacters": 2232,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge/leadership-and-ai-adoption",
+      "javaScript": true,
+      "title": "How does leadership affect AI adoption? | NeuroBusiness",
+      "readableCharacters": 2007,
+      "mobileOverflow": false
+    },
+    {
+      "route": "/knowledge",
+      "javaScript": true,
+      "title": "AI readiness and adoption knowledge | NeuroBusiness",
+      "readableCharacters": 1177,
+      "mobileOverflow": false
+    }
+  ],
+  "internalLinksChecked": 26,
+  "checkedAt": "2026-10-12T13:48:24.903Z",
+  "origin": "https://e96c937c.neurobusiness-website.pages.dev",
+  "testedCommit": "ff9ea9a"
+}

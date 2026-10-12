@@ -1,0 +1,1253 @@
+{
+  "Coach.dc.html": {
+    "title": [
+      "Diagnostik f\u00fcr evidenzbasiertes Business Coaching | NeuroBusiness\u2122"
+    ],
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://www.neurobusiness.one/coaches\">"
+    ],
+    "template_placeholders": 147,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1",
+      "h2",
+      "h2",
+      "h3",
+      "h2",
+      "h3",
+      "h2",
+      "h3",
+      "h2",
+      "h3",
+      "h2",
+      "h3",
+      "h2",
+      "h2",
+      "h3",
+      "h2",
+      "h3",
+      "h2",
+      "h3",
+      "h2",
+      "h2",
+      "h3",
+      "h2",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "./Homepage.dc.html",
+      "./Solo.dc.html",
+      "./Team.dc.html",
+      "/coaches",
+      "{{ li.href }}",
+      "https://www.neurobusiness.one/quiz",
+      "https://www.neurobusiness.one/quiz",
+      "https://www.neurobusiness.one/quiz",
+      "#report-preview",
+      "#kontakt",
+      "mailto:hello@neurobusiness.one",
+      "https://wa.me/4915565695582?text=Hi%20Eva%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20NeuroBusiness%20Practitioner-Zertifizierung",
+      "https://www.neurobusiness.one/quiz",
+      "mailto:hello@neurobusiness.one?subject=Strategiegespr%C3%A4ch%20NeuroBusiness%20f%C3%BCr%20Coaches",
+      "./Homepage.dc.html",
+      "./Solo.dc.html",
+      "./Team.dc.html",
+      "https://www.germaninstitute.eu/impressum.html",
+      "https://www.germaninstitute.eu/datenschutz.html"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 1,
+    "json_ld_blocks": 1,
+    "meta": [
+      {
+        "charset": "utf-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "description",
+        "content": "NeuroBusiness verbindet psychologisch fundierte Business-Diagnostik, strukturierte Reports und AI-Unterst\u00fctzung f\u00fcr Coaches, Beratung und Leadership-Entwicklung."
+      },
+      {
+        "property": "og:title",
+        "content": "NeuroBusiness\u2122 f\u00fcr Coaches \u2013 Entwicklung sichtbar machen"
+      },
+      {
+        "property": "og:description",
+        "content": "Ein diagnostisches System f\u00fcr nachvollziehbare Coaching-Prozesse, strukturierte Reports und fundierte Folgearbeit."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:url",
+        "content": "https://www.neurobusiness.one/coaches"
+      },
+      {
+        "property": "og:site_name",
+        "content": "NeuroBusiness\u2122"
+      },
+      {
+        "property": "og:image",
+        "content": "https://www.neurobusiness.one/assets/diagnostik-report-phone.png"
+      },
+      {
+        "name": "theme-color",
+        "content": "#faf7f0"
+      }
+    ]
+  },
+  "Homepage.dc.html": {
+    "title": [
+      "NeuroBusiness\u2122 \u2013 Business-Diagnostik f\u00fcr Selbstst\u00e4ndige, Teams & Coaches"
+    ],
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "template_placeholders": 114,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1",
+      "h2",
+      "h3",
+      "h2",
+      "h2",
+      "h3",
+      "h2",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "/",
+      "./Solo.dc.html",
+      "./Team.dc.html",
+      "./Coach.dc.html",
+      "{{ li.href }}",
+      "https://www.neurobusiness.one/quiz",
+      "https://www.neurobusiness.one/quiz",
+      "https://www.neurobusiness.one/quiz",
+      "#wege",
+      "{{ whatsappHref }}",
+      "{{ p.href }}",
+      "./Solo.dc.html#psychotypes",
+      "./Solo.dc.html",
+      "./Team.dc.html",
+      "./Coach.dc.html",
+      "https://www.germaninstitute.eu/impressum.html",
+      "https://www.germaninstitute.eu/datenschutz.html"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 2,
+    "json_ld_blocks": 3,
+    "meta": [
+      {
+        "charset": "utf-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "description",
+        "content": "Finde heraus, welche Arbeitsweise, welches Business-Modell und welche Sichtbarkeitsstrategie zu dir oder deinem Team passen. NeuroBusiness\u2122 Diagnostik f\u00fcr Selbstst\u00e4ndige, Teams und Coaches."
+      },
+      {
+        "name": "robots",
+        "content": "index,follow,max-image-preview:large"
+      },
+      {
+        "property": "og:title",
+        "content": "NeuroBusiness\u2122 \u2013 Not every business fits every brain."
+      },
+      {
+        "property": "og:description",
+        "content": "Neuropsychologische Business-Diagnostik f\u00fcr Selbstst\u00e4ndige, Teams und Coaches."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:url",
+        "content": "https://neurobusiness.one/"
+      },
+      {
+        "property": "og:site_name",
+        "content": "NeuroBusiness"
+      },
+      {
+        "property": "og:image",
+        "content": "https://neurobusiness.one/assets/diagnostik-report-phone.png"
+      },
+      {
+        "property": "og:image:width",
+        "content": "2048"
+      },
+      {
+        "property": "og:image:height",
+        "content": "1306"
+      },
+      {
+        "name": "twitter:card",
+        "content": "summary_large_image"
+      },
+      {
+        "name": "twitter:title",
+        "content": "NeuroBusiness\u2122 \u2013 Not every business fits every brain."
+      },
+      {
+        "name": "twitter:description",
+        "content": "Neuropsychologische Business-Diagnostik f\u00fcr Selbstst\u00e4ndige, Teams und Coaches."
+      },
+      {
+        "name": "twitter:image",
+        "content": "https://neurobusiness.one/assets/diagnostik-report-phone.png"
+      }
+    ]
+  },
+  "Solo.dc.html": {
+    "title": [
+      "NeuroBusiness\u2122 Solo \u2013 Business-Diagnostik f\u00fcr Selbstst\u00e4ndige"
+    ],
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/solo\">"
+    ],
+    "template_placeholders": 121,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1",
+      "h2",
+      "h3",
+      "h2",
+      "h3",
+      "h3",
+      "h2",
+      "h2",
+      "h3",
+      "h2",
+      "h3",
+      "h2",
+      "h3",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "./Homepage.dc.html",
+      "/solo",
+      "./Team.dc.html",
+      "./Coach.dc.html",
+      "{{ li.href }}",
+      "https://www.neurobusiness.one/quiz",
+      "https://www.neurobusiness.one/quiz",
+      "#pricing",
+      "#howitworks",
+      "#pricing",
+      "#quicktest",
+      "{{ plan.href }}",
+      "mailto:hello@neurobusiness.one?subject=Anfrage%2012-Wochen%20NeuroBusiness%20Transformation",
+      "#pricing",
+      "https://www.neurobusiness.one/quiz",
+      "./Homepage.dc.html",
+      "./Team.dc.html",
+      "./Coach.dc.html",
+      "https://www.germaninstitute.eu/impressum.html",
+      "https://www.germaninstitute.eu/datenschutz.html"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 2,
+    "json_ld_blocks": 1,
+    "meta": [
+      {
+        "charset": "utf-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "description",
+        "content": "Erkenne deinen NeuroBusiness-Psychotyp und finde das Business-Modell, die Sichtbarkeit und Arbeitsweise, die zu dir passen. 50 Fragen, 5 Dimensionen, pers\u00f6nlicher Report."
+      },
+      {
+        "property": "og:title",
+        "content": "NeuroBusiness\u2122 Solo \u2013 Welches Business passt zu deiner Arbeitsweise?"
+      },
+      {
+        "property": "og:description",
+        "content": "Neuropsychologische Business-Diagnostik f\u00fcr Coaches, Berater:innen und selbstst\u00e4ndige Expert:innen."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:url",
+        "content": "https://neurobusiness.one/solo"
+      }
+    ]
+  },
+  "Team.dc.html": {
+    "title": [
+      "NeuroBusiness\u2122 Team Intelligence \u2013 Rollen, Kommunikation & Blind Spots"
+    ],
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/teams\">"
+    ],
+    "template_placeholders": 74,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1",
+      "h2",
+      "h2",
+      "h3",
+      "h2",
+      "h3",
+      "h2",
+      "h2",
+      "h3",
+      "h2",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "./Homepage.dc.html",
+      "./Solo.dc.html",
+      "/teams",
+      "./Coach.dc.html",
+      "{{ li.href }}",
+      "https://www.neurobusiness.one/quiz",
+      "https://www.neurobusiness.one/quiz",
+      "#kontakt",
+      "#leistungen",
+      "#kontakt",
+      "https://wa.me/4915565695582?text=Hi%20Eva%2C%20ich%20interessiere%20mich%20f%C3%BCr%20NeuroBusiness%20Team%20Intelligence",
+      "mailto:hello@neurobusiness.one?subject=Anfrage%20Strategiegespr%C3%A4ch%20Team%20Intelligence",
+      "./Homepage.dc.html",
+      "./Solo.dc.html",
+      "./Coach.dc.html",
+      "https://www.germaninstitute.eu/impressum.html",
+      "https://www.germaninstitute.eu/datenschutz.html"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 2,
+    "json_ld_blocks": 1,
+    "meta": [
+      {
+        "charset": "utf-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "description",
+        "content": "Vertrauliche Team-Diagnostik f\u00fcr Gr\u00fcnder- und F\u00fchrungsteams: Arbeitspr\u00e4ferenzen, Rollen, Kommunikation und kollektive Blind Spots aggregiert sichtbar machen. Team Scan ab 1.500 \u20ac netto."
+      },
+      {
+        "property": "og:title",
+        "content": "NeuroBusiness\u2122 Team Intelligence"
+      },
+      {
+        "property": "og:description",
+        "content": "Eine psychologische Intelligence-Ebene f\u00fcr Rollen, Kommunikation und Entscheidungen im Team."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:url",
+        "content": "https://neurobusiness.one/teams"
+      }
+    ]
+  },
+  "academy/index.html": {
+    "title": [
+      "NeuroBusiness Academy\u2122 | Training & Zertifizierung"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1",
+      "h2",
+      "h3",
+      "h3",
+      "h3",
+      "h3",
+      "h3",
+      "h3"
+    ],
+    "links": [
+      "/",
+      "#bereiche",
+      "https://coach.neurobusiness.one/",
+      "https://coach.neurobusiness.one/",
+      "/impressum",
+      "/datenschutz",
+      "mailto:hello@neurobusiness.one"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "utf-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "description",
+        "content": "Training, Zertifizierung und Methodik f\u00fcr Certified NeuroBusiness Practitioner\u2122. Coming Soon Preview."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:url",
+        "content": "https://academy.neurobusiness.one/"
+      },
+      {
+        "property": "og:title",
+        "content": "NeuroBusiness Academy\u2122"
+      },
+      {
+        "property": "og:description",
+        "content": "Training, Zertifizierung und Methodik f\u00fcr Certified NeuroBusiness Practitioner\u2122."
+      },
+      {
+        "property": "og:image",
+        "content": "https://neurobusiness.one/og-image.jpg"
+      }
+    ]
+  },
+  "admin-login.html": {
+    "title": [
+      "NeuroBusiness Admin \u2013 Anmeldung"
+    ],
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://admin.neurobusiness.one/admin-login.html\">"
+    ],
+    "template_placeholders": 0,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1"
+    ],
+    "links": [],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "utf-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width,initial-scale=1"
+      },
+      {
+        "name": "robots",
+        "content": "noindex,nofollow"
+      }
+    ]
+  },
+  "admin.html": {
+    "title": [
+      "NeuroBusiness Admin"
+    ],
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://admin.neurobusiness.one/\">"
+    ],
+    "template_placeholders": 0,
+    "h1_count": 0,
+    "heading_sequence": [],
+    "links": [],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "utf-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width,initial-scale=1"
+      },
+      {
+        "name": "robots",
+        "content": "noindex,nofollow"
+      }
+    ]
+  },
+  "app.html": {
+    "title": [
+      "NeuroBusiness\u2122 AI"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 0,
+    "heading_sequence": [],
+    "links": [],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "robots",
+        "content": "noindex, nofollow"
+      }
+    ]
+  },
+  "app/index.html": {
+    "title": [
+      "NeuroBusiness\u2122 App Gateway | AI Companion & NBIS Platform\u2122"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1",
+      "h2",
+      "h3",
+      "h3",
+      "h3",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "/",
+      "#zugang",
+      "#platform",
+      "#access",
+      "https://neurobusiness.one/app.html",
+      "https://neurobusiness.one/app.html",
+      "#access",
+      "/impressum",
+      "/datenschutz",
+      "mailto:hello@neurobusiness.one"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "utf-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "description",
+        "content": "Zugang zur bestehenden NeuroBusiness\u2122 AI App und Preview der kommenden NBIS Platform\u2122 f\u00fcr Practitioner, Teams und Organisationen."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:url",
+        "content": "https://app.neurobusiness.one/"
+      },
+      {
+        "property": "og:title",
+        "content": "NeuroBusiness\u2122 App Gateway"
+      },
+      {
+        "property": "og:description",
+        "content": "\u00d6ffnen Sie die bestehende NeuroBusiness\u2122 AI App oder merken Sie sich f\u00fcr die kommende NBIS Platform\u2122 vor."
+      },
+      {
+        "property": "og:image",
+        "content": "https://neurobusiness.one/og-image.jpg"
+      }
+    ]
+  },
+  "cancel.html": {
+    "title": [
+      "Payment cancelled \u2014 NeuroBusiness\u2122"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1"
+    ],
+    "links": [
+      "/",
+      "/#produkte",
+      "https://wa.me/4915565695582?text=Hi%20Eva%2C%20ich%20habe%20eine%20Frage%20zu%20NeuroBusiness%E2%84%A2",
+      "/"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "robots",
+        "content": "noindex, nofollow"
+      }
+    ]
+  },
+  "checkout-success.html": {
+    "title": [
+      "Zahlung erfolgreich \u00b7 NeuroBusiness\u2122"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1"
+    ],
+    "links": [
+      "https://neurobusiness.one"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      }
+    ]
+  },
+  "coach-login.html": {
+    "title": [
+      "NeuroBusiness\u2122 Coach \u00b7 Login"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 0,
+    "heading_sequence": [
+      "h2"
+    ],
+    "links": [
+      "mailto:hello@neurobusiness.one"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "robots",
+        "content": "noindex, nofollow"
+      }
+    ]
+  },
+  "coach/index.html": {
+    "title": [
+      "Certified NeuroBusiness Practitioner\u2122 | NeuroBusiness\u2122"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1",
+      "h2",
+      "h2",
+      "h3",
+      "h3",
+      "h3",
+      "h3",
+      "h2",
+      "h3",
+      "h2",
+      "h3",
+      "h3",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "/",
+      "#problem",
+      "#loesung",
+      "#angebot",
+      "#faq",
+      "#apply",
+      "#apply",
+      "#system",
+      "#apply",
+      "/impressum",
+      "/datenschutz",
+      "mailto:hello@neurobusiness.one"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "utf-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "description",
+        "content": "Mach aus deinem Coaching ein diagnostikbasiertes Premium-Angebot. Founding Practitioner Track f\u00fcr Coaches, Berater:innen und Mentor:innen."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:url",
+        "content": "https://coach.neurobusiness.one/"
+      },
+      {
+        "property": "og:title",
+        "content": "Certified NeuroBusiness Practitioner\u2122"
+      },
+      {
+        "property": "og:description",
+        "content": "Integriere NeuroBusiness\u2122 in deine Arbeit und starte Klient:innenreisen mit einem klaren Business-Profil."
+      },
+      {
+        "property": "og:image",
+        "content": "https://neurobusiness.one/og-image.jpg"
+      }
+    ]
+  },
+  "coaches.html": {
+    "title": [
+      "NeuroBusiness\u2122 Certified Practitioner \u2014 F\u00fcr Coaches & Facilitatoren"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1",
+      "h2",
+      "h2",
+      "h2",
+      "h2",
+      "h2",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "/",
+      "/",
+      "#levels",
+      "practitioner.html",
+      "https://wa.me/4915565695582?text=Hi%20Eva%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%20NeuroBusiness%20Practitioner%20Programm",
+      "https://wa.me/4915565695582?text=Hi%20Eva%2C%20ich%20m%C3%B6chte%20mich%20als%20NeuroBusiness%20Practitioner%20bewerben",
+      "mailto:hello@neurobusiness.one?subject=Senior Practitioner Anfrage",
+      "mailto:hello@neurobusiness.one?subject=Master Trainer Anfrage",
+      "practitioner.html",
+      "https://wa.me/4915565695582?text=Hi%20Eva%2C%20ich%20m%C3%B6chte%20mich%20als%20NeuroBusiness%20Certified%20Practitioner%20bewerben",
+      "team-dashboard.html?demo=1",
+      "app.html?dev=1&type=V",
+      "/",
+      "/#impressum",
+      "/#datenschutz"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "description",
+        "content": "Lizenziere das NeuroBusiness\u2122 System f\u00fcr deine Coaching-Praxis. Zertifizierung, Diagnostik-Zugang, Facilitator-Toolkit und ein wachsendes Netzwerk zertifizierter Praktiker."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:url",
+        "content": "https://neurobusiness.one/coaches"
+      },
+      {
+        "property": "og:title",
+        "content": "NeuroBusiness\u2122 Certified Practitioner \u2014 F\u00fcr Coaches & Facilitatoren"
+      },
+      {
+        "property": "og:description",
+        "content": "Lizenziere das NeuroBusiness\u2122 System f\u00fcr deine Coaching-Praxis. Zertifizierung, Diagnostik-Zugang, Facilitator-Toolkit und ein wachsendes Netzwerk."
+      },
+      {
+        "property": "og:image",
+        "content": "https://neurobusiness.one/og-image.jpg"
+      }
+    ]
+  },
+  "diagnostic.html": {
+    "title": [
+      "NeuroBusiness\u2122 Diagnostic \u2014 50-Question Assessment"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 2,
+    "heading_sequence": [
+      "h1",
+      "h1"
+    ],
+    "links": [
+      "https://neurobusiness.one",
+      "./Solo.dc.html#produkte",
+      "mailto:hello@germaninstitute.eu",
+      "https://neurobusiness.one/?legal=datenschutz",
+      "mailto:hello@germaninstitute.eu"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "robots",
+        "content": "noindex, nofollow"
+      }
+    ]
+  },
+  "hr/index.html": {
+    "title": [
+      "NeuroBusiness Team Intelligence\u2122 | HR & Teams"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1",
+      "h2",
+      "h2",
+      "h3",
+      "h3",
+      "h3",
+      "h2",
+      "h2",
+      "h3",
+      "h3",
+      "h3",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "/",
+      "#problem",
+      "#loesung",
+      "#angebote",
+      "#pilot",
+      "#pilot",
+      "#angebote",
+      "#pilot",
+      "#pilot",
+      "#pilot",
+      "/impressum",
+      "/datenschutz",
+      "mailto:hello@neurobusiness.one"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "utf-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "description",
+        "content": "Teamdiagnostik, Rollen-Fit, Kommunikationsmuster, Entscheidungsf\u00e4higkeit und AI Readiness f\u00fcr Unternehmen, HR und People & Culture."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:url",
+        "content": "https://hr.neurobusiness.one/"
+      },
+      {
+        "property": "og:title",
+        "content": "NeuroBusiness Team Intelligence\u2122"
+      },
+      {
+        "property": "og:description",
+        "content": "Machen Sie sichtbar, wie Ihr Team denkt, entscheidet, kommuniziert und umsetzt."
+      },
+      {
+        "property": "og:image",
+        "content": "https://neurobusiness.one/og-image.jpg"
+      }
+    ]
+  },
+  "index.html": {
+    "title": [
+      "NeuroBusiness\u2122 \u2013 Business-Diagnostik f\u00fcr Selbstst\u00e4ndige, Teams & Coaches"
+    ],
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "template_placeholders": 114,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1",
+      "h2",
+      "h3",
+      "h2",
+      "h2",
+      "h3",
+      "h2",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "/",
+      "./Solo.dc.html",
+      "./Team.dc.html",
+      "./Coach.dc.html",
+      "{{ li.href }}",
+      "https://www.neurobusiness.one/quiz",
+      "https://www.neurobusiness.one/quiz",
+      "https://www.neurobusiness.one/quiz",
+      "#wege",
+      "{{ whatsappHref }}",
+      "{{ p.href }}",
+      "./Solo.dc.html#psychotypes",
+      "./Solo.dc.html",
+      "./Team.dc.html",
+      "./Coach.dc.html",
+      "https://www.germaninstitute.eu/impressum.html",
+      "https://www.germaninstitute.eu/datenschutz.html"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 2,
+    "json_ld_blocks": 3,
+    "meta": [
+      {
+        "charset": "utf-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "description",
+        "content": "Finde heraus, welche Arbeitsweise, welches Business-Modell und welche Sichtbarkeitsstrategie zu dir oder deinem Team passen. NeuroBusiness\u2122 Diagnostik f\u00fcr Selbstst\u00e4ndige, Teams und Coaches."
+      },
+      {
+        "name": "robots",
+        "content": "index,follow,max-image-preview:large"
+      },
+      {
+        "property": "og:title",
+        "content": "NeuroBusiness\u2122 \u2013 Not every business fits every brain."
+      },
+      {
+        "property": "og:description",
+        "content": "Neuropsychologische Business-Diagnostik f\u00fcr Selbstst\u00e4ndige, Teams und Coaches."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:url",
+        "content": "https://neurobusiness.one/"
+      },
+      {
+        "property": "og:site_name",
+        "content": "NeuroBusiness"
+      },
+      {
+        "property": "og:image",
+        "content": "https://neurobusiness.one/assets/diagnostik-report-phone.png"
+      },
+      {
+        "property": "og:image:width",
+        "content": "2048"
+      },
+      {
+        "property": "og:image:height",
+        "content": "1306"
+      },
+      {
+        "name": "twitter:card",
+        "content": "summary_large_image"
+      },
+      {
+        "name": "twitter:title",
+        "content": "NeuroBusiness\u2122 \u2013 Not every business fits every brain."
+      },
+      {
+        "name": "twitter:description",
+        "content": "Neuropsychologische Business-Diagnostik f\u00fcr Selbstst\u00e4ndige, Teams und Coaches."
+      },
+      {
+        "name": "twitter:image",
+        "content": "https://neurobusiness.one/assets/diagnostik-report-phone.png"
+      }
+    ]
+  },
+  "practitioner.html": {
+    "title": [
+      "NeuroBusiness\u2122 Practitioner Portal"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 2,
+    "heading_sequence": [
+      "h1",
+      "h1",
+      "h2",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "#",
+      "#",
+      "mailto:hello@neurobusiness.one"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "robots",
+        "content": "noindex, nofollow"
+      }
+    ]
+  },
+  "result_v2.html": {
+    "title": [],
+    "canonical": [],
+    "template_placeholders": 41,
+    "h1_count": 0,
+    "heading_sequence": [],
+    "links": [
+      "https://neurobusiness.one/teams",
+      "https://neurobusiness.one/companion"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      }
+    ]
+  },
+  "result_v2_en.html": {
+    "title": [],
+    "canonical": [],
+    "template_placeholders": 41,
+    "h1_count": 0,
+    "heading_sequence": [],
+    "links": [
+      "https://neurobusiness.one/teams",
+      "https://neurobusiness.one/companion"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      }
+    ]
+  },
+  "success.html": {
+    "title": [
+      "Payment confirmed \u2014 NeuroBusiness\u2122"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1"
+    ],
+    "links": [
+      "/",
+      "mailto:hello@neurobusiness.one",
+      "/"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "robots",
+        "content": "noindex, nofollow"
+      }
+    ]
+  },
+  "team-dashboard.html": {
+    "title": [
+      "NeuroBusiness\u2122 Team Dashboard"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 2,
+    "heading_sequence": [
+      "h1",
+      "h1",
+      "h2",
+      "h2",
+      "h2",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "teams.html",
+      "https://zeeg.me/evak/15min"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "robots",
+        "content": "noindex, nofollow"
+      }
+    ]
+  },
+  "teams.html": {
+    "title": [
+      "NeuroBusiness\u2122 Team Intelligence \u2014 F\u00fcr Gr\u00fcnderteams, Acceleratoren & F\u00fchrungsteams"
+    ],
+    "canonical": [],
+    "template_placeholders": 0,
+    "h1_count": 1,
+    "heading_sequence": [
+      "h1",
+      "h2",
+      "h2",
+      "h2",
+      "h2"
+    ],
+    "links": [
+      "/",
+      "/#produkte",
+      "/#psychotypen",
+      "https://www.germaninstitute.eu/ausbildungen/neurobusiness-practitioner",
+      "#kontakt",
+      "#kontakt",
+      "#kontakt",
+      "#leistungen",
+      "#kontakt",
+      "https://wa.me/4915565695582?text=Hi%20Eva%2C%20ich%20interessiere%20mich%20f%C3%BCr%20NeuroBusiness%E2%84%A2%20Team%20Intelligence",
+      "mailto:hello@neurobusiness.one?subject=Team%20Intelligence%20Anfrage",
+      "https://zeeg.me/evak/15min",
+      "/",
+      "https://www.germaninstitute.eu/ausbildungen/neurobusiness-practitioner",
+      "mailto:hello@neurobusiness.one",
+      "https://linkedin.com/in/coach-eva",
+      "/?legal=impressum",
+      "/?legal=datenschutz"
+    ],
+    "images_missing_alt": 0,
+    "images_without_dimensions": 0,
+    "json_ld_blocks": 0,
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "description",
+        "content": "NeuroBusiness\u2122 Team Intelligence macht sichtbar, wie Menschen denken, entscheiden, kommunizieren und Energie verlieren \u2014 damit Teams mit weniger Reibung und klareren Rollen arbeiten. F\u00fcr Startup-Teams, Acceleratoren und Unternehmen."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:url",
+        "content": "https://neurobusiness.one/teams"
+      },
+      {
+        "property": "og:title",
+        "content": "NeuroBusiness\u2122 Team Intelligence"
+      },
+      {
+        "property": "og:description",
+        "content": "Team-Psychologie sichtbar machen \u2014 Rollen, Kommunikation und blinde Flecken, bevor sie zu Performance-Problemen werden."
+      },
+      {
+        "property": "og:image",
+        "content": "https://neurobusiness.one/og-image.jpg"
+      }
+    ]
+  }
+}

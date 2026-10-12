@@ -1,23 +1,574 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="nb-prerender">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Diagnostik für evidenzbasiertes Business Coaching | NeuroBusiness™</title>
 <meta name="description" content="NeuroBusiness verbindet psychologisch fundierte Business-Diagnostik, strukturierte Reports und AI-Unterstützung für Coaches, Beratung und Leadership-Entwicklung.">
-<link rel="canonical" href="https://www.neurobusiness.one/coaches">
+<link rel="canonical" href="https://neurobusiness.one/coaches">
 <meta property="og:title" content="NeuroBusiness™ für Coaches – Entwicklung sichtbar machen">
 <meta property="og:description" content="Ein diagnostisches System für nachvollziehbare Coaching-Prozesse, strukturierte Reports und fundierte Folgearbeit.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.neurobusiness.one/coaches">
+<meta property="og:url" content="https://neurobusiness.one/coaches">
 <meta property="og:site_name" content="NeuroBusiness™">
 <meta property="og:image" content="https://www.neurobusiness.one/assets/diagnostik-report-phone.png">
 <meta name="theme-color" content="#faf7f0">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Ersetzt NeuroBusiness mein Coaching?","acceptedAnswer":{"@type":"Answer","text":"Nein. NeuroBusiness ergänzt deinen bestehenden Coaching-Prozess um eine strukturierte diagnostische Ausgangslage, Reports und nachvollziehbare Folgearbeit."}},{"@type":"Question","name":"Ist NeuroBusiness ein Persönlichkeitstest?","acceptedAnswer":{"@type":"Answer","text":"Nein. Im Mittelpunkt stehen arbeits- und businessbezogene Präferenzen, Denk- und Entscheidungsmuster sowie deren Bedeutung im jeweiligen Kontext."}},{"@type":"Question","name":"Wie ist der wissenschaftliche Entwicklungsstand?","acceptedAnswer":{"@type":"Answer","text":"NeuroBusiness wird psychologisch fundiert für den Business-Kontext entwickelt. Erkenntnisse aus Forschung, Anwendung und Daten fließen kontinuierlich in die Weiterentwicklung des Modells ein."}},{"@type":"Question","name":"Wie kann ich die Diagnostik in meiner Praxis einsetzen?","acceptedAnswer":{"@type":"Answer","text":"Als strukturierten Einstieg in Coaching und Beratung, als eigenständige Auswertung mit Report oder als Grundlage für individuelle Empfehlungen und Folgearbeit."}},{"@type":"Question","name":"Wie funktionieren Diagnostik-Credits und laufende Kosten?","acceptedAnswer":{"@type":"Answer","text":"Ein Credit entspricht einer vollständigen Diagnostik mit persönlichem Report. Fünf Starter-Credits und ein Monat Coach AI Companion sind enthalten; weitere Pakete und optionale Folgekosten werden vor der Buchung transparent ausgewiesen."}},{"@type":"Question","name":"Ist das Practitioner-Programm vollständig online?","acceptedAnswer":{"@type":"Answer","text":"Ja. Das kompakte Intensivtraining findet live online statt."}}]}</script>
-<script src="./support.js?v=20260725-1"></script>
+
+
+<style>
+    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
+      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
+    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
+    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
+      background:color-mix(in srgb,currentColor 8%,transparent)}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:color-mix(in srgb,currentColor 50%,transparent);
+      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      figure, table { break-inside: avoid; }
+      #dc-root, #dc-root > .sc-host { height: auto; }
+      *, *::before, *::after {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+
+x-dc{display:none!important}
+
+html,body{height:100%;margin:0}#dc-root,#dc-root>.sc-host{height:100%}
+body{margin:0;background:#faf7f0;}@keyframes nb-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .hero-mesh{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100vw;height:100%;z-index:-1;overflow:hidden;pointer-events:none;}
+  .mesh-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.5;animation:nb-blob 16s infinite ease-in-out alternate;}
+  .blob-1{width:55vw;height:55vw;background:radial-gradient(circle,#cfc7ef 0%,transparent 70%);top:-14%;left:-8%;}
+  .blob-2{width:48vw;height:48vw;background:radial-gradient(circle,#e4efd6 0%,transparent 70%);bottom:-16%;right:-10%;animation-delay:-5s;}
+  .blob-3{width:40vw;height:40vw;background:radial-gradient(circle,#f0e6cf 0%,transparent 70%);top:38%;left:34%;animation-delay:-10s;}
+  .hero-mesh::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,transparent 30%,#faf7f0 90%);}
+  @keyframes nb-blob{0%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-50px) scale(1.1)}66%{transform:translate(-20px,20px) scale(.9)}100%{transform:translate(0,0) scale(1)}}
+  .nb-faq details{background:#fff;border:1px solid rgba(21,19,15,.09);border-radius:14px;padding:0 20px}.nb-faq details+details{margin-top:10px}.nb-faq summary{cursor:pointer;list-style:none;padding:19px 32px 19px 0;font-weight:700;position:relative}.nb-faq summary::-webkit-details-marker{display:none}.nb-faq summary::after{content:'+';position:absolute;right:2px;top:15px;font-family:'Source Serif 4',serif;font-size:25px;font-weight:400;color:#7c6fd6}.nb-faq details[open] summary::after{content:'–'}.nb-faq details p{color:#544e46;font-size:14.5px;line-height:1.65;margin:0;padding:0 34px 20px 0}
+  .nb-workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.nb-workflow-step{background:#fff;border:1px solid rgba(21,19,15,.09);border-radius:15px;padding:22px 20px;min-height:132px}.nb-step-number{display:block;color:#7c6fd6;font-family:'Source Serif 4',serif;font-size:20px;margin-bottom:12px}.nb-workflow-step h3{font-size:15px;margin:0 0 7px}.nb-workflow-step h3,.nb-workflow-step h3 *{color:#15130f!important}.nb-workflow-step p{font-size:12.5px;line-height:1.55;margin:0}.nb-workflow-step p,.nb-workflow-step p *{color:#6b645a!important}.nb-report-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}.nb-report-chip{background:#fff;border:1px solid rgba(21,19,15,.09);border-radius:11px;padding:13px 14px;font-size:12.5px;font-weight:600}
+  .nb-reveal{opacity:0;transform:translate3d(0,24px,0);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .nb-reveal.is-visible{opacity:1;transform:none}
+  .nb-workflow{position:relative}
+  .nb-workflow-step{position:relative;overflow:hidden;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease,background-color .35s ease}
+  .nb-workflow-step::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:#7c6fd6;transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+  .nb-workflow-step.is-active{transform:translateY(-4px);border-color:rgba(124,111,214,.45);box-shadow:0 18px 38px -28px rgba(21,19,15,.55)}
+  .nb-workflow-step.is-active::after{transform:scaleX(1)}
+  .nb-product-visual{margin:0}.nb-product-image-frame{overflow:hidden;background:#0d2923;border-radius:20px;box-shadow:0 28px 60px -38px rgba(9,35,29,.65)}.nb-product-image-frame img{display:block;width:100%;height:auto}.nb-product-visual figcaption{margin:12px 4px 0;color:#746d63;font-size:11.5px;line-height:1.55}
+  .nb-editorial-report{background:#0b2922;color:#faf7f0;padding:120px 40px}.nb-editorial-inner{max-width:1160px;margin:0 auto}.nb-editorial-copy{max-width:750px;margin:0 auto 44px;text-align:center}.nb-editorial-frame{overflow:hidden;border-radius:22px;border:1px solid rgba(250,247,240,.12);box-shadow:0 34px 80px -42px rgba(0,0,0,.85)}.nb-editorial-frame img{display:block;width:100%;height:auto}.nb-editorial-report figcaption{color:rgba(250,247,240,.58);text-align:center;margin-top:14px;font-size:11.5px;line-height:1.55}
+  .nb-actions a,.nb-mobile-cta,.nb-nav>a,.nb-report-chip{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background-color .22s ease}
+  .nb-actions a:hover,.nb-actions a:focus-visible,.nb-mobile-cta:hover,.nb-mobile-cta:focus-visible{transform:translateY(-2px);box-shadow:0 13px 28px -18px rgba(21,19,15,.7)}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid rgba(124,111,214,.55);outline-offset:3px}
+  .nb-nav.is-scrolled{background:rgba(250,247,240,.96)!important;box-shadow:0 12px 32px -28px rgba(21,19,15,.65)}
+  .nb-mobile-cta,.nb-mobile-lang{display:none}
+  @media(max-width:900px){
+    html{scroll-padding-top:72px}body{overflow-x:hidden}.nb-desktop-nav{display:none!important}.nb-mobile-cta,.nb-mobile-lang{display:inline-flex!important;align-items:center;justify-content:center;box-sizing:border-box}.nb-mobile-cta{min-height:42px}.nb-nav{padding:11px 16px!important}.nb-nav>a:first-child{font-size:17px!important;gap:7px!important}.nb-nav>a:first-child img{width:30px!important;height:30px!important}.nb-hero{padding:116px 20px 58px!important;text-align:left!important}.nb-hero h1{font-size:clamp(38px,11vw,50px)!important;line-height:1.03!important}.nb-hero>p{margin-left:0!important;margin-right:0!important;font-size:16px!important}.nb-actions{display:grid!important;grid-template-columns:1fr!important;gap:10px!important}.nb-actions a{width:100%;min-height:52px;box-sizing:border-box;text-align:center}.nb-two-col{grid-template-columns:1fr!important;gap:34px!important}.nb-stats{grid-template-columns:repeat(2,1fr)!important;gap:24px 14px!important;margin-top:44px!important;padding-top:32px!important}.nb-workflow{grid-template-columns:1fr!important;gap:10px!important}.nb-workflow-step{min-height:0!important;padding:18px!important}.nb-section{padding:64px 20px!important}.nb-footer-grid{grid-template-columns:1fr!important;gap:30px!important}.nb-faq details{padding:0 16px!important}.nb-product-image-frame--web{aspect-ratio:4/3}.nb-product-image-frame--web img{height:100%;object-fit:cover;object-position:72% center}.nb-editorial-report{padding:72px 20px}.nb-editorial-copy{margin-bottom:30px;text-align:left}.nb-editorial-frame{aspect-ratio:4/3}.nb-editorial-frame img{height:100%;object-fit:cover;object-position:61% center}[style*="padding:120px 40px"],[style*="padding:110px 40px"],[style*="padding:100px 40px"],[style*="padding:90px 40px"],[style*="padding:80px 40px"],[style*="padding:70px 40px"]{padding:64px 20px!important}[style*="grid-template-columns:repeat(4"],[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}[style*="grid-template-columns:repeat(2"]{grid-template-columns:1fr!important}[style*="min-height:"]{min-height:0!important}}
+  @media(max-width:430px){.nb-nav{gap:7px!important}.nb-brand-name{font-size:14px!important}.nb-mobile-lang{padding:2px!important}.nb-mobile-lang button{font-size:10.5px!important;padding:5px 6px!important}.nb-mobile-cta{font-size:11px!important;padding:9px 9px!important}.nb-hero h1{font-size:38px!important}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.mesh-blob{animation:none!important}.nb-reveal{opacity:1!important;transform:none!important;transition:none!important}.nb-workflow-step,.nb-workflow-step::after,.nb-actions a,.nb-mobile-cta{transition:none!important}.nb-workflow-step.is-active{transform:none!important}}
+
+x-dc{display:none!important}.nb-prerender #dc-root{display:none!important}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://neurobusiness.one/#organization","name":"NeuroBusiness","url":"https://neurobusiness.one/","founder":{"@id":"https://neurobusiness.one/founder#person"}},{"@type":"Person","@id":"https://neurobusiness.one/founder#person","name":"Eva Kolontai","url":"https://neurobusiness.one/founder"},{"@type":"WebSite","@id":"https://neurobusiness.one/#website","name":"NeuroBusiness","url":"https://neurobusiness.one/","publisher":{"@id":"https://neurobusiness.one/#organization"}},{"@type":"WebPage","@id":"https://neurobusiness.one/coaches#webpage","url":"https://neurobusiness.one/coaches","name":"Diagnostik für evidenzbasiertes Business Coaching | NeuroBusiness™","description":"NeuroBusiness verbindet psychologisch fundierte Business-Diagnostik, strukturierte Reports und AI-Unterstützung für Coaches, Beratung und Leadership-Entwicklung.","inLanguage":"de","isPartOf":{"@id":"https://neurobusiness.one/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"NeuroBusiness","item":"https://neurobusiness.one/"},{"@type":"ListItem","position":2,"name":"Diagnostik für evidenzbasiertes Business Coaching | NeuroBusiness™","item":"https://neurobusiness.one/coaches"}]},{"@type":"Service","@id":"https://neurobusiness.one/coaches#service","name":"NeuroBusiness Practitioner","provider":{"@id":"https://neurobusiness.one/#organization"},"url":"https://neurobusiness.one/coaches","description":"NeuroBusiness verbindet psychologisch fundierte Business-Diagnostik, strukturierte Reports und AI-Unterstützung für Coaches, Beratung und Leadership-Entwicklung."}]}</script>
+<link rel="alternate" type="text/plain" href="/llms.txt" title="Discovery index">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Diagnostik für evidenzbasiertes Business Coaching | NeuroBusiness™"><meta name="twitter:description" content="NeuroBusiness verbindet psychologisch fundierte Business-Diagnostik, strukturierte Reports und AI-Unterstützung für Coaches, Beratung und Leadership-Entwicklung."><meta name="twitter:image" content="https://neurobusiness.one/og-image.jpg"><meta property="og:image" content="https://neurobusiness.one/og-image.jpg">
 </head>
 <body>
-<x-dc>
+<main id="nb-static"><div class="sc-host" data-sc-name="Coach"><div data-dc-tpl="5" style="font-family: Manrope, sans-serif; background: rgb(250, 247, 240); color: rgb(21, 19, 15); overflow-x: hidden;">
+
+
+  <div data-dc-tpl="6" class="nb-nav" style="position: fixed; top: 0px; left: 0px; right: 0px; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 40px; background: rgba(250, 247, 240, 0.86); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(21, 19, 15, 0.08);">
+    <a data-dc-tpl="7" href="./Homepage.dc.html" style="display: flex; align-items: center; gap: 8px; font-family: &quot;Source Serif 4&quot;, serif; font-size: 19px; font-weight: 600; text-decoration: none; color: rgb(21, 19, 15);">
+      <img data-dc-tpl="8" width="1024" height="1024" src="./assets/NB_Coach_Icon.png" alt="" aria-hidden="true" style="width: 34px; height: 34px; display: block; flex: 0 0 auto; object-fit: contain;"><span data-dc-tpl="9" class="nb-brand-name">NeuroBusiness<span data-dc-tpl="10" style="color: rgb(34, 201, 100);">™</span></span>
+    </a>
+    <div data-dc-tpl="11" class="nb-desktop-nav" style="display: flex; align-items: center; gap: 30px;">
+      <div data-dc-tpl="12" style="display: flex; align-items: center; gap: 26px;">
+        <a data-dc-tpl="13" href="/solo" class="scp0" style="color: rgb(21, 19, 15); text-decoration: none; font-size: 14.5px; font-weight: 500; opacity: 0.78;"><span class="sc-interp">Für Selbstständige</span></a>
+        <a data-dc-tpl="14" href="/teams" class="scp0" style="color: rgb(21, 19, 15); text-decoration: none; font-size: 14.5px; font-weight: 500; opacity: 0.78;"><span class="sc-interp">Für Teams</span></a>
+        <a data-dc-tpl="15" href="/coaches" style="color: rgb(21, 19, 15); text-decoration: none; font-size: 14.5px; font-weight: 700; opacity: 1;"><span class="sc-interp">Für Coaches</span></a>
+      </div>
+      <div data-dc-tpl="16" style="display: flex; align-items: center; gap: 8px; font-family: Manrope; font-size: 12px; letter-spacing: 1px;">
+        <span style="border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: rgb(21, 19, 15); font-family: Manrope; font-size: 12px; font-weight: 700; opacity: 1; cursor: pointer; padding: 0px;">DE</span>
+        <span data-dc-tpl="18" style="color: rgba(21, 19, 15, 0.25);">/</span>
+        <span style="border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: rgb(21, 19, 15); font-family: Manrope; font-size: 12px; font-weight: 700; opacity: 0.4; cursor: pointer; padding: 0px;">EN</span>
+      </div>
+      <div data-dc-tpl="20" style="position: relative;">
+        <span style="border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: rgb(21, 19, 15); font-family: Manrope; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 8px 0px;">Log in▾</span>
+
+      </div>
+      <a data-dc-tpl="27" href="https://www.neurobusiness.one/quiz" class="scp2" style="background: rgb(124, 111, 214); color: rgb(255, 255, 255); text-decoration: none; font-size: 14px; font-weight: 600; padding: 11px 20px; border-radius: 8px;"><span class="sc-interp">Quick-Scan starten</span></a>
+    </div>
+    <div data-dc-tpl="28" class="nb-mobile-lang" aria-label="Sprache" style="align-items: center; gap: 6px;">
+      <span style="border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: rgb(21, 19, 15); font-family: Manrope; font-size: 11px; font-weight: 700; padding: 0px; opacity: 1; cursor: pointer;">DE</span>
+      <span data-dc-tpl="30" style="color: rgba(21, 19, 15, 0.25);">/</span>
+      <span style="border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: rgb(21, 19, 15); font-family: Manrope; font-size: 11px; font-weight: 700; padding: 0px; opacity: 0.4; cursor: pointer;">EN</span>
+    </div>
+    <a data-dc-tpl="32" class="nb-mobile-cta" href="https://www.neurobusiness.one/quiz" style="background: rgb(124, 111, 214); color: rgb(255, 255, 255); text-decoration: none; font-size: 12.5px; font-weight: 700; padding: 9px 13px; border-radius: 8px;"><span class="sc-interp">Quick-Scan</span></a>
+  </div>
+
+
+  <div data-dc-tpl="33" class="nb-hero" style="padding: 170px 40px 40px; max-width: 1100px; margin: 0px auto; text-align: center; position: relative;">
+    <div data-dc-tpl="34" class="hero-mesh"><div data-dc-tpl="35" class="mesh-blob blob-1"></div><div data-dc-tpl="36" class="mesh-blob blob-2"></div><div data-dc-tpl="37" class="mesh-blob blob-3"></div></div>
+    <p data-dc-tpl="38" style="font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(124, 111, 214); font-weight: 600; margin: 0px 0px 24px;"><span class="sc-interp">Evidenz statt Bauchgefühl.</span></p>
+    <h1 data-dc-tpl="39" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(34px, 5.6vw, 64px); line-height: 1.08; font-weight: 400; margin: 0px 0px 26px; letter-spacing: -0.6px; text-wrap: pretty;"><span class="sc-interp">Diagnostik für Coaches, die Entwicklung</span> <span data-dc-tpl="40" style="font-style: italic; color: rgb(124, 111, 214);"><span class="sc-interp">sichtbar machen.</span></span></h1>
+    <p data-dc-tpl="41" style="font-size: 17.5px; line-height: 1.55; color: rgb(84, 78, 70); max-width: 680px; margin: 0px auto 38px; text-wrap: pretty;"><span class="sc-interp">NeuroBusiness™ ergänzt dein Coaching um eine psychologisch fundierte diagnostische Ausgangslage, strukturierte Reports und nachvollziehbare Folgearbeit. Dein Coaching bleibt persönlich — der Prozess wird klarer.</span></p>
+    <div data-dc-tpl="42" class="nb-actions" style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+      <a data-dc-tpl="43" href="https://www.neurobusiness.one/quiz" style="background: rgb(124, 111, 214); color: rgb(255, 255, 255); text-decoration: none; font-weight: 700; font-size: 15.5px; padding: 16px 30px; border-radius: 9px;"><span class="sc-interp">Kostenlosen Quick-Scan starten</span></a>
+      <a data-dc-tpl="44" href="#static-report-preview" style="color: rgb(21, 19, 15); text-decoration: none; font-weight: 600; font-size: 15.5px; padding: 16px 22px; border-radius: 9px; border: 1px solid rgba(21, 19, 15, 0.16);"><span class="sc-interp">Musterreport ansehen →</span></a>
+    </div>
+    <div data-dc-tpl="45" class="nb-stats" style="max-width: 1000px; margin: 64px auto 0px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding-top: 44px; border-top: 1px solid rgba(21, 19, 15, 0.14);">
+
+        <div data-dc-tpl="47" style="text-align: center;">
+          <div data-dc-tpl="48" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(32px, 4vw, 52px); font-weight: 400; color: rgb(21, 19, 15); line-height: 1; letter-spacing: -0.5px;"><span class="sc-interp">5</span></div>
+          <div data-dc-tpl="49" style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgb(138, 131, 120); margin-top: 14px;"><span class="sc-interp">Psychotypen</span></div>
+        </div>
+
+        <div data-dc-tpl="47" style="text-align: center;">
+          <div data-dc-tpl="48" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(32px, 4vw, 52px); font-weight: 400; color: rgb(21, 19, 15); line-height: 1; letter-spacing: -0.5px;"><span class="sc-interp">50</span></div>
+          <div data-dc-tpl="49" style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgb(138, 131, 120); margin-top: 14px;"><span class="sc-interp">Diagnostik-Fragen</span></div>
+        </div>
+
+        <div data-dc-tpl="47" style="text-align: center;">
+          <div data-dc-tpl="48" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(32px, 4vw, 52px); font-weight: 400; color: rgb(21, 19, 15); line-height: 1; letter-spacing: -0.5px;"><span class="sc-interp">1</span></div>
+          <div data-dc-tpl="49" style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgb(138, 131, 120); margin-top: 14px;"><span class="sc-interp">Executive-Report</span></div>
+        </div>
+
+        <div data-dc-tpl="47" style="text-align: center;">
+          <div data-dc-tpl="48" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(32px, 4vw, 52px); font-weight: 400; color: rgb(21, 19, 15); line-height: 1; letter-spacing: -0.5px;"><span class="sc-interp">2</span></div>
+          <div data-dc-tpl="49" style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgb(138, 131, 120); margin-top: 14px;"><span class="sc-interp">Sprachen</span></div>
+        </div>
+
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="50" class="nb-motion-section nb-reveal is-visible" style="background: rgb(21, 19, 15); color: rgb(250, 247, 240); padding: 110px 40px; margin-top: 90px;">
+    <div data-dc-tpl="51" class="nb-two-col" style="max-width: 1100px; margin: 0px auto; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 76px; align-items: center;">
+      <div data-dc-tpl="52"><p data-dc-tpl="53" style="font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(201, 150, 63); font-weight: 600; margin: 0px 0px 22px;"><span class="sc-interp">Die Ausgangslage</span></p><h2 data-dc-tpl="54" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(30px, 4vw, 48px); font-weight: 400; margin: 0px; line-height: 1.08;"><span class="sc-interp">Coaching verändert Menschen. Doch Entwicklung bleibt oft schwer greifbar.</span></h2></div>
+      <div data-dc-tpl="55"><p data-dc-tpl="56" style="font-size: 17px; line-height: 1.7; color: rgba(250, 247, 240, 0.78); margin: 0px 0px 22px;"><span class="sc-interp">Gute Gespräche schaffen Bewegung. Für Klient:innen und Auftraggeber fehlt jedoch häufig eine gemeinsame, nachvollziehbare Ausgangslage.</span></p><p data-dc-tpl="57" style="font-size: 14.5px; line-height: 1.7; color: rgba(250, 247, 240, 0.58); margin: 0px;"><span class="sc-interp">NeuroBusiness ersetzt weder Beziehung noch Erfahrung. Das System ergänzt dein Coaching um eine strukturierte diagnostische Ebene — damit Muster früher sichtbar, Gespräche fokussierter und nächste Schritte anschlussfähiger werden.</span></p></div>
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="58" class="nb-motion-section nb-reveal is-visible" style="background: rgb(255, 255, 255); padding: 100px 40px; border-bottom: 1px solid rgba(21, 19, 15, 0.08);">
+    <div data-dc-tpl="59" style="max-width: 1100px; margin: 0px auto;">
+      <p data-dc-tpl="60" style="text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(124, 111, 214); font-weight: 600; margin: 0px 0px 18px;"><span class="sc-interp">Was Auftraggeber heute erwarten</span></p>
+      <h2 data-dc-tpl="61" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(28px, 3.6vw, 42px); text-align: center; font-weight: 400; margin: 0px auto 18px; max-width: 780px;"><span class="sc-interp">Von guter Begleitung zu nachvollziehbarer Entwicklung.</span></h2>
+      <p data-dc-tpl="62" style="text-align: center; font-size: 15px; line-height: 1.65; color: rgb(107, 100, 90); max-width: 700px; margin: 0px auto 48px;"><span class="sc-interp">Nicht mehr Marketing, sondern mehr Klarheit: über Ausgangslage, Prozess und die fachlich begründeten nächsten Schritte.</span></p>
+      <div data-dc-tpl="63" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;">
+
+          <div data-dc-tpl="65" style="background: rgb(250, 247, 240); border: 1px solid rgba(21, 19, 15, 0.08); border-radius: 15px; padding: 26px 24px;"><div data-dc-tpl="66" style="font-family: &quot;Source Serif 4&quot;, serif; color: rgb(124, 111, 214); font-size: 21px; margin-bottom: 12px;"><span class="sc-interp">01</span></div><h3 data-dc-tpl="67" style="font-size: 16px; margin: 0px 0px 9px;"><span class="sc-interp">Transparenz</span></h3><p data-dc-tpl="68" style="font-size: 13.5px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Klient:innen verstehen, wo sie starten und woran sie konkret arbeiten.</span></p></div>
+
+          <div data-dc-tpl="65" style="background: rgb(250, 247, 240); border: 1px solid rgba(21, 19, 15, 0.08); border-radius: 15px; padding: 26px 24px;"><div data-dc-tpl="66" style="font-family: &quot;Source Serif 4&quot;, serif; color: rgb(124, 111, 214); font-size: 21px; margin-bottom: 12px;"><span class="sc-interp">02</span></div><h3 data-dc-tpl="67" style="font-size: 16px; margin: 0px 0px 9px;"><span class="sc-interp">Struktur</span></h3><p data-dc-tpl="68" style="font-size: 13.5px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Diagnostik, Debrief und Coaching folgen einer gemeinsamen Logik.</span></p></div>
+
+          <div data-dc-tpl="65" style="background: rgb(250, 247, 240); border: 1px solid rgba(21, 19, 15, 0.08); border-radius: 15px; padding: 26px 24px;"><div data-dc-tpl="66" style="font-family: &quot;Source Serif 4&quot;, serif; color: rgb(124, 111, 214); font-size: 21px; margin-bottom: 12px;"><span class="sc-interp">03</span></div><h3 data-dc-tpl="67" style="font-size: 16px; margin: 0px 0px 9px;"><span class="sc-interp">Anschlussfähigkeit</span></h3><p data-dc-tpl="68" style="font-size: 13.5px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Erkenntnisse lassen sich in Ziele, Folgearbeit und Re-Assessments übersetzen.</span></p></div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="69" id="static-workflow" class="nb-motion-section nb-reveal is-visible" style="max-width: 1160px; margin: 0px auto; padding: 120px 40px;">
+    <p data-dc-tpl="70" style="text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(124, 111, 214); font-weight: 600; margin: 0px 0px 18px;"><span class="sc-interp">So arbeitet das System</span></p>
+    <h2 data-dc-tpl="71" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(28px, 3.6vw, 42px); text-align: center; font-weight: 400; margin: 0px auto 18px; max-width: 820px;"><span class="sc-interp">Ein klarer Prozess — ohne dein Coaching zu standardisieren.</span></h2>
+    <p data-dc-tpl="72" style="text-align: center; font-size: 15px; line-height: 1.65; color: rgb(107, 100, 90); max-width: 700px; margin: 0px auto 50px;"><span class="sc-interp">NeuroBusiness schafft einen wiederholbaren Rahmen. Deine Methode, deine Beziehung und deine fachliche Entscheidung bleiben zentral.</span></p>
+    <div data-dc-tpl="73" class="nb-workflow"><div data-dc-tpl="75" class="nb-workflow-step"><span data-dc-tpl="76" class="nb-step-number"><span class="sc-interp">01</span></span><h3 data-dc-tpl="77"><span class="sc-interp">Auftrag klären</span></h3><p data-dc-tpl="78"><span class="sc-interp">Ziel, Kontext und passende diagnostische Fragestellung definieren.</span></p></div><div data-dc-tpl="75" class="nb-workflow-step"><span data-dc-tpl="76" class="nb-step-number"><span class="sc-interp">02</span></span><h3 data-dc-tpl="77"><span class="sc-interp">Diagnostik</span></h3><p data-dc-tpl="78"><span class="sc-interp">50 arbeits- und businessbezogene Fragen strukturiert bearbeiten.</span></p></div><div data-dc-tpl="75" class="nb-workflow-step"><span data-dc-tpl="76" class="nb-step-number"><span class="sc-interp">03</span></span><h3 data-dc-tpl="77"><span class="sc-interp">Executive Report</span></h3><p data-dc-tpl="78"><span class="sc-interp">Profil, Muster, Stärken und mögliche Entwicklungsfelder aufbereiten.</span></p></div><div data-dc-tpl="75" class="nb-workflow-step"><span data-dc-tpl="76" class="nb-step-number"><span class="sc-interp">04</span></span><h3 data-dc-tpl="77"><span class="sc-interp">Debrief</span></h3><p data-dc-tpl="78"><span class="sc-interp">Ergebnisse gemeinsam einordnen und Hypothesen prüfen.</span></p></div><div data-dc-tpl="75" class="nb-workflow-step"><span data-dc-tpl="76" class="nb-step-number"><span class="sc-interp">05</span></span><h3 data-dc-tpl="77"><span class="sc-interp">Coaching</span></h3><p data-dc-tpl="78"><span class="sc-interp">Individuelle Ziele und Interventionen aus dem Kontext ableiten.</span></p></div><div data-dc-tpl="75" class="nb-workflow-step"><span data-dc-tpl="76" class="nb-step-number"><span class="sc-interp">06</span></span><h3 data-dc-tpl="77"><span class="sc-interp">AI Companion</span></h3><p data-dc-tpl="78"><span class="sc-interp">Vorbereitung, Reflexion und Kontinuität zwischen Sitzungen unterstützen.</span></p></div><div data-dc-tpl="75" class="nb-workflow-step"><span data-dc-tpl="76" class="nb-step-number"><span class="sc-interp">07</span></span><h3 data-dc-tpl="77"><span class="sc-interp">Re-Assessment</span></h3><p data-dc-tpl="78"><span class="sc-interp">Veränderungen zu einem späteren Zeitpunkt erneut betrachten.</span></p></div><div data-dc-tpl="75" class="nb-workflow-step"><span data-dc-tpl="76" class="nb-step-number"><span class="sc-interp">08</span></span><h3 data-dc-tpl="77"><span class="sc-interp">Entwicklungsreport</span></h3><p data-dc-tpl="78"><span class="sc-interp">Fortschritt und sinnvolle nächste Schritte nachvollziehbar bündeln.</span></p></div></div>
+  </div>
+
+
+  <div data-dc-tpl="79" id="static-programm" class="nb-motion-section nb-reveal is-visible" style="max-width: 1160px; margin: 0px auto; padding: 120px 40px;">
+    <p data-dc-tpl="80" style="text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(124, 111, 214); font-weight: 600; margin: 0px 0px 18px;"><span class="sc-interp">Für deine Coaching-Praxis</span></p>
+    <h2 data-dc-tpl="81" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(28px, 3.6vw, 42px); text-align: center; font-weight: 400; margin: 0px auto 60px; letter-spacing: -0.5px; text-wrap: pretty; max-width: 780px;"><span class="sc-interp">Was NeuroBusiness™ in deinem bestehenden Prozess verändert.</span></h2>
+    <div data-dc-tpl="82" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+
+        <div data-dc-tpl="84" style="background: rgb(255, 255, 255); border-radius: 16px; padding: 28px 24px; border: 1px solid rgba(21, 19, 15, 0.08);">
+          <div data-dc-tpl="85" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 20px; color: rgb(124, 111, 214); margin-bottom: 12px;"><span class="sc-interp">01</span></div>
+          <h3 data-dc-tpl="86" style="font-size: 16.5px; font-weight: 600; margin: 0px 0px 10px;"><span class="sc-interp">Gemeinsame Ausgangslage</span></h3>
+          <p data-dc-tpl="87" style="font-size: 13.5px; line-height: 1.55; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Du und dein Klient starten mit einer strukturierten Sprache für Arbeitsweise, Stärken und mögliche Blockierungen.</span></p>
+        </div>
+
+        <div data-dc-tpl="84" style="background: rgb(255, 255, 255); border-radius: 16px; padding: 28px 24px; border: 1px solid rgba(21, 19, 15, 0.08);">
+          <div data-dc-tpl="85" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 20px; color: rgb(124, 111, 214); margin-bottom: 12px;"><span class="sc-interp">02</span></div>
+          <h3 data-dc-tpl="86" style="font-size: 16.5px; font-weight: 600; margin: 0px 0px 10px;"><span class="sc-interp">Reproduzierbarer Prozess</span></h3>
+          <p data-dc-tpl="87" style="font-size: 13.5px; line-height: 1.55; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Diagnostik, Report, Debrief und Folgearbeit greifen ineinander, ohne deine eigene Coaching-Methode zu ersetzen.</span></p>
+        </div>
+
+        <div data-dc-tpl="84" style="background: rgb(255, 255, 255); border-radius: 16px; padding: 28px 24px; border: 1px solid rgba(21, 19, 15, 0.08);">
+          <div data-dc-tpl="85" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 20px; color: rgb(124, 111, 214); margin-bottom: 12px;"><span class="sc-interp">03</span></div>
+          <h3 data-dc-tpl="86" style="font-size: 16.5px; font-weight: 600; margin: 0px 0px 10px;"><span class="sc-interp">Nachvollziehbare Entwicklung</span></h3>
+          <p data-dc-tpl="87" style="font-size: 13.5px; line-height: 1.55; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Ziele und Veränderungen werden entlang eines klaren Ausgangsprofils reflektiert statt nur aus dem Moment heraus bewertet.</span></p>
+        </div>
+
+        <div data-dc-tpl="84" style="background: rgb(255, 255, 255); border-radius: 16px; padding: 28px 24px; border: 1px solid rgba(21, 19, 15, 0.08);">
+          <div data-dc-tpl="85" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 20px; color: rgb(124, 111, 214); margin-bottom: 12px;"><span class="sc-interp">04</span></div>
+          <h3 data-dc-tpl="86" style="font-size: 16.5px; font-weight: 600; margin: 0px 0px 10px;"><span class="sc-interp">Coach bleibt Entscheider</span></h3>
+          <p data-dc-tpl="87" style="font-size: 13.5px; line-height: 1.55; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Reports und AI-Unterstützung bereiten Erkenntnisse auf. Die fachliche Einordnung und Begleitung bleiben bei dir.</span></p>
+        </div>
+
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="88" class="nb-motion-section nb-reveal is-visible" style="background: rgb(240, 235, 224); padding: 110px 40px;">
+    <div data-dc-tpl="89" style="max-width: 1100px; margin: 0px auto;">
+      <p data-dc-tpl="90" style="text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(124, 111, 214); font-weight: 600; margin: 0px 0px 18px;"><span class="sc-interp">Für wen ist das Programm?</span></p>
+      <h2 data-dc-tpl="91" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(28px, 3.6vw, 42px); text-align: center; font-weight: 400; margin: 0px 0px 60px; letter-spacing: -0.5px;"><span class="sc-interp">Du passt zum Programm, wenn mindestens eines zutrifft.</span></h2>
+      <div data-dc-tpl="92" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+
+          <div data-dc-tpl="94" style="background: rgb(255, 255, 255); border-radius: 14px; padding: 28px 26px; border: 1px solid rgba(21, 19, 15, 0.08);">
+            <div data-dc-tpl="95" style="width: 42px; height: 42px; border-radius: 11px; background: rgb(239, 231, 211); display: flex; align-items: center; justify-content: center; font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; color: rgb(124, 111, 214); margin-bottom: 18px;"><span class="sc-interp">C</span></div>
+            <h3 data-dc-tpl="96" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; font-weight: 500; margin: 0px 0px 10px;"><span class="sc-interp">Business Coach</span></h3>
+            <p data-dc-tpl="97" style="font-size: 13.5px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Du begleitest Selbstständige und willst ihnen von Tag 1 ein klares Profil geben — statt erst nach Monaten zu verstehen, wie dein Klient wirklich tickt.</span></p>
+          </div>
+
+          <div data-dc-tpl="94" style="background: rgb(255, 255, 255); border-radius: 14px; padding: 28px 26px; border: 1px solid rgba(21, 19, 15, 0.08);">
+            <div data-dc-tpl="95" style="width: 42px; height: 42px; border-radius: 11px; background: rgb(239, 231, 211); display: flex; align-items: center; justify-content: center; font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; color: rgb(124, 111, 214); margin-bottom: 18px;"><span class="sc-interp">F</span></div>
+            <h3 data-dc-tpl="96" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; font-weight: 500; margin: 0px 0px 10px;"><span class="sc-interp">Facilitator &amp; Trainer</span></h3>
+            <p data-dc-tpl="97" style="font-size: 13.5px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Du leitest Workshops, Mastermind-Gruppen oder Team-Entwicklungen und willst ein System, das sofort Tiefe erzeugt und Gruppenarbeit strukturiert.</span></p>
+          </div>
+
+          <div data-dc-tpl="94" style="background: rgb(255, 255, 255); border-radius: 14px; padding: 28px 26px; border: 1px solid rgba(21, 19, 15, 0.08);">
+            <div data-dc-tpl="95" style="width: 42px; height: 42px; border-radius: 11px; background: rgb(239, 231, 211); display: flex; align-items: center; justify-content: center; font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; color: rgb(124, 111, 214); margin-bottom: 18px;"><span class="sc-interp">B</span></div>
+            <h3 data-dc-tpl="96" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; font-weight: 500; margin: 0px 0px 10px;"><span class="sc-interp">Unternehmensberater</span></h3>
+            <p data-dc-tpl="97" style="font-size: 13.5px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Du arbeitest mit Gründern oder Führungskräften und willst psychologische Tiefe in deine strategische Beratung integrieren, ohne zum Therapeuten zu werden.</span></p>
+          </div>
+
+          <div data-dc-tpl="94" style="background: rgb(255, 255, 255); border-radius: 14px; padding: 28px 26px; border: 1px solid rgba(21, 19, 15, 0.08);">
+            <div data-dc-tpl="95" style="width: 42px; height: 42px; border-radius: 11px; background: rgb(239, 231, 211); display: flex; align-items: center; justify-content: center; font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; color: rgb(124, 111, 214); margin-bottom: 18px;"><span class="sc-interp">P</span></div>
+            <h3 data-dc-tpl="96" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; font-weight: 500; margin: 0px 0px 10px;"><span class="sc-interp">Psycholog:in</span></h3>
+            <p data-dc-tpl="97" style="font-size: 13.5px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Du willst deine psychologische Expertise in arbeits- und businessbezogene Beratung übersetzen — mit klarer Abgrenzung zu therapeutischen Anwendungen.</span></p>
+          </div>
+
+          <div data-dc-tpl="94" style="background: rgb(255, 255, 255); border-radius: 14px; padding: 28px 26px; border: 1px solid rgba(21, 19, 15, 0.08);">
+            <div data-dc-tpl="95" style="width: 42px; height: 42px; border-radius: 11px; background: rgb(239, 231, 211); display: flex; align-items: center; justify-content: center; font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; color: rgb(124, 111, 214); margin-bottom: 18px;"><span class="sc-interp">M</span></div>
+            <h3 data-dc-tpl="96" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; font-weight: 500; margin: 0px 0px 10px;"><span class="sc-interp">Mentor &amp; Advisor</span></h3>
+            <p data-dc-tpl="97" style="font-size: 13.5px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Du begleitest Gründer informal oder als Accelerator-Mentor und willst ihnen von Anfang an eine klare Sprache über ihre Stärken und blinden Flecken geben.</span></p>
+          </div>
+
+          <div data-dc-tpl="94" style="background: rgb(255, 255, 255); border-radius: 14px; padding: 28px 26px; border: 1px solid rgba(21, 19, 15, 0.08);">
+            <div data-dc-tpl="95" style="width: 42px; height: 42px; border-radius: 11px; background: rgb(239, 231, 211); display: flex; align-items: center; justify-content: center; font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; color: rgb(124, 111, 214); margin-bottom: 18px;"><span class="sc-interp">H</span></div>
+            <h3 data-dc-tpl="96" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 18px; font-weight: 500; margin: 0px 0px 10px;"><span class="sc-interp">HR &amp; Organisationsentwicklung</span></h3>
+            <p data-dc-tpl="97" style="font-size: 13.5px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Du baust Teams und willst über Rollen und Fähigkeiten hinaus auch die psychologische Dynamik verstehen — wer ergänzt wen, wo entstehen Konflikte strukturell.</span></p>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="98" id="static-inhalte" class="nb-motion-section nb-reveal is-visible" style="max-width: 1000px; margin: 0px auto; padding: 120px 40px;">
+    <p data-dc-tpl="99" style="text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(124, 111, 214); font-weight: 600; margin: 0px 0px 18px;"><span class="sc-interp">Inhalte</span></p>
+    <h2 data-dc-tpl="100" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(28px, 3.6vw, 42px); text-align: center; font-weight: 400; margin: 0px 0px 60px; letter-spacing: -0.5px;"><span class="sc-interp">Was du lernst</span></h2>
+    <div data-dc-tpl="101" style="display: flex; flex-direction: column; gap: 16px;">
+
+        <div data-dc-tpl="103" style="background: rgb(255, 255, 255); border-radius: 14px; padding: 26px 28px; border: 1px solid rgba(21, 19, 15, 0.08); display: flex; gap: 20px; align-items: flex-start;">
+          <div data-dc-tpl="104" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 22px; color: rgb(124, 111, 214); flex-shrink: 0;"><span class="sc-interp">01</span></div>
+          <div data-dc-tpl="105">
+            <h3 data-dc-tpl="106" style="font-size: 16.5px; font-weight: 600; margin: 0px 0px 8px;"><span class="sc-interp">Das NeuroBusiness™ Framework</span></h3>
+            <p data-dc-tpl="107" style="font-size: 14px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Die 5 Psychotypen, Musterarchitektur, Blockierungslogik und die Brücke zwischen Psychologie und Strategie.</span></p>
+          </div>
+        </div>
+
+        <div data-dc-tpl="103" style="background: rgb(255, 255, 255); border-radius: 14px; padding: 26px 28px; border: 1px solid rgba(21, 19, 15, 0.08); display: flex; gap: 20px; align-items: flex-start;">
+          <div data-dc-tpl="104" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 22px; color: rgb(124, 111, 214); flex-shrink: 0;"><span class="sc-interp">02</span></div>
+          <div data-dc-tpl="105">
+            <h3 data-dc-tpl="106" style="font-size: 16.5px; font-weight: 600; margin: 0px 0px 8px;"><span class="sc-interp">Diagnostik-Auswertung &amp; Lizenz</span></h3>
+            <p data-dc-tpl="107" style="font-size: 14px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Wie du das Diagnostic durchführst, Reports auswertest und Ergebnisse in Handlungsempfehlungen übersetzt.</span></p>
+          </div>
+        </div>
+
+        <div data-dc-tpl="103" style="background: rgb(255, 255, 255); border-radius: 14px; padding: 26px 28px; border: 1px solid rgba(21, 19, 15, 0.08); display: flex; gap: 20px; align-items: flex-start;">
+          <div data-dc-tpl="104" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 22px; color: rgb(124, 111, 214); flex-shrink: 0;"><span class="sc-interp">03</span></div>
+          <div data-dc-tpl="105">
+            <h3 data-dc-tpl="106" style="font-size: 16.5px; font-weight: 600; margin: 0px 0px 8px;"><span class="sc-interp">Das NeuroBusiness™ AI-Tool</span></h3>
+            <p data-dc-tpl="107" style="font-size: 14px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Individuelle Reports generieren, Muster analysieren, Empfehlungen automatisiert aufbereiten.</span></p>
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="108" id="static-report-preview" class="nb-motion-section nb-reveal is-visible" style="max-width: 1200px; margin: 0px auto; padding: 20px 40px 120px; scroll-margin-top: 90px;">
+    <div data-dc-tpl="109" class="nb-two-col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+      <figure data-dc-tpl="110" class="nb-product-visual">
+        <div data-dc-tpl="111" class="nb-product-image-frame nb-product-image-frame--web">
+          <img data-dc-tpl="112" src="./assets/business-report-web.jpg" alt="Beispielansicht eines NeuroBusiness Team Intelligence Reports mit Management Summary und Teamprofil" width="1536" height="1024" loading="lazy" decoding="async">
+        </div>
+        <figcaption data-dc-tpl="113"><span class="sc-interp">Beispiel einer vertraulichen Team-Auswertung, die zertifizierte Practitioner in ihrer Arbeit einsetzen können.</span></figcaption>
+      </figure>
+      <div data-dc-tpl="114">
+        <p data-dc-tpl="115" style="font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(124, 111, 214); font-weight: 600; margin: 0px 0px 20px;"><span class="sc-interp">Ein Ergebnis, mit dem du weiterarbeiten kannst</span></p>
+        <h2 data-dc-tpl="116" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(24px, 3.2vw, 34px); font-weight: 400; margin: 0px 0px 20px; letter-spacing: -0.3px;"><span class="sc-interp">Der Report macht die diagnostische Ausgangslage verständlich.</span></h2>
+        <p data-dc-tpl="117" style="font-size: 15px; line-height: 1.6; color: rgb(84, 78, 70); margin: 0px 0px 24px;"><span class="sc-interp">Nicht als fertiges Urteil, sondern als strukturierte Grundlage für Debrief, Coachingziele und passende Folgearbeit.</span></p>
+        <div data-dc-tpl="118" style="display: flex; flex-direction: column; gap: 10px;">
+
+            <div data-dc-tpl="120" style="display: flex; gap: 9px; align-items: flex-start; font-size: 14px;"><span data-dc-tpl="121" style="color: rgb(124, 111, 214); font-weight: 700;">＋</span><span data-dc-tpl="122"><span class="sc-interp">Executive Summary für den schnellen Einstieg</span></span></div>
+
+            <div data-dc-tpl="120" style="display: flex; gap: 9px; align-items: flex-start; font-size: 14px;"><span data-dc-tpl="121" style="color: rgb(124, 111, 214); font-weight: 700;">＋</span><span data-dc-tpl="122"><span class="sc-interp">Stärken und mögliche Blockierungsmuster</span></span></div>
+
+            <div data-dc-tpl="120" style="display: flex; gap: 9px; align-items: flex-start; font-size: 14px;"><span data-dc-tpl="121" style="color: rgb(124, 111, 214); font-weight: 700;">＋</span><span data-dc-tpl="122"><span class="sc-interp">Arbeits-, Entscheidungs- und Kommunikationspräferenzen</span></span></div>
+
+            <div data-dc-tpl="120" style="display: flex; gap: 9px; align-items: flex-start; font-size: 14px;"><span data-dc-tpl="121" style="color: rgb(124, 111, 214); font-weight: 700;">＋</span><span data-dc-tpl="122"><span class="sc-interp">Kontextbezogene Handlungsempfehlungen</span></span></div>
+
+            <div data-dc-tpl="120" style="display: flex; gap: 9px; align-items: flex-start; font-size: 14px;"><span data-dc-tpl="121" style="color: rgb(124, 111, 214); font-weight: 700;">＋</span><span data-dc-tpl="122"><span class="sc-interp">PDF-Ausgabe in Deutsch oder Englisch</span></span></div>
+
+        </div>
+        <div data-dc-tpl="123" class="nb-report-grid"><div data-dc-tpl="125" class="nb-report-chip"><span class="sc-interp">Executive Summary</span></div><div data-dc-tpl="125" class="nb-report-chip"><span class="sc-interp">5-Dimensionen-Profil</span></div><div data-dc-tpl="125" class="nb-report-chip"><span class="sc-interp">Stärken &amp; Risiken</span></div><div data-dc-tpl="125" class="nb-report-chip"><span class="sc-interp">Nächste Schritte</span></div></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="126" class="nb-motion-section nb-reveal is-visible" style="background: rgb(246, 241, 231); color: rgb(21, 19, 15); padding: 120px 40px;">
+    <div data-dc-tpl="127" style="max-width: 1000px; margin: 0px auto;">
+      <p data-dc-tpl="128" style="text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(124, 111, 214); font-weight: 600; margin: 0px 0px 18px;"><span class="sc-interp">Entwicklungspfad</span></p>
+      <h2 data-dc-tpl="129" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(28px, 3.6vw, 42px); text-align: center; font-weight: 400; margin: 0px 0px 60px; letter-spacing: -0.5px;"><span class="sc-interp">Vom Practitioner zum Master</span></h2>
+      <div data-dc-tpl="130" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: rgba(21, 19, 15, 0.1); border: 1px solid rgba(21, 19, 15, 0.1);">
+
+          <div data-dc-tpl="132" style="background: rgb(250, 247, 240); padding: 34px 30px;">
+            <h3 data-dc-tpl="133" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 19px; font-weight: 400; margin: 0px 0px 12px;"><span class="sc-interp">① Practitioner</span></h3>
+            <p data-dc-tpl="134" style="font-size: 13.5px; line-height: 1.65; color: rgb(107, 100, 90); margin: 0px;"><span class="sc-interp">Einstieg &amp; Lizenz. Du führst das Diagnostic durch, wertest aus und arbeitest mit dem AI-Tool.</span></p>
+          </div>
+
+          <div data-dc-tpl="132" style="background: rgb(250, 247, 240); padding: 34px 30px;">
+            <h3 data-dc-tpl="133" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 19px; font-weight: 400; margin: 0px 0px 12px;"><span class="sc-interp">② Senior Practitioner</span></h3>
+            <p data-dc-tpl="134" style="font-size: 13.5px; line-height: 1.65; color: rgb(107, 100, 90); margin: 0px;"><span class="sc-interp">Vertiefung nach nachgewiesener Praxis. Erweiterte Fallarbeit und Team-Diagnostik.</span></p>
+          </div>
+
+          <div data-dc-tpl="132" style="background: rgb(250, 247, 240); padding: 34px 30px;">
+            <h3 data-dc-tpl="133" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 19px; font-weight: 400; margin: 0px 0px 12px;"><span class="sc-interp">③ Master Practitioner</span></h3>
+            <p data-dc-tpl="134" style="font-size: 13.5px; line-height: 1.65; color: rgb(107, 100, 90); margin: 0px;"><span class="sc-interp">Höchste Stufe. Eigene Lizenzpartner-Perspektive und vertiefte methodische Kompetenz.</span></p>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="135" class="nb-section nb-motion-section nb-reveal is-visible" style="background: rgb(21, 19, 15); color: rgb(250, 247, 240); padding: 110px 40px;">
+    <div data-dc-tpl="136" style="max-width: 1080px; margin: 0px auto;">
+      <p data-dc-tpl="137" style="text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(201, 150, 63); font-weight: 600; margin: 0px 0px 18px;"><span class="sc-interp">Dein Business Case</span></p>
+      <h2 data-dc-tpl="138" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(28px, 3.6vw, 42px); text-align: center; font-weight: 400; margin: 0px auto 18px; max-width: 760px;"><span class="sc-interp">Ein Werkzeug, das Diagnose und Folgearbeit verbindet.</span></h2>
+      <p data-dc-tpl="139" style="text-align: center; font-size: 15px; line-height: 1.65; color: rgba(250, 247, 240, 0.65); max-width: 650px; margin: 0px auto 50px;"><span class="sc-interp">Die Zertifizierung gibt dir keine pauschalen Umsatzversprechen, aber drei klare Wege, die Diagnostik wirtschaftlich und fachlich sinnvoll in deine bestehende Praxis einzubauen.</span></p>
+      <div data-dc-tpl="140" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
+
+          <div data-dc-tpl="142" style="border: 1px solid rgba(250, 247, 240, 0.12); border-radius: 16px; padding: 28px 25px; background: rgba(250, 247, 240, 0.04);">
+            <div data-dc-tpl="143" style="font-family: &quot;Source Serif 4&quot;, serif; color: rgb(201, 150, 63); font-size: 22px; margin-bottom: 13px;"><span class="sc-interp">01</span></div>
+            <h3 data-dc-tpl="144" style="font-size: 17px; margin: 0px 0px 10px;"><span class="sc-interp">Eigenständiges Diagnostik-Angebot</span></h3>
+            <p data-dc-tpl="145" style="font-size: 14px; line-height: 1.6; color: rgba(250, 247, 240, 0.65); margin: 0px;"><span class="sc-interp">Nutze die Auswertung als klar umrissenes Einstiegsprodukt mit Report und Ergebnisgespräch.</span></p>
+          </div>
+
+          <div data-dc-tpl="142" style="border: 1px solid rgba(250, 247, 240, 0.12); border-radius: 16px; padding: 28px 25px; background: rgba(250, 247, 240, 0.04);">
+            <div data-dc-tpl="143" style="font-family: &quot;Source Serif 4&quot;, serif; color: rgb(201, 150, 63); font-size: 22px; margin-bottom: 13px;"><span class="sc-interp">02</span></div>
+            <h3 data-dc-tpl="144" style="font-size: 17px; margin: 0px 0px 10px;"><span class="sc-interp">Qualifizierter Beratungsstart</span></h3>
+            <p data-dc-tpl="145" style="font-size: 14px; line-height: 1.6; color: rgba(250, 247, 240, 0.65); margin: 0px;"><span class="sc-interp">Beginne Coaching und Beratung mit einer gemeinsamen Sprache für Stärken, Blockierungen und Arbeitsweise.</span></p>
+          </div>
+
+          <div data-dc-tpl="142" style="border: 1px solid rgba(250, 247, 240, 0.12); border-radius: 16px; padding: 28px 25px; background: rgba(250, 247, 240, 0.04);">
+            <div data-dc-tpl="143" style="font-family: &quot;Source Serif 4&quot;, serif; color: rgb(201, 150, 63); font-size: 22px; margin-bottom: 13px;"><span class="sc-interp">03</span></div>
+            <h3 data-dc-tpl="144" style="font-size: 17px; margin: 0px 0px 10px;"><span class="sc-interp">Strukturierte Folgearbeit</span></h3>
+            <p data-dc-tpl="145" style="font-size: 14px; line-height: 1.6; color: rgba(250, 247, 240, 0.65); margin: 0px;"><span class="sc-interp">Leite aus dem Profil passende Workshops, Coaching-Schwerpunkte und nächste Entwicklungsschritte ab.</span></p>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="146" class="nb-motion-section nb-reveal is-visible" style="background: rgb(255, 255, 255); padding: 110px 40px; border-top: 1px solid rgba(21, 19, 15, 0.08); border-bottom: 1px solid rgba(21, 19, 15, 0.08);">
+    <div data-dc-tpl="147" style="max-width: 1080px; margin: 0px auto;">
+      <p data-dc-tpl="148" style="text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(124, 111, 214); font-weight: 600; margin: 0px 0px 18px;"><span class="sc-interp">Wissenschaftliche Grundlage</span></p>
+      <h2 data-dc-tpl="149" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(28px, 3.6vw, 42px); text-align: center; font-weight: 400; margin: 0px auto 18px; max-width: 820px;"><span class="sc-interp">Psychologisch fundiert. Für den Business-Kontext entwickelt.</span></h2>
+      <p data-dc-tpl="150" style="text-align: center; font-size: 15px; line-height: 1.7; color: rgb(107, 100, 90); max-width: 760px; margin: 0px auto 48px;"><span class="sc-interp">NeuroBusiness übersetzt psychologische Erkenntnisse in ein strukturiertes Modell für Arbeitsweise, Entscheidungen und beruflichen Kontext. Forschung, Anwendung und Daten fließen kontinuierlich in seine Weiterentwicklung ein.</span></p>
+      <div data-dc-tpl="151" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+
+          <div data-dc-tpl="153" style="background: rgb(250, 247, 240); border: 1px solid rgba(21, 19, 15, 0.08); border-radius: 15px; padding: 24px 22px;"><h3 data-dc-tpl="154" style="font-size: 15.5px; margin: 0px 0px 9px;"><span class="sc-interp">Psychologische Grundlage</span></h3><p data-dc-tpl="155" style="font-size: 13px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Konstrukte und Hypothesen werden fachlich begründet und dokumentiert.</span></p></div>
+
+          <div data-dc-tpl="153" style="background: rgb(250, 247, 240); border: 1px solid rgba(21, 19, 15, 0.08); border-radius: 15px; padding: 24px 22px;"><h3 data-dc-tpl="154" style="font-size: 15.5px; margin: 0px 0px 9px;"><span class="sc-interp">Business-Kontext</span></h3><p data-dc-tpl="155" style="font-size: 13px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Die Einordnung bezieht Arbeitsweise, Rolle und beruflichen Kontext ein.</span></p></div>
+
+          <div data-dc-tpl="153" style="background: rgb(250, 247, 240); border: 1px solid rgba(21, 19, 15, 0.08); border-radius: 15px; padding: 24px 22px;"><h3 data-dc-tpl="154" style="font-size: 15.5px; margin: 0px 0px 9px;"><span class="sc-interp">Systematische Weiterentwicklung</span></h3><p data-dc-tpl="155" style="font-size: 13px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Erkenntnisse aus Forschung, Anwendung und Daten präzisieren das Modell fortlaufend.</span></p></div>
+
+          <div data-dc-tpl="153" style="background: rgb(250, 247, 240); border: 1px solid rgba(21, 19, 15, 0.08); border-radius: 15px; padding: 24px 22px;"><h3 data-dc-tpl="154" style="font-size: 15.5px; margin: 0px 0px 9px;"><span class="sc-interp">Klarer Anwendungsbereich</span></h3><p data-dc-tpl="155" style="font-size: 13px; line-height: 1.6; color: rgb(101, 94, 84); margin: 0px;"><span class="sc-interp">Für Coaching und Beratung entwickelt — klar abgegrenzt von klinischer Diagnostik und Therapie.</span></p></div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="156" class="nb-editorial-report nb-motion-section nb-reveal is-visible">
+    <div data-dc-tpl="157" class="nb-editorial-inner">
+      <div data-dc-tpl="158" class="nb-editorial-copy">
+        <p data-dc-tpl="159" style="font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(213, 170, 82); font-weight: 600; margin: 0px 0px 18px;"><span class="sc-interp">Reportqualität</span></p>
+        <h2 data-dc-tpl="160" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(30px, 4vw, 48px); font-weight: 400; line-height: 1.12; margin: 0px 0px 18px;"><span class="sc-interp">Ein Ergebnis, das im Kundengespräch trägt.</span></h2>
+        <p data-dc-tpl="161" style="font-size: 15px; line-height: 1.7; color: rgba(250, 247, 240, 0.68); margin: 0px;"><span class="sc-interp">Klar strukturiert, visuell verständlich und so aufbereitet, dass aus diagnostischen Mustern anschlussfähige Gespräche und nächste Schritte entstehen.</span></p>
+      </div>
+      <figure data-dc-tpl="162" class="nb-product-visual">
+        <div data-dc-tpl="163" class="nb-editorial-frame">
+          <img data-dc-tpl="164" src="./assets/nbif-report-mockup.jpg" alt="Hochwertig gestalteter NeuroBusiness Team Intelligence Report als gebundenes Executive-Dokument" width="1536" height="1024" loading="lazy" decoding="async">
+        </div>
+        <figcaption data-dc-tpl="165"><span class="sc-interp">Team Intelligence Report · vertrauliche Auswertung mit synthetischen Beispieldaten.</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="166" id="static-preise" class="nb-motion-section nb-reveal is-visible" style="background: rgb(240, 235, 224); padding: 120px 40px;">
+    <div data-dc-tpl="167" style="max-width: 900px; margin: 0px auto;">
+      <p data-dc-tpl="168" style="text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(124, 111, 214); font-weight: 600; margin: 0px 0px 18px;"><span class="sc-interp">Investition</span></p>
+      <h2 data-dc-tpl="169" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(28px, 3.6vw, 42px); text-align: center; font-weight: 400; margin: 0px 0px 60px; letter-spacing: -0.5px;"><span class="sc-interp">Klar. Transparent. Einmalig.</span></h2>
+      <div data-dc-tpl="170" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+
+          <div data-dc-tpl="172" style="background: rgb(21, 19, 15); color: rgb(250, 247, 240); border-radius: 18px; padding: 34px 30px; border: 1px solid rgba(250, 247, 240, 0.12); position: relative;">
+
+              <span data-dc-tpl="174" style="position: absolute; top: -12px; right: 24px; background: rgb(124, 111, 214); color: rgb(255, 255, 255); font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 12px;"><span class="sc-interp">Zertifizierung</span></span>
+
+            <h3 data-dc-tpl="175" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 19px; font-weight: 500; margin: 0px 0px 6px;"><span class="sc-interp">Certified NeuroBusiness Practitioner</span></h3>
+            <p data-dc-tpl="176" style="font-size: 13px; opacity: 0.65; margin: 0px 0px 22px;"><span class="sc-interp">Öffentlicher Standardpreis</span></p>
+            <div data-dc-tpl="177" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 34px; font-weight: 500; margin-bottom: 6px;"><span class="sc-interp">1.490 €</span></div>
+            <p data-dc-tpl="178" style="font-size: 12px; opacity: 0.55; margin: 0px 0px 22px;"><span class="sc-interp">einmalig · Ratenzahlung möglich</span></p>
+            <div data-dc-tpl="179" style="display: flex; flex-direction: column; gap: 9px; margin-bottom: 26px;">
+
+                <div data-dc-tpl="181" style="display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px;"><span data-dc-tpl="182" style="color: rgb(201, 150, 63); font-weight: 700;">＋</span><span data-dc-tpl="183"><span class="sc-interp">4h Online-Intensivtraining (live)</span></span></div>
+
+                <div data-dc-tpl="181" style="display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px;"><span data-dc-tpl="182" style="color: rgb(201, 150, 63); font-weight: 700;">＋</span><span data-dc-tpl="183"><span class="sc-interp">NeuroBusiness™ Framework vollständig</span></span></div>
+
+                <div data-dc-tpl="181" style="display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px;"><span data-dc-tpl="182" style="color: rgb(201, 150, 63); font-weight: 700;">＋</span><span data-dc-tpl="183"><span class="sc-interp">Diagnostik-Auswertung &amp; Lizenz</span></span></div>
+
+                <div data-dc-tpl="181" style="display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px;"><span data-dc-tpl="182" style="color: rgb(201, 150, 63); font-weight: 700;">＋</span><span data-dc-tpl="183"><span class="sc-interp">5 Starter-Credits inklusive</span></span></div>
+
+                <div data-dc-tpl="181" style="display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px;"><span data-dc-tpl="182" style="color: rgb(201, 150, 63); font-weight: 700;">＋</span><span data-dc-tpl="183"><span class="sc-interp">1 Monat Coach AI Companion inklusive, danach optional 49 €/Monat</span></span></div>
+
+                <div data-dc-tpl="181" style="display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px;"><span data-dc-tpl="182" style="color: rgb(201, 150, 63); font-weight: 700;">＋</span><span data-dc-tpl="183"><span class="sc-interp">Offizielles GIPP-Zertifikat &amp; Badge</span></span></div>
+
+            </div>
+            <a data-dc-tpl="184" href="#static-kontakt" style="display: block; text-align: center; text-decoration: none; background: rgb(201, 150, 63); color: rgb(21, 19, 15); font-weight: 700; font-size: 14px; padding: 13px; border-radius: 9px;"><span class="sc-interp">Platz reservieren</span></a>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="185" id="static-kontakt" class="nb-motion-section nb-reveal is-visible" style="background: rgb(21, 19, 15); color: rgb(250, 247, 240); padding: 110px 40px;">
+    <div data-dc-tpl="186" class="nb-two-col" style="max-width: 1140px; margin: 0px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+      <div data-dc-tpl="187">
+        <p data-dc-tpl="188" style="font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(201, 150, 63); font-weight: 600; margin: 0px 0px 22px;"><span class="sc-interp">Kontakt</span></p>
+        <h2 data-dc-tpl="189" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(34px, 5vw, 56px); font-weight: 400; margin: 0px 0px 22px; letter-spacing: -0.5px; line-height: 1.05;"><span class="sc-interp">Lass uns</span> <span data-dc-tpl="190" style="font-style: italic; color: rgb(124, 111, 214);"><span class="sc-interp">sprechen.</span></span></h2>
+        <p data-dc-tpl="191" style="font-size: 15px; line-height: 1.65; color: rgba(250, 247, 240, 0.65); max-width: 420px; margin: 0px 0px 34px;"><span class="sc-interp">Du hast Fragen zum Programm oder bist bereit loszulegen? Wir antworten innerhalb von 24 Stunden.</span></p>
+        <div data-dc-tpl="192" style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;">
+          <a data-dc-tpl="193" href="mailto:hello@neurobusiness.one" style="display: flex; align-items: center; gap: 14px; color: rgb(250, 247, 240); text-decoration: none; font-size: 15px;">
+            <span data-dc-tpl="194" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(250, 247, 240, 0.06); display: flex; align-items: center; justify-content: center;">✉</span>hello@neurobusiness.one
+          </a>
+          <div data-dc-tpl="195" style="display: flex; align-items: center; gap: 14px; font-size: 15px; color: rgba(250, 247, 240, 0.75);">
+            <span data-dc-tpl="196" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(250, 247, 240, 0.06); display: flex; align-items: center; justify-content: center;">◉</span>Berlin · London · Dubai
+          </div>
+        </div>
+        <a data-dc-tpl="197" href="https://wa.me/4915565695582?text=Hi%20Eva%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20NeuroBusiness%20Practitioner-Zertifizierung" style="display: inline-flex; align-items: center; gap: 10px; background: rgb(37, 211, 102); color: rgb(255, 255, 255); text-decoration: none; font-weight: 700; font-size: 15px; padding: 15px 26px; border-radius: 10px;"><span class="sc-interp">WhatsApp schreiben</span></a>
+      </div>
+      <form data-dc-tpl="198" style="background: rgba(250, 247, 240, 0.04); border: 1px solid rgba(250, 247, 240, 0.1); border-radius: 18px; padding: 34px; display: flex; flex-direction: column; gap: 22px;">
+        <div data-dc-tpl="199">
+          <label data-dc-tpl="200" style="display: block; font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase; color: rgba(250, 247, 240, 0.45); margin-bottom: 9px;"><span class="sc-interp">Name</span></label>
+          <input data-dc-tpl="201" name="name" type="text" placeholder="Name" style="width: 100%; box-sizing: border-box; border: 1px solid rgba(250, 247, 240, 0.14); background: rgba(250, 247, 240, 0.03); border-radius: 10px; padding: 14px 15px; font-family: Manrope; font-size: 15px; color: rgb(250, 247, 240); outline: none;">
+        </div>
+        <div data-dc-tpl="202">
+          <label data-dc-tpl="203" style="display: block; font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase; color: rgba(250, 247, 240, 0.45); margin-bottom: 9px;"><span class="sc-interp">E-Mail</span></label>
+          <input data-dc-tpl="204" name="email" type="email" placeholder="deine@email.com" style="width: 100%; box-sizing: border-box; border: 1px solid rgba(250, 247, 240, 0.14); background: rgba(250, 247, 240, 0.03); border-radius: 10px; padding: 14px 15px; font-family: Manrope; font-size: 15px; color: rgb(250, 247, 240); outline: none;">
+        </div>
+        <div data-dc-tpl="205">
+          <label data-dc-tpl="206" style="display: block; font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase; color: rgba(250, 247, 240, 0.45); margin-bottom: 9px;"><span class="sc-interp">Interesse</span></label>
+          <select data-dc-tpl="207" name="interest" style="width: 100%; box-sizing: border-box; border: 1px solid rgba(250, 247, 240, 0.14); background: rgba(250, 247, 240, 0.03); border-radius: 10px; padding: 14px 15px; font-family: Manrope; font-size: 15px; color: rgb(250, 247, 240); outline: none;">
+
+              <option data-dc-tpl="209" style="color: rgb(21, 19, 15);"><span class="sc-interp">Bitte wählen…</span></option>
+
+              <option data-dc-tpl="209" style="color: rgb(21, 19, 15);"><span class="sc-interp">Certified-Practitioner-Programm</span></option>
+
+              <option data-dc-tpl="209" style="color: rgb(21, 19, 15);"><span class="sc-interp">Portal-Zugang &amp; Lizenz</span></option>
+
+              <option data-dc-tpl="209" style="color: rgb(21, 19, 15);"><span class="sc-interp">Kooperation / Lizenzpartner</span></option>
+
+              <option data-dc-tpl="209" style="color: rgb(21, 19, 15);"><span class="sc-interp">Sonstiges</span></option>
+
+          </select>
+        </div>
+        <div data-dc-tpl="210">
+          <label data-dc-tpl="211" style="display: block; font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase; color: rgba(250, 247, 240, 0.45); margin-bottom: 9px;"><span class="sc-interp">Nachricht</span></label>
+          <textarea data-dc-tpl="212" name="message" rows="4" placeholder="Wie können wir dir helfen?" style="width: 100%; box-sizing: border-box; border: 1px solid rgba(250, 247, 240, 0.14); background: rgba(250, 247, 240, 0.03); border-radius: 10px; padding: 14px 15px; font-family: Manrope; font-size: 15px; color: rgb(250, 247, 240); outline: none; resize: vertical;"></textarea>
+        </div>
+        <span style="background: rgb(201, 150, 63); color: rgb(21, 19, 15); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; font-family: Manrope; font-weight: 700; font-size: 15px; padding: 16px; border-radius: 10px; cursor: pointer;">Nachricht per E-Mail senden →</span>
+        <p data-dc-tpl="214" style="margin: 0px; font-size: 12.5px; color: rgba(250, 247, 240, 0.48); text-align: center;"><span class="sc-interp">Beim Absenden öffnet sich dein E-Mail-Programm mit der vorbereiteten Nachricht.</span></p>
+      </form>
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="215" class="nb-faq nb-section nb-motion-section nb-reveal is-visible" style="max-width: 860px; margin: 0px auto; padding: 110px 40px 20px;">
+    <p data-dc-tpl="216" style="text-align: center; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgb(124, 111, 214); font-weight: 600; margin: 0px 0px 18px;"><span class="sc-interp">Häufige Fragen</span></p>
+    <h2 data-dc-tpl="217" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(28px, 4vw, 42px); text-align: center; font-weight: 400; margin: 0px 0px 42px; letter-spacing: -0.5px;"><span class="sc-interp">Was du vor dem Einsatz wissen solltest.</span></h2>
+    <details data-dc-tpl="219"><summary data-dc-tpl="220"><span class="sc-interp">Ersetzt NeuroBusiness mein Coaching?</span></summary><p data-dc-tpl="221"><span class="sc-interp">Nein. NeuroBusiness ergänzt deinen bestehenden Prozess um eine strukturierte diagnostische Ausgangslage, Reports und nachvollziehbare Folgearbeit.</span></p></details><details data-dc-tpl="219"><summary data-dc-tpl="220"><span class="sc-interp">Ist NeuroBusiness ein Persönlichkeitstest?</span></summary><p data-dc-tpl="221"><span class="sc-interp">Nein. Im Mittelpunkt stehen arbeits- und businessbezogene Präferenzen, Denk- und Entscheidungsmuster sowie ihre Bedeutung im jeweiligen Kontext.</span></p></details><details data-dc-tpl="219"><summary data-dc-tpl="220"><span class="sc-interp">Wie ist der wissenschaftliche Entwicklungsstand?</span></summary><p data-dc-tpl="221"><span class="sc-interp">NeuroBusiness wird psychologisch fundiert für den Business-Kontext entwickelt. Erkenntnisse aus Forschung, Anwendung und Daten fließen kontinuierlich in die Weiterentwicklung des Modells ein.</span></p></details><details data-dc-tpl="219"><summary data-dc-tpl="220"><span class="sc-interp">Wie kann ich die Diagnostik in meiner Praxis einsetzen?</span></summary><p data-dc-tpl="221"><span class="sc-interp">Als strukturierten Einstieg in Coaching und Beratung, als eigenständige Auswertung mit Report oder als Grundlage für individuelle Empfehlungen und Folgearbeit.</span></p></details><details data-dc-tpl="219"><summary data-dc-tpl="220"><span class="sc-interp">Wie funktionieren Credits und laufende Kosten?</span></summary><p data-dc-tpl="221"><span class="sc-interp">Ein Credit entspricht einer vollständigen Diagnostik mit persönlichem Report. Fünf Starter-Credits und ein Monat Coach AI Companion sind enthalten. Weitere Pakete und optionale Folgekosten werden vor der Buchung transparent ausgewiesen.</span></p></details><details data-dc-tpl="219"><summary data-dc-tpl="220"><span class="sc-interp">Ist das Practitioner-Programm vollständig online?</span></summary><p data-dc-tpl="221"><span class="sc-interp">Ja. Das kompakte Intensivtraining findet live online statt.</span></p></details>
+  </div>
+
+
+  <div data-dc-tpl="222" class="nb-motion-section nb-reveal is-visible" style="padding: 120px 40px; text-align: center;">
+    <h2 data-dc-tpl="223" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: clamp(26px, 4vw, 44px); font-weight: 400; max-width: 640px; margin: 0px auto 16px; letter-spacing: -0.4px; text-wrap: pretty;"><span class="sc-interp">Mach dir zuerst selbst ein Bild.</span></h2>
+    <p data-dc-tpl="224" style="font-size: 15px; color: rgb(138, 131, 120); margin: 0px 0px 30px;"><span class="sc-interp">Erhalte mit dem kostenlosen Quick-Scan eine erste Orientierung oder sprich mit uns über den Einsatz der vollständigen Diagnostik in deiner Praxis.</span></p>
+    <div data-dc-tpl="225" style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+      <a data-dc-tpl="226" href="https://www.neurobusiness.one/quiz" style="background: rgb(21, 19, 15); color: rgb(250, 247, 240); text-decoration: none; font-weight: 700; font-size: 15.5px; padding: 17px 30px; border-radius: 10px;"><span class="sc-interp">Kostenlosen Quick-Scan starten</span></a>
+      <a data-dc-tpl="227" href="mailto:hello@neurobusiness.one?subject=Strategiegespr%C3%A4ch%20NeuroBusiness%20f%C3%BCr%20Coaches" style="color: rgb(21, 19, 15); text-decoration: none; font-weight: 600; font-size: 15.5px; padding: 17px 22px; border-radius: 10px; border: 1px solid rgba(21, 19, 15, 0.16);"><span class="sc-interp">Strategiegespräch anfragen</span></a>
+    </div>
+  </div>
+
+
+  <div data-dc-tpl="228" style="background: rgb(21, 19, 15); color: rgba(250, 247, 240, 0.7); padding: 70px 40px 34px;">
+    <div data-dc-tpl="229" class="nb-footer-grid" style="max-width: 1240px; margin: 0px auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 50px; border-bottom: 1px solid rgba(250, 247, 240, 0.1);">
+      <div data-dc-tpl="230">
+        <div data-dc-tpl="231" style="font-family: &quot;Source Serif 4&quot;, serif; font-size: 19px; font-weight: 600; color: rgb(255, 255, 255); margin-bottom: 14px;">NeuroBusiness<span data-dc-tpl="232" style="color: rgb(201, 150, 63);">™</span></div>
+        <p data-dc-tpl="233" style="font-size: 14px; line-height: 1.6; max-width: 280px;"><span class="sc-interp">Certified-Practitioner-Programm des German Institute of Positive Psychology.</span></p>
+      </div>
+      <div data-dc-tpl="234">
+        <div data-dc-tpl="235" style="font-size: 12.5px; letter-spacing: 1px; text-transform: uppercase; color: rgba(250, 247, 240, 0.4); margin-bottom: 16px;"><span class="sc-interp">Wege</span></div>
+        <div data-dc-tpl="236" style="margin-bottom: 10px;"><a data-dc-tpl="237" href="./Homepage.dc.html" class="scp4" style="color: inherit; text-decoration: none; font-size: 14px;"><span class="sc-interp">Startseite</span></a></div>
+        <div data-dc-tpl="238" style="margin-bottom: 10px;"><a data-dc-tpl="239" href="/solo" class="scp4" style="color: inherit; text-decoration: none; font-size: 14px;"><span class="sc-interp">Für Selbstständige</span></a></div>
+        <div data-dc-tpl="240" style="margin-bottom: 10px;"><a data-dc-tpl="241" href="/teams" class="scp4" style="color: inherit; text-decoration: none; font-size: 14px;"><span class="sc-interp">Für Teams</span></a></div>
+      </div>
+      <div data-dc-tpl="242">
+        <div data-dc-tpl="243" style="font-size: 12.5px; letter-spacing: 1px; text-transform: uppercase; color: rgba(250, 247, 240, 0.4); margin-bottom: 16px;"><span class="sc-interp">Unternehmen</span></div>
+        <div data-dc-tpl="244" style="margin-bottom: 10px; font-size: 14px;">German Institute of Positive Psychology</div>
+        <div data-dc-tpl="245" style="margin-bottom: 10px;"><a data-dc-tpl="246" href="https://www.germaninstitute.eu/impressum.html" class="scp4" style="color: inherit; text-decoration: none; font-size: 14px;">Impressum</a></div>
+        <div data-dc-tpl="247" style="margin-bottom: 10px;"><a data-dc-tpl="248" href="https://www.germaninstitute.eu/datenschutz.html" class="scp4" style="color: inherit; text-decoration: none; font-size: 14px;">Datenschutz</a></div>
+      </div>
+    </div>
+    <div data-dc-tpl="249" style="max-width: 1240px; margin: 0px auto; display: flex; justify-content: space-between; align-items: center; padding-top: 26px; flex-wrap: wrap; gap: 12px;">
+      <span data-dc-tpl="250" style="font-size: 13px;"><span class="sc-interp">© 2026 NeuroBusiness™ · German Institute of Positive Psychology</span></span>
+      <span data-dc-tpl="251" style="font-size: 13px; font-style: italic; font-family: &quot;Source Serif 4&quot;, serif;"><span class="sc-interp">Not every business fits every brain.</span></span>
+    </div>
+  </div></div><nav data-dc-tpl="252" aria-label="Knowledge and company" style="display: flex; flex-wrap: wrap; gap: 16px; padding: 28px 24px; background: rgb(250, 247, 240); font: 15px / 1.6 system-ui;"><a data-dc-tpl="253" href="/ai-readiness">AI Readiness</a><a data-dc-tpl="254" href="/ai-adoption">AI Adoption</a><a data-dc-tpl="255" href="/team-intelligence">Team Intelligence</a><a data-dc-tpl="256" href="/knowledge">Knowledge</a><a data-dc-tpl="257" href="/methodology">Methodology</a><a data-dc-tpl="258" href="/about">About</a><a data-dc-tpl="259" href="/contact">Contact</a></nav></div></main>
+<template id="nb-template">
 
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,12 +610,12 @@
   <!-- NAV -->
   <div class="nb-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(250,247,240,0.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(21,19,15,0.08);">
     <a href="./Homepage.dc.html" style="display:flex;align-items:center;gap:8px;font-family:'Source Serif 4',serif;font-size:19px;font-weight:600;text-decoration:none;color:#15130f;">
-      <img src="./assets/NB_Coach_Icon.png" alt="" aria-hidden="true" style="width:34px;height:34px;display:block;flex:0 0 auto;object-fit:contain;"><span class="nb-brand-name">NeuroBusiness<span style="color:#22c964;">™</span></span>
+      <img width="1024" height="1024" src="./assets/NB_Coach_Icon.png" alt="" aria-hidden="true" style="width:34px;height:34px;display:block;flex:0 0 auto;object-fit:contain;"><span class="nb-brand-name">NeuroBusiness<span style="color:#22c964;">™</span></span>
     </a>
     <div class="nb-desktop-nav" style="display:flex;align-items:center;gap:30px;">
       <div style="display:flex;align-items:center;gap:26px;">
-        <a href="./Solo.dc.html" style="color:#15130f;text-decoration:none;font-size:14.5px;font-weight:500;opacity:0.78;" style-hover="opacity:1;">{{ navSolo }}</a>
-        <a href="./Team.dc.html" style="color:#15130f;text-decoration:none;font-size:14.5px;font-weight:500;opacity:0.78;" style-hover="opacity:1;">{{ navTeam }}</a>
+        <a href="/solo" style="color:#15130f;text-decoration:none;font-size:14.5px;font-weight:500;opacity:0.78;" style-hover="opacity:1;">{{ navSolo }}</a>
+        <a href="/teams" style="color:#15130f;text-decoration:none;font-size:14.5px;font-weight:500;opacity:0.78;" style-hover="opacity:1;">{{ navTeam }}</a>
         <a href="/coaches" style="color:#15130f;text-decoration:none;font-size:14.5px;font-weight:700;opacity:1;">{{ navCoach }}</a>
       </div>
       <div style="display:flex;align-items:center;gap:8px;font-family:Manrope;font-size:12px;letter-spacing:1px;">
@@ -377,8 +928,8 @@
       <div>
         <div style="font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:rgba(250,247,240,0.4);margin-bottom:16px;">{{ footerCol1 }}</div>
         <div style="margin-bottom:10px;"><a href="./Homepage.dc.html" style="color:inherit;text-decoration:none;font-size:14px;" style-hover="color:#fff;">{{ footerHome }}</a></div>
-        <div style="margin-bottom:10px;"><a href="./Solo.dc.html" style="color:inherit;text-decoration:none;font-size:14px;" style-hover="color:#fff;">{{ navSolo }}</a></div>
-        <div style="margin-bottom:10px;"><a href="./Team.dc.html" style="color:inherit;text-decoration:none;font-size:14px;" style-hover="color:#fff;">{{ footerTeam }}</a></div>
+        <div style="margin-bottom:10px;"><a href="/solo" style="color:inherit;text-decoration:none;font-size:14px;" style-hover="color:#fff;">{{ navSolo }}</a></div>
+        <div style="margin-bottom:10px;"><a href="/teams" style="color:inherit;text-decoration:none;font-size:14px;" style-hover="color:#fff;">{{ footerTeam }}</a></div>
       </div>
       <div>
         <div style="font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:rgba(250,247,240,0.4);margin-bottom:16px;">{{ footerCol2 }}</div>
@@ -395,7 +946,11 @@
 
 </div>
 
-</x-dc>
+<nav aria-label="Knowledge and company" style="display:flex;flex-wrap:wrap;gap:16px;padding:28px 24px;background:#faf7f0;font:15px/1.6 system-ui;">
+<a href="/ai-readiness">AI Readiness</a><a href="/ai-adoption">AI Adoption</a><a href="/team-intelligence">Team Intelligence</a><a href="/knowledge">Knowledge</a><a href="/methodology">Methodology</a><a href="/about">About</a><a href="/contact">Contact</a></nav>
+</template>
+<script src="/assets/prerender-bridge.js"></script>
+<script src="/support.js?v=20260725-1"></script>
 <script type="text/x-dc" data-dc-script>
 
 const COPY = {

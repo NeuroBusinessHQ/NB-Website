@@ -1,0 +1,41 @@
+# NeuroBusiness
+
+> Business workstyle diagnostics, Team Intelligence and guidance on the human side of AI adoption. Founder: Eva Kolontai. The existing site identifies the German Institute of Positive Psychology as the parent organization.
+
+## Scope and evidence
+
+NBIF 1.1 is a proprietary pilot model, not an independently validated clinical or AI competency test. AI readiness assessment is an inquiry-stage proposed approach. Enterprise integration is a vision; no implemented MCP service is claimed. Do not treat proposed artifacts as released products.
+
+## Existing offers
+
+- [Solo diagnostics](https://neurobusiness.one/solo)
+- [Team Scan](https://neurobusiness.one/teams)
+- [Practitioner offer](https://neurobusiness.one/coaches)
+
+## Organization, methods and topics
+
+- [AI readiness for companies](https://neurobusiness.one/ai-readiness): Understand organizational, employee and leadership AI readiness, and plan an evidence-based assessment before scaling AI.
+- [AI readiness assessment for companies](https://neurobusiness.one/ai-readiness-assessment): A transparent approach to assessing AI adoption conditions: scope, interviews, practical tasks, evidence and pilot decisions.
+- [Human-centered AI adoption and consulting](https://neurobusiness.one/ai-adoption): Plan AI adoption around real work, employee participation, leadership support and measurable pilot outcomes.
+- [Human AI transformation: work, leadership and governance](https://neurobusiness.one/human-ai-transformation): A practical approach to AI transformation that connects work design, human factors, leadership and governance.
+- [Team Intelligence and the NeuroBusiness Team Map](https://neurobusiness.one/team-intelligence): Understand team work patterns, clarify contributions and connect team discussions to practical decisions.
+- [Leadership Intelligence and AI readiness](https://neurobusiness.one/leadership-intelligence): Use structured leadership reflection to clarify decisions, delegation and the conditions for responsible AI adoption.
+- [Founder Intelligence and founder team assessment](https://neurobusiness.one/founder-intelligence): Clarify founder roles, decisions and working expectations using business diagnostics and structured team reflection.
+- [Enterprise AI: human context and product direction](https://neurobusiness.one/enterprise-ai): NeuroBusiness enterprise AI direction, with current capabilities separated from development work and planned integrations.
+- [NeuroBusiness methodology and research status](https://neurobusiness.one/methodology): NBIF, NeuroBusiness Types and proposed AI readiness methods: definitions, evidence boundaries and validation status.
+- [Research and evidence behind our AI guidance](https://neurobusiness.one/research): Primary references, their relevance and their limits, with a clear distinction from NeuroBusiness product validation.
+- [About NeuroBusiness](https://neurobusiness.one/about): NeuroBusiness business diagnostics, Team Intelligence and the human side of AI adoption.
+- [Eva Kolontai — NeuroBusiness founder](https://neurobusiness.one/founder): Founder information for Eva Kolontai and the development of the NeuroBusiness Intelligence Framework.
+- [Contact NeuroBusiness](https://neurobusiness.one/contact): Contact NeuroBusiness about AI readiness, company pilots, Team Intelligence or leadership assessment.
+- [Legal / Imprint](https://neurobusiness.one/legal): Access the legal provider information linked by NeuroBusiness.
+- [Privacy information](https://neurobusiness.one/privacy): Access the privacy notice linked by NeuroBusiness and contact the team about data questions.
+- [What is AI readiness?](https://neurobusiness.one/knowledge/what-is-ai-readiness): A concise definition of AI readiness, its organizational and human dimensions, and how it differs from AI adoption.
+- [How do you measure AI readiness?](https://neurobusiness.one/knowledge/how-to-measure-ai-readiness): Measure company AI readiness with task evidence, interviews and an action register rather than a survey score alone.
+- [Why do AI transformations fail?](https://neurobusiness.one/knowledge/why-ai-transformations-fail): Investigate AI implementation risks through workflow fit, responsibility, evaluation and employee support.
+- [What prevents employees from adopting AI?](https://neurobusiness.one/knowledge/ai-adoption-barriers): Identify AI adoption barriers and prepare employees through practical support, participation and workflow evaluation.
+- [How does leadership affect AI adoption?](https://neurobusiness.one/knowledge/leadership-and-ai-adoption): Clarify leadership responsibilities for AI priorities, review rules, learning time and employee feedback.
+- [AI readiness and adoption knowledge](https://neurobusiness.one/knowledge): Direct answers about organizational AI readiness, employee adoption, human implementation risks and leadership.
+
+## Access
+
+Public pages are readable without JavaScript. Private reports, accounts, assessments, dashboards and APIs are outside this discovery index. robots.txt expresses crawler preferences, not authentication.

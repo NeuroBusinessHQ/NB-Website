@@ -1,0 +1,12 @@
+{
+  "name": "neurobusiness-discovery-validation",
+  "private": true,
+  "scripts": {
+    "build:discovery": "python3 scripts/build-discovery.py",
+    "build:marketing": "node scripts/prerender.cjs",
+    "test:static": "python3 scripts/validate-static.py && node scripts/test-worker.mjs",
+    "test:browser": "node scripts/test-discovery.cjs",
+    "serve:test": "node scripts/dev-server.mjs"
+  },
+  "devDependencies": { "playwright": "1.62.1" }
+}

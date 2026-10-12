@@ -1,0 +1,381 @@
+[
+  {
+    "url": "https://neurobusiness.one/",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Coaching-Tools & Teamdiagnostik | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Not every business fits every brain.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 127177,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://neurobusiness.one/solo",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/Solo.dc",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Business-Diagnostik & AI Coaching Tool | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Dein Business sollte zu dir passen. Nicht umgekehrt.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 106363,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/solo\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://neurobusiness.one/teams",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/Team.dc",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Team Coaching f\u00fcr Unternehmen & Teamdiagnostik | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Klarere Rollen. Bessere Entscheidungen. Weniger Reibungsverlust.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 88494,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/teams\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://neurobusiness.one/coaches",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/Coach.dc",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Coaching Tool f\u00fcr Coaches: Diagnostik & AI | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Diagnostik f\u00fcr Coaches, die Entwicklung</span> <span data-dc-tpl=\"38\" style=\"font-style: italic; color: rgb(124, 111, 214);\"><span class=\"sc-interp\">sichtbar machen.</span></span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 166369,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/coaches\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://neurobusiness.one/robots.txt",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/robots.txt",
+    "content_type": "text/plain; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [],
+    "h1": [],
+    "template_tokens": 0,
+    "bytes": 204,
+    "canonical": [],
+    "text": "User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\nUser-agent: *\nAllow: /\n\nSitemap: https://neurobusiness.one/sitemap.xml\n"
+  },
+  {
+    "url": "https://neurobusiness.one/sitemap.xml",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/sitemap.xml",
+    "content_type": "application/xml",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [],
+    "h1": [],
+    "template_tokens": 0,
+    "bytes": 797,
+    "canonical": [],
+    "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://neurobusiness.one/</loc>\n    <lastmod>2026-07-25T11:10:00+00:00</lastmod>\n  </url>\n  <url>\n    <loc>https://neurobusiness.one/solo</loc>\n    <lastmod>2026-07-25T11:10:00+00:00</lastmod>\n  </url>\n  <url>\n    <loc>https://neurobusiness.one/teams</loc>\n    <lastmod>2026-07-25T11:10:00+00:00</lastmod>\n  </url>\n  <url>\n    <loc>https://neurobusiness.one/coaches</loc>\n    <lastmod>2026-07-31T00:00:00+00:00</lastmod>\n  </url>\n  <url>\n    <loc>https://neurobusiness.one/practitioner/apply/</loc>\n    <lastmod>2026-07-31T00:00:00+00:00</lastmod>\n  </url>\n  <url>\n    <loc>https://neurobusiness.one/quiz</loc>\n    <lastmod>2026-07-25T11:10:00+00:00</lastmod>\n  </url>\n</urlset>\n"
+  },
+  {
+    "url": "https://neurobusiness.one/llms.txt",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/llms.txt",
+    "content_type": "text/plain; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [],
+    "h1": [],
+    "template_tokens": 0,
+    "bytes": 2127,
+    "canonical": [],
+    "text": "# NeuroBusiness\n\n> NeuroBusiness ist ein psychologisch fundiertes System f\u00fcr Business-Diagnostik, Coaching-Tools und Team Intelligence. Es richtet sich an Selbstst\u00e4ndige, Business Coaches, Unternehmensberater, F\u00fchrungsteams und Unternehmen.\n\n## Zentrale Angebote\n\n- [Business-Diagnostik f\u00fcr Selbstst\u00e4ndige](https://neurobusiness.one/solo): 50 Fragen \u00fcber f\u00fcnf businessrelevante Dimensionen, pers\u00f6nlicher Report, Hinweise zu Business-Modell und Sichtbarkeit sowie optionaler AI Companion.\n- [Team Coaching und Teamdiagnostik f\u00fcr Unternehmen](https://neurobusiness.one/teams): vertrauliche Einzelassessments, aggregiertes Teamprofil ab vier vollst\u00e4ndigen Profilen, Team Intelligence Report, Beitragsmatrix sowie Kommunikations- und Aufgabenbriefing-Guides. Der Team Scan startet bei 1.500 Euro netto.\n- [Coaching Tool f\u00fcr Coaches](https://neurobusiness.one/coaches): Business-Diagnostik, strukturierte Reports, Debrief, AI-Unterst\u00fctzung und Practitioner-Lizenz f\u00fcr Coaches und Berater. Das Live-Online-Programm Certified NeuroBusiness Practitioner kostet regul\u00e4r 2.490 Euro netto. Die ersten 25 bezahlten Pl\u00e4tze k\u00f6nnen \u00fcber die begrenzte Startpromotion 1.490 Euro netto kosten.\n- [Kostenloser Quick-Scan](https://neurobusiness.one/quiz): zehn Fragen, ungef\u00e4hr zwei Minuten, sofortige Typ-Tendenz ohne Anmeldung.\n\n## Geeignet f\u00fcr\n\n- Business Coaches und Leadership Coaches\n- Unternehmensberaterinnen und Unternehmensberater\n- F\u00fchrungsteams, Gr\u00fcnderteams und People-&-Culture-Verantwortliche\n- Unternehmen, Acceleratoren und Incubators\n- Selbstst\u00e4ndige Expertinnen und Experten\n\n## Methodische Einordnung\n\nNeuroBusiness ist eine Business-Diagnostik und kein klinisches Diagnoseinstrument. Im Mittelpunkt stehen arbeits- und businessbezogene Pr\u00e4ferenzen, Entscheidungs- und Kommunikationsmuster, Business-Modelle, Sichtbarkeit und Zusammenarbeit.\n\n## Anbieter\n\nNeuroBusiness wurde von Eva Kolontai, Diplom-Psychologin und NeuroBusiness Strategist, entwickelt und geh\u00f6rt zum German Institute of Positive Psychology.\n\nKontakt: hello@neurobusiness.one\nWebsite: https://neurobusiness.one/\nSitemap: https://neurobusiness.one/sitemap.xml\n"
+  },
+  {
+    "url": "https://neurobusiness.one/nonexistent-audit-20261012",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/nonexistent-audit-20261012",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Coaching-Tools & Teamdiagnostik | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Not every business fits every brain.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 127177,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://neurobusiness.one/ai-readiness",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/ai-readiness",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Coaching-Tools & Teamdiagnostik | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Not every business fits every brain.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 127177,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://neurobusiness.one/",
+    "agent": "Googlebot",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Coaching-Tools & Teamdiagnostik | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Not every business fits every brain.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 127177,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://neurobusiness.one/",
+    "agent": "Bingbot",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Coaching-Tools & Teamdiagnostik | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Not every business fits every brain.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 127177,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://neurobusiness.one/",
+    "agent": "OAI-SearchBot",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Coaching-Tools & Teamdiagnostik | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Not every business fits every brain.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 127177,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://neurobusiness.one/",
+    "agent": "ChatGPT-User",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Coaching-Tools & Teamdiagnostik | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Not every business fits every brain.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 127177,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://neurobusiness.one/",
+    "agent": "GPTBot",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Coaching-Tools & Teamdiagnostik | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Not every business fits every brain.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 127177,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://neurobusiness.one/",
+    "agent": "ClaudeBot",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://neurobusiness.one/",
+    "agent": "PerplexityBot",
+    "status": 200,
+    "final_url": "https://neurobusiness.one/",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Coaching-Tools & Teamdiagnostik | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Not every business fits every brain.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 127177,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://www.neurobusiness.one/",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://www.neurobusiness.one/",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Coaching-Tools & Teamdiagnostik | NeuroBusiness\u2122"
+    ],
+    "h1": [
+      "<span class=\"sc-interp\">Not every business fits every brain.</span>"
+    ],
+    "template_tokens": 0,
+    "bytes": 127177,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://neurobusiness.one/\">"
+    ],
+    "text": null
+  },
+  {
+    "url": "https://www.germaninstitute.eu/impressum.html",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://www.germaninstitute.eu/impressum",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Impressum \u2502 German Institute of Positive Psychology"
+    ],
+    "h1": [
+      "Impressum"
+    ],
+    "template_tokens": 0,
+    "bytes": 2810,
+    "canonical": [],
+    "text": null
+  },
+  {
+    "url": "https://www.germaninstitute.eu/datenschutz.html",
+    "agent": "NeuroBusiness-Discovery-Audit/1.0",
+    "status": 200,
+    "final_url": "https://www.germaninstitute.eu/datenschutz",
+    "content_type": "text/html; charset=utf-8",
+    "server": "cloudflare",
+    "robots": null,
+    "challenge": null,
+    "title": [
+      "Datenschutzerkl\u00e4rung \u2502 German Institute of Positive Psychology"
+    ],
+    "h1": [
+      "Datenschutzerkl\u00e4rung"
+    ],
+    "template_tokens": 0,
+    "bytes": 5572,
+    "canonical": [],
+    "text": null
+  }
+]
